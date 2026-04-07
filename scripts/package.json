@@ -1,0 +1,13 @@
+{
+  "name": "website-scraper",
+  "version": "1.0.0",
+  "description": "Scrape client website content and images for redesign research",
+  "scripts": {
+    "scrape": "node scrape.js",
+    "download-images": "node download-images.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0"
+  }
+}
