@@ -1,0 +1,135 @@
+<!-- PRICING -->
+<section class="pricing section-dark-2" id="pricing">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="badge badge-accent">Flat-Rate Pricing</div>
+      <h2 class="section-title section-title-dark">
+        Simple pricing.<br>No hidden fees.
+      </h2>
+      <p class="section-sub" style="color:var(--text-dark-2)">
+        One price covers our service fee. State filing fees are quoted
+        separately at checkout — no surprises.
+      </p>
+      <!-- Toggle: One-time / Subscription -->
+      <div class="pricing-toggle">
+        <button class="ptoggle-btn active" data-plan="onetime" onclick="setPricingPlan('onetime')">One-Time</button>
+        <button class="ptoggle-btn" data-plan="subscription" onclick="setPricingPlan('subscription')">
+          Annual
+          <span class="ptoggle-save">Save 20%</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Basic -->
+      <div class="pricing-card glass-card reveal">
+        <div class="pc-tier">Basic</div>
+        <div class="pc-desc">Essential filings — get your business legally formed.</div>
+        <div class="pc-price">
+          <span class="pc-dollar">$</span>
+          <span class="pc-amount" data-onetime="99" data-subscription="79">99</span>
+          <span class="pc-per">/ one-time</span>
+        </div>
+        <div class="pc-state-fee">+ state filing fees</div>
+        <a href="https://www.bizjump.com/service/basic-incorporation-package/" target="_blank" class="btn btn-ghost-dark pc-btn">Get Started</a>
+        <ul class="pc-features">
+          <li class="pc-feat-yes">Certificate of Incorporation filing</li>
+          <li class="pc-feat-yes">Name availability check</li>
+          <li class="pc-feat-yes">Digital delivery</li>
+          <li class="pc-feat-yes">Secure client dashboard</li>
+          <li class="pc-feat-no">EIN / Tax ID</li>
+          <li class="pc-feat-no">Registered Agent (1 yr)</li>
+          <li class="pc-feat-no">Operating Agreement</li>
+          <li class="pc-feat-no">Express processing</li>
+        </ul>
+      </div>
+
+      <!-- Pro (MOST POPULAR) -->
+      <div class="pricing-card pricing-card-featured glass-card reveal reveal-delay-1">
+        <div class="pc-popular-badge">Most Popular</div>
+        <div class="pc-tier">Pro</div>
+        <div class="pc-desc">Everything you need to launch and stay compliant.</div>
+        <div class="pc-price">
+          <span class="pc-dollar">$</span>
+          <span class="pc-amount" data-onetime="199" data-subscription="159">199</span>
+          <span class="pc-per">/ one-time</span>
+        </div>
+        <div class="pc-state-fee">+ state filing fees</div>
+        <a href="https://www.bizjump.com/service/incorporation/" target="_blank" class="btn btn-primary pc-btn">Get Started</a>
+        <ul class="pc-features">
+          <li class="pc-feat-yes">Everything in Basic</li>
+          <li class="pc-feat-yes">EIN / Federal Tax ID</li>
+          <li class="pc-feat-yes">Registered Agent (1 yr)</li>
+          <li class="pc-feat-yes">Operating Agreement template</li>
+          <li class="pc-feat-yes">S-Corp &amp; Corp filings</li>
+          <li class="pc-feat-yes">1-day express processing</li>
+          <li class="pc-feat-no">Custom corporate kit</li>
+          <li class="pc-feat-no">Business plan consultation</li>
+        </ul>
+      </div>
+
+      <!-- Premium -->
+      <div class="pricing-card glass-card reveal reveal-delay-2">
+        <div class="pc-tier">Premium</div>
+        <div class="pc-desc">Full-service formation with expert consultation included.</div>
+        <div class="pc-price">
+          <span class="pc-dollar">$</span>
+          <span class="pc-amount" data-onetime="295" data-subscription="236">295</span>
+          <span class="pc-per">/ one-time</span>
+        </div>
+        <div class="pc-state-fee">+ state filing fees</div>
+        <a href="https://www.bizjump.com/service/incorporation/" target="_blank" class="btn btn-ghost-dark pc-btn">Get Started</a>
+        <ul class="pc-features">
+          <li class="pc-feat-yes">Everything in Pro</li>
+          <li class="pc-feat-yes">Custom corporate kit</li>
+          <li class="pc-feat-yes">By-laws &amp; stock certificates</li>
+          <li class="pc-feat-yes">Banking resolution documents</li>
+          <li class="pc-feat-yes">Business planning tax consultation</li>
+          <li class="pc-feat-yes">Compliance calendar alerts</li>
+          <li class="pc-feat-yes">Priority support</li>
+          <li class="pc-feat-no">Dedicated account manager</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="pricing-card glass-card reveal reveal-delay-3">
+        <div class="pc-tier">Enterprise</div>
+        <div class="pc-desc">Multi-state filings, subscriptions, and dedicated management.</div>
+        <div class="pc-price">
+          <span class="pc-dollar"></span>
+          <span class="pc-amount" style="font-size:28px">Custom</span>
+          <span class="pc-per"></span>
+        </div>
+        <div class="pc-state-fee">Volume pricing available</div>
+        <a href="https://www.bizjump.com/business-consulting/" target="_blank" class="btn btn-ghost-dark pc-btn">Contact Us</a>
+        <ul class="pc-features">
+          <li class="pc-feat-yes">Everything in Premium</li>
+          <li class="pc-feat-yes">Multi-state formations</li>
+          <li class="pc-feat-yes">Dedicated account manager</li>
+          <li class="pc-feat-yes">Website hosting included</li>
+          <li class="pc-feat-yes">Digital launch package</li>
+          <li class="pc-feat-yes">CRM &amp; compliance integration</li>
+          <li class="pc-feat-yes">Volume discounts</li>
+          <li class="pc-feat-yes">White-glove support</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Add-ons strip -->
+    <div class="pricing-addons reveal">
+      <div class="pricing-addons-label">Popular Add-Ons:</div>
+      <div class="pricing-addons-list">
+        <span class="addon-chip">Registered Agent <strong>+$99/yr</strong></span>
+        <span class="addon-chip">EIN / Tax ID <strong>+$49</strong></span>
+        <span class="addon-chip">Business Bank Account <strong>Free</strong></span>
+        <span class="addon-chip">Annual Report Filing <strong>+$49</strong></span>
+        <span class="addon-chip">Operating Agreement <strong>+$39</strong></span>
+        <span class="addon-chip">Digital Launch Package <strong>+$199</strong></span>
+      </div>
+    </div>
+
+  </div>
+</section>

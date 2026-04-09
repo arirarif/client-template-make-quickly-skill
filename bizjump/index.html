@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BizJump — Incorporate Your Business Online | Fast, Flat-Rate Pricing</title>
+  <meta name="description" content="Form your LLC, Corporation, or Nonprofit online in minutes. Transparent flat-rate pricing, guided wizard, and expert support. BizJump has helped 2,200+ businesses for over 20 years."/>
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="css/tokens.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/hero.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+  <link rel="stylesheet" href="css/pricing.css"/>
+  <link rel="stylesheet" href="css/how-it-works.css"/>
+  <link rel="stylesheet" href="css/features.css"/>
+  <link rel="stylesheet" href="css/social-proof.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+</head>
+<body>
+
+  <!-- ── Partial slots ── -->
+  <div id="slot-announcement"></div>
+  <div id="slot-nav"></div>
+  <main>
+    <div id="slot-hero"></div>
+    <div id="slot-ticker"></div>
+    <div id="slot-stats"></div>
+    <div id="slot-entity-types"></div>
+    <div id="slot-pricing"></div>
+    <div id="slot-how-it-works"></div>
+    <div id="slot-features"></div>
+    <div id="slot-social-proof"></div>
+    <div id="slot-cta"></div>
+  </main>
+  <div id="slot-footer"></div>
+
+  <!-- ── Partial loader ── -->
+  <script>
+    const PARTIALS = [
+      ['slot-announcement', 'partials/announcement.html'],
+      ['slot-nav',          'partials/nav.html'],
+      ['slot-hero',         'partials/hero.html'],
+      ['slot-ticker',       'partials/ticker.html'],
+      ['slot-stats',        'partials/stats.html'],
+      ['slot-entity-types', 'partials/entity-types.html'],
+      ['slot-pricing',      'partials/pricing.html'],
+      ['slot-how-it-works', 'partials/how-it-works.html'],
+      ['slot-features',     'partials/features.html'],
+      ['slot-social-proof', 'partials/social-proof.html'],
+      ['slot-cta',          'partials/cta.html'],
+      ['slot-footer',       'partials/footer.html'],
+    ];
+
+    async function loadPartials() {
+      await Promise.all(PARTIALS.map(async ([id, src]) => {
+        try {
+          const res  = await fetch(src);
+          const html = await res.text();
+          const slot = document.getElementById(id);
+          if (slot) slot.innerHTML = html;
+        } catch(e) {
+          console.warn('Could not load partial:', src, e);
+        }
+      }));
+      // Boot JS after all partials are in the DOM
+      initAll();
+    }
+
+    function initAll() {
+      if (typeof initNav        === 'function') initNav();
+      if (typeof initAnimations === 'function') initAnimations();
+      if (typeof initWizard     === 'function') initWizard();
+    }
+
+    loadPartials();
+  </script>
+
+  <!-- ── JS modules ── -->
+  <script src="js/nav.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/wizard.js"></script>
+
+</body>
+</html>
