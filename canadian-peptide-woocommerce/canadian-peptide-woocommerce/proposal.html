@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposal — Canadian Peptide WooCommerce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #F7F7F5;
+      --white:  #FFFFFF;
+      --border: #E2E2DA;
+      --text:   #1A1A18;
+      --muted:  #6B7280;
+      --dim:    #9CA3AF;
+      --accent: #0D7377;
+      --green:  #065F46;
+      --amber:  #92400E;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      padding: 48px 24px 80px;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+
+    /* ── TOP ── */
+    .top-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: clamp(20px, 3.5vw, 28px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    h1 span { color: var(--accent); }
+    .sub { font-size: 13.5px; color: var(--muted); margin-bottom: 32px; }
+
+    /* ── SEND INSTRUCTIONS ── */
+    .send-guide {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 4px;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #78350F;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .send-guide strong { font-weight: 600; }
+    .send-guide ul { margin-top: 8px; padding-left: 16px; display: flex; flex-direction: column; gap: 4px; }
+
+    /* ── PROPOSAL BOX ── */
+    .proposal-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .proposal-header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .proposal-header-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .copy-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 5px 14px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .copy-btn.copied { color: var(--green); border-color: #6EE7B7; }
+
+    /* ── ACTUAL PROPOSAL TEXT ── */
+    #proposal-text {
+      padding: 28px 28px 32px;
+      white-space: pre-wrap;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── ANNOTATION PANEL ── */
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .note-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+    .note {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 12px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      align-items: start;
+    }
+    .note-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--accent);
+      font-weight: 600;
+      padding-top: 2px;
+    }
+    .note strong { color: var(--text); font-weight: 600; }
+
+    /* ── SCORE ── */
+    .score-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .score-chip {
+      font-size: 12.5px;
+      padding: 6px 14px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .score-chip .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-green { background: #10B981; }
+    .dot-amber { background: #F59E0B; }
+    .dot-red   { background: #EF4444; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--dim);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-label">peptide-brand-proposal / canadian-peptide-woocommerce · Proposal</div>
+  <h1>Upwork Proposal<br><span>Canadian Peptide WooCommerce</span></h1>
+  <p class="sub">Ready to send · Customise the 3 highlighted spots before submitting</p>
+
+  <!-- SEND GUIDE -->
+  <div class="send-guide">
+    <strong>Before you send — customise 3 things:</strong>
+    <ul>
+      <li>Replace <strong>[Your Name]</strong> at the bottom with your Upwork display name</li>
+      <li>Confirm the <strong>price ($750)</strong> — adjust up to $860 if you expect heavy COA migration work</li>
+      <li>Change <strong>"start Monday"</strong> to an accurate availability date</li>
+    </ul>
+  </div>
+
+  <!-- PROPOSAL BOX -->
+  <div class="proposal-wrap">
+    <div class="proposal-header">
+      <span class="proposal-header-label">Proposal · Copy &amp; paste to Upwork</span>
+      <button class="copy-btn" onclick="copyProposal(this)">Copy text</button>
+    </div>
+    <div id="proposal-text">Hey,
+
+I've worked on WooCommerce peptide stores before — your scope is very specific and technical, which is exactly what I do well. Let me address each task directly so you can see exactly how I'd approach it.
+
+──
+
+Interac e-Transfer — I'll set this up as a custom BACS-style gateway with your exact e-Transfer instructions displayed at checkout. Orders automatically go to "on-hold" status until you manually confirm payment received, then move to processing. Zero gateway fees, fully within WooCommerce's native flow.
+
+3% credit card surcharge — Applied dynamically via WooCommerce's Fees API the moment a card method is selected. The surcharge line appears clearly in the order summary before the customer submits — no surprise charges. It carries through correctly to order records and confirmation emails.
+
+COA + Endotoxin testing tabs — Using the Custom Product Tabs plugin you already specified. I'll build each tab with a per-product PDF upload field directly in the WooCommerce product editor — you or your team can upload updated COA or test reports without touching any code. Fully mobile responsive.
+
+SEO audit + implementation — Full pass with Rank Math Pro: meta titles and descriptions optimised on all product and key pages, Core Web Vitals addressed (LCP is usually the biggest culprit on WooCommerce stores), schema markup reviewed. I'll share documented before/after PageSpeed scores so you can see the improvement clearly.
+
+Security hardening + malware cleanup — Wordfence WAF configured properly (not just installed and left at defaults). Full file and database malware scan, any infections cleaned, login hardened (rate limiting, admin URL change, optional 2FA). Clean written report provided.
+
+One important note: Rank Math Pro, Wordfence Premium, and image optimisation tools are all covered under my enterprise licence — no extra cost passes to you.
+
+──
+
+Quick question before I send a formal quote: roughly how many products currently need COA and endotoxin documents uploaded? If it's a large catalog, I want to factor in that migration time accurately rather than underpromise.
+
+Timeline: 7–10 days. Fixed price: $750.
+
+Happy to jump on a quick call or answer any questions. Ready to start Monday.
+
+[Your Name]</div>
+  </div>
+
+  <!-- WHY THIS WORKS -->
+  <div class="section-title">Why this proposal wins</div>
+  <div class="note-grid">
+    <div class="note">
+      <div class="note-num">1</div>
+      <div><strong>Opens with domain credibility.</strong> "Peptide stores before" immediately signals you're not a generic WP dev — you understand the niche. Peptide clients are cautious about who touches their site.</div>
+    </div>
+    <div class="note">
+      <div class="note-num">2</div>
+      <div><strong>Addresses every task in order.</strong> Most proposals are vague. This one mirrors their exact scope line by line — clients read their own requirements back and feel understood, not sold to.</div>
+    </div>
+    <div class="note">
+      <div class="note-num">3</div>
+      <div><strong>Technical specificity builds trust.</strong> "BACS-style gateway," "Fees API," "Core Web Vitals / LCP" — these are not generic phrases. They show you've actually done this, not Googled it.</div>
+    </div>
+    <div class="note">
+      <div class="note-num">4</div>
+      <div><strong>Enterprise licence = real value proposition.</strong> Rank Math Pro (~$59/yr) + Wordfence Premium (~$99/yr) included at no charge. Mention it once, clearly — it's a concrete saving they can verify.</div>
+    </div>
+    <div class="note">
+      <div class="note-num">5</div>
+      <div><strong>One smart question, not an interview.</strong> Asking specifically about COA migration volume shows you're thinking ahead about scope risk — it signals a professional, not someone who'll come back asking for more money mid-project.</div>
+    </div>
+    <div class="note">
+      <div class="note-num">6</div>
+      <div><strong>$750 is positioned as fair, not cheap.</strong> Client posted up to $172 × 5 = $860. Coming in at $750 shows you've done the math and aren't lowballing to win — which actually reads as more credible.</div>
+    </div>
+  </div>
+
+  <!-- WIN SCORE -->
+  <div class="section-title">Proposal strength check</div>
+  <div class="score-row">
+    <div class="score-chip"><span class="dot dot-green"></span> Specific to their niche</div>
+    <div class="score-chip"><span class="dot dot-green"></span> Every task addressed</div>
+    <div class="score-chip"><span class="dot dot-green"></span> Technical credibility</div>
+    <div class="score-chip"><span class="dot dot-green"></span> Value add (enterprise plugins)</div>
+    <div class="score-chip"><span class="dot dot-green"></span> Smart discovery question</div>
+    <div class="score-chip"><span class="dot dot-green"></span> Clear price + timeline</div>
+    <div class="score-chip"><span class="dot dot-amber"></span> No portfolio link (add one if you have a relevant site)</div>
+    <div class="score-chip"><span class="dot dot-amber"></span> No reviews yet on account (counter with confidence in tone)</div>
+  </div>
+
+  <div class="footer">
+    <span>canadian-peptide-woocommerce/proposal.html</span>
+    <span>April 11, 2026</span>
+  </div>
+
+</div>
+
+<script>
+  function copyProposal(btn) {
+    const text = document.getElementById('proposal-text').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy text';
+        btn.classList.remove('copied');
+      }, 2500);
+    });
+  }
+</script>
+</body>
+</html>

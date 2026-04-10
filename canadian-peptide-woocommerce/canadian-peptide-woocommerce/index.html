@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canadian Peptide Site — Brief Read</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #FAFAF8;
+      --surface: #FFFFFF;
+      --border:  #E4E4DC;
+      --text:    #1A1A18;
+      --muted:   #6B7280;
+      --dim:     #9CA3AF;
+      --accent:  #0D7377;
+      --warn:    #B45309;
+      --green:   #065F46;
+      --red:     #991B1B;
+      --tag-bg:  #F0FDF4;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      padding: 48px 24px 80px;
+    }
+
+    .wrap { max-width: 760px; margin: 0 auto; }
+
+    /* ── TOP LABEL ── */
+    .top-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 20px;
+    }
+
+    /* ── HEADER ── */
+    h1 {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    h1 span { color: var(--accent); }
+    .sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    /* ── CHIPS ── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--surface);
+    }
+    .chip.hi { background: #ECFDF5; border-color: #6EE7B7; color: var(--green); }
+    .chip.warn { background: #FFFBEB; border-color: #FCD34D; color: var(--warn); }
+    .chip.red { background: #FEF2F2; border-color: #FCA5A5; color: var(--red); }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 40px; }
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── TASK CARDS ── */
+    .tasks { display: flex; flex-direction: column; gap: 10px; }
+    .task {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--border);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+    .task.payment  { border-left-color: #10B981; }
+    .task.product  { border-left-color: #6366F1; }
+    .task.seo      { border-left-color: #F59E0B; }
+    .task.security { border-left-color: #EF4444; }
+
+    .task-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .task-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .task-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-green  { background: #ECFDF5; color: #065F46; border: 1px solid #6EE7B7; }
+    .badge-purple { background: #EEF2FF; color: #3730A3; border: 1px solid #A5B4FC; }
+    .badge-amber  { background: #FFFBEB; color: #92400E; border: 1px solid #FCD34D; }
+    .badge-red    { background: #FEF2F2; color: #991B1B; border: 1px solid #FCA5A5; }
+
+    .task-body { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+    .task-body ul { margin-top: 8px; padding-left: 18px; display: flex; flex-direction: column; gap: 3px; }
+    .task-body li { font-size: 13px; }
+
+    /* ── CLARIFY BLOCK ── */
+    .clarify {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .clarify-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--warn);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .clarify ol {
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .clarify li {
+      font-size: 13px;
+      color: #78350F;
+      line-height: 1.6;
+    }
+
+    /* ── BUDGET TABLE ── */
+    .budget-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    .budget-row:last-child { margin-bottom: 0; }
+    .budget-label { color: var(--text); font-weight: 500; }
+    .budget-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .budget-row.total {
+      background: #F0FDF4;
+      border-color: #6EE7B7;
+      margin-top: 8px;
+    }
+    .budget-row.total .budget-label { color: var(--green); font-weight: 600; }
+    .budget-row.total .budget-val { color: var(--green); font-size: 13px; font-weight: 600; }
+
+    /* ── PLUGIN NOTE ── */
+    .plugin-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .plugin-note strong { color: var(--text); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 56px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--dim);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 560px) {
+      .task-head { flex-direction: column; }
+      .footer { flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-label">peptide-brand-proposal / canadian-peptide-woocommerce · Brief Read</div>
+
+  <h1>Canadian Peptide Site<br><span>WooCommerce Enhancement Brief</span></h1>
+  <p class="sub">Posted ~36 minutes ago · 5 responses · Fixed price · Less than 1 month · Canada</p>
+
+  <div class="chips">
+    <span class="chip warn">Up to $172 / delivery · 5 deliveries/day</span>
+    <span class="chip hi">Existing WooCommerce site</span>
+    <span class="chip">Payment integration</span>
+    <span class="chip">SEO audit</span>
+    <span class="chip">Security / malware</span>
+    <span class="chip">Custom product tabs</span>
+    <span class="chip red">Canadian market (CAD)</span>
+  </div>
+
+  <!-- ══ WHAT CLIENT ACTUALLY NEEDS ══ -->
+  <div class="section">
+    <div class="section-title">What client needs — 5 clear tasks</div>
+    <div class="tasks">
+
+      <div class="task payment">
+        <div class="task-head">
+          <div class="task-name">1. Add Interac e-Transfer as a payment method</div>
+          <span class="task-badge badge-green">Payment</span>
+        </div>
+        <div class="task-body">
+          Client wants customers to be able to pay via Interac e-Transfer — a standard Canadian bank transfer method. The checkout should:
+          <ul>
+            <li>Show clear instructions for how to send the e-Transfer</li>
+            <li>Hold the order as "pending" until payment is manually confirmed</li>
+            <li>Fit cleanly into the existing WooCommerce checkout flow</li>
+          </ul>
+          <strong style="display:block;margin-top:8px;color:#374151;font-size:12.5px;">→ Approach: WooCommerce BACS gateway (customised) or a dedicated Interac plugin. No gateway fee involved — manual confirmation flow.</strong>
+        </div>
+      </div>
+
+      <div class="task payment">
+        <div class="task-head">
+          <div class="task-name">2. Add 3% credit card surcharge at checkout</div>
+          <span class="task-badge badge-green">Payment</span>
+        </div>
+        <div class="task-body">
+          When a customer selects a credit card payment option, a 3% fee should be automatically added to the order total. The surcharge must be:
+          <ul>
+            <li>Clearly visible on the checkout page before payment is submitted</li>
+            <li>Applied dynamically only when credit card is selected</li>
+            <li>Reflected correctly in the order total and order confirmation email</li>
+          </ul>
+          <strong style="display:block;margin-top:8px;color:#374151;font-size:12.5px;">→ Approach: WooCommerce Fees API or a surcharge plugin (WC Checkout Fees). Must comply with card network rules.</strong>
+        </div>
+      </div>
+
+      <div class="task product">
+        <div class="task-head">
+          <div class="task-name">3. Custom product page tabs — COA &amp; Endotoxin testing</div>
+          <span class="task-badge badge-purple">Product Pages</span>
+        </div>
+        <div class="task-body">
+          Each product page needs two additional tabs (alongside Description/Reviews):
+          <ul>
+            <li><strong>COA tab</strong> — Certificate of Analysis (PDF upload per product, viewable in-browser)</li>
+            <li><strong>Endotoxin Testing tab</strong> — test result document (PDF upload, editable via backend)</li>
+            <li>Both tabs must be editable by the client without touching code</li>
+            <li>Must display correctly on mobile</li>
+          </ul>
+          <strong style="display:block;margin-top:8px;color:#374151;font-size:12.5px;">→ Plugin: "Custom Product Tabs for WooCommerce" (client specified this). Needs per-product PDF upload field.</strong>
+        </div>
+      </div>
+
+      <div class="task seo">
+        <div class="task-head">
+          <div class="task-name">4. Full on-page SEO audit + implementation</div>
+          <span class="task-badge badge-amber">SEO</span>
+        </div>
+        <div class="task-body">
+          Not just an audit — they want the fixes implemented too:
+          <ul>
+            <li>Optimise meta titles and descriptions for all key pages + products</li>
+            <li>Improve page speed (Core Web Vitals — LCP, CLS, FID)</li>
+            <li>Fix mobile performance issues</li>
+            <li>Schema markup review (Product, Organization)</li>
+          </ul>
+          <strong style="display:block;margin-top:8px;color:#374151;font-size:12.5px;">→ Tool: Rank Math or Yoast. Page speed: image compression, caching, defer JS. Report before + after PageSpeed scores.</strong>
+        </div>
+      </div>
+
+      <div class="task security">
+        <div class="task-head">
+          <div class="task-name">5. Security hardening + malware scan &amp; cleanup</div>
+          <span class="task-badge badge-red">Security</span>
+        </div>
+        <div class="task-body">
+          The site needs a proper security layer — this is a peptide/supplement store, higher attack target:
+          <ul>
+            <li>Install and configure a Web Application Firewall (WAF)</li>
+            <li>Full malware scan of all WordPress files and database</li>
+            <li>Clean up any infections found</li>
+            <li>Harden login (rate limiting, 2FA, change default admin URL)</li>
+          </ul>
+          <strong style="display:block;margin-top:8px;color:#374151;font-size:12.5px;">→ Plugin: Wordfence (WAF + scan) or MalCare. One-time deep clean + config.</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ THINGS TO CLARIFY BEFORE STARTING ══ -->
+  <div class="section">
+    <div class="section-title">Clarify before starting</div>
+    <div class="clarify">
+      <div class="clarify-title">⚠ Ask the client these before sending a proposal</div>
+      <ol>
+        <li><strong>What payment gateway are they using for credit cards?</strong> — The 3% surcharge implementation differs between Stripe, Square, or PayPal. Need to know before quoting.</li>
+        <li><strong>Is there an existing Interac e-Transfer flow or should it be built from scratch?</strong> — Some peptide stores already have a manual bank transfer setup; others need a new plugin entirely.</li>
+        <li><strong>How many products have COA / Endotoxin docs that need uploading?</strong> — If it's 200+ products, that's a migration task on top of the dev work and affects timeline/price.</li>
+        <li><strong>Has the site had any known malware or hacking incidents?</strong> — If infected, cost of cleanup goes up. Good to flag upfront.</li>
+        <li><strong>"5 deliveries per day" — what does this mean for them?</strong> — This likely refers to Upwork's contract structure, not actual deliverables. Confirm it's just one full project payment split into 5 tranches of $172 ($860 total), or if they mean 5 separate scoped tasks done one at a time.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══ BUDGET BREAKDOWN ══ -->
+  <div class="section">
+    <div class="section-title">Budget read — what the numbers mean</div>
+
+    <div class="budget-row">
+      <span class="budget-label">Stated budget</span>
+      <span class="budget-val">Up to $172 / delivery</span>
+    </div>
+    <div class="budget-row">
+      <span class="budget-label">5 deliveries listed</span>
+      <span class="budget-val">$172 × 5 = $860 max total</span>
+    </div>
+    <div class="budget-row">
+      <span class="budget-label">Realistic scope value</span>
+      <span class="budget-val">$600 – $900 (reasonable for 5 focused tasks)</span>
+    </div>
+    <div class="budget-row total">
+      <span class="budget-label">Recommended fixed price</span>
+      <span class="budget-val">$750 – $860 (single or milestone)</span>
+    </div>
+
+    <div class="plugin-note" style="margin-top:12px;">
+      <strong>Plugin note:</strong> Client specified "Custom Product Tabs for WooCommerce" — this plugin is already in their requirements. If you hold enterprise licences, Rank Math Pro, Wordfence Premium, and ShortPixel/Imagify are all covered at no extra cost. That's a $200–400 saving worth highlighting in your proposal.
+    </div>
+  </div>
+
+  <!-- ══ QUICK SCOPE SUMMARY ══ -->
+  <div class="section">
+    <div class="section-title">One-line scope summary</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:20px 20px;font-size:14px;color:var(--muted);line-height:1.75;">
+      Enhance an <strong style="color:var(--text);">existing Canadian WooCommerce peptide store</strong> with two payment features (Interac e-Transfer + 3% CC surcharge), custom COA/endotoxin product tabs with PDF uploads, a full SEO audit with fixes, and a security clean + WAF setup. <strong style="color:var(--text);">No new store build — existing site improvement only.</strong> Timeframe: under 1 month (realistic: 5–10 days for all 5 tasks done sequentially).
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>peptide-brand-proposal/canadian-peptide-woocommerce/index.html</span>
+    <span>Brief Read · April 11, 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
