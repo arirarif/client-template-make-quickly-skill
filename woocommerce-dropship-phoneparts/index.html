@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WooCommerce Dropship Store — Project Brief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #07090F;
+      --bg-card:  #0D1420;
+      --bg-card2: #111827;
+      --border:   #1C2D45;
+      --border2:  #253650;
+      --text:     #D9E4F0;
+      --muted:    #5E7A99;
+      --dim:      #3A5068;
+      --accent:   #0CF2D8;
+      --accent2:  #F59E0B;
+      --accent3:  #6366F1;
+      --red:      #F87171;
+      --green:    #34D399;
+
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent3));
+      width: 0%; z-index: 1000;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 120px;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      position: relative;
+      padding: 80px 0 64px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      top: -120px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(12,242,216,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cover-inner { position: relative; z-index: 1; }
+
+    .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      border: 1px solid rgba(12,242,216,0.3);
+      background: rgba(12,242,216,0.06);
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+    .cover-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .cover-title {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .cover-title span {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cover-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .cover-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .meta-chip {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--muted);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .meta-chip .label { color: var(--dim); }
+    .meta-chip .val { color: var(--text); font-weight: 500; }
+    .meta-chip .val.green { color: var(--green); }
+    .meta-chip .val.amber { color: var(--accent2); }
+
+    /* ── SECTION HEADERS ── */
+    .section {
+      padding: 56px 0 0;
+    }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 120px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+
+    /* ── SCOPE CARDS ── */
+    .scope-grid {
+      display: grid;
+      gap: 2px;
+    }
+    .scope-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s;
+    }
+    .scope-item.visible { opacity: 1; transform: none; }
+    .scope-item:hover { border-color: var(--border2); }
+    .scope-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(12,242,216,0.04);
+      border-right: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .scope-content {
+      padding: 16px 20px;
+    }
+    .scope-heading {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .scope-body {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .scope-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 2px;
+      letter-spacing: 0.06em;
+    }
+    .tag-blue  { background: rgba(99,102,241,0.12); color: #818CF8; border: 1px solid rgba(99,102,241,0.2); }
+    .tag-teal  { background: rgba(12,242,216,0.08); color: var(--accent); border: 1px solid rgba(12,242,216,0.2); }
+    .tag-amber { background: rgba(245,158,11,0.10); color: var(--accent2); border: 1px solid rgba(245,158,11,0.2); }
+    .tag-green { background: rgba(52,211,153,0.10); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
+    .tag-red   { background: rgba(248,113,113,0.10); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
+
+    /* ── TECH STACK ── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .stack-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.2s, background 0.2s;
+    }
+    .stack-card.visible { opacity: 1; transform: none; }
+    .stack-card:hover {
+      border-color: var(--border2);
+      background: var(--bg-card2);
+    }
+    .stack-cat {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 6px;
+    }
+    .stack-name {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .stack-note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── PHASES ── */
+    .phases { display: flex; flex-direction: column; gap: 0; }
+    .phase {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0;
+      opacity: 0;
+      transform: translateX(-12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .phase.visible { opacity: 1; transform: none; }
+    .phase-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 24px;
+      padding-top: 4px;
+    }
+    .phase-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(12,242,216,0.5);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .phase-line {
+      flex: 1;
+      width: 1px;
+      background: var(--border);
+      margin-top: 8px;
+    }
+    .phase:last-child .phase-line { display: none; }
+    .phase-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--dim);
+      text-align: right;
+      margin-bottom: 4px;
+      letter-spacing: 0.06em;
+    }
+    .phase-right {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 8px;
+    }
+    .phase-title {
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .phase-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .phase-list li {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .phase-list li::before {
+      content: '›';
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    .phase-duration {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent2);
+      margin-top: 10px;
+    }
+
+    /* ── RISKS / CAVEATS ── */
+    .risk-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 600px) { .risk-grid { grid-template-columns: 1fr; } }
+    .risk-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid;
+      border-radius: 4px;
+      padding: 16px;
+    }
+    .risk-card.warn { border-left-color: var(--accent2); }
+    .risk-card.info { border-left-color: var(--accent3); }
+    .risk-title {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .risk-body { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+    /* ── PRICING ── */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .pricing-table thead tr {
+      background: var(--bg-card);
+    }
+    .pricing-table th {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      vertical-align: top;
+    }
+    .pricing-table td:first-child { color: var(--text); font-weight: 500; }
+    .pricing-table td.price {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent2);
+      white-space: nowrap;
+    }
+    .pricing-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .pricing-table tfoot td {
+      padding-top: 14px;
+      border-bottom: none;
+      color: #fff;
+      font-weight: 600;
+    }
+    .pricing-table tfoot td.price {
+      color: var(--accent);
+      font-size: 15px;
+    }
+
+    /* ── DELIVERABLES CHECKLIST ── */
+    .checklist {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    @media (max-width: 600px) { .checklist { grid-template-columns: 1fr; } }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 10px 14px;
+    }
+    .check-icon {
+      font-size: 11px;
+      color: var(--green);
+      background: rgba(52,211,153,0.1);
+      border: 1px solid rgba(52,211,153,0.2);
+      border-radius: 2px;
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    /* ── TERMS ── */
+    .terms-grid {
+      display: grid;
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .term-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      background: var(--bg-card);
+    }
+    .term-row:nth-child(even) { background: var(--bg-card2); }
+    .term-key {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--dim);
+      padding: 12px 16px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+    .term-val {
+      font-size: 13px;
+      color: var(--text);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ── STRATEGY HIGHLIGHT ── */
+    .strategy-block {
+      background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(12,242,216,0.05) 100%);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 6px;
+      padding: 28px 32px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 32px;
+    }
+    .strategy-block::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .strategy-block blockquote {
+      font-family: var(--font-head);
+      font-size: clamp(16px, 2.5vw, 20px);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+    .strategy-block blockquote em {
+      color: var(--accent);
+      font-style: normal;
+    }
+    .strategy-author {
+      margin-top: 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── COPY BTN ── */
+    .copy-wrap {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+    }
+    .copy-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── FOOTER ── */
+    .brief-footer {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brief-footer-left {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--dim);
+    }
+    .brief-footer-right {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--dim);
+      text-align: right;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--dim); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .term-row { grid-template-columns: 1fr; }
+      .term-key { border-right: none; border-bottom: 1px solid var(--border); }
+      .phase { grid-template-columns: 1fr; }
+      .phase-left { display: none; }
+      .phase-right { margin-bottom: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<div class="page-wrap">
+
+  <!-- ══════════ COVER ══════════ -->
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="cover-badge">Project Brief — Active</div>
+      <h1 class="cover-title">
+        WooCommerce Dropship<br>
+        <span>Phone Parts Store (CH)</span>
+      </h1>
+      <p class="cover-sub">
+        Full-build proposal for a German-language WooCommerce dropshipping store targeting the Swiss market — 3,000 AliExpress products, Galaxus/Ricardo integration, Amazon-style filtering UI.
+      </p>
+      <div class="cover-meta">
+        <div class="meta-chip"><span class="label">Date</span><span class="val">April 10, 2026</span></div>
+        <div class="meta-chip"><span class="label">Budget</span><span class="val amber">$1,050 Fixed</span></div>
+        <div class="meta-chip"><span class="label">Platform</span><span class="val">WordPress + WooCommerce</span></div>
+        <div class="meta-chip"><span class="label">Market</span><span class="val">🇨🇭 Switzerland (DE)</span></div>
+        <div class="meta-chip"><span class="label">Products</span><span class="val green">3,000 SKUs</span></div>
+        <div class="meta-chip"><span class="label">Status</span><span class="val">Planning</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SCOPE OF WORK ══════════ -->
+  <div class="section">
+    <div class="section-label">01 — Scope</div>
+    <h2 class="section-title">What Gets Built</h2>
+    <p class="section-desc">Full breakdown of every deliverable — no vague line items.</p>
+
+    <div class="scope-grid">
+
+      <div class="scope-item">
+        <div class="scope-num">01</div>
+        <div class="scope-content">
+          <div class="scope-heading">WordPress + WooCommerce Environment Setup</div>
+          <div class="scope-body">Configure the provided hosting (PHP, MySQL, SSL). Install WordPress, WooCommerce, child theme. Harden security (limit login, firewall plugin, HTTPS enforce). Configure caching (LiteSpeed or W3TC) and CDN.</div>
+          <div class="scope-tags">
+            <span class="tag tag-teal">WooCommerce 8.x</span>
+            <span class="tag tag-blue">Hostinger/SiteGround</span>
+            <span class="tag tag-amber">SSL + Hardening</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-item">
+        <div class="scope-num">02</div>
+        <div class="scope-content">
+          <div class="scope-heading">Theme — Amazon-Style UI/UX</div>
+          <div class="scope-body">Implement a clean, dense product-catalog theme (Astra / Flatsome / custom starter). Category sidebar with nested phone model filters, parts-type filters, price range. Breadcrumb navigation, sticky header with search, mobile-first responsive grid.</div>
+          <div class="scope-tags">
+            <span class="tag tag-blue">Astra Pro / Flatsome</span>
+            <span class="tag tag-teal">Elementor or Gutenberg blocks</span>
+            <span class="tag tag-green">WCAG AA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-item">
+        <div class="scope-num">03</div>
+        <div class="scope-content">
+          <div class="scope-heading">AliExpress Product Import — 3,000 SKUs</div>
+          <div class="scope-body">Use DSers or AliDropship Chrome extension + WooCommerce plugin to bulk-import 3,000 products. Map categories: Phone Screens, Batteries, Back Covers, Charging Cables, Cases, Accessories. Optimise import pipeline to preserve variation data (color, size, model).</div>
+          <div class="scope-tags">
+            <span class="tag tag-blue">DSers Plugin</span>
+            <span class="tag tag-amber">AliDropship</span>
+            <span class="tag tag-teal">CSV Fallback</span>
+            <span class="tag tag-green">Variation Support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-item">
+        <div class="scope-num">04</div>
+        <div class="scope-content">
+          <div class="scope-heading">German Localization — High-Quality</div>
+          <div class="scope-body">Translate product titles and descriptions into clean, natural German. No raw DeepL dump — post-edit every product description for grammar, terminology, and tone (Swiss-German commerce norms). Use WPML + WooCommerce Multilingual for site-wide localization. Configure CHF currency, Swiss date/number formats.</div>
+          <div class="scope-tags">
+            <span class="tag tag-blue">WPML</span>
+            <span class="tag tag-teal">WooCommerce Multilingual</span>
+            <span class="tag tag-amber">DeepL API + Human Post-Edit</span>
+            <span class="tag tag-green">CHF Currency</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-item">
+        <div class="scope-num">05</div>
+        <div class="scope-content">
+          <div class="scope-heading">Product Image Optimization</div>
+          <div class="scope-body">Download and rehost all product images on the client's server (no hotlinking to AliExpress). Convert to WebP, compress without quality loss, generate srcset for responsive delivery. Add lazy-loading. Target: core web vitals LCP &lt;2.5s.</div>
+          <div class="scope-tags">
+            <span class="tag tag-teal">WebP Conversion</span>
+            <span class="tag tag-blue">ShortPixel or Imagify</span>
+            <span class="tag tag-green">Lazy Load</span>
+            <span class="tag tag-amber">LCP Target &lt;2.5s</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-item">
+        <div class="scope-num">06</div>
+        <div class="scope-content">
+          <div class="scope-heading">On-Page SEO — Full Implementation</div>
+          <div class="scope-body">Rank-Math or Yoast SEO setup. Optimized meta titles and descriptions per product (German). Schema markup: Product, BreadcrumbList, Organization. Canonical URLs, XML sitemap, robots.txt. Structured category pages with H1/H2 hierarchy. Submit to Google Search Console.</div>
+          <div class="scope-tags">
+            <span class="tag tag-blue">Rank Math SEO</span>
+            <span class="tag tag-teal">Schema.org Markup</span>
+            <span class="tag tag-green">Google Search Console</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-item">
+        <div class="scope-num">07</div>
+        <div class="scope-content">
+          <div class="scope-heading">Swiss Marketplace Integration</div>
+          <div class="scope-body">Connect WooCommerce to Galaxus (Digitec) and Ricardo via their seller API or a feed plugin (Lengow, Channable, or WooCommerce Google Feed Manager). Generate compliant product feeds (GTIN/EAN, CHF pricing, German descriptions). Inventory sync to avoid overselling.</div>
+          <div class="scope-tags">
+            <span class="tag tag-amber">Galaxus Seller API</span>
+            <span class="tag tag-blue">Ricardo.ch</span>
+            <span class="tag tag-teal">Lengow / Channable Feed</span>
+            <span class="tag tag-red">GTIN Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-item">
+        <div class="scope-num">08</div>
+        <div class="scope-content">
+          <div class="scope-heading">Advanced Product Filtering</div>
+          <div class="scope-body">Implement AJAX-powered filtering by: Phone Brand → Phone Model → Part Type → Price Range → Condition → Compatibility. Use FiboFilters or WooCommerce Product Filters plugin. Filtered URLs must be indexable (no JS-only param rendering) for SEO.</div>
+          <div class="scope-tags">
+            <span class="tag tag-blue">FiboFilters</span>
+            <span class="tag tag-teal">AJAX Filtering</span>
+            <span class="tag tag-green">SEO-Friendly URLs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-item">
+        <div class="scope-num">09</div>
+        <div class="scope-content">
+          <div class="scope-heading">Payment + Checkout (Swiss Market)</div>
+          <div class="scope-body">Configure WooCommerce payments appropriate for Switzerland: Stripe (VISA/MC), PostFinance (optional), TWINT (if available via gateway), PayPal. Configure VAT/MWST handling (Swiss 8.1%), shipping zones for CH/DE/AT. GDPR-compliant checkout with cookie banner.</div>
+          <div class="scope-tags">
+            <span class="tag tag-blue">Stripe</span>
+            <span class="tag tag-teal">TWINT Gateway</span>
+            <span class="tag tag-amber">Swiss VAT 8.1%</span>
+            <span class="tag tag-green">GDPR Cookie Banner</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-item">
+        <div class="scope-num">10</div>
+        <div class="scope-content">
+          <div class="scope-heading">Automated AliExpress Order Fulfilment</div>
+          <div class="scope-body">Set up DSers semi-automated order fulfilment workflow: WooCommerce order → DSers one-click push to AliExpress supplier → auto tracking number pull-back → email customer. Configure pricing rules (2.5× cost multiplier for CHF). Set up price auto-update when supplier changes cost.</div>
+          <div class="scope-tags">
+            <span class="tag tag-blue">DSers Automation</span>
+            <span class="tag tag-teal">Tracking Integration</span>
+            <span class="tag tag-amber">Pricing Rules</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ TECH STACK ══════════ -->
+  <div class="section">
+    <div class="section-label">02 — Stack</div>
+    <h2 class="section-title">Technology Decisions</h2>
+    <p class="section-desc">Every tool chosen for a reason — no bloat.</p>
+
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="stack-cat">CMS</div>
+        <div class="stack-name">WordPress 6.x</div>
+        <div class="stack-note">Block editor, REST API, mature plugin ecosystem for dropshipping.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">Ecommerce</div>
+        <div class="stack-name">WooCommerce 8.x</div>
+        <div class="stack-note">Industry standard, best plugin support for dropshipping, multisite, SEO.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">Theme</div>
+        <div class="stack-name">Astra Pro</div>
+        <div class="stack-note">Lightest catalog theme. &lt;50KB base CSS, full Elementor compat, WooCommerce hooks.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">Dropshipping</div>
+        <div class="stack-name">DSers</div>
+        <div class="stack-note">Official AliExpress partner. Free tier covers 3k products. Best order automation.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">Localisation</div>
+        <div class="stack-name">WPML + Woo ML</div>
+        <div class="stack-note">Multi-language + CHF currency, Swiss number formats, tax config.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">SEO</div>
+        <div class="stack-name">Rank Math Pro</div>
+        <div class="stack-note">Schema, bulk SEO editor, GSC integration, sitemap. Better than Yoast for product-heavy stores.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">Images</div>
+        <div class="stack-name">ShortPixel</div>
+        <div class="stack-note">WebP auto-conversion, bulk compress, CDN offload. One-time credit model.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">Filters</div>
+        <div class="stack-name">FiboFilters Pro</div>
+        <div class="stack-note">AJAX filters, clean URL structure, compatible with Astra + Rank Math canonical.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">Feeds</div>
+        <div class="stack-name">Channable</div>
+        <div class="stack-note">WooCommerce → Galaxus / Ricardo feed generation with GTIN mapping.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">Payments</div>
+        <div class="stack-name">Stripe + PayPal</div>
+        <div class="stack-note">Stripe for cards; PayPal as fallback. TWINT via third-party gateway if available.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">Caching</div>
+        <div class="stack-name">LiteSpeed Cache</div>
+        <div class="stack-note">Server-level cache, QUIC.cloud CDN. Best for shared hosting environments.</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">Security</div>
+        <div class="stack-name">Wordfence</div>
+        <div class="stack-note">WAF + brute-force protection + malware scan. Free tier sufficient.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ PHASE TIMELINE ══════════ -->
+  <div class="section">
+    <div class="section-label">03 — Timeline</div>
+    <h2 class="section-title">Delivery Phases</h2>
+    <p class="section-desc">Sequential delivery across 10–15 days. Single payment — no milestone splits.</p>
+
+    <div class="phases">
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-label">Phase 1</div>
+          <div class="phase-dot"></div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="phase-right">
+          <div class="phase-title">Foundation &amp; Theme</div>
+          <ul class="phase-list">
+            <li>WordPress + WooCommerce install on client hosting</li>
+            <li>Astra Pro theme + child theme setup</li>
+            <li>Homepage, category, product page templates designed</li>
+            <li>Mobile-first responsive validation (375 / 768 / 1280px)</li>
+            <li>Security baseline + caching configured</li>
+          </ul>
+          <div class="phase-duration">Est. 2–3 days</div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-label">Phase 2</div>
+          <div class="phase-dot"></div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="phase-right">
+          <div class="phase-title">Product Import &amp; Categorisation</div>
+          <ul class="phase-list">
+            <li>DSers plugin setup + AliExpress account linked</li>
+            <li>Batch import 3,000 products across 6+ categories</li>
+            <li>Category + attribute taxonomy built (Brand → Model → Part)</li>
+            <li>Variation import (colour / size / compatibility)</li>
+            <li>Pricing rules configured (CHF markup)</li>
+          </ul>
+          <div class="phase-duration">Est. 3–4 days</div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-label">Phase 3</div>
+          <div class="phase-dot"></div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="phase-right">
+          <div class="phase-title">German Localisation + SEO</div>
+          <ul class="phase-list">
+            <li>WPML + Woo Multilingual install and configure</li>
+            <li>All product titles translated via DeepL API + post-edited</li>
+            <li>Meta titles + descriptions written in German for all products</li>
+            <li>Schema markup: Product + BreadcrumbList + Organization</li>
+            <li>XML sitemap + GSC submission</li>
+          </ul>
+          <div class="phase-duration">Est. 4–5 days (volume-dependent)</div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-label">Phase 4</div>
+          <div class="phase-dot"></div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="phase-right">
+          <div class="phase-title">Image Optimisation + Performance</div>
+          <ul class="phase-list">
+            <li>All AliExpress images downloaded + rehosted</li>
+            <li>ShortPixel bulk WebP conversion + compression</li>
+            <li>Lazy load, srcset, LQIP placeholders</li>
+            <li>PageSpeed &gt;80 desktop / &gt;70 mobile validated</li>
+          </ul>
+          <div class="phase-duration">Est. 2–3 days</div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-label">Phase 5</div>
+          <div class="phase-dot"></div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="phase-right">
+          <div class="phase-title">Payments + Marketplace Feeds + Launch</div>
+          <ul class="phase-list">
+            <li>Stripe, PayPal, TWINT payment gateways live</li>
+            <li>Swiss VAT (8.1%) + shipping zones configured</li>
+            <li>Galaxus + Ricardo product feed via Channable</li>
+            <li>GDPR cookie banner + privacy page</li>
+            <li>Final QA across devices — handoff</li>
+          </ul>
+          <div class="phase-duration">Est. 2–3 days</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ DELIVERABLES ══════════ -->
+  <div class="section">
+    <div class="section-label">04 — Deliverables</div>
+    <h2 class="section-title">What the Client Gets</h2>
+    <p class="section-desc">Everything included in the fixed price — no scope creep.</p>
+
+    <ul class="checklist">
+      <li><span class="check-icon">✓</span>Live WooCommerce store on client hosting</li>
+      <li><span class="check-icon">✓</span>3,000 products imported + categorised</li>
+      <li><span class="check-icon">✓</span>Full German localisation (all product copy)</li>
+      <li><span class="check-icon">✓</span>Amazon-style filter UI (Brand / Model / Part)</li>
+      <li><span class="check-icon">✓</span>Mobile-first responsive design</li>
+      <li><span class="check-icon">✓</span>On-page SEO for all products</li>
+      <li><span class="check-icon">✓</span>Google Search Console configured</li>
+      <li><span class="check-icon">✓</span>WebP image optimisation (all 3k products)</li>
+      <li><span class="check-icon">✓</span>Stripe + PayPal live payments</li>
+      <li><span class="check-icon">✓</span>Swiss VAT + shipping zones</li>
+      <li><span class="check-icon">✓</span>DSers automated order fulfilment</li>
+      <li><span class="check-icon">✓</span>Galaxus + Ricardo product feeds</li>
+      <li><span class="check-icon">✓</span>GDPR cookie consent + privacy policy</li>
+      <li><span class="check-icon">✓</span>PageSpeed score documented pre-handoff</li>
+      <li><span class="check-icon">✓</span>30-min walkthrough video (Loom)</li>
+      <li><span class="check-icon">✓</span>7-day post-launch bug fix window</li>
+    </ul>
+  </div>
+
+  <!-- ══════════ PRICING ══════════ -->
+  <div class="section">
+    <div class="section-label">05 — Investment</div>
+    <h2 class="section-title">Pricing Breakdown</h2>
+    <p class="section-desc">Fixed price — single payment, paid upfront on project start. No milestones, no hourly surprises.</p>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Deliverable</th>
+          <th>Notes</th>
+          <th class="price">Est. Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>WP + WooCommerce setup + theme</td>
+          <td>Hosting config, premium theme (enterprise licence provided), child theme, responsive</td>
+          <td class="price">$100</td>
+        </tr>
+        <tr>
+          <td>3,000 product import + categorisation</td>
+          <td>DSers pipeline, taxonomy build, pricing rules, variation mapping</td>
+          <td class="price">$180</td>
+        </tr>
+        <tr>
+          <td>German localisation (full 3k products)</td>
+          <td>DeepL API + human post-edit, WPML (enterprise licence), CHF currency config</td>
+          <td class="price">$220</td>
+        </tr>
+        <tr>
+          <td>Image optimisation (3k SKUs)</td>
+          <td>Download + rehost, WebP conversion, ShortPixel (enterprise), lazy load + srcset</td>
+          <td class="price">$100</td>
+        </tr>
+        <tr>
+          <td>On-page SEO (all products)</td>
+          <td>Rank Math Pro (enterprise), bulk meta copy, schema markup, sitemap, GSC submit</td>
+          <td class="price">$150</td>
+        </tr>
+        <tr>
+          <td>Advanced filtering UI + Amazon-style UX</td>
+          <td>FiboFilters Pro (enterprise), AJAX filters, SEO-friendly URLs, branded category pages</td>
+          <td class="price">$100</td>
+        </tr>
+        <tr>
+          <td>Marketplace feeds (Galaxus + Ricardo)</td>
+          <td>Channable (enterprise), GTIN mapping, inventory sync, CHF pricing export</td>
+          <td class="price">$80</td>
+        </tr>
+        <tr>
+          <td>Payments + Swiss VAT + GDPR compliance</td>
+          <td>Stripe, PayPal, TWINT attempt, 8.1% MWST setup, cookie banner + privacy policy</td>
+          <td class="price">$70</td>
+        </tr>
+        <tr>
+          <td>DSers order automation + tracking</td>
+          <td>Semi-automated fulfilment, tracking pull-back, customer email notifications</td>
+          <td class="price">$30</td>
+        </tr>
+        <tr>
+          <td>QA + performance audit + handoff</td>
+          <td>Cross-device QA, PageSpeed &gt;80 validated, Loom walkthrough, 7-day bug window</td>
+          <td class="price">$20</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Total — Fixed Price · Single Payment · All Premium Plugins Included</td>
+          <td class="price">$1,050</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- ══════════ RISKS ══════════ -->
+  <div class="section">
+    <div class="section-label">06 — Risks &amp; Caveats</div>
+    <h2 class="section-title">Important Considerations</h2>
+    <p class="section-desc">These need client acknowledgement before project start.</p>
+
+    <div class="risk-grid">
+      <div class="risk-card warn">
+        <div class="risk-title">Galaxus Seller Account Required</div>
+        <div class="risk-body">Galaxus/Digitec has a manual seller onboarding process. Client must have an approved seller account. Integration cannot proceed without this.</div>
+      </div>
+      <div class="risk-card warn">
+        <div class="risk-title">GTIN / EAN Codes for Marketplaces</div>
+        <div class="risk-body">Ricardo and Galaxus require valid GTINs/EANs for most categories. Phone parts from AliExpress often lack proper GTINs — this may limit which products are listable.</div>
+      </div>
+      <div class="risk-card info">
+        <div class="risk-title">German Translation Volume</div>
+        <div class="risk-body">3,000 descriptions post-edited to natural German is significant scope. Allocated budget assumes avg. 50-word descriptions. Longer product copy or custom rewriting is outside scope.</div>
+      </div>
+      <div class="risk-card info">
+        <div class="risk-title">All Premium Plugins Included — Zero Licence Cost to Client</div>
+        <div class="risk-body">WPML, Rank Math Pro, FiboFilters, ShortPixel, Channable, Astra Pro, and all required premium plugins are covered under an enterprise unlimited licence. No additional plugin costs are passed to the client — ever.</div>
+      </div>
+      <div class="risk-card warn">
+        <div class="risk-title">AliExpress Product Quality Variation</div>
+        <div class="risk-body">Supplier quality, shipping times, and stock vary. DSers can sync price/stock but cannot guarantee supplier reliability. A supplier vetting step is recommended before go-live.</div>
+      </div>
+      <div class="risk-card info">
+        <div class="risk-title">TWINT Payment Gateway</div>
+        <div class="risk-body">TWINT requires a Swiss business bank account. If client does not have one, this gateway must be skipped. Stripe + PayPal covers most Swiss buyers regardless.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ TERMS ══════════ -->
+  <div class="section">
+    <div class="section-label">07 — Terms</div>
+    <h2 class="section-title">Project Terms</h2>
+
+    <div class="terms-grid">
+      <div class="term-row">
+        <div class="term-key">Payment</div>
+        <div class="term-val">$1,050 — single full payment on project start · No milestones</div>
+      </div>
+      <div class="term-row">
+        <div class="term-key">Timeline</div>
+        <div class="term-val">10–15 working days from payment received</div>
+      </div>
+      <div class="term-row">
+        <div class="term-key">Revisions</div>
+        <div class="term-val">2 revision rounds on design; unlimited bug fixes pre-launch</div>
+      </div>
+      <div class="term-row">
+        <div class="term-key">Access Needed</div>
+        <div class="term-val">WordPress admin, cPanel/hosting, domain DNS, AliExpress account</div>
+      </div>
+      <div class="term-row">
+        <div class="term-key">Not Included</div>
+        <div class="term-val">Hosting fees, marketplace seller account fees, ongoing maintenance — all premium plugin licences ARE included</div>
+      </div>
+      <div class="term-row">
+        <div class="term-key">Post-Launch</div>
+        <div class="term-val">7-day bug fix guarantee · Ongoing maintenance available on monthly retainer</div>
+      </div>
+      <div class="term-row">
+        <div class="term-key">Communication</div>
+        <div class="term-val">Daily update via Upwork message · Loom video walkthrough at handoff</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ STRATEGY INSIGHT ══════════ -->
+  <div class="strategy-block">
+    <blockquote>
+      The biggest risk on this project is not the technical build — it's the <em>translation volume</em> and <em>marketplace onboarding</em>. Nail those two, and the store launches to a fully indexed, market-ready catalog on day one.
+    </blockquote>
+    <p style="margin-top:20px;font-size:14px;color:var(--muted);line-height:1.75;position:relative;z-index:1;">
+      3,000 product descriptions post-edited to natural, commerce-grade German is the single most time-intensive task — and the one most agencies cut corners on with raw machine output. Getting it right means every product is findable, trustworthy, and conversion-ready from launch. Marketplace onboarding on Galaxus and Ricardo requires seller approval, valid GTIN data, and compliant CHF product feeds — none of which can be rushed on the client's side. These two non-technical dependencies are the real project timeline drivers.
+    </p>
+    <p style="margin-top:12px;font-size:14px;color:var(--muted);line-height:1.75;position:relative;z-index:1;">
+      The $1,050 price reflects the full scope honestly: all premium plugin licences are covered under an enterprise unlimited licence — WPML, Rank Math Pro, FiboFilters Pro, Channable, ShortPixel, Astra Pro — with zero licence cost passed to the client. That alone represents $400–600/yr in tools included at no additional charge. Combined with the advanced SEO build, AJAX filtering, and automated DSers fulfilment pipeline, this is a production-grade store at a fraction of standard agency rates.
+    </p>
+    <div class="strategy-author" style="margin-top:16px;">// Project Strategy Note — April 11, 2026</div>
+  </div>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <div class="brief-footer">
+    <div class="brief-footer-left">
+      woocommerce-dropship-phoneparts/<br>
+      index.html · v1.0
+    </div>
+    <div class="brief-footer-right">
+      Platform: WordPress + WooCommerce<br>
+      Market: Switzerland (DE) · $1,050 Fixed · Single Payment
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<script>
+  // ── Scroll Progress Bar
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    bar.style.width = scrolled + '%';
+  });
+
+  // ── Reveal Animations
+  const revealEls = document.querySelectorAll('.scope-item, .stack-card, .phase');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const siblings = [...el.parentElement.children];
+        const i = siblings.indexOf(el);
+        setTimeout(() => el.classList.add('visible'), i * 60);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

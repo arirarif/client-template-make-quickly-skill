@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HandyTeile.ch — Smartphone Ersatzteile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #F3F3F1;
+      --white:    #FFFFFF;
+      --border:   #DDD;
+      --border2:  #C8C8BE;
+      --text:     #0F0F0E;
+      --muted:    #555;
+      --dim:      #999;
+      --accent:   #D97706;
+      --accent2:  #B45309;
+      --blue:     #1D4ED8;
+      --blue-lt:  #EFF6FF;
+      --green:    #065F46;
+      --green-lt: #ECFDF5;
+      --red:      #991B1B;
+      --red-lt:   #FEF2F2;
+      --shadow:   0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md:0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══ DEMO BANNER ══ */
+    .demo-banner {
+      background: #1e293b;
+      color: #94a3b8;
+      text-align: center;
+      padding: 9px 20px;
+      font-size: 11.5px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.04em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .demo-banner strong { color: #e2e8f0; }
+    .demo-chip {
+      background: rgba(255,255,255,0.08);
+      padding: 2px 8px;
+      border-radius: 2px;
+      font-size: 10px;
+      color: #64748b;
+    }
+
+    /* ══ TOP BAR ══ */
+    .topbar {
+      background: #232F3E;
+      color: #ccc;
+      padding: 7px 0;
+    }
+    .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      gap: 16px;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 16px; }
+    .topbar .flag { font-size: 14px; }
+    .topbar a { color: #ccc; text-decoration: none; cursor: pointer; }
+    .topbar a:hover { color: #fff; text-decoration: underline; }
+
+    /* ══ NAV ══ */
+    .nav {
+      background: #131921;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-logo .tld { font-size: 13px; color: #94a3b8; font-family: 'JetBrains Mono', monospace; }
+
+    .nav-search {
+      flex: 1;
+      display: flex;
+      height: 42px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 2px solid var(--accent);
+    }
+    .nav-search select {
+      background: #f3f3f1;
+      border: none;
+      border-right: 1px solid #ccc;
+      padding: 0 10px;
+      font-size: 12px;
+      color: #333;
+      outline: none;
+      cursor: pointer;
+      width: 160px;
+      flex-shrink: 0;
+    }
+    .nav-search input {
+      flex: 1;
+      border: none;
+      padding: 0 14px;
+      font-size: 14px;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .nav-search-btn {
+      background: var(--accent);
+      border: none;
+      width: 48px;
+      cursor: pointer;
+      color: #fff;
+      font-size: 18px;
+      transition: background 0.15s;
+    }
+    .nav-search-btn:hover { background: var(--accent2); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    .nav-right a {
+      color: #fff;
+      font-size: 13px;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nav-right a:hover { text-decoration: underline; }
+    .nav-cart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+    }
+    .cart-count-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0 4px;
+      border-radius: 10px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    /* ══ CATEGORY NAV ══ */
+    .cat-nav {
+      background: #232F3E;
+      border-bottom: 1px solid #3d4f63;
+    }
+    .cat-nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+    }
+    .cat-nav-btn {
+      padding: 9px 14px;
+      font-size: 12.5px;
+      color: #ddd;
+      background: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.15s, background 0.15s;
+      border-radius: 3px 3px 0 0;
+    }
+    .cat-nav-btn:hover { color: #fff; background: rgba(255,255,255,0.07); }
+    .cat-nav-btn.active { color: #fff; background: rgba(255,255,255,0.12); font-weight: 500; }
+
+    /* ══ BREADCRUMB ══ */
+    .breadcrumb {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 0;
+    }
+    .breadcrumb-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      font-size: 12.5px;
+      color: var(--dim);
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb-inner a { color: var(--blue); text-decoration: none; cursor: pointer; }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+
+    /* ══ PAGE LAYOUT ══ */
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 20px 60px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .page { grid-template-columns: 1fr; } }
+
+    /* ══ FILTER SIDEBAR ══  */
+    .sidebar { position: sticky; top: 62px; }
+    .filter-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .filter-header {
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      background: #FAFAF8;
+      border-bottom: 1px solid var(--border);
+      user-select: none;
+    }
+    .filter-header .chevron { font-size: 10px; color: var(--dim); transition: transform 0.2s; }
+    .filter-header.collapsed .chevron { transform: rotate(-90deg); }
+    .filter-body { padding: 10px 16px 14px; }
+    .filter-body.hidden { display: none; }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 5px 0;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    .filter-option:hover { color: var(--blue); }
+    .filter-option input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--blue);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .filter-count {
+      margin-left: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--dim);
+    }
+    .filter-option.active { color: var(--blue); font-weight: 500; }
+
+    /* CASCADING MODEL SELECT */
+    .model-group { margin-top: 4px; }
+    .model-brand-label {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin: 10px 0 4px;
+    }
+    .model-group.hidden { display: none; }
+
+    /* Price Range */
+    .price-range-inputs {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .price-input {
+      flex: 1;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-size: 12.5px;
+      font-family: 'JetBrains Mono', monospace;
+      outline: none;
+      color: var(--text);
+    }
+    .price-input:focus { border-color: var(--blue); }
+    .price-sep { font-size: 12px; color: var(--dim); }
+    .filter-apply-btn {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 7px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.15s;
+    }
+    .filter-apply-btn:hover { background: var(--accent2); }
+
+    /* ══ ACTIVE FILTERS BAR ══ */
+    .active-filters {
+      display: none;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+      padding: 10px 14px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .active-filters.visible { display: flex; }
+    .active-filters label {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      align-self: center;
+      margin-right: 4px;
+    }
+    .filter-tag {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--blue-lt);
+      border: 1px solid #BFDBFE;
+      color: var(--blue);
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .filter-tag:hover { background: #DBEAFE; }
+    .filter-tag .x { font-size: 13px; line-height: 1; margin-left: 2px; }
+    .filter-clear-all {
+      font-size: 12px;
+      color: var(--red);
+      background: var(--red-lt);
+      border: 1px solid #FCA5A5;
+      padding: 3px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      margin-left: auto;
+    }
+
+    /* ══ RESULTS AREA ══ */
+    .results-area {}
+
+    .results-toolbar {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .results-count { font-size: 13px; color: var(--muted); }
+    .results-count strong { color: var(--text); }
+    .results-right { display: flex; align-items: center; gap: 12px; }
+    .sort-select {
+      font-size: 13px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      outline: none;
+      color: var(--text);
+      background: var(--white);
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .view-toggle { display: flex; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .view-btn {
+      padding: 6px 10px;
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--dim);
+      transition: background 0.15s, color 0.15s;
+    }
+    .view-btn.active { background: var(--blue-lt); color: var(--blue); }
+
+    /* ══ SEO CATEGORY HEADER ══ */
+    .seo-header {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+    .seo-header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .seo-header p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ══ PRODUCT GRID ══ */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover { box-shadow: var(--shadow-md); border-color: #B0B0A8; }
+    .product-card.hidden { display: none; }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #FAFAF8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      padding: 16px;
+    }
+    .card-img img { width: 100%; height: 100%; object-fit: contain; }
+    .card-img .part-placeholder {
+      width: 80%;
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .card-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      padding: 2px 6px;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+    .badge-new    { background: #DC2626; color: #fff; }
+    .badge-sale   { background: var(--accent); color: #fff; }
+    .badge-best   { background: #0D9488; color: #fff; }
+    .galaxus-pin {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2px 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      color: #005EB8;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .card-body { padding: 11px 13px; flex: 1; display: flex; flex-direction: column; }
+    .card-brand { font-size: 10.5px; color: var(--dim); font-family: 'JetBrains Mono', monospace; margin-bottom: 3px; }
+    .card-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 6px;
+      flex: 1;
+    }
+    .card-compat {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .card-rating { display: flex; align-items: center; gap: 5px; margin-bottom: 8px; }
+    .card-stars { color: #F59E0B; font-size: 11px; letter-spacing: 0.5px; }
+    .card-rating-num { font-size: 11px; color: var(--dim); }
+
+    .card-price-row { display: flex; align-items: baseline; gap: 6px; }
+    .card-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: -0.02em;
+    }
+    .card-currency { font-size: 12px; color: var(--muted); }
+    .card-was { font-size: 11px; color: var(--dim); text-decoration: line-through; }
+
+    .card-footer {
+      padding: 8px 13px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 6px;
+    }
+    .btn-add-cart {
+      flex: 1;
+      padding: 7px;
+      background: #FFD814;
+      color: #111;
+      border: none;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .btn-add-cart:hover { background: #F7CA00; }
+    .btn-wishlist {
+      padding: 7px 9px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--muted);
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-wishlist:hover { border-color: var(--red); color: var(--red); }
+
+    /* ══ CHALLENGE CALLOUTS ══ */
+    .challenge-section {
+      margin-top: 32px;
+    }
+    .challenge-heading {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+    .challenge-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .challenge-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .challenge-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 18px 20px;
+      border-left: 4px solid;
+    }
+    .challenge-card.c-red    { border-left-color: #EF4444; }
+    .challenge-card.c-amber  { border-left-color: #F59E0B; }
+    .challenge-card.c-blue   { border-left-color: #3B82F6; }
+    .challenge-card.c-green  { border-left-color: #10B981; }
+    .challenge-card.c-purple { border-left-color: #8B5CF6; }
+
+    .ch-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 6px;
+    }
+    .ch-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .ch-body { font-size: 12.5px; color: var(--muted); line-height: 1.65; }
+    .ch-body strong { color: var(--text); font-weight: 600; }
+    .ch-solution {
+      margin-top: 10px;
+      padding: 8px 10px;
+      background: var(--bg);
+      border-radius: 3px;
+      font-size: 12px;
+      color: #374151;
+      line-height: 1.6;
+      border-left: 2px solid var(--border2);
+    }
+    .ch-solution strong { font-weight: 600; color: var(--text); }
+
+    /* ══ IMPORT PIPELINE VISUALIZER ══ */
+    .pipeline-section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 24px 28px;
+      margin-top: 12px;
+    }
+    .pipeline-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .pipeline-sub { font-size: 12.5px; color: var(--muted); margin-bottom: 20px; }
+
+    .pipeline-flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .pipe-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      min-width: 90px;
+    }
+    .pipe-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .pipe-icon.ali   { background: #FFF7ED; border: 2px solid #FED7AA; }
+    .pipe-icon.dsers { background: #EFF6FF; border: 2px solid #BFDBFE; }
+    .pipe-icon.woo   { background: #F5F3FF; border: 2px solid #DDD6FE; }
+    .pipe-icon.de    { background: #ECFDF5; border: 2px solid #6EE7B7; }
+    .pipe-icon.seo   { background: #FFFBEB; border: 2px solid #FDE68A; }
+    .pipe-icon.mkt   { background: #FEF2F2; border: 2px solid #FCA5A5; }
+    .pipe-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.4;
+    }
+    .pipe-arrow {
+      font-size: 20px;
+      color: var(--border2);
+      padding: 0 4px;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .pipe-count {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--dim);
+      margin-top: 2px;
+      text-align: center;
+    }
+
+    /* ══ TRANSLATION PREVIEW ══ */
+    .translation-preview {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .tp-header {
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tp-title { font-size: 13.5px; font-weight: 600; color: var(--text); }
+    .tp-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+    .tp-table { width: 100%; border-collapse: collapse; }
+    .tp-table th {
+      background: #F1F5F9;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
+      padding: 8px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .tp-table td {
+      padding: 11px 16px;
+      font-size: 12.5px;
+      border-bottom: 1px solid #F0F0EC;
+      vertical-align: top;
+    }
+    .tp-table td:first-child { color: var(--muted); background: #FAFAF8; border-right: 1px solid var(--border); width: 90px; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+    .tp-raw { color: #991B1B; line-height: 1.5; }
+    .tp-good { color: #065F46; line-height: 1.5; }
+    .tp-arrow-col { color: var(--dim); text-align: center; font-size: 16px; }
+    .tp-table tr:last-child td { border-bottom: none; }
+
+    /* ══ FOOTER ══ */
+    .site-footer {
+      background: #232F3E;
+      color: #96A3B4;
+      padding: 36px 0 20px;
+      margin-top: 40px;
+    }
+    .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 28px; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+    .footer-logo { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .footer-logo span { color: var(--accent); }
+    .footer-tagline { font-size: 12px; line-height: 1.65; }
+    .footer-col-title { font-size: 11px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #CBD5E1; margin-bottom: 10px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .footer-links li { font-size: 12.5px; cursor: pointer; transition: color 0.15s; }
+    .footer-links li:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid #3D4F63; padding-top: 16px; display: flex; justify-content: space-between; font-size: 11.5px; flex-wrap: wrap; gap: 8px; }
+    .marketplace-badges { display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: wrap; }
+    .mkt-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-weight: 700;
+      border: 1px solid;
+    }
+    .mkt-badge.galaxus { background: rgba(0,94,184,0.15); border-color: rgba(0,94,184,0.4); color: #60A5FA; }
+    .mkt-badge.ricardo { background: rgba(220,38,38,0.12); border-color: rgba(220,38,38,0.3); color: #F87171; }
+
+    /* ══ NOTIFICATION TOAST ══ */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: #1F2937;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 13.5px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 320px;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast-icon { font-size: 18px; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+<!-- DEMO BANNER -->
+<div class="demo-banner">
+  <strong>UI/UX Mockup</strong> — HandyTeile.ch · WooCommerce Dropship Phone Parts (CH)
+  <span class="demo-chip">Amazon-Style Filtering</span>
+  <span class="demo-chip">German / CHF</span>
+  <span class="demo-chip">Galaxus + Ricardo</span>
+  <span class="demo-chip">3,000 SKU Store</span>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span class="flag">🇨🇭</span>
+      <a>Versand nach: Schweiz</a>
+      <a>Sprache: Deutsch</a>
+      <a>Währung: CHF</a>
+    </div>
+    <div style="display:flex;gap:16px;">
+      <a>Konto</a>
+      <a>Bestellungen</a>
+      <a>Hilfe</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Handy<span>Teile</span><span class="tld">.ch</span></div>
+    <div class="nav-search">
+      <select id="search-cat">
+        <option>Alle Kategorien</option>
+        <option>Displayscheiben</option>
+        <option>Akkus</option>
+        <option>Rückschalen</option>
+        <option>Ladekabel</option>
+        <option>Hüllen</option>
+      </select>
+      <input type="text" placeholder="Suche nach Modell, Ersatzteil…" value="iPhone 13 Display">
+      <button class="nav-search-btn">🔍</button>
+    </div>
+    <div class="nav-right">
+      <a style="display:flex;flex-direction:column;gap:1px;"><span style="font-size:11px;color:#94a3b8;">Konto</span><span style="font-weight:600;">Anmelden</span></a>
+      <div class="nav-cart">
+        <span class="cart-count-badge">3</span>
+        <span style="font-size:13px;font-weight:600;color:#fff;">Warenkorb</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- CAT NAV -->
+<div class="cat-nav">
+  <div class="cat-nav-inner">
+    <button class="cat-nav-btn">Alle Kategorien</button>
+    <button class="cat-nav-btn active">📱 Displayscheiben</button>
+    <button class="cat-nav-btn">🔋 Akkus</button>
+    <button class="cat-nav-btn">📦 Rückschalen</button>
+    <button class="cat-nav-btn">🔌 Ladekabel</button>
+    <button class="cat-nav-btn">🛡️ Hüllen</button>
+    <button class="cat-nav-btn">🔧 Zubehör</button>
+    <button class="cat-nav-btn" style="margin-left:auto;color:#F59E0B;">🌐 Galaxus & Ricardo</button>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a>HandyTeile.ch</a> /
+    <a>Displayscheiben</a> /
+    <span style="color:var(--text);">Apple iPhone · Displayscheiben</span>
+  </div>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar">
+
+    <!-- Marke (Brand) -->
+    <div class="filter-box">
+      <div class="filter-header" onclick="toggleFilter(this)">
+        Marke <span class="chevron">▼</span>
+      </div>
+      <div class="filter-body" id="fb-brand">
+        <label class="filter-option">
+          <input type="checkbox" checked onchange="applyFilters()">
+          Apple <span class="filter-count">847</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Samsung <span class="filter-count">692</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Xiaomi <span class="filter-count">415</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Huawei <span class="filter-count">234</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Google Pixel <span class="filter-count">112</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Modell (cascading) -->
+    <div class="filter-box">
+      <div class="filter-header" onclick="toggleFilter(this)">
+        Modell <span class="chevron">▼</span>
+      </div>
+      <div class="filter-body" id="fb-model">
+        <div class="model-brand-label">Apple iPhone</div>
+        <div class="model-group" id="mg-apple">
+          <label class="filter-option active">
+            <input type="checkbox" checked onchange="applyFilters()">
+            iPhone 15 / 15 Pro <span class="filter-count">124</span>
+          </label>
+          <label class="filter-option active">
+            <input type="checkbox" checked onchange="applyFilters()">
+            iPhone 14 / 14 Pro <span class="filter-count">186</span>
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" onchange="applyFilters()">
+            iPhone 13 / 13 Pro <span class="filter-count">203</span>
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" onchange="applyFilters()">
+            iPhone 12 / 12 Mini <span class="filter-count">178</span>
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" onchange="applyFilters()">
+            iPhone SE (2022) <span class="filter-count">46</span>
+          </label>
+        </div>
+        <div class="model-brand-label" style="margin-top:12px;">Samsung Galaxy</div>
+        <div class="model-group hidden" id="mg-samsung">
+          <label class="filter-option">
+            <input type="checkbox" onchange="applyFilters()">
+            Galaxy S24 / Ultra <span class="filter-count">88</span>
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" onchange="applyFilters()">
+            Galaxy S23 <span class="filter-count">96</span>
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" onchange="applyFilters()">
+            Galaxy A54 / A34 <span class="filter-count">74</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teiltyp -->
+    <div class="filter-box">
+      <div class="filter-header" onclick="toggleFilter(this)">
+        Teiltyp <span class="chevron">▼</span>
+      </div>
+      <div class="filter-body">
+        <label class="filter-option active">
+          <input type="checkbox" checked onchange="applyFilters()">
+          Display + Touchscreen <span class="filter-count">412</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Nur LCD / OLED <span class="filter-count">218</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Mit Rahmen (Frame) <span class="filter-count">94</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Touchscreen (nur) <span class="filter-count">66</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Zustand -->
+    <div class="filter-box">
+      <div class="filter-header" onclick="toggleFilter(this)">
+        Qualität <span class="chevron">▼</span>
+      </div>
+      <div class="filter-body">
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Original OEM <span class="filter-count">189</span>
+        </label>
+        <label class="filter-option active">
+          <input type="checkbox" checked onchange="applyFilters()">
+          AAA+ Qualität <span class="filter-count">634</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Refurbished <span class="filter-count">112</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Preis -->
+    <div class="filter-box">
+      <div class="filter-header" onclick="toggleFilter(this)">
+        Preis (CHF) <span class="chevron">▼</span>
+      </div>
+      <div class="filter-body">
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Bis CHF 25 <span class="filter-count">198</span>
+        </label>
+        <label class="filter-option active">
+          <input type="checkbox" checked onchange="applyFilters()">
+          CHF 25 – 75 <span class="filter-count">512</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          CHF 75 – 150 <span class="filter-count">234</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          CHF 150+ <span class="filter-count">88</span>
+        </label>
+        <div class="price-range-inputs">
+          <input class="price-input" type="number" placeholder="Min" value="0">
+          <span class="price-sep">–</span>
+          <input class="price-input" type="number" placeholder="Max">
+        </div>
+        <button class="filter-apply-btn" onclick="showToast('Filter angewendet')">Anwenden</button>
+      </div>
+    </div>
+
+    <!-- Galaxus/Ricardo -->
+    <div class="filter-box">
+      <div class="filter-header" onclick="toggleFilter(this)">
+        Marktplatz <span class="chevron">▼</span>
+      </div>
+      <div class="filter-body">
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Auch auf Galaxus <span class="filter-count">1204</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" onchange="applyFilters()">
+          Auch auf Ricardo.ch <span class="filter-count">876</span>
+        </label>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ══ RESULTS ══ -->
+  <div class="results-area">
+
+    <!-- SEO CATEGORY HEADER (for indexability) -->
+    <div class="seo-header">
+      <h1>Displayscheiben für Apple iPhone — Schweiz</h1>
+      <p>847 Ersatzteile für iPhone 15, 14, 13, 12 und mehr. Alle Displays iPhone kompatibel, AAA+ Qualität, schneller Versand aus der Schweiz. OLED, LCD und Touchscreen-Einheiten — mit und ohne Rahmen.</p>
+    </div>
+
+    <!-- ACTIVE FILTERS -->
+    <div class="active-filters visible" id="active-filters">
+      <label>Filter:</label>
+      <span class="filter-tag">Apple <span class="x">×</span></span>
+      <span class="filter-tag">iPhone 15/14 <span class="x">×</span></span>
+      <span class="filter-tag">Display + Touch <span class="x">×</span></span>
+      <span class="filter-tag">CHF 25–75 <span class="x">×</span></span>
+      <span class="filter-clear-all" onclick="showToast('Filter zurückgesetzt')">Alle löschen</span>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="results-toolbar">
+      <div class="results-count"><strong id="result-count">24</strong> Ergebnisse für <strong>"iPhone Displays"</strong></div>
+      <div class="results-right">
+        <select class="sort-select">
+          <option>Sortieren: Relevanz</option>
+          <option>Preis aufsteigend</option>
+          <option>Preis absteigend</option>
+          <option>Neueste zuerst</option>
+          <option>Bestseller</option>
+        </select>
+        <div class="view-toggle">
+          <button class="view-btn active" title="Raster">⊞</button>
+          <button class="view-btn" title="Liste">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="product-grid" id="product-grid">
+
+      <!-- PRODUCT 1 -->
+      <div class="product-card" data-brand="apple" data-model="iphone15">
+        <div class="card-img">
+          <div class="part-placeholder">
+            <svg width="80" height="130" viewBox="0 0 80 130"><rect x="5" y="5" width="70" height="120" rx="8" fill="#1a1a1a"/><rect x="8" y="8" width="64" height="114" rx="6" fill="#2d2d2d"/><rect x="6" y="18" width="68" height="90" rx="2" fill="#1a1a2e"/><rect x="6" y="18" width="68" height="90" rx="2" fill="url(#sg)" opacity="0.5"/><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.4"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.2"/></linearGradient></defs></svg>
+          </div>
+          <span class="card-badge badge-best">BESTSELLER</span>
+          <div class="galaxus-pin">📦 Galaxus</div>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">APPLE</div>
+          <div class="card-name">iPhone 15 OLED Displayscheibe inkl. Touchscreen</div>
+          <div class="card-compat">Passend für: iPhone 15 · Schwarz</div>
+          <div class="card-rating"><span class="card-stars">★★★★★</span><span class="card-rating-num">(142)</span></div>
+          <div class="card-price-row">
+            <span class="card-price">CHF 64.90</span>
+            <span class="card-was">CHF 89.00</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-add-cart" onclick="showToast('In den Warenkorb gelegt')">In den Warenkorb</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card" data-brand="apple" data-model="iphone15">
+        <div class="card-img">
+          <div class="part-placeholder">
+            <svg width="80" height="130" viewBox="0 0 80 130"><rect x="5" y="5" width="70" height="120" rx="8" fill="#1a1a1a"/><rect x="8" y="8" width="64" height="114" rx="6" fill="#2d2d2d"/><rect x="6" y="18" width="68" height="90" rx="2" fill="#0f172a"/><rect x="6" y="18" width="68" height="90" rx="2" fill="url(#sg2)" opacity="0.6"/><defs><linearGradient id="sg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.2"/></linearGradient></defs></svg>
+          </div>
+          <span class="card-badge badge-new">NEU</span>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">APPLE</div>
+          <div class="card-name">iPhone 15 Pro OLED Display (Original Qualität, OEM)</div>
+          <div class="card-compat">Passend für: iPhone 15 Pro / Pro Max</div>
+          <div class="card-rating"><span class="card-stars">★★★★☆</span><span class="card-rating-num">(38)</span></div>
+          <div class="card-price-row">
+            <span class="card-price">CHF 119.00</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-add-cart" onclick="showToast('In den Warenkorb gelegt')">In den Warenkorb</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 3 -->
+      <div class="product-card" data-brand="apple" data-model="iphone14">
+        <div class="card-img">
+          <div class="part-placeholder">
+            <svg width="80" height="130" viewBox="0 0 80 130"><rect x="5" y="5" width="70" height="120" rx="8" fill="#c8a96b"/><rect x="8" y="8" width="64" height="114" rx="6" fill="#d4b87a"/><rect x="6" y="18" width="68" height="90" rx="2" fill="#1a1a2e"/><rect x="6" y="18" width="68" height="90" rx="2" fill="url(#sg3)" opacity="0.5"/><defs><linearGradient id="sg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.4"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.2"/></linearGradient></defs></svg>
+          </div>
+          <span class="card-badge badge-sale">-28%</span>
+          <div class="galaxus-pin">📦 Ricardo</div>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">APPLE</div>
+          <div class="card-name">iPhone 14 OLED Display + Rahmen (Gold)</div>
+          <div class="card-compat">Passend für: iPhone 14 · Gold</div>
+          <div class="card-rating"><span class="card-stars">★★★★★</span><span class="card-rating-num">(89)</span></div>
+          <div class="card-price-row">
+            <span class="card-price">CHF 54.90</span>
+            <span class="card-was">CHF 76.00</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-add-cart" onclick="showToast('In den Warenkorb gelegt')">In den Warenkorb</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card" data-brand="apple" data-model="iphone14">
+        <div class="card-img">
+          <div class="part-placeholder">
+            <svg width="80" height="130" viewBox="0 0 80 130"><rect x="5" y="5" width="70" height="120" rx="8" fill="#ffffff"/><rect x="8" y="8" width="64" height="114" rx="6" fill="#f8f8f8"/><rect x="6" y="18" width="68" height="90" rx="2" fill="#0f172a"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">APPLE</div>
+          <div class="card-name">iPhone 14 Pro LCD Display AAA+ Weiss</div>
+          <div class="card-compat">Passend für: iPhone 14 Pro · Weiss/Silber</div>
+          <div class="card-rating"><span class="card-stars">★★★★☆</span><span class="card-rating-num">(54)</span></div>
+          <div class="card-price-row">
+            <span class="card-price">CHF 47.50</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-add-cart" onclick="showToast('In den Warenkorb gelegt')">In den Warenkorb</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 5 (Samsung) -->
+      <div class="product-card hidden" data-brand="samsung" data-model="s24">
+        <div class="card-img">
+          <div class="part-placeholder">
+            <svg width="80" height="140" viewBox="0 0 80 140"><rect x="5" y="5" width="70" height="130" rx="10" fill="#1a1a1a"/><rect x="8" y="8" width="64" height="124" rx="8" fill="#2a2a2a"/><rect x="6" y="16" width="68" height="106" rx="1" fill="#0a0a1a"/><rect x="6" y="16" width="68" height="106" rx="1" fill="url(#sg5)" opacity="0.7"/><defs><linearGradient id="sg5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#10b981" stop-opacity="0.3"/></linearGradient></defs></svg>
+          </div>
+          <span class="card-badge badge-best">TOP</span>
+          <div class="galaxus-pin">📦 Galaxus</div>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">SAMSUNG</div>
+          <div class="card-name">Samsung Galaxy S24 AMOLED Display Einheit</div>
+          <div class="card-compat">Passend für: Galaxy S24 / S24+ · Phantom Black</div>
+          <div class="card-rating"><span class="card-stars">★★★★★</span><span class="card-rating-num">(67)</span></div>
+          <div class="card-price-row">
+            <span class="card-price">CHF 78.00</span>
+            <span class="card-was">CHF 109.00</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-add-cart" onclick="showToast('In den Warenkorb gelegt')">In den Warenkorb</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 6 -->
+      <div class="product-card" data-brand="apple" data-model="iphone13">
+        <div class="card-img">
+          <div class="part-placeholder">
+            <svg width="80" height="130" viewBox="0 0 80 130"><rect x="5" y="5" width="70" height="120" rx="8" fill="#2d4a7a"/><rect x="8" y="8" width="64" height="114" rx="6" fill="#3558a0"/><rect x="6" y="18" width="68" height="90" rx="2" fill="#0f172a"/></svg>
+          </div>
+          <span class="card-badge badge-sale">-22%</span>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">APPLE</div>
+          <div class="card-name">iPhone 13 OLED Display + Touch, Blau</div>
+          <div class="card-compat">Passend für: iPhone 13 · Midnight Blue</div>
+          <div class="card-rating"><span class="card-stars">★★★★★</span><span class="card-rating-num">(211)</span></div>
+          <div class="card-price-row">
+            <span class="card-price">CHF 38.90</span>
+            <span class="card-was">CHF 49.00</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-add-cart" onclick="showToast('In den Warenkorb gelegt')">In den Warenkorb</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 7 -->
+      <div class="product-card" data-brand="apple" data-model="iphone13">
+        <div class="card-img">
+          <div class="part-placeholder">
+            <svg width="80" height="130" viewBox="0 0 80 130"><rect x="5" y="5" width="70" height="120" rx="8" fill="#1a1a1a"/><rect x="8" y="8" width="64" height="114" rx="6" fill="#2d2d2d"/><rect x="6" y="18" width="68" height="90" rx="2" fill="#0f172a"/><rect x="6" y="18" width="68" height="90" rx="2" fill="url(#sg7)" opacity="0.5"/><defs><linearGradient id="sg7" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#a855f7" stop-opacity="0.4"/><stop offset="100%" stop-color="#ec4899" stop-opacity="0.2"/></linearGradient></defs></svg>
+          </div>
+          <div class="galaxus-pin">📦 Ricardo</div>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">APPLE</div>
+          <div class="card-name">iPhone 13 Pro Max Display mit Rahmen, Schwarz</div>
+          <div class="card-compat">Passend für: iPhone 13 Pro Max</div>
+          <div class="card-rating"><span class="card-stars">★★★★★</span><span class="card-rating-num">(77)</span></div>
+          <div class="card-price-row">
+            <span class="card-price">CHF 62.00</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-add-cart" onclick="showToast('In den Warenkorb gelegt')">In den Warenkorb</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 8 -->
+      <div class="product-card" data-brand="apple" data-model="iphone12">
+        <div class="card-img">
+          <div class="part-placeholder">
+            <svg width="80" height="130" viewBox="0 0 80 130"><rect x="5" y="5" width="70" height="120" rx="8" fill="#065f46"/><rect x="8" y="8" width="64" height="114" rx="6" fill="#047857"/><rect x="6" y="18" width="68" height="90" rx="2" fill="#0f172a"/></svg>
+          </div>
+          <span class="card-badge badge-new">NEU</span>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">APPLE</div>
+          <div class="card-name">iPhone 12 Mini Display LCD + Touch (Grün)</div>
+          <div class="card-compat">Passend für: iPhone 12 Mini · Grün</div>
+          <div class="card-rating"><span class="card-stars">★★★★☆</span><span class="card-rating-num">(45)</span></div>
+          <div class="card-price-row">
+            <span class="card-price">CHF 29.90</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-add-cart" onclick="showToast('In den Warenkorb gelegt')">In den Warenkorb</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+
+    <!-- ══ CHALLENGE CALLOUTS ══ -->
+    <div class="challenge-section">
+      <div class="challenge-heading">Projekt-Demo · Technische Erklärung</div>
+      <div class="challenge-title">Die schwierigsten Teile dieses Projekts</div>
+      <div class="challenge-sub">Was dieses Projekt von einem einfachen WooCommerce-Setup unterscheidet — und wie jede Herausforderung gelöst wird.</div>
+
+      <div class="challenge-grid">
+
+        <div class="challenge-card c-red">
+          <div class="ch-label">Challenge 01 · Import</div>
+          <div class="ch-title">3,000 AliExpress-Produkte mit Variationen importieren</div>
+          <div class="ch-body">
+            Phone parts haben <strong>komplexe Variationen</strong>: Farbe × Modell × Qualitätsstufe. Ein iPhone 13 Display gibt es in 6 Farben × 3 Qualitetsstufen = 18 Variationen pro SKU. Bei 3,000 Produkten können das 30,000–50,000 Variationseinträge sein — DSers CSV-Import kann dabei brechen.
+          </div>
+          <div class="ch-solution">
+            <strong>Lösung:</strong> Batch-Import in Gruppen von 200, mit WP-CLI zur Validierung nach jedem Batch. Variation-Mapping manuell überprüft für die Top-100 meistverkauften Produkte.
+          </div>
+        </div>
+
+        <div class="challenge-card c-amber">
+          <div class="ch-label">Challenge 02 · Übersetzung</div>
+          <div class="ch-title">3,000 deutsche Produkttexte — keine rohe Maschinenlösung</div>
+          <div class="ch-body">
+            AliExpress-Titel wie <em class="tp-raw">"For iPhone OLED Digitizer Assembly Replace"</em> müssen zu <em class="tp-good">"iPhone 15 OLED Displayscheibe inkl. Touchscreen – AAA+ Qualität"</em> werden. Rohe DeepL-Ausgabe hat <strong>unnatürliche Satzstruktur im Deutschen</strong> — Produkttitel auf Deutsch folgen eigenen E-Commerce-Konventionen.
+          </div>
+          <div class="ch-solution">
+            <strong>Lösung:</strong> DeepL API für Batch-Übersetzung + Python-Skript für Titelformatierung nach Schema: [Modell] + [Teiltyp] + [Qualität/Farbe]. Post-Edit für alle Beschreibungen mit &lt;80 Wörtern.
+          </div>
+        </div>
+
+        <div class="challenge-card c-blue">
+          <div class="ch-label">Challenge 03 · Filterung</div>
+          <div class="ch-title">Amazon-ähnliches Kaskaden-Filter: Marke → Modell → Teiltyp</div>
+          <div class="ch-body">
+            Wenn ein Kunde "Samsung" auswählt, soll die Modellliste nur Samsung-Modelle anzeigen. FiboFilters unterstützt <strong>AJAX-Filterung</strong> aber keine dynamische Kaskadierung ohne Custom-Entwicklung. Das Filter-URL muss SEO-freundlich bleiben (kein JS-only Rendering).
+          </div>
+          <div class="ch-solution">
+            <strong>Lösung:</strong> WooCommerce-Produktattribute: pa_brand → pa_model als hierarchische Taxonomie. FiboFilters mit Custom Query-hooks. URL-Struktur: <code style="font-family:'JetBrains Mono',monospace;font-size:10.5px;">/displays/apple/iphone-15/</code>
+          </div>
+        </div>
+
+        <div class="challenge-card c-green">
+          <div class="ch-label">Challenge 04 · Marktplatz</div>
+          <div class="ch-title">Galaxus-Integration: GTIN-Pflicht + Feed-Compliance</div>
+          <div class="ch-body">
+            Galaxus/Digitec <strong>verlangt gültige GTINs/EANs</strong> für jeden Artikel. AliExpress-Produkte haben oft keine oder ungültige GTINs. Fake-GTINs führen zur Sperrung. Ricardo ist zugänglicher, aber verlangt korrekte Kategorisierung.
+          </div>
+          <div class="ch-solution">
+            <strong>Lösung:</strong> GS1-Datenbank-Check für die Top-500 Produkte. Für den Rest: Ricardo als primärer Marktplatz starten, Galaxus schrittweise für verifizierbare Produkte (OEM-Teile mit echter GTIN).
+          </div>
+        </div>
+
+        <div class="challenge-card c-purple">
+          <div class="ch-label">Challenge 05 · SEO</div>
+          <div class="ch-title">3,000 Produktseiten SEO-indexierbar machen bei 0 Duplicate Content</div>
+          <div class="ch-body">
+            3,000 Produkte × durchschnittlich 15 Variationen = potenziell 45,000 Seiten. Ohne <strong>Canonical-Tags und Variationssteuerung</strong> indiziert Google Duplikate und der Crawl-Budget wird verbraucht. Filterseiten müssen noindex oder canonical gesetzt werden.
+          </div>
+          <div class="ch-solution">
+            <strong>Lösung:</strong> Rank Math Pro: Variationsseiten → canonical zur Hauptseite. Filterkombinationen: ?filter_= URLs → noindex. Category-Pages: unique H1 + Beschreibungstext per Kategorie geschrieben.
+          </div>
+        </div>
+
+        <div class="challenge-card c-red" style="border-left-color:#8B5CF6;">
+          <div class="ch-label">Challenge 06 · Performance</div>
+          <div class="ch-title">3,000 AliExpress-Produktbilder: lokal hosten + WebP + LCP</div>
+          <div class="ch-body">
+            AliExpress-Bilder dürfen não hotlinked werden (TOS-Verstoß, CDN-Sperrung). <strong>3,000 Bilder lokal downloaden, konvertieren und optimieren</strong> ohne den Server zum Absturz zu bringen oder Disk-Space zu überschreiten ist eine eigene Ingenieuraufgabe.
+          </div>
+          <div class="ch-solution">
+            <strong>Lösung:</strong> Python-Batch-Downloader mit 800ms Delay + ShortPixel-Bulk-API für WebP. Bilder auf Cloudflare R2 gehostet (kostenlos bis 10GB). LCP-Target: &lt;2.5s via LiteSpeed Cache + LQIP-Platzhaler.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ IMPORT PIPELINE ══ -->
+    <div class="pipeline-section">
+      <div class="pipeline-title">Import-Pipeline: AliExpress → WooCommerce → Galaxus</div>
+      <div class="pipeline-sub">So wird der 3,000-Produkt-Import automatisiert — jeder Schritt beschleunigt das nächste.</div>
+      <div class="pipeline-flow">
+        <div class="pipe-step">
+          <div class="pipe-icon ali">🛒</div>
+          <div class="pipe-label">AliExpress<br>Produkt-Liste</div>
+          <div class="pipe-count">3,000 SKUs</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-icon dsers">⚙️</div>
+          <div class="pipe-label">DSers<br>Plugin Import</div>
+          <div class="pipe-count">Variationen</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-icon woo">🛍️</div>
+          <div class="pipe-label">WooCommerce<br>Produktkatalog</div>
+          <div class="pipe-count">CHF-Preise</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-icon de">🇩🇪</div>
+          <div class="pipe-label">DeepL +<br>Post-Edit DE</div>
+          <div class="pipe-count">alle Texte</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-icon seo">📈</div>
+          <div class="pipe-label">Rank Math<br>SEO-Felder</div>
+          <div class="pipe-count">Meta + Schema</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-icon mkt">🏪</div>
+          <div class="pipe-label">Galaxus &amp;<br>Ricardo Feed</div>
+          <div class="pipe-count">via Channable</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TRANSLATION PREVIEW ══ -->
+    <div class="translation-preview">
+      <div class="tp-header">
+        <div class="tp-title">Übersetzungsqualität — Rohtitel vs. optimierter Titel</div>
+        <span class="tp-badge" style="background:var(--green-lt);color:var(--green);border:1px solid #6EE7B7;">DeepL API + Post-Edit</span>
+      </div>
+      <table class="tp-table">
+        <thead>
+          <tr>
+            <th>Typ</th>
+            <th>AliExpress Original (EN)</th>
+            <th style="width:40px;text-align:center;">→</th>
+            <th>Optimierter Titel (DE) für SEO + UX</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Titel</td>
+            <td class="tp-raw">For iphone 15 OLED digitizer touch screen assembly replace with tools</td>
+            <td class="tp-arrow-col">→</td>
+            <td class="tp-good">iPhone 15 OLED Displayscheibe inkl. Touch – AAA+ Qualität, Schwarz</td>
+          </tr>
+          <tr>
+            <td>Beschr.</td>
+            <td class="tp-raw">High quality for iphone screen LCD replacement best compatible use original chip.....</td>
+            <td class="tp-arrow-col">→</td>
+            <td class="tp-good">Hochwertiger Ersatzdisplay für iPhone 15 — kompatibel mit Original-Chip, kalibrierungsfrei.</td>
+          </tr>
+          <tr>
+            <td>Titel</td>
+            <td class="tp-raw">For Samsung S24 Screen Replacement AMOLED original quality with frame</td>
+            <td class="tp-arrow-col">→</td>
+            <td class="tp-good">Samsung Galaxy S24 AMOLED Display mit Rahmen – Original-Qualität, Phantom Black</td>
+          </tr>
+          <tr>
+            <td>Beschr.</td>
+            <td class="tp-raw">100% test original screen for Samsung repair part ships fast from warehouse</td>
+            <td class="tp-arrow-col">→</td>
+            <td class="tp-good">100% geprüfter AMOLED-Ersatzbildschirm für Samsung Galaxy S24. Schneller Versand aus der Schweiz.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /results-area -->
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Handy<span>Teile</span>.ch</div>
+        <div class="footer-tagline">Schweizer Onlineshop für Smartphone-Ersatzteile. Schnellversand, AAA+ Qualität, CHF-Preise.</div>
+        <div class="marketplace-badges" style="margin-top:14px;">
+          <span style="font-size:11px;color:#64748b;">Auch erhältlich auf:</span>
+          <span class="mkt-badge galaxus">📦 Galaxus</span>
+          <span class="mkt-badge ricardo">🔴 Ricardo.ch</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Kategorien</div>
+        <ul class="footer-links">
+          <li>Displayscheiben</li><li>Akkus</li><li>Rückschalen</li><li>Ladekabel</li><li>Hüllen</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Marken</div>
+        <ul class="footer-links">
+          <li>Apple iPhone</li><li>Samsung Galaxy</li><li>Xiaomi</li><li>Huawei</li><li>Google Pixel</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Service</div>
+        <ul class="footer-links">
+          <li>Versand & Lieferung</li><li>Rückgabe</li><li>Garantie</li><li>Kontakt</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HandyTeile.ch · Alle Rechte vorbehalten</span>
+      <span>Datenschutz · AGB · Impressum</span>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="toast-icon">🛒</span>
+  <span id="toast-msg">In den Warenkorb gelegt</span>
+</div>
+
+<script>
+  // ── Filter toggle collapse
+  function toggleFilter(header) {
+    header.classList.toggle('collapsed');
+    const body = header.nextElementSibling;
+    body.classList.toggle('hidden');
+  }
+
+  // ── Apply filters (simulate product filtering)
+  function applyFilters() {
+    const brandBoxes = document.querySelectorAll('#fb-brand input');
+    const samsungChecked = [...brandBoxes].some(cb => cb.parentElement.textContent.includes('Samsung') && cb.checked);
+
+    // Show/hide Samsung model group
+    document.getElementById('mg-samsung').classList.toggle('hidden', !samsungChecked);
+
+    // Simulate filtering products shown
+    const cards = document.querySelectorAll('.product-card');
+    let shown = 0;
+    cards.forEach(card => {
+      const brand = card.dataset.brand;
+      if (brand === 'samsung' && !samsungChecked) {
+        card.classList.add('hidden');
+      } else if (brand === 'samsung' && samsungChecked) {
+        card.classList.remove('hidden');
+        shown++;
+      } else {
+        card.classList.remove('hidden');
+        shown++;
+      }
+    });
+    document.getElementById('result-count').textContent = shown;
+    updateActiveFilters(samsungChecked);
+  }
+
+  function updateActiveFilters(samsungChecked) {
+    const bar = document.getElementById('active-filters');
+    const existingSamsung = bar.querySelector('[data-brand="samsung"]');
+    if (samsungChecked && !existingSamsung) {
+      const tag = document.createElement('span');
+      tag.className = 'filter-tag';
+      tag.dataset.brand = 'samsung';
+      tag.innerHTML = 'Samsung <span class="x">×</span>';
+      tag.onclick = () => {
+        tag.remove();
+        document.querySelectorAll('#fb-brand input').forEach(cb => {
+          if (cb.parentElement.textContent.includes('Samsung')) cb.checked = false;
+        });
+        applyFilters();
+      };
+      bar.insertBefore(tag, bar.querySelector('.filter-clear-all'));
+    } else if (!samsungChecked && existingSamsung) {
+      existingSamsung.remove();
+    }
+  }
+
+  // ── Toast notification
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-msg').textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  // ── View toggle
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // ── Category nav tab switching
+  document.querySelectorAll('.cat-nav-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.cat-nav-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wellness Junkiez — Redesign Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+
+    /* ── TOKENS ── */
+    :root {
+      --cream:    #faf7f2;
+      --cream-2:  #f4efe6;
+      --cream-3:  #ede6d8;
+      --green:    #1a3a2a;
+      --green-mid:#2d5c42;
+      --green-lt: #3d7a57;
+      --gold:     #b8860b;
+      --gold-lt:  #d4a017;
+      --teal:     #0d9e7e;
+      --teal-lt:  #12c49c;
+      --text:     #1a1a1a;
+      --text-2:   #3d3d3d;
+      --muted:    #7a7268;
+      --border:   rgba(26,58,42,0.12);
+      --border-2: rgba(26,58,42,0.06);
+      --shadow-sm: 0 2px 8px rgba(26,58,42,0.08);
+      --shadow-md: 0 8px 32px rgba(26,58,42,0.12);
+      --shadow-lg: 0 24px 64px rgba(26,58,42,0.16);
+      --r:        16px;
+      --r-sm:     10px;
+      --r-pill:   100px;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--cream-2); }
+    ::-webkit-scrollbar-thumb { background: var(--green-lt); border-radius: 4px; }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--green-lt);
+    }
+    .tag::before {
+      content: ''; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--teal); flex-shrink: 0;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--r-pill);
+      font-size: 14px; font-weight: 600; letter-spacing: .01em;
+      transition: all .25s cubic-bezier(.34,1.56,.64,1);
+      position: relative; overflow: hidden;
+    }
+    .btn-primary {
+      background: var(--green); color: #fff;
+      box-shadow: 0 4px 24px rgba(26,58,42,0.30);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(26,58,42,0.35);
+      background: var(--green-mid);
+    }
+    .btn-outline {
+      background: transparent; color: var(--green);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover {
+      background: var(--cream-2);
+      border-color: rgba(26,58,42,.25);
+      transform: translateY(-3px);
+    }
+    .btn-gold {
+      background: var(--gold); color: #fff;
+      box-shadow: 0 4px 20px rgba(184,134,11,0.30);
+    }
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      background: var(--gold-lt);
+      box-shadow: 0 10px 28px rgba(184,134,11,0.35);
+    }
+    .btn-white {
+      background: #fff; color: var(--green);
+      box-shadow: 0 4px 24px rgba(0,0,0,.15);
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.18); }
+    .btn-ghost-white {
+      background: transparent; color: rgba(255,255,255,.8);
+      border: 1.5px solid rgba(255,255,255,.25);
+    }
+    .btn-ghost-white:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.4);
+      transform: translateY(-3px);
+    }
+    .btn-arrow::after { content: '→'; font-size: 16px; transition: transform .25s; }
+    .btn-arrow:hover::after { transform: translateX(4px); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s cubic-bezier(.22,1,.36,1),
+                  transform .7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.up { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: .08s; }
+    .reveal-d2 { transition-delay: .16s; }
+    .reveal-d3 { transition-delay: .24s; }
+    .reveal-d4 { transition-delay: .32s; }
+    .reveal-d5 { transition-delay: .40s; }
+    .reveal-d6 { transition-delay: .48s; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ANNOUNCEMENT BANNER */
+    .banner {
+      background: var(--green);
+      color: rgba(255,255,255,.8);
+      text-align: center; padding: 10px 24px;
+      font-size: 13px; font-weight: 500; letter-spacing: .02em;
+    }
+    .banner strong { color: var(--gold-lt); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAV */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(250,247,242,.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-2);
+      transition: box-shadow .3s;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px; max-width: 1440px; margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--green); letter-spacing: -.5px;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: var(--text-2);
+      transition: color .2s; position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1.5px; background: var(--teal); transition: width .25s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-cart {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500; color: var(--text-2);
+      padding: 8px 14px; border-radius: var(--r-pill);
+      border: 1px solid var(--border); transition: all .2s;
+    }
+    .nav-cart:hover { border-color: rgba(26,58,42,.25); background: var(--cream-2); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO */
+    .hero {
+      min-height: calc(100vh - 48px);
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; overflow: hidden; position: relative;
+    }
+    .hero-blob {
+      position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+    }
+    .hero-blob-1 {
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(13,158,126,.08) 0%, transparent 70%);
+      top: -100px; right: 30%;
+      animation: blobFloat 10s ease-in-out infinite;
+    }
+    .hero-blob-2 {
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(184,134,11,.07) 0%, transparent 70%);
+      bottom: 80px; left: 5%;
+      animation: blobFloat 14s ease-in-out infinite reverse;
+    }
+    @keyframes blobFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(20px,-30px) scale(1.05); }
+      66%      { transform: translate(-15px,20px) scale(0.96); }
+    }
+    .hero-left { padding: 80px 64px 80px 80px; position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(13,158,126,.10); border: 1px solid rgba(13,158,126,.20);
+      color: var(--teal); padding: 6px 16px; border-radius: var(--r-pill);
+      font-size: 12px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--teal);
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.2;} }
+    .hero-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 5vw, 72px);
+      line-height: 1.06; letter-spacing: -.02em; color: var(--green);
+      margin-bottom: 24px;
+    }
+    .hero-headline em   { font-style: italic; color: var(--teal); }
+    .hero-headline .hl-gold { color: var(--gold); }
+    .hero-sub {
+      font-size: 17px; color: var(--muted); line-height: 1.75;
+      max-width: 480px; margin-bottom: 40px; font-weight: 400;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
+    .hero-proof { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .proof-stars { color: #d4a017; font-size: 15px; letter-spacing: 2px; }
+    .proof-text  { font-size: 13px; color: var(--muted); }
+    .proof-text strong { color: var(--text-2); font-weight: 600; }
+    .proof-sep { width: 1px; height: 24px; background: var(--border); }
+
+    /* Hero Right */
+    .hero-right {
+      position: relative; height: 100%; min-height: 600px;
+      background: var(--cream-2); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-right::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 60% 40%, rgba(13,158,126,.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 30% 70%, rgba(184,134,11,.06) 0%, transparent 60%);
+    }
+    .hero-right::after {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(26,58,42,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,58,42,.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-products-scene {
+      position: relative; z-index: 2; width: 380px; height: 480px;
+    }
+    .hpcard {
+      position: absolute; background: #fff; border-radius: 20px;
+      box-shadow: var(--shadow-lg); overflow: hidden;
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1); cursor: pointer;
+    }
+    .hpcard:hover { transform: translateY(-8px) scale(1.03) !important; }
+    .hpcard-main {
+      width: 200px; height: 260px;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      animation: cardFloat 4s ease-in-out infinite; z-index: 3;
+      border: 1px solid var(--border-2);
+    }
+    @keyframes cardFloat {
+      0%,100% { transform: translate(-50%,-50%) translateY(0); }
+      50%      { transform: translate(-50%,-50%) translateY(-14px); }
+    }
+    .hpcard-a {
+      width: 150px; height: 190px; top: 8%; left: -2%;
+      transform: rotate(-10deg);
+      animation: cardFloat2 5.5s ease-in-out infinite 1s;
+      z-index: 2; opacity: .85;
+    }
+    .hpcard-b {
+      width: 140px; height: 178px; bottom: 6%; right: -4%;
+      transform: rotate(8deg);
+      animation: cardFloat3 6s ease-in-out infinite .5s;
+      z-index: 2; opacity: .85;
+    }
+    @keyframes cardFloat2 {
+      0%,100%{transform:rotate(-10deg) translateY(0);}
+      50%{transform:rotate(-10deg) translateY(-10px);}
+    }
+    @keyframes cardFloat3 {
+      0%,100%{transform:rotate(8deg) translateY(0);}
+      50%{transform:rotate(8deg) translateY(-12px);}
+    }
+    .hpcard-img {
+      width: 100%; aspect-ratio: 1; background: var(--cream-2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px; transition: transform .4s;
+    }
+    .hpcard-main .hpcard-img { font-size: 64px; }
+    .hpcard:hover .hpcard-img { transform: scale(1.08); }
+    .hpcard-body { padding: 12px 14px; }
+    .hpcard-name {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 4px;
+    }
+    .hpcard-main .hpcard-name { font-size: 13px; }
+    .hpcard-price { font-size: 16px; font-weight: 700; color: var(--text); }
+    .hpcard-main .hpcard-price { font-size: 20px; }
+    .hpcard-badge {
+      position: absolute; top: 10px; right: 10px;
+      background: var(--green); color: #fff;
+      font-size: 9px; font-weight: 700;
+      padding: 3px 8px; border-radius: 20px; letter-spacing: .05em;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ TICKER */
+    .ticker-wrap { overflow: hidden; background: var(--green); padding: 13px 0; }
+    .ticker {
+      display: flex; white-space: nowrap;
+      animation: ticker 22s linear infinite;
+    }
+    .ticker:hover { animation-play-state: paused; }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 10px; padding: 0 32px;
+      font-size: 12px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: rgba(255,255,255,.65);
+    }
+    .ticker-sep { color: var(--teal-lt); font-size: 10px; }
+    @keyframes ticker { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ANIMATED TEXT CYCLE — inspired by 21st.dev/community/components/thimows/animated-text-cycle */
+    .hero-cycle-wrap {
+      display: inline-block; overflow: hidden; vertical-align: bottom;
+      height: 1.12em; line-height: 1.12;
+    }
+    .hero-cycle-word {
+      display: block; color: var(--teal); font-style: italic;
+      will-change: transform, opacity;
+    }
+    .hero-cycle-word.tc-enter {
+      animation: tcEnter .5s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    .hero-cycle-word.tc-exit {
+      animation: tcExit .4s cubic-bezier(.55,0,1,.45) forwards;
+    }
+    @keyframes tcEnter {
+      from { opacity:0; transform: translateY(24px) skewY(5deg); }
+      to   { opacity:1; transform: translateY(0) skewY(0deg); }
+    }
+    @keyframes tcExit {
+      from { opacity:1; transform: translateY(0) skewY(0deg); }
+      to   { opacity:0; transform: translateY(-24px) skewY(-5deg); }
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ CONTAINER SCROLL — port of Aceternity UI ContainerScroll */
+    .cscroll-section { position: relative; height: 180vh; }
+    .cscroll-sticky {
+      position: sticky; top: 0;
+      height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 40px 24px 20px;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .cscroll-header {
+      max-width: 700px; text-align: center;
+      margin-bottom: 28px;
+      will-change: transform;
+    }
+    .cscroll-header .tag { margin-bottom: 12px; }
+    .cscroll-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+      color: var(--green); line-height: 1.1; margin-bottom: 12px;
+    }
+    .cscroll-header p { font-size: 16px; color: var(--muted); line-height: 1.6; }
+    .cscroll-card {
+      max-width: 960px; width: 100%;
+      height: clamp(300px, 42vh, 460px);
+      border-radius: 24px;
+      border: 3px solid rgba(26,58,42,0.2);
+      background: var(--green);
+      overflow: hidden;
+      will-change: transform;
+      transform: perspective(1000px) rotateX(20deg) scale(1.05);
+      box-shadow: 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042,
+                  0 84px 50px #00000026, 0 149px 60px #0000000a;
+    }
+    .cscroll-card-inner {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      padding: 20px; gap: 14px;
+    }
+    .csc-topbar {
+      display: flex; align-items: center; justify-content: space-between; padding: 0 4px;
+    }
+    .csc-topbar-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(255,255,255,.9);
+    }
+    .csc-topbar-logo span { color: var(--teal-lt); }
+    .csc-topbar-badges { display: flex; gap: 8px; }
+    .csc-badge {
+      font-size: 10px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: rgba(255,255,255,.6);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 100px; padding: 4px 10px;
+    }
+    .csc-products {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; flex: 1;
+    }
+    .csc-product {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px; padding: 20px 16px;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      position: relative; transition: background .2s;
+    }
+    .csc-product:hover { background: rgba(255,255,255,.12); }
+    .csc-prod-icon { font-size: 2.2rem; line-height: 1; }
+    .csc-prod-name {
+      font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,.9); text-align: center; line-height: 1.3;
+    }
+    .csc-prod-price { font-size: 13px; color: var(--teal-lt); font-weight: 700; }
+    .csc-prod-star  { font-size: 10px; color: var(--gold-lt); letter-spacing: 1px; }
+    .csc-prod-badge {
+      position: absolute; top: 10px; right: 10px;
+      font-size: 9px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--green);
+      background: var(--teal-lt); border-radius: 100px; padding: 3px 8px;
+    }
+    .csc-statbar {
+      display: flex; align-items: center; justify-content: center; gap: 28px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+    }
+    .csc-stat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .csc-stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px; font-weight: 700; color: #fff;
+    }
+    .csc-stat-val span { color: var(--teal-lt); }
+    .csc-stat-label {
+      font-size: 10px; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: rgba(255,255,255,.4);
+    }
+    .csc-stat-sep { width: 1px; height: 32px; background: rgba(255,255,255,.1); }
+    @media(max-width:768px) {
+      .cscroll-section { height: 150vh; }
+      .csc-topbar-badges { display: none; }
+      .csc-prod-icon { font-size: 1.8rem; }
+      .csc-statbar { gap: 14px; }
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ STATS — Bento Grid — inspired by 21st.dev/community/components/kokonutd/bento-grid */
+    .stats-section { padding: 80px 0; }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+    .bento-cell {
+      background: #fff; border: 1.5px solid var(--border-2);
+      border-radius: 20px; padding: 40px 36px;
+      position: relative; overflow: hidden;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+    }
+    .bento-cell:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .bento-cell.bc-featured {
+      grid-row: 1 / 3;
+      background: var(--green);
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .bento-cell.bc-featured::before {
+      content: ''; position: absolute;
+      top: -80px; right: -80px;
+      width: 280px; height: 280px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(13,158,126,.3), transparent 65%);
+      pointer-events: none;
+    }
+    .bento-cell.bc-featured .stat-num { color: #fff; font-size: 80px; }
+    .bento-cell.bc-featured .stat-label { color: rgba(255,255,255,.55); font-size: 15px; line-height: 1.6; margin-top: 6px; }
+    .bento-cell.bc-featured .stat-tag { color: rgba(255,255,255,.35); margin-bottom: 12px; }
+    .bento-cell.bc-accent { background: rgba(13,158,126,.05); border-color: rgba(13,158,126,.14); }
+    .bento-cell.bc-wide { grid-column: 2 / 4; }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 52px; line-height: 1; letter-spacing: -.02em;
+      color: var(--green); margin-bottom: 8px;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .bento-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .bento-pill {
+      font-size: 12px; font-weight: 500;
+      padding: 5px 12px; border-radius: var(--r-pill);
+      background: var(--cream-2); border: 1px solid var(--border);
+      color: var(--text-2); white-space: nowrap;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SECTION HEADER */
+    .section-header { margin-bottom: 56px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      color: var(--green); line-height: 1.1; letter-spacing: -.02em; margin-bottom: 16px;
+    }
+    .section-title em { font-style: italic; color: var(--teal); }
+    .section-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 560px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ GOALS */
+    .goals-section { padding: 80px 0; }
+    .goals-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .goal-card {
+      padding: 36px 28px; border-radius: 20px; border: 1.5px solid var(--border);
+      background: #fff; cursor: pointer; position: relative; overflow: hidden;
+      transition: all .35s cubic-bezier(.34,1.56,.64,1);
+    }
+    .goal-card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .3s; border-radius: 20px;
+    }
+    .goal-card.sleep::before  { background: radial-gradient(135% 135% at 0% 0%, rgba(93,63,211,.06) 0%, transparent 60%); }
+    .goal-card.detox::before  { background: radial-gradient(135% 135% at 0% 0%, rgba(13,158,126,.06) 0%, transparent 60%); }
+    .goal-card.skin::before   { background: radial-gradient(135% 135% at 0% 0%, rgba(184,134,11,.06) 0%, transparent 60%); }
+    .goal-card.energy::before { background: radial-gradient(135% 135% at 0% 0%, rgba(220,80,40,.06) 0%, transparent 60%); }
+    .goal-card:hover {
+      transform: translateY(-6px); box-shadow: var(--shadow-md);
+      border-color: rgba(26,58,42,.18);
+    }
+    .goal-card:hover::before { opacity: 1; }
+    .goal-icon { font-size: 36px; margin-bottom: 20px; display: block; transition: transform .35s; }
+    .goal-card:hover .goal-icon { transform: scale(1.15) rotate(-5deg); }
+    .goal-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--green); margin-bottom: 8px; }
+    .goal-desc  { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+    .goal-link {
+      font-size: 13px; font-weight: 600; color: var(--teal);
+      display: inline-flex; align-items: center; gap: 4px;
+      opacity: 0; transform: translateX(-6px);
+      transition: all .25s; pointer-events: none;
+    }
+    .goal-card:hover .goal-link { opacity: 1; transform: translateX(0); pointer-events: all; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PRODUCTS */
+    .products-section { padding: 80px 0; background: var(--cream-2); }
+    .products-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 36px; flex-wrap: wrap; gap: 20px;
+    }
+    .filter-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .ftab {
+      padding: 8px 18px; border-radius: var(--r-pill);
+      font-size: 13px; font-weight: 500;
+      border: 1.5px solid var(--border);
+      background: transparent; color: var(--muted); transition: all .2s; cursor: pointer;
+    }
+    .ftab.active, .ftab:hover { background: var(--green); border-color: var(--green); color: #fff; }
+    .products-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .pcard {
+      background: #fff; border-radius: 20px; border: 1.5px solid var(--border-2);
+      overflow: hidden; cursor: pointer;
+      transition: all .35s cubic-bezier(.34,1.56,.64,1); position: relative;
+    }
+    .pcard:hover {
+      transform: translateY(-8px); box-shadow: var(--shadow-lg);
+      border-color: rgba(26,58,42,.15);
+    }
+    .pcard-img {
+      height: 200px; background: var(--cream-2);
+      display: flex; align-items: center; justify-content: center; font-size: 72px;
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+      position: relative; overflow: hidden;
+    }
+    .pcard-img::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px;
+      background: linear-gradient(to top, var(--cream-2), transparent);
+    }
+    .pcard:hover .pcard-img { transform: scale(1.06); }
+    .pcard-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--green); color: #fff;
+      font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px;
+    }
+    .pcard-body { padding: 20px; }
+    .pcard-name { font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+    .pcard-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
+    .pcard-row  { display: flex; align-items: center; justify-content: space-between; }
+    .pcard-price{ font-size: 22px; font-weight: 700; color: var(--text); }
+    .add-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--green); color: #fff; font-size: 20px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .25s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 4px 16px rgba(26,58,42,.25);
+    }
+    .add-btn:hover { transform: scale(1.15) rotate(90deg); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PROBLEM / SOLUTION */
+    .ps-section { padding: 100px 0; }
+    .ps-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch;
+      border-radius: 24px; overflow: hidden;
+      border: 1.5px solid var(--border); box-shadow: var(--shadow-md);
+    }
+    .ps-pane { padding: 56px 52px; }
+    .ps-pane-problem  { background: #fff; }
+    .ps-pane-solution { background: var(--green); }
+    .ps-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; padding: 5px 14px; border-radius: var(--r-pill); margin-bottom: 28px;
+    }
+    .ps-label.bad  { background: rgba(220,60,40,.08); color: #dc3828; border: 1px solid rgba(220,60,40,.2); }
+    .ps-label.good { background: rgba(13,158,126,.15); color: var(--teal); border: 1px solid rgba(13,158,126,.3); }
+    .ps-title {
+      font-family: 'DM Serif Display', serif; font-size: 26px; line-height: 1.2;
+      margin-bottom: 28px; color: var(--green);
+    }
+    .ps-pane-solution .ps-title { color: rgba(255,255,255,.95); }
+    .ps-item { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .ps-dot {
+      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700;
+    }
+    .ps-dot.x     { background: rgba(220,60,40,.10); color: #dc3828; border: 1.5px solid rgba(220,60,40,.25); }
+    .ps-dot.check { background: rgba(13,158,126,.20); color: var(--teal); border: 1.5px solid rgba(13,158,126,.40); }
+    .ps-pane-solution .ps-dot.check { background: rgba(255,255,255,.15); color: #fff; border-color: rgba(255,255,255,.3); }
+    .ps-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .ps-text strong { color: var(--text-2); font-weight: 600; }
+    .ps-pane-solution .ps-text         { color: rgba(255,255,255,.65); }
+    .ps-pane-solution .ps-text strong  { color: rgba(255,255,255,.9); }
+    .ab-block { margin-top: 32px; }
+    .ab-row   { margin-bottom: 16px; }
+    .ab-meta  { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; font-weight: 500; }
+    .ab-meta-label { color: var(--muted); }
+    .ab-track { height: 6px; background: rgba(26,58,42,.08); border-radius: 3px; overflow: hidden; }
+    .ab-fill  { height: 100%; border-radius: 3px; width: 0; transition: width 1.4s cubic-bezier(.22,1,.36,1); }
+    .ab-fill.bad  { background: linear-gradient(90deg, #dc3828, #ef7060); }
+    .ab-fill.good { background: linear-gradient(90deg, var(--teal), var(--teal-lt)); }
+    .ps-pane-solution .ab-track       { background: rgba(255,255,255,.12); }
+    .ps-pane-solution .ab-meta-label  { color: rgba(255,255,255,.5); }
+    .ps-pane-solution .ab-meta-val    { color: rgba(255,255,255,.9); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ BUNDLES */
+    .bundles-section { padding: 100px 0; background: var(--cream-2); }
+    .bundles-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 24px; }
+    .bundle-promo {
+      background: var(--green); border-radius: 24px; padding: 48px 40px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; overflow: hidden;
+    }
+    .bundle-promo::before {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(13,158,126,.25), transparent 70%);
+    }
+    .bundle-promo-save {
+      display: inline-block; background: var(--gold); color: #fff;
+      font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+      letter-spacing: .06em; margin-bottom: 20px;
+    }
+    .bundle-promo-title {
+      font-family: 'DM Serif Display', serif; font-size: 32px; line-height: 1.15;
+      color: #fff; margin-bottom: 16px;
+    }
+    .bundle-promo-sub { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.65; margin-bottom: 36px; }
+    .bundle-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .bcard {
+      background: #fff; border-radius: 16px; padding: 28px 24px;
+      border: 1.5px solid var(--border-2); position: relative; cursor: pointer;
+      transition: all .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    .bcard:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: rgba(26,58,42,.15); }
+    .bcard-off {
+      position: absolute; top: 14px; right: 14px;
+      background: var(--teal); color: #fff;
+      font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 12px;
+    }
+    .bcard-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+    .bcard-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--green); margin-bottom: 6px; }
+    .bcard-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
+    .bcard-price { display: flex; align-items: baseline; gap: 8px; }
+    .bcard-new   { font-size: 20px; font-weight: 700; color: var(--text); }
+    .bcard-old   { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ INGREDIENTS */
+    .ingredients-section { padding: 100px 0; }
+    .ingredients-grid {
+      display: grid; grid-template-columns: repeat(6,1fr);
+      gap: 14px; margin-top: 56px;
+    }
+    .ingcard {
+      background: #fff; border: 1.5px solid var(--border-2); border-radius: 16px;
+      padding: 28px 16px; text-align: center; cursor: pointer;
+      transition: all .35s cubic-bezier(.34,1.56,.64,1);
+    }
+    .ingcard:hover {
+      transform: translateY(-6px) scale(1.02); box-shadow: var(--shadow-md);
+      border-color: rgba(13,158,126,.25); background: rgba(13,158,126,.03);
+    }
+    .ingcard-icon { font-size: 32px; margin-bottom: 12px; transition: transform .35s; }
+    .ingcard:hover .ingcard-icon { transform: scale(1.2) rotate(-8deg); }
+    .ingcard-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--green); line-height: 1.3; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ REVIEWS */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ TESTIMONIAL SCROLL COLUMNS — inspired by 21st.dev/community/components/efferd/testimonials-columns-1 */
+    .reviews-section { padding: 100px 0; background: var(--cream-2); }
+    .tcols-outer {
+      margin-top: 56px;
+      max-height: 720px; overflow: hidden;
+      mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+    }
+    .tcols-inner {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; align-items: start;
+    }
+    .tcol { display: flex; flex-direction: column; gap: 16px; overflow: hidden; }
+    .tcol:nth-child(2) { margin-top: -48px; }
+    .tcol:nth-child(3) { margin-top: -24px; }
+    .tcol-strip {
+      display: flex; flex-direction: column; gap: 16px;
+      animation: tcScrollUp var(--dur, 22s) linear infinite;
+    }
+    .tcol-strip:hover { animation-play-state: paused; }
+    @keyframes tcScrollUp {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    .rcard {
+      background: #fff; border-radius: 20px; padding: 28px;
+      border: 1.5px solid var(--border-2); position: relative;
+      transition: box-shadow .3s, transform .3s;
+      flex-shrink: 0;
+    }
+    .rcard:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .rcard::before {
+      content: '"'; position: absolute; top: 16px; right: 20px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 70px; line-height: 1; color: rgba(13,158,126,.09);
+    }
+    .rcard-stars  { font-size: 12px; color: var(--gold); letter-spacing: 2px; margin-bottom: 12px; }
+    .rcard-text   { font-size: 14px; color: var(--text-2); line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+    .rcard-author { display: flex; align-items: center; gap: 10px; }
+    .rcard-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-lt), var(--teal));
+      color: #fff; font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .rcard-name   { font-size: 13px; font-weight: 600; color: var(--text); }
+    .rcard-meta   { font-size: 11px; color: var(--muted); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FINAL CTA */
+    .cta-section {
+      padding: 120px 0; text-align: center;
+      background: var(--green); position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; top: -100px; left: 50%;
+      transform: translateX(-50%); width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(13,158,126,.2) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-section .section-title { color: #fff; }
+    .cta-section .section-title em { color: var(--teal-lt); }
+    .cta-section .section-sub { color: rgba(255,255,255,.6); margin: 0 auto 44px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER */
+    footer {
+      background: #fff; border-top: 1.5px solid var(--border-2); padding: 64px 0 40px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    .footer-brand-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--green); letter-spacing: -.5px;
+      display: block; margin-bottom: 14px;
+    }
+    .footer-brand-logo span { color: var(--teal); }
+    .footer-brand p { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 260px; margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .fsoc {
+      width: 36px; height: 36px; border-radius: 10px; background: var(--cream-2);
+      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+      font-size: 14px; transition: all .2s; text-decoration: none; color: var(--text-2);
+    }
+    .fsoc:hover { background: var(--green); color: #fff; border-color: var(--green); transform: translateY(-2px); }
+    .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a  { font-size: 14px; color: var(--text-2); transition: color .2s; }
+    .footer-col a:hover { color: var(--teal); }
+    .footer-bottom {
+      border-top: 1px solid var(--border-2); padding-top: 28px;
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .footer-bottom p { font-size: 13px; color: var(--muted); }
+    .footer-disclaimer { font-size: 11px; color: rgba(26,26,26,.3); max-width: 520px; line-height: 1.6; text-align: right; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ RESPONSIVE */
+    @media (max-width:1100px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 400px; }
+      .products-grid, .goals-grid { grid-template-columns: repeat(2,1fr); }
+      .ingredients-grid { grid-template-columns: repeat(3,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width:768px) {
+      .nav-inner { padding: 14px 24px; }
+      .nav-links  { display: none; }
+      .hero-left  { padding: 60px 24px; }
+      .container  { padding: 0 24px; }
+      .bento-grid { grid-template-columns: 1fr 1fr; }
+      .bento-cell.bc-featured { grid-row: auto; }
+      .bento-cell.bc-wide { grid-column: auto; }
+      .goals-grid, .products-grid { grid-template-columns: 1fr; }
+      .tcols-inner { grid-template-columns: 1fr; }
+      .tcol:nth-child(2), .tcol:nth-child(3) { display: none; }
+      .ps-layout  { grid-template-columns: 1fr; }
+      .bundles-layout, .bundle-cards-grid { grid-template-columns: 1fr; }
+      .ingredients-grid { grid-template-columns: repeat(2,1fr); }
+      footer { padding: 48px 0 32px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ━━━━ BANNER ━━━━ -->
+<div class="banner">
+  ⚡ <strong>Up to 30% Off</strong> your first subscription &nbsp;·&nbsp;
+  Free Shipping on orders $50+ &nbsp;·&nbsp;
+  <strong>4.97★</strong> Rated by 30,000+ Customers
+</div>
+
+<!-- ━━━━ NAV ━━━━ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">WELLNESS<span>JUNKIEZ</span></a>
+    <ul class="nav-links">
+      <li><a href="#goals">Shop by Goal</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#bundles">Bundles</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="nav-cart">🛒 $0.00</a>
+      <a href="#products" class="btn btn-primary" style="padding:10px 22px;font-size:13px">Shop Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ━━━━ HERO ━━━━ -->
+<section class="hero" id="top">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge reveal">
+      <span class="hero-badge-dot"></span>
+      Pharmaceutical-Grade Bioavailability
+    </div>
+
+    <h1 class="hero-headline reveal reveal-d1">
+      Stop Being<br/>
+      A <span class="hl-gold">Patient.</span><br/>
+      Become A<br/><span class="hero-cycle-wrap"><span id="hero-cycle" class="hero-cycle-word tc-enter">PowerHouse.</span></span>
+    </h1>
+
+    <p class="hero-sub reveal reveal-d2">
+      Most supplements are designed for shelf-life, not human life.
+      We've stripped away the fillers and corporate noise to give you
+      <strong>8× the absorption</strong> of standard retail brands.
+    </p>
+
+    <div class="hero-ctas reveal reveal-d3">
+      <a href="#products" class="btn btn-primary btn-arrow">Secure The Blueprint </a>
+      <a href="#goals"    class="btn btn-outline">Explore Products</a>
+    </div>
+
+    <div class="hero-proof reveal reveal-d4">
+      <span class="proof-stars">★★★★★</span>
+      <span class="proof-text"><strong>4.97</strong> average</span>
+      <span class="proof-sep"></span>
+      <span class="proof-text">Trusted by <strong>30,000+</strong> who knew better</span>
+      <span class="proof-sep"></span>
+      <span class="proof-text">Woman-owned · Chicago-made</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-products-scene reveal reveal-d2">
+      <div class="hpcard hpcard-a">
+        <span class="hpcard-badge">Fan Fave</span>
+        <div class="hpcard-img">🌿</div>
+        <div class="hpcard-body">
+          <div class="hpcard-name">Super Detox</div>
+          <div class="hpcard-price">$23.99</div>
+        </div>
+      </div>
+      <div class="hpcard hpcard-main">
+        <span class="hpcard-badge">Best Seller</span>
+        <div class="hpcard-img">🌊</div>
+        <div class="hpcard-body">
+          <div class="hpcard-name">Sea Moss Gummies</div>
+          <div class="hpcard-price">$23.99</div>
+        </div>
+      </div>
+      <div class="hpcard hpcard-b">
+        <span class="hpcard-badge">New</span>
+        <div class="hpcard-img">🫐</div>
+        <div class="hpcard-body">
+          <div class="hpcard-name">Berry Lift</div>
+          <div class="hpcard-price">$29.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ TICKER ━━━━ -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <span class="ticker-item">High-Performance Gummies <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Zero Synthetic Dyes <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Berry Lift Revival <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Charcoal Detox Soap <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Sleep Support <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">8× Absorption <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Woman-Owned · Chicago-Made <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Glyphosate Residue-Free <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Sea Moss <span class="ticker-sep">✦</span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">High-Performance Gummies <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Zero Synthetic Dyes <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Berry Lift Revival <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Charcoal Detox Soap <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Sleep Support <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">8× Absorption <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Woman-Owned · Chicago-Made <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Glyphosate Residue-Free <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Sea Moss <span class="ticker-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- ━━━━ CONTAINER SCROLL ━━━━ -->
+<section id="cscroll-section" class="cscroll-section">
+  <div class="cscroll-sticky">
+    <div id="cscroll-header" class="cscroll-header">
+      <span class="tag">Premium Collection 2025</span>
+      <h2>Your Body Runs On<br/><em>What You Give It.</em></h2>
+      <p>Every formula engineered down to the molecule &mdash; no fillers, no compromise, no shortcuts.</p>
+    </div>
+    <div id="cscroll-card" class="cscroll-card">
+      <div class="cscroll-card-inner">
+        <div class="csc-topbar">
+          <span class="csc-topbar-logo">WELLNESS<span>JUNKIEZ</span> &mdash; The Collection</span>
+          <div class="csc-topbar-badges">
+            <span class="csc-badge">3rd Party Tested</span>
+            <span class="csc-badge">GMP Certified</span>
+            <span class="csc-badge">Zero Fillers</span>
+          </div>
+        </div>
+        <div class="csc-products">
+          <div class="csc-product">
+            <span class="csc-prod-badge">Best Seller</span>
+            <div class="csc-prod-icon">🌊</div>
+            <div class="csc-prod-name">Sea Moss Gummies</div>
+            <div class="csc-prod-price">$23.99</div>
+            <div class="csc-prod-star">★★★★★</div>
+          </div>
+          <div class="csc-product">
+            <span class="csc-prod-badge">Fan Fave</span>
+            <div class="csc-prod-icon">🌿</div>
+            <div class="csc-prod-name">Super Detox Complex</div>
+            <div class="csc-prod-price">$23.99</div>
+            <div class="csc-prod-star">★★★★★</div>
+          </div>
+          <div class="csc-product">
+            <span class="csc-prod-badge">New Drop</span>
+            <div class="csc-prod-icon">🫐</div>
+            <div class="csc-prod-name">Berry Lift Revival</div>
+            <div class="csc-prod-price">$29.99</div>
+            <div class="csc-prod-star">★★★★★</div>
+          </div>
+        </div>
+        <div class="csc-statbar">
+          <div class="csc-stat">
+            <span class="csc-stat-val">8<span>&times;</span></span>
+            <span class="csc-stat-label">Absorption</span>
+          </div>
+          <div class="csc-stat-sep"></div>
+          <div class="csc-stat">
+            <span class="csc-stat-val">30<span>K+</span></span>
+            <span class="csc-stat-label">Customers</span>
+          </div>
+          <div class="csc-stat-sep"></div>
+          <div class="csc-stat">
+            <span class="csc-stat-val">4.97<span>★</span></span>
+            <span class="csc-stat-label">Avg Rating</span>
+          </div>
+          <div class="csc-stat-sep"></div>
+          <div class="csc-stat">
+            <span class="csc-stat-val">0<span>g</span></span>
+            <span class="csc-stat-label">Synthetic Fillers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ STATS BENTO ━━━━ -->
+<section class="stats-section">
+  <div class="container">
+    <div class="bento-grid">
+
+      <!-- Featured big cell -->
+      <div class="bento-cell bc-featured reveal">
+        <div>
+          <span class="tag stat-tag">The Core Proof</span>
+          <div class="stat-num" data-to="8" data-suffix="×" style="margin-top:14px">0×</div>
+          <p class="stat-label">More absorption than standard retail.<br/>The science is non-negotiable.</p>
+        </div>
+        <a href="#about" class="btn btn-white btn-arrow" style="align-self:flex-start;padding:10px 22px;font-size:13px;color:var(--green);margin-top:32px">See How It Works </a>
+      </div>
+
+      <!-- 30K+ -->
+      <div class="bento-cell reveal reveal-d1">
+        <div class="stat-num" data-to="30" data-suffix="K+">0K+</div>
+        <p class="stat-label">Real customers.<br/>Real results.</p>
+      </div>
+
+      <!-- 4.97★ -->
+      <div class="bento-cell bc-accent reveal reveal-d2">
+        <div class="stat-num" data-to="97" data-prefix="4." data-suffix="★">4.0★</div>
+        <p class="stat-label">Avg. star rating<br/>across all products</p>
+      </div>
+
+      <!-- Zero — spans right 2 cols -->
+      <div class="bento-cell bc-wide reveal reveal-d3">
+        <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+          <div>
+            <div class="stat-num" style="font-size:40px">Zero</div>
+            <p class="stat-label">Synthetic fillers, dyes,<br/>or corporate dishonesty</p>
+          </div>
+          <div class="bento-pills">
+            <span class="bento-pill">🌿 Organic Catalysts</span>
+            <span class="bento-pill">🚫 No Synthetic Dyes</span>
+            <span class="bento-pill">✓ Glyphosate-Free</span>
+            <span class="bento-pill">🌊 Sea Moss Derived</span>
+            <span class="bento-pill">💊 8× Bioavailability</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ GOALS ━━━━ -->
+<section class="goals-section" id="goals">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Shop by Goal</span>
+      <h2 class="section-title" style="margin-top:12px">What Are You<br/><em>Working Towards?</em></h2>
+      <p class="section-sub">Results-first formulas designed around your actual life, not a one-size-fits-all promise.</p>
+    </div>
+    <div class="goals-grid">
+      <div class="goal-card sleep reveal reveal-d1">
+        <span class="goal-icon">🌙</span>
+        <h3 class="goal-title">Sleep Better</h3>
+        <p class="goal-desc">Melatonin-free, restorative sleep support. Wake up recovered, not groggy.</p>
+        <a href="#" class="goal-link">Shop Sleep →</a>
+      </div>
+      <div class="goal-card detox reveal reveal-d2">
+        <span class="goal-icon">🌿</span>
+        <h3 class="goal-title">Body Detox</h3>
+        <p class="goal-desc">Activated charcoal, sea moss & clean catalysts to flush what doesn't belong.</p>
+        <a href="#" class="goal-link">Shop Detox →</a>
+      </div>
+      <div class="goal-card skin reveal reveal-d3">
+        <span class="goal-icon">✨</span>
+        <h3 class="goal-title">Glowing Skin & Hair</h3>
+        <p class="goal-desc">Biotin, collagen-support gummies and sea moss soaps built for the skin you want.</p>
+        <a href="#" class="goal-link">Shop Skin →</a>
+      </div>
+      <div class="goal-card energy reveal reveal-d4">
+        <span class="goal-icon">⚡</span>
+        <h3 class="goal-title">Boost Your Energy</h3>
+        <p class="goal-desc">No jitters. No crash. Ashwagandha + ACV formulas that power your 24/7 life.</p>
+        <a href="#" class="goal-link">Shop Energy →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ PRODUCTS ━━━━ -->
+<section class="products-section" id="products">
+  <div class="container">
+    <div class="products-header">
+      <div class="reveal">
+        <span class="tag">Our Products</span>
+        <h2 class="section-title" style="margin-top:12px">High-Performance.<br/><em>Zero Compromise.</em></h2>
+      </div>
+      <div class="filter-row reveal">
+        <button class="ftab active">All</button>
+        <button class="ftab">Gummies</button>
+        <button class="ftab">Soaps</button>
+        <button class="ftab">Supplements</button>
+        <button class="ftab">Bundles</button>
+      </div>
+    </div>
+    <div class="products-grid">
+      <div class="pcard reveal reveal-d1">
+        <span class="pcard-badge">Best Seller</span>
+        <div class="pcard-img">💊</div>
+        <div class="pcard-body">
+          <div class="pcard-name">Super Detox</div>
+          <div class="pcard-desc">Rapidly hydrates, supports immunity with clean detox formula.</div>
+          <div class="pcard-row">
+            <span class="pcard-price">$23.99</span>
+            <button class="add-btn" aria-label="Add to cart">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="pcard reveal reveal-d2">
+        <span class="pcard-badge">New</span>
+        <div class="pcard-img">🫐</div>
+        <div class="pcard-body">
+          <div class="pcard-name">Berry Lift Revival</div>
+          <div class="pcard-desc">Premium serum-grade bioavailability. The upgrade your body deserves.</div>
+          <div class="pcard-row">
+            <span class="pcard-price">$29.99</span>
+            <button class="add-btn" aria-label="Add to cart">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="pcard reveal reveal-d3">
+        <div class="pcard-img">🌊</div>
+        <div class="pcard-body">
+          <div class="pcard-name">Sea Moss</div>
+          <div class="pcard-desc">92 trace minerals for gut health, immunity and natural energy boost.</div>
+          <div class="pcard-row">
+            <span class="pcard-price">$23.99</span>
+            <button class="add-btn" aria-label="Add to cart">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="pcard reveal reveal-d4">
+        <span class="pcard-badge">Fan Fave</span>
+        <div class="pcard-img">😴</div>
+        <div class="pcard-body">
+          <div class="pcard-name">Sleep Support</div>
+          <div class="pcard-desc">Melatonin-free deep sleep. Wake up restored, not dependent.</div>
+          <div class="pcard-row">
+            <span class="pcard-price">$23.99</span>
+            <button class="add-btn" aria-label="Add to cart">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px" class="reveal">
+      <a href="#" class="btn btn-outline btn-arrow">View All 20 Products </a>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ PROBLEM / SOLUTION ━━━━ -->
+<section class="ps-section" id="about">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="tag">The Real Story</span>
+      <h2 class="section-title" style="margin-top:12px">
+        Why Most Supplements Are<br/><em>A Waste Of Money</em>
+      </h2>
+      <p class="section-sub">
+        The industry has a transparency problem. We built Wellness Junkiez to fix it once and for all.
+      </p>
+    </div>
+    <div class="ps-layout">
+      <div class="ps-pane ps-pane-problem reveal reveal-d1">
+        <span class="ps-label bad">⚠ The Problem</span>
+        <h3 class="ps-title">You're Paying for Vitamins Your Body Never Uses</h3>
+        <div class="ps-item">
+          <div class="ps-dot x">✕</div>
+          <p class="ps-text"><strong>The 12% Reality:</strong> Only 1 in 8 nutrients from standard supplements actually reaches your bloodstream due to poor absorption.</p>
+        </div>
+        <div class="ps-item">
+          <div class="ps-dot x">✕</div>
+          <p class="ps-text"><strong>$1,200+ Wasted Annually:</strong> Most professionals spend this much on supplements their bodies treat as bio-waste.</p>
+        </div>
+        <div class="ps-item">
+          <div class="ps-dot x">✕</div>
+          <p class="ps-text"><strong>The Fatigue Gap:</strong> 70% of high-performers still report recurring fatigue despite "healthy" supplement habits.</p>
+        </div>
+        <div class="ab-block">
+          <div class="ab-row">
+            <div class="ab-meta">
+              <span class="ab-meta-label">Standard Supplement Absorption</span>
+              <span class="ab-meta-val" style="color:#dc3828">~12%</span>
+            </div>
+            <div class="ab-track"><div class="ab-fill bad" data-w="12"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-pane ps-pane-solution reveal reveal-d2">
+        <span class="ps-label good">✓ The Solution</span>
+        <h3 class="ps-title">The Wellness Junkiez Rebuttal</h3>
+        <div class="ps-item">
+          <div class="ps-dot check">✓</div>
+          <p class="ps-text"><strong>8× Absorption Standard:</strong> Our formulas are 800% more bioavailable — active ingredients bypass digestive degradation.</p>
+        </div>
+        <div class="ps-item">
+          <div class="ps-dot check">✓</div>
+          <p class="ps-text"><strong>Cell-First Engineering:</strong> Clean, organic catalysts that facilitate immediate nutrient uptake at the cellular level.</p>
+        </div>
+        <div class="ps-item">
+          <div class="ps-dot check">✓</div>
+          <p class="ps-text"><strong>Built for Professionals 30–55:</strong> You don't just take it — you <em>feel it</em>. Measurable, physiological feedback.</p>
+        </div>
+        <div class="ab-block">
+          <div class="ab-row">
+            <div class="ab-meta">
+              <span class="ab-meta-label">Wellness Junkiez Absorption</span>
+              <span class="ab-meta-val">~96%</span>
+            </div>
+            <div class="ab-track"><div class="ab-fill good" data-w="96"></div></div>
+          </div>
+        </div>
+        <a href="#products" class="btn btn-white btn-arrow" style="margin-top:28px">Shop Now </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ BUNDLES ━━━━ -->
+<section class="bundles-section" id="bundles">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Bundle &amp; Save</span>
+      <h2 class="section-title" style="margin-top:12px">All-Day Support.<br/><em>One System.</em></h2>
+    </div>
+    <div class="bundles-layout">
+      <div class="bundle-promo reveal">
+        <div>
+          <span class="bundle-promo-save">25% OFF ALL BUNDLES</span>
+          <h3 class="bundle-promo-title">Morning to Night,<br/>Your Body's Covered</h3>
+          <p class="bundle-promo-sub">Nutrients with up to 5× more absorption working together — from sunrise through to deep, restorative sleep.</p>
+        </div>
+        <a href="#" class="btn btn-gold btn-arrow">Build Your Bundle </a>
+      </div>
+      <div class="bundle-cards-grid">
+        <div class="bcard reveal reveal-d1">
+          <span class="bcard-off">25% OFF</span>
+          <span class="bcard-icon">🌿</span>
+          <div class="bcard-name">Super Detox</div>
+          <p class="bcard-desc">Rapidly hydrates, supports immunity from the inside out.</p>
+          <div class="bcard-price"><span class="bcard-new">$18.00</span><span class="bcard-old">$23.99</span></div>
+        </div>
+        <div class="bcard reveal reveal-d2">
+          <span class="bcard-off">25% OFF</span>
+          <span class="bcard-icon">💅</span>
+          <div class="bcard-name">Hair, Skin &amp; Nails</div>
+          <p class="bcard-desc">No jitters, no crash. Just glow from the inside.</p>
+          <div class="bcard-price"><span class="bcard-new">$18.00</span><span class="bcard-old">$23.99</span></div>
+        </div>
+        <div class="bcard reveal reveal-d3">
+          <span class="bcard-off">25% OFF</span>
+          <span class="bcard-icon">🌙</span>
+          <div class="bcard-name">Sleep</div>
+          <p class="bcard-desc">Melatonin-free restorative sleep. Wake up human again.</p>
+          <div class="bcard-price"><span class="bcard-new">$18.00</span><span class="bcard-old">$23.99</span></div>
+        </div>
+        <div class="bcard reveal reveal-d4">
+          <span class="bcard-off">25% OFF</span>
+          <span class="bcard-icon">💪</span>
+          <div class="bcard-name">Total Body</div>
+          <p class="bcard-desc">All the essentials your body needs. Nothing it doesn't.</p>
+          <div class="bcard-price"><span class="bcard-new">$75.00</span><span class="bcard-old">$96.00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ INGREDIENTS ━━━━ -->
+<section class="ingredients-section">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="tag">Why It Works</span>
+      <h2 class="section-title" style="margin-top:12px">Ingredients We're<br/><em>Proud to Name</em></h2>
+      <p class="section-sub">No mystery blends. No filler. Every single ingredient earns its place.</p>
+    </div>
+    <div class="ingredients-grid">
+      <div class="ingcard reveal reveal-d1"><div class="ingcard-icon">🌊</div><div class="ingcard-name">Sea Moss</div></div>
+      <div class="ingcard reveal reveal-d2"><div class="ingcard-icon">🍎</div><div class="ingcard-name">Apple Cider Vinegar</div></div>
+      <div class="ingcard reveal reveal-d3"><div class="ingcard-icon">🌿</div><div class="ingcard-name">Vitamins A &amp; C</div></div>
+      <div class="ingcard reveal reveal-d4"><div class="ingcard-icon">🌱</div><div class="ingcard-name">Ashwagandha</div></div>
+      <div class="ingcard reveal reveal-d5"><div class="ingcard-icon">🖤</div><div class="ingcard-name">Activated Charcoal</div></div>
+      <div class="ingcard reveal reveal-d6"><div class="ingcard-icon">✨</div><div class="ingcard-name">Melatonin-Free Sleep</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ REVIEWS ━━━━ -->
+<section class="reviews-section">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="tag">Real Reviews</span>
+      <h2 class="section-title" style="margin-top:12px">30,000+ Who<br/><em>Knew Better</em></h2>
+      <p class="section-sub">Not influencer-paid. Not fabricated. Real people, real results, real receipts.</p>
+    </div>
+    <!-- 3-column auto-scroll testimonials — pattern from 21st.dev/community/components/efferd/testimonials-columns-1 -->
+    <div class="tcols-outer">
+      <div class="tcols-inner">
+
+        <!-- Column 1 (speed 22s) -->
+        <div class="tcol">
+          <div class="tcol-strip" style="--dur:22s">
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"I've tried every supplement brand on the market. Wellness Junkiez is the first where I actually felt a difference within week one. Super Detox is a non-negotiable now."</p>
+              <div class="rcard-author"><div class="rcard-avatar">MJ</div><div><div class="rcard-name">Marcus J.</div><div class="rcard-meta">Attorney, Chicago · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"My energy was tanking every afternoon. Two weeks in on the ACV gummies and I'm coasting through 3pm without a coffee. This is real."</p>
+              <div class="rcard-author"><div class="rcard-avatar">DS</div><div><div class="rcard-name">David S.</div><div class="rcard-meta">Software Eng., Austin · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"As a nurse I'm skeptical of supplements. The ingredient list here is clean — no shortcuts, no mystery blends. I recommend it to patients who ask."</p>
+              <div class="rcard-author"><div class="rcard-avatar">LM</div><div><div class="rcard-name">Lisa M., RN</div><div class="rcard-meta">Nurse Practitioner · Verified</div></div></div>
+            </div>
+            <!-- duplicate for seamless loop -->
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"I've tried every supplement brand on the market. Wellness Junkiez is the first where I actually felt a difference within week one. Super Detox is a non-negotiable now."</p>
+              <div class="rcard-author"><div class="rcard-avatar">MJ</div><div><div class="rcard-name">Marcus J.</div><div class="rcard-meta">Attorney, Chicago · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"My energy was tanking every afternoon. Two weeks in on the ACV gummies and I'm coasting through 3pm without a coffee. This is real."</p>
+              <div class="rcard-author"><div class="rcard-avatar">DS</div><div><div class="rcard-name">David S.</div><div class="rcard-meta">Software Eng., Austin · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"As a nurse I'm skeptical of supplements. The ingredient list here is clean — no shortcuts, no mystery blends. I recommend it to patients who ask."</p>
+              <div class="rcard-author"><div class="rcard-avatar">LM</div><div><div class="rcard-name">Lisa M., RN</div><div class="rcard-meta">Nurse Practitioner · Verified</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2 (speed 28s, staggered top) -->
+        <div class="tcol">
+          <div class="tcol-strip" style="--dur:28s">
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"Sleep Support changed my life. I wasn't sleeping more than 5 hours and dragging every morning. Now I consistently hit 7–8 hours and wake up energized."</p>
+              <div class="rcard-author"><div class="rcard-avatar">TW</div><div><div class="rcard-name">Tanya W.</div><div class="rcard-meta">Entrepreneur, NYC · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"I was dealing with bloating and digestive issues for years. Three weeks on Sea Moss and I noticed a real change. My gut feels completely reset."</p>
+              <div class="rcard-author"><div class="rcard-avatar">KC</div><div><div class="rcard-name">Keisha C.</div><div class="rcard-meta">Teacher, Atlanta · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"Bought for my mom for her birthday. She called me the next week to say her joints felt better. That's when I ordered for myself too. Now we're both hooked."</p>
+              <div class="rcard-author"><div class="rcard-avatar">JR</div><div><div class="rcard-name">James R.</div><div class="rcard-meta">Accountant, Detroit · Verified</div></div></div>
+            </div>
+            <!-- duplicate -->
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"Sleep Support changed my life. I wasn't sleeping more than 5 hours and dragging every morning. Now I consistently hit 7–8 hours and wake up energized."</p>
+              <div class="rcard-author"><div class="rcard-avatar">TW</div><div><div class="rcard-name">Tanya W.</div><div class="rcard-meta">Entrepreneur, NYC · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"I was dealing with bloating and digestive issues for years. Three weeks on Sea Moss and I noticed a real change. My gut feels completely reset."</p>
+              <div class="rcard-author"><div class="rcard-avatar">KC</div><div><div class="rcard-name">Keisha C.</div><div class="rcard-meta">Teacher, Atlanta · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"Bought for my mom for her birthday. She called me the next week to say her joints felt better. That's when I ordered for myself too."</p>
+              <div class="rcard-author"><div class="rcard-avatar">JR</div><div><div class="rcard-name">James R.</div><div class="rcard-meta">Accountant, Detroit · Verified</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3 (speed 25s, staggered top) -->
+        <div class="tcol">
+          <div class="tcol-strip" style="--dur:25s">
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"The Hair, Skin &amp; Nail gummies gave me results I double-checked in the mirror. Skin glowing, nails stopped breaking. This brand is different — in the best way."</p>
+              <div class="rcard-author"><div class="rcard-avatar">PR</div><div><div class="rcard-name">Priya R.</div><div class="rcard-meta">Nurse Practitioner · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"The charcoal soap cleared my back acne in two weeks. I've spent hundreds on skincare routinely. This $12 bar does more than any of it."</p>
+              <div class="rcard-author"><div class="rcard-avatar">AM</div><div><div class="rcard-name">Andre M.</div><div class="rcard-meta">Fitness Coach, Houston · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"I was skeptical of the 8× absorption claim. Then I actually felt it. No placebo — within 10 days my brain fog lifted. I've reordered four times."</p>
+              <div class="rcard-author"><div class="rcard-avatar">NB</div><div><div class="rcard-name">Nicole B.</div><div class="rcard-meta">Marketing Director, LA · Verified</div></div></div>
+            </div>
+            <!-- duplicate -->
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"The Hair, Skin &amp; Nail gummies gave me results I double-checked in the mirror. Skin glowing, nails stopped breaking. This brand is different — in the best way."</p>
+              <div class="rcard-author"><div class="rcard-avatar">PR</div><div><div class="rcard-name">Priya R.</div><div class="rcard-meta">Nurse Practitioner · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"The charcoal soap cleared my back acne in two weeks. I've spent hundreds on skincare routinely. This $12 bar does more than any of it."</p>
+              <div class="rcard-author"><div class="rcard-avatar">AM</div><div><div class="rcard-name">Andre M.</div><div class="rcard-meta">Fitness Coach, Houston · Verified</div></div></div>
+            </div>
+            <div class="rcard">
+              <div class="rcard-stars">★★★★★</div>
+              <p class="rcard-text">"I was skeptical of the 8× absorption claim. Then I actually felt it. No placebo — within 10 days my brain fog lifted. I've reordered four times."</p>
+              <div class="rcard-author"><div class="rcard-avatar">NB</div><div><div class="rcard-name">Nicole B.</div><div class="rcard-meta">Marketing Director, LA · Verified</div></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ FINAL CTA ━━━━ -->
+<section class="cta-section">
+  <div class="container">
+    <span class="tag reveal" style="color:rgba(255,255,255,.5);justify-content:center;display:flex;margin-bottom:16px">Your Body Deserves Better</span>
+    <h2 class="section-title reveal" style="margin-bottom:16px">Stop Spending.<br/><em>Start Absorbing.</em></h2>
+    <p class="section-sub reveal">
+      Join 30,000+ professionals who stopped wasting money on supplements that don't work
+      and switched to a system their body can actually use.
+    </p>
+    <div class="cta-btns reveal">
+      <a href="#products" class="btn btn-white btn-arrow" style="color:var(--green)">Secure The Blueprint </a>
+      <a href="#products" class="btn btn-ghost-white">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ FOOTER ━━━━ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-brand-logo">WELLNESS<span>JUNKIEZ</span></span>
+        <p>Pharmaceutical-grade bioavailability, designed for professionals who demand more from their supplements. Woman-owned. Chicago-made.</p>
+        <div class="footer-socials">
+          <a class="fsoc" href="https://instagram.com/wellnessjunkiez" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
+          <a class="fsoc" href="https://facebook.com/wellnessjunkiez" target="_blank" rel="noopener noreferrer" aria-label="Facebook">👍</a>
+          <a class="fsoc" href="mailto:hello@absorbmore.com" aria-label="Email">✉️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#">Gummies</a></li>
+          <li><a href="#">Supplements</a></li>
+          <li><a href="#">Soaps</a></li>
+          <li><a href="#">Bundles</a></li>
+          <li><a href="#">Shop All</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Goals</h5>
+        <ul>
+          <li><a href="#">Sleep Better</a></li>
+          <li><a href="#">Body Detox</a></li>
+          <li><a href="#">Glowing Skin</a></li>
+          <li><a href="#">Boost Energy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="tel:8052220097">(805) 222-0097</a></li>
+          <li><a href="mailto:hello@absorbmore.com">hello@absorbmore.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Wellness Junkies Co. All rights reserved.</p>
+      <p class="footer-disclaimer">*These products have not been evaluated by the Food and Drug Administration and are not intended to diagnose, treat, cure or prevent any disease.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── SCROLL REVEAL ── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('up');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ── ANIMATED COUNTERS ── */
+function animCounter(el) {
+  const to     = parseInt(el.dataset.to);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const dur    = 1600;
+  const fps    = 60;
+  const step   = to / (dur / (1000 / fps));
+  let cur = 0;
+  const id = setInterval(() => {
+    cur = Math.min(cur + step, to);
+    el.textContent = prefix + Math.round(cur) + suffix;
+    if (cur >= to) clearInterval(id);
+  }, 1000 / fps);
+}
+const statObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-to]').forEach(animCounter);
+      statObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.bento-grid').forEach(el => statObs.observe(el));
+
+/* ── ANIMATED TEXT CYCLE — 21st.dev/thimows/animated-text-cycle port ── */
+(function() {
+  const words = ['PowerHouse.', 'Blueprint.', 'Standard.', 'Upgrade.', 'System.'];
+  let idx = 0;
+  const el = document.getElementById('hero-cycle');
+  if (!el) return;
+  function next() {
+    el.classList.remove('tc-enter');
+    el.classList.add('tc-exit');
+    setTimeout(() => {
+      idx = (idx + 1) % words.length;
+      el.textContent = words[idx];
+      el.classList.remove('tc-exit');
+      el.classList.add('tc-enter');
+    }, 420);
+  }
+  setInterval(next, 2800);
+}());
+
+/* ── ABSORPTION BARS ── */
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.ab-fill').forEach(bar => {
+        setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, 300);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.ps-layout').forEach(el => barObs.observe(el));
+
+/* ── NAV SHADOW ON SCROLL ── */
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  navEl.style.boxShadow = window.scrollY > 60
+    ? '0 4px 32px rgba(26,58,42,0.10)'
+    : '';
+}, { passive: true });
+
+/* ── 3D CARD TILT ── */
+document.querySelectorAll('.hpcard-main').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - 0.5;
+    const y = (e.clientY - r.top)  / r.height - 0.5;
+    card.style.transform = `translate(-50%,-50%) rotateY(${x * 22}deg) rotateX(${-y * 22}deg) translateY(-14px)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+
+/* ── CONTAINER SCROLL — Aceternity UI ContainerScroll port ── */
+(function() {
+  const section = document.getElementById('cscroll-section');
+  const card    = document.getElementById('cscroll-card');
+  const header  = document.getElementById('cscroll-header');
+  if (!section || !card || !header) return;
+  function update() {
+    const rect     = section.getBoundingClientRect();
+    const totalH   = section.offsetHeight - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, -rect.top / totalH));
+    const rotate   = 20 - progress * 20;
+    const scale    = 1.05 - progress * 0.05;
+    const ty       = progress * -100;
+    card.style.transform   = `perspective(1000px) rotateX(${rotate}deg) scale(${scale})`;
+    header.style.transform = `translateY(${ty}px)`;
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
+}());
+
+/* ── FILTER TABS ── */
+document.querySelectorAll('.ftab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+/* ── REDUCED MOTION ── */
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.ticker').forEach(t => t.style.animationPlayState = 'paused');
+}
+</script>
+
+</body>
+</html>
