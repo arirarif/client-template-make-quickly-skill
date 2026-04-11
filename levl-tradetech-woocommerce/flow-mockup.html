@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEVL Trade Tech — Architecture WooCommerce</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream:     #FDFAF5;
+  --dark:      #1C0F08;
+  --brown:     #3D1C0A;
+  --terra:     #B5521A;
+  --gold:      #C8973A;
+  --sage:      #4A6741;
+  --warm:      #F5EAD8;
+  --border:    #E5D5C0;
+  --muted:     #8C7B6B;
+  --purple:    #7B6CF6;
+  --blue:      #2E86AB;
+  --gold-bg:   #FBF5E8;
+  --font-d:    'Cormorant Garamond', Georgia, serif;
+  --font-b:    'DM Sans', system-ui, sans-serif;
+}
+body { background: var(--cream); color: var(--dark); font-family: var(--font-b); font-size: 15px; line-height: 1.6; }
+
+/* ── COVER ── */
+.cover {
+  background: var(--dark);
+  color: #fff;
+  padding: 72px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+.cover-brand {
+  font-family: var(--font-d);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+.cover h1 {
+  font-family: var(--font-d);
+  font-size: 52px;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.cover h1 em { font-style: italic; color: var(--gold); }
+.cover-desc { font-size: 15px; color: rgba(255,255,255,.65); max-width: 500px; line-height: 1.8; margin-bottom: 32px; }
+.cover-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.ctag {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.75);
+  font-size: 11px;
+  padding: 5px 13px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+.cover-meta { text-align: right; }
+.cover-meta .ref {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.cover-meta .meta-item { font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 6px; }
+.cover-meta .meta-item strong { color: #fff; font-size: 16px; }
+.cover-divider { width: 1px; background: rgba(255,255,255,.1); align-self: stretch; flex-shrink: 0; }
+
+/* ── SECTION BASE ── */
+.sect { padding: 64px 80px; }
+.sect-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 8px;
+}
+.sect-title { font-family: var(--font-d); font-size: 38px; font-weight: 300; margin-bottom: 8px; }
+.sect-sub { font-size: 14px; color: var(--muted); margin-bottom: 44px; max-width: 620px; line-height: 1.7; }
+
+/* ── JOURNEY FLOW ── */
+.journey-wrap { display: flex; flex-direction: column; gap: 0; }
+.journey-row { display: flex; gap: 16px; align-items: stretch; }
+.journey-mid {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 0;
+  position: relative;
+}
+.journey-mid::before {
+  content: '';
+  position: absolute;
+  right: 46px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), var(--terra));
+}
+.journey-mid-arrow {
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  margin-right: 26px;
+  position: relative;
+  z-index: 1;
+}
+.step-box {
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 16px 20px;
+  text-align: center;
+  position: relative;
+  transition: box-shadow .2s;
+}
+.step-box:hover { box-shadow: 0 8px 32px rgba(28,15,8,.1); }
+.step-box::after {
+  content: '→';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--gold);
+  z-index: 2;
+  background: var(--cream);
+  padding: 0 2px;
+  line-height: 1;
+}
+.step-box:last-child::after { display: none; }
+.step-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; color: #fff;
+  margin-bottom: 10px;
+}
+.s-terra .step-num { background: var(--terra); }
+.s-gold  .step-num { background: var(--gold); color: var(--dark); }
+.s-sage  .step-num { background: var(--sage); }
+.s-blue  .step-num { background: var(--blue); }
+.s-purple .step-num { background: var(--purple); }
+
+.s-terra { border-top: 3px solid var(--terra); }
+.s-gold  { border-top: 3px solid var(--gold); }
+.s-sage  { border-top: 3px solid var(--sage); }
+.s-blue  { border-top: 3px solid var(--blue); }
+.s-purple{ border-top: 3px solid var(--purple); }
+
+.step-icon { font-size: 26px; display: block; margin-bottom: 8px; }
+.step-box h4 { font-size: 12px; font-weight: 600; margin-bottom: 8px; color: var(--dark); }
+.step-box ul { list-style: none; font-size: 11px; color: var(--muted); line-height: 2; }
+
+/* Row-2 arrows point left */
+.row2 .step-box::after { content: '←'; right: auto; left: -12px; }
+.row2 .step-box:last-child::after { display: none; }
+.row2 .step-box:first-child::after { display: block; }
+.row2 .step-box.row2-last::after { display: none; }
+
+/* ── TECH STACK (dark) ── */
+.sect-dark { background: var(--dark); }
+.sect-dark .sect-title { color: #fff; }
+.sect-dark .sect-sub { color: rgba(255,255,255,.55); }
+.tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tech-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+.tech-card h3 {
+  font-family: var(--font-d);
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--gold);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.tech-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+.tech-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); margin-top: 8px; flex-shrink: 0; }
+.tech-item strong { display: block; font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+.tech-item span { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.5; }
+.hosting-note {
+  margin-top: 24px;
+  padding: 20px 24px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  display: flex; align-items: center; gap: 16px;
+}
+.hosting-note span { font-size: 30px; }
+.hosting-note strong { color: var(--gold); display: block; font-size: 14px; margin-bottom: 4px; }
+.hosting-note p { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+/* ── BACK OFFICE ── */
+.bo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.bo-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 22px;
+}
+.bo-icon { font-size: 34px; margin-bottom: 14px; }
+.bo-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 14px; }
+.bo-card ul { list-style: none; font-size: 12px; color: var(--muted); line-height: 2.1; }
+.bo-card ul li::before { content: '✓  '; color: var(--sage); font-weight: 700; }
+.bo-note {
+  margin-top: 24px;
+  padding: 18px 22px;
+  background: var(--gold-bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--dark);
+  line-height: 1.7;
+}
+
+/* ── FUNNEL ── */
+.sect-warm { background: var(--warm); }
+.funnel-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.funnel-bars { display: flex; flex-direction: column; gap: 10px; }
+.fbar { display: flex; align-items: center; gap: 14px; }
+.fbar-label { font-size: 12px; color: var(--muted); width: 80px; text-align: right; flex-shrink: 0; }
+.fbar-fill {
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  gap: 8px;
+}
+.fbar-fill .pct { font-size: 16px; font-weight: 700; }
+.fb1 { width: 100%; background: var(--terra); }
+.fb2 { width: 68%;  background: #C8731A; }
+.fb3 { width: 44%;  background: var(--gold); color: var(--dark); }
+.fb4 { width: 30%;  background: var(--sage); }
+.funnel-tips { display: flex; flex-direction: column; gap: 10px; }
+.ftip {
+  padding: 14px 16px;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  border-left: 3px solid transparent;
+  line-height: 1.6;
+}
+.ftip strong { display: block; margin-bottom: 3px; }
+.ftip.t1 { border-color: var(--terra); }
+.ftip.t1 strong { color: var(--terra); }
+.ftip.t2 { border-color: #C8731A; }
+.ftip.t2 strong { color: #C8731A; }
+.ftip.t3 { border-color: var(--gold); }
+.ftip.t3 strong { color: var(--gold); }
+.ftip.t4 { border-color: var(--sage); }
+.ftip.t4 strong { color: var(--sage); }
+
+/* ── TIMELINE ── */
+.tl-rows { display: flex; flex-direction: column; gap: 10px; max-width: 920px; }
+.tl-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 18px 22px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.tl-row.launch { background: var(--warm); border: 2px solid var(--terra); }
+.tl-day { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .15em; margin-bottom: 3px; }
+.tl-task { font-size: 14px; font-weight: 600; }
+.tl-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.tl-bar { width: 44px; height: 4px; border-radius: 4px; margin-top: 6px; }
+
+/* ── CTA ── */
+.cta-sect {
+  background: var(--terra);
+  color: #fff;
+  text-align: center;
+  padding: 56px 80px;
+}
+.cta-sect .eyebrow {
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  opacity: .7;
+  margin-bottom: 14px;
+}
+.cta-sect h2 { font-family: var(--font-d); font-size: 40px; font-weight: 300; margin-bottom: 14px; }
+.cta-sect p { font-size: 15px; opacity: .85; margin-bottom: 28px; }
+.cta-sect .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-white {
+  background: #fff;
+  color: var(--terra);
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-b);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,.6);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-b);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* ── FOOTER ── */
+.doc-footer {
+  background: var(--brown);
+  color: rgba(255,255,255,.5);
+  padding: 22px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+.doc-footer strong { color: #fff; }
+.doc-footer .highlight { color: var(--gold); font-weight: 600; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .cover, .sect, .cta-sect, .doc-footer { padding: 40px 24px; }
+  .tech-grid, .bo-grid { grid-template-columns: 1fr 1fr; }
+  .funnel-wrap { grid-template-columns: 1fr; }
+  .journey-row { flex-wrap: wrap; }
+  .step-box::after, .row2 .step-box::after { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════ COVER ════════════════════════════ -->
+<header class="cover">
+  <div>
+    <div class="cover-brand">LEVL Trade Tech — Architecture de Projet</div>
+    <h1>Votre boutique<br>WooCommerce<br><em>clé en main</em></h1>
+    <p class="cover-desc">Architecture technique complète, parcours client optimisé et plan de livraison pour la boutique d'épicerie africaine premium — France & Europe.</p>
+    <div class="cover-tags">
+      <span class="ctag">WooCommerce</span>
+      <span class="ctag">WordPress</span>
+      <span class="ctag">Hostinger</span>
+      <span class="ctag">Stripe + PayPal</span>
+      <span class="ctag">France + 27 pays EU</span>
+      <span class="ctag">SEO + GA4</span>
+      <span class="ctag">Meta Pixel</span>
+      <span class="ctag">Mobile-First</span>
+    </div>
+  </div>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="ref">Réf : LTT-2026-001</div>
+    <div class="meta-item">Avril 2026</div>
+    <div class="meta-item" style="margin-top:16px;">Client<br><strong>LEVL Trade Tech</strong></div>
+    <div class="meta-item" style="margin-top:16px;">Budget<br><strong style="color:var(--gold)">$350</strong></div>
+    <div class="meta-item">Délai<br><strong>7 jours</strong></div>
+    <div class="meta-item" style="margin-top:16px;font-size:11px;opacity:.5;">Document confidentiel</div>
+  </div>
+</header>
+
+<!-- ════════════════════════════ SECTION 1: CUSTOMER JOURNEY ════════════════════════════ -->
+<section class="sect" style="background:var(--cream)">
+  <div class="sect-label">Section 01 — Vue Globale</div>
+  <h2 class="sect-title">Le Parcours Client Complet</h2>
+  <p class="sect-sub">De la première impression à la fidélisation — chaque étape est pensée pour maximiser les conversions et surprendre le client.</p>
+
+  <div class="journey-wrap">
+    <!-- Row 1 — Left to Right: Steps 1–4 -->
+    <div class="journey-row">
+      <div class="step-box s-terra">
+        <div class="step-num">1</div>
+        <span class="step-icon">🔍</span>
+        <h4>Découverte</h4>
+        <ul><li>SEO Google</li><li>Réseaux sociaux</li><li>Meta Ads</li><li>Bouche-à-oreille</li></ul>
+      </div>
+      <div class="step-box s-gold">
+        <div class="step-num">2</div>
+        <span class="step-icon">🏠</span>
+        <h4>Page d'Accueil</h4>
+        <ul><li>Story de marque</li><li>Produits vedettes</li><li>Preuve sociale</li><li>Navigation claire</li></ul>
+      </div>
+      <div class="step-box s-terra">
+        <div class="step-num">3</div>
+        <span class="step-icon">🛍️</span>
+        <h4>Boutique</h4>
+        <ul><li>Filtres &amp; tags</li><li>Catégories claires</li><li>Moteur recherche</li><li>Tri popularité</li></ul>
+      </div>
+      <div class="step-box s-purple" style="border-right:2px solid var(--purple);">
+        <div class="step-num">4</div>
+        <span class="step-icon">📦</span>
+        <h4>Fiche Produit</h4>
+        <ul><li>Photos HD</li><li>Variantes poids/packs</li><li>Badge IGP certifié</li><li>Avis clients</li></ul>
+      </div>
+    </div>
+
+    <!-- Mid connector -->
+    <div class="journey-mid">
+      <div class="journey-mid-arrow">↓</div>
+    </div>
+
+    <!-- Row 2 — Right to Left: Steps 5–8 -->
+    <div class="journey-row row2">
+      <div class="step-box s-blue row2-last">
+        <div class="step-num">8</div>
+        <span class="step-icon">⭐</span>
+        <h4>Fidélisation</h4>
+        <ul><li>Compte client</li><li>Historique commandes</li><li>Analytics GA4</li><li>Email retargeting</li></ul>
+      </div>
+      <div class="step-box s-sage">
+        <div class="step-num">7</div>
+        <span class="step-icon">🚚</span>
+        <h4>Livraison</h4>
+        <ul><li>France métro</li><li>27 pays EU</li><li>Suivi colis</li><li>Notif. email auto</li></ul>
+      </div>
+      <div class="step-box s-blue">
+        <div class="step-num">6</div>
+        <span class="step-icon">💳</span>
+        <h4>Paiement</h4>
+        <ul><li>Stripe (Visa/MC)</li><li>PayPal</li><li>3 clics maximum</li><li>SSL sécurisé</li></ul>
+      </div>
+      <div class="step-box s-gold">
+        <div class="step-num">5</div>
+        <span class="step-icon">🛒</span>
+        <h4>Panier</h4>
+        <ul><li>Upsell automatique</li><li>Cross-sell produits</li><li>Livraison estimée</li><li>Réassurance achat</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;padding:16px 22px;background:var(--gold-bg);border:1px solid var(--border);border-radius:10px;font-size:13px;color:var(--muted);line-height:1.7;">
+    <strong style="color:var(--dark);">💡 Optimisation tunnel :</strong> Chaque étape réduit les abandons — progression visible, paiement rapide, message de réassurance à chaque point clé. Taux d'abandon panier moyen du secteur : 70%. Notre objectif : 45% grâce aux upsells, checkout simplifié et emails de récupération.
+  </div>
+</section>
+
+<!-- ════════════════════════════ SECTION 2: TECH STACK ════════════════════════════ -->
+<section class="sect sect-dark">
+  <div class="sect-label">Section 02 — Architecture Technique</div>
+  <h2 class="sect-title">Stack Technique</h2>
+  <p class="sect-sub">Des outils éprouvés en production, légers et maintenables — aucun plugin inutile, chaque composant a un rôle précis.</p>
+
+  <div class="tech-grid">
+    <div class="tech-card">
+      <h3>🎨 Front-End & CMS</h3>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>WordPress (dernière version)</strong><span>CMS le plus utilisé au monde — maintenable sans développeur après livraison</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Thème Premium offert (valeur 60–120 €)</strong><span>Inclus dans notre package — design mobile-first, optimisé Core Web Vitals</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Elementor Pro — Page Builder</strong><span>Modifier votre contenu visuellement, sans toucher au code</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Score Lighthouse 90+ visé</strong><span>Images optimisées, caching agressif, CSS/JS minifiés</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Responsive 375 / 768 / 1440px</strong><span>Testé sur mobile, tablette et desktop — mobile-first</span></div>
+      </div>
+    </div>
+
+    <div class="tech-card">
+      <h3>🛒 E-Commerce Engine</h3>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>WooCommerce (officiel)</strong><span>Plugin e-commerce #1 WordPress — robuste, évolutif, large écosystème</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Variantes produits complètes</strong><span>Poids, packs, bundles — toutes les variations avec prix différenciés</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Zones livraison France + EU</strong><span>27 pays configurés avec frais de port par zone géographique</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Comptes clients complets</strong><span>Historique commandes, adresses sauvegardées, téléchargements</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Upsell / Cross-sell configurés</strong><span>"Les clients ont aussi acheté" + offres dans le panier</span></div>
+      </div>
+    </div>
+
+    <div class="tech-card">
+      <h3>⚡ Intégrations</h3>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Stripe</strong><span>Visa, Mastercard, Apple Pay, Google Pay — paiement instantané sécurisé</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>PayPal</strong><span>Pour les clients préférant payer via leur compte PayPal</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Google Analytics 4</strong><span>Ventes, sources trafic, taux de conversion, comportement client</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>Meta Pixel</strong><span>Retargeting Facebook &amp; Instagram — récupérer les visiteurs non convertis</span></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot"></div>
+        <div><strong>SSL + SMTP Email</strong><span>Certificat HTTPS + emails transactionnels fiables (confirmations, suivi)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hosting-note">
+    <span>🏠</span>
+    <div>
+      <strong>Hébergement — Votre Hostinger existant</strong>
+      <p>Nous installons tout directement sur votre hébergement Hostinger déjà en place — aucun coût supplémentaire. Nous optimiserons les paramètres PHP, activerons le caching serveur et configurerons le CDN pour des performances maximales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ SECTION 3: BACK OFFICE ════════════════════════════ -->
+<section class="sect" style="background:var(--cream)">
+  <div class="sect-label">Section 03 — Gestion Quotidienne</div>
+  <h2 class="sect-title">Votre Back-Office</h2>
+  <p class="sect-sub">Interface simple et claire — gérer votre boutique après livraison ne nécessite aucune compétence technique. Tout en français.</p>
+
+  <div class="bo-grid">
+    <div class="bo-card" style="border-top:3px solid var(--terra);">
+      <div class="bo-icon">📦</div>
+      <h4>Gestion Produits</h4>
+      <ul>
+        <li>Ajouter un produit</li>
+        <li>Modifier les prix</li>
+        <li>Créer des variantes</li>
+        <li>Gérer le stock</li>
+        <li>Uploader photos HD</li>
+        <li>Catégoriser</li>
+      </ul>
+    </div>
+    <div class="bo-card" style="border-top:3px solid var(--gold);">
+      <div class="bo-icon">📋</div>
+      <h4>Suivi Commandes</h4>
+      <ul>
+        <li>Voir toutes les commandes</li>
+        <li>Marquer comme expédiée</li>
+        <li>Ajouter n° de suivi</li>
+        <li>Gérer remboursements</li>
+        <li>Imprimer bons de livraison</li>
+        <li>Email auto au client</li>
+      </ul>
+    </div>
+    <div class="bo-card" style="border-top:3px solid var(--sage);">
+      <div class="bo-icon">👥</div>
+      <h4>Clients</h4>
+      <ul>
+        <li>Voir tous les comptes</li>
+        <li>Historique achats</li>
+        <li>Adresses enregistrées</li>
+        <li>Notes internes</li>
+        <li>Export CSV</li>
+        <li>Communication directe</li>
+      </ul>
+    </div>
+    <div class="bo-card" style="border-top:3px solid var(--purple);">
+      <div class="bo-icon">📊</div>
+      <h4>Analytics & Rapports</h4>
+      <ul>
+        <li>CA journalier / mensuel</li>
+        <li>Produits best-sellers</li>
+        <li>Taux de conversion</li>
+        <li>Sources trafic GA4</li>
+        <li>Paniers abandonnés</li>
+        <li>Rapport livraison EU</li>
+      </ul>
+    </div>
+  </div>
+  <div class="bo-note">
+    🎬 <strong>Formation vidéo offerte :</strong> Une vidéo screencast de 10–15 minutes enregistrée spécialement pour vous — comment ajouter un produit, traiter une commande, consulter vos ventes, modifier les prix. Tout en français. Vous pouvez la regarder à tout moment sans faire appel à un technicien.
+  </div>
+</section>
+
+<!-- ════════════════════════════ SECTION 4: CONVERSION FUNNEL ════════════════════════════ -->
+<section class="sect sect-warm">
+  <div class="sect-label">Section 04 — Performance</div>
+  <h2 class="sect-title">Tunnel de Conversion Optimisé</h2>
+  <p class="sect-sub">Transformer un visiteur en acheteur — chaque friction supprimée = plus de ventes. Voici notre approche section par section.</p>
+
+  <div class="funnel-wrap">
+    <div class="funnel-bars">
+      <div style="font-size:12px;color:var(--muted);margin-bottom:14px;font-weight:500;">Simulation sur 1 000 visiteurs</div>
+      <div class="fbar">
+        <span class="fbar-label">Visiteurs</span>
+        <div class="fbar-fill fb1"><span class="pct">1 000</span> visiteurs arrivent</div>
+      </div>
+      <div class="fbar">
+        <span class="fbar-label">Boutique</span>
+        <div class="fbar-fill fb2"><span class="pct">680</span> visitent la boutique</div>
+      </div>
+      <div class="fbar">
+        <span class="fbar-label">Panier</span>
+        <div class="fbar-fill fb3"><span class="pct">420</span> ajoutent au panier</div>
+      </div>
+      <div class="fbar">
+        <span class="fbar-label">Achat ✓</span>
+        <div class="fbar-fill fb4"><span class="pct">280</span> complètent l'achat</div>
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:var(--muted);">Taux de conversion e-commerce moyen France : 2–3%. Notre objectif avec tunnel optimisé : <strong style="color:var(--dark)">4–5%</strong>.</div>
+    </div>
+
+    <div>
+      <h3 style="font-family:var(--font-d);font-size:24px;font-weight:400;margin-bottom:20px;">Comment on améliore chaque étape</h3>
+      <div class="funnel-tips">
+        <div class="ftip t1"><strong>Homepage → Boutique (+20%)</strong>Hero percutant avec CTA immédiatement visible, catégories produits bien mises en avant, trust bar avec certifications IGP</div>
+        <div class="ftip t2"><strong>Boutique → Panier (+15%)</strong>Fiches produits riches (badge IGP, photos multi-angles), avis certifiés, variantes clairement présentées, description d'origine</div>
+        <div class="ftip t3"><strong>Panier → Checkout (+25%)</strong>Upsell intégré (pack découverte), barre livraison gratuite dès 50€, récap commande clair, 0 frais cachés</div>
+        <div class="ftip t4"><strong>Checkout → Confirmation (+30%)</strong>Stripe 3D Secure rapide, choix Stripe/PayPal, confirmation instantanée, email avec suivi commande</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ SECTION 5: TIMELINE ════════════════════════════ -->
+<section class="sect" style="background:var(--cream)">
+  <div class="sect-label">Section 05 — Planning</div>
+  <h2 class="sect-title">Livraison en 7 Jours</h2>
+  <p class="sect-sub">Un planning précis et transparent. Vous savez exactement ce qui se passe chaque jour. Livraison garantie ou remboursement.</p>
+
+  <div class="tl-rows">
+    <div class="tl-row">
+      <div>
+        <div class="tl-day">Jour 1</div>
+        <div class="tl-task" style="color:var(--sage)">⚙️ Installation</div>
+        <div class="tl-bar" style="background:var(--sage)"></div>
+      </div>
+      <div class="tl-desc">Configuration WordPress + WooCommerce sur Hostinger · Installation thème premium · Sécurisation SSL · Accès admin configuré et transmis</div>
+    </div>
+    <div class="tl-row">
+      <div>
+        <div class="tl-day">Jour 2</div>
+        <div class="tl-task" style="color:var(--gold)">🎨 Design System</div>
+        <div class="tl-bar" style="background:var(--gold)"></div>
+      </div>
+      <div class="tl-desc">Palette LEVL Trade Tech · Typographies · Navigation principale · Pages statiques (À propos, Contact) · Mention légales</div>
+    </div>
+    <div class="tl-row">
+      <div>
+        <div class="tl-day">Jour 3</div>
+        <div class="tl-task" style="color:var(--terra)">🏠 Page d'Accueil</div>
+        <div class="tl-bar" style="background:var(--terra)"></div>
+      </div>
+      <div class="tl-desc">Construction homepage complète · Hero · Catégories · Produits vedettes · Section storytelling africain · Témoignages · Footer</div>
+    </div>
+    <div class="tl-row">
+      <div>
+        <div class="tl-day">Jour 4</div>
+        <div class="tl-task" style="color:var(--purple)">📦 Produits</div>
+        <div class="tl-bar" style="background:var(--purple)"></div>
+      </div>
+      <div class="tl-desc">Création fiches produits complètes · Variantes poids/packs · Photos importées · Descriptions avec origines · Gestion stock · Catégories boutique</div>
+    </div>
+    <div class="tl-row">
+      <div>
+        <div class="tl-day">Jour 5</div>
+        <div class="tl-task" style="color:var(--blue)">💳 Paiement & Livraison</div>
+        <div class="tl-bar" style="background:var(--blue)"></div>
+      </div>
+      <div class="tl-desc">Stripe + PayPal intégrés et testés (paiements de test effectués) · Zones livraison France + EU · Frais de port par pays · Emails WooCommerce configurés</div>
+    </div>
+    <div class="tl-row">
+      <div>
+        <div class="tl-day">Jour 6</div>
+        <div class="tl-task" style="color:var(--gold)">📈 SEO & Analytics</div>
+        <div class="tl-bar" style="background:var(--gold)"></div>
+      </div>
+      <div class="tl-desc">Structure SEO complète (titres, métas, sitemap) · Yoast SEO configuré · Google Analytics 4 · Meta Pixel · Optimisation vitesse · Score Lighthouse</div>
+    </div>
+    <div class="tl-row launch">
+      <div>
+        <div class="tl-day">Jour 7</div>
+        <div class="tl-task" style="color:var(--terra)">🚀 LANCEMENT</div>
+        <div class="tl-bar" style="background:var(--terra)"></div>
+      </div>
+      <div class="tl-desc">Tests complets multi-device · Revisions finales · Vérification mobile · Enregistrement vidéo de formation · Mise en ligne officielle · Remise complète des accès</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ CTA ════════════════════════════ -->
+<section class="cta-sect">
+  <div class="eyebrow">Prêt à démarrer ?</div>
+  <h2>Votre boutique peut être en ligne<br>dans exactement 7 jours</h2>
+  <p>Budget tout compris : <strong>$350</strong> — Aucun coût caché. Thème offert (valeur 60–120 €). Formation vidéo incluse.</p>
+  <div class="btns">
+    <a href="#" class="btn-white">Lancer le Projet →</a>
+    <a href="homepage-mockup.html" class="btn-outline">Voir le Mockup Homepage</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+<footer class="doc-footer">
+  <div><strong>LEVL Trade Tech</strong> — Document Architecture WooCommerce</div>
+  <div style="text-align:center;">Réf : LTT-2026-001 &nbsp;·&nbsp; Avril 2026 &nbsp;·&nbsp; Confidentiel</div>
+  <div>Budget : <span class="highlight">$350</span> &nbsp;·&nbsp; Délai : <span class="highlight">7 jours garantis</span></div>
+</footer>
+
+</body>
+</html>
