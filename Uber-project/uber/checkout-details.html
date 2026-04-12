@@ -119,6 +119,33 @@
             <p class="mt-2 text-[11px] text-on-surface-variant italic">We track your flight for delay-free pickups.</p>
           </div>
           <div class="relative group">
+            <label class="block text-[11px] font-label font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1">Corporate Account Reference <span class="text-on-surface-variant/50">(Optional)</span></label>
+            <input class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant/30 focus:ring-0 focus:border-secondary py-4 px-1 text-on-surface placeholder:text-outline-variant transition-all font-body" placeholder="e.g. ACME-2026-Q2" type="text"/>
+            <p class="mt-2 text-[11px] text-on-surface-variant italic">Used for corporate billing and monthly invoice reports.</p>
+          </div>
+          <!-- Meet & Greet vs Curbside -->
+          <div class="relative group">
+            <label class="block text-[11px] font-label font-bold uppercase tracking-widest text-on-surface-variant mb-3 ml-1">Pickup Style</label>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="cursor-pointer">
+                <input name="pickup_style" type="radio" class="sr-only peer" checked/>
+                <div class="peer-checked:border-secondary peer-checked:bg-secondary/5 border-2 border-outline-variant/30 rounded-xl p-4 text-center transition-all hover:border-secondary/40">
+                  <span class="material-symbols-outlined text-2xl text-secondary mb-1 block">waving_hand</span>
+                  <p class="text-sm font-bold text-primary">Meet &amp; Greet</p>
+                  <p class="text-[11px] text-on-surface-variant mt-1">Driver waits at arrivals board with your name sign</p>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input name="pickup_style" type="radio" class="sr-only peer"/>
+                <div class="peer-checked:border-secondary peer-checked:bg-secondary/5 border-2 border-outline-variant/30 rounded-xl p-4 text-center transition-all hover:border-secondary/40">
+                  <span class="material-symbols-outlined text-2xl text-on-surface-variant mb-1 block">directions_walk</span>
+                  <p class="text-sm font-bold text-primary">Curbside</p>
+                  <p class="text-[11px] text-on-surface-variant mt-1">Driver waits at the designated pick-up kerb</p>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="relative group">
             <label class="block text-[11px] font-label font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1">Notes for the Chauffeur</label>
             <textarea class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant/30 focus:ring-0 focus:border-secondary py-4 px-1 text-on-surface placeholder:text-outline-variant transition-all font-body resize-none" placeholder="Special requirements, luggage details, or pickup instructions..." rows="3"></textarea>
           </div>
@@ -127,10 +154,15 @@
           <a href="homepage.html" class="flex items-center text-on-surface-variant hover:text-primary transition-colors font-label font-medium text-sm group">
             <span class="material-symbols-outlined mr-2 group-hover:-translate-x-1 transition-transform">arrow_back</span> Back to Homepage
           </a>
-          <button class="w-full md:w-auto px-12 py-5 signature-texture text-on-secondary rounded-lg font-headline font-bold text-lg tracking-wide shadow-xl active:scale-[0.98] transition-all" type="submit">
-            Next: Payment
-          </button>
-        </div>
+          <div class="flex flex-col items-end gap-2">
+            <button class="w-full md:w-auto px-12 py-5 signature-texture text-on-secondary rounded-lg font-headline font-bold text-lg tracking-wide shadow-xl active:scale-[0.98] transition-all" type="submit">
+              Next: Payment
+            </button>
+            <div class="flex items-center gap-1.5 text-[11px] text-green-700 font-medium">
+              <span class="material-symbols-outlined text-sm">event_available</span>
+              Free cancellation up to 1 hour before pickup
+            </div>
+          </div>
       </form>
     </div>
 
@@ -209,6 +241,8 @@
     <a href="admin-operations.html"><span class="material-symbols-outlined" style="font-size:16px;">bar_chart</span> Admin: Operations <span class="badge badge-admin">Admin</span></a>
     <a href="admin-bookings.html"><span class="material-symbols-outlined" style="font-size:16px;">list_alt</span> Admin: Bookings <span class="badge badge-admin">Admin</span></a>
     <a href="admin-pricing.html"><span class="material-symbols-outlined" style="font-size:16px;">price_change</span> Admin: Pricing <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-coupons.html"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> Admin: Coupons <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-users.html"><span class="material-symbols-outlined" style="font-size:16px;">group</span> Admin: Users <span class="badge badge-admin">Admin</span></a>
   </div>
 </div>
 </body></html>

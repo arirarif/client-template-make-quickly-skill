@@ -120,6 +120,28 @@
         <span class="material-symbols-outlined text-on-surface-variant text-sm">mail</span>
         <p class="text-sm text-on-surface-variant font-medium">Confirmation sent to your email</p>
       </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-4">
+        <!-- Live Tracking Countdown -->
+        <div class="bg-secondary/5 border border-secondary/20 rounded-xl p-5 flex items-center gap-4">
+          <div class="w-12 h-12 signature-gradient rounded-xl flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-white text-xl">my_location</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">Live Driver Tracking</p>
+            <p class="font-bold text-primary text-sm">Your driver departs in</p>
+            <p class="font-headline font-extrabold text-2xl text-secondary tabular-nums" id="trackCountdown">02:47:13</p>
+          </div>
+          <span class="material-symbols-outlined text-secondary animate-pulse">radio_button_checked</span>
+        </div>
+        <!-- Download Invoice -->
+        <button onclick="alert('Invoice PV-88294-XQ downloading...')" class="flex items-center justify-center gap-3 p-5 bg-white border border-outline-variant/40 rounded-xl font-bold text-primary hover:bg-surface-container-low transition-all shadow-sm">
+          <span class="material-symbols-outlined text-secondary">picture_as_pdf</span>
+          <div class="text-left">
+            <p class="text-sm font-bold">Download Invoice</p>
+            <p class="text-[11px] text-on-surface-variant font-normal">#PV-88294-XQ &bull; PDF</p>
+          </div>
+        </button>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
         <button class="flex items-center justify-center gap-3 px-8 py-4 bg-white border border-outline-variant/40 rounded-lg font-bold text-primary hover:bg-surface-container-low transition-all shadow-sm">
           <span class="material-symbols-outlined">calendar_add_on</span> Add to calendar
@@ -180,6 +202,8 @@
     <a href="admin-operations.html"><span class="material-symbols-outlined" style="font-size:16px;">bar_chart</span> Admin: Operations <span class="badge badge-admin">Admin</span></a>
     <a href="admin-bookings.html"><span class="material-symbols-outlined" style="font-size:16px;">list_alt</span> Admin: Bookings <span class="badge badge-admin">Admin</span></a>
     <a href="admin-pricing.html"><span class="material-symbols-outlined" style="font-size:16px;">price_change</span> Admin: Pricing <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-coupons.html"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> Admin: Coupons <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-users.html"><span class="material-symbols-outlined" style="font-size:16px;">group</span> Admin: Users <span class="badge badge-admin">Admin</span></a>
   </div>
 </div>
 </body></html>

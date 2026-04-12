@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PrestigeVTC Admin | Coupon Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{
+    colors:{
+      "surface-variant":"#e1e3e4","on-tertiary-container":"#a17d61","tertiary-container":"#2c1603",
+      "inverse-on-surface":"#f0f1f2","on-primary-container":"#7c839f","secondary-fixed-dim":"#b7c4ff",
+      "on-primary-fixed":"#141a32","on-background":"#191c1d","surface-container-high":"#e7e8e9",
+      "surface-tint":"#575d78","tertiary-fixed-dim":"#e8be9f","tertiary":"#000000",
+      "on-secondary":"#ffffff","on-secondary-fixed-variant":"#0039b5","on-secondary-fixed":"#001551",
+      "surface-container-low":"#f3f4f5","surface-dim":"#d9dadb","surface-container":"#edeeef",
+      "surface-container-highest":"#e1e3e4","error":"#ba1a1a","background":"#f8f9fa",
+      "outline-variant":"#c6c6ce","on-surface-variant":"#46464d","error-container":"#ffdad6",
+      "surface":"#f8f9fa","on-tertiary":"#ffffff","outline":"#76767e","secondary-container":"#4069f2",
+      "on-secondary-container":"#fffbff","inverse-primary":"#bfc5e4","on-tertiary-fixed-variant":"#5e4029",
+      "on-tertiary-fixed":"#2c1603","inverse-surface":"#2e3132","on-primary":"#ffffff",
+      "surface-bright":"#f8f9fa","tertiary-fixed":"#ffdcc3","on-surface":"#191c1d",
+      "on-error-container":"#93000a","primary-container":"#141a32","on-error":"#ffffff",
+      "primary":"#000000","surface-container-lowest":"#ffffff","primary-fixed":"#dce1ff",
+      "secondary":"#1d4ed8","primary-fixed-dim":"#bfc5e4","on-primary-fixed-variant":"#3f465f",
+      "secondary-fixed":"#dce1ff"
+    },
+    borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+    fontFamily:{headline:["Manrope"],body:["Inter"],label:["Inter"]}
+  }}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .signature-gradient{background:linear-gradient(135deg,#1d4ed8 0%,#4069f2 100%);}
+  .page-nav{position:fixed;bottom:24px;right:24px;z-index:100;}
+  .page-nav-btn{background:#141a32;color:#fff;border:none;border-radius:999px;padding:12px 20px;font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,0.25);display:flex;align-items:center;gap:8px;transition:opacity 0.2s;}
+  .page-nav-btn:hover{opacity:0.85;}
+  .page-nav-menu{display:none;position:absolute;bottom:52px;right:0;background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.15);padding:8px;min-width:220px;}
+  .page-nav-menu.open{display:block;}
+  .page-nav-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;font-family:Inter,sans-serif;font-size:13px;font-weight:500;color:#191c1d;text-decoration:none;transition:background 0.15s;}
+  .page-nav-menu a:hover{background:#f3f4f5;}
+  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.06em;}
+  .badge-customer{background:#dce1ff;color:#0039b5;}
+  .badge-driver{background:#d1fae5;color:#065f46;}
+  .badge-admin{background:#fef3c7;color:#92400e;}
+  .badge-active{background:#141a32;color:#fff;}
+  /* Modal */
+  .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;align-items:center;justify-content:center;}
+  .modal-backdrop.open{display:flex;}
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 bg-[#0A1128] h-screen w-72 flex-shrink-0 z-50">
+  <div class="px-8 mb-10">
+    <a href="homepage.html" class="text-xl font-bold tracking-tight text-white font-headline hover:opacity-80 transition-opacity block">PrestigeVTC</a>
+    <p class="text-[10px] text-on-primary-container font-label tracking-[0.2em] uppercase mt-1">Admin Console</p>
+  </div>
+  <nav class="flex-1 space-y-1">
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="admin-bookings.html">
+      <span class="material-symbols-outlined">calendar_month</span>Bookings
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="admin-users.html">
+      <span class="material-symbols-outlined">groups</span>Clients
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="#">
+      <span class="material-symbols-outlined">payments</span>Payments
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="admin-pricing.html">
+      <span class="material-symbols-outlined">receipt_long</span>Pricing rules
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 bg-[#141a32] text-white border-l-4 border-secondary font-medium text-sm" href="admin-coupons.html">
+      <span class="material-symbols-outlined">redeem</span>Coupons
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="admin-operations.html">
+      <span class="material-symbols-outlined">dashboard</span>Operations
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="#">
+      <span class="material-symbols-outlined">settings</span>Settings
+    </a>
+  </nav>
+  <div class="px-8 mt-auto pt-8 border-t border-white/5">
+    <div class="flex items-center gap-3">
+      <img alt="Administrator" class="w-10 h-10 rounded-full object-cover border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGambLHctrLBRjf5fP9JATz6N-5PK2HCRvWylbnqlt1nNjrbztapFlZfE3yNqtuzKJm2r3xYnF3SrGar7ilsGAZrAM6iyVAXyG2GTfDH25FLT0ife08Ukh18HwsO1shj1SPyXuh51ZW5UVOvdw4r22Br4rKuh7eoiJh2666qo7EmDKnfcJHtkvq7AK_TLRiTkvoF_BHiiru-_V3osml4fQdOA5puLA5F64NN_KYGcNglXNmSFSWDnzYiWNa9S0Z5wrdtn4T76RmOY"/>
+      <div>
+        <p class="text-xs font-bold text-white">Administrator</p>
+        <p class="text-[10px] text-gray-500">Premium Support</p>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Canvas -->
+<main class="ml-72 min-h-screen">
+  <!-- TopBar -->
+  <header class="flex justify-between items-center px-8 h-16 sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-outline-variant/10">
+    <div class="flex items-center gap-4 flex-1 max-w-md">
+      <span class="material-symbols-outlined text-outline">search</span>
+      <input class="bg-transparent border-none focus:ring-0 text-sm w-full font-body placeholder:text-outline/60" placeholder="Search coupon code or campaign name..." type="text"/>
+    </div>
+    <div class="flex items-center gap-6">
+      <div class="flex gap-4 text-slate-500">
+        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">help_outline</span></button>
+      </div>
+      <div class="h-6 w-[1px] bg-outline-variant/30"></div>
+      <span class="text-[10px] font-label font-bold tracking-widest text-on-surface-variant uppercase">Luxury VTC Admin</span>
+    </div>
+  </header>
+
+  <div class="p-12 space-y-10">
+
+    <!-- Page Header -->
+    <section class="max-w-7xl mx-auto flex justify-between items-end">
+      <div class="space-y-2">
+        <h2 class="text-4xl font-extrabold tracking-tight font-headline text-primary">Coupon Management</h2>
+        <p class="text-on-surface-variant text-sm font-body">Create, configure, and monitor promotional codes and discount campaigns.</p>
+      </div>
+      <button onclick="document.getElementById('createModal').classList.add('open')" class="signature-gradient px-6 py-3 rounded-lg text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-secondary/20 hover:scale-105 active:opacity-80 transition-all">
+        <span class="material-symbols-outlined text-sm">add</span>Create Coupon
+      </button>
+    </section>
+
+    <!-- Stats Row -->
+    <section class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Active Coupons</p>
+        <p class="text-3xl font-headline font-extrabold text-primary">7</p>
+        <p class="text-xs text-green-600 font-medium mt-1">+2 this week</p>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Total Redemptions</p>
+        <p class="text-3xl font-headline font-extrabold text-primary">248</p>
+        <p class="text-xs text-secondary font-medium mt-1">Across all campaigns</p>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Revenue Discounted</p>
+        <p class="text-3xl font-headline font-extrabold text-primary">€4,820</p>
+        <p class="text-xs text-on-surface-variant font-medium mt-1">This month</p>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Avg. Discount</p>
+        <p class="text-3xl font-headline font-extrabold text-primary">12.4%</p>
+        <p class="text-xs text-amber-600 font-medium mt-1">↑ from 10.1% last month</p>
+      </div>
+    </section>
+
+    <!-- Filters + Table -->
+    <section class="max-w-7xl mx-auto bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+      <!-- Filter Bar -->
+      <div class="flex items-center gap-4 px-8 py-5 border-b border-outline-variant/10">
+        <div class="flex gap-2">
+          <button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary border-b-2 border-primary">All</button>
+          <button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">Active</button>
+          <button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">Scheduled</button>
+          <button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">Expired</button>
+        </div>
+        <div class="ml-auto flex items-center gap-3">
+          <select class="bg-surface-container-low border border-outline-variant/30 rounded-lg text-xs font-bold px-3 py-2 focus:ring-secondary/20 focus:border-secondary outline-none">
+            <option>All Types</option>
+            <option>Flat Discount</option>
+            <option>Percentage</option>
+            <option>Free Upgrade</option>
+          </select>
+          <button class="flex items-center gap-2 text-xs font-bold text-on-surface-variant hover:text-primary px-3 py-2 border border-outline-variant/30 rounded-lg transition-colors">
+            <span class="material-symbols-outlined text-sm">download</span> Export CSV
+          </button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-outline-variant/10">
+              <th class="text-left px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Code</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Type</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Value</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Min Order</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Used / Limit</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Expiry</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Status</th>
+              <th class="px-4 py-4"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-outline-variant/10">
+            <!-- Row 1 -->
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="px-8 py-5">
+                <span class="font-mono font-bold text-primary bg-surface-container-low px-3 py-1.5 rounded-lg text-xs tracking-widest">SUMMER24</span>
+              </td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant font-medium">Percentage</td>
+              <td class="px-4 py-5 font-bold text-primary">15%</td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">€50.00</td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-primary">87</span>
+                  <span class="text-xs text-on-surface-variant">/ 200</span>
+                  <div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-secondary rounded-full" style="width:43%"></div></div>
+                </div>
+              </td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">31 Aug 2025</td>
+              <td class="px-4 py-5"><span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Active</span></td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-red-50 text-on-surface-variant hover:text-red-600 transition-colors"><span class="material-symbols-outlined text-sm">block</span></button>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="px-8 py-5">
+                <span class="font-mono font-bold text-primary bg-surface-container-low px-3 py-1.5 rounded-lg text-xs tracking-widest">VIP100</span>
+              </td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant font-medium">Flat Discount</td>
+              <td class="px-4 py-5 font-bold text-primary">€100</td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">€200.00</td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-primary">12</span>
+                  <span class="text-xs text-on-surface-variant">/ 50</span>
+                  <div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:24%"></div></div>
+                </div>
+              </td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">31 Dec 2025</td>
+              <td class="px-4 py-5"><span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Active</span></td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-red-50 text-on-surface-variant hover:text-red-600 transition-colors"><span class="material-symbols-outlined text-sm">block</span></button>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 3 -->
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="px-8 py-5">
+                <span class="font-mono font-bold text-primary bg-surface-container-low px-3 py-1.5 rounded-lg text-xs tracking-widest">CORP2026</span>
+              </td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant font-medium">Percentage</td>
+              <td class="px-4 py-5 font-bold text-primary">20%</td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">€100.00</td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-primary">149</span>
+                  <span class="text-xs text-on-surface-variant">/ Unlimited</span>
+                </div>
+              </td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">31 Jan 2026</td>
+              <td class="px-4 py-5"><span class="px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Corporate</span></td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-red-50 text-on-surface-variant hover:text-red-600 transition-colors"><span class="material-symbols-outlined text-sm">block</span></button>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 4 -->
+            <tr class="hover:bg-surface-container-low transition-colors opacity-60">
+              <td class="px-8 py-5">
+                <span class="font-mono font-bold text-on-surface-variant bg-surface-container-low px-3 py-1.5 rounded-lg text-xs tracking-widest">WINTER23</span>
+              </td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant font-medium">Percentage</td>
+              <td class="px-4 py-5 font-bold text-on-surface-variant">10%</td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">—</td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-on-surface-variant">200</span>
+                  <span class="text-xs text-on-surface-variant">/ 200</span>
+                  <div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-slate-400 rounded-full" style="width:100%"></div></div>
+                </div>
+              </td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">31 Jan 2024</td>
+              <td class="px-4 py-5"><span class="px-3 py-1 bg-red-50 text-red-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Expired</span></td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">refresh</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-red-50 text-on-surface-variant hover:text-red-600 transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 5 -->
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="px-8 py-5">
+                <span class="font-mono font-bold text-primary bg-surface-container-low px-3 py-1.5 rounded-lg text-xs tracking-widest">NEWUSER</span>
+              </td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant font-medium">Flat Discount</td>
+              <td class="px-4 py-5 font-bold text-primary">€15</td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">First booking</td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-primary">341</span>
+                  <span class="text-xs text-on-surface-variant">/ Unlimited</span>
+                </div>
+              </td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">Never</td>
+              <td class="px-4 py-5"><span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Active</span></td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-red-50 text-on-surface-variant hover:text-red-600 transition-colors"><span class="material-symbols-outlined text-sm">block</span></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex items-center justify-between px-8 py-5 border-t border-outline-variant/10">
+        <p class="text-xs text-on-surface-variant">Showing 5 of 7 coupons</p>
+        <div class="flex gap-2">
+          <button class="px-4 py-2 text-xs font-bold border border-outline-variant/30 rounded-lg hover:bg-surface-container-low transition-colors">Previous</button>
+          <button class="px-4 py-2 text-xs font-bold signature-gradient text-white rounded-lg">1</button>
+          <button class="px-4 py-2 text-xs font-bold border border-outline-variant/30 rounded-lg hover:bg-surface-container-low transition-colors">2</button>
+          <button class="px-4 py-2 text-xs font-bold border border-outline-variant/30 rounded-lg hover:bg-surface-container-low transition-colors">Next</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Create Coupon Modal -->
+<div class="modal-backdrop" id="createModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-8" onclick="event.stopPropagation()">
+    <div class="flex items-center justify-between mb-8">
+      <h3 class="text-xl font-headline font-bold">Create New Coupon</h3>
+      <button onclick="document.getElementById('createModal').classList.remove('open')" class="p-2 rounded-full hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="space-y-6">
+      <div>
+        <label class="block text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Coupon Code</label>
+        <input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-3 font-mono font-bold uppercase text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none" placeholder="e.g. FLASH30" type="text"/>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Discount Type</label>
+          <select class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none">
+            <option>Percentage (%)</option>
+            <option>Flat Amount (€)</option>
+            <option>Free Upgrade</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Value</label>
+          <input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none" placeholder="e.g. 20" type="number"/>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Usage Limit</label>
+          <input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none" placeholder="Leave blank = unlimited" type="number"/>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Expiry Date</label>
+          <input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none" type="date"/>
+        </div>
+      </div>
+      <div>
+        <label class="block text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Minimum Order (€)</label>
+        <input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none" placeholder="e.g. 50 — leave blank for no minimum" type="number"/>
+      </div>
+    </div>
+    <div class="flex gap-3 mt-8">
+      <button onclick="document.getElementById('createModal').classList.remove('open')" class="flex-1 py-3 border border-outline-variant/30 rounded-lg text-sm font-bold hover:bg-surface-container-low transition-colors">Cancel</button>
+      <button onclick="alert('Coupon created!');document.getElementById('createModal').classList.remove('open')" class="flex-1 py-3 signature-gradient text-white rounded-lg text-sm font-bold hover:opacity-90 transition-all shadow-sm">Create Coupon</button>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Page Navigator -->
+<div class="page-nav" id="pageNav">
+  <button class="page-nav-btn" onclick="document.getElementById('navMenu').classList.toggle('open')">
+    <span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;">grid_view</span> All Pages
+  </button>
+  <div class="page-nav-menu" id="navMenu">
+    <a href="index.html"><span class="material-symbols-outlined" style="font-size:16px;">home</span> Page Hub <span class="badge badge-customer">Index</span></a>
+    <a href="homepage.html"><span class="material-symbols-outlined" style="font-size:16px;">language</span> Homepage <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-details.html"><span class="material-symbols-outlined" style="font-size:16px;">person</span> Checkout: Details <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-payment.html"><span class="material-symbols-outlined" style="font-size:16px;">credit_card</span> Checkout: Payment <span class="badge badge-customer">Customer</span></a>
+    <a href="confirmation.html"><span class="material-symbols-outlined" style="font-size:16px;">check_circle</span> Confirmation <span class="badge badge-customer">Customer</span></a>
+    <a href="client-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">dashboard</span> Client Dashboard <span class="badge badge-customer">Customer</span></a>
+    <a href="driver-incoming.html"><span class="material-symbols-outlined" style="font-size:16px;">notifications</span> Driver: Incoming <span class="badge badge-driver">Driver</span></a>
+    <a href="driver-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">directions_car</span> Driver Dashboard <span class="badge badge-driver">Driver</span></a>
+    <a href="admin-operations.html"><span class="material-symbols-outlined" style="font-size:16px;">bar_chart</span> Admin: Operations <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-bookings.html"><span class="material-symbols-outlined" style="font-size:16px;">list_alt</span> Admin: Bookings <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-pricing.html"><span class="material-symbols-outlined" style="font-size:16px;">price_change</span> Admin: Pricing <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-coupons.html"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> Admin: Coupons <span class="badge badge-active">Active</span></a>
+    <a href="admin-users.html"><span class="material-symbols-outlined" style="font-size:16px;">group</span> Admin: Users <span class="badge badge-admin">Admin</span></a>
+  </div>
+</div>
+
+</body></html>

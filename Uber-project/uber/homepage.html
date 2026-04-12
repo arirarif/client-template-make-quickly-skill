@@ -94,6 +94,18 @@
     </p>
     <!-- Booking Widget -->
     <div class="w-full max-w-4xl bg-surface-container-lowest rounded-xl shadow-2xl p-6 md:p-8 flex flex-col gap-6 text-left">
+      <!-- Trip type + Return trip toggle -->
+      <div class="flex items-center justify-between">
+        <div class="flex bg-surface-container-low rounded-lg p-1 gap-1">
+          <button class="px-5 py-2 rounded-md bg-primary text-white text-xs font-bold uppercase tracking-widest">One Way</button>
+          <button class="px-5 py-2 rounded-md text-on-surface-variant text-xs font-bold uppercase tracking-widest hover:bg-surface-container-high transition-colors">Return Trip</button>
+          <button class="px-5 py-2 rounded-md text-on-surface-variant text-xs font-bold uppercase tracking-widest hover:bg-surface-container-high transition-colors">Hourly</button>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-on-surface-variant font-medium">
+          <span class="material-symbols-outlined text-sm text-secondary">info</span>
+          Free cancellation up to 1h before pickup
+        </div>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-4">
           <div class="relative">
@@ -113,6 +125,44 @@
           </div>
         </div>
       </div>
+      <!-- Vehicle Class Selector -->
+      <div>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-3">Select Vehicle Class</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <label class="relative cursor-pointer">
+            <input name="vclass" type="radio" class="sr-only peer" checked/>
+            <div class="peer-checked:border-secondary peer-checked:bg-secondary/5 border-2 border-transparent bg-surface-container-low rounded-xl p-3 text-center transition-all hover:border-secondary/40">
+              <span class="material-symbols-outlined text-2xl text-secondary mb-1 block">directions_car</span>
+              <p class="text-xs font-bold text-primary">Business</p>
+              <p class="text-[10px] text-on-surface-variant">From €45</p>
+            </div>
+          </label>
+          <label class="relative cursor-pointer">
+            <input name="vclass" type="radio" class="sr-only peer"/>
+            <div class="peer-checked:border-secondary peer-checked:bg-secondary/5 border-2 border-transparent bg-surface-container-low rounded-xl p-3 text-center transition-all hover:border-secondary/40">
+              <span class="material-symbols-outlined text-2xl text-amber-500 mb-1 block">star</span>
+              <p class="text-xs font-bold text-primary">First Class</p>
+              <p class="text-[10px] text-on-surface-variant">From €85</p>
+            </div>
+          </label>
+          <label class="relative cursor-pointer">
+            <input name="vclass" type="radio" class="sr-only peer"/>
+            <div class="peer-checked:border-secondary peer-checked:bg-secondary/5 border-2 border-transparent bg-surface-container-low rounded-xl p-3 text-center transition-all hover:border-secondary/40">
+              <span class="material-symbols-outlined text-2xl text-emerald-600 mb-1 block">airport_shuttle</span>
+              <p class="text-xs font-bold text-primary">Van / MPV</p>
+              <p class="text-[10px] text-on-surface-variant">From €65</p>
+            </div>
+          </label>
+          <label class="relative cursor-pointer">
+            <input name="vclass" type="radio" class="sr-only peer"/>
+            <div class="peer-checked:border-secondary peer-checked:bg-secondary/5 border-2 border-transparent bg-surface-container-low rounded-xl p-3 text-center transition-all hover:border-secondary/40">
+              <span class="material-symbols-outlined text-2xl text-purple-600 mb-1 block">corporate_fare</span>
+              <p class="text-xs font-bold text-primary">Corporate</p>
+              <p class="text-[10px] text-on-surface-variant">From €110</p>
+            </div>
+          </label>
+        </div>
+      </div>
       <div class="flex flex-wrap gap-2 py-2 no-scrollbar overflow-x-auto">
         <button class="px-4 py-2 rounded-full bg-primary-container text-white text-sm font-semibold flex items-center gap-2"><span class="material-symbols-outlined text-sm">calendar_today</span> Today</button>
         <button class="px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-medium hover:bg-surface-container-high transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 14:30</button>
@@ -130,6 +180,17 @@
         </a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<section class="bg-white border-y border-outline-variant/20 py-5">
+  <div class="max-w-7xl mx-auto px-8 flex flex-wrap justify-center gap-8 md:gap-12">
+    <div class="flex items-center gap-2 text-sm font-medium text-on-surface-variant"><span class="material-symbols-outlined text-amber-500 text-lg" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">star</span> Rated 4.9/5 on 1,200+ rides</div>
+    <div class="flex items-center gap-2 text-sm font-medium text-on-surface-variant"><span class="material-symbols-outlined text-green-600 text-lg">verified_user</span> SSL Secured & GDPR Compliant</div>
+    <div class="flex items-center gap-2 text-sm font-medium text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg">license</span> Licensed VTC — Préfecture de Police</div>
+    <div class="flex items-center gap-2 text-sm font-medium text-on-surface-variant"><span class="material-symbols-outlined text-primary text-lg">support_agent</span> 24/7 Concierge Support</div>
+    <div class="flex items-center gap-2 text-sm font-medium text-on-surface-variant"><span class="material-symbols-outlined text-red-500 text-lg">event_busy</span> Free cancellation up to 1h</div>
   </div>
 </section>
 
@@ -233,6 +294,53 @@
 </section>
 </main>
 
+<!-- FAQ Section -->
+<section class="py-24 px-8 bg-surface-container-low">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="uppercase tracking-[0.2em] text-secondary font-bold mb-4 block text-sm">Got Questions?</span>
+      <h2 class="text-4xl font-headline font-bold text-primary">Frequently Asked</h2>
+    </div>
+    <div class="space-y-4" id="faqList">
+      <div class="bg-white rounded-xl overflow-hidden shadow-sm">
+        <button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('.faq-icon').textContent=this.nextElementSibling.classList.contains('hidden')?'expand_more':'expand_less'" class="w-full flex justify-between items-center p-6 text-left font-bold text-primary hover:bg-surface-container-low transition-colors">
+          Can I change my destination after booking?
+          <span class="material-symbols-outlined faq-icon text-secondary transition-transform">expand_more</span>
+        </button>
+        <div class="hidden px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">Yes — you can modify your destination up to 30 minutes before pickup by calling your dedicated concierge or via the dashboard under "My Bookings".</div>
+      </div>
+      <div class="bg-white rounded-xl overflow-hidden shadow-sm">
+        <button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('.faq-icon').textContent=this.nextElementSibling.classList.contains('hidden')?'expand_more':'expand_less'" class="w-full flex justify-between items-center p-6 text-left font-bold text-primary hover:bg-surface-container-low transition-colors">
+          What is the cancellation policy?
+          <span class="material-symbols-outlined faq-icon text-secondary transition-transform">expand_more</span>
+        </button>
+        <div class="hidden px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">Cancellations made more than 1 hour before the scheduled pickup are fully refunded. Cancellations within 1 hour are charged 50% of the fare. No-shows are charged in full.</div>
+      </div>
+      <div class="bg-white rounded-xl overflow-hidden shadow-sm">
+        <button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('.faq-icon').textContent=this.nextElementSibling.classList.contains('hidden')?'expand_more':'expand_less'" class="w-full flex justify-between items-center p-6 text-left font-bold text-primary hover:bg-surface-container-low transition-colors">
+          How do loyalty points work?
+          <span class="material-symbols-outlined faq-icon text-secondary transition-transform">expand_more</span>
+        </button>
+        <div class="hidden px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">You earn 1 point per €1 spent. Platinum members earn 2x points. Points can be redeemed at checkout — 1,000 points = €10 off. Points never expire as long as your account is active.</div>
+      </div>
+      <div class="bg-white rounded-xl overflow-hidden shadow-sm">
+        <button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('.faq-icon').textContent=this.nextElementSibling.classList.contains('hidden')?'expand_more':'expand_less'" class="w-full flex justify-between items-center p-6 text-left font-bold text-primary hover:bg-surface-container-low transition-colors">
+          Do you track my flight for airport pickups?
+          <span class="material-symbols-outlined faq-icon text-secondary transition-transform">expand_more</span>
+        </button>
+        <div class="hidden px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">Yes. Enter your flight number at checkout and our system tracks it in real time. If your flight is delayed, your driver will automatically adjust their arrival — no rebooking needed.</div>
+      </div>
+      <div class="bg-white rounded-xl overflow-hidden shadow-sm">
+        <button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('.faq-icon').textContent=this.nextElementSibling.classList.contains('hidden')?'expand_more':'expand_less'" class="w-full flex justify-between items-center p-6 text-left font-bold text-primary hover:bg-surface-container-low transition-colors">
+          Can I book for a corporate account?
+          <span class="material-symbols-outlined faq-icon text-secondary transition-transform">expand_more</span>
+        </button>
+        <div class="hidden px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">Absolutely. We offer corporate accounts with centralised billing, cost centre codes, and monthly invoicing. Contact our B2B team or fill in your company reference at booking.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer class="bg-slate-50 flex flex-col items-center justify-center space-y-8 w-full py-16 mt-20">
   <div class="max-w-screen-2xl w-full px-8 flex flex-col md:flex-row justify-between items-center gap-12">
@@ -272,6 +380,8 @@
     <a href="admin-operations.html"><span class="material-symbols-outlined" style="font-size:16px;">bar_chart</span> Admin: Operations <span class="badge badge-admin">Admin</span></a>
     <a href="admin-bookings.html"><span class="material-symbols-outlined" style="font-size:16px;">list_alt</span> Admin: Bookings <span class="badge badge-admin">Admin</span></a>
     <a href="admin-pricing.html"><span class="material-symbols-outlined" style="font-size:16px;">price_change</span> Admin: Pricing <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-coupons.html"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> Admin: Coupons <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-users.html"><span class="material-symbols-outlined" style="font-size:16px;">group</span> Admin: Users <span class="badge badge-admin">Admin</span></a>
   </div>
 </div>
 

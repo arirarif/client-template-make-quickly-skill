@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PrestigeVTC Admin | User Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{
+    colors:{
+      "surface-variant":"#e1e3e4","on-tertiary-container":"#a17d61","tertiary-container":"#2c1603",
+      "inverse-on-surface":"#f0f1f2","on-primary-container":"#7c839f","secondary-fixed-dim":"#b7c4ff",
+      "on-primary-fixed":"#141a32","on-background":"#191c1d","surface-container-high":"#e7e8e9",
+      "surface-tint":"#575d78","tertiary-fixed-dim":"#e8be9f","tertiary":"#000000",
+      "on-secondary":"#ffffff","on-secondary-fixed-variant":"#0039b5","on-secondary-fixed":"#001551",
+      "surface-container-low":"#f3f4f5","surface-dim":"#d9dadb","surface-container":"#edeeef",
+      "surface-container-highest":"#e1e3e4","error":"#ba1a1a","background":"#f8f9fa",
+      "outline-variant":"#c6c6ce","on-surface-variant":"#46464d","error-container":"#ffdad6",
+      "surface":"#f8f9fa","on-tertiary":"#ffffff","outline":"#76767e","secondary-container":"#4069f2",
+      "on-secondary-container":"#fffbff","inverse-primary":"#bfc5e4","on-tertiary-fixed-variant":"#5e4029",
+      "on-tertiary-fixed":"#2c1603","inverse-surface":"#2e3132","on-primary":"#ffffff",
+      "surface-bright":"#f8f9fa","tertiary-fixed":"#ffdcc3","on-surface":"#191c1d",
+      "on-error-container":"#93000a","primary-container":"#141a32","on-error":"#ffffff",
+      "primary":"#000000","surface-container-lowest":"#ffffff","primary-fixed":"#dce1ll",
+      "secondary":"#1d4ed8","primary-fixed-dim":"#bfc5e4","on-primary-fixed-variant":"#3f465f",
+      "secondary-fixed":"#dce1ff"
+    },
+    borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+    fontFamily:{headline:["Manrope"],body:["Inter"],label:["Inter"]}
+  }}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .signature-gradient{background:linear-gradient(135deg,#1d4ed8 0%,#4069f2 100%);}
+  .page-nav{position:fixed;bottom:24px;right:24px;z-index:100;}
+  .page-nav-btn{background:#141a32;color:#fff;border:none;border-radius:999px;padding:12px 20px;font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,0.25);display:flex;align-items:center;gap:8px;transition:opacity 0.2s;}
+  .page-nav-btn:hover{opacity:0.85;}
+  .page-nav-menu{display:none;position:absolute;bottom:52px;right:0;background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.15);padding:8px;min-width:220px;}
+  .page-nav-menu.open{display:block;}
+  .page-nav-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;font-family:Inter,sans-serif;font-size:13px;font-weight:500;color:#191c1d;text-decoration:none;transition:background 0.15s;}
+  .page-nav-menu a:hover{background:#f3f4f5;}
+  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.06em;}
+  .badge-customer{background:#dce1ff;color:#0039b5;}
+  .badge-driver{background:#d1fae5;color:#065f46;}
+  .badge-admin{background:#fef3c7;color:#92400e;}
+  .badge-active{background:#141a32;color:#fff;}
+  .tier-platinum{background:#ede9fe;color:#5b21b6;}
+  .tier-gold{background:#fef9c3;color:#a16207;}
+  .tier-silver{background:#f1f5f9;color:#475569;}
+  .tier-bronze{background:#fef3c7;color:#92400e;}
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 bg-[#0A1128] h-screen w-72 flex-shrink-0 z-50">
+  <div class="px-8 mb-10">
+    <a href="homepage.html" class="text-xl font-bold tracking-tight text-white font-headline hover:opacity-80 transition-opacity block">PrestigeVTC</a>
+    <p class="text-[10px] text-on-primary-container font-label tracking-[0.2em] uppercase mt-1">Admin Console</p>
+  </div>
+  <nav class="flex-1 space-y-1">
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="admin-bookings.html">
+      <span class="material-symbols-outlined">calendar_month</span>Bookings
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 bg-[#141a32] text-white border-l-4 border-secondary font-medium text-sm" href="admin-users.html">
+      <span class="material-symbols-outlined">groups</span>Clients
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="#">
+      <span class="material-symbols-outlined">payments</span>Payments
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="admin-pricing.html">
+      <span class="material-symbols-outlined">receipt_long</span>Pricing rules
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="admin-coupons.html">
+      <span class="material-symbols-outlined">redeem</span>Coupons
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="admin-operations.html">
+      <span class="material-symbols-outlined">dashboard</span>Operations
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="#">
+      <span class="material-symbols-outlined">settings</span>Settings
+    </a>
+  </nav>
+  <div class="px-8 mt-auto pt-8 border-t border-white/5">
+    <div class="flex items-center gap-3">
+      <img alt="Administrator" class="w-10 h-10 rounded-full object-cover border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGambLHctrLBRjf5fP9JATz6N-5PK2HCRvWylbnqlt1nNjrbztapFlZfE3yNqtuzKJm2r3xYnF3SrGar7ilsGAZrAM6iyVAXyG2GTfDH25FLT0ife08Ukh18HwsO1shj1SPyXuh51ZW5UVOvdw4r22Br4rKuh7eoiJh2666qo7EmDKnfcJHtkvq7AK_TLRiTkvoF_BHiiru-_V3osml4fQdOA5puLA5F64NN_KYGcNglXNmSFSWDnzYiWNa9S0Z5wrdtn4T76RmOY"/>
+      <div>
+        <p class="text-xs font-bold text-white">Administrator</p>
+        <p class="text-[10px] text-gray-500">Premium Support</p>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Canvas -->
+<main class="ml-72 min-h-screen">
+  <!-- TopBar -->
+  <header class="flex justify-between items-center px-8 h-16 sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-outline-variant/10">
+    <div class="flex items-center gap-4 flex-1 max-w-md">
+      <span class="material-symbols-outlined text-outline">search</span>
+      <input class="bg-transparent border-none focus:ring-0 text-sm w-full font-body placeholder:text-outline/60" placeholder="Search by name, email, or phone..." type="text"/>
+    </div>
+    <div class="flex items-center gap-6">
+      <div class="flex gap-4 text-slate-500">
+        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">help_outline</span></button>
+      </div>
+      <div class="h-6 w-[1px] bg-outline-variant/30"></div>
+      <span class="text-[10px] font-label font-bold tracking-widest text-on-surface-variant uppercase">Luxury VTC Admin</span>
+    </div>
+  </header>
+
+  <div class="p-12 space-y-10">
+
+    <!-- Page Header -->
+    <section class="max-w-7xl mx-auto flex justify-between items-end">
+      <div class="space-y-2">
+        <h2 class="text-4xl font-extrabold tracking-tight font-headline text-primary">User Management</h2>
+        <p class="text-on-surface-variant text-sm font-body">View, edit, and manage all registered clients across tiers and status.</p>
+      </div>
+      <button onclick="alert('Export user list as CSV')" class="signature-gradient px-6 py-3 rounded-lg text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-secondary/20 hover:scale-105 active:opacity-80 transition-all">
+        <span class="material-symbols-outlined text-sm">download</span>Export Users
+      </button>
+    </section>
+
+    <!-- Stats Row -->
+    <section class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Total Users</p>
+        <p class="text-3xl font-headline font-extrabold text-primary">1,847</p>
+        <p class="text-xs text-green-600 font-medium mt-1">+34 this week</p>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Platinum Members</p>
+        <p class="text-3xl font-headline font-extrabold text-primary">128</p>
+        <p class="text-xs text-purple-600 font-medium mt-1">Top 6.9% of users</p>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Avg. Lifetime Value</p>
+        <p class="text-3xl font-headline font-extrabold text-primary">€2,340</p>
+        <p class="text-xs text-secondary font-medium mt-1">Per active user</p>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Banned Accounts</p>
+        <p class="text-3xl font-headline font-extrabold text-primary">6</p>
+        <p class="text-xs text-red-600 font-medium mt-1">Review pending</p>
+      </div>
+    </section>
+
+    <!-- Filters + Table -->
+    <section class="max-w-7xl mx-auto bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+      <!-- Filter Bar -->
+      <div class="flex items-center gap-4 px-8 py-5 border-b border-outline-variant/10">
+        <div class="flex gap-2">
+          <button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary border-b-2 border-primary">All</button>
+          <button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">Active</button>
+          <button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">Platinum</button>
+          <button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">Corporate</button>
+          <button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-red-600 hover:text-red-700 transition-colors">Banned</button>
+        </div>
+        <div class="ml-auto flex items-center gap-3">
+          <select class="bg-surface-container-low border border-outline-variant/30 rounded-lg text-xs font-bold px-3 py-2 focus:ring-secondary/20 focus:border-secondary outline-none">
+            <option>Sort: Most Rides</option>
+            <option>Sort: Highest Spend</option>
+            <option>Sort: Newest</option>
+            <option>Sort: Loyalty Points</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-outline-variant/10">
+              <th class="text-left px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Client</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Tier</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Rides</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Total Spend</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Loyalty Pts</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Last Booking</th>
+              <th class="text-left px-4 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Status</th>
+              <th class="px-4 py-4"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-outline-variant/10">
+            <!-- Row 1 — Julian Vance (from client-dashboard) -->
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="px-8 py-5">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold text-sm flex-shrink-0">JV</div>
+                  <div>
+                    <p class="font-bold text-primary text-sm">Julian Vance</p>
+                    <p class="text-[11px] text-on-surface-variant">j.vance@prestige.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-5"><span class="tier-platinum badge px-3 py-1 rounded-full">Platinum</span></td>
+              <td class="px-4 py-5 font-bold text-primary">247</td>
+              <td class="px-4 py-5 font-bold text-primary">€18,430</td>
+              <td class="px-4 py-5 text-sm text-secondary font-bold">12,450</td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">24 May 2025</td>
+              <td class="px-4 py-5"><span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Active</span></td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors" title="View profile"><span class="material-symbols-outlined text-sm">open_in_new</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors" title="Edit tier"><span class="material-symbols-outlined text-sm">military_tech</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-red-50 text-on-surface-variant hover:text-red-600 transition-colors" title="Ban user"><span class="material-symbols-outlined text-sm">block</span></button>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="px-8 py-5">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 font-bold text-sm flex-shrink-0">SO</div>
+                  <div>
+                    <p class="font-bold text-primary text-sm">Sophie Ouvrard</p>
+                    <p class="text-[11px] text-on-surface-variant">s.ouvrard@maison.fr</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-5"><span class="tier-gold badge px-3 py-1 rounded-full">Gold</span></td>
+              <td class="px-4 py-5 font-bold text-primary">83</td>
+              <td class="px-4 py-5 font-bold text-primary">€6,210</td>
+              <td class="px-4 py-5 text-sm text-secondary font-bold">4,180</td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">21 May 2025</td>
+              <td class="px-4 py-5"><span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Active</span></td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">open_in_new</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">military_tech</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-red-50 text-on-surface-variant hover:text-red-600 transition-colors"><span class="material-symbols-outlined text-sm">block</span></button>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 3 — Corporate -->
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="px-8 py-5">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-sm flex-shrink-0">AC</div>
+                  <div>
+                    <p class="font-bold text-primary text-sm">ACME Corp Account</p>
+                    <p class="text-[11px] text-on-surface-variant">billing@acme-corp.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-5"><span class="badge bg-blue-50 text-blue-700 px-3 py-1 rounded-full">Corporate</span></td>
+              <td class="px-4 py-5 font-bold text-primary">512</td>
+              <td class="px-4 py-5 font-bold text-primary">€41,800</td>
+              <td class="px-4 py-5 text-sm text-on-surface-variant font-bold">N/A</td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">23 May 2025</td>
+              <td class="px-4 py-5"><span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Active</span></td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">open_in_new</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-red-50 text-on-surface-variant hover:text-red-600 transition-colors"><span class="material-symbols-outlined text-sm">block</span></button>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 4 -->
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="px-8 py-5">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-sm flex-shrink-0">MB</div>
+                  <div>
+                    <p class="font-bold text-primary text-sm">Marc Bertrand</p>
+                    <p class="text-[11px] text-on-surface-variant">m.bertrand@email.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-5"><span class="tier-silver badge px-3 py-1 rounded-full">Silver</span></td>
+              <td class="px-4 py-5 font-bold text-primary">29</td>
+              <td class="px-4 py-5 font-bold text-primary">€2,100</td>
+              <td class="px-4 py-5 text-sm text-secondary font-bold">1,870</td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">15 May 2025</td>
+              <td class="px-4 py-5"><span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Active</span></td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">open_in_new</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-sm">military_tech</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-red-50 text-on-surface-variant hover:text-red-600 transition-colors"><span class="material-symbols-outlined text-sm">block</span></button>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 5 — Banned -->
+            <tr class="hover:bg-surface-container-low transition-colors opacity-60">
+              <td class="px-8 py-5">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-bold text-sm flex-shrink-0">XX</div>
+                  <div>
+                    <p class="font-bold text-on-surface-variant text-sm line-through">Alex Dubois</p>
+                    <p class="text-[11px] text-on-surface-variant">a.dubois@mail.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-5"><span class="tier-bronze badge px-3 py-1 rounded-full">Bronze</span></td>
+              <td class="px-4 py-5 font-bold text-on-surface-variant">4</td>
+              <td class="px-4 py-5 font-bold text-on-surface-variant">€310</td>
+              <td class="px-4 py-5 text-sm text-on-surface-variant font-bold">200</td>
+              <td class="px-4 py-5 text-xs text-on-surface-variant">3 Apr 2025</td>
+              <td class="px-4 py-5"><span class="px-3 py-1 bg-red-50 text-red-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Banned</span></td>
+              <td class="px-4 py-5">
+                <div class="flex items-center gap-2">
+                  <button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors" title="View reason"><span class="material-symbols-outlined text-sm">info</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-green-50 text-on-surface-variant hover:text-green-700 transition-colors" title="Unban"><span class="material-symbols-outlined text-sm">lock_open</span></button>
+                  <button class="p-1.5 rounded-lg hover:bg-red-50 text-on-surface-variant hover:text-red-600 transition-colors" title="Delete"><span class="material-symbols-outlined text-sm">delete</span></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex items-center justify-between px-8 py-5 border-t border-outline-variant/10">
+        <p class="text-xs text-on-surface-variant">Showing 5 of 1,847 users</p>
+        <div class="flex gap-2">
+          <button class="px-4 py-2 text-xs font-bold border border-outline-variant/30 rounded-lg hover:bg-surface-container-low transition-colors">Previous</button>
+          <button class="px-4 py-2 text-xs font-bold signature-gradient text-white rounded-lg">1</button>
+          <button class="px-4 py-2 text-xs font-bold border border-outline-variant/30 rounded-lg hover:bg-surface-container-low transition-colors">2</button>
+          <button class="px-4 py-2 text-xs font-bold border border-outline-variant/30 rounded-lg hover:bg-surface-container-low transition-colors">3</button>
+          <button class="px-4 py-2 text-xs font-bold border border-outline-variant/30 rounded-lg hover:bg-surface-container-low transition-colors">Next</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Floating Page Navigator -->
+<div class="page-nav" id="pageNav">
+  <button class="page-nav-btn" onclick="document.getElementById('navMenu').classList.toggle('open')">
+    <span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;">grid_view</span> All Pages
+  </button>
+  <div class="page-nav-menu" id="navMenu">
+    <a href="index.html"><span class="material-symbols-outlined" style="font-size:16px;">home</span> Page Hub <span class="badge badge-customer">Index</span></a>
+    <a href="homepage.html"><span class="material-symbols-outlined" style="font-size:16px;">language</span> Homepage <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-details.html"><span class="material-symbols-outlined" style="font-size:16px;">person</span> Checkout: Details <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-payment.html"><span class="material-symbols-outlined" style="font-size:16px;">credit_card</span> Checkout: Payment <span class="badge badge-customer">Customer</span></a>
+    <a href="confirmation.html"><span class="material-symbols-outlined" style="font-size:16px;">check_circle</span> Confirmation <span class="badge badge-customer">Customer</span></a>
+    <a href="client-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">dashboard</span> Client Dashboard <span class="badge badge-customer">Customer</span></a>
+    <a href="driver-incoming.html"><span class="material-symbols-outlined" style="font-size:16px;">notifications</span> Driver: Incoming <span class="badge badge-driver">Driver</span></a>
+    <a href="driver-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">directions_car</span> Driver Dashboard <span class="badge badge-driver">Driver</span></a>
+    <a href="admin-operations.html"><span class="material-symbols-outlined" style="font-size:16px;">bar_chart</span> Admin: Operations <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-bookings.html"><span class="material-symbols-outlined" style="font-size:16px;">list_alt</span> Admin: Bookings <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-pricing.html"><span class="material-symbols-outlined" style="font-size:16px;">price_change</span> Admin: Pricing <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-coupons.html"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> Admin: Coupons <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-users.html"><span class="material-symbols-outlined" style="font-size:16px;">group</span> Admin: Users <span class="badge badge-active">Active</span></a>
+  </div>
+</div>
+
+</body></html>
