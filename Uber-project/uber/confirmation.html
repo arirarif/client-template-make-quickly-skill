@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PrestigeVTC — Booking Confirmed!</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{
+    colors:{
+      "on-background":"#191c1d","surface-container-high":"#e7e8e9","tertiary":"#000000",
+      "on-secondary":"#ffffff","on-secondary-fixed-variant":"#0039b5","on-secondary-fixed":"#001551",
+      "surface-variant":"#e1e3e4","inverse-on-surface":"#f0f1f2","tertiary-container":"#2c1603",
+      "on-primary-container":"#7c839f","secondary-fixed-dim":"#b7c4ff","on-primary-fixed":"#141a32",
+      "on-surface-variant":"#46464d","outline-variant":"#c6c6ce","on-tertiary":"#ffffff",
+      "surface":"#f8f9fa","outline":"#76767e","secondary-container":"#4069f2",
+      "on-secondary-container":"#fffbff","surface-container-low":"#f3f4f5","surface-dim":"#d9dadb",
+      "surface-container":"#edeeef","surface-container-highest":"#e1e3e4","error":"#ba1a1a",
+      "background":"#f8f9fa","primary-container":"#141a32","on-error":"#ffffff",
+      "inverse-surface":"#2e3132","on-primary":"#ffffff","surface-bright":"#f8f9fa",
+      "on-surface":"#191c1d","secondary-fixed":"#dce1ff",
+      "primary":"#000000","surface-container-lowest":"#ffffff","primary-fixed":"#dce1ff","secondary":"#1d4ed8"
+    },
+    borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+    fontFamily:{headline:["Manrope"],body:["Inter"],label:["Inter"]}
+  }}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .signature-gradient{background:linear-gradient(135deg,#1d4ed8 0%,#4069f2 100%);}
+  .page-nav{position:fixed;bottom:24px;right:24px;z-index:100;}
+  .page-nav-btn{background:#141a32;color:#fff;border:none;border-radius:999px;padding:12px 20px;font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,0.25);display:flex;align-items:center;gap:8px;transition:opacity 0.2s;}
+  .page-nav-btn:hover{opacity:0.85;}
+  .page-nav-menu{display:none;position:absolute;bottom:52px;right:0;background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.15);padding:8px;min-width:220px;}
+  .page-nav-menu.open{display:block;}
+  .page-nav-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;font-family:Inter,sans-serif;font-size:13px;font-weight:500;color:#191c1d;text-decoration:none;transition:background 0.15s;}
+  .page-nav-menu a:hover{background:#f3f4f5;}
+  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.06em;}
+  .badge-customer{background:#dce1ff;color:#0039b5;}
+  .badge-driver{background:#d1fae5;color:#065f46;}
+  .badge-admin{background:#fef3c7;color:#92400e;}
+  .badge-active{background:#141a32;color:#fff;}
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+
+<header class="bg-white/80 backdrop-blur-xl shadow-sm fixed top-0 w-full z-50">
+  <div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+    <a href="homepage.html" class="text-2xl font-headline font-extrabold tracking-tighter text-black hover:opacity-80 transition-opacity">PrestigeVTC</a>
+    <nav class="hidden md:flex items-center space-x-8">
+      <a class="text-slate-600 font-medium hover:text-blue-600 transition-colors" href="homepage.html">Fleet</a>
+      <a class="text-slate-600 font-medium hover:text-blue-600 transition-colors" href="homepage.html">Services</a>
+      <a class="text-slate-600 font-medium hover:text-blue-600 transition-colors" href="homepage.html">Experience</a>
+      <a class="text-slate-600 font-medium hover:text-blue-600 transition-colors" href="homepage.html">Corporate</a>
+    </nav>
+    <div class="flex items-center space-x-4">
+      <a href="client-dashboard.html" class="text-slate-600 font-medium px-4 py-2 hover:text-black transition-colors">My Account</a>
+      <a href="homepage.html" class="signature-gradient text-white px-6 py-2 rounded-md font-bold shadow-lg hover:opacity-90 transition-all">Book Again</a>
+    </div>
+  </div>
+</header>
+
+<main class="pt-32 pb-20 px-4 min-h-screen flex flex-col items-center">
+  <!-- Success Header -->
+  <div class="w-full max-w-2xl text-center mb-12">
+    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-50 text-green-600 mb-6 border border-green-100 shadow-sm">
+      <span class="material-symbols-outlined" style="font-size:40px;font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">check_circle</span>
+    </div>
+    <h1 class="font-headline font-extrabold text-4xl md:text-5xl tracking-tight text-primary mb-4">Booking confirmed!</h1>
+    <p class="font-label text-sm uppercase tracking-widest text-on-primary-container font-semibold">Reference: #PV-88294-XQ</p>
+  </div>
+
+  <div class="w-full max-w-3xl space-y-6">
+    <!-- Journey + Financial -->
+    <section class="bg-surface-container-lowest rounded-xl p-8 shadow-lg border border-outline-variant/20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-8">
+          <div>
+            <span class="font-label text-xs uppercase tracking-widest text-on-primary-container mb-2 block">Journey Details</span>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-secondary">calendar_today</span>
+                <div><p class="font-bold text-primary">Thursday, 24 October 2024</p><p class="text-on-surface-variant text-sm">Scheduled for 14:30 PM</p></div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-secondary">near_me</span>
+                <div><p class="font-bold text-primary">Paris-Charles de Gaulle (CDG)</p><p class="text-on-surface-variant text-sm">Terminal 2E, Arrivals Level</p></div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-secondary">location_on</span>
+                <div><p class="font-bold text-primary">Hôtel Ritz Paris</p><p class="text-on-surface-variant text-sm">15 Place Vendôme, 75001 Paris</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col justify-between bg-surface-container-low rounded-lg p-6">
+          <div>
+            <span class="font-label text-xs uppercase tracking-widest text-on-primary-container mb-4 block">Financial Summary</span>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center"><span class="text-on-surface-variant">Class: First Class Sedan</span><span class="text-primary font-bold">€145.00</span></div>
+              <div class="flex justify-between items-center"><span class="text-on-surface-variant">Service Fee</span><span class="text-primary font-bold">€0.00</span></div>
+              <div class="border-t border-outline-variant/30 my-4"></div>
+              <div class="flex justify-between items-center"><span class="text-primary font-bold text-lg">Total Paid</span><span class="text-primary font-bold text-2xl">€145.00</span></div>
+            </div>
+          </div>
+          <div class="mt-8 pt-6 border-t border-outline-variant/30">
+            <div class="flex items-center gap-3 text-secondary">
+              <span class="material-symbols-outlined">military_tech</span>
+              <span class="text-sm font-bold font-headline">+250 Prestige Loyalty Points earned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <div class="flex flex-col items-center gap-6">
+      <div class="flex items-center gap-2 px-6 py-3 bg-surface-container-high/50 rounded-full">
+        <span class="material-symbols-outlined text-on-surface-variant text-sm">mail</span>
+        <p class="text-sm text-on-surface-variant font-medium">Confirmation sent to your email</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+        <button class="flex items-center justify-center gap-3 px-8 py-4 bg-white border border-outline-variant/40 rounded-lg font-bold text-primary hover:bg-surface-container-low transition-all shadow-sm">
+          <span class="material-symbols-outlined">calendar_add_on</span> Add to calendar
+        </button>
+        <button class="flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] text-white rounded-lg font-bold hover:brightness-105 transition-all shadow-sm">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.544.917 3.51 1.403 5.516 1.404 5.32 0 9.648-4.328 9.65-9.647 0-2.577-1.003-4.999-2.825-6.822-1.821-1.822-4.241-2.827-6.82-2.827-5.32 0-9.648 4.328-9.65 9.647 0 2.04.519 3.974 1.502 5.671l-.999 3.648 3.732-.976z"/></svg>
+          WhatsApp receipt
+        </button>
+        <a href="client-dashboard.html" class="flex items-center justify-center gap-3 px-8 py-4 signature-gradient text-white rounded-lg font-bold hover:opacity-90 transition-all shadow-sm">
+          <span class="material-symbols-outlined">dashboard</span> View Dashboard
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chauffeur Preview -->
+  <aside class="mt-20 w-full max-w-4xl">
+    <div class="relative h-64 w-full rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700">
+      <img alt="Luxury Mercedes S-Class interior at night" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5eT6IYI3Z79hiC-SbkBcg79wTel4mU5vY1XeeG3ec2iycs4VckpuO-vHYHtiShNJuhtd9wKVYRddgx1XBoMv369p90p5PKWMayhiPZs3RF2wKNq-RXbhhiclxrVhfIcEzmT3MnQXfOeXU0yafGb0yDEw-5norUjK8wr8bH60ZVjlj5VclTmtaeRVutBm5WKcHtrbIEi87piWFqb4Le5A8_AQu3JEVSIWb7aqSkjAwLwAu0KwHYkG_UbCgYgrfSKe3-m5uFnAQJ00"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+        <div class="flex items-center gap-4">
+          <img alt="Chauffeur Jean-Pierre portrait" class="w-12 h-12 rounded-full border-2 border-white shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOgo6633xdjcrqragd0fHEAE9zDjKMR5E_lf4XTP1xSnMbkNqvtL1B0QUACH9Y3BEl9rKeoNpLZnrFpAYG4EqH6MH5jA9_0K_pc5amNQ6G8YO1PEGYksJ8XuibC7pA2l3tw0PbeLuIUu9On3UbnCBm7z_Kt6xAAwsex5ZZbgClZt42_iPaUMo0g4vhUJCbRB1W64zCFHRwrgFUyP1iuxfIavaurJpHwQcyC5U8KAQfWfBvBA-kvBlljG71aBMDNizHqGOgc8khMww"/>
+          <div>
+            <p class="text-white font-bold">Your Chauffeur: Jean-Pierre</p>
+            <p class="text-white/70 text-sm">Mercedes S-Class • 5.0 Star Rating</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer class="bg-slate-50 py-12 w-full mt-20 flex flex-col items-center justify-center space-y-6">
+  <a href="homepage.html" class="font-headline font-bold text-lg text-primary">PrestigeVTC</a>
+  <div class="flex flex-wrap justify-center gap-8 px-4">
+    <a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="#">Privacy Policy</a>
+    <a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="#">Terms of Service</a>
+    <a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="driver-dashboard.html">Driver Login</a>
+    <a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="admin-operations.html">Admin</a>
+  </div>
+  <p class="font-body text-xs uppercase tracking-widest text-slate-400">© 2025 PrestigeVTC. Exceptionalism as Standard.</p>
+</footer>
+
+<!-- Floating Page Navigator -->
+<div class="page-nav" id="pageNav">
+  <button class="page-nav-btn" onclick="document.getElementById('navMenu').classList.toggle('open')">
+    <span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;">grid_view</span> All Pages
+  </button>
+  <div class="page-nav-menu" id="navMenu">
+    <a href="index.html"><span class="material-symbols-outlined" style="font-size:16px;">home</span> Page Hub <span class="badge badge-customer">Index</span></a>
+    <a href="homepage.html"><span class="material-symbols-outlined" style="font-size:16px;">language</span> Homepage <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-details.html"><span class="material-symbols-outlined" style="font-size:16px;">person</span> Checkout: Details <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-payment.html"><span class="material-symbols-outlined" style="font-size:16px;">credit_card</span> Checkout: Payment <span class="badge badge-customer">Customer</span></a>
+    <a href="confirmation.html"><span class="material-symbols-outlined" style="font-size:16px;">check_circle</span> Confirmation <span class="badge badge-active">Active</span></a>
+    <a href="client-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">dashboard</span> Client Dashboard <span class="badge badge-customer">Customer</span></a>
+    <a href="driver-incoming.html"><span class="material-symbols-outlined" style="font-size:16px;">notifications</span> Driver: Incoming <span class="badge badge-driver">Driver</span></a>
+    <a href="driver-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">directions_car</span> Driver Dashboard <span class="badge badge-driver">Driver</span></a>
+    <a href="admin-operations.html"><span class="material-symbols-outlined" style="font-size:16px;">bar_chart</span> Admin: Operations <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-bookings.html"><span class="material-symbols-outlined" style="font-size:16px;">list_alt</span> Admin: Bookings <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-pricing.html"><span class="material-symbols-outlined" style="font-size:16px;">price_change</span> Admin: Pricing <span class="badge badge-admin">Admin</span></a>
+  </div>
+</div>
+</body></html>

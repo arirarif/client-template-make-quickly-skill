@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PrestigeVTC — Booking: Secure Payment</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{
+    colors:{
+      "on-background":"#191c1d","surface-container-high":"#e7e8e9","tertiary":"#000000",
+      "on-secondary":"#ffffff","on-secondary-fixed-variant":"#0039b5","on-secondary-fixed":"#001551",
+      "surface-variant":"#e1e3e4","inverse-on-surface":"#f0f1f2","tertiary-container":"#2c1603",
+      "on-primary-container":"#7c839f","secondary-fixed-dim":"#b7c4ff","on-primary-fixed":"#141a32",
+      "on-surface-variant":"#46464d","outline-variant":"#c6c6ce","on-tertiary":"#ffffff",
+      "surface":"#f8f9fa","outline":"#76767e","secondary-container":"#4069f2",
+      "on-secondary-container":"#fffbff","surface-container-low":"#f3f4f5","surface-dim":"#d9dadb",
+      "surface-container":"#edeeef","surface-container-highest":"#e1e3e4","error":"#ba1a1a",
+      "background":"#f8f9fa","primary-container":"#141a32","on-error":"#ffffff",
+      "inverse-surface":"#2e3132","on-primary":"#ffffff","surface-bright":"#f8f9fa",
+      "tertiary-fixed":"#ffdcc3","on-surface":"#191c1d","secondary-fixed":"#dce1ff",
+      "primary":"#000000","surface-container-lowest":"#ffffff","primary-fixed":"#dce1ff","secondary":"#1d4ed8"
+    },
+    borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+    fontFamily:{headline:["Manrope"],body:["Inter"],label:["Inter"]}
+  }}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .glass-panel{background:rgba(255,255,255,0.8);backdrop-filter:blur(20px);}
+  .signature-gradient{background:linear-gradient(135deg,#1d4ed8 0%,#4069f2 100%);}
+  .page-nav{position:fixed;bottom:24px;right:24px;z-index:100;}
+  .page-nav-btn{background:#141a32;color:#fff;border:none;border-radius:999px;padding:12px 20px;font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,0.25);display:flex;align-items:center;gap:8px;transition:opacity 0.2s;}
+  .page-nav-btn:hover{opacity:0.85;}
+  .page-nav-menu{display:none;position:absolute;bottom:52px;right:0;background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.15);padding:8px;min-width:220px;}
+  .page-nav-menu.open{display:block;}
+  .page-nav-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;font-family:Inter,sans-serif;font-size:13px;font-weight:500;color:#191c1d;text-decoration:none;transition:background 0.15s;}
+  .page-nav-menu a:hover{background:#f3f4f5;}
+  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.06em;}
+  .badge-customer{background:#dce1ff;color:#0039b5;}
+  .badge-driver{background:#d1fae5;color:#065f46;}
+  .badge-admin{background:#fef3c7;color:#92400e;}
+  .badge-active{background:#141a32;color:#fff;}
+</style>
+</head>
+<body class="bg-surface text-on-background font-body antialiased">
+
+<!-- Header -->
+<header class="sticky top-0 z-50 glass-panel shadow-sm">
+  <div class="max-w-screen-2xl mx-auto px-8 py-4 flex justify-between items-center">
+    <a href="homepage.html" class="text-2xl font-headline font-extrabold tracking-tighter text-black hover:opacity-80 transition-opacity">PrestigeVTC</a>
+    <a href="checkout-details.html" class="text-on-surface-variant flex items-center gap-2 hover:text-primary transition-colors">
+      <span class="material-symbols-outlined text-sm">arrow_back</span>
+      <span class="font-label text-xs uppercase tracking-widest font-medium">Back to Details</span>
+    </a>
+  </div>
+</header>
+
+<main class="max-w-screen-xl mx-auto px-8 py-12 lg:py-20">
+  <!-- Progress Bar -->
+  <div class="mb-16">
+    <div class="flex items-center justify-between max-w-2xl mx-auto relative">
+      <div class="absolute top-1/2 left-0 w-full h-[2px] bg-surface-container-high -translate-y-1/2 z-0"></div>
+      <div class="absolute top-1/2 left-0 w-1/2 h-[2px] bg-secondary -translate-y-1/2 z-0"></div>
+      <div class="relative z-10 flex flex-col items-center">
+        <div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center mb-3"><span class="material-symbols-outlined text-xl">check</span></div>
+        <span class="font-label text-[10px] uppercase tracking-widest font-bold text-secondary">Details</span>
+      </div>
+      <div class="relative z-10 flex flex-col items-center">
+        <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center mb-3 ring-4 ring-surface"><span class="text-sm font-bold">2</span></div>
+        <span class="font-label text-[10px] uppercase tracking-widest font-bold text-primary">Payment</span>
+      </div>
+      <div class="relative z-10 flex flex-col items-center">
+        <div class="w-10 h-10 rounded-full bg-surface-container-high text-outline flex items-center justify-center mb-3"><span class="text-sm font-bold">3</span></div>
+        <span class="font-label text-[10px] uppercase tracking-widest font-medium text-outline">Confirm</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+    <!-- Payment Column -->
+    <div class="lg:col-span-7 space-y-12">
+      <section>
+        <div class="mb-8">
+          <h1 class="text-4xl font-headline font-bold tracking-tight text-primary mb-2">Secure Payment</h1>
+          <p class="text-on-surface-variant font-body">Choose your preferred settlement method for the upcoming journey.</p>
+        </div>
+        <!-- Payment Plan -->
+        <div class="space-y-4 mb-10">
+          <label class="group relative flex items-center p-6 bg-surface-container-lowest rounded-xl cursor-pointer hover:shadow-md transition-all border border-secondary">
+            <input checked class="hidden peer" name="payment_plan" type="radio"/>
+            <div class="flex-1">
+              <span class="block font-headline font-bold text-lg">Full payment</span>
+              <span class="block text-on-surface-variant text-sm">Settle the entire balance today for a seamless arrival.</span>
+            </div>
+            <div class="w-6 h-6 rounded-full border-2 border-secondary bg-secondary flex items-center justify-center"><div class="w-2 h-2 rounded-full bg-white"></div></div>
+          </label>
+          <label class="group relative flex items-center p-6 bg-surface-container-lowest rounded-xl cursor-pointer hover:shadow-md transition-all border border-transparent">
+            <input class="hidden peer" name="payment_plan" type="radio"/>
+            <div class="flex-1">
+              <span class="block font-headline font-bold text-lg">Pay deposit (30%)</span>
+              <span class="block text-on-surface-variant text-sm">Pay €84.60 now and the remainder at the end of your trip.</span>
+            </div>
+            <div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center"><div class="w-2 h-2 rounded-full bg-transparent"></div></div>
+          </label>
+        </div>
+        <!-- Card Form -->
+        <div class="bg-surface-container-low rounded-xl p-8 space-y-6">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-headline font-bold">Credit or Debit Card</h3>
+            <div class="flex gap-2">
+              <img alt="Visa" class="h-6 w-auto opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6qk9gnven9YgMIHKCbLDT0mzkPPvk1cvp8APYq-BPqZAA1n275E1cxpl2LE66lcwFywgownYsHoGcvnexp_mm1XYx0N14Fvy_nn0Yf1gFBWjm0yvjO7NZOOrXitUfXwUXFBRNfdYv9ZvapvAHEH6vB4HpSKBrDLN6T5FKAWSmERU93O825H9a_O3Vi5X23Gdl8iwt_ej6W6dnvs-ADKMQgkqj8gzIJK0oYNACFA7zjRQo1S7WooltwHqhwYY4yY2aV60dMMZYQxo"/>
+              <img alt="Mastercard" class="h-6 w-auto opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUrN6hAIIAmTq0k1GAkRDK1IirsldjIDW5avr44xw1aYv9tqcytvriDDXdB77aFaqcHXGalwqTOl8adXKxPJ7_m70BVs66UyyMJrtUne5JxsYGF5HRfB6tV9JJ0v0Buf2HDdgYP-7CPdnRKb-PALZjL3bx6-Z6T4yMh6M9jJD8Tut5Fo2WJiWPAzTF_2HFp_9Fpnjtc3NTjHegBPlA0i4kqYfyLlRkojg6QFwj8B8E_W4-E8dA58U1JXkBXwCFTjEGA1K2DVbVmBU"/>
+              <img alt="Apple Pay" class="h-6 w-auto opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr02zpBspVqUDcTXBc60KfCRPzA0fXdYdLsHFc_kZq0uGXD6zQLaYLbT_PyGRjeXP1bZkSmdt8rKKEySfSItRV3CNlAmAkgAqFcrfms7po3Yif6-so2wxH-s08pyqZ55BLvVzfyDgN7f1c6sWLNn5TzhFMFCP2DRerbc6w0kKxynoktvjF85LTC67Y4Ha8DWP5ctO9HGwloPGKzFXcVS7jTgRgk34mB0H822WPvv4EWQNtwIdY7nGl1Deju9p3vABLOYFTb-iChL4"/>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <label class="block font-label text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-2">Card Number</label>
+              <input class="w-full bg-surface-container-lowest border-none focus:ring-0 rounded-md px-4 py-4 text-lg font-mono" placeholder="•••• •••• •••• ••••" type="text"/>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block font-label text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-2">Expiry Date</label>
+                <input class="w-full bg-surface-container-lowest border-none focus:ring-0 rounded-md px-4 py-4 text-lg font-mono" placeholder="MM/YY" type="text"/>
+              </div>
+              <div>
+                <label class="block font-label text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-2">CVV</label>
+                <input class="w-full bg-surface-container-lowest border-none focus:ring-0 rounded-md px-4 py-4 text-lg font-mono" placeholder="•••" type="text"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="flex items-center justify-center gap-3 text-outline text-xs">
+        <span class="material-symbols-outlined text-sm">lock</span>
+        <span class="font-medium">Securely processed by Stripe</span>
+      </div>
+    </div>
+
+    <!-- Summary Sidebar -->
+    <div class="lg:col-span-5">
+      <div class="bg-primary-container text-white rounded-xl overflow-hidden shadow-2xl">
+        <div class="p-8 pb-4 relative">
+          <span class="inline-block font-label text-[10px] uppercase tracking-widest font-bold bg-white/10 px-3 py-1 rounded-full mb-6">Reservation Summary</span>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center pt-1">
+              <div class="w-2 h-2 rounded-full bg-secondary"></div>
+              <div class="w-[1px] h-10 border-l border-white/20 my-1"></div>
+              <div class="w-2 h-2 rounded-full border border-white/40"></div>
+            </div>
+            <div class="space-y-4">
+              <div><p class="text-white/60 text-[10px] uppercase tracking-wider font-bold">Pick-up</p><p class="font-headline font-semibold">Charles de Gaulle Airport (CDG)</p></div>
+              <div><p class="text-white/60 text-[10px] uppercase tracking-wider font-bold">Drop-off</p><p class="font-headline font-semibold">Hôtel Ritz Paris, 15 Place Vendôme</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="px-8 py-8 space-y-4 bg-white/5 border-t border-white/10">
+          <div class="flex justify-between text-sm"><span class="text-white/60">Base fare (Mercedes S-Class)</span><span>€245.00</span></div>
+          <div class="flex justify-between text-sm"><span class="text-white/60">Night surcharge (22:00–06:00)</span><span>€35.00</span></div>
+          <div class="flex justify-between text-sm"><span class="text-white/60">Luggage supplement (3 Large)</span><span>€12.00</span></div>
+          <div class="flex justify-between text-sm text-secondary-fixed-dim"><span class="font-medium">Loyalty discount (PRESTIGE10)</span><span>–€10.00</span></div>
+          <div class="pt-6 border-t border-white/20">
+            <p class="text-white/60 text-[10px] uppercase tracking-widest font-bold">Total Amount</p>
+            <p class="text-4xl font-headline font-extrabold tracking-tighter">€282.00</p>
+          </div>
+        </div>
+        <div class="p-8">
+          <a href="confirmation.html" class="w-full signature-gradient text-on-secondary py-5 rounded-lg font-headline font-bold text-lg shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
+            <span>Pay €282.00</span><span class="material-symbols-outlined">arrow_forward</span>
+          </a>
+          <p class="text-center text-white/40 text-[10px] mt-6 font-medium">By clicking "Pay", you agree to our Terms of Service and Cancellation Policy.</p>
+        </div>
+      </div>
+      <div class="mt-8 p-6 bg-surface-container-low rounded-xl flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high shrink-0">
+          <img class="w-full h-full object-cover" alt="Concierge support agent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIIO6JEXl7SPZlE531uSs6mwXaESpSk0WvZr-5V8MQdfeVz3IUBLJrZ20XRPvSlPEHLY0HOaEvI4JbnHQbrgXaqdO4l_N28pEhS9h47Z9bnI-0T863gqHcd-v5jiLRnIyFtf_ZlLv8KlS9nwtgeNFVUS1WecH8oTQnsGCryMfM9LxVTkFGcd6FewVdbIc3Ry-py2NYtefX_sTh902hMnnfbk5m97ix5Q1FD_8J7TNXkuOCH0Ax1GN9CfWFkabd9bciIHczGnQG7CU"/>
+        </div>
+        <div>
+          <p class="font-headline font-bold text-sm">Need assistance?</p>
+          <p class="text-on-surface-variant text-xs">Our 24/7 concierge is standing by.</p>
+          <button class="text-secondary text-[10px] font-bold uppercase tracking-widest mt-2 hover:underline">Chat Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="flex flex-col items-center justify-center space-y-6 w-full mt-20 py-12 bg-slate-50">
+  <a href="homepage.html" class="font-headline font-bold text-lg text-primary tracking-tighter uppercase">PrestigeVTC</a>
+  <div class="flex flex-wrap justify-center gap-8 px-8">
+    <a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="#">Privacy Policy</a>
+    <a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="#">Terms of Service</a>
+    <a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="driver-dashboard.html">Driver Login</a>
+    <a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="admin-operations.html">Admin</a>
+  </div>
+  <p class="font-body text-xs uppercase tracking-widest text-slate-400">© 2025 PrestigeVTC. Exceptionalism as Standard.</p>
+</footer>
+
+<!-- Floating Page Navigator -->
+<div class="page-nav" id="pageNav">
+  <button class="page-nav-btn" onclick="document.getElementById('navMenu').classList.toggle('open')">
+    <span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;">grid_view</span> All Pages
+  </button>
+  <div class="page-nav-menu" id="navMenu">
+    <a href="index.html"><span class="material-symbols-outlined" style="font-size:16px;">home</span> Page Hub <span class="badge badge-customer">Index</span></a>
+    <a href="homepage.html"><span class="material-symbols-outlined" style="font-size:16px;">language</span> Homepage <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-details.html"><span class="material-symbols-outlined" style="font-size:16px;">person</span> Checkout: Details <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-payment.html"><span class="material-symbols-outlined" style="font-size:16px;">credit_card</span> Checkout: Payment <span class="badge badge-active">Active</span></a>
+    <a href="confirmation.html"><span class="material-symbols-outlined" style="font-size:16px;">check_circle</span> Confirmation <span class="badge badge-customer">Customer</span></a>
+    <a href="client-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">dashboard</span> Client Dashboard <span class="badge badge-customer">Customer</span></a>
+    <a href="driver-incoming.html"><span class="material-symbols-outlined" style="font-size:16px;">notifications</span> Driver: Incoming <span class="badge badge-driver">Driver</span></a>
+    <a href="driver-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">directions_car</span> Driver Dashboard <span class="badge badge-driver">Driver</span></a>
+    <a href="admin-operations.html"><span class="material-symbols-outlined" style="font-size:16px;">bar_chart</span> Admin: Operations <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-bookings.html"><span class="material-symbols-outlined" style="font-size:16px;">list_alt</span> Admin: Bookings <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-pricing.html"><span class="material-symbols-outlined" style="font-size:16px;">price_change</span> Admin: Pricing <span class="badge badge-admin">Admin</span></a>
+  </div>
+</div>
+</body></html>

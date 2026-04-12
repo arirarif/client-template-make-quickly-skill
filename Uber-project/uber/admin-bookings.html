@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PrestigeVTC Admin | Bookings Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{
+    colors:{
+      "surface-variant":"#e1e3e4","on-tertiary-container":"#a17d61","tertiary-container":"#2c1603",
+      "inverse-on-surface":"#f0f1f2","on-primary-container":"#7c839f","secondary-fixed-dim":"#b7c4ff",
+      "on-primary-fixed":"#141a32","on-background":"#191c1d","surface-container-high":"#e7e8e9",
+      "surface-tint":"#575d78","tertiary-fixed-dim":"#e8be9f","tertiary":"#000000",
+      "on-secondary":"#ffffff","on-secondary-fixed-variant":"#0039b5","on-secondary-fixed":"#001551",
+      "surface-container-low":"#f3f4f5","surface-dim":"#d9dadb","surface-container":"#edeeef",
+      "surface-container-highest":"#e1e3e4","error":"#ba1a1a","background":"#f8f9fa",
+      "outline-variant":"#c6c6ce","on-surface-variant":"#46464d","error-container":"#ffdad6",
+      "surface":"#f8f9fa","on-tertiary":"#ffffff","outline":"#76767e","secondary-container":"#4069f2",
+      "on-secondary-container":"#fffbff","inverse-primary":"#bfc5e4","on-tertiary-fixed-variant":"#5e4029",
+      "on-tertiary-fixed":"#2c1603","inverse-surface":"#2e3132","on-primary":"#ffffff",
+      "surface-bright":"#f8f9fa","tertiary-fixed":"#ffdcc3","on-surface":"#191c1d",
+      "on-error-container":"#93000a","primary-container":"#141a32","on-error":"#ffffff",
+      "primary":"#000000","surface-container-lowest":"#ffffff","primary-fixed":"#dce1ff",
+      "secondary":"#1d4ed8","primary-fixed-dim":"#bfc5e4","on-primary-fixed-variant":"#3f465f",
+      "secondary-fixed":"#dce1ff"
+    },
+    borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+    fontFamily:{headline:["Manrope"],body:["Inter"],label:["Inter"]}
+  }}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .signature-gradient{background:linear-gradient(135deg,#1d4ed8 0%,#4069f2 100%);}
+  .page-nav{position:fixed;bottom:24px;right:24px;z-index:100;}
+  .page-nav-btn{background:#141a32;color:#fff;border:none;border-radius:999px;padding:12px 20px;font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,0.25);display:flex;align-items:center;gap:8px;transition:opacity 0.2s;}
+  .page-nav-btn:hover{opacity:0.85;}
+  .page-nav-menu{display:none;position:absolute;bottom:52px;right:0;background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.15);padding:8px;min-width:220px;}
+  .page-nav-menu.open{display:block;}
+  .page-nav-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;font-family:Inter,sans-serif;font-size:13px;font-weight:500;color:#191c1d;text-decoration:none;transition:background 0.15s;}
+  .page-nav-menu a:hover{background:#f3f4f5;}
+  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.06em;}
+  .badge-customer{background:#dce1ff;color:#0039b5;}
+  .badge-driver{background:#d1fae5;color:#065f46;}
+  .badge-admin{background:#fef3c7;color:#92400e;}
+  .badge-active{background:#141a32;color:#fff;}
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 bg-[#0A1128] h-screen w-72 flex-shrink-0 z-50">
+  <div class="px-8 mb-10">
+    <a href="homepage.html" class="text-xl font-bold tracking-tight text-white font-headline hover:opacity-80 transition-opacity block">PrestigeVTC</a>
+    <p class="text-[10px] text-on-primary-container font-label tracking-[0.2em] uppercase mt-1">Admin Console</p>
+  </div>
+  <nav class="flex-1 space-y-1">
+    <a class="flex items-center gap-3 px-8 py-3 bg-[#141a32] text-white border-l-4 border-secondary font-medium text-sm" href="admin-bookings.html">
+      <span class="material-symbols-outlined">calendar_month</span>Bookings
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="#">
+      <span class="material-symbols-outlined">groups</span>Clients
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="#">
+      <span class="material-symbols-outlined">payments</span>Payments
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="admin-pricing.html">
+      <span class="material-symbols-outlined">receipt_long</span>Pricing rules
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="#">
+      <span class="material-symbols-outlined">loyalty</span>Loyalty &amp; promos
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="admin-operations.html">
+      <span class="material-symbols-outlined">dashboard</span>Operations
+    </a>
+    <a class="flex items-center gap-3 px-8 py-3 text-gray-400 hover:text-white hover:bg-[#141a32] transition-all text-sm font-medium" href="#">
+      <span class="material-symbols-outlined">settings</span>Settings
+    </a>
+  </nav>
+  <div class="px-8 mt-auto pt-8 border-t border-white/5">
+    <div class="flex items-center gap-3">
+      <img alt="Administrator" class="w-10 h-10 rounded-full object-cover border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGambLHctrLBRjf5fP9JATz6N-5PK2HCRvWylbnqlt1nNjrbztapFlZfE3yNqtuzKJm2r3xYnF3SrGar7ilsGAZrAM6iyVAXyG2GTfDH25FLT0ife08Ukh18HwsO1shj1SPyXuh51ZW5UVOvdw4r22Br4rKuh7eoiJh2666qo7EmDKnfcJHtkvq7AK_TLRiTkvoF_BHiiru-_V3osml4fQdOA5puLA5F64NN_KYGcNglXNmSFSWDnzYiWNa9S0Z5wrdtn4T76RmOY"/>
+      <div>
+        <p class="text-xs font-bold text-white">Administrator</p>
+        <p class="text-[10px] text-gray-500">Premium Support</p>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Canvas -->
+<main class="ml-72 min-h-screen">
+  <!-- TopNavBar -->
+  <header class="flex justify-between items-center px-8 h-16 sticky top-0 z-40 bg-white/80 backdrop-blur-xl">
+    <div class="flex items-center gap-4 flex-1 max-w-md">
+      <span class="material-symbols-outlined text-outline">search</span>
+      <input class="bg-transparent border-none focus:ring-0 text-sm w-full font-body placeholder:text-outline/60" placeholder="Search Client Name or Booking Ref..." type="text"/>
+    </div>
+    <div class="flex items-center gap-6">
+      <div class="flex gap-4 text-slate-500">
+        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">help_outline</span></button>
+      </div>
+      <div class="h-6 w-[1px] bg-outline-variant/30"></div>
+      <span class="text-[10px] font-label font-bold tracking-widest text-on-surface-variant uppercase">Luxury VTC Admin</span>
+    </div>
+  </header>
+
+  <div class="p-12 space-y-10">
+    <!-- Page Header -->
+    <section class="max-w-7xl mx-auto flex justify-between items-end">
+      <div class="space-y-2">
+        <h2 class="text-4xl font-extrabold tracking-tight font-headline text-primary">Bookings Management</h2>
+        <p class="text-on-primary-container text-sm font-body">Monitor and manage all scheduled journeys with administrative precision.</p>
+      </div>
+      <button class="signature-gradient px-6 py-3 rounded-lg text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-secondary/20 hover:scale-105 active:opacity-80 transition-all">
+        <span class="material-symbols-outlined text-sm">add</span>New Booking
+      </button>
+    </section>
+
+    <!-- Filters Bar -->
+    <section class="max-w-7xl mx-auto">
+      <div class="bg-surface-container-lowest p-1 rounded-xl shadow-[0px_12px_32px_rgba(10,17,40,0.06)] flex flex-wrap items-center gap-2">
+        <div class="flex-1 min-w-[200px] px-6 py-3 flex items-center gap-4">
+          <span class="material-symbols-outlined text-secondary">date_range</span>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-bold text-outline-variant uppercase tracking-tighter">Date Range</span>
+            <select class="bg-transparent border-none p-0 focus:ring-0 text-sm font-semibold text-primary appearance-none cursor-pointer">
+              <option>Last 30 Days</option><option>This Week</option><option>Next 7 Days</option><option>Custom Range</option>
+            </select>
+          </div>
+        </div>
+        <div class="h-10 w-[1px] bg-surface-container"></div>
+        <div class="px-6 py-3 flex items-center gap-8">
+          <div class="flex gap-2">
+            <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-primary text-white">All</button>
+            <button class="px-4 py-1.5 rounded-full text-xs font-bold text-on-surface-variant hover:bg-surface-container">Upcoming</button>
+            <button class="px-4 py-1.5 rounded-full text-xs font-bold text-on-surface-variant hover:bg-surface-container">Completed</button>
+            <button class="px-4 py-1.5 rounded-full text-xs font-bold text-on-surface-variant hover:bg-surface-container">Cancelled</button>
+          </div>
+        </div>
+        <div class="h-10 w-[1px] bg-surface-container"></div>
+        <button class="px-6 py-3 text-secondary font-bold text-xs flex items-center gap-2 hover:opacity-70 transition-opacity">
+          <span class="material-symbols-outlined text-sm">filter_list</span>Advanced Filters
+        </button>
+      </div>
+    </section>
+
+    <!-- Bookings Table -->
+    <section class="max-w-7xl mx-auto overflow-hidden rounded-2xl bg-surface-container-lowest shadow-[0px_12px_32px_rgba(10,17,40,0.04)]">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-surface-container-low/50">
+            <th class="px-8 py-5 text-[10px] font-extrabold text-on-surface-variant uppercase tracking-[0.1em]">Ref</th>
+            <th class="px-8 py-5 text-[10px] font-extrabold text-on-surface-variant uppercase tracking-[0.1em]">Client</th>
+            <th class="px-8 py-5 text-[10px] font-extrabold text-on-surface-variant uppercase tracking-[0.1em]">Route</th>
+            <th class="px-8 py-5 text-[10px] font-extrabold text-on-surface-variant uppercase tracking-[0.1em]">Date &amp; Time</th>
+            <th class="px-8 py-5 text-[10px] font-extrabold text-on-surface-variant uppercase tracking-[0.1em]">Fare</th>
+            <th class="px-8 py-5 text-[10px] font-extrabold text-on-surface-variant uppercase tracking-[0.1em]">Status</th>
+            <th class="px-8 py-5 text-[10px] font-extrabold text-on-surface-variant uppercase tracking-[0.1em] text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-surface-container-low">
+          <!-- Row 1 -->
+          <tr class="hover:bg-surface-container-low/30 transition-colors group">
+            <td class="px-8 py-6 font-headline font-bold text-sm text-primary">PV-88294</td>
+            <td class="px-8 py-6">
+              <div class="flex items-center gap-3">
+                <img alt="Julian Vance" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUiOkWJrkkBKNmJWET4dpqFKp7U-0wXf9CU-wsFjFORbuEiGvxdZ_OoMTxnEMDwSSFLfwKOGmKs8JwtpfypRPkB36oQqST8FXG-RCvyK4aLf2Xaid2weLrq2vQyxlI10C-HGPF_3If7sy-EoVoh1Z9axAxTcnkF653WOEHvjo7bKa50rr-Jo895HypgOZ9-jgeYLf1xRlAMAI0JFOeBJY0pV9Pe_IMa43Ky4fGw18mJVZWwII7fbyLkKTunwfa05rURwb-s42BeLQ"/>
+                <span class="text-sm font-semibold text-primary">Julian Vance</span>
+              </div>
+            </td>
+            <td class="px-8 py-6">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-secondary"></div><span class="text-xs font-medium">Paris CDG Airport</span></div>
+                <div class="ml-[3px] border-l border-outline-variant/30 h-2"></div>
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div><span class="text-xs font-medium">Hotel Ritz Paris</span></div>
+              </div>
+            </td>
+            <td class="px-8 py-6"><div class="flex flex-col"><span class="text-sm font-bold text-primary">24 Oct, 2023</span><span class="text-[11px] text-on-surface-variant font-medium">14:30 PM</span></div></td>
+            <td class="px-8 py-6 font-headline font-extrabold text-primary">€145.00</td>
+            <td class="px-8 py-6"><span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest bg-secondary/10 text-secondary border border-secondary/20">Upcoming</span></td>
+            <td class="px-8 py-6 text-center"><a href="confirmation.html" class="p-2 hover:bg-secondary/10 text-on-surface-variant hover:text-secondary rounded-lg transition-all inline-flex"><span class="material-symbols-outlined">visibility</span></a></td>
+          </tr>
+          <!-- Row 2 -->
+          <tr class="hover:bg-surface-container-low/30 transition-colors group">
+            <td class="px-8 py-6 font-headline font-bold text-sm text-primary">PV-88301</td>
+            <td class="px-8 py-6">
+              <div class="flex items-center gap-3">
+                <img alt="Elena Rodriguez" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5u4t_FZ9G65Kkk6eo5lhw6ybF3RWynp7mjliK-PjgjdLIi9UecrcMJZUBQ8X03aEDz270EG-cVeBbkeF0OV5k0-ocdAatDXoyJXgon-XSdbQe0rliFGvkEUvp7f5ThmWVgbkCdoChex0J6idynofKR8erRNu6gDDSOvM9nirqwfLUXCKgJQ-foTpEa0nUWnoAxBUUFwFmaD6SBjXgyrbHJYfBVTgiOw1nSK7e1OZfVe1zue_PVQhgJUdv-hT3ZdO1r5UacxH3ZEA"/>
+                <span class="text-sm font-semibold text-primary">Elena Rodriguez</span>
+              </div>
+            </td>
+            <td class="px-8 py-6">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-secondary"></div><span class="text-xs font-medium">La Défense Business District</span></div>
+                <div class="ml-[3px] border-l border-outline-variant/30 h-2"></div>
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div><span class="text-xs font-medium">Orly Terminal 4</span></div>
+              </div>
+            </td>
+            <td class="px-8 py-6"><div class="flex flex-col"><span class="text-sm font-bold text-primary">23 Oct, 2023</span><span class="text-[11px] text-on-surface-variant font-medium">09:15 AM</span></div></td>
+            <td class="px-8 py-6 font-headline font-extrabold text-primary">€85.00</td>
+            <td class="px-8 py-6"><span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest bg-green-500/10 text-green-600 border border-green-500/20">Completed</span></td>
+            <td class="px-8 py-6 text-center"><button class="p-2 hover:bg-secondary/10 text-on-surface-variant hover:text-secondary rounded-lg transition-all"><span class="material-symbols-outlined">visibility</span></button></td>
+          </tr>
+          <!-- Row 3 -->
+          <tr class="hover:bg-surface-container-low/30 transition-colors group">
+            <td class="px-8 py-6 font-headline font-bold text-sm text-primary">PV-88315</td>
+            <td class="px-8 py-6">
+              <div class="flex items-center gap-3">
+                <img alt="Marcus Thorne" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-kWtbwEs2EeRSUdJ4bu9blwf2Nd0GmuDr5h0-_C5Fy8Rn-it9rQkFyiyuCxq1viFgpDbzSa7L5bkUWhotZmBKEhWWoelFKPKFcA3wpojvGrNV1E9HchHEN4wR4ldGUl16h2ZIJUxNyVJxtowkgyHRse4iiYvm52MaoSi3g9YtV0ymfwPb-UXPPFciAgQ91L2MtT7SAKVAfZFrKHMQfxTuceoJx5iNTzy9yi2RbVkUMgtllWb5EGm0LJbB3t03Kmmw6CpBA0fD4pU"/>
+                <span class="text-sm font-semibold text-primary">Marcus Thorne</span>
+              </div>
+            </td>
+            <td class="px-8 py-6">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-secondary"></div><span class="text-xs font-medium">Gare du Nord</span></div>
+                <div class="ml-[3px] border-l border-outline-variant/30 h-2"></div>
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div><span class="text-xs font-medium">Le Meurice</span></div>
+              </div>
+            </td>
+            <td class="px-8 py-6"><div class="flex flex-col"><span class="text-sm font-bold text-primary">22 Oct, 2023</span><span class="text-[11px] text-on-surface-variant font-medium">18:00 PM</span></div></td>
+            <td class="px-8 py-6 font-headline font-extrabold text-primary">€60.00</td>
+            <td class="px-8 py-6"><span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest bg-error/10 text-error border border-error/20">Cancelled</span></td>
+            <td class="px-8 py-6 text-center"><button class="p-2 hover:bg-secondary/10 text-on-surface-variant hover:text-secondary rounded-lg transition-all"><span class="material-symbols-outlined">visibility</span></button></td>
+          </tr>
+          <!-- Row 4 -->
+          <tr class="hover:bg-surface-container-low/30 transition-colors group">
+            <td class="px-8 py-6 font-headline font-bold text-sm text-primary">PV-88320</td>
+            <td class="px-8 py-6">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-primary-container text-white flex items-center justify-center font-bold text-xs">SL</div>
+                <span class="text-sm font-semibold text-primary">Sophia Laurent</span>
+              </div>
+            </td>
+            <td class="px-8 py-6">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-secondary"></div><span class="text-xs font-medium">Versailles Palace</span></div>
+                <div class="ml-[3px] border-l border-outline-variant/30 h-2"></div>
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div><span class="text-xs font-medium">Paris City Center</span></div>
+              </div>
+            </td>
+            <td class="px-8 py-6"><div class="flex flex-col"><span class="text-sm font-bold text-primary">25 Oct, 2023</span><span class="text-[11px] text-on-surface-variant font-medium">11:00 AM</span></div></td>
+            <td class="px-8 py-6 font-headline font-extrabold text-primary">€190.00</td>
+            <td class="px-8 py-6"><span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest bg-secondary/10 text-secondary border border-secondary/20">Upcoming</span></td>
+            <td class="px-8 py-6 text-center"><button class="p-2 hover:bg-secondary/10 text-on-surface-variant hover:text-secondary rounded-lg transition-all"><span class="material-symbols-outlined">visibility</span></button></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Pagination Footer -->
+      <div class="px-8 py-5 flex items-center justify-between bg-surface-container-low/30">
+        <p class="text-xs text-on-surface-variant font-medium">Showing <span class="text-primary font-bold">1-10</span> of 152 bookings</p>
+        <div class="flex items-center gap-2">
+          <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-on-surface-variant hover:bg-white transition-colors"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+          <button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white text-xs font-bold">1</button>
+          <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white text-on-surface-variant text-xs font-bold transition-colors">2</button>
+          <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white text-on-surface-variant text-xs font-bold transition-colors">3</button>
+          <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-on-surface-variant hover:bg-white transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="flex flex-col items-center justify-center space-y-4 w-full mt-8 font-body text-xs uppercase tracking-widest py-10">
+      <div class="flex gap-8 text-slate-500">
+        <a class="hover:text-black transition-colors" href="homepage.html">Customer Site</a>
+        <a class="hover:text-black transition-colors" href="admin-operations.html">Operations</a>
+        <a class="hover:text-black transition-colors" href="admin-pricing.html">Pricing</a>
+        <a class="hover:text-black transition-colors" href="driver-dashboard.html">Driver Portal</a>
+      </div>
+      <p class="text-slate-400">© 2025 PrestigeVTC. Exceptionalism as Standard.</p>
+    </footer>
+  </div>
+</main>
+
+<!-- Floating Page Navigator -->
+<div class="page-nav" id="pageNav">
+  <button class="page-nav-btn" onclick="document.getElementById('navMenu').classList.toggle('open')">
+    <span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;">grid_view</span> All Pages
+  </button>
+  <div class="page-nav-menu" id="navMenu">
+    <a href="index.html"><span class="material-symbols-outlined" style="font-size:16px;">home</span> Page Hub <span class="badge badge-customer">Index</span></a>
+    <a href="homepage.html"><span class="material-symbols-outlined" style="font-size:16px;">language</span> Homepage <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-details.html"><span class="material-symbols-outlined" style="font-size:16px;">person</span> Checkout: Details <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-payment.html"><span class="material-symbols-outlined" style="font-size:16px;">credit_card</span> Checkout: Payment <span class="badge badge-customer">Customer</span></a>
+    <a href="confirmation.html"><span class="material-symbols-outlined" style="font-size:16px;">check_circle</span> Confirmation <span class="badge badge-customer">Customer</span></a>
+    <a href="client-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">dashboard</span> Client Dashboard <span class="badge badge-customer">Customer</span></a>
+    <a href="driver-incoming.html"><span class="material-symbols-outlined" style="font-size:16px;">notifications</span> Driver: Incoming <span class="badge badge-driver">Driver</span></a>
+    <a href="driver-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">directions_car</span> Driver Dashboard <span class="badge badge-driver">Driver</span></a>
+    <a href="admin-operations.html"><span class="material-symbols-outlined" style="font-size:16px;">bar_chart</span> Admin: Operations <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-bookings.html"><span class="material-symbols-outlined" style="font-size:16px;">list_alt</span> Admin: Bookings <span class="badge badge-active">Active</span></a>
+    <a href="admin-pricing.html"><span class="material-symbols-outlined" style="font-size:16px;">price_change</span> Admin: Pricing <span class="badge badge-admin">Admin</span></a>
+  </div>
+</div>
+</body></html>

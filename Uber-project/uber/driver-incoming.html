@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PrestigeVTC | Driver: Incoming Requests</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{
+    colors:{
+      "error-container":"#ffdad6","error":"#ba1a1a","surface":"#f8f9fa","surface-bright":"#f8f9fa",
+      "on-secondary-fixed":"#001551","surface-container-low":"#f3f4f5","on-tertiary":"#ffffff",
+      "tertiary-container":"#2c1603","on-primary-fixed":"#141a32","on-surface":"#191c1d",
+      "on-tertiary-fixed":"#2c1603","secondary":"#1d4ed8","secondary-container":"#4069f2",
+      "on-secondary-container":"#fffbff","primary":"#000000","primary-container":"#141a32",
+      "on-primary":"#ffffff","on-primary-container":"#7c839f","surface-container-lowest":"#ffffff",
+      "outline-variant":"#c6c6ce","on-surface-variant":"#46464d"
+    },
+    borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+    fontFamily:{headline:["Manrope"],body:["Inter"],label:["Inter"]}
+  }}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .glass-panel{background:rgba(255,255,255,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+  .signature-gradient{background:linear-gradient(135deg,#1d4ed8 0%,#4069f2 100%);}
+  .page-nav{position:fixed;bottom:24px;right:24px;z-index:100;}
+  .page-nav-btn{background:#141a32;color:#fff;border:none;border-radius:999px;padding:12px 20px;font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,0.25);display:flex;align-items:center;gap:8px;transition:opacity 0.2s;}
+  .page-nav-btn:hover{opacity:0.85;}
+  .page-nav-menu{display:none;position:absolute;bottom:52px;right:0;background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.15);padding:8px;min-width:220px;}
+  .page-nav-menu.open{display:block;}
+  .page-nav-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;font-family:Inter,sans-serif;font-size:13px;font-weight:500;color:#191c1d;text-decoration:none;transition:background 0.15s;}
+  .page-nav-menu a:hover{background:#f3f4f5;}
+  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.06em;}
+  .badge-customer{background:#dce1ff;color:#0039b5;}
+  .badge-driver{background:#d1fae5;color:#065f46;}
+  .badge-admin{background:#fef3c7;color:#92400e;}
+  .badge-active{background:#141a32;color:#fff;}
+</style>
+</head>
+<body class="bg-surface font-body text-primary selection:bg-secondary/20">
+
+<!-- Side Navigation Bar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 flex flex-col py-8 gap-4 z-50">
+  <div class="px-8 mb-8">
+    <a href="homepage.html" class="text-lg font-black text-black tracking-tighter hover:opacity-80 transition-opacity block">PrestigeVTC</a>
+    <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Driver Portal</p>
+  </div>
+  <nav class="flex-1 flex flex-col">
+    <a class="text-blue-700 font-bold border-r-2 border-blue-700 pl-4 py-3 flex items-center gap-3 transition-all cursor-pointer" href="driver-incoming.html">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span class="font-['Inter'] text-sm font-medium">Dashboard</span>
+    </a>
+    <a class="text-slate-600 pl-4 py-3 opacity-70 flex items-center gap-3 hover:bg-slate-100 transition-all cursor-pointer" href="driver-dashboard.html">
+      <span class="material-symbols-outlined">directions_car</span>
+      <span class="font-['Inter'] text-sm font-medium">Fleet</span>
+    </a>
+    <a class="text-slate-600 pl-4 py-3 opacity-70 flex items-center gap-3 hover:bg-slate-100 transition-all cursor-pointer" href="driver-dashboard.html">
+      <span class="material-symbols-outlined">insights</span>
+      <span class="font-['Inter'] text-sm font-medium">Analytics</span>
+    </a>
+    <a class="text-slate-600 pl-4 py-3 opacity-70 flex items-center gap-3 hover:bg-slate-100 transition-all cursor-pointer" href="driver-dashboard.html">
+      <span class="material-symbols-outlined">calendar_month</span>
+      <span class="font-['Inter'] text-sm font-medium">Bookings</span>
+    </a>
+    <a class="text-slate-600 pl-4 py-3 opacity-70 flex items-center gap-3 hover:bg-slate-100 transition-all cursor-pointer" href="#">
+      <span class="material-symbols-outlined">monitor_heart</span>
+      <span class="font-['Inter'] text-sm font-medium">System Health</span>
+    </a>
+    <div class="pt-4 border-t border-slate-200 mt-4 px-4">
+      <p class="px-0 py-2 text-[10px] uppercase tracking-widest text-slate-400 font-bold">Links</p>
+      <a class="text-slate-600 py-3 opacity-70 flex items-center gap-3 hover:bg-slate-100 transition-all rounded-lg px-2" href="client-dashboard.html">
+        <span class="material-symbols-outlined">person</span>
+        <span class="font-['Inter'] text-sm font-medium">Customer View</span>
+      </a>
+    </div>
+  </nav>
+  <div class="mt-auto px-4">
+    <button class="w-full py-3 bg-secondary text-white rounded-lg font-bold text-sm shadow-lg shadow-secondary/20 active:scale-95 transition-transform">
+      Go Online
+    </button>
+  </div>
+  <footer class="mt-4 flex flex-col">
+    <a class="text-slate-600 pl-4 py-3 opacity-70 flex items-center gap-3 hover:bg-slate-100 transition-all cursor-pointer" href="#">
+      <span class="material-symbols-outlined">settings</span>
+      <span class="font-['Inter'] text-sm font-medium">Settings</span>
+    </a>
+    <a class="text-slate-600 pl-4 py-3 opacity-70 flex items-center gap-3 hover:bg-slate-100 transition-all cursor-pointer" href="homepage.html">
+      <span class="material-symbols-outlined">logout</span>
+      <span class="font-['Inter'] text-sm font-medium">Logout</span>
+    </a>
+  </footer>
+</aside>
+
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen bg-surface">
+  <!-- Top Bar -->
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full">
+    <div class="flex flex-col">
+      <span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Today's Schedule</span>
+      <h2 class="font-headline font-bold text-xl tracking-tight text-primary uppercase">Monday, 24 May</h2>
+    </div>
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/20">
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+        </span>
+        <span class="text-sm font-bold tracking-wide text-emerald-700">ONLINE</span>
+        <div class="w-10 h-5 bg-emerald-500 rounded-full relative cursor-pointer shadow-inner">
+          <div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full"></div>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+        <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">help_outline</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="px-8 py-8 space-y-10">
+    <!-- Metric Cards Grid -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm">
+        <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Today's rides</p>
+        <div class="flex items-end gap-2">
+          <h3 class="text-3xl font-headline font-extrabold text-primary">12</h3>
+          <span class="text-emerald-600 text-xs font-bold mb-1 flex items-center"><span class="material-symbols-outlined text-sm">trending_up</span> +2</span>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm">
+        <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Today's revenue</p>
+        <div class="flex items-end gap-2">
+          <h3 class="text-3xl font-headline font-extrabold text-primary">€428.50</h3>
+          <span class="text-emerald-600 text-xs font-bold mb-1 flex items-center"><span class="material-symbols-outlined text-sm">trending_up</span> +14%</span>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm">
+        <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Monthly revenue</p>
+        <div class="flex items-end gap-2">
+          <h3 class="text-3xl font-headline font-extrabold text-primary">€8,940</h3>
+          <span class="text-secondary text-xs font-bold mb-1 flex items-center"><span class="material-symbols-outlined text-sm">horizontal_rule</span> 0%</span>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm">
+        <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Average rating</p>
+        <div class="flex items-end gap-2">
+          <h3 class="text-3xl font-headline font-extrabold text-primary">4.98</h3>
+          <span class="text-amber-500 text-xs font-bold mb-1 flex items-center"><span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">star</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Requests Section -->
+    <section class="max-w-4xl">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="font-headline font-bold text-2xl tracking-tight text-primary">Booking Requests</h2>
+        <span class="bg-secondary/10 text-secondary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-tighter">3 Active Requests</span>
+      </div>
+      <div class="space-y-6">
+        <!-- Booking Card 1 — Julianne -->
+        <div class="bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/10 transition-all hover:shadow-xl hover:shadow-primary/5 group">
+          <div class="flex flex-col md:flex-row justify-between gap-8">
+            <div class="flex-1 space-y-6">
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-headline font-bold text-lg ring-4 ring-surface">JD</div>
+                <div>
+                  <h4 class="font-headline font-bold text-lg text-primary">Julianne Deville</h4>
+                  <div class="flex gap-2 mt-1">
+                    <span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold rounded uppercase tracking-wider">New request</span>
+                    <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded uppercase tracking-wider">Deposit paid</span>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div class="flex gap-4">
+                  <div class="flex flex-col items-center gap-1 mt-1">
+                    <div class="w-2.5 h-2.5 rounded-full border-2 border-secondary bg-white"></div>
+                    <div class="w-0.5 h-8 bg-slate-200"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+                  </div>
+                  <div class="flex flex-col justify-between h-14 py-0.5">
+                    <p class="text-sm font-medium text-on-surface">Charles de Gaulle Airport, Terminal 2F</p>
+                    <p class="text-sm font-medium text-on-surface">Hôtel de Crillon, Place de la Concorde</p>
+                  </div>
+                </div>
+                <div class="flex gap-6 pt-2">
+                  <div class="flex items-center gap-2 text-on-surface-variant">
+                    <span class="material-symbols-outlined text-lg">calendar_today</span>
+                    <span class="text-xs font-semibold">Today, 18:45</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-on-surface-variant">
+                    <span class="material-symbols-outlined text-lg">route</span>
+                    <span class="text-xs font-semibold">28.4 km (45 min)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-56 flex flex-col justify-between items-end">
+              <div class="text-right">
+                <span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Estimated Fare</span>
+                <h3 class="text-4xl font-headline font-black text-primary tracking-tighter">€145.00</h3>
+              </div>
+              <div class="flex flex-col w-full gap-3 mt-6">
+                <button class="w-full py-4 bg-secondary text-white font-bold rounded-lg shadow-lg shadow-secondary/20 hover:scale-[1.02] active:scale-95 transition-all">Accept Request</button>
+                <button class="w-full py-3 bg-transparent border border-outline-variant text-on-surface-variant font-bold rounded-lg hover:bg-surface-container-low transition-all">Decline</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Booking Card 2 — Marcus -->
+        <div class="bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/10 transition-all hover:shadow-xl hover:shadow-primary/5 group">
+          <div class="flex flex-col md:flex-row justify-between gap-8">
+            <div class="flex-1 space-y-6">
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-full bg-slate-200 flex items-center justify-center text-slate-700 font-headline font-bold text-lg ring-4 ring-surface">MB</div>
+                <div>
+                  <h4 class="font-headline font-bold text-lg text-primary">Marcus Blackwood</h4>
+                  <div class="flex gap-2 mt-1">
+                    <span class="px-2 py-0.5 bg-slate-900 text-white text-[10px] font-bold rounded uppercase tracking-wider">Night fare</span>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div class="flex gap-4">
+                  <div class="flex flex-col items-center gap-1 mt-1">
+                    <div class="w-2.5 h-2.5 rounded-full border-2 border-secondary bg-white"></div>
+                    <div class="w-0.5 h-8 bg-slate-200"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+                  </div>
+                  <div class="flex flex-col justify-between h-14 py-0.5">
+                    <p class="text-sm font-medium text-on-surface">Avenue Montaigne, 8th Arr.</p>
+                    <p class="text-sm font-medium text-on-surface">Paris-Orly Airport, West Terminal</p>
+                  </div>
+                </div>
+                <div class="flex gap-6 pt-2">
+                  <div class="flex items-center gap-2 text-on-surface-variant">
+                    <span class="material-symbols-outlined text-lg">calendar_today</span>
+                    <span class="text-xs font-semibold">Today, 22:15</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-on-surface-variant">
+                    <span class="material-symbols-outlined text-lg">route</span>
+                    <span class="text-xs font-semibold">16.2 km (30 min)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-56 flex flex-col justify-between items-end">
+              <div class="text-right">
+                <span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Estimated Fare</span>
+                <h3 class="text-4xl font-headline font-black text-primary tracking-tighter">€85.50</h3>
+              </div>
+              <div class="flex flex-col w-full gap-3 mt-6">
+                <button class="w-full py-4 bg-secondary text-white font-bold rounded-lg shadow-lg shadow-secondary/20 hover:scale-[1.02] active:scale-95 transition-all">Accept Request</button>
+                <button class="w-full py-3 bg-transparent border border-outline-variant text-on-surface-variant font-bold rounded-lg hover:bg-surface-container-low transition-all">Decline</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Visualization Section -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2 h-[400px] rounded-2xl overflow-hidden relative shadow-inner">
+        <img class="w-full h-full object-cover" alt="Modern dark-themed digital map showing Paris city streets with glowing blue route lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsycOjAknnb44dGFP2EFSkyeznN8X8guHoHpym02_MtZbv44YCx-aSUs4MmmB3s0WIzQtpbCXGiZcgKxyh6XYmbcyNPVk_681XwqOEnH_A01WP5lERg8-d5cE8sPkADqn1xUI11-DTprCgKNy7s5-c2CZb9XYclrjH2QWhZPJaLFSX5cZiu0LCyR2IvhgL-H-5RFVLY9B8rpK7EQQ2tc595Sp9LwzkFVA1fGFPDOocA8kzfn4XC0LfeTUbPd8HY5fSI1d7wh8UW14"/>
+        <div class="absolute inset-0 bg-primary/10 pointer-events-none"></div>
+        <div class="absolute bottom-6 left-6 right-6 glass-panel p-4 rounded-xl flex items-center justify-between border border-white/40">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1;">navigation</span>
+            <div>
+              <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Next destination</p>
+              <p class="text-sm font-bold text-primary">CDG Airport Terminal 2F</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Est. Travel</p>
+            <p class="text-sm font-bold text-secondary">14 min</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-primary-container p-8 rounded-2xl flex flex-col justify-between text-white overflow-hidden relative">
+        <div class="relative z-10">
+          <h4 class="font-headline font-bold text-xl mb-2">Fleet Insight</h4>
+          <p class="text-on-primary-container text-sm leading-relaxed">Demand is 24% higher in the 8th Arrondissement tonight. We recommend staying near Avenue Montaigne for VIP requests.</p>
+        </div>
+        <div class="relative z-10 pt-10">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-bold text-on-primary-container uppercase tracking-widest">Weekly Goal</span>
+            <span class="text-xs font-bold">72%</span>
+          </div>
+          <div class="w-full h-1.5 bg-white/10 rounded-full">
+            <div class="w-[72%] h-full bg-secondary rounded-full"></div>
+          </div>
+        </div>
+        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl"></div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="flex flex-col items-center justify-center space-y-4 w-full mt-12 font-body text-xs uppercase tracking-widest bg-slate-50 py-10 border-t border-outline-variant/20">
+    <a href="homepage.html" class="font-headline font-bold text-base">PrestigeVTC</a>
+    <div class="flex gap-8 text-slate-500">
+      <a class="hover:text-black transition-colors" href="homepage.html">Customer Site</a>
+      <a class="hover:text-black transition-colors" href="driver-dashboard.html">Driver Dashboard</a>
+      <a class="hover:text-black transition-colors" href="admin-operations.html">Admin Panel</a>
+    </div>
+    <p class="text-slate-400">© 2025 PrestigeVTC. Exceptionalism as Standard.</p>
+  </footer>
+</main>
+
+<!-- Floating Page Navigator -->
+<div class="page-nav" id="pageNav">
+  <button class="page-nav-btn" onclick="document.getElementById('navMenu').classList.toggle('open')">
+    <span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;">grid_view</span> All Pages
+  </button>
+  <div class="page-nav-menu" id="navMenu">
+    <a href="index.html"><span class="material-symbols-outlined" style="font-size:16px;">home</span> Page Hub <span class="badge badge-customer">Index</span></a>
+    <a href="homepage.html"><span class="material-symbols-outlined" style="font-size:16px;">language</span> Homepage <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-details.html"><span class="material-symbols-outlined" style="font-size:16px;">person</span> Checkout: Details <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-payment.html"><span class="material-symbols-outlined" style="font-size:16px;">credit_card</span> Checkout: Payment <span class="badge badge-customer">Customer</span></a>
+    <a href="confirmation.html"><span class="material-symbols-outlined" style="font-size:16px;">check_circle</span> Confirmation <span class="badge badge-customer">Customer</span></a>
+    <a href="client-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">dashboard</span> Client Dashboard <span class="badge badge-customer">Customer</span></a>
+    <a href="driver-incoming.html"><span class="material-symbols-outlined" style="font-size:16px;">notifications</span> Driver: Incoming <span class="badge badge-active">Active</span></a>
+    <a href="driver-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">directions_car</span> Driver Dashboard <span class="badge badge-driver">Driver</span></a>
+    <a href="admin-operations.html"><span class="material-symbols-outlined" style="font-size:16px;">bar_chart</span> Admin: Operations <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-bookings.html"><span class="material-symbols-outlined" style="font-size:16px;">list_alt</span> Admin: Bookings <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-pricing.html"><span class="material-symbols-outlined" style="font-size:16px;">price_change</span> Admin: Pricing <span class="badge badge-admin">Admin</span></a>
+  </div>
+</div>
+</body></html>

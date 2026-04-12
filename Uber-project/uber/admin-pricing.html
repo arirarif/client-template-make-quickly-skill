@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PrestigeVTC Admin | Pricing Rules</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{
+    colors:{
+      "on-background":"#191c1d","surface-container-high":"#e7e8e9","surface-tint":"#575d78",
+      "tertiary":"#000000","on-secondary":"#ffffff","on-secondary-fixed-variant":"#0039b5",
+      "on-secondary-fixed":"#001551","on-tertiary-container":"#a17d61","surface-variant":"#e1e3e4",
+      "inverse-on-surface":"#f0f1f2","tertiary-container":"#2c1603","on-primary-container":"#7c839f",
+      "secondary-fixed-dim":"#b7c4ff","on-primary-fixed":"#141a32","error-container":"#ffdad6",
+      "on-surface-variant":"#46464d","outline-variant":"#c6c6ce","on-tertiary":"#ffffff",
+      "surface":"#f8f9fa","outline":"#76767e","secondary-container":"#4069f2",
+      "on-secondary-container":"#fffbff","surface-container-low":"#f3f4f5","surface-dim":"#d9dadb",
+      "surface-container":"#edeeef","surface-container-highest":"#e1e3e4","error":"#ba1a1a",
+      "background":"#f8f9fa","on-error-container":"#93000a","primary-container":"#141a32",
+      "on-error":"#ffffff","inverse-primary":"#bfc5e4","on-tertiary-fixed-variant":"#5e4029",
+      "inverse-surface":"#2e3132","on-tertiary-fixed":"#2c1603","on-primary":"#ffffff",
+      "surface-bright":"#f8f9fa","tertiary-fixed":"#ffdcc3","on-surface":"#191c1d",
+      "primary-fixed-dim":"#bfc5e4","on-primary-fixed-variant":"#3f465f","secondary-fixed":"#dce1ff",
+      "primary":"#000000","surface-container-lowest":"#ffffff","primary-fixed":"#dce1ff",
+      "secondary":"#1d4ed8"
+    },
+    borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+    fontFamily:{headline:["Manrope"],body:["Inter"],label:["Inter"]}
+  }}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .signature-gradient{background:linear-gradient(135deg,#1d4ed8 0%,#4069f2 100%);}
+  .signature-gradient:hover{opacity:0.9;}
+  .chart-grid{background-image:radial-gradient(circle at 1px 1px,#e2e8f0 1px,transparent 0);background-size:24px 24px;}
+  .preview-pane{background:linear-gradient(180deg,#ffffff 0%,#f1f5f9 100%);}
+  .page-nav{position:fixed;bottom:24px;right:24px;z-index:100;}
+  .page-nav-btn{background:#141a32;color:#fff;border:none;border-radius:999px;padding:12px 20px;font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,0.25);display:flex;align-items:center;gap:8px;transition:opacity 0.2s;}
+  .page-nav-btn:hover{opacity:0.85;}
+  .page-nav-menu{display:none;position:absolute;bottom:52px;right:0;background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.15);padding:8px;min-width:220px;}
+  .page-nav-menu.open{display:block;}
+  .page-nav-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;font-family:Inter,sans-serif;font-size:13px;font-weight:500;color:#191c1d;text-decoration:none;transition:background 0.15s;}
+  .page-nav-menu a:hover{background:#f3f4f5;}
+  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.06em;}
+  .badge-customer{background:#dce1ff;color:#0039b5;}
+  .badge-driver{background:#d1fae5;color:#065f46;}
+  .badge-admin{background:#fef3c7;color:#92400e;}
+  .badge-active{background:#141a32;color:#fff;}
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+
+<!-- Sidebar Shell -->
+<aside class="flex flex-col h-full fixed left-0 top-0 bg-slate-900 w-72 shadow-2xl z-50">
+  <div class="text-xl font-headline font-black text-white px-6 py-10 uppercase tracking-widest">
+    <a href="homepage.html" class="hover:opacity-80 transition-opacity">PrestigeVTC</a>
+    <p class="text-[10px] text-slate-500 font-normal normal-case tracking-widest mt-1">Admin Central</p>
+  </div>
+  <nav class="flex-1 px-2 space-y-1">
+    <a class="text-slate-400 hover:text-white px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 rounded-md" href="admin-operations.html">
+      <span class="material-symbols-outlined">analytics</span><span class="font-body tracking-wide text-sm">Overview</span>
+    </a>
+    <a class="text-slate-400 hover:text-white px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 rounded-md" href="admin-bookings.html">
+      <span class="material-symbols-outlined">list_alt</span><span class="font-body tracking-wide text-sm">All Bookings</span>
+    </a>
+    <a class="text-slate-400 hover:text-white px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 rounded-md" href="#">
+      <span class="material-symbols-outlined">airport_shuttle</span><span class="font-body tracking-wide text-sm">Fleet Mgmt</span>
+    </a>
+    <a class="text-slate-400 hover:text-white px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 rounded-md" href="#">
+      <span class="material-symbols-outlined">account_balance</span><span class="font-body tracking-wide text-sm">Financials</span>
+    </a>
+    <a class="bg-blue-600 text-white rounded-md mx-2 px-4 py-3 flex items-center gap-3 shadow-lg" href="admin-pricing.html">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">rule</span>
+      <span class="font-body tracking-wide text-sm font-semibold">Pricing Rules</span>
+    </a>
+    <a class="text-slate-400 hover:text-white px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 rounded-md" href="#">
+      <span class="material-symbols-outlined">group_add</span><span class="font-body tracking-wide text-sm">User Access</span>
+    </a>
+  </nav>
+  <div class="mt-auto p-4 space-y-1">
+    <div class="px-4 py-3 mb-4 flex items-center gap-4">
+      <div class="w-10 h-10 rounded-full overflow-hidden bg-slate-800 border border-slate-700">
+        <img alt="Admin Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq3Nb2v4DFJkX7O5BqdbodqUPIDjYeOV2J5jAoEMThkP71OdIcAnYpufnGbhD4OFcMV-oGm58rY1blqkqipK40c_P28H7HdtkRi1N3mjD7pW76jxjCIgUDHgYGrXkltZXMmFm3QtPn7lkSArZxwDyFDVu5LIWUcc2QPV6oQx9YP442MDTENpdoim6zx1zvjFSls3IZQqlkDA-rsEseIJrFyrmrLBVhpz0N8sS4bef_-dOM2LZ-YfudKh-tha0yvIatrWKdUoYfkYE"/>
+      </div>
+      <div>
+        <div class="text-white text-xs font-bold font-headline tracking-tight">System Controller</div>
+        <div class="text-slate-500 text-[10px] uppercase">Admin Central</div>
+      </div>
+    </div>
+    <a class="text-slate-400 hover:text-white px-4 py-2 flex items-center gap-3 text-xs transition-all" href="#">
+      <span class="material-symbols-outlined text-lg">shield</span><span>Security</span>
+    </a>
+    <a class="text-slate-400 hover:text-white px-4 py-2 flex items-center gap-3 text-xs transition-all" href="homepage.html">
+      <span class="material-symbols-outlined text-lg">logout</span><span>Logout</span>
+    </a>
+  </div>
+</aside>
+
+<!-- Main Content Canvas -->
+<main class="ml-72 min-h-screen p-8 lg:p-12 xl:p-16">
+  <!-- Header -->
+  <header class="mb-10 flex justify-between items-end">
+    <div>
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-8 h-[2px] bg-secondary"></span>
+        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Operational Control</span>
+      </div>
+      <h1 class="text-5xl font-headline font-extrabold tracking-tighter text-primary mb-4">Pricing Rules</h1>
+      <p class="text-on-surface-variant font-body max-w-2xl leading-relaxed">
+        Configure the algorithmic core of PrestigeVTC. Adjust base rates and surcharges to maintain premium service standards across all territories.
+      </p>
+    </div>
+    <div class="flex gap-4">
+      <button class="px-6 py-2.5 bg-white border border-outline-variant text-primary font-bold text-sm rounded-lg hover:bg-slate-50 transition-all">Discard Changes</button>
+      <button class="px-8 py-2.5 signature-gradient text-white font-bold text-sm rounded-lg shadow-xl shadow-secondary/20 hover:scale-[1.02] active:scale-95 transition-all">Save Changes</button>
+    </div>
+  </header>
+
+  <!-- Quick Stats Row -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+    <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-surface-container flex items-center gap-4">
+      <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600"><span class="material-symbols-outlined">trending_up</span></div>
+      <div><div class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Avg. Fare (30d)</div><div class="text-2xl font-headline font-bold">€42.80</div></div>
+    </div>
+    <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-surface-container flex items-center gap-4">
+      <div class="w-12 h-12 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600"><span class="material-symbols-outlined">star</span></div>
+      <div><div class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Top Surcharge</div><div class="text-2xl font-headline font-bold">Night (+15%)</div></div>
+    </div>
+    <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-surface-container flex items-center gap-4">
+      <div class="w-12 h-12 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600"><span class="material-symbols-outlined">directions_car</span></div>
+      <div><div class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Active Fleet Rules</div><div class="text-2xl font-headline font-bold">48 Vehicles</div></div>
+    </div>
+    <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-surface-container flex items-center gap-4">
+      <div class="w-12 h-12 rounded-lg bg-slate-50 flex items-center justify-center text-slate-600"><span class="material-symbols-outlined">update</span></div>
+      <div><div class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Last Rule Sync</div><div class="text-2xl font-headline font-bold">2h ago</div></div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-12 gap-8 items-start">
+    <!-- Left: Configuration Grid -->
+    <div class="col-span-12 lg:col-span-8 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Base Pricing -->
+        <section class="bg-white p-8 rounded-xl border border-outline-variant/30 shadow-sm">
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-lg font-headline font-bold text-primary">Base Pricing</h2>
+            <span class="material-symbols-outlined text-secondary">euro_symbol</span>
+          </div>
+          <div class="space-y-6">
+            <div class="group">
+              <label class="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-on-surface-variant mb-2.5">Base Fare</label>
+              <div class="relative"><span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">€</span>
+                <input class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3.5 pl-8 pr-4 font-headline font-bold text-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" type="text" value="12.00"/></div>
+            </div>
+            <div class="group">
+              <label class="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-on-surface-variant mb-2.5">Price per Kilometer</label>
+              <div class="relative"><span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">€</span>
+                <input class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3.5 pl-8 pr-4 font-headline font-bold text-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" type="text" value="1.80"/></div>
+            </div>
+            <div class="group">
+              <label class="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-on-surface-variant mb-2.5">Minimum Trip Fare</label>
+              <div class="relative"><span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">€</span>
+                <input class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3.5 pl-8 pr-4 font-headline font-bold text-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" type="text" value="25.00"/></div>
+            </div>
+          </div>
+          <button class="w-full mt-10 signature-gradient text-white py-4 rounded-lg font-headline font-bold text-sm tracking-wide shadow-lg shadow-secondary/20 transition-all active:scale-95">Update Base Rates</button>
+        </section>
+
+        <!-- Surcharges -->
+        <section class="bg-white p-8 rounded-xl border border-outline-variant/30 shadow-sm">
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-lg font-headline font-bold text-primary">Surcharge Adjustments</h2>
+            <span class="material-symbols-outlined text-secondary">percent</span>
+          </div>
+          <div class="space-y-6">
+            <div class="group">
+              <label class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant mb-2.5 block">Night Premium</label>
+              <div class="relative">
+                <input class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3.5 px-4 font-headline font-bold text-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" type="text" value="15"/>
+                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">%</span>
+              </div>
+            </div>
+            <div class="group">
+              <label class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant mb-2.5 block">Weekend Premium</label>
+              <div class="relative">
+                <input class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3.5 px-4 font-headline font-bold text-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" type="text" value="10"/>
+                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">%</span>
+              </div>
+            </div>
+            <div class="group">
+              <label class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant mb-2.5 block">Wait Time Rate</label>
+              <div class="relative"><span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">€</span>
+                <input class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3.5 pl-8 pr-4 font-headline font-bold text-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" type="text" value="4.00"/></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Global Toggles -->
+      <section class="bg-white p-8 rounded-xl border border-outline-variant/30 shadow-sm">
+        <h2 class="text-lg font-headline font-bold text-primary mb-6">Active Rule Sets</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-4 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+            <div><div class="text-sm font-bold text-primary">Night Rule</div><div class="text-[10px] text-on-surface-variant uppercase tracking-wide">Automatic Shift</div></div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input checked="" class="sr-only peer" type="checkbox"/>
+              <div class="w-10 h-5 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:bg-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+            </label>
+          </div>
+          <div class="p-4 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+            <div><div class="text-sm font-bold text-primary">Weekend Uplift</div><div class="text-[10px] text-on-surface-variant uppercase tracking-wide">Calendar Based</div></div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input checked="" class="sr-only peer" type="checkbox"/>
+              <div class="w-10 h-5 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:bg-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+            </label>
+          </div>
+          <div class="p-4 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+            <div><div class="text-sm font-bold text-primary">Holiday Surge</div><div class="text-[10px] text-on-surface-variant uppercase tracking-wide">+20% regional</div></div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input class="sr-only peer" type="checkbox"/>
+              <div class="w-10 h-5 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:bg-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Analytics -->
+      <section class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_12px_32px_rgba(10,17,40,0.04)] border border-surface-container">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-xl font-headline font-bold tracking-tight">Pricing Analytics</h2>
+            <p class="text-xs text-on-surface-variant mt-1">Average Fare Trend (Last 30 Days)</p>
+          </div>
+          <div class="flex gap-2">
+            <button class="px-3 py-1 rounded-md bg-slate-100 text-[10px] font-bold uppercase tracking-tighter">Day</button>
+            <button class="px-3 py-1 rounded-md bg-secondary text-white text-[10px] font-bold uppercase tracking-tighter">Week</button>
+            <button class="px-3 py-1 rounded-md bg-slate-100 text-[10px] font-bold uppercase tracking-tighter">Month</button>
+          </div>
+        </div>
+        <div class="h-64 w-full chart-grid relative overflow-hidden rounded-lg border border-slate-100">
+          <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 100">
+            <defs>
+              <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.2"></stop>
+                <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M0,80 Q50,75 100,60 T200,50 T300,40 T400,30 L400,100 L0,100 Z" fill="url(#chartGradient)"></path>
+            <path d="M0,80 Q50,75 100,60 T200,50 T300,40 T400,30" fill="none" stroke="#1d4ed8" stroke-width="2.5"></path>
+            <circle cx="100" cy="60" fill="white" r="3" stroke="#1d4ed8" stroke-width="2"></circle>
+            <circle cx="200" cy="50" fill="white" r="3" stroke="#1d4ed8" stroke-width="2"></circle>
+            <circle cx="300" cy="40" fill="white" r="3" stroke="#1d4ed8" stroke-width="2"></circle>
+            <circle cx="400" cy="30" fill="white" r="3" stroke="#1d4ed8" stroke-width="2"></circle>
+          </svg>
+          <div class="absolute bottom-4 left-0 right-0 px-4 flex justify-between text-[8px] font-bold text-slate-400 uppercase tracking-widest">
+            <span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Right: Simulator & Changelog -->
+    <div class="col-span-12 lg:col-span-4 space-y-8">
+      <!-- Pricing Simulator -->
+      <section class="preview-pane p-8 rounded-xl border border-outline-variant/30 shadow-lg sticky top-8">
+        <div class="flex items-center gap-2 mb-6">
+          <span class="material-symbols-outlined text-secondary">calculate</span>
+          <h2 class="text-lg font-headline font-bold text-primary">Pricing Simulator</h2>
+        </div>
+        <div class="space-y-4 mb-8">
+          <div class="text-xs font-bold text-on-surface-variant uppercase tracking-widest border-b border-slate-200 pb-2">Simulation Scenario</div>
+          <div class="flex justify-between text-sm py-1"><span class="text-slate-500">Distance</span><span class="font-bold text-primary">15.0 km</span></div>
+          <div class="flex justify-between text-sm py-1"><span class="text-slate-500">Time of Day</span><span class="font-bold text-primary">23:30 (Night Rate)</span></div>
+          <div class="flex justify-between text-sm py-1"><span class="text-slate-500">Waiting Time</span><span class="font-bold text-primary">10 mins</span></div>
+        </div>
+        <div class="bg-primary p-6 rounded-lg text-white space-y-3 shadow-xl">
+          <div class="flex justify-between text-xs opacity-70"><span>Base Fare</span><span>€12.00</span></div>
+          <div class="flex justify-between text-xs opacity-70"><span>Distance (15km x €1.80)</span><span>€27.00</span></div>
+          <div class="flex justify-between text-xs opacity-70"><span>Wait Time (2 units)</span><span>€8.00</span></div>
+          <div class="flex justify-between text-xs text-secondary font-bold"><span>Night Surcharge (15%)</span><span>+ €7.05</span></div>
+          <div class="h-[1px] bg-white/10 my-2"></div>
+          <div class="flex justify-between items-end">
+            <span class="text-sm font-bold">Estimated Total</span>
+            <span class="text-2xl font-headline font-extrabold text-white">€54.05</span>
+          </div>
+        </div>
+        <button class="w-full mt-6 py-3 border border-slate-200 text-slate-500 rounded-lg text-sm font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all">
+          <span class="material-symbols-outlined text-sm">refresh</span>Recalculate Preview
+        </button>
+      </section>
+
+      <!-- Recent Changes Log -->
+      <section class="bg-primary-container p-8 rounded-xl text-white shadow-xl">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-secondary-fixed-dim">history</span>
+          <h2 class="text-xl font-headline font-bold tracking-tight">Recent Changes</h2>
+        </div>
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[10px] font-bold">JD</div>
+            <div>
+              <div class="text-sm font-semibold">Base Fare Updated</div>
+              <div class="text-[10px] text-on-primary-container uppercase tracking-wider">Julian D. • 2h ago</div>
+              <p class="text-xs text-on-primary-container/80 mt-1">Adjusted base rate from €10 to €12 for seasonal demand.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[10px] font-bold">SC</div>
+            <div>
+              <div class="text-sm font-semibold">Night Surcharge Toggled</div>
+              <div class="text-[10px] text-on-primary-container uppercase tracking-wider">System Control • 5h ago</div>
+              <p class="text-xs text-on-primary-container/80 mt-1">Automatic activation of global night premium rule.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[10px] font-bold">MA</div>
+            <div>
+              <div class="text-sm font-semibold">Luggage Fee Adjusted</div>
+              <div class="text-[10px] text-on-primary-container uppercase tracking-wider">Marie A. • 1d ago</div>
+              <p class="text-xs text-on-primary-container/80 mt-1">Increased oversized luggage handling fee by €1.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="flex flex-col items-center justify-center space-y-6 w-full py-12 bg-slate-50/50 border-t border-slate-100 mt-12">
+    <a href="homepage.html" class="font-headline font-bold text-lg text-primary tracking-tighter">PrestigeVTC</a>
+    <div class="flex gap-8">
+      <a class="font-body text-[10px] uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="homepage.html">Customer Site</a>
+      <a class="font-body text-[10px] uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="admin-operations.html">Operations</a>
+      <a class="font-body text-[10px] uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="admin-bookings.html">Bookings</a>
+      <a class="font-body text-[10px] uppercase tracking-widest text-slate-500 hover:text-black transition-colors" href="#">Help Center</a>
+    </div>
+    <p class="font-body text-[10px] uppercase tracking-widest text-slate-400">© 2025 PrestigeVTC. Exceptionalism as Standard.</p>
+  </footer>
+</main>
+
+<!-- Floating Page Navigator -->
+<div class="page-nav" id="pageNav">
+  <button class="page-nav-btn" onclick="document.getElementById('navMenu').classList.toggle('open')">
+    <span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;">grid_view</span> All Pages
+  </button>
+  <div class="page-nav-menu" id="navMenu">
+    <a href="index.html"><span class="material-symbols-outlined" style="font-size:16px;">home</span> Page Hub <span class="badge badge-customer">Index</span></a>
+    <a href="homepage.html"><span class="material-symbols-outlined" style="font-size:16px;">language</span> Homepage <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-details.html"><span class="material-symbols-outlined" style="font-size:16px;">person</span> Checkout: Details <span class="badge badge-customer">Customer</span></a>
+    <a href="checkout-payment.html"><span class="material-symbols-outlined" style="font-size:16px;">credit_card</span> Checkout: Payment <span class="badge badge-customer">Customer</span></a>
+    <a href="confirmation.html"><span class="material-symbols-outlined" style="font-size:16px;">check_circle</span> Confirmation <span class="badge badge-customer">Customer</span></a>
+    <a href="client-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">dashboard</span> Client Dashboard <span class="badge badge-customer">Customer</span></a>
+    <a href="driver-incoming.html"><span class="material-symbols-outlined" style="font-size:16px;">notifications</span> Driver: Incoming <span class="badge badge-driver">Driver</span></a>
+    <a href="driver-dashboard.html"><span class="material-symbols-outlined" style="font-size:16px;">directions_car</span> Driver Dashboard <span class="badge badge-driver">Driver</span></a>
+    <a href="admin-operations.html"><span class="material-symbols-outlined" style="font-size:16px;">bar_chart</span> Admin: Operations <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-bookings.html"><span class="material-symbols-outlined" style="font-size:16px;">list_alt</span> Admin: Bookings <span class="badge badge-admin">Admin</span></a>
+    <a href="admin-pricing.html"><span class="material-symbols-outlined" style="font-size:16px;">price_change</span> Admin: Pricing <span class="badge badge-active">Active</span></a>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PrestigeVTC | Design System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config={darkMode:"class",theme:{extend:{
+    colors:{
+      "primary":"#000000","secondary":"#1d4ed8","primary-container":"#141a32",
+      "on-primary-container":"#7c839f","on-surface-variant":"#46464d",
+      "surface":"#f8f9fa","surface-container-lowest":"#ffffff",
+      "surface-container":"#edeeef","outline-variant":"#c6c6ce",
+    },
+    fontFamily:{headline:["Manrope"],body:["Inter"],label:["Inter"]}
+  }}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .signature-gradient{background:linear-gradient(135deg,#1d4ed8 0%,#4069f2 100%);}
+  .hero-gradient{background:linear-gradient(145deg,#0a0e1e 0%,#141a32 60%,#1d4ed8 100%);}
+  .badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:0.07em;}
+  .badge-customer{background:#dce1ff;color:#0039b5;}
+  .badge-driver{background:#d1fae5;color:#065f46;}
+  .badge-admin{background:#fef3c7;color:#92400e;}
+  .page-card{transition:transform 0.25s cubic-bezier(.22,.61,.36,1),box-shadow 0.25s cubic-bezier(.22,.61,.36,1);}
+  .page-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,0.12);}
+  .page-card:hover .card-arrow{transform:translateX(4px);}
+  .card-arrow{transition:transform 0.2s;}
+  .section-divider{border-top:2px solid currentColor;opacity:0.12;}
+  .stat-num{font-size:3.5rem;font-weight:800;line-height:1;font-family:Manrope,sans-serif;letter-spacing:-0.04em;}
+</style>
+</head>
+<body class="bg-gray-50 font-body text-primary antialiased">
+
+<!-- NAV -->
+<header class="bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="font-headline font-extrabold text-xl tracking-tighter">PrestigeVTC</div>
+    <div class="flex items-center gap-3">
+      <span class="hidden sm:inline text-[11px] font-bold uppercase tracking-widest text-gray-400">Design System</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-secondary hidden sm:block"></span>
+      <span class="text-[11px] font-bold uppercase tracking-widest text-secondary">11 Pages</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-gradient py-24 px-6 text-white relative overflow-hidden">
+  <!-- decorative grid -->
+  <div class="absolute inset-0 opacity-5" style="background-image:linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px);background-size:64px 64px;"></div>
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-[11px] font-bold uppercase tracking-widest mb-8">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      Prototype Complete
+    </div>
+    <h1 class="text-6xl md:text-7xl font-headline font-extrabold tracking-tighter mb-6 leading-none">
+      11 Production-Ready<br/><span class="text-blue-400">Pages</span>
+    </h1>
+    <p class="text-white/60 text-lg max-w-2xl leading-relaxed mb-10">
+      A complete end-to-end ride-hailing platform spanning the full customer flow, driver operations portal, and admin intelligence dashboard.
+    </p>
+    <div class="flex flex-wrap gap-8">
+      <div><div class="stat-num">3</div><div class="text-white/50 text-xs uppercase tracking-widest mt-1">User Roles</div></div>
+      <div class="w-px bg-white/10"></div>
+      <div><div class="stat-num">11</div><div class="text-white/50 text-xs uppercase tracking-widest mt-1">Unique Pages</div></div>
+      <div class="w-px bg-white/10"></div>
+      <div><div class="stat-num">1</div><div class="text-white/50 text-xs uppercase tracking-widest mt-1">Design System</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<main class="max-w-7xl mx-auto px-6 py-20 space-y-20">
+
+  <!-- ─── CUSTOMER JOURNEY ─── -->
+  <section>
+    <div class="flex items-center gap-4 mb-10">
+      <span class="badge badge-customer text-sm py-1.5 px-4">Customer</span>
+      <div class="h-px flex-1 bg-blue-100"></div>
+      <span class="text-[11px] font-bold uppercase tracking-widest text-blue-300">5 Pages</span>
+    </div>
+    <h2 class="text-3xl font-headline font-extrabold tracking-tighter mb-2">Customer Journey</h2>
+    <p class="text-gray-400 text-sm mb-10">The complete booking funnel — from discovery to confirmation — plus the loyalty account dashboard.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Homepage -->
+      <a href="homepage.html" target="_blank" rel="noopener" class="page-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col group">
+        <div class="h-48 signature-gradient relative flex items-end p-6">
+          <span class="material-symbols-outlined text-white/30 absolute top-6 right-6" style="font-size:64px;">language</span>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-1">Entry Point</div>
+            <div class="text-white text-xl font-headline font-bold leading-tight">Homepage</div>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-gray-500 text-sm flex-1 leading-relaxed">Hero booking widget with service cards, coverage map, testimonials, and city CTA.</p>
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <span class="badge badge-customer">Customer</span>
+            <span class="text-secondary text-sm font-bold flex items-center gap-1 card-arrow">Open Page <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Checkout Details -->
+      <a href="checkout-details.html" target="_blank" rel="noopener" class="page-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col group">
+        <div class="h-48 bg-slate-800 relative flex items-end p-6">
+          <span class="material-symbols-outlined text-white/20 absolute top-6 right-6" style="font-size:64px;">person</span>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-1">Step 1 of 3</div>
+            <div class="text-white text-xl font-headline font-bold leading-tight">Checkout: Details</div>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-gray-500 text-sm flex-1 leading-relaxed">Passenger details form — name, email, phone, pickup location, and special requests.</p>
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <span class="badge badge-customer">Customer</span>
+            <span class="text-secondary text-sm font-bold flex items-center gap-1 card-arrow">Open Page <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Checkout Payment -->
+      <a href="checkout-payment.html" target="_blank" rel="noopener" class="page-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col group">
+        <div class="h-48 bg-primary-container relative flex items-end p-6">
+          <span class="material-symbols-outlined text-white/20 absolute top-6 right-6" style="font-size:64px;">credit_card</span>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-1">Step 2 of 3</div>
+            <div class="text-white text-xl font-headline font-bold leading-tight">Checkout: Payment</div>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-gray-500 text-sm flex-1 leading-relaxed">Card payment form with dark fare summary sidebar and live order preview.</p>
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <span class="badge badge-customer">Customer</span>
+            <span class="text-secondary text-sm font-bold flex items-center gap-1 card-arrow">Open Page <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Confirmation -->
+      <a href="confirmation.html" target="_blank" rel="noopener" class="page-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col group">
+        <div class="h-48 bg-gradient-to-br from-emerald-600 to-teal-700 relative flex items-end p-6">
+          <span class="material-symbols-outlined text-white/25 absolute top-6 right-6" style="font-size:64px;">check_circle</span>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-1">Step 3 of 3</div>
+            <div class="text-white text-xl font-headline font-bold leading-tight">Confirmation</div>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-gray-500 text-sm flex-1 leading-relaxed">Booking success screen with chauffeur preview, loyalty points earned, and booking reference.</p>
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <span class="badge badge-customer">Customer</span>
+            <span class="text-secondary text-sm font-bold flex items-center gap-1 card-arrow">Open Page <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Client Dashboard -->
+      <a href="client-dashboard.html" target="_blank" rel="noopener" class="page-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col group sm:col-span-2 lg:col-span-2">
+        <div class="h-48 bg-gradient-to-r from-blue-900 via-[#141a32] to-blue-900 relative flex items-end p-6">
+          <span class="material-symbols-outlined text-white/15 absolute top-6 right-6" style="font-size:64px;">account_circle</span>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-1">Logged In</div>
+            <div class="text-white text-xl font-headline font-bold leading-tight">Client Dashboard</div>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-gray-500 text-sm flex-1 leading-relaxed">Loyalty bento grid with Platinum tier card, promo codes, upcoming + completed booking history. Passenger portal for Julian Vance.</p>
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <span class="badge badge-customer">Customer</span>
+            <span class="text-secondary text-sm font-bold flex items-center gap-1 card-arrow">Open Page <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ─── DRIVER PORTAL ─── -->
+  <section>
+    <div class="flex items-center gap-4 mb-10">
+      <span class="badge badge-driver text-sm py-1.5 px-4">Driver</span>
+      <div class="h-px flex-1 bg-emerald-100"></div>
+      <span class="text-[11px] font-bold uppercase tracking-widest text-emerald-300">2 Pages</span>
+    </div>
+    <h2 class="text-3xl font-headline font-extrabold tracking-tighter mb-2">Driver Portal</h2>
+    <p class="text-gray-400 text-sm mb-10">Fleet operations interface for managing live booking requests and reviewing daily metrics.</p>
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <!-- Driver Incoming -->
+      <a href="driver-incoming.html" target="_blank" rel="noopener" class="page-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col group">
+        <div class="h-48 bg-gradient-to-br from-slate-800 to-slate-900 relative flex items-end p-6">
+          <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-500/20 border border-red-400/40 text-red-400 text-[10px] font-bold uppercase tracking-widest">2 New Requests</span>
+          <span class="material-symbols-outlined text-white/20 absolute top-6 right-6" style="font-size:64px;top:48px;">notifications_active</span>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-1">Live Queue</div>
+            <div class="text-white text-xl font-headline font-bold leading-tight">Driver: Incoming Requests</div>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-gray-500 text-sm flex-1 leading-relaxed">Real-time booking request cards with accept/decline, client rating, and route preview. Fleet insight sidebar.</p>
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <span class="badge badge-driver">Driver</span>
+            <span class="text-secondary text-sm font-bold flex items-center gap-1 card-arrow">Open Page <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Driver Dashboard -->
+      <a href="driver-dashboard.html" target="_blank" rel="noopener" class="page-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col group">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-emerald-900/50 relative flex items-end p-6">
+          <span class="material-symbols-outlined text-white/20 absolute top-6 right-6" style="font-size:64px;">local_taxi</span>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-1">Driver View</div>
+            <div class="text-white text-xl font-headline font-bold leading-tight">Driver Dashboard</div>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-gray-500 text-sm flex-1 leading-relaxed">Today's earnings, ride count, rating metrics, ONLINE toggle, and 3 active booking request cards with accept/decline.</p>
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <span class="badge badge-driver">Driver</span>
+            <span class="text-secondary text-sm font-bold flex items-center gap-1 card-arrow">Open Page <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ─── ADMIN PANEL ─── -->
+  <section>
+    <div class="flex items-center gap-4 mb-10">
+      <span class="badge badge-admin text-sm py-1.5 px-4">Admin</span>
+      <div class="h-px flex-1 bg-amber-100"></div>
+      <span class="text-[11px] font-bold uppercase tracking-widest text-amber-300">3 Pages</span>
+    </div>
+    <h2 class="text-3xl font-headline font-extrabold tracking-tighter mb-2">Admin Panel</h2>
+    <p class="text-gray-400 text-sm mb-10">Command center for operations oversight, booking management, and dynamic pricing control.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Admin Operations -->
+      <a href="admin-operations.html" target="_blank" rel="noopener" class="page-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col group">
+        <div class="h-48 bg-gradient-to-br from-slate-100 to-blue-50 border-b border-gray-100 relative flex items-end p-6">
+          <span class="material-symbols-outlined text-blue-300 absolute top-6 right-6" style="font-size:64px;">bar_chart</span>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-1">Dashboard</div>
+            <div class="text-gray-900 text-xl font-headline font-bold leading-tight">Admin: Operations</div>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-gray-500 text-sm flex-1 leading-relaxed">Fleet map (Paris), 4 KPI cards, revenue bar chart (Mon-Sun), system activity log, and driver status feed.</p>
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <span class="badge badge-admin">Admin</span>
+            <span class="text-secondary text-sm font-bold flex items-center gap-1 card-arrow">Open Page <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Admin Bookings -->
+      <a href="admin-bookings.html" target="_blank" rel="noopener" class="page-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col group">
+        <div class="h-48 bg-[#0A1128] relative flex items-end p-6">
+          <span class="material-symbols-outlined text-white/15 absolute top-6 right-6" style="font-size:64px;">list_alt</span>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-amber-400 mb-1">Fleet Portal</div>
+            <div class="text-white text-xl font-headline font-bold leading-tight">Admin: Bookings</div>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-gray-500 text-sm flex-1 leading-relaxed">Full bookings table with status pills (Upcoming/Completed/Cancelled), date filters, and booking detail view.</p>
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <span class="badge badge-admin">Admin</span>
+            <span class="text-secondary text-sm font-bold flex items-center gap-1 card-arrow">Open Page <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Admin Pricing -->
+      <a href="admin-pricing.html" target="_blank" rel="noopener" class="page-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col group">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-blue-900 relative flex items-end p-6">
+          <span class="material-symbols-outlined text-white/20 absolute top-6 right-6" style="font-size:64px;">price_change</span>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-1">Pricing Engine</div>
+            <div class="text-white text-xl font-headline font-bold leading-tight">Admin: Pricing</div>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-gray-500 text-sm flex-1 leading-relaxed">Base rate inputs, surcharge toggles, live Pricing Simulator (€54.05 sample), analytics trend chart, and change log.</p>
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <span class="badge badge-admin">Admin</span>
+            <span class="text-secondary text-sm font-bold flex items-center gap-1 card-arrow">Open Page <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FLOW DIAGRAM -->
+  <section class="bg-white rounded-3xl border border-gray-100 shadow-sm p-12">
+    <h2 class="text-2xl font-headline font-extrabold tracking-tighter mb-2">Page Flow</h2>
+    <p class="text-gray-400 text-sm mb-10">How the pages connect across the three user journeys.</p>
+    <div class="space-y-8">
+      <!-- Customer Flow -->
+      <div>
+        <div class="text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-4">Customer Flow</div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="homepage.html" target="_blank" class="px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg text-sm font-bold text-blue-700 hover:bg-blue-100 transition-colors">Homepage</a>
+          <span class="material-symbols-outlined text-gray-300">arrow_forward</span>
+          <a href="checkout-details.html" target="_blank" class="px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg text-sm font-bold text-blue-700 hover:bg-blue-100 transition-colors">Checkout: Details</a>
+          <span class="material-symbols-outlined text-gray-300">arrow_forward</span>
+          <a href="checkout-payment.html" target="_blank" class="px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg text-sm font-bold text-blue-700 hover:bg-blue-100 transition-colors">Checkout: Payment</a>
+          <span class="material-symbols-outlined text-gray-300">arrow_forward</span>
+          <a href="confirmation.html" target="_blank" class="px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg text-sm font-bold text-blue-700 hover:bg-blue-100 transition-colors">Confirmation</a>
+          <span class="material-symbols-outlined text-gray-300">arrow_forward</span>
+          <a href="client-dashboard.html" target="_blank" class="px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg text-sm font-bold text-blue-700 hover:bg-blue-100 transition-colors">Client Dashboard</a>
+        </div>
+      </div>
+      <!-- Driver Flow -->
+      <div>
+        <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-4">Driver Flow</div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="driver-dashboard.html" target="_blank" class="px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-lg text-sm font-bold text-emerald-700 hover:bg-emerald-100 transition-colors">Driver Dashboard</a>
+          <span class="material-symbols-outlined text-gray-300">arrow_forward</span>
+          <a href="driver-incoming.html" target="_blank" class="px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-lg text-sm font-bold text-emerald-700 hover:bg-emerald-100 transition-colors">Driver: Incoming Requests</a>
+        </div>
+      </div>
+      <!-- Admin Flow -->
+      <div>
+        <div class="text-[10px] font-bold uppercase tracking-widest text-amber-500 mb-4">Admin Flow</div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="admin-operations.html" target="_blank" class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-lg text-sm font-bold text-amber-700 hover:bg-amber-100 transition-colors">Admin: Operations</a>
+          <span class="material-symbols-outlined text-gray-300">swap_horiz</span>
+          <a href="admin-bookings.html" target="_blank" class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-lg text-sm font-bold text-amber-700 hover:bg-amber-100 transition-colors">Admin: Bookings</a>
+          <span class="material-symbols-outlined text-gray-300">swap_horiz</span>
+          <a href="admin-pricing.html" target="_blank" class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-lg text-sm font-bold text-amber-700 hover:bg-amber-100 transition-colors">Admin: Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-100 py-12 px-6 mt-8">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="font-headline font-extrabold text-lg tracking-tighter">PrestigeVTC</div>
+    <p class="text-[11px] font-bold uppercase tracking-widest text-gray-400">© 2025 – Design System Overview – 11 Pages</p>
+  </div>
+</footer>
+</body></html>
