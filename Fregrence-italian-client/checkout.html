@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Checkout — L'ESSENCE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "secondary": "#e9c176", "surface-container-low": "#1e1b1e",
+          "tertiary": "#c8c6c5", "secondary-container": "#604403",
+          "primary-container": "#341536", "on-secondary": "#412d00",
+          "on-background": "#e8e0e5", "surface-variant": "#383437",
+          "on-secondary-container": "#dab36a", "on-primary-container": "#a47ba2",
+          "primary": "#e6b8e2", "surface-container-high": "#2d292c",
+          "tertiary-container": "#212121", "surface-container-highest": "#383437",
+          "secondary-fixed": "#ffdea5", "on-surface-variant": "#cfc3ca",
+          "outline-variant": "#4c454a", "outline": "#988e94",
+          "on-surface": "#e8e0e5", "on-primary": "#452446",
+          "surface-container-lowest": "#100d10", "background": "#151215",
+          "surface-container": "#221f22", "surface": "#151215"
+        },
+        borderRadius: { DEFAULT: "0px", lg: "0px", xl: "0px", full: "9999px" },
+        fontFamily: { headline: ["Newsreader","serif"], body: ["Manrope","sans-serif"], label: ["Manrope","sans-serif"] }
+      }
+    }
+  }
+</script>
+<style>
+  body { background-color: #151215; color: #e8e0e5; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  .grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+  input:focus, textarea:focus, select:focus { outline: none !important; box-shadow: none !important; border-color: #e9c176 !important; }
+</style>
+</head>
+<body class="bg-background text-on-background selection:bg-secondary/30">
+<div class="grain"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 h-24 bg-[#151215]/80 backdrop-blur-xl flex justify-between items-center px-12 max-w-[1920px] mx-auto">
+  <div class="flex items-center gap-12">
+    <a href="home.html" class="text-3xl font-headline italic text-[#e8e0e5] tracking-tight">L'ESSENCE</a>
+    <div class="hidden md:flex gap-8">
+      <a href="home.html" class="font-label text-[11px] uppercase tracking-[0.15em] text-[#e8e0e5]/70 hover:text-[#e8e0e5] transition-colors">Home</a>
+      <a href="shop.html" class="font-label text-[11px] uppercase tracking-[0.15em] text-[#e9c176] border-b border-[#e9c176]/30 pb-1">Shop</a>
+      <a href="collections.html" class="font-label text-[11px] uppercase tracking-[0.15em] text-[#e8e0e5]/70 hover:text-[#e8e0e5] transition-colors">Collections</a>
+      <a href="about.html" class="font-label text-[11px] uppercase tracking-[0.15em] text-[#e8e0e5]/70 hover:text-[#e8e0e5] transition-colors">About</a>
+      <a href="contact.html" class="font-label text-[11px] uppercase tracking-[0.15em] text-[#e8e0e5]/70 hover:text-[#e8e0e5] transition-colors">Contact</a>
+    </div>
+  </div>
+  <div class="flex items-center gap-6 text-[#e9c176]">
+    <button class="hover:opacity-80 transition-opacity"><span class="material-symbols-outlined">shopping_bag</span></button>
+    <button class="hover:opacity-80 transition-opacity"><span class="material-symbols-outlined">person</span></button>
+  </div>
+</nav>
+
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+
+    <!-- Left: Shipping and Payment -->
+    <div class="lg:col-span-7 space-y-16">
+      <div>
+        <h1 class="text-4xl font-headline mb-12 text-on-surface">Secure Checkout</h1>
+
+        <!-- Contact -->
+        <section class="space-y-8 mb-16">
+          <h2 class="font-headline text-xl tracking-wide border-b border-outline-variant/10 pb-4">Contact Information</h2>
+          <div>
+            <label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant block mb-2">Email Address</label>
+            <input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant/20 py-3 text-on-surface placeholder:text-on-surface-variant/30 focus:border-secondary transition-all" placeholder="your@email.com" type="email">
+          </div>
+        </section>
+
+        <!-- Shipping -->
+        <section class="space-y-8 mb-16">
+          <h2 class="font-headline text-xl tracking-wide border-b border-outline-variant/10 pb-4">Shipping Destination</h2>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="col-span-1">
+              <label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant block mb-2">First Name</label>
+              <input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant/20 py-3 text-on-surface focus:border-secondary transition-all" type="text">
+            </div>
+            <div class="col-span-1">
+              <label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant block mb-2">Last Name</label>
+              <input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant/20 py-3 text-on-surface focus:border-secondary transition-all" type="text">
+            </div>
+            <div class="col-span-2">
+              <label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant block mb-2">Address</label>
+              <input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant/20 py-3 text-on-surface placeholder:text-on-surface-variant/30 focus:border-secondary transition-all" placeholder="123 Atelier Street" type="text">
+            </div>
+            <div class="col-span-1">
+              <label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant block mb-2">City</label>
+              <input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant/20 py-3 text-on-surface focus:border-secondary transition-all" type="text">
+            </div>
+            <div class="col-span-1">
+              <label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant block mb-2">Postal Code</label>
+              <input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant/20 py-3 text-on-surface focus:border-secondary transition-all" type="text">
+            </div>
+          </div>
+        </section>
+
+        <!-- Payment -->
+        <section class="space-y-8">
+          <h2 class="font-headline text-xl tracking-wide border-b border-outline-variant/10 pb-4">Payment Method</h2>
+          <div class="bg-surface-container-lowest p-8 border border-outline-variant/5">
+            <div class="grid grid-cols-2 gap-6">
+              <div class="col-span-2">
+                <label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant block mb-2">Card Number</label>
+                <div class="relative">
+                  <input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant/20 py-3 text-on-surface placeholder:text-on-surface-variant/30 focus:border-secondary transition-all" placeholder="0000 0000 0000 0000" type="text">
+                  <span class="absolute right-0 top-3 material-symbols-outlined text-on-surface-variant/50">credit_card</span>
+                </div>
+              </div>
+              <div class="col-span-1">
+                <label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant block mb-2">Expiry Date</label>
+                <input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant/20 py-3 text-on-surface placeholder:text-on-surface-variant/30 focus:border-secondary transition-all" placeholder="MM/YY" type="text">
+              </div>
+              <div class="col-span-1">
+                <label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant block mb-2">CVV</label>
+                <input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant/20 py-3 text-on-surface placeholder:text-on-surface-variant/30 focus:border-secondary transition-all" placeholder="***" type="text">
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Right: Order Summary -->
+    <div class="lg:col-span-5">
+      <div class="sticky top-32 bg-surface-container-low p-10 border border-outline-variant/5">
+        <h3 class="font-headline text-2xl mb-10">Order Summary</h3>
+        <div class="space-y-8 mb-10">
+          <div class="flex gap-6">
+            <div class="w-24 h-32 bg-surface-container-high overflow-hidden">
+              <img alt="Noir Essence" class="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUWnCTpiysKptlGdnLNpDCTJ5dbzON1n-OrOcnFAv-n9zYY3N_8CYAuPsuz4CwNUVowora7ypmcU_mm1HW9QW-uL3DlYT8Hn9CyOl4ASKMZUITa2Fh5T5t8FRsmEgB08SjhIK7QNoDR0kgVgWEkyMz0bVIFuG5dvpInArVBnnTWqB1fZhVecteRic6XP6YWcqM5AoJYnZ6vLmpdAn6Zx82W3srxLWxXTnEUXklZnPg-f_5nPvSRyX-bW37_-HOrxe7bjvUDN04MueH">
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-secondary mb-1">Eau de Parfum</span>
+              <h4 class="font-headline text-lg">Noir Essence, 100ml</h4>
+              <p class="text-sm text-on-surface-variant mt-1">Quantity: 1</p>
+              <span class="text-sm font-medium mt-auto">$245.00</span>
+            </div>
+          </div>
+          <div class="flex gap-6">
+            <div class="w-24 h-32 bg-surface-container-high overflow-hidden">
+              <img alt="Nocturne de l'Orchidée" class="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0UNw4njC1_tm09NQfnMVzEAVGbYWfVttO_bl-uhkWcw8_BVI6O8XWpwIhJzWuuSozmpgZl6E8FZFp5FS8tUUvXN-hMOzffCKmzj0JcT7QTxhNI3Ul1aoFY1A9qHTG8w3mvHnUCZ1P8ZwTb7JhSD7UIcy8VsKo1IBO5TNYZCN82Yj9_u6qlCOO5xUwHl9kwfGLf5uaHk91ax8FBaw-VaKeNdSsUK-6-qcTBEFsXS5AWb2GVkEVbX8A9rlGssjlNKLQ8Pw0ZcjtxYiN">
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-secondary mb-1">Collection Privée</span>
+              <h4 class="font-headline text-lg">Nocturne de l'Orchidée, 50ml</h4>
+              <p class="text-sm text-on-surface-variant mt-1">Quantity: 1</p>
+              <span class="text-sm font-medium mt-auto">$185.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-outline-variant/10 pt-8 space-y-4">
+          <div class="flex justify-between text-sm text-on-surface-variant">
+            <span>Subtotal</span><span>$430.00</span>
+          </div>
+          <div class="flex justify-between text-sm text-on-surface-variant">
+            <span>Shipping (Express)</span><span>$15.00</span>
+          </div>
+          <div class="flex justify-between text-sm text-on-surface-variant">
+            <span>Taxes</span><span>$34.40</span>
+          </div>
+          <div class="flex justify-between text-xl font-headline pt-4 text-on-surface">
+            <span>Total</span>
+            <span class="text-secondary">$479.40</span>
+          </div>
+        </div>
+
+        <button class="w-full mt-12 bg-secondary text-on-secondary py-5 text-sm uppercase tracking-[0.25em] font-bold hover:bg-secondary-fixed transition-all active:scale-[0.98]">
+          Complete Purchase
+        </button>
+        <p class="mt-6 text-center text-[10px] text-on-surface-variant/60 uppercase tracking-widest flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-xs">lock</span>
+          Encrypted &amp; Secure Checkout
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="w-full pt-20 pb-10 border-t border-[#383437]/10 bg-[#100d10]">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto">
+    <div class="space-y-6">
+      <a href="home.html" class="text-xl font-headline italic text-[#e8e0e5] block">L'ESSENCE</a>
+      <p class="text-[10px] text-[#e8e0e5]/50 leading-loose tracking-[0.05em] font-body">CRAFTING OLFACTORY ART FOR THE DISCERNING SOUL.</p>
+    </div>
+    <div class="flex flex-col gap-4">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-[#e9c176] mb-2 font-label">Explore</span>
+      <a href="shop.html" class="text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors font-label">Shop All</a>
+      <a href="collections.html" class="text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors font-label">Boutiques</a>
+      <a href="contact.html" class="text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors font-label">Fragrance Finder</a>
+    </div>
+    <div class="flex flex-col gap-4">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-[#e9c176] mb-2 font-label">Legal</span>
+      <a href="#" class="text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors font-label">Privacy Policy</a>
+      <a href="#" class="text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors font-label">Terms of Service</a>
+      <a href="contact.html" class="text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors font-label">Shipping &amp; Returns</a>
+    </div>
+    <div class="flex flex-col gap-4">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-[#e9c176] mb-2 font-label">Connect</span>
+      <a href="#" class="text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors font-label">Instagram</a>
+      <a href="#" class="text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors font-label">Newsletter</a>
+      <a href="contact.html" class="text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors font-label">Concierge</a>
+    </div>
+  </div>
+  <div class="mt-20 text-center border-t border-[#383437]/10 pt-10 px-12">
+    <p class="text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/30 font-label">© 2024 L'ESSENCE PERFUMES. ALL RIGHTS RESERVED.</p>
+  </div>
+</footer>
+</body>
+</html>

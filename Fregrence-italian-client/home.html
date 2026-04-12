@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'ESSENCE — Luxury Fragrance Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "secondary": "#e9c176", "surface-container-low": "#1e1b1e",
+          "tertiary": "#c8c6c5", "secondary-container": "#604403",
+          "primary-container": "#341536", "on-secondary": "#412d00",
+          "on-background": "#e8e0e5", "surface-dim": "#151215",
+          "surface-variant": "#383437", "on-secondary-container": "#dab36a",
+          "on-primary-container": "#a47ba2", "primary": "#e6b8e2",
+          "surface-container-high": "#2d292c", "tertiary-container": "#212121",
+          "surface-bright": "#3c383b", "surface-container-highest": "#383437",
+          "secondary-fixed": "#ffdea5", "on-surface-variant": "#cfc3ca",
+          "outline-variant": "#4c454a", "outline": "#988e94",
+          "inverse-surface": "#e8e0e5", "on-surface": "#e8e0e5",
+          "on-primary": "#452446", "surface-container-lowest": "#100d10",
+          "background": "#151215", "surface-container": "#221f22", "surface": "#151215"
+        },
+        borderRadius: { DEFAULT: "0px", lg: "0px", xl: "0px", full: "9999px" },
+        fontFamily: { headline: ["Newsreader","serif"], body: ["Manrope","sans-serif"], label: ["Manrope","sans-serif"] }
+      }
+    }
+  }
+</script>
+<style>
+  body { background-color: #151215; color: #e8e0e5; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  .grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+  .text-glow { text-shadow: 0 0 30px rgba(233,193,118,0.3); }
+  .glass-panel { background: rgba(21,18,21,0.4); backdrop-filter: blur(40px); }
+  .noise-overlay { position: relative; }
+  .noise-overlay::after { content: ""; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03; pointer-events: none; z-index: 10; }
+</style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary/30 selection:text-secondary">
+<div class="grain"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 h-24 bg-[#151215]/60 backdrop-blur-xl flex justify-between items-center px-12 max-w-[1920px] mx-auto border-b border-outline-variant/10">
+  <div class="flex items-center gap-16">
+    <a href="home.html" class="text-3xl font-headline italic text-[#e8e0e5] tracking-tight">L'ESSENCE</a>
+    <div class="hidden lg:flex gap-10 items-center">
+      <a href="home.html" class="text-[#e9c176] font-label text-[11px] uppercase tracking-[0.15em] border-b border-[#e9c176]/30 pb-1">Home</a>
+      <a href="shop.html" class="text-[#e8e0e5]/70 hover:text-[#e8e0e5] font-label text-[11px] uppercase tracking-[0.15em] transition-all">Shop</a>
+      <a href="collections.html" class="text-[#e8e0e5]/70 hover:text-[#e8e0e5] font-label text-[11px] uppercase tracking-[0.15em] transition-all">Collections</a>
+      <a href="about.html" class="text-[#e8e0e5]/70 hover:text-[#e8e0e5] font-label text-[11px] uppercase tracking-[0.15em] transition-all">About</a>
+      <a href="contact.html" class="text-[#e8e0e5]/70 hover:text-[#e8e0e5] font-label text-[11px] uppercase tracking-[0.15em] transition-all">Contact</a>
+    </div>
+  </div>
+  <div class="flex items-center gap-8">
+    <div class="hidden sm:flex items-center gap-4 border-r border-outline-variant/20 pr-8 mr-2">
+      <button class="material-symbols-outlined text-on-surface/70 hover:text-secondary transition-colors text-xl">search</button>
+      <button class="material-symbols-outlined text-on-surface/70 hover:text-secondary transition-colors text-xl">favorite</button>
+    </div>
+    <button class="material-symbols-outlined text-[#e8e0e5] hover:text-[#e9c176] transition-colors">shopping_bag</button>
+    <a href="shop.html" class="bg-secondary text-on-secondary px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-label hover:opacity-90 active:scale-95 transition-all">Shop Now ↗</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="relative h-screen w-full flex items-center justify-start overflow-hidden noise-overlay">
+  <div class="absolute inset-0 z-0">
+    <img alt="Luxury perfume bottle in dramatic lighting" class="w-full h-full object-cover opacity-70"
+      src="https://lh3.googleusercontent.com/aida/ADBb0ujPFBO0Z98_4rBKEnTA1KQOptpEwoZmeZ9c4fg1LCNHJbft7DfCix1Q_T71-rVfewLTmlkJ5o7ut3iJsmr1ZR5wAg5kwedTZhTZwTb4Gu4fAjrPeNWcQDQ0Efqqrv5ZPjtMdLWLP820fpNVh6ADGLBwg_DvRh8QIN9M_ui8FLP4sTNPnJYWCNI6kYEnUd9uvgBSfyzOVGMYefLRhT3WfbKVfg6MsMVasmb00xjLl7Zesqwf5Vrnpb8Os248lTP__HBf2UfNysS_FXg">
+    <div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+  </div>
+  <div class="relative z-10 max-w-5xl px-12 lg:px-24">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-12 h-[1px] bg-secondary"></div>
+      <p class="font-label text-secondary uppercase tracking-[0.4em] text-[10px]">Private Reserve Edition</p>
+    </div>
+    <h1 class="font-headline text-7xl md:text-[10rem] text-on-background italic leading-[0.85] mb-8 text-glow">
+      Unleash Your<br>
+      <span class="text-secondary not-italic font-medium">Inner Fire.</span>
+    </h1>
+    <p class="max-w-md text-on-surface-variant font-body text-lg mb-12 leading-relaxed opacity-80">
+      L'ESSENCE is more than a fragrance. It's a statement of sophistication and passion, a tribute to the beautiful moments that define you.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-6 items-start">
+      <a href="product.html" class="bg-secondary text-on-secondary px-10 py-5 text-[11px] uppercase tracking-[0.2em] font-label hover:shadow-[0_0_30px_rgba(233,193,118,0.25)] transition-all active:scale-95 group">
+        Discover Our Signature <span class="inline-block transition-transform group-hover:translate-x-1 ml-2">↗</span>
+      </a>
+      <div class="flex items-center gap-4 py-4">
+        <div class="flex -space-x-2">
+          <div class="w-8 h-8 rounded-full border-2 border-background bg-surface-variant"></div>
+          <div class="w-8 h-8 rounded-full border-2 border-background bg-surface-container-high"></div>
+          <div class="w-8 h-8 rounded-full border-2 border-background bg-secondary/20"></div>
+        </div>
+        <div>
+          <div class="flex gap-1">
+            <span class="material-symbols-outlined text-[12px] text-secondary">star</span>
+            <span class="material-symbols-outlined text-[12px] text-secondary">star</span>
+            <span class="material-symbols-outlined text-[12px] text-secondary">star</span>
+            <span class="material-symbols-outlined text-[12px] text-secondary">star</span>
+            <span class="material-symbols-outlined text-[12px] text-secondary">star</span>
+          </div>
+          <p class="text-[9px] uppercase tracking-widest text-on-surface/50 font-label">9K+ Global Reviews</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute right-12 bottom-24 hidden xl:flex flex-col gap-8 items-end">
+    <a href="#" class="flex items-center gap-4 group cursor-pointer">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-on-surface/40 group-hover:text-secondary transition-colors">Instagram</span>
+      <div class="w-8 h-[1px] bg-outline-variant/30 group-hover:bg-secondary group-hover:w-12 transition-all"></div>
+    </a>
+    <a href="#" class="flex items-center gap-4 group cursor-pointer">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-on-surface/40 group-hover:text-secondary transition-colors">Pinterest</span>
+      <div class="w-8 h-[1px] bg-outline-variant/30 group-hover:bg-secondary group-hover:w-12 transition-all"></div>
+    </a>
+  </div>
+</header>
+
+<!-- Curated Collection Grid -->
+<section class="py-32 px-12 max-w-[1920px] mx-auto bg-surface">
+  <div class="text-center mb-24">
+    <p class="font-label text-secondary uppercase tracking-[0.3em] text-[10px] mb-4">Curated Selections</p>
+    <h2 class="font-headline text-5xl md:text-7xl">The Masterpieces</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+    <a href="product.html" class="group cursor-pointer block">
+      <div class="relative aspect-[3/4] overflow-hidden bg-surface-container-lowest mb-8">
+        <img alt="Noir Essence perfume bottle" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQhtanWXDbDsu2wuDhyam9p1aBbTRXxEDmSlZWbIim9yGTHFfw1UbaBzXue4L02d9QYpGo35XFtWsCxohCZFzY0rq3Rf6aSRc8vNlHEt842cU5fqJ_ajNuSfn2LXowCED2EwkZGRJzExOy2HX-PrbWs3qxIxBx7IxPgC0LjFsXWFP1Abeo1Wdvbrr1dT-0JR121RorecqYIVkvw--rZ0q0tENEIPOrt9a63lp6HuStrxQGbnI8PHKPtAeybKjZZelc4vQfpRRa1Hy3">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+        <div class="absolute bottom-8 left-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+          <span class="bg-on-surface text-surface px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-label">Quick Shop</span>
+        </div>
+      </div>
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 class="font-headline text-2xl mb-1">Noir Essence</h3>
+          <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface/50">Oudh, Smoke, Amber</p>
+        </div>
+        <p class="font-headline italic text-xl text-secondary">$280</p>
+      </div>
+    </a>
+    <a href="product.html" class="group cursor-pointer block lg:mt-12">
+      <div class="relative aspect-[3/4] overflow-hidden bg-surface-container-lowest mb-8">
+        <img alt="Orchid Moon perfume bottle" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjnE67D_POqYBxfNSoof6MzZwuvYqSSxGA8S7YlPOynWc14ufFSLUVGd_L8zpsOaU1Z0vRLuQJFEcloxaV135IL_tkol2O9kxd5b6mAZxUPnGo3y0hJqv0uNu6t1zxbYFSO9oF94N5JUZeFc0M63Z_kbfUK1qoLM0vSLBImu3CnEUPQVU3jco9Y6KNUfx00jHE17PcmtYITUJJKAJqY9JBxyzYfKhCKwFXq1GILweTAXo7_y2aI1ddvKd6RgMDZ1CtEbY8LjkMr2hA">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+        <div class="absolute bottom-8 left-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+          <span class="bg-on-surface text-surface px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-label">Quick Shop</span>
+        </div>
+      </div>
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 class="font-headline text-2xl mb-1">Orchid Moon</h3>
+          <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface/50">Violet, Leather, Musk</p>
+        </div>
+        <p class="font-headline italic text-xl text-secondary">$310</p>
+      </div>
+    </a>
+    <a href="product.html" class="group cursor-pointer block">
+      <div class="relative aspect-[3/4] overflow-hidden bg-surface-container-lowest mb-8">
+        <img alt="Solar Flare perfume bottle" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMUDu5J7KTgQ0naItzgwsKHkpdui05rBqvgQOmx2-76JGbSMcigeebCOkhaEpaX0DYD-0c_-veMSXGu-yPxGwndhzwg-jxeVO693r_L8LfCzFYMDZJ7GvmzwLSxdXVoIj6b5yR_LPPuRTOSkSGHPhiw4X2XNUfznA4w_ZGXZGH_xnsUwEw4ploLCn5qYZmPxBttvGEjNynEe3D4WY07w95gF3n41uZu8qC-6LGYnlNVkcrb2e5kCc4PzQ1EpHAtFF36XPytvj9EFlT">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+        <div class="absolute bottom-8 left-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+          <span class="bg-on-surface text-surface px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-label">Quick Shop</span>
+        </div>
+      </div>
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 class="font-headline text-2xl mb-1">Solar Flare</h3>
+          <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface/50">Bergamot, Saffron, Salt</p>
+        </div>
+        <p class="font-headline italic text-xl text-secondary">$265</p>
+      </div>
+    </a>
+  </div>
+  <div class="text-center mt-20">
+    <a href="shop.html" class="inline-flex items-center gap-4 font-label text-[10px] uppercase tracking-[0.3em] text-secondary border-b border-secondary/30 pb-3 hover:border-secondary transition-colors">
+      View All Fragrances <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    </a>
+  </div>
+</section>
+
+<!-- Signature Scents Section -->
+<section class="py-32 px-12 max-w-[1920px] mx-auto bg-surface-container-lowest">
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+    <div>
+      <p class="font-label text-secondary uppercase tracking-[0.4em] text-[10px] mb-4">Limited Release</p>
+      <h2 class="font-headline text-5xl md:text-7xl italic">Signature Scents</h2>
+    </div>
+    <p class="text-on-surface-variant font-body text-sm max-w-sm opacity-60 uppercase tracking-widest leading-loose">
+      Exclusive compositions available only through our atelier or private consultation.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <a href="product.html" class="group relative overflow-hidden bg-background border border-outline-variant/10 hover:border-secondary/20 transition-all duration-700 block">
+      <div class="aspect-[4/5] overflow-hidden">
+        <img alt="Noir Essence bottle" class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQhtanWXDbDsu2wuDhyam9p1aBbTRXxEDmSlZWbIim9yGTHFfw1UbaBzXue4L02d9QYpGo35XFtWsCxohCZFzY0rq3Rf6aSRc8vNlHEt842cU5fqJ_ajNuSfn2LXowCED2EwkZGRJzExOy2HX-PrbWs3qxIxBx7IxPgC0LjFsXWFP1Abeo1Wdvbrr1dT-0JR121RorecqYIVkvw--rZ0q0tENEIPOrt9a63lp6HuStrxQGbnI8PHKPtAeybKjZZelc4vQfpRRa1Hy3">
+      </div>
+      <div class="p-8 space-y-4">
+        <div class="flex justify-between items-baseline">
+          <h3 class="font-headline text-3xl">Noir Essence</h3>
+          <span class="text-secondary font-headline italic text-xl">$280</span>
+        </div>
+        <div class="w-8 h-[1px] bg-secondary/30"></div>
+        <p class="text-[11px] font-label uppercase tracking-[0.2em] text-on-surface/60 leading-relaxed">
+          A haunting melody of Oudh and Smoke, balanced by the warmth of aged Amber.
+        </p>
+        <span class="pt-4 flex items-center gap-2 text-[10px] font-label uppercase tracking-[0.3em] text-secondary group-hover:gap-4 transition-all">
+          Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </span>
+      </div>
+    </a>
+    <a href="product.html" class="group relative overflow-hidden bg-background border border-outline-variant/10 hover:border-secondary/20 transition-all duration-700 block">
+      <div class="aspect-[4/5] overflow-hidden">
+        <img alt="Orchid Moon bottle" class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjnE67D_POqYBxfNSoof6MzZwuvYqSSxGA8S7YlPOynWc14ufFSLUVGd_L8zpsOaU1Z0vRLuQJFEcloxaV135IL_tkol2O9kxd5b6mAZxUPnGo3y0hJqv0uNu6t1zxbYFSO9oF94N5JUZeFc0M63Z_kbfUK1qoLM0vSLBImu3CnEUPQVU3jco9Y6KNUfx00jHE17PcmtYITUJJKAJqY9JBxyzYfKhCKwFXq1GILweTAXo7_y2aI1ddvKd6RgMDZ1CtEbY8LjkMr2hA">
+      </div>
+      <div class="p-8 space-y-4">
+        <div class="flex justify-between items-baseline">
+          <h3 class="font-headline text-3xl">Orchid Moon</h3>
+          <span class="text-secondary font-headline italic text-xl">$310</span>
+        </div>
+        <div class="w-8 h-[1px] bg-secondary/30"></div>
+        <p class="text-[11px] font-label uppercase tracking-[0.2em] text-on-surface/60 leading-relaxed">
+          Ephemeral Violet and raw Leather notes create an atmosphere of nocturnal mystery.
+        </p>
+        <span class="pt-4 flex items-center gap-2 text-[10px] font-label uppercase tracking-[0.3em] text-secondary group-hover:gap-4 transition-all">
+          Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </span>
+      </div>
+    </a>
+    <a href="product.html" class="group relative overflow-hidden bg-background border border-outline-variant/10 hover:border-secondary/20 transition-all duration-700 block">
+      <div class="aspect-[4/5] overflow-hidden">
+        <img alt="Solar Flare bottle" class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMUDu5J7KTgQ0naItzgwsKHkpdui05rBqvgQOmx2-76JGbSMcigeebCOkhaEpaX0DYD-0c_-veMSXGu-yPxGwndhzwg-jxeVO693r_L8LfCzFYMDZJ7GvmzwLSxdXVoIj6b5yR_LPPuRTOSkSGHPhiw4X2XNUfznA4w_ZGXZGH_xnsUwEw4ploLCn5qYZmPxBttvGEjNynEe3D4WY07w95gF3n41uZu8qC-6LGYnlNVkcrb2e5kCc4PzQ1EpHAtFF36XPytvj9EFlT">
+      </div>
+      <div class="p-8 space-y-4">
+        <div class="flex justify-between items-baseline">
+          <h3 class="font-headline text-3xl">Solar Flare</h3>
+          <span class="text-secondary font-headline italic text-xl">$265</span>
+        </div>
+        <div class="w-8 h-[1px] bg-secondary/30"></div>
+        <p class="text-[11px] font-label uppercase tracking-[0.2em] text-on-surface/60 leading-relaxed">
+          The brilliance of Bergamot and Saffron meet the sharp clarity of mineral sea Salt.
+        </p>
+        <span class="pt-4 flex items-center gap-2 text-[10px] font-label uppercase tracking-[0.3em] text-secondary group-hover:gap-4 transition-all">
+          Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Scent Finder CTA -->
+<section class="relative py-48 overflow-hidden">
+  <div class="absolute inset-0">
+    <img alt="Water ripples abstract" class="w-full h-full object-cover grayscale opacity-40 scale-110 blur-[2px]"
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTp9cr1eejc8bUZrWFDglE4LC_tQS3D3nlbf5AmTn-QJOd2yHIaAuisV-DDakQOX2uqhGCG9wx4qVsB-ZYaf0ObhVjI_UYJ1NXtddjhbp8x5yloeHorZT7xsvW_u-LqAa6lE8VjfnTf2idtV2-TmJbhgO_soKyC2Y29BotkigqsnVR7iWp9rPtpwjiLgdFBofV7OsBLTkfR0Qpqmtd22VeDD_llyjC77k822rtRqYZvG5QX4pl7TaiSlgVAEKanKpCrYvRw7k5UEGJ">
+    <div class="absolute inset-0 bg-background/80"></div>
+  </div>
+  <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
+    <h2 class="font-headline text-5xl md:text-8xl mb-8 leading-tight">Find Your <span class="italic text-secondary">Signature</span> Essence</h2>
+    <p class="text-on-surface-variant font-body text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+      Every fragrance tells a unique story. Allow our Digital Sommelier to navigate the olfactory notes of your subconscious and reveal your perfect match.
+    </p>
+    <a href="contact.html" class="inline-block bg-secondary text-on-secondary px-12 py-6 text-xs uppercase tracking-[0.3em] font-label hover:shadow-[0_0_40px_rgba(233,193,118,0.3)] transition-all active:scale-95">
+      Begin Consultation
+    </a>
+  </div>
+</section>
+
+<!-- Olfactory Storytelling -->
+<section class="bg-surface-container-lowest border-y border-outline-variant/10">
+  <div class="grid grid-cols-1 lg:grid-cols-2">
+    <div class="aspect-square lg:aspect-auto overflow-hidden">
+      <img alt="Master perfumer at work" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZdIdDIaT8n2Nd5WHL54LPT-XM9WSCqosn_Xdj3iqU02zbwIcid8psmxkmvdQEu7Pe39Vc8mrkl8ZsQkFnbfPKit4NnmDZgJEnV3XtO_lEichZzYNRyAYqE9u5hSHpu77HCJIzJbb8VbCPP1MfkXTtYP8LbyGjV6y-VXvWh2iS6Z-J9GsuAuENNoh1NzCXNKBmQSGpq3j24n7Y_YXKtHlXfgcI6L_6EDyElDUiG-G0h27SD_iusZf0Pc5N-D3pzB4HaiRIsKRIfIxG">
+    </div>
+    <div class="flex flex-col justify-center p-12 lg:p-24 space-y-8 bg-surface">
+      <span class="font-label text-secondary uppercase tracking-[0.4em] text-[10px]">The Heritage</span>
+      <h3 class="font-headline text-5xl md:text-6xl italic leading-tight">Alchemy in <br>Every Drop</h3>
+      <p class="text-on-surface-variant font-body text-lg leading-relaxed max-w-md">
+        Our process remains unchanged since the 18th century. We source the rarest botanicals from across the globe, aged in charred obsidian vessels to achieve a depth that defies modern synthesis.
+      </p>
+      <a href="about.html" class="inline-block font-label text-[10px] uppercase tracking-[0.3em] text-secondary border-b border-secondary/30 pb-2 hover:border-secondary transition-colors w-max">Read the Chronicles</a>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-2">
+    <div class="order-2 lg:order-1 flex flex-col justify-center p-12 lg:p-24 space-y-8 bg-surface">
+      <span class="font-label text-secondary uppercase tracking-[0.4em] text-[10px]">The Ethos</span>
+      <h3 class="font-headline text-5xl md:text-6xl leading-tight">Whispers of <br><span class="italic text-secondary">Elegance</span></h3>
+      <p class="text-on-surface-variant font-body text-lg leading-relaxed max-w-md">
+        A fragrance should not shout; it should linger like a memory. We design silhouettes for the skin, invisible garments that reveal the soul's most intimate layers.
+      </p>
+      <a href="about.html" class="inline-block font-label text-[10px] uppercase tracking-[0.3em] text-secondary border-b border-secondary/30 pb-2 hover:border-secondary transition-colors w-max">Our Philosophy</a>
+    </div>
+    <div class="order-1 lg:order-2 aspect-square lg:aspect-auto overflow-hidden">
+      <img alt="Fragrance artistry and craft" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTp9cr1eejc8bUZrWFDglE4LC_tQS3D3nlbf5AmTn-QJOd2yHIaAuisV-DDakQOX2uqhGCG9wx4qVsB-ZYaf0ObhVjI_UYJ1NXtddjhbp8x5yloeHorZT7xsvW_u-LqAa6lE8VjfnTf2idtV2-TmJbhgO_soKyC2Y29BotkigqsnVR7iWp9rPtpwjiLgdFBofV7OsBLTkfR0Qpqmtd22VeDD_llyjC77k822rtRqYZvG5QX4pl7TaiSlgVAEKanKpCrYvRw7k5UEGJ">
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="py-32 bg-background border-t border-outline-variant/5">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <span class="font-label text-secondary uppercase tracking-[0.4em] text-[10px] block mb-8">The Inner Circle</span>
+    <h2 class="font-headline text-5xl mb-12 italic">Join the Sensory Avant-Garde</h2>
+    <p class="text-on-surface-variant font-body mb-16 text-lg max-w-xl mx-auto opacity-70">
+      Be the first to experience private reserve releases, atelier events, and limited batch collaborations.
+    </p>
+    <div class="max-w-md mx-auto relative group">
+      <input class="w-full bg-transparent border-0 border-b border-outline-variant/30 py-4 font-label text-[10px] uppercase tracking-[0.3em] focus:ring-0 focus:border-secondary transition-colors placeholder:text-on-surface/30 text-center" placeholder="EMAIL ADDRESS" type="email">
+      <button class="absolute right-0 top-1/2 -translate-y-1/2 text-secondary group-hover:translate-x-1 transition-transform">
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+    <div class="mt-12 flex justify-center gap-4">
+      <label class="flex items-center gap-3 cursor-pointer">
+        <input class="rounded-none bg-transparent border-outline-variant/30 text-secondary focus:ring-0 w-4 h-4" type="checkbox">
+        <span class="text-[9px] font-label uppercase tracking-[0.1em] text-on-surface/40">I accept the privacy terms</span>
+      </label>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="w-full pt-24 pb-12 bg-surface-container-lowest border-t border-outline-variant/5">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 px-12 max-w-7xl mx-auto mb-24">
+    <div class="space-y-8">
+      <a href="home.html" class="text-2xl font-headline italic text-[#e8e0e5] block">L'ESSENCE</a>
+      <p class="text-[11px] font-label text-on-surface/50 leading-relaxed tracking-wider uppercase">
+        An olfactory studio dedicated to the preservation of high perfumery. Crafted in Paris, Bottled for the World.
+      </p>
+      <div class="flex gap-6">
+        <a href="#" class="text-on-surface/40 hover:text-secondary transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" class="text-on-surface/40 hover:text-secondary transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="space-y-6">
+      <h4 class="font-label text-[10px] uppercase tracking-[0.25em] text-secondary">Maison</h4>
+      <ul class="space-y-4">
+        <li><a href="about.html" class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface/40 hover:text-secondary transition-colors">Heritage</a></li>
+        <li><a href="about.html" class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface/40 hover:text-secondary transition-colors">Ingredients</a></li>
+        <li><a href="about.html" class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface/40 hover:text-secondary transition-colors">Sustainability</a></li>
+      </ul>
+    </div>
+    <div class="space-y-6">
+      <h4 class="font-label text-[10px] uppercase tracking-[0.25em] text-secondary">Collections</h4>
+      <ul class="space-y-4">
+        <li><a href="collections.html" class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface/40 hover:text-secondary transition-colors">Noir Absolu</a></li>
+        <li><a href="collections.html" class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface/40 hover:text-secondary transition-colors">Lunar Floral</a></li>
+        <li><a href="collections.html" class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface/40 hover:text-secondary transition-colors">Private Reserve</a></li>
+      </ul>
+    </div>
+    <div class="space-y-6">
+      <h4 class="font-label text-[10px] uppercase tracking-[0.25em] text-secondary">Concierge</h4>
+      <ul class="space-y-4">
+        <li><a href="contact.html" class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface/40 hover:text-secondary transition-colors">Order Tracking</a></li>
+        <li><a href="contact.html" class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface/40 hover:text-secondary transition-colors">Store Locator</a></li>
+        <li><a href="contact.html" class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface/40 hover:text-secondary transition-colors">Sample Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pt-12 border-t border-outline-variant/5 text-center px-12">
+    <p class="text-[9px] font-label text-on-surface/30 uppercase tracking-[0.4em]">© 2024 L'ESSENCE PERFUMES ATELIER. ALL RIGHTS RESERVED.</p>
+  </div>
+</footer>
+</body>
+</html>

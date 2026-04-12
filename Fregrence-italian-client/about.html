@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — L'ESSENCE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "secondary": "#e9c176", "surface-container-low": "#1e1b1e",
+          "tertiary": "#c8c6c5", "secondary-container": "#604403",
+          "primary-container": "#341536", "on-secondary": "#412d00",
+          "on-background": "#e8e0e5", "surface-variant": "#383437",
+          "on-secondary-container": "#dab36a", "on-primary-container": "#a47ba2",
+          "primary": "#e6b8e2", "surface-container-high": "#2d292c",
+          "tertiary-container": "#212121", "surface-container-highest": "#383437",
+          "secondary-fixed": "#ffdea5", "on-surface-variant": "#cfc3ca",
+          "outline-variant": "#4c454a", "outline": "#988e94",
+          "on-surface": "#e8e0e5", "on-primary": "#452446",
+          "surface-container-lowest": "#100d10", "background": "#151215",
+          "surface-container": "#221f22", "surface": "#151215"
+        },
+        borderRadius: { DEFAULT: "0px", lg: "0px", xl: "0px", full: "9999px" },
+        fontFamily: { headline: ["Newsreader","serif"], body: ["Manrope","sans-serif"], label: ["Manrope","sans-serif"] }
+      }
+    }
+  }
+</script>
+<style>
+  body { background-color: #151215; color: #e8e0e5; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  .grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+</style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary/30">
+<div class="grain"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 h-24 bg-[#151215]/80 backdrop-blur-xl flex justify-between items-center px-12 max-w-[1920px] mx-auto transition-all duration-300">
+  <div class="flex items-center gap-12">
+    <a href="home.html" class="text-3xl font-headline italic text-[#e8e0e5] tracking-tight">L'ESSENCE</a>
+    <div class="hidden md:flex gap-8 items-center">
+      <a href="home.html" class="text-[#e8e0e5]/70 hover:text-[#e8e0e5] transition-colors font-label text-[11px] uppercase tracking-[0.15em]">Home</a>
+      <a href="shop.html" class="text-[#e8e0e5]/70 hover:text-[#e8e0e5] transition-colors font-label text-[11px] uppercase tracking-[0.15em]">Shop</a>
+      <a href="collections.html" class="text-[#e8e0e5]/70 hover:text-[#e8e0e5] transition-colors font-label text-[11px] uppercase tracking-[0.15em]">Collections</a>
+      <a href="about.html" class="text-[#e9c176] border-b border-[#e9c176]/30 pb-1 font-label text-[11px] uppercase tracking-[0.15em]">About</a>
+      <a href="contact.html" class="text-[#e8e0e5]/70 hover:text-[#e8e0e5] transition-colors font-label text-[11px] uppercase tracking-[0.15em]">Contact</a>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <button class="hover:opacity-80 transition-opacity duration-300">
+      <span class="material-symbols-outlined text-[#e8e0e5]">shopping_bag</span>
+    </button>
+    <button class="hover:opacity-80 transition-opacity duration-300">
+      <span class="material-symbols-outlined text-[#e8e0e5]">person</span>
+    </button>
+    <a href="shop.html" class="hidden md:block bg-secondary text-on-secondary px-8 py-2 font-label text-sm tracking-[0.1em] uppercase hover:opacity-90 active:scale-95 transition-all">Shop</a>
+  </div>
+</nav>
+
+<main class="pt-24">
+  <!-- Hero Section -->
+  <section class="relative h-[921px] flex items-center px-12 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img alt="Master perfumer's hands" class="w-full h-full object-cover opacity-50 grayscale contrast-125"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGfw3ecqBeETuolNAZZQq71RlajLNVWU0zZss6HbuWyuYY-tmMHKCxgd4t1DgactfAkS5_vMBiVvlv4sFiYERREMEeh_LIEEdn6rZ3UKSKSqf47f23od7Axxhfnb2tYA8y0sejmWGckKYC1L436amMZYv-CDb3ukx6kA1pYQagq55fPgumbLZtjdI5KOiwqkGCFaYdaJwWC7WhHwzq2ZmEfK73akNQMcxu12qHS8USm88TNiKYAwuRYcgsyKFKmKKJD6MxCb6ymsz0">
+      <div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl">
+      <span class="font-label text-secondary tracking-[0.3em] uppercase text-xs mb-6 block">Our Heritage</span>
+      <h1 class="font-headline text-7xl md:text-9xl text-on-background leading-none mb-8">The Silent <br><span class="italic text-secondary">Soul</span> of Scent</h1>
+      <p class="font-body text-xl text-on-surface-variant max-w-xl leading-relaxed font-light tracking-wide">
+        Born in the limestone hills of Grasse and refined in the obsidian shadows of Parisian nights, L'Essence represents the intersection of ancestral alchemy and modern desire.
+      </p>
+    </div>
+  </section>
+
+  <!-- The Story Section -->
+  <section class="py-32 px-12 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-5 relative">
+        <img alt="Vintage perfume laboratory" class="w-full grayscale brightness-75"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuARxJGBuD1vygS3nRIEGh20Mm2qovnDPyqk889Sb3suPxtqL0Xgi6djBVE8TeZ1a_w98mLpDp9Ni7jb57BB9RZ95KZb0iq42JnAZ67kCrhF29nEC5XxdYVb9vlT">
+        <div class="absolute -bottom-8 -right-8 bg-surface-container-high p-8 hidden md:block">
+          <p class="font-headline text-3xl italic text-on-surface leading-tight">"A fragrance <br>is a memory <br>unspoken."</p>
+        </div>
+      </div>
+      <div class="md:col-start-7 md:col-span-6">
+        <h2 class="font-headline text-5xl mb-12 text-on-background">Crafted in Shadows</h2>
+        <div class="space-y-8 font-body text-on-surface-variant leading-loose tracking-wide">
+          <p>Established in 1924, L'Essence began as a private apothecary catering to the avant-garde elite of the roaring twenties. While the world looked toward synthetic reproduction, we remained anchored in the physical—the soil, the root, and the resin.</p>
+          <p>Our process is one of patient extraction. We believe that true luxury cannot be hurried. It is matured in oak, distilled in glass, and preserved in the dark.</p>
+          <div class="pt-8">
+            <a href="contact.html" class="inline-flex items-center gap-4 text-secondary font-label tracking-widest text-xs uppercase group">
+              Explore Our Archives
+              <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Large Quote Break -->
+  <section class="bg-surface-container-lowest py-40 px-12 text-center border-y border-outline-variant/10">
+    <div class="max-w-5xl mx-auto">
+      <blockquote class="font-headline text-5xl md:text-7xl italic text-on-background leading-tight">
+        "We do not create perfumes to mask the wearer, but to unveil the <span class="text-secondary">architectural truth</span> of their character."
+      </blockquote>
+      <cite class="font-label text-outline tracking-[0.2em] uppercase text-xs mt-12 block">— Julian Vane, Master Perfumer</cite>
+    </div>
+  </section>
+
+  <!-- Craftsmanship Grid -->
+  <section class="py-32 px-12 bg-background">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+        <div class="max-w-2xl">
+          <span class="font-label text-secondary tracking-[0.3em] uppercase text-xs mb-4 block">The Process</span>
+          <h2 class="font-headline text-6xl text-on-background">Alchemy &amp; Ethics</h2>
+        </div>
+        <p class="font-body text-on-surface-variant max-w-sm text-sm tracking-wider leading-relaxed">
+          Sustainable sourcing is not a trend for us; it is the preservation of the medium we love.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant/10">
+        <div class="bg-background p-12 space-y-8 group transition-colors hover:bg-surface-container-low">
+          <img alt="Botanical extraction process" class="w-full aspect-square object-cover grayscale opacity-60 group-hover:opacity-90 transition-opacity"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDieMHwAzBg7bfF0FPCwVm4MD1IsMzRd5-DGsz68HXmXyWsiITBGAy1x_WwvZoQx02MPsaYw91ri91Da7nKJ-z0psBuNMj2PbMkxwEuGJoP7DLTFgiUu83Z21HuwF_HFnU-yI9IW7p_aNIxD77kjzO1hZUpfQ1od9YkX-JlrR3jMrcIg7NAuTOCdiQcU0AXhWvs7ihPTtMn33mCQhGaelxUNPkhpzibLGpVsSw8CqRqDV3F8o60u34EcjhpUk_n6pyrhISvNY3H9vQE">
+          <h3 class="font-headline text-3xl">Botanical Integrity</h3>
+          <p class="font-body text-on-surface-variant text-sm leading-relaxed">We work directly with small-batch flower farms from the Grasse region to ensure the molecular purity of every petal.</p>
+        </div>
+        <div class="bg-background p-12 space-y-8 group transition-colors hover:bg-surface-container-low">
+          <img alt="Crystal glass perfume bottles" class="w-full aspect-square object-cover grayscale opacity-60 group-hover:opacity-90 transition-opacity"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKTO_V4675oIxBnS0k2T-5o52oMugq3gJBzxYhfE3DpXvG8k4bCdufWR9Zs-xGv4GCI2wZlfSEQo9l2O7wboyOKbCnorDYbyqKCQuyuZxAWktIn8uhIcob0bsHgv_EmwykQpg91CRxXFRjoswYaM-ubYvPtMZhX9cmUS-BP0muYW50szYwqTn7vWizmaBHVZ_TJIHP8eCOMC257-9xkt1b1DCK6cbmxcYeTHXEb-9MKbRLEpVGpzGhs2xuwhjI9_QcAbLS05nkSYHy">
+          <h3 class="font-headline text-3xl">Glass Craft</h3>
+          <p class="font-body text-on-surface-variant text-sm leading-relaxed">Our obsidian-glass bottles are hand-poured by traditional glassblowers in Normandy, designed to be kept for a lifetime.</p>
+        </div>
+        <div class="bg-background p-12 space-y-8 group transition-colors hover:bg-surface-container-low">
+          <img alt="Incense smoke and aged resins" class="w-full aspect-square object-cover grayscale opacity-60 group-hover:opacity-90 transition-opacity"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzz6NPIqvUhhslT01DU15E0x8cx2YQ4QR7ujVyCwVCGk-8T1XOt0cXRfAYuG5QSzvoNpZPyCQhFY6nVjQnEO-_n_Mfs5QsaGOVOgwFMxtdMOUCJe5dK0AC9Dffs3jaMer3NTAw_kFlxtsp5AWSq5H-X4Z3yk9hBoICV2pweoCoFy3bvhLsRfg-WjFdenv7F3Kmvj2e6wdpQOemizZDOjbZMKiUWDjnMAyzlz-V6RtACOwvwfqqhxhcbpI-LvYc47DyjOvnDZNW79dS">
+          <h3 class="font-headline text-3xl">Aged Resins</h3>
+          <p class="font-body text-on-surface-variant text-sm leading-relaxed">We utilize a proprietary aging process for our Oud and Sandalwood oils, maturing them for a minimum of 36 months.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Immersive CTA -->
+  <section class="relative h-[614px] flex items-center justify-center text-center px-12 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img alt="Lavender field at twilight" class="w-full h-full object-cover grayscale contrast-150 brightness-50"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMAGtal_sPI5SGU2FgKegk8KjV5whYjRjN-edQbbuvYQDK2R2n7g_8DQjlMEMz4jROh9G4d8uNGNQt42mqxyd24bkEBGvE-LSvPh7bgtLM_5-4P87QR4DkBCXzA7_1e6HNdPh4SJbk-zLc2pB-8Wkmq8sizI-PKLLOSmiTsHQAwVO4Ze3YWUBJlWTWUN1PUyEizSDcHOzMLgwrdnc-O3yBfmpl3-KzB-SdSOb_6IQRlvbcBvqik_9iG1pROt3cQCuhd6cTBnvQ9pR6">
+      <div class="absolute inset-0 bg-background/60"></div>
+    </div>
+    <div class="relative z-10 max-w-2xl">
+      <h2 class="font-headline text-5xl md:text-6xl text-on-background mb-8">Begin Your Consultation</h2>
+      <p class="font-body text-on-surface-variant mb-12 tracking-wide leading-relaxed">Allow our digital sommelier to guide you through the olfactory landscapes of L'Essence.</p>
+      <a href="contact.html" class="inline-block bg-secondary text-on-secondary px-12 py-4 font-label tracking-[0.2em] uppercase text-xs hover:bg-secondary/80 transition-colors">Find Your Signature</a>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full pt-20 pb-10 border-t border-[#383437]/10 bg-[#100d10]">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto">
+    <div class="col-span-1">
+      <a href="home.html" class="text-xl font-headline italic text-[#e8e0e5] block mb-6">L'ESSENCE</a>
+      <p class="font-body text-[10px] text-[#e8e0e5]/50 leading-loose tracking-widest uppercase">
+        The intersection of ancestral alchemy and modern desire.
+      </p>
+    </div>
+    <div>
+      <h4 class="font-label text-[10px] uppercase tracking-[0.2em] text-[#e9c176] mb-6">Explore</h4>
+      <ul class="space-y-4">
+        <li><a href="shop.html" class="font-label text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors">Shop All</a></li>
+        <li><a href="collections.html" class="font-label text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors">Collections</a></li>
+        <li><a href="contact.html" class="font-label text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors">Discovery Sets</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-label text-[10px] uppercase tracking-[0.2em] text-[#e9c176] mb-6">Legal</h4>
+      <ul class="space-y-4">
+        <li><a href="#" class="font-label text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors">Privacy Policy</a></li>
+        <li><a href="#" class="font-label text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors">Terms of Service</a></li>
+        <li><a href="contact.html" class="font-label text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors">Shipping &amp; Returns</a></li>
+        <li><a href="contact.html" class="font-label text-[10px] uppercase tracking-[0.2em] text-[#e8e0e5]/50 hover:text-[#e9c176] transition-colors">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-label text-[10px] uppercase tracking-[0.2em] text-[#e9c176] mb-6">Newsletter</h4>
+      <div class="relative border-b border-outline-variant/30 py-2">
+        <input class="bg-transparent border-none w-full text-[10px] tracking-[0.2em] text-on-surface focus:ring-0 placeholder:text-outline/40" placeholder="JOIN THE LIST" type="email">
+        <button class="absolute right-0 top-1/2 -translate-y-1/2">
+          <span class="material-symbols-outlined text-sm text-secondary">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mt-20 px-12 max-w-7xl mx-auto border-t border-[#383437]/10 pt-10 text-center">
+    <span class="font-label text-[8px] uppercase tracking-[0.3em] text-[#e8e0e5]/30">© 2024 L'ESSENCE PERFUMES. ALL RIGHTS RESERVED.</span>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'ESSENCE — Design Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "secondary": "#e9c176", "surface-container-low": "#1e1b1e",
+          "on-secondary": "#412d00", "on-background": "#e8e0e5",
+          "surface-variant": "#383437", "on-secondary-container": "#dab36a",
+          "primary": "#e6b8e2", "surface-container-high": "#2d292c",
+          "on-surface-variant": "#cfc3ca", "outline-variant": "#4c454a",
+          "outline": "#988e94", "on-surface": "#e8e0e5",
+          "surface-container-lowest": "#100d10", "background": "#151215",
+          "surface-container": "#221f22"
+        },
+        borderRadius: { DEFAULT: "0px", lg: "0px", xl: "0px", full: "9999px" },
+        fontFamily: { headline: ["Newsreader","serif"], body: ["Manrope","sans-serif"], label: ["Manrope","sans-serif"] }
+      }
+    }
+  }
+</script>
+<style>
+  body { background-color: #100d10; color: #e8e0e5; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  .grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+  .page-card { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+  .page-card:hover { transform: translateY(-4px); }
+  .page-card:hover .card-arrow { transform: translateX(6px); }
+  .card-arrow { transition: transform 0.3s ease; }
+  .tag-badge { font-family: 'Manrope', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; }
+</style>
+</head>
+<body class="bg-[#100d10] text-on-background font-body min-h-screen">
+<div class="grain"></div>
+
+<!-- Header -->
+<header class="w-full px-12 py-16 max-w-7xl mx-auto">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-outline-variant/10 pb-16">
+    <div>
+      <div class="flex items-center gap-4 mb-6">
+        <span class="inline-block w-3 h-3 rounded-full bg-secondary animate-pulse"></span>
+        <span class="font-label text-[10px] uppercase tracking-[0.3em] text-outline">Design Prototype — All Pages</span>
+      </div>
+      <h1 class="font-headline text-6xl md:text-8xl italic text-on-background leading-none">L'ESSENCE</h1>
+      <p class="font-headline text-xl italic text-on-surface-variant mt-3">Italian Luxury Fragrance Atelier</p>
+    </div>
+    <div class="text-right">
+      <p class="font-label text-[10px] text-outline uppercase tracking-[0.2em] mb-2">Website Build</p>
+      <p class="font-headline text-3xl font-bold text-secondary">7 Pages</p>
+      <p class="font-label text-[10px] text-outline uppercase tracking-[0.15em] mt-1">Full Navigation · Dark Mode · Responsive</p>
+    </div>
+  </div>
+</header>
+
+<!-- Pages Grid -->
+<main class="px-12 pb-24 max-w-7xl mx-auto">
+
+  <!-- Section label -->
+  <div class="flex items-center gap-6 mb-12">
+    <span class="font-label text-[10px] uppercase tracking-[0.3em] text-outline">Navigate to Page</span>
+    <div class="flex-1 h-px bg-outline-variant/20"></div>
+  </div>
+
+  <!-- Main 3-column grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-outline-variant/10">
+
+    <!-- Home -->
+    <a href="home.html" class="page-card bg-[#151215] p-10 group block">
+      <div class="flex justify-between items-start mb-10">
+        <div class="flex items-center gap-3">
+          <span class="tag-badge bg-secondary/10 text-secondary border border-secondary/20 px-3 py-1">Landing</span>
+        </div>
+        <span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors card-arrow">arrow_outward</span>
+      </div>
+      <div class="mb-6">
+        <span class="font-label text-[10px] text-outline uppercase tracking-[0.2em] block mb-3">01 — home.html</span>
+        <h2 class="font-headline text-4xl italic text-on-background mb-4">Homepage</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+          Full-screen hero with gold CTA, curated product grid, signature scents, scent finder, olfactory storytelling, newsletter, and footer.
+        </p>
+      </div>
+      <div class="border-t border-outline-variant/10 pt-6 flex flex-wrap gap-2">
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Hero</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Product Grid</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Newsletter</span>
+      </div>
+    </a>
+
+    <!-- Shop -->
+    <a href="shop.html" class="page-card bg-[#151215] p-10 group block">
+      <div class="flex justify-between items-start mb-10">
+        <div class="flex items-center gap-3">
+          <span class="tag-badge bg-primary/10 text-primary border border-primary/20 px-3 py-1">Commerce</span>
+        </div>
+        <span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors card-arrow">arrow_outward</span>
+      </div>
+      <div class="mb-6">
+        <span class="font-label text-[10px] text-outline uppercase tracking-[0.2em] block mb-3">02 — shop.html</span>
+        <h2 class="font-headline text-4xl italic text-on-background mb-4">The Boutique</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+          Sidebar filters by scent profile and collection, 6-product editorial grid with hover reveals, staggered layout, and pagination.
+        </p>
+      </div>
+      <div class="border-t border-outline-variant/10 pt-6 flex flex-wrap gap-2">
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Filters</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">6 Products</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Staggered Grid</span>
+      </div>
+    </a>
+
+    <!-- Product -->
+    <a href="product.html" class="page-card bg-[#151215] p-10 group block">
+      <div class="flex justify-between items-start mb-10">
+        <div class="flex items-center gap-3">
+          <span class="tag-badge bg-primary/10 text-primary border border-primary/20 px-3 py-1">Commerce</span>
+        </div>
+        <span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors card-arrow">arrow_outward</span>
+      </div>
+      <div class="mb-6">
+        <span class="font-label text-[10px] text-outline uppercase tracking-[0.2em] block mb-3">03 — product.html</span>
+        <h2 class="font-headline text-4xl italic text-on-background mb-4">Product Detail</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+          Asymmetric 12-col hero, olfactory pyramid, note breakdown, size selector, "Add to Bag", and horizontal scroll carousel.
+        </p>
+      </div>
+      <div class="border-t border-outline-variant/10 pt-6 flex flex-wrap gap-2">
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Olfactory Pyramid</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Carousel</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Accordion</span>
+      </div>
+    </a>
+
+    <!-- Checkout -->
+    <a href="checkout.html" class="page-card bg-[#151215] p-10 group block">
+      <div class="flex justify-between items-start mb-10">
+        <div class="flex items-center gap-3">
+          <span class="tag-badge bg-secondary/10 text-secondary border border-secondary/20 px-3 py-1">Commerce</span>
+        </div>
+        <span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors card-arrow">arrow_outward</span>
+      </div>
+      <div class="mb-6">
+        <span class="font-label text-[10px] text-outline uppercase tracking-[0.2em] block mb-3">04 — checkout.html</span>
+        <h2 class="font-headline text-4xl italic text-on-background mb-4">Secure Checkout</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+          Shipping destination, payment form, sticky order summary sidebar with line items, taxes, and total.
+        </p>
+      </div>
+      <div class="border-t border-outline-variant/10 pt-6 flex flex-wrap gap-2">
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Form</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Order Summary</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Payment</span>
+      </div>
+    </a>
+
+    <!-- About -->
+    <a href="about.html" class="page-card bg-[#151215] p-10 group block">
+      <div class="flex justify-between items-start mb-10">
+        <div class="flex items-center gap-3">
+          <span class="tag-badge bg-[#2d292c] text-on-surface-variant border border-outline-variant/30 px-3 py-1">Brand</span>
+        </div>
+        <span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors card-arrow">arrow_outward</span>
+      </div>
+      <div class="mb-6">
+        <span class="font-label text-[10px] text-outline uppercase tracking-[0.2em] block mb-3">05 — about.html</span>
+        <h2 class="font-headline text-4xl italic text-on-background mb-4">Our Story</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+          921px hero, brand origin story, Julian Vane quote break, 3-col craftsmanship grid, and "Begin Your Consultation" CTA.
+        </p>
+      </div>
+      <div class="border-t border-outline-variant/10 pt-6 flex flex-wrap gap-2">
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Heritage</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Craftsmanship Grid</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Quote Break</span>
+      </div>
+    </a>
+
+    <!-- Contact -->
+    <a href="contact.html" class="page-card bg-[#151215] p-10 group block">
+      <div class="flex justify-between items-start mb-10">
+        <div class="flex items-center gap-3">
+          <span class="tag-badge bg-[#2d292c] text-on-surface-variant border border-outline-variant/30 px-3 py-1">Brand</span>
+        </div>
+        <span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors card-arrow">arrow_outward</span>
+      </div>
+      <div class="mb-6">
+        <span class="font-label text-[10px] text-outline uppercase tracking-[0.2em] block mb-3">06 — contact.html</span>
+        <h2 class="font-headline text-4xl italic text-on-background mb-4">Concierge</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+          Bento grid contact form, Paris atelier details with map, quick service links, and editorial Master Parfumeur quote.
+        </p>
+      </div>
+      <div class="border-t border-outline-variant/10 pt-6 flex flex-wrap gap-2">
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Form + Bento</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Map</span>
+        <span class="tag-badge bg-[#221f22] text-on-surface-variant px-2 py-1">Paris Atelier</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Collections — Full-width featured card -->
+  <div class="mt-px bg-outline-variant/10 p-px">
+    <a href="collections.html" class="page-card bg-[#151215] p-10 group block md:flex gap-16 items-center">
+      <div class="md:w-1/3 mb-8 md:mb-0">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="tag-badge bg-secondary/10 text-secondary border border-secondary/20 px-3 py-1">Featured</span>
+          <span class="tag-badge bg-secondary/5 text-secondary/70 px-3 py-1">New Page</span>
+        </div>
+        <span class="font-label text-[10px] text-outline uppercase tracking-[0.2em] block mb-3">07 — collections.html</span>
+        <h2 class="font-headline text-5xl italic text-on-background mb-4">The Collections</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+          Editorial grid showcasing all 6 collections: Noir Absolu, Lunar Floral, Soleil Levant, Private Reserve, L'Ombre, and Nuit d'Or. Full-bleed image heroes with hover color reveals, product tag chips, and bespoke inquiry CTA.
+        </p>
+      </div>
+      <div class="flex-1 grid grid-cols-3 md:grid-cols-6 gap-2">
+        <div class="bg-surface-container p-4 text-center">
+          <p class="font-label text-[9px] uppercase tracking-[0.15em] text-outline mb-1">I</p>
+          <p class="font-headline text-sm italic text-on-background">Noir Absolu</p>
+        </div>
+        <div class="bg-surface-container p-4 text-center">
+          <p class="font-label text-[9px] uppercase tracking-[0.15em] text-outline mb-1">II</p>
+          <p class="font-headline text-sm italic text-on-background">Lunar Floral</p>
+        </div>
+        <div class="bg-surface-container p-4 text-center">
+          <p class="font-label text-[9px] uppercase tracking-[0.15em] text-outline mb-1">III</p>
+          <p class="font-headline text-sm italic text-on-background">Soleil Levant</p>
+        </div>
+        <div class="bg-surface-container p-4 text-center">
+          <p class="font-label text-[9px] uppercase tracking-[0.15em] text-outline mb-1">IV</p>
+          <p class="font-headline text-sm italic text-on-background">Private Reserve</p>
+        </div>
+        <div class="bg-surface-container p-4 text-center">
+          <p class="font-label text-[9px] uppercase tracking-[0.15em] text-outline mb-1">V</p>
+          <p class="font-headline text-sm italic text-on-background">L'Ombre</p>
+        </div>
+        <div class="bg-surface-container p-4 text-center">
+          <p class="font-label text-[9px] uppercase tracking-[0.15em] text-outline mb-1">VI</p>
+          <p class="font-headline text-sm italic text-on-background">Nuit d'Or</p>
+        </div>
+      </div>
+      <div class="mt-6 md:mt-0 md:ml-8 shrink-0">
+        <span class="material-symbols-outlined text-secondary text-3xl card-arrow group-hover:translate-x-2 transition-transform">arrow_forward</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Design System Reference -->
+  <section class="mt-24 border-t border-outline-variant/10 pt-24">
+    <div class="flex items-center gap-6 mb-12">
+      <span class="font-label text-[10px] uppercase tracking-[0.3em] text-outline">Design Tokens</span>
+      <div class="flex-1 h-px bg-outline-variant/20"></div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-outline-variant/10">
+      <!-- Color Palette -->
+      <div class="bg-[#151215] p-8">
+        <p class="font-label text-[9px] uppercase tracking-[0.2em] text-outline mb-6">Color Palette</p>
+        <div class="space-y-3">
+          <div class="flex items-center gap-3"><div class="w-8 h-8 shrink-0" style="background:#151215; border:1px solid #4c454a40"></div><span class="font-body text-xs text-on-surface-variant">Background #151215</span></div>
+          <div class="flex items-center gap-3"><div class="w-8 h-8 shrink-0" style="background:#e9c176"></div><span class="font-body text-xs text-on-surface-variant">Gold #e9c176</span></div>
+          <div class="flex items-center gap-3"><div class="w-8 h-8 shrink-0" style="background:#e6b8e2"></div><span class="font-body text-xs text-on-surface-variant">Mauve #e6b8e2</span></div>
+          <div class="flex items-center gap-3"><div class="w-8 h-8 shrink-0" style="background:#e8e0e5"></div><span class="font-body text-xs text-on-surface-variant">Text #e8e0e5</span></div>
+        </div>
+      </div>
+      <!-- Typography -->
+      <div class="bg-[#151215] p-8">
+        <p class="font-label text-[9px] uppercase tracking-[0.2em] text-outline mb-6">Typography</p>
+        <div class="space-y-4">
+          <div>
+            <p class="font-headline text-2xl italic text-on-background">Headlines</p>
+            <p class="font-body text-[9px] text-outline uppercase tracking-[0.15em] mt-1">Newsreader Serif Italic</p>
+          </div>
+          <div>
+            <p class="font-body text-sm text-on-background">Body text here</p>
+            <p class="font-body text-[9px] text-outline uppercase tracking-[0.15em] mt-1">Manrope Sans</p>
+          </div>
+          <div>
+            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-secondary">LABELS / CAPS</p>
+            <p class="font-body text-[9px] text-outline uppercase tracking-[0.15em] mt-1">Manrope + .2em tracking</p>
+          </div>
+        </div>
+      </div>
+      <!-- Effects -->
+      <div class="bg-[#151215] p-8">
+        <p class="font-label text-[9px] uppercase tracking-[0.2em] text-outline mb-6">Visual Effects</p>
+        <div class="space-y-4 text-on-surface-variant font-body text-xs leading-relaxed">
+          <p>→ Grain overlay (fixed, z:9999, opacity 0.02)</p>
+          <p>→ Grayscale images → color on hover</p>
+          <p>→ Backdrop blur nav (blur-xl)</p>
+          <p>→ All border-radius: 0px (sharp)</p>
+          <p>→ Gold text-glow on headings</p>
+        </div>
+      </div>
+      <!-- Navigation -->
+      <div class="bg-[#151215] p-8">
+        <p class="font-label text-[9px] uppercase tracking-[0.2em] text-outline mb-6">Navigation</p>
+        <div class="space-y-3">
+          <a href="home.html" class="flex items-center gap-3 hover:text-secondary transition-colors group">
+            <span class="material-symbols-outlined text-sm text-outline group-hover:text-secondary">home</span>
+            <span class="font-label text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Home</span>
+          </a>
+          <a href="shop.html" class="flex items-center gap-3 hover:text-secondary transition-colors group">
+            <span class="material-symbols-outlined text-sm text-outline group-hover:text-secondary">storefront</span>
+            <span class="font-label text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Shop</span>
+          </a>
+          <a href="collections.html" class="flex items-center gap-3 hover:text-secondary transition-colors group">
+            <span class="material-symbols-outlined text-sm text-outline group-hover:text-secondary">auto_awesome_mosaic</span>
+            <span class="font-label text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Collections</span>
+          </a>
+          <a href="about.html" class="flex items-center gap-3 hover:text-secondary transition-colors group">
+            <span class="material-symbols-outlined text-sm text-outline group-hover:text-secondary">eco</span>
+            <span class="font-label text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">About</span>
+          </a>
+          <a href="contact.html" class="flex items-center gap-3 hover:text-secondary transition-colors group">
+            <span class="material-symbols-outlined text-sm text-outline group-hover:text-secondary">mail</span>
+            <span class="font-label text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Contact</span>
+          </a>
+          <a href="checkout.html" class="flex items-center gap-3 hover:text-secondary transition-colors group">
+            <span class="material-symbols-outlined text-sm text-outline group-hover:text-secondary">shopping_bag</span>
+            <span class="font-label text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Checkout</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-outline-variant/10 px-12 py-10 max-w-7xl mx-auto mt-0">
+  <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+    <p class="font-label text-[9px] uppercase tracking-[0.3em] text-outline">L'ESSENCE — Website Prototype — 7 Pages</p>
+    <a href="home.html" class="font-headline text-xl italic text-secondary hover:opacity-80 transition-opacity">
+      Enter Site →
+    </a>
+  </div>
+</footer>
+</body>
+</html>
