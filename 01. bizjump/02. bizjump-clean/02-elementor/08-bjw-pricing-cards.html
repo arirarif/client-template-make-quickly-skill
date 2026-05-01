@@ -1,0 +1,305 @@
+<!--
+=======================================================
+  WIDGET 08 — bjw-pricing-cards
+  WHERE TO PASTE:
+    Elementor → Add Section
+    Section settings:
+      Background: #f9fafb
+      Padding Top/Bottom: 88px
+    Add 1 column → HTML Widget → paste everything below
+  NOTE: Plan CTA links use URL param for wizard pre-selection
+    /incorporate/?plan=plan_basic  etc.
+=======================================================
+-->
+
+<style>
+.bjw08-wrap {
+  font-family: 'Inter', sans-serif;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+.bjw08-header { text-align: center; margin-bottom: 52px; }
+.bjw08-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: #2563eb;
+  margin-bottom: 10px; display: block;
+}
+.bjw08-title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800; color: #111827;
+  letter-spacing: -0.8px; line-height: 1.18;
+  margin-bottom: 12px;
+}
+.bjw08-note {
+  font-size: 15px; color: #6b7280;
+}
+.bjw08-note strong { color: #111827; }
+
+/* Grid */
+.bjw08-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* Card base */
+.bjw08-card {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 32px 24px 28px;
+  position: relative;
+  transition: box-shadow .25s, transform .25s;
+}
+.bjw08-card:hover {
+  box-shadow: 0 8px 40px rgba(0,0,0,.1);
+  transform: translateY(-4px);
+}
+
+/* FEATURED card — Premium */
+.bjw08-card.bjw08-featured {
+  border-color: #2563eb;
+  box-shadow: 0 8px 32px rgba(37,99,235,.18);
+  transform: scale(1.03);
+  z-index: 2;
+}
+.bjw08-card.bjw08-featured:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 14px 48px rgba(37,99,235,.24);
+}
+
+/* Popular badge */
+.bjw08-badge {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  background: #2563eb; color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: .5px;
+  padding: 5px 16px; border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* Plan name */
+.bjw08-plan-name {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 17px; font-weight: 700; color: #111827;
+  margin-bottom: 4px;
+}
+
+/* Price area */
+.bjw08-price-row {
+  margin-bottom: 4px; display: flex; align-items: baseline; gap: 4px;
+}
+.bjw08-dollar { font-size: 20px; font-weight: 700; color: #0f2156; margin-top: 12px; }
+.bjw08-amount {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 46px; font-weight: 800; color: #0f2156; line-height: 1;
+}
+.bjw08-period { font-size: 13px; color: #6b7280; margin-top: 4px; }
+.bjw08-sub-price { font-size: 12px; color: #6b7280; margin-bottom: 20px; }
+
+/* Features list */
+.bjw08-features {
+  list-style: none; margin: 0 0 28px; padding: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.bjw08-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: #374151;
+}
+.bjw08-features li::before {
+  content: '✓';
+  background: #eff6ff; color: #2563eb;
+  width: 20px; height: 20px; border-radius: 50%;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800;
+  margin-top: 1px;
+}
+
+/* Divider */
+.bjw08-div { border: none; border-top: 1px solid #f3f4f6; margin: 0 0 20px; }
+
+/* CTA Button */
+.bjw08-cta {
+  display: block; width: 100%;
+  padding: 14px; border-radius: 10px;
+  text-align: center; font-size: 15px; font-weight: 700;
+  text-decoration: none; cursor: pointer;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  font-family: 'Inter', sans-serif;
+}
+.bjw08-cta-outline {
+  background: #f9fafb; color: #0f2156;
+  border: 2px solid #e5e7eb;
+}
+.bjw08-cta-outline:hover {
+  background: #eff6ff; border-color: #2563eb; color: #2563eb;
+}
+.bjw08-cta-solid {
+  background: #2563eb; color: #fff;
+  border: 2px solid #2563eb;
+  box-shadow: 0 4px 16px rgba(37,99,235,.3);
+}
+.bjw08-cta-solid:hover {
+  background: #1d4ed8;
+  box-shadow: 0 6px 24px rgba(37,99,235,.4);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.bjw08-cta-orange {
+  background: #f97316; color: #fff;
+  border: 2px solid #f97316;
+  box-shadow: 0 4px 16px rgba(249,115,22,.3);
+}
+.bjw08-cta-orange:hover {
+  background: #ea6c00; border-color: #ea6c00;
+  box-shadow: 0 6px 24px rgba(249,115,22,.4);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Turnaround note */
+.bjw08-time {
+  text-align: center; margin-top: 12px;
+  font-size: 12px; color: #9ca3af;
+}
+
+/* Scroll reveal */
+.bjw08-card { opacity: 0; transform: translateY(24px); }
+.bjw08-card.bjw08-visible { opacity: 1; }
+.bjw08-card { transition: opacity .55s ease, transform .55s ease, box-shadow .25s; }
+.bjw08-card.bjw08-featured { transform: scale(1.03) translateY(24px); }
+.bjw08-card.bjw08-featured.bjw08-visible { transform: scale(1.03) translateY(0); }
+.bjw08-card:nth-child(2) { transition-delay: .08s; }
+.bjw08-card:nth-child(3) { transition-delay: .16s; }
+.bjw08-card:nth-child(4) { transition-delay: .24s; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .bjw08-grid { grid-template-columns: repeat(2, 1fr); }
+  .bjw08-card.bjw08-featured { transform: scale(1) translateY(24px); }
+  .bjw08-card.bjw08-featured.bjw08-visible { transform: scale(1) translateY(0); }
+  .bjw08-card.bjw08-featured:hover { transform: translateY(-4px); }
+}
+@media (max-width: 640px) {
+  .bjw08-grid { grid-template-columns: 1fr; }
+  .bjw08-wrap { padding: 0 16px; }
+}
+</style>
+
+<div class="bjw08-wrap" id="pricing">
+
+  <!-- Header -->
+  <div class="bjw08-header">
+    <span class="bjw08-label">Transparent Pricing</span>
+    <h2 class="bjw08-title">Simple Flat-Rate Plans</h2>
+    <p class="bjw08-note">+ state filing fee (varies by state) · <strong>No hidden charges. Ever.</strong></p>
+  </div>
+
+  <!-- Cards -->
+  <div class="bjw08-grid">
+
+    <!-- Basic -->
+    <div class="bjw08-card">
+      <div class="bjw08-plan-name">Basic</div>
+      <div class="bjw08-price-row">
+        <span class="bjw08-dollar">$</span>
+        <span class="bjw08-amount">99</span>
+      </div>
+      <div class="bjw08-period">one-time · + state fee</div>
+      <div class="bjw08-sub-price">7–10 business day processing</div>
+      <hr class="bjw08-div">
+      <ul class="bjw08-features">
+        <li>Articles of Incorporation filing</li>
+        <li>Name availability check</li>
+        <li>Lifetime customer support</li>
+        <li>Digital document delivery</li>
+      </ul>
+      <a href="/incorporate/?plan=plan_basic" class="bjw08-cta bjw08-cta-outline">Get Started</a>
+      <div class="bjw08-time">⏱ 7–10 business days</div>
+    </div>
+
+    <!-- Pro -->
+    <div class="bjw08-card">
+      <div class="bjw08-plan-name">Pro</div>
+      <div class="bjw08-price-row">
+        <span class="bjw08-dollar">$</span>
+        <span class="bjw08-amount">195</span>
+      </div>
+      <div class="bjw08-period">one-time · + state fee</div>
+      <div class="bjw08-sub-price">5 business day processing</div>
+      <hr class="bjw08-div">
+      <ul class="bjw08-features">
+        <li>Everything in Basic</li>
+        <li>EIN / Tax ID number</li>
+        <li>Operating Agreement</li>
+        <li>Registered Agent (1 year)</li>
+        <li>Priority processing (5 days)</li>
+      </ul>
+      <a href="/incorporate/?plan=plan_pro" class="bjw08-cta bjw08-cta-solid">Get Started</a>
+      <div class="bjw08-time">⏱ 5 business days</div>
+    </div>
+
+    <!-- Premium — FEATURED -->
+    <div class="bjw08-card bjw08-featured">
+      <div class="bjw08-badge">⭐ Most Popular</div>
+      <div class="bjw08-plan-name">Premium</div>
+      <div class="bjw08-price-row">
+        <span class="bjw08-dollar">$</span>
+        <span class="bjw08-amount">295</span>
+      </div>
+      <div class="bjw08-period">one-time · + state fee</div>
+      <div class="bjw08-sub-price">Rush 1-day processing</div>
+      <hr class="bjw08-div">
+      <ul class="bjw08-features">
+        <li>Everything in Pro</li>
+        <li>Rush 1-day filing</li>
+        <li>Business bank account setup</li>
+        <li>Compliance calendar alerts</li>
+        <li>Dedicated account manager</li>
+        <li>Expedited state filing</li>
+      </ul>
+      <a href="/incorporate/?plan=plan_premium" class="bjw08-cta bjw08-cta-orange">Get Started →</a>
+      <div class="bjw08-time">⚡ Rush: 1 business day</div>
+    </div>
+
+    <!-- Enterprise -->
+    <div class="bjw08-card">
+      <div class="bjw08-plan-name">Enterprise</div>
+      <div class="bjw08-price-row">
+        <span class="bjw08-dollar">$</span>
+        <span class="bjw08-amount">295</span>
+      </div>
+      <div class="bjw08-period">one-time · + state fee</div>
+      <div class="bjw08-sub-price">+ $29/month ongoing services · Rush 1-day</div>
+      <hr class="bjw08-div">
+      <ul class="bjw08-features">
+        <li>Everything in Premium</li>
+        <li>Monthly compliance monitoring</li>
+        <li>Annual report reminders</li>
+        <li>Ongoing registered agent</li>
+        <li>Priority phone support</li>
+        <li>Multi-state filing support</li>
+      </ul>
+      <a href="/incorporate/?plan=plan_enterprise" class="bjw08-cta bjw08-cta-solid">Get Started</a>
+      <div class="bjw08-time">⚡ Rush: 1 business day</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var cards = document.querySelectorAll('.bjw08-card');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bjw08-visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  cards.forEach(function(c){ obs.observe(c); });
+})();
+</script>

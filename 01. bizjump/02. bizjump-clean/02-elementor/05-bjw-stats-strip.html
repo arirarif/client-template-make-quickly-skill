@@ -1,0 +1,189 @@
+<!--
+=======================================================
+  WIDGET 05 — bjw-stats-strip
+  WHERE TO PASTE:
+    Elementor → Add Section
+    Section settings:
+      Background: #ffffff (white)
+      Border bottom: 1px solid #f3f4f6
+      Padding Top/Bottom: 56px | Left/Right: 32px
+    Add 4 EQUAL columns
+    In EACH column → drag the Elementor "Counter" widget
+    Use settings below for each counter
+    Then add the custom CSS at the bottom of this file
+    to the Section → Advanced → Custom CSS tab
+=======================================================
+
+════════════════════════
+COLUMN 1 — Businesses Formed
+════════════════════════
+  Widget: Counter
+  Starting Number: 0
+  Ending Number:   3500
+  Duration:        2000
+  Thousands Separator: , (comma)
+  Suffix: +
+  Label: Businesses Formed
+  Sub-label (add as Text widget below Counter):
+    Since 1998
+
+  Style → Number:
+    Font family: Space Grotesk
+    Size: 42px | Weight: 800
+    Color: #0f2156
+    Letter spacing: -1px
+
+  Style → Title:
+    Font size: 14px | Weight: 500
+    Color: #6b7280
+    Margin top: 8px
+
+════════════════════════
+COLUMN 2 — States Supported
+════════════════════════
+  Ending Number: 50
+  Suffix: (none)
+  Label: States Supported
+  Sub-label: All across the USA
+  (same style as Column 1)
+
+════════════════════════
+COLUMN 3 — Years Experience
+════════════════════════
+  Ending Number: 25
+  Suffix: +
+  Label: Years of Experience
+  Sub-label: Trusted since 1998
+  (same style as Column 1)
+
+════════════════════════
+COLUMN 4 — Hidden Fees
+════════════════════════
+  Prefix: $
+  Ending Number: 0
+  Suffix: (none)
+  Label: Hidden Fees
+  Sub-label: Always transparent
+  (same style as Column 1)
+
+════════════════════════
+SECTION — Custom CSS
+(Add to Section → Advanced → Custom CSS)
+════════════════════════
+
+.bjw05-stats-section .elementor-column {
+  border-right: 1px solid #f3f4f6;
+  text-align: center;
+}
+.bjw05-stats-section .elementor-column:last-child {
+  border-right: none;
+}
+
+@media (max-width: 768px) {
+  .bjw05-stats-section .elementor-column {
+    border-right: none;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .bjw05-stats-section .elementor-column:last-child {
+    border-bottom: none;
+  }
+}
+
+════════════════════════
+ALTERNATIVE — HTML Widget (if Counter widget unavailable)
+Paste the HTML below into a single-column full-width HTML widget
+════════════════════════
+-->
+
+<style>
+.bjw05-stats {
+  background: #fff;
+  padding: 56px 32px;
+  border-bottom: 1px solid #f3f4f6;
+  font-family: 'Inter', sans-serif;
+}
+.bjw05-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.bjw05-item {
+  text-align: center;
+  padding: 24px 16px;
+  border-right: 1px solid #f3f4f6;
+}
+.bjw05-item:last-child { border-right: none; }
+.bjw05-num {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 42px; font-weight: 800;
+  color: #0f2156; line-height: 1;
+  letter-spacing: -1px;
+}
+.bjw05-label {
+  font-size: 14px; color: #6b7280;
+  margin-top: 8px; font-weight: 500;
+}
+.bjw05-sub {
+  font-size: 12px; color: #d1d5db; margin-top: 3px;
+}
+
+@media (max-width: 768px) {
+  .bjw05-grid { grid-template-columns: repeat(2, 1fr); }
+  .bjw05-item { border-right: none; border-bottom: 1px solid #f3f4f6; padding: 20px 12px; }
+  .bjw05-item:nth-child(odd) { border-right: 1px solid #f3f4f6; }
+  .bjw05-item:nth-child(3), .bjw05-item:nth-child(4) { border-bottom: none; }
+  .bjw05-num { font-size: 34px; }
+}
+</style>
+
+<div class="bjw05-stats">
+  <div class="bjw05-grid">
+    <div class="bjw05-item">
+      <div class="bjw05-num" data-bjw05-target="3500">0+</div>
+      <div class="bjw05-label">Businesses Formed</div>
+      <div class="bjw05-sub">Since 1998</div>
+    </div>
+    <div class="bjw05-item">
+      <div class="bjw05-num" data-bjw05-target="50">0</div>
+      <div class="bjw05-label">States Supported</div>
+      <div class="bjw05-sub">All across the USA</div>
+    </div>
+    <div class="bjw05-item">
+      <div class="bjw05-num" data-bjw05-target="25">0+</div>
+      <div class="bjw05-label">Years of Experience</div>
+      <div class="bjw05-sub">Trusted since 1998</div>
+    </div>
+    <div class="bjw05-item">
+      <div class="bjw05-num">$0</div>
+      <div class="bjw05-label">Hidden Fees</div>
+      <div class="bjw05-sub">Always transparent</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var suffix = {3500:'+', 25:'+'};
+  document.querySelectorAll('[data-bjw05-target]').forEach(function(el){
+    var target = parseInt(el.getAttribute('data-bjw05-target'), 10);
+    var suf = suffix[target] || '';
+    var started = false;
+    var obs = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting && !started){
+        started = true;
+        var start = performance.now();
+        var dur = 1600;
+        (function tick(now){
+          var p = Math.min((now - start) / dur, 1);
+          var ease = 1 - Math.pow(1-p, 3);
+          el.textContent = Math.floor(ease * target).toLocaleString() + suf;
+          if(p < 1) requestAnimationFrame(tick);
+        })(start);
+        obs.unobserve(el);
+      }
+    }, {threshold: 0.5});
+    obs.observe(el);
+  });
+})();
+</script>

@@ -1,0 +1,129 @@
+<!--
+=======================================================
+  WIDGET DLW-09 — Footer (Demo Landing)
+  WHERE TO PASTE:
+    Elementor → Add New Section → Stretch: YES (full-width)
+    Section padding: 0 (HTML handles dark bg + padding)
+    Add 1 column → drag HTML Widget → paste below
+  ALT: Use as theme footer in Elementor Pro Theme Builder.
+=======================================================
+-->
+
+<style>
+.dlw09-footer {
+  background: #0F172A;
+  padding: 64px 0 32px;
+  font-family: 'Inter', sans-serif;
+}
+.dlw09-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.dlw09-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+.dlw09-brand .dlw09-logo {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 20px; font-weight: 800; color: #fff;
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 14px;
+}
+.dlw09-brand .dlw09-logo span { color: #F97316; }
+.dlw09-brand p {
+  font-size: 14px; color: #94A3B8;
+  line-height: 1.65;
+  max-width: 260px;
+}
+.dlw09-col h4 {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #94A3B8;
+  margin: 0 0 16px;
+}
+.dlw09-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.dlw09-col a {
+  font-size: 14px;
+  color: #64748B;
+  text-decoration: none;
+  transition: color .15s;
+}
+.dlw09-col a:hover { color: #E2E8F0; }
+
+.dlw09-bottom {
+  border-top: 1px solid #1E293B;
+  padding-top: 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.dlw09-copy { font-size: 13px; color: #64748B; }
+.dlw09-legal { display: flex; gap: 20px; }
+.dlw09-legal a {
+  font-size: 13px; color: #64748B;
+  text-decoration: none;
+  transition: color .15s;
+}
+.dlw09-legal a:hover { color: #CBD5E1; }
+
+@media (max-width: 900px) {
+  .dlw09-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 24px;
+  }
+  .dlw09-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .dlw09-footer { padding: 48px 0 28px; }
+  .dlw09-grid { grid-template-columns: 1fr; gap: 28px; margin-bottom: 32px; }
+  .dlw09-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .dlw09-legal { flex-wrap: wrap; gap: 14px; }
+}
+</style>
+
+<footer class="dlw09-footer">
+  <div class="dlw09-inner">
+
+    <div class="dlw09-grid">
+      <div class="dlw09-brand">
+        <div class="dlw09-logo">Biz<span>Jump</span></div>
+        <p>America's trusted business formation service. We make starting a business fast, simple, and affordable.</p>
+      </div>
+      <div class="dlw09-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Form an LLC</a></li>
+          <li><a href="#">Form a Corporation</a></li>
+          <li><a href="#">Registered Agent</a></li>
+          <li><a href="#">EIN Filing</a></li>
+        </ul>
+      </div>
+      <div class="dlw09-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Business Name Search</a></li>
+          <li><a href="#">State Requirements</a></li>
+          <li><a href="#">Business Guide</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="dlw09-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Customer Reviews</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Affiliate Program</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dlw09-bottom">
+      <span class="dlw09-copy">© 2026 BizJump Inc. All rights reserved.</span>
+      <div class="dlw09-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>

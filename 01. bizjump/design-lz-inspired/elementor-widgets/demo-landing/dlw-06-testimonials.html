@@ -1,0 +1,127 @@
+<!--
+=======================================================
+  WIDGET DLW-06 — Testimonials (Demo Landing)
+  WHERE TO PASTE:
+    Elementor → Add New Section → Stretch: NO
+    Section padding: 0
+    Background: transparent (HTML uses #F8FAFC)
+    Add 1 column → drag HTML Widget → paste below
+=======================================================
+-->
+
+<style>
+.dlw06-section { padding: 88px 0; background: #F8FAFC; font-family: 'Inter', sans-serif; }
+.dlw06-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.dlw06-header { text-align: center; margin-bottom: 56px; }
+.dlw06-label {
+  display: inline-block; font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #F97316; margin-bottom: 12px;
+}
+.dlw06-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 800; color: #0F172A;
+  line-height: 1.2; letter-spacing: -.02em;
+  margin: 0 0 14px;
+}
+
+.dlw06-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.dlw06-card {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 2px 6px rgba(15,23,42,0.08);
+  transition: box-shadow .25s, transform .25s;
+}
+.dlw06-card:hover {
+  box-shadow: 0 4px 14px rgba(15,23,42,0.10);
+  transform: translateY(-2px);
+}
+.dlw06-stars {
+  display: flex; gap: 3px; margin-bottom: 14px;
+  color: #FB923C; font-size: 16px;
+  letter-spacing: 1px;
+}
+.dlw06-text {
+  font-size: 15px; color: #475569;
+  line-height: 1.65; margin-bottom: 20px;
+}
+.dlw06-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.dlw06-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+.dlw06-name { font-size: 14px; font-weight: 600; color: #1E293B; }
+.dlw06-role { font-size: 12px; color: #94A3B8; margin-top: 2px; }
+
+@media (max-width: 900px) {
+  .dlw06-grid { grid-template-columns: 1fr; gap: 16px; max-width: 520px; margin: 0 auto; }
+}
+@media (max-width: 600px) {
+  .dlw06-section { padding: 64px 0; }
+  .dlw06-header { margin-bottom: 40px; }
+  .dlw06-card { padding: 24px 22px; }
+}
+</style>
+
+<section class="dlw06-section">
+  <div class="dlw06-inner">
+
+    <div class="dlw06-header">
+      <span class="dlw06-label">Reviews</span>
+      <h2 class="dlw06-title">What Our Customers Say</h2>
+    </div>
+
+    <div class="dlw06-grid">
+
+      <div class="dlw06-card">
+        <div class="dlw06-stars">★★★★★</div>
+        <p class="dlw06-text">"BizJump made forming my LLC incredibly straightforward. The entire process took less than 10 minutes and my LLC was approved in 2 days."</p>
+        <div class="dlw06-author">
+          <div class="dlw06-avatar" style="background: linear-gradient(135deg, #6366F1, #4F46E5);">JM</div>
+          <div>
+            <div class="dlw06-name">James M.</div>
+            <div class="dlw06-role">E-commerce founder, TX</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dlw06-card">
+        <div class="dlw06-stars">★★★★★</div>
+        <p class="dlw06-text">"I was surprised at how smooth the experience was. Professional service, fast turnaround, and the registered agent feature is a huge time saver."</p>
+        <div class="dlw06-author">
+          <div class="dlw06-avatar" style="background: linear-gradient(135deg, #F97316, #EA580C);">SK</div>
+          <div>
+            <div class="dlw06-name">Sarah K.</div>
+            <div class="dlw06-role">Freelance consultant, NY</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dlw06-card">
+        <div class="dlw06-stars">★★★★★</div>
+        <p class="dlw06-text">"Used BizJump for my second LLC and the experience was even better than the first. Highly recommend the Pro plan — worth every penny."</p>
+        <div class="dlw06-author">
+          <div class="dlw06-avatar" style="background: linear-gradient(135deg, #1E293B, #334155);">RT</div>
+          <div>
+            <div class="dlw06-name">Robert T.</div>
+            <div class="dlw06-role">Real estate investor, FL</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

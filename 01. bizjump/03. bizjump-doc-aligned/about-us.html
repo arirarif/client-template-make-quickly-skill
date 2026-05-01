@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — BizJump: Business Development Accelerated</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-200:#FED7AA;
+  --orange-400:#FB923C;--orange-500:#F97316;--orange-600:#EA580C;--orange-700:#C2410C;
+  --indigo-50:#EEF2FF;--indigo-100:#E0E7FF;--indigo-500:#6366F1;--indigo-600:#4F46E5;
+  --slate-50:#F8FAFC;--slate-100:#F1F5F9;--slate-200:#E2E8F0;--slate-300:#CBD5E1;
+  --slate-400:#94A3B8;--slate-500:#64748B;--slate-600:#475569;--slate-700:#334155;
+  --slate-800:#1E293B;--slate-900:#0F172A;--white:#FFFFFF;
+  --cream:#F2EDE7;--cream-dark:#EAE3DB;
+  --shadow-xs:0 1px 3px rgba(15,23,42,.06);--shadow-sm:0 2px 6px rgba(15,23,42,.08);
+  --shadow-md:0 4px 14px rgba(15,23,42,.10);--shadow-lg:0 8px 28px rgba(15,23,42,.13);
+  --shadow-orange-btn:0 4px 14px rgba(249,115,22,.32);--shadow-orange-hover:0 6px 22px rgba(249,115,22,.44);
+  --font:'Inter','Plus Jakarta Sans',sans-serif;--fontd:'Plus Jakarta Sans','Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);font-size:16px;line-height:1.6;color:var(--slate-600);background:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+.container-sm{max-width:860px;margin:0 auto;padding:0 24px}
+.container-xs{max-width:760px;margin:0 auto;padding:0 24px}
+
+/* ── NAVBAR ─────────────────────────────────────── */
+.navbar{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--slate-200);box-shadow:var(--shadow-xs)}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:var(--fontd);font-size:22px;font-weight:800;color:var(--slate-900);display:flex;align-items:center;gap:8px}
+.nav-logo-icon{width:30px;height:30px;background:var(--orange-500);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff}
+.nav-logo em{font-style:normal;color:var(--orange-500)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--slate-500);transition:color .15s}
+.nav-links a:hover,.nav-links a.is-active{color:var(--slate-900)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.btn-signin{font-size:13px;font-weight:600;color:var(--slate-600);padding:7px 16px;border-radius:8px;border:1.5px solid var(--slate-200);background:transparent;cursor:pointer;transition:all .15s}
+.btn-signin:hover{background:var(--slate-50);border-color:var(--slate-300)}
+.btn-nav-primary{font-size:13px;font-weight:600;color:#fff;padding:8px 18px;border-radius:8px;background:var(--orange-500);border:none;cursor:pointer;box-shadow:var(--shadow-orange-btn);transition:all .2s}
+.btn-nav-primary:hover{background:var(--orange-600);box-shadow:var(--shadow-orange-hover);transform:translateY(-1px)}
+
+/* ── HERO ZONE ──────────────────────────────────── */
+.page-hero{background:var(--cream);padding:64px 0 72px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-30%;right:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(249,115,22,.08) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-500);margin-bottom:14px;padding:5px 14px;background:#fff;border-radius:999px;box-shadow:var(--shadow-xs);position:relative;z-index:1}
+.hero-headline{font-family:var(--fontd);font-size:clamp(34px,4.6vw,58px);font-weight:800;line-height:1.08;letter-spacing:-.025em;color:var(--slate-900);margin-bottom:18px;max-width:820px;position:relative;z-index:1}
+.hero-tagline{font-family:var(--fontd);font-size:clamp(18px,1.9vw,22px);font-weight:600;color:var(--orange-600);margin-bottom:20px;letter-spacing:.01em;position:relative;z-index:1}
+.hero-sub{font-size:17px;color:var(--slate-600);max-width:680px;line-height:1.7;position:relative;z-index:1}
+
+/* ── SECTION ────────────────────────────────────── */
+.section{padding:80px 0}
+.section-alt{background:var(--slate-50)}
+.section-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-500);margin-bottom:12px}
+.section-title{font-family:var(--fontd);font-size:clamp(26px,3.2vw,38px);font-weight:800;line-height:1.18;letter-spacing:-.02em;color:var(--slate-900);margin-bottom:18px}
+
+/* ── 2-COLUMN STORY BLOCKS ─────────────────────── */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.story-grid.flip{direction:rtl}
+.story-grid.flip > *{direction:ltr}
+.story-text p{font-size:16px;color:var(--slate-600);line-height:1.78;margin-bottom:18px}
+.story-text p:last-child{margin-bottom:0}
+.story-img{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:5/3}
+.story-img img{width:100%;height:100%;object-fit:cover;display:block}
+.story-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(249,115,22,.0) 0%,rgba(249,115,22,.08) 100%);pointer-events:none}
+
+/* ── STATS STRIP ────────────────────────────────── */
+.stats-strip{background:var(--slate-900);padding:56px 0;color:#fff;position:relative;overflow:hidden}
+.stats-strip::before{content:'';position:absolute;top:-40%;left:-10%;width:480px;height:480px;background:radial-gradient(circle,rgba(249,115,22,.18) 0%,transparent 70%);border-radius:50%}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;position:relative;z-index:1}
+.stat{text-align:center}
+.stat-num{font-family:var(--fontd);font-size:clamp(36px,4vw,52px);font-weight:800;color:var(--orange-400);line-height:1;letter-spacing:-.02em;margin-bottom:8px}
+.stat-label{font-size:14px;color:rgba(255,255,255,.7);font-weight:500;letter-spacing:.02em}
+
+/* ── PROCESS PHASES ─────────────────────────────── */
+.phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
+.phase-card{background:#fff;border:1px solid var(--slate-200);border-radius:18px;padding:32px 32px 30px;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s}
+.phase-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.phase-tag{display:inline-flex;align-items:center;gap:8px;background:var(--orange-50);color:var(--orange-600);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid var(--orange-100);margin-bottom:18px}
+.phase-num{font-family:var(--fontd);font-size:42px;font-weight:800;color:var(--orange-500);line-height:1;margin-bottom:14px}
+.phase-title{font-family:var(--fontd);font-size:20px;font-weight:700;color:var(--slate-900);margin-bottom:10px}
+.phase-text{font-size:14px;color:var(--slate-600);line-height:1.7}
+
+/* ── HEAR FROM US (CTA) ─────────────────────────── */
+.cta-zone{background:linear-gradient(135deg,var(--orange-700) 0%,var(--orange-500) 55%,var(--orange-400) 100%);padding:80px 0;text-align:center;position:relative;overflow:hidden}
+.cta-zone::before{content:'';position:absolute;top:-40%;left:-10%;width:480px;height:480px;background:rgba(255,255,255,.06);border-radius:50%}
+.cta-zone::after{content:'';position:absolute;bottom:-30%;right:-5%;width:380px;height:380px;background:rgba(255,255,255,.05);border-radius:50%}
+.cta-zone .container{position:relative;z-index:1}
+.cta-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.18);padding:5px 14px;border-radius:999px;margin-bottom:16px;backdrop-filter:blur(8px)}
+.cta-zone h2{font-family:var(--fontd);font-size:clamp(28px,3.6vw,42px);font-weight:800;color:#fff;line-height:1.18;letter-spacing:-.02em;margin-bottom:14px}
+.cta-zone p{font-size:17px;color:rgba(255,255,255,.85);max-width:580px;margin:0 auto 32px;line-height:1.65}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--orange-600);font-size:15px;font-weight:700;padding:14px 32px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.18);transition:all .2s}
+.btn-white:hover{background:var(--orange-50);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.22)}
+
+/* ── SERVICES TWO-COL ───────────────────────────── */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px}
+.svc-card{background:#fff;border:1px solid var(--slate-200);border-radius:16px;padding:32px;box-shadow:var(--shadow-xs)}
+.svc-card h3{font-family:var(--fontd);font-size:18px;font-weight:700;color:var(--slate-900);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.svc-card h3 .svc-dot{width:9px;height:9px;border-radius:50%;background:var(--orange-500)}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.svc-list li{font-size:14px;color:var(--slate-700);display:flex;align-items:center;gap:10px}
+.svc-list li::before{content:'';width:14px;height:14px;border-radius:50%;background:var(--orange-50);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23EA580C' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");background-repeat:no-repeat;background-position:center;background-size:9px;flex-shrink:0}
+
+/* ── FOOTER ─────────────────────────────────────── */
+.footer{background:var(--slate-900);padding:60px 0 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
+.footer-logo{font-family:var(--fontd);font-size:20px;font-weight:800;color:#fff;margin-bottom:12px}
+.footer-logo em{font-style:normal;color:var(--orange-500)}
+.footer-brand p{font-size:13px;color:var(--slate-500);line-height:1.65;max-width:240px}
+.fcol h4{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-500);margin-bottom:14px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fcol a{font-size:13px;color:var(--slate-500);transition:color .15s}
+.fcol a:hover{color:var(--slate-200)}
+.footer-bottom{border-top:1px solid var(--slate-800);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:var(--slate-600)}
+.footer-legal{display:flex;gap:16px}
+.footer-legal a{font-size:12px;color:var(--slate-600);transition:color .15s}
+.footer-legal a:hover{color:var(--slate-300)}
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+@media (max-width:920px){
+  .nav-links{display:none}
+  .story-grid{grid-template-columns:1fr;gap:36px}
+  .story-grid.flip{direction:ltr}
+  .stats-grid{grid-template-columns:1fr;gap:28px}
+  .phase-grid,.svc-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){.footer-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      Biz<em>Jump</em>
+    </div>
+    <ul class="nav-links">
+      <li><a href="formation-landing.html">Form a Business</a></li>
+      <li><a href="about-us.html" class="is-active">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact-us.html">Contact</a></li>
+      <li><a href="shop.html">Shop</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-signin">Sign In</button>
+      <button class="btn-nav-primary">My Account</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="page-hero">
+  <div class="container">
+    <span class="hero-eyebrow">About Us</span>
+    <h1 class="hero-headline">The BizJump Story</h1>
+    <p class="hero-tagline">Business Development Accelerated</p>
+    <p class="hero-sub">From a graduate-school startup in 1998 to a platform connecting more than 2,200 entrepreneurs with expert consultants — here's how we got here.</p>
+  </div>
+</section>
+
+<!-- ══ STORY ══ -->
+<section class="section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text">
+        <span class="section-eyebrow">Our Story</span>
+        <h2 class="section-title">From grad-school idea to a national platform</h2>
+        <p>Co-Founded in 1998 by Clinton and Michelle while in Grad school, Bizjump evolved to a management consultancy, for medium sized and large enterprises. We have worked tirelessly behind the scenes with federal, state and municipal agencies to launch business assistance programs, develop entrepreneurship programs for colleges and even work with banks to develop loan products for new ventures.</p>
+        <p>Our new platform signals a return to our roots of working one on one with entrepreneurs to launch and grow new ventures.</p>
+      </div>
+      <div class="story-img">
+        <img src="https://www.bizjump.com/wp-content/uploads/2019/05/businessman-chairs-facial-expression-716411-e1559267142351-1024x434.jpg" alt="BizJump founders meeting with a client">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num">1998</div><div class="stat-label">Founded by Clinton &amp; Michelle</div></div>
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Years of business development</div></div>
+      <div class="stat"><div class="stat-num">2,200+</div><div class="stat-label">Entrepreneurs we've helped launch</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ GROWTH & SUCCESS ══ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="story-grid flip">
+      <div class="story-text">
+        <span class="section-eyebrow">Growth &amp; Success</span>
+        <h2 class="section-title">Working one-on-one with entrepreneurs</h2>
+        <p>For over 20 years, Bizjump-trained management consultants have assisted over 2,200 entrepreneurs to launch and grow their businesses. Our new platform at bizjump.com now allows entrepreneurs to collaborate with expert consultants and partners, through our blogs and forums on business financing, incorporation, business planning, digital marketing, tax and accounting, and procurement of government contracts.</p>
+        <p>For one-on-one assistance, entrepreneurs can contact one of our certified consultants or partners to receive advice or help in almost any area of their businesses.</p>
+      </div>
+      <div class="story-img">
+        <img src="https://www.bizjump.com/wp-content/uploads/2019/05/business-people-working-together-istock_000017346252medium-1024x682.jpg" alt="BizJump consultants working with clients">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INCUBATE + ACCELERATE PROCESS ══ -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:820px;margin:0 auto 16px">
+      <span class="section-eyebrow">Our Process</span>
+      <h2 class="section-title">The Incubate + Accelerate Business Development Process</h2>
+      <p style="font-size:16px;color:var(--slate-600);line-height:1.78">For entrepreneurs, the business development journey is much more similar than you would think. First, the entrepreneur senses that there is an unmet need in the marketplace for which she could create a product/service to satisfy that market segment. Second, in the face of enormous risks, she marshals available resources—financing, knowledge, skills, relationship and people—to create a solution that she hopes that customers will find more valuable than that of competitors. Third, based on this initial success, she scales the business to acquire even more customers leading to a mutually beneficial long-term relationship along with the riches that comes with it.</p>
+    </div>
+
+    <div class="phase-grid">
+      <div class="phase-card">
+        <span class="phase-tag">Phase 1</span>
+        <div class="phase-num">01</div>
+        <h3 class="phase-title">Incubation Phase</h3>
+        <p class="phase-text">The start-up or incubation phase is when the entrepreneur is trying to get the value proposition right. In other words: what are the specific attributes and features of the product that customers value more in relation to the competitors? Can the new firm deliver this superior value in a consistent manner?</p>
+      </div>
+      <div class="phase-card">
+        <span class="phase-tag">Phase 2</span>
+        <div class="phase-num">02</div>
+        <h3 class="phase-title">Growth Phase</h3>
+        <p class="phase-text">After those questions are answered, the firm moves into a growth phase where the needs of the business are starkly different from the startup phase. This deep understanding of the business development cycle is what makes BizJump one of the best options for any entrepreneur seeking a business development partner.</p>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:32px;font-size:15px;color:var(--slate-500);font-style:italic">With over a quarter century of business development expertise, our client engagement is based on a two-prong business development model.</p>
+  </div>
+</section>
+
+<!-- ══ WHAT WE DO ══ -->
+<section class="section section-alt">
+  <div class="container">
+    <div style="text-align:center;max-width:760px;margin:0 auto">
+      <span class="section-eyebrow">What We Do</span>
+      <h2 class="section-title">From start-up through growth</h2>
+      <p style="font-size:16px;color:var(--slate-600);line-height:1.78">BizJump has helped over 2,200 clients for over 20 years. We not only help businesses to start but we also assist in maintenance and growth of business. Our consultants are highly trained to work one on one with small businesses to produce the results you need in all departments.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <h3><span class="svc-dot"></span>Business Start-ups</h3>
+        <ul class="svc-list">
+          <li>Business Plan Development</li>
+          <li>Business Consulting</li>
+          <li>Financing</li>
+          <li>Start Up Package</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <h3><span class="svc-dot"></span>Existing Businesses</h3>
+        <ul class="svc-list">
+          <li>Accounting &amp; Tax</li>
+          <li>Procurement</li>
+          <li>Digital Marketing</li>
+          <li>Web Development</li>
+          <li>Credit Repair &amp; Analysis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HEAR FROM US ══ -->
+<section class="cta-zone">
+  <div class="container">
+    <span class="cta-eyebrow">Hear From Us</span>
+    <h2>Talk to our team</h2>
+    <p>Request to speak to one of our several departments including HR, Customer Service or the Technical Support Team.</p>
+    <a href="contact-us.html" class="btn-white">
+      Message us
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Biz<em>Jump</em></div>
+        <p>America's trusted business formation service. We make starting a business fast, simple, and affordable.</p>
+      </div>
+      <div class="fcol"><h4>Services</h4><ul>
+        <li><a href="#">Form an LLC</a></li><li><a href="#">Form a Corporation</a></li>
+        <li><a href="#">Registered Agent</a></li><li><a href="#">EIN Filing</a></li>
+      </ul></div>
+      <div class="fcol"><h4>Resources</h4><ul>
+        <li><a href="#">Business Name Search</a></li><li><a href="#">State Requirements</a></li>
+        <li><a href="blog.html">Business Guide</a></li><li><a href="#">FAQ</a></li>
+      </ul></div>
+      <div class="fcol"><h4>Company</h4><ul>
+        <li><a href="about-us.html">About Us</a></li><li><a href="#">Customer Reviews</a></li>
+        <li><a href="contact-us.html">Contact</a></li><li><a href="#">Affiliate Program</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 BizJump Inc. All rights reserved.</span>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

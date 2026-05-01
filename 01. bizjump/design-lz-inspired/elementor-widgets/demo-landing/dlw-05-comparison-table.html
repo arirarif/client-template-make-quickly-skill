@@ -1,0 +1,200 @@
+<!--
+=======================================================
+  WIDGET DLW-05 — Comparison Table (Demo Landing)
+  WHERE TO PASTE:
+    Elementor → Add New Section → Stretch: NO
+    Section padding: 0 (HTML handles)
+    Background: White
+    Add 1 column → drag HTML Widget → paste below
+  NOTE: On mobile (≤700px) the table flips to a stacked
+        card layout per plan for readability.
+=======================================================
+-->
+
+<style>
+.dlw05-section { padding: 88px 0; background: #FFFFFF; font-family: 'Inter', sans-serif; }
+.dlw05-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.dlw05-header { text-align: center; margin-bottom: 56px; }
+.dlw05-label {
+  display: inline-block; font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #F97316; margin-bottom: 12px;
+}
+.dlw05-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 800; color: #0F172A;
+  line-height: 1.2; letter-spacing: -.02em;
+  margin: 0 0 14px;
+}
+.dlw05-wrap {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.10);
+  overflow: hidden;
+}
+.dlw05-head {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  background: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 0 24px;
+}
+.dlw05-th {
+  padding: 18px 12px;
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #94A3B8;
+}
+.dlw05-th.dlw05-featured {
+  color: #F97316; position: relative;
+}
+.dlw05-th.dlw05-featured::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px; background: #F97316;
+  border-radius: 3px 3px 0 0;
+}
+.dlw05-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 0 24px;
+  border-bottom: 1px solid #F1F5F9;
+  align-items: center;
+}
+.dlw05-row:last-child { border-bottom: none; }
+.dlw05-row:hover { background: #F8FAFC; }
+.dlw05-td {
+  padding: 15px 12px;
+  font-size: 14px; color: #475569;
+}
+.dlw05-label-td { font-weight: 500; color: #334155; }
+.dlw05-center { text-align: center; }
+.dlw05-check {
+  width: 20px; height: 20px;
+  background: #EEF2FF;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto;
+  color: #6366F1;
+}
+.dlw05-dash {
+  width: 20px; height: 2px;
+  background: #E2E8F0;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* Mobile-friendly column header for stacked cards */
+.dlw05-mh { display: none; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #94A3B8; }
+
+@media (max-width: 900px) {
+  .dlw05-section { padding: 64px 0; }
+  .dlw05-th, .dlw05-td { font-size: 12px; padding: 14px 8px; }
+  .dlw05-head, .dlw05-row { padding: 0 14px; }
+}
+
+/* Stack the table into card-per-plan on small screens */
+@media (max-width: 700px) {
+  .dlw05-wrap { background: transparent; border: none; box-shadow: none; }
+  .dlw05-head { display: none; }
+  .dlw05-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
+    margin-bottom: 14px;
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(15,23,42,0.06);
+  }
+  .dlw05-row .dlw05-td {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 18px;
+    border-bottom: 1px solid #F1F5F9;
+    text-align: left;
+  }
+  .dlw05-row .dlw05-td:last-child { border-bottom: none; }
+  .dlw05-row .dlw05-label-td {
+    background: #F8FAFC;
+    font-weight: 700; color: #0F172A;
+    font-size: 14px;
+    padding: 14px 18px;
+  }
+  .dlw05-mh { display: inline-block; }
+  .dlw05-check, .dlw05-dash { margin: 0; }
+}
+</style>
+
+<section class="dlw05-section">
+  <div class="dlw05-inner">
+
+    <div class="dlw05-header">
+      <span class="dlw05-label">Compare</span>
+      <h2 class="dlw05-title">Plan Comparison</h2>
+    </div>
+
+    <div class="dlw05-wrap">
+      <div class="dlw05-head">
+        <div class="dlw05-th">Feature</div>
+        <div class="dlw05-th">Basic</div>
+        <div class="dlw05-th dlw05-featured">Pro</div>
+        <div class="dlw05-th">Premium</div>
+      </div>
+
+      <div class="dlw05-row">
+        <div class="dlw05-td dlw05-label-td">LLC Articles of Organization</div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Basic</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Pro</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Premium</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+
+      <div class="dlw05-row">
+        <div class="dlw05-td dlw05-label-td">Name Availability Search</div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Basic</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Pro</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Premium</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+
+      <div class="dlw05-row">
+        <div class="dlw05-td dlw05-label-td">Registered Agent (1 Year)</div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Basic</span><div class="dlw05-dash"></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Pro</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Premium</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+
+      <div class="dlw05-row">
+        <div class="dlw05-td dlw05-label-td">Operating Agreement</div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Basic</span><div class="dlw05-dash"></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Pro</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Premium</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+
+      <div class="dlw05-row">
+        <div class="dlw05-td dlw05-label-td">EIN / Tax ID Filing</div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Basic</span><div class="dlw05-dash"></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Pro</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Premium</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+
+      <div class="dlw05-row">
+        <div class="dlw05-td dlw05-label-td">Business Bank Account</div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Basic</span><div class="dlw05-dash"></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Pro</span><div class="dlw05-dash"></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Premium</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+
+      <div class="dlw05-row">
+        <div class="dlw05-td dlw05-label-td">Domain + Business Email</div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Basic</span><div class="dlw05-dash"></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Pro</span><div class="dlw05-dash"></div></div>
+        <div class="dlw05-td dlw05-center"><span class="dlw05-mh">Premium</span><div class="dlw05-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>

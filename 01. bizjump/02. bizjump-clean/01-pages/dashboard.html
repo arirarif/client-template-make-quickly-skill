@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard — BizJump</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f2156; --blue: #1e3a8a; --blue-mid: #2563eb; --blue-lt: #eff6ff;
+    --orange: #f97316; --orange-dk: #ea6c00;
+    --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb; --gray-300: #d1d5db;
+    --gray-500: #6b7280; --gray-700: #374151; --gray-900: #111827;
+    --green: #16a34a; --green-lt: #f0fdf4;
+    --yellow: #f59e0b; --yellow-lt: #fffbeb;
+    --white: #ffffff; --radius: 10px;
+    --shadow: 0 2px 16px rgba(0,0,0,.07);
+  }
+  body { font-family: 'Inter', sans-serif; color: var(--gray-900); background: var(--gray-50); min-height: 100vh; }
+
+  /* SIDEBAR NAV */
+  .app { display: flex; min-height: 100vh; }
+  .sidebar {
+    width: 240px; background: var(--navy); color: rgba(255,255,255,.8);
+    display: flex; flex-direction: column; flex-shrink: 0;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  }
+  .sidebar-logo {
+    padding: 28px 24px 20px; font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.5px;
+    text-decoration: none; display: block;
+  }
+  .sidebar-logo span { color: var(--orange); }
+  .sidebar-divider { height: 1px; background: rgba(255,255,255,.08); margin: 0 24px 16px; }
+  .sidebar-section { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,.35); padding: 0 24px 10px; }
+  .sidebar-link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 11px 24px; font-size: 14px; font-weight: 500;
+    color: rgba(255,255,255,.7); text-decoration: none;
+    transition: background .15s, color .15s; border-radius: 0;
+  }
+  .sidebar-link:hover { background: rgba(255,255,255,.07); color: #fff; }
+  .sidebar-link.active { background: rgba(255,255,255,.12); color: #fff; font-weight: 600; }
+  .sidebar-link .icon { font-size: 16px; width: 20px; text-align: center; }
+  .sidebar-bottom { margin-top: auto; padding: 20px 24px; border-top: 1px solid rgba(255,255,255,.08); }
+  .sidebar-user { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,.65); }
+  .user-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--blue-mid); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+  .sidebar-user a { color: rgba(255,255,255,.45); text-decoration: none; font-size: 12px; display: block; margin-top: 2px; }
+  .sidebar-user a:hover { color: rgba(255,255,255,.8); }
+
+  /* MAIN CONTENT */
+  .main-content { flex: 1; overflow-y: auto; }
+  .topbar {
+    background: var(--white); border-bottom: 1px solid var(--gray-100);
+    padding: 0 32px; height: 64px; display: flex; align-items: center;
+    justify-content: space-between; box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .topbar h1 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--gray-900); }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .btn-start {
+    background: var(--orange); color: #fff; border: none;
+    border-radius: var(--radius); padding: 9px 20px;
+    font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif;
+    cursor: pointer; text-decoration: none;
+    transition: background .2s;
+  }
+  .btn-start:hover { background: var(--orange-dk); color: #fff; }
+
+  /* PAGE CONTENT */
+  .page { padding: 32px; }
+
+  /* STATS STRIP */
+  .stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 12px; padding: 20px 24px;
+    box-shadow: var(--shadow);
+  }
+  .stat-card .s-label { font-size: 13px; color: var(--gray-500); font-weight: 500; margin-bottom: 8px; }
+  .stat-card .s-num { font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 800; color: var(--gray-900); line-height: 1; }
+  .stat-card .s-note { font-size: 12px; color: var(--gray-500); margin-top: 4px; }
+
+  /* ORDER CARD */
+  .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 16px; }
+  .order-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 12px; padding: 0; margin-bottom: 24px;
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .order-head {
+    padding: 20px 24px; display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .order-head-left h3 { font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+  .order-head-left p { font-size: 13px; color: var(--gray-500); }
+  .status-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 700;
+  }
+  .status-badge.processing { background: var(--yellow-lt); color: #92400e; }
+  .status-badge.complete { background: var(--green-lt); color: #15803d; }
+  .status-badge.pending { background: var(--blue-lt); color: var(--blue); }
+  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* PROGRESS TRACKER */
+  .order-progress { padding: 24px; }
+  .progress-track { display: flex; align-items: center; gap: 0; margin-bottom: 12px; }
+  .prog-step { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; }
+  .prog-step:not(:last-child) { position: relative; }
+  .prog-step:not(:last-child)::after {
+    content: ''; position: absolute; top: 15px; left: 50%; width: 100%;
+    height: 2px; background: var(--gray-200); z-index: 0;
+  }
+  .prog-step.done:not(:last-child)::after { background: var(--green); }
+  .prog-dot {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; position: relative; z-index: 1;
+    border: 2px solid var(--gray-300); background: var(--white); color: var(--gray-400);
+  }
+  .prog-step.done .prog-dot { background: var(--green); border-color: var(--green); color: #fff; }
+  .prog-step.active .prog-dot { background: var(--white); border-color: var(--blue-mid); color: var(--blue-mid); box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+  .prog-label { font-size: 11px; font-weight: 600; color: var(--gray-500); text-align: center; }
+  .prog-step.done .prog-label { color: var(--green); }
+  .prog-step.active .prog-label { color: var(--blue-mid); }
+
+  /* TWO COLUMN GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 12px; padding: 24px; box-shadow: var(--shadow);
+  }
+  .info-card h4 { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 16px; }
+  .info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--gray-50); font-size: 14px; }
+  .info-row:last-child { border-bottom: none; }
+  .info-row .l { color: var(--gray-500); }
+  .info-row .v { font-weight: 600; color: var(--gray-900); }
+
+  /* UPCOMING */
+  .upcoming-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 14px 0; border-bottom: 1px solid var(--gray-100);
+  }
+  .upcoming-item:last-child { border-bottom: none; }
+  .date-badge {
+    width: 44px; text-align: center; flex-shrink: 0;
+    background: var(--blue-lt); border-radius: 8px; padding: 6px 4px;
+  }
+  .date-badge .month { font-size: 10px; font-weight: 700; color: var(--blue-mid); text-transform: uppercase; }
+  .date-badge .day { font-size: 20px; font-weight: 800; color: var(--navy); line-height: 1; font-family: 'Space Grotesk', sans-serif; }
+  .upcoming-text h5 { font-size: 14px; font-weight: 600; color: var(--gray-900); margin-bottom: 3px; }
+  .upcoming-text p { font-size: 13px; color: var(--gray-500); }
+  .urgent { border-left: 3px solid var(--orange); padding-left: 12px; }
+
+  /* DOCUMENT ROW */
+  .doc-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid var(--gray-100);
+    font-size: 14px;
+  }
+  .doc-row:last-child { border-bottom: none; }
+  .doc-icon { font-size: 20px; }
+  .doc-name { flex: 1; font-weight: 500; color: var(--gray-900); }
+  .doc-status { font-size: 12px; font-weight: 600; }
+  .doc-status.ready { color: var(--green); }
+  .doc-status.pending { color: var(--gray-400); }
+  .doc-btn {
+    background: none; border: 1px solid var(--gray-200);
+    border-radius: 6px; padding: 5px 14px;
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    color: var(--gray-700); transition: all .2s;
+  }
+  .doc-btn:hover { background: var(--gray-50); border-color: var(--gray-300); }
+  .doc-btn.disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .stats-strip { grid-template-columns: 1fr 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .page { padding: 20px 16px; }
+    .stats-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .topbar { padding: 0 16px; }
+    .topbar h1 { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a href="homepage.html" class="sidebar-logo">Biz<span>Jump</span></a>
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">My Business</div>
+    <a href="dashboard.html" class="sidebar-link active"><span class="icon">&#127968;</span> Dashboard</a>
+    <a href="#" class="sidebar-link"><span class="icon">&#128196;</span> My Orders</a>
+    <a href="#" class="sidebar-link"><span class="icon">&#128230;</span> Documents</a>
+    <a href="#" class="sidebar-link"><span class="icon">&#128197;</span> Compliance</a>
+
+    <div class="sidebar-divider" style="margin-top:16px"></div>
+    <div class="sidebar-section">Services</div>
+    <a href="incorporation-landing.html" class="sidebar-link"><span class="icon">&#127970;</span> Start New Business</a>
+    <a href="#" class="sidebar-link"><span class="icon">&#128200;</span> Business Financing</a>
+    <a href="#" class="sidebar-link"><span class="icon">&#128187;</span> Digital Marketing</a>
+    <a href="#" class="sidebar-link"><span class="icon">&#129534;</span> Accounting &amp; Tax</a>
+
+    <div class="sidebar-divider" style="margin-top:16px"></div>
+    <a href="contact.html" class="sidebar-link"><span class="icon">&#128233;</span> Contact Support</a>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-user">
+        <div class="user-avatar">JD</div>
+        <div>
+          <div>John Doe</div>
+          <a href="homepage.html">Log out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-content">
+
+    <div class="topbar">
+      <h1>Your Business Command Center</h1>
+      <div class="topbar-right">
+        <a href="incorporation-landing.html" class="btn-start">+ Start New Business</a>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- STATS -->
+      <div class="stats-strip">
+        <div class="stat-card">
+          <div class="s-label">Active Businesses</div>
+          <div class="s-num">1</div>
+          <div class="s-note">Acme Holdings LLC</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-label">Formation Status</div>
+          <div class="s-num" style="font-size:18px;color:#f59e0b">&#9888; In Progress</div>
+          <div class="s-note">Filed with state — pending</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-label">Upcoming Deadlines</div>
+          <div class="s-num" style="color:#f97316">2</div>
+          <div class="s-note">Next: Annual Report — Jun 1</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-label">Documents Ready</div>
+          <div class="s-num">3</div>
+          <div class="s-note">of 5 ready to download</div>
+        </div>
+      </div>
+
+      <!-- ORDER PROGRESS -->
+      <div class="section-title">Formation Progress</div>
+      <div class="order-card">
+        <div class="order-head">
+          <div class="order-head-left">
+            <h3>Acme Holdings LLC &mdash; Delaware</h3>
+            <p>Order #BJ-2026-4421 &middot; Started April 27, 2026 &middot; Premium Plan</p>
+          </div>
+          <span class="status-badge processing"><span class="status-dot"></span> Processing</span>
+        </div>
+        <div class="order-progress">
+          <div class="progress-track">
+            <div class="prog-step done">
+              <div class="prog-dot">&#10003;</div>
+              <div class="prog-label">Name Check</div>
+            </div>
+            <div class="prog-step done">
+              <div class="prog-dot">&#10003;</div>
+              <div class="prog-label">Docs Prepared</div>
+            </div>
+            <div class="prog-step active">
+              <div class="prog-dot">3</div>
+              <div class="prog-label">State Filing</div>
+            </div>
+            <div class="prog-step">
+              <div class="prog-dot">4</div>
+              <div class="prog-label">Approval</div>
+            </div>
+            <div class="prog-step">
+              <div class="prog-dot">5</div>
+              <div class="prog-label">Delivered</div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:#6b7280">&#9889; <strong>Currently at step 3:</strong> Formation documents submitted to Delaware Secretary of State. Estimated approval: 3&ndash;5 business days.</p>
+        </div>
+      </div>
+
+      <!-- TWO COLUMN -->
+      <div class="grid-2">
+
+        <!-- BUSINESS DETAILS -->
+        <div class="info-card">
+          <h4>&#127970; Business Details</h4>
+          <div class="info-row"><span class="l">Business Name</span><span class="v">Acme Holdings LLC</span></div>
+          <div class="info-row"><span class="l">Entity Type</span><span class="v">LLC</span></div>
+          <div class="info-row"><span class="l">State</span><span class="v">Delaware</span></div>
+          <div class="info-row"><span class="l">Service Plan</span><span class="v">Premium</span></div>
+          <div class="info-row"><span class="l">Registered Agent</span><span class="v" style="color:#16a34a">BizJump (Included)</span></div>
+          <div class="info-row"><span class="l">EIN / Tax ID</span><span class="v" style="color:#f59e0b">Pending filing</span></div>
+        </div>
+
+        <!-- UPCOMING DEADLINES -->
+        <div class="info-card">
+          <h4>&#128197; Upcoming Deadlines</h4>
+          <div class="upcoming-item">
+            <div class="date-badge"><div class="month">Jun</div><div class="day">1</div></div>
+            <div class="upcoming-text">
+              <h5>Annual Report Due — Delaware</h5>
+              <p>File your LLC Annual Report with the state to maintain good standing.</p>
+            </div>
+          </div>
+          <div class="upcoming-item urgent">
+            <div class="date-badge"><div class="month">May</div><div class="day">15</div></div>
+            <div class="upcoming-text">
+              <h5>EIN Application Confirmation</h5>
+              <p>Review and sign your EIN application — sent to your email.</p>
+            </div>
+          </div>
+          <div class="upcoming-item">
+            <div class="date-badge"><div class="month">Apr</div><div class="day">27</div></div>
+            <div class="upcoming-text">
+              <h5>Formation Submitted</h5>
+              <p>Your formation documents were submitted to Delaware Secretary of State.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DOCUMENTS -->
+      <div class="info-card" style="margin-bottom:24px">
+        <h4>&#128230; My Documents</h4>
+        <div class="doc-row">
+          <span class="doc-icon">&#128196;</span>
+          <span class="doc-name">Articles of Organization</span>
+          <span class="doc-status pending">Pending state approval</span>
+          <button class="doc-btn disabled">Download</button>
+        </div>
+        <div class="doc-row">
+          <span class="doc-icon">&#128203;</span>
+          <span class="doc-name">Operating Agreement</span>
+          <span class="doc-status ready">&#10003; Ready</span>
+          <button class="doc-btn" onclick="alert('In the live site this downloads your Operating Agreement PDF.')">Download</button>
+        </div>
+        <div class="doc-row">
+          <span class="doc-icon">&#128202;</span>
+          <span class="doc-name">Registered Agent Confirmation</span>
+          <span class="doc-status ready">&#10003; Ready</span>
+          <button class="doc-btn" onclick="alert('In the live site this downloads your RA confirmation PDF.')">Download</button>
+        </div>
+        <div class="doc-row">
+          <span class="doc-icon">&#128179;</span>
+          <span class="doc-name">EIN Certificate</span>
+          <span class="doc-status pending">Awaiting IRS processing</span>
+          <button class="doc-btn disabled">Download</button>
+        </div>
+        <div class="doc-row">
+          <span class="doc-icon">&#128196;</span>
+          <span class="doc-name">Order Invoice / Receipt</span>
+          <span class="doc-status ready">&#10003; Ready</span>
+          <button class="doc-btn" onclick="alert('In the live site this downloads your invoice PDF.')">Download</button>
+        </div>
+      </div>
+
+    </div><!-- /.page -->
+  </div><!-- /.main-content -->
+</div><!-- /.app -->
+
+</body>
+</html>

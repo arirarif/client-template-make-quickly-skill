@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BizJump — Client Dashboard Requirements</title>
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --ink: #0f172a;
+    --ink-soft: #475569;
+    --muted: #94a3b8;
+    --line: #e2e8f0;
+    --line-soft: #eef2f7;
+    --brand: #2563eb;
+    --brand-soft: #dbeafe;
+    --accent: #7c3aed;
+    --green: #16a34a;
+    --green-soft: #dcfce7;
+    --yellow: #ca8a04;
+    --yellow-soft: #fef9c3;
+    --red: #dc2626;
+    --red-soft: #fee2e2;
+    --blue: #0284c7;
+    --blue-soft: #e0f2fe;
+    --shadow: 0 6px 20px -10px rgba(15,23,42,.18);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  code, pre, .mono { font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace; }
+
+  /* Layout */
+  .app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  .sidebar {
+    background: linear-gradient(180deg, #0f172a, #1e293b);
+    color: #e2e8f0;
+    padding: 28px 22px;
+    position: sticky; top: 0;
+    height: 100vh; overflow-y: auto;
+  }
+  .sidebar h1 { font-size: 18px; margin: 0 0 4px; color: #fff; letter-spacing: -.01em; }
+  .sidebar .sub { font-size: 12px; color: #94a3b8; margin-bottom: 22px; }
+  .sidebar nav a {
+    display: block; padding: 8px 12px; color: #cbd5e1; text-decoration: none;
+    border-radius: 8px; font-size: 13px; margin-bottom: 2px;
+  }
+  .sidebar nav a:hover { background: #334155; color: #fff; }
+  .sidebar nav .group { font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+    color: #64748b; padding: 14px 12px 6px; }
+
+  .main { padding: 36px 48px; max-width: 1180px; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: #fff; padding: 36px; border-radius: var(--radius);
+    margin-bottom: 28px; box-shadow: var(--shadow);
+  }
+  .hero h1 { margin: 0 0 6px; font-size: 32px; letter-spacing: -.02em; }
+  .hero p { margin: 6px 0; opacity: .92; }
+  .hero .pill {
+    display: inline-block; background: rgba(255,255,255,.18);
+    padding: 5px 12px; border-radius: 999px; font-size: 12px;
+    margin-top: 12px; backdrop-filter: blur(6px);
+  }
+
+  /* Section card */
+  section.card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 28px 30px; margin-bottom: 22px;
+    box-shadow: var(--shadow);
+  }
+  section.card > h2 {
+    font-size: 22px; margin: 0 0 4px; letter-spacing: -.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  section.card > h2 .num {
+    background: var(--brand-soft); color: var(--brand);
+    font-size: 13px; padding: 4px 10px; border-radius: 8px; font-weight: 700;
+  }
+  section.card > h2 .star { color: #f59e0b; }
+  section.card .desc {
+    color: var(--ink-soft); margin: 8px 0 18px; font-size: 14px;
+    border-left: 3px solid var(--brand-soft); padding-left: 12px;
+  }
+  section.card h3 { font-size: 15px; margin: 22px 0 10px; color: var(--ink); }
+  section.card h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--muted); margin: 18px 0 8px; }
+
+  /* ASCII grid */
+  pre.grid {
+    background: #0f172a; color: #e2e8f0;
+    padding: 18px 20px; border-radius: 10px;
+    font-size: 12.5px; line-height: 1.5; overflow-x: auto;
+    border: 1px solid #1e293b;
+  }
+
+  /* Tables */
+  table.data {
+    width: 100%; border-collapse: collapse; margin: 8px 0 14px;
+    background: #fff; border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  table.data th, table.data td {
+    text-align: left; padding: 10px 14px; font-size: 13px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  table.data th { background: #f8fafc; color: var(--ink-soft); font-weight: 600; }
+  table.data tr:last-child td { border-bottom: none; }
+
+  /* Badges / pills */
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  }
+  .pill.green { background: var(--green-soft); color: var(--green); }
+  .pill.yellow { background: var(--yellow-soft); color: var(--yellow); }
+  .pill.red { background: var(--red-soft); color: var(--red); }
+  .pill.blue { background: var(--blue-soft); color: var(--blue); }
+  .pill.brand { background: var(--brand-soft); color: var(--brand); }
+
+  /* Visual mockups */
+  .mock {
+    background: #f8fafc; border: 1px solid var(--line);
+    border-radius: 12px; padding: 18px; margin: 14px 0;
+  }
+  .mock-title { font-size: 12px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+
+  /* Dashboard preview grid (Section 1) */
+  .dash-preview { display: grid; grid-template-columns: 70% 30%; gap: 14px; }
+  .dash-preview .card-mock {
+    background: #fff; border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px;
+  }
+  .dash-preview h5 { margin: 0 0 8px; font-size: 13px; color: var(--ink); }
+  .dash-preview ul { margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--ink-soft); }
+  .progress { background: #e2e8f0; border-radius: 999px; height: 8px; overflow: hidden;
+    margin: 8px 0; }
+  .progress > span { display: block; height: 100%;
+    background: linear-gradient(90deg, #2563eb, #7c3aed); }
+
+  /* Sidebar mock */
+  .sidebar-mock {
+    background: #0f172a; color: #cbd5e1; border-radius: 10px;
+    padding: 14px; font-size: 13px;
+  }
+  .sidebar-mock div { padding: 8px 10px; border-radius: 6px; margin: 2px 0; }
+  .sidebar-mock div.active { background: #2563eb; color: #fff; }
+  .sidebar-mock div:hover:not(.active) { background: #1e293b; color: #fff; }
+
+  /* Topbar mock */
+  .topbar-mock {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .topbar-mock .logo { font-weight: 800; color: var(--brand); }
+  .topbar-mock .right { display: flex; gap: 14px; color: var(--ink-soft); font-size: 13px; }
+
+  /* Reference images */
+  .refs {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px; margin: 14px 0;
+  }
+  .ref {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden; transition: transform .15s, box-shadow .15s;
+  }
+  .ref:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .ref img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover;
+    background: #f1f5f9; }
+  .ref .meta { padding: 10px 12px; font-size: 12px; }
+  .ref .meta .name { font-weight: 600; color: var(--ink); }
+  .ref .meta .desc { color: var(--ink-soft); font-size: 11.5px; margin-top: 2px; line-height: 1.4; }
+  .ref.match { border-color: #f59e0b; }
+  .ref.match .meta::before { content: "★ Best match"; color: #f59e0b;
+    font-size: 11px; font-weight: 700; display: block; margin-bottom: 4px; }
+
+  /* Buttons mock */
+  .btn-row { display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 8px 16px; border-radius: 8px;
+    font-size: 13px; font-weight: 600; border: 1px solid transparent;
+  }
+  .btn.primary { background: var(--brand); color: #fff; }
+  .btn.outline { background: #fff; color: var(--brand); border-color: var(--brand); }
+  .btn.ghost { background: #f1f5f9; color: var(--ink-soft); }
+
+  /* Checklist */
+  .checklist { margin: 8px 0; }
+  .checklist li {
+    list-style: none; padding: 8px 12px; background: #f8fafc;
+    border-radius: 8px; margin: 6px 0; font-size: 13px; color: var(--ink-soft);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .checklist li::before { content: "☐"; font-size: 16px; color: var(--muted); }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+  .tab {
+    padding: 8px 18px; font-size: 13px; font-weight: 600; cursor: default;
+    border-bottom: 2px solid transparent; color: var(--ink-soft);
+  }
+  .tab.active { border-bottom-color: var(--brand); color: var(--brand); }
+
+  /* Two column */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* Footer */
+  footer { padding: 20px 0 60px; color: var(--muted); font-size: 12px; text-align: center; }
+
+  /* Anchor offset */
+  section.card { scroll-margin-top: 20px; }
+
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; }
+    .main { padding: 24px; }
+    .dash-preview, .two-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- =============== SIDEBAR =============== -->
+<aside class="sidebar">
+  <h1>🚀 BizJump</h1>
+  <div class="sub">Business Command Center<br>Client Requirements Master</div>
+
+  <nav>
+    <div class="group">Sections</div>
+    <a href="#s1">1. Dashboard Home</a>
+    <a href="#s2">2. Document Hub</a>
+    <a href="#s3">3. Compliance Center</a>
+    <a href="#s4">4. Service Management</a>
+    <a href="#s5">5. Action Center ⭐</a>
+    <a href="#s6">6. Communication Hub</a>
+    <a href="#s7">7. Business Profile</a>
+
+    <div class="group">Global</div>
+    <a href="#s8">8. Sidebar Menu</a>
+    <a href="#s9">9. Notifications</a>
+    <a href="#s10">10. Empty States</a>
+    <a href="#s11">11. Top Bar</a>
+    <a href="#s12">12. Support</a>
+    <a href="#s13">13. Positioning</a>
+    <a href="#s14">14. Implementation</a>
+
+    <div class="group">Reference</div>
+    <a href="#refs">All 21 Mockups</a>
+  </nav>
+</aside>
+
+<!-- =============== MAIN =============== -->
+<main class="main">
+
+<!-- Hero -->
+<div class="hero">
+  <h1>BizJump — Client Dashboard Requirements</h1>
+  <p><strong>System Name:</strong> Business Command Center</p>
+  <p>Merged from <code>docs.md</code> + <code>Wire Frame of Customer Portal.docx</code> (21 design references)</p>
+  <span class="pill">Headline reference: Fiverr — "SaaS / AI dashboard / CRM" by Varun Dade</span>
+</div>
+
+<!-- Global layout overview -->
+<section class="card">
+  <h2>🌐 Global Layout</h2>
+  <div class="desc">High-level shell that wraps every page (sections 1–7).</div>
+  <div class="mock">
+    <div class="topbar-mock">
+      <span class="logo">BizJump</span>
+      <span class="right">🔔 &nbsp;|&nbsp; Support &nbsp;|&nbsp; Account ▾</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 200px 1fr; gap: 12px; margin-top: 12px;">
+      <div class="sidebar-mock">
+        <div class="active">📊 Dashboard</div>
+        <div>📁 Documents</div>
+        <div>⚖️ Compliance</div>
+        <div>🛠 Services</div>
+        <div>✅ Action Plan</div>
+        <div>💬 Messages</div>
+        <div>⚙️ Settings</div>
+        <div>🚪 Logout</div>
+      </div>
+      <div style="background: #f1f5f9; border-radius: 10px; padding: 18px; color: var(--muted); display: flex; align-items: center; justify-content: center;">
+        <span>Main Content Area (Sections 1–7)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SECTION 1 =============== -->
+<section class="card" id="s1">
+  <h2><span class="num">1</span> Dashboard Home (Main Screen)</h2>
+  <div class="desc">
+    <strong>Welcome back, [First Name]</strong><br>
+    "Here's the current status of your business and what needs your attention."
+  </div>
+
+  <h3>📐 Layout Grid</h3>
+  <div class="mock">
+    <div class="dash-preview">
+      <div>
+        <div class="card-mock">
+          <h5>📊 Business Status</h5>
+          <ul>
+            <li>Business Name: <em>[Auto]</em></li>
+            <li>Entity Type: LLC / Corp</li>
+            <li>State: <em>[Auto]</em></li>
+            <li>Filing Status: Preparing → Filed → Approved</li>
+            <li>EIN Status: Not Started / In Progress / Completed</li>
+          </ul>
+          <div style="font-size: 11px; color: var(--muted); margin-top: 10px;">Your Business Formation Progress</div>
+          <div class="progress"><span style="width: 60%"></span></div>
+        </div>
+        <div class="card-mock" style="margin-top: 12px;">
+          <h5>✅ Action Plan – Next Steps</h5>
+          <ul class="checklist">
+            <li>Apply for EIN</li>
+            <li>Download formation documents</li>
+            <li>Open business bank account</li>
+            <li>Set up compliance reminders</li>
+            <li>Add optional services</li>
+          </ul>
+          <div class="btn-row"><span class="btn primary">View Full Action Plan</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="card-mock">
+          <h5>⚡ Quick Summary</h5>
+          <ul>
+            <li>Formation Progress: 60%</li>
+            <li>Next Deadline: May 15</li>
+            <li>Active Services: 3</li>
+          </ul>
+        </div>
+        <div class="card-mock" style="margin-top: 12px;">
+          <h5>🔔 Notifications</h5>
+          <ul>
+            <li>Filing update</li>
+            <li>Reminder alerts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>📋 Status Panel Fields</h3>
+  <table class="data">
+    <thead><tr><th>Field</th><th>Value Source</th></tr></thead>
+    <tbody>
+      <tr><td>Business Name</td><td>Auto</td></tr>
+      <tr><td>Entity Type</td><td>LLC / Corp / etc.</td></tr>
+      <tr><td>State</td><td>Auto</td></tr>
+      <tr><td>Filing Status</td><td><span class="pill yellow">Preparing</span> → <span class="pill blue">Filed</span> → <span class="pill green">Approved</span></td></tr>
+      <tr><td>EIN Status</td><td><span class="pill yellow">Not Started</span> · <span class="pill blue">In Progress</span> · <span class="pill green">Completed</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>🖼 Design References</h3>
+  <div class="refs">
+    <div class="ref">
+      <img src="_extracted/word/media/image1.jpeg" alt="Fiverr Varun Dade SaaS reference">
+      <div class="meta"><span class="name">image1.jpeg</span><span class="desc">Fiverr "Varun Dade" SaaS/CRM collage — overall aesthetic anchor</span></div>
+    </div>
+    <div class="ref match">
+      <img src="_extracted/word/media/image2.png" alt="Dashboard layout reference">
+      <div class="meta"><span class="name">image2.png</span><span class="desc">Stat cards + donut chart + notifications + calendar</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SECTION 2 =============== -->
+<section class="card" id="s2">
+  <h2><span class="num">2</span> Document Hub</h2>
+  <div class="desc">
+    <strong>Your Business Documents</strong><br>
+    "Access, download, and manage all your official business documents in one place."
+  </div>
+
+  <h3>📐 Layout</h3>
+  <div class="mock">
+    <table class="data">
+      <thead><tr><th>Document Name</th><th>Type</th><th>Date Uploaded</th><th>Status</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Articles of Organization</td><td>PDF</td><td>2026-04-12</td><td><span class="pill green">✅ Ready</span></td><td><span class="btn outline">Download</span></td></tr>
+        <tr><td>EIN Confirmation Letter</td><td>PDF</td><td>2026-04-15</td><td><span class="pill yellow">⏳ Pending</span></td><td><span class="btn outline">Download</span></td></tr>
+        <tr><td>Operating Agreement</td><td>PDF</td><td>2026-04-20</td><td><span class="pill blue">🔄 Processing</span></td><td><span class="btn outline">Download</span></td></tr>
+      </tbody>
+    </table>
+    <div class="btn-row">
+      <span class="btn primary">Upload New Document</span>
+      <span class="btn outline">Download All Files</span>
+    </div>
+  </div>
+
+  <h3>🖱 UX Behavior</h3>
+  <ul>
+    <li>Click row → preview document inline</li>
+    <li>Status tags: <span class="pill green">Ready</span> <span class="pill yellow">Pending</span> <span class="pill blue">Processing</span></li>
+  </ul>
+
+  <h3>🖼 Design References</h3>
+  <div class="refs">
+    <div class="ref"><img src="_extracted/word/media/image3.png" alt=""><div class="meta"><span class="name">image3.png</span><span class="desc">"My Documents" — file-type tiles + table</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image4.png" alt=""><div class="meta"><span class="name">image4.png</span><span class="desc">Status badges + responsive mobile preview</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image5.png" alt=""><div class="meta"><span class="name">image5.png</span><span class="desc">"Client Portal" — sidebar nav + filter modal</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image6.png" alt=""><div class="meta"><span class="name">image6.png</span><span class="desc">"Document Directory" — multi-filter chips</span></div></div>
+  </div>
+</section>
+
+<!-- =============== SECTION 3 =============== -->
+<section class="card" id="s3">
+  <h2><span class="num">3</span> Compliance Center</h2>
+  <div class="desc">
+    <strong>Stay Compliant</strong><br>
+    "Keep up with state requirements and tax obligations—deadlines, filings, and reminders all in one place so you never miss a step."
+  </div>
+
+  <h3>📐 Top Section: Alerts</h3>
+  <div class="mock">
+    <table class="data">
+      <tbody>
+        <tr><td>Annual Report Due</td><td>2026-08-15</td><td><span class="pill green">🟢 On Track</span></td></tr>
+        <tr><td>State Filing Requirement</td><td>2026-05-12</td><td><span class="pill yellow">🟡 Action Required</span></td></tr>
+        <tr><td>Tax Reminder</td><td>2026-04-20</td><td><span class="pill red">🔴 Overdue</span></td></tr>
+      </tbody>
+    </table>
+    <div class="btn-row">
+      <span class="btn primary">View Compliance Calendar</span>
+      <span class="btn outline">Add Compliance Service</span>
+    </div>
+  </div>
+
+  <h3>🚦 Status Indicators</h3>
+  <div class="btn-row">
+    <span class="pill green">🟢 Green = On Track</span>
+    <span class="pill yellow">🟡 Yellow = Action Required</span>
+    <span class="pill red">🔴 Red = Overdue</span>
+  </div>
+
+  <h3>🖼 Design References</h3>
+  <div class="refs">
+    <div class="ref match"><img src="_extracted/word/media/image7.png" alt=""><div class="meta"><span class="name">image7.png</span><span class="desc">Tax Compliance Dashboard — calendar + deadlines + tasks</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image8.png" alt=""><div class="meta"><span class="name">image8.png</span><span class="desc">Yearly heatmap (green/yellow/red by month)</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image9.png" alt=""><div class="meta"><span class="name">image9.png</span><span class="desc">Mobile Tax Returns — Pending/Processing/Completed</span></div></div>
+  </div>
+</section>
+
+<!-- =============== SECTION 4 =============== -->
+<section class="card" id="s4">
+  <h2><span class="num">4</span> Service Management Panel</h2>
+  <div class="desc">
+    <strong>Your Services</strong><br>
+    "View and manage the services you've selected. Add new services anytime as your business grows."
+  </div>
+
+  <h3>⭐ Active Services</h3>
+  <div class="mock">
+    <div class="two-col">
+      <div class="card-mock"><h5>Formation Package</h5><span class="pill green">Active</span></div>
+      <div class="card-mock"><h5>Registered Agent</h5><span class="pill green">Active</span></div>
+    </div>
+    <div class="card-mock" style="margin-top: 12px;"><h5>EIN Filing</h5><span class="pill blue">In Progress</span></div>
+  </div>
+
+  <h3>➕ Available Add-Ons</h3>
+  <div class="mock">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 10px;">
+      <div class="card-mock"><h5>Operating Agreement</h5></div>
+      <div class="card-mock"><h5>Corporate Bylaws</h5></div>
+      <div class="card-mock"><h5>Bank Account Setup</h5></div>
+      <div class="card-mock"><h5>Social Media Setup</h5></div>
+      <div class="card-mock"><h5>Google Business & Analytics</h5></div>
+    </div>
+    <div class="btn-row" style="margin-top: 12px;">
+      <span class="btn primary">Add Services</span>
+      <span class="btn outline">Upgrade Package</span>
+    </div>
+  </div>
+
+  <h3>🖼 Design References</h3>
+  <div class="refs">
+    <div class="ref"><img src="_extracted/word/media/image10.jpeg" alt=""><div class="meta"><span class="name">image10.jpeg</span><span class="desc">"Nectar" — stat cards + suppliers/services table</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image11.jpeg" alt=""><div class="meta"><span class="name">image11.jpeg</span><span class="desc">Subscription dashboard — renewals + history</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image12.png" alt=""><div class="meta"><span class="name">image12.png</span><span class="desc">Pricing plan cards (4 tiers) — for Upgrade flow</span></div></div>
+  </div>
+</section>
+
+<!-- =============== SECTION 5 =============== -->
+<section class="card" id="s5">
+  <h2><span class="num">5</span> Action Center <span class="star">⭐</span> <span class="pill brand">Key Differentiator</span></h2>
+  <div class="desc">
+    <strong>Your Business Action Plan</strong><br>
+    "A step-by-step guide to help you fully set up and run your business."
+  </div>
+
+  <h3>📐 Tabs / Sections</h3>
+  <div class="mock">
+    <div class="tabs">
+      <div class="tab active">Setup</div>
+      <div class="tab">Growth</div>
+      <div class="tab">Compliance</div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h4>🔧 Setup</h4>
+        <ul class="checklist">
+          <li>Register for EIN</li>
+          <li>Open Business Bank Account</li>
+          <li>Set up Accounting System</li>
+        </ul>
+      </div>
+      <div>
+        <h4>📈 Growth</h4>
+        <ul class="checklist">
+          <li>Create Social Media Accounts</li>
+          <li>Set up Google Business Profile</li>
+          <li>Launch Website</li>
+        </ul>
+      </div>
+    </div>
+    <h4>⚖️ Compliance</h4>
+    <ul class="checklist">
+      <li>File Annual Report</li>
+      <li>Maintain Registered Agent</li>
+      <li>Track Tax Deadlines</li>
+    </ul>
+  </div>
+
+  <h3>🖱 Interactions</h3>
+  <ul>
+    <li><strong>Checkbox</strong> → Mark Complete</li>
+    <li><strong>Expand</strong> → View instructions inline</li>
+  </ul>
+
+  <h3>🖼 Design References</h3>
+  <div class="refs">
+    <div class="ref match"><img src="_extracted/word/media/image13.png" alt=""><div class="meta"><span class="name">image13.png</span><span class="desc">"Getting Started" — 38% progress + step checklist</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image14.png" alt=""><div class="meta"><span class="name">image14.png</span><span class="desc">"Checklist" — per-row progress bars</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image15.png" alt=""><div class="meta"><span class="name">image15.png</span><span class="desc">Productivity bars + project summary</span></div></div>
+  </div>
+</section>
+
+<!-- =============== SECTION 6 =============== -->
+<section class="card" id="s6">
+  <h2><span class="num">6</span> Communication Hub</h2>
+  <div class="desc">
+    <strong>Messages & Updates</strong><br>
+    "Stay connected with our team and receive important updates about your business."
+  </div>
+
+  <h3>📐 Layout</h3>
+  <div class="mock">
+    <div style="display: grid; grid-template-columns: 220px 1fr; gap: 12px;">
+      <div class="card-mock">
+        <h5>💬 Conversations</h5>
+        <ul style="list-style: none; padding: 0; font-size: 12.5px;">
+          <li style="padding: 8px; background: var(--brand-soft); border-radius: 6px; color: var(--brand);">BizJump Team <span style="color: var(--red); float: right;">● 2</span></li>
+          <li style="padding: 8px; color: var(--ink-soft);">Filing Updates</li>
+          <li style="padding: 8px; color: var(--ink-soft);">Notifications</li>
+        </ul>
+      </div>
+      <div class="card-mock">
+        <div style="background: var(--brand-soft); padding: 8px 12px; border-radius: 8px; font-size: 12.5px; max-width: 70%; margin-bottom: 8px;">[BizJump] Your filing is approved! 🎉</div>
+        <div style="background: #f1f5f9; padding: 8px 12px; border-radius: 8px; font-size: 12.5px; max-width: 70%; margin-bottom: 8px; margin-left: auto;">[You] Thanks, when is the EIN ready?</div>
+        <div style="background: var(--brand-soft); padding: 8px 12px; border-radius: 8px; font-size: 12.5px; max-width: 70%; margin-bottom: 8px;">[BizJump] Within 5 business days.</div>
+        <div style="border: 1px solid var(--line); border-radius: 8px; padding: 10px; color: var(--muted); font-size: 12px; margin-top: 14px;">Type your message…</div>
+        <div class="btn-row" style="margin-top: 8px;">
+          <span class="btn primary">Send Message</span>
+          <span class="btn ghost">📎 Upload File</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>🖼 Design References</h3>
+  <div class="refs">
+    <div class="ref match"><img src="_extracted/word/media/image16.png" alt=""><div class="meta"><span class="name">image16.png</span><span class="desc">"Tenx Messages & Inbox" — list + chat thread</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image17.png" alt=""><div class="meta"><span class="name">image17.png</span><span class="desc">"BOARDASH" — list with sent/received stats</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image18.png" alt=""><div class="meta"><span class="name">image18.png</span><span class="desc">"Workhubs" — chat thread + voice messages</span></div></div>
+  </div>
+</section>
+
+<!-- =============== SECTION 7 =============== -->
+<section class="card" id="s7">
+  <h2><span class="num">7</span> Business Profile</h2>
+  <div class="desc"><strong>Your Business Details</strong></div>
+
+  <h3>📐 Editable Fields</h3>
+  <div class="mock">
+    <table class="data">
+      <tbody>
+        <tr><td style="width: 200px;">Business Name</td><td><em>__________________________</em></td></tr>
+        <tr><td>Entity Type</td><td>[ LLC ▾ ]</td></tr>
+        <tr><td>State</td><td>[ Florida ▾ ]</td></tr>
+        <tr><td>Formation Date</td><td>__ / __ / ____</td></tr>
+        <tr><td>EIN (if available)</td><td><em>__________________________</em></td></tr>
+        <tr><td>Registered Agent</td><td><em>__________________________</em></td></tr>
+      </tbody>
+    </table>
+    <div class="btn-row"><span class="btn primary">Edit Information</span></div>
+  </div>
+
+  <h3>💡 Additional Fields (suggested by reference images)</h3>
+  <ul>
+    <li>Business contact phone (with verification)</li>
+    <li>Business address (street + city + ZIP)</li>
+    <li>Time zone</li>
+    <li>Tax/VAT registration number</li>
+    <li>Branding (logo upload)</li>
+    <li>Bank accounts & currencies tab</li>
+  </ul>
+
+  <h3>🖼 Design References</h3>
+  <div class="refs">
+    <div class="ref"><img src="_extracted/word/media/image19.png" alt=""><div class="meta"><span class="name">image19.png</span><span class="desc">"Account Settings" — sidebar nav of profile sections</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image20.png" alt=""><div class="meta"><span class="name">image20.png</span><span class="desc">Business account settings (name/address/phone/zone)</span></div></div>
+    <div class="ref match"><img src="_extracted/word/media/image21.png" alt=""><div class="meta"><span class="name">image21.png</span><span class="desc">"Business Information" — Store + Business + Tax tabs</span></div></div>
+  </div>
+</section>
+
+<!-- =============== SECTION 8 =============== -->
+<section class="card" id="s8">
+  <h2><span class="num">8</span> Sidebar Menu</h2>
+  <div class="desc">Global navigation, visible on every page.</div>
+  <div class="mock" style="max-width: 280px;">
+    <div class="sidebar-mock">
+      <div class="active">📊 Dashboard</div>
+      <div>📁 Documents</div>
+      <div>⚖️ Compliance</div>
+      <div>🛠 Services</div>
+      <div>✅ Action Plan</div>
+      <div>💬 Messages</div>
+      <div>⚙️ Settings</div>
+      <div>🚪 Logout</div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SECTION 9 =============== -->
+<section class="card" id="s9">
+  <h2><span class="num">9</span> Notifications System</h2>
+  <div class="desc">Toast and inline alerts triggered by lifecycle events.</div>
+  <h3>Examples</h3>
+  <ul class="checklist">
+    <li><span class="pill green">✅</span> Your business has been successfully filed with the state</li>
+    <li><span class="pill blue">🔄</span> Your EIN application is in progress</li>
+    <li><span class="pill yellow">⏰</span> Annual report due in 30 days</li>
+  </ul>
+  <h3>Triggers</h3>
+  <ul>
+    <li>Filing status change</li>
+    <li>EIN milestone reached</li>
+    <li>Compliance deadline approaching (30d / 7d / overdue)</li>
+    <li>New message from BizJump team</li>
+    <li>Document uploaded / ready</li>
+  </ul>
+</section>
+
+<!-- =============== SECTION 10 =============== -->
+<section class="card" id="s10">
+  <h2><span class="num">10</span> Empty States (UX Copy)</h2>
+  <div class="desc">First-run / zero-state copy for each major area.</div>
+  <table class="data">
+    <thead><tr><th>Section</th><th>Copy</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Documents</strong></td><td><em>"You don't have any documents yet. Once your business is filed, they will appear here."</em></td></tr>
+      <tr><td><strong>Compliance</strong></td><td><em>"No upcoming deadlines at the moment. You're all set."</em></td></tr>
+      <tr><td><strong>Services</strong></td><td><em>"You haven't added any additional services yet. Explore options to strengthen your business."</em></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- =============== SECTION 11 =============== -->
+<section class="card" id="s11">
+  <h2><span class="num">11</span> Top Bar (Global)</h2>
+  <div class="desc">Persistent header on every page.</div>
+  <div class="mock">
+    <div class="topbar-mock">
+      <span class="logo">BizJump</span>
+      <span class="right">🔔 Notifications &nbsp;|&nbsp; Support &nbsp;|&nbsp; Account ▾</span>
+    </div>
+  </div>
+  <table class="data">
+    <thead><tr><th>Position</th><th>Element</th></tr></thead>
+    <tbody>
+      <tr><td>Left</td><td>BizJump Logo</td></tr>
+      <tr><td>Right</td><td>Notifications Icon · Support Button · Account Menu</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- =============== SECTION 12 =============== -->
+<section class="card" id="s12">
+  <h2><span class="num">12</span> Support Access</h2>
+  <div class="desc">Visible on every page.</div>
+  <div class="btn-row"><span class="btn primary">Contact Support</span></div>
+  <p style="color: var(--muted); font-size: 13px;"><strong>Tooltip:</strong> "Get help from our team anytime."</p>
+</section>
+
+<!-- =============== SECTION 13 =============== -->
+<section class="card" id="s13">
+  <h2><span class="num">13</span> Core Positioning & Differentiation</h2>
+  <div class="desc">
+    <em>"Everything you need to start, manage, and grow your business — clearly organized in one place."</em>
+  </div>
+
+  <h3>⭐ Key Differentiators</h3>
+  <table class="data">
+    <tbody>
+      <tr><td>✅ Provide real operational value</td><td>(not just documents)</td></tr>
+      <tr><td>✅ Guide users on what to do next</td><td>(Action Center)</td></tr>
+      <tr><td>✅ Avoid aggressive upsells</td><td></td></tr>
+      <tr><td>✅ Reinforce trust and transparency</td><td></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- =============== SECTION 14 =============== -->
+<section class="card" id="s14">
+  <h2><span class="num">14</span> Implementation Mapping</h2>
+  <div class="desc">How each dashboard area maps to WordPress / WooCommerce stack.</div>
+  <table class="data">
+    <thead><tr><th>Dashboard Feature</th><th>Maps To</th></tr></thead>
+    <tbody>
+      <tr><td>Orders + Services</td><td><strong>WooCommerce</strong></td></tr>
+      <tr><td>Custom Dashboard</td><td><strong>Custom "My Account" pages</strong></td></tr>
+      <tr><td>CRM Integration</td><td><strong>FluentCRM</strong> or <strong>Jetpack CRM</strong></td></tr>
+      <tr><td>Document Storage</td><td>Document storage plugin</td></tr>
+      <tr><td>Notifications</td><td>Notification system plugin</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- =============== ALL REFERENCES =============== -->
+<section class="card" id="refs">
+  <h2>🖼 All 21 Design References</h2>
+  <div class="desc">Extracted from <code>Wire Frame of Customer Portal.docx</code> → <code>_extracted/word/media/</code>. ★ marks the closest visual matches.</div>
+  <div class="refs">
+    <div class="ref"><img src="_extracted/word/media/image1.jpeg" alt=""><div class="meta"><span class="name">image1.jpeg</span><span class="desc"><strong>Hero ref</strong> — Fiverr Varun Dade SaaS/CRM collage</span></div></div>
+    <div class="ref match"><img src="_extracted/word/media/image2.png" alt=""><div class="meta"><span class="name">image2.png</span><span class="desc"><strong>§1</strong> — Stat cards + donut + notifications + calendar</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image3.png" alt=""><div class="meta"><span class="name">image3.png</span><span class="desc"><strong>§2</strong> — File-type tiles + table</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image4.png" alt=""><div class="meta"><span class="name">image4.png</span><span class="desc"><strong>§2</strong> — Status badges + mobile</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image5.png" alt=""><div class="meta"><span class="name">image5.png</span><span class="desc"><strong>§2</strong> — Client Portal + filter modal</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image6.png" alt=""><div class="meta"><span class="name">image6.png</span><span class="desc"><strong>§2</strong> — Document Directory + filters</span></div></div>
+    <div class="ref match"><img src="_extracted/word/media/image7.png" alt=""><div class="meta"><span class="name">image7.png</span><span class="desc"><strong>§3</strong> — Tax Compliance Dashboard</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image8.png" alt=""><div class="meta"><span class="name">image8.png</span><span class="desc"><strong>§3</strong> — Yearly compliance heatmap</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image9.png" alt=""><div class="meta"><span class="name">image9.png</span><span class="desc"><strong>§3</strong> — Mobile Tax Returns</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image10.jpeg" alt=""><div class="meta"><span class="name">image10.jpeg</span><span class="desc"><strong>§4</strong> — Nectar dashboard + table</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image11.jpeg" alt=""><div class="meta"><span class="name">image11.jpeg</span><span class="desc"><strong>§4</strong> — Subscription dashboard</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image12.png" alt=""><div class="meta"><span class="name">image12.png</span><span class="desc"><strong>§4</strong> — Pricing plan cards</span></div></div>
+    <div class="ref match"><img src="_extracted/word/media/image13.png" alt=""><div class="meta"><span class="name">image13.png</span><span class="desc"><strong>§5</strong> — Getting Started 38% progress</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image14.png" alt=""><div class="meta"><span class="name">image14.png</span><span class="desc"><strong>§5</strong> — Checklist + per-row progress</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image15.png" alt=""><div class="meta"><span class="name">image15.png</span><span class="desc"><strong>§5</strong> — Productivity bars</span></div></div>
+    <div class="ref match"><img src="_extracted/word/media/image16.png" alt=""><div class="meta"><span class="name">image16.png</span><span class="desc"><strong>§6</strong> — Tenx Messages & Inbox</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image17.png" alt=""><div class="meta"><span class="name">image17.png</span><span class="desc"><strong>§6</strong> — BOARDASH messages</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image18.png" alt=""><div class="meta"><span class="name">image18.png</span><span class="desc"><strong>§6</strong> — Workhubs chat + voice</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image19.png" alt=""><div class="meta"><span class="name">image19.png</span><span class="desc"><strong>§7</strong> — Account Settings sidebar</span></div></div>
+    <div class="ref"><img src="_extracted/word/media/image20.png" alt=""><div class="meta"><span class="name">image20.png</span><span class="desc"><strong>§7</strong> — Business account settings</span></div></div>
+    <div class="ref match"><img src="_extracted/word/media/image21.png" alt=""><div class="meta"><span class="name">image21.png</span><span class="desc"><strong>§7</strong> — Store + Business + Tax tabs</span></div></div>
+  </div>
+</section>
+
+<footer>
+  Generated from <code>docs.md</code> + <code>Wire Frame of Customer Portal.docx</code> · BizJump Business Command Center
+</footer>
+
+</main>
+</div>
+</body>
+</html>

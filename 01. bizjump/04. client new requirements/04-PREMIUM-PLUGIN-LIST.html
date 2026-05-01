@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BizJump — Premium Plugin Shopping List</title>
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --ink: #0f172a;
+    --ink-soft: #475569;
+    --muted: #94a3b8;
+    --line: #e2e8f0;
+    --line-soft: #eef2f7;
+    --brand: #2563eb;
+    --brand-soft: #dbeafe;
+    --accent: #7c3aed;
+    --accent-soft: #ede9fe;
+    --green: #16a34a;
+    --green-soft: #dcfce7;
+    --yellow: #ca8a04;
+    --yellow-soft: #fef9c3;
+    --red: #dc2626;
+    --red-soft: #fee2e2;
+    --orange: #ea580c;
+    --orange-soft: #ffedd5;
+    --blue: #0284c7;
+    --blue-soft: #e0f2fe;
+    --pink: #db2777;
+    --pink-soft: #fce7f3;
+    --gold: #b45309;
+    --gold-soft: #fef3c7;
+    --shadow: 0 6px 20px -10px rgba(15,23,42,.18);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-family: "JetBrains Mono","SF Mono",Menlo,Consolas,monospace; font-size: 12.5px; }
+
+  .app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  .sidebar {
+    background: linear-gradient(180deg, #0f172a, #1e293b);
+    color: #e2e8f0; padding: 28px 22px;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  }
+  .sidebar h1 { font-size: 18px; margin: 0 0 4px; color: #fff; letter-spacing: -.01em; }
+  .sidebar .sub { font-size: 12px; color: #94a3b8; margin-bottom: 22px; }
+  .sidebar nav a {
+    display: block; padding: 8px 12px; color: #cbd5e1; text-decoration: none;
+    border-radius: 8px; font-size: 13px; margin-bottom: 2px;
+  }
+  .sidebar nav a:hover { background: #334155; color: #fff; }
+  .sidebar nav .group { font-size: 11px; text-transform: uppercase;
+    letter-spacing: .08em; color: #64748b; padding: 14px 12px 6px; }
+
+  .main { padding: 36px 48px; max-width: 1200px; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #b45309 0%, #ea580c 50%, #db2777 100%);
+    color: #fff; padding: 36px; border-radius: var(--radius);
+    margin-bottom: 28px; box-shadow: var(--shadow);
+  }
+  .hero h1 { margin: 0 0 6px; font-size: 32px; letter-spacing: -.02em; }
+  .hero p { margin: 6px 0; opacity: .95; font-size: 16px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 22px; }
+  .hero-stat {
+    background: rgba(255,255,255,.15); border-radius: 12px; padding: 16px;
+    backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.18);
+  }
+  .hero-stat .num { font-size: 26px; font-weight: 800; letter-spacing: -.02em; }
+  .hero-stat .label { font-size: 11px; opacity: .9; text-transform: uppercase; letter-spacing: .08em; }
+
+  /* Card */
+  section.card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 28px 30px; margin-bottom: 22px;
+    box-shadow: var(--shadow); scroll-margin-top: 20px;
+  }
+  section.card > h2 {
+    font-size: 22px; margin: 0 0 4px; letter-spacing: -.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  section.card > h2 .num {
+    background: var(--brand-soft); color: var(--brand);
+    font-size: 13px; padding: 4px 10px; border-radius: 8px; font-weight: 700;
+  }
+  section.card .desc {
+    color: var(--ink-soft); margin: 8px 0 18px; font-size: 14px;
+    border-left: 3px solid var(--brand-soft); padding-left: 12px;
+  }
+
+  /* Plugin cards */
+  .plugins { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .plugin {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 20px; transition: transform .15s, box-shadow .15s;
+    position: relative;
+  }
+  .plugin:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .plugin.critical { border-left: 4px solid var(--red); }
+  .plugin.recommended { border-left: 4px solid var(--brand); }
+  .plugin.optional { border-left: 4px solid var(--yellow); }
+  .plugin.owned { border-left: 4px solid var(--green); background: linear-gradient(180deg, #f0fdf4, #fff); }
+  .plugin .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .plugin .name { font-size: 15px; font-weight: 700; color: var(--ink); margin: 0; }
+  .plugin .vendor { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .plugin .price { font-size: 14px; font-weight: 800; color: var(--brand); white-space: nowrap; }
+  .plugin .price.free { color: var(--green); }
+  .plugin .price.once { color: var(--accent); }
+  .plugin .for { font-size: 12.5px; color: var(--ink-soft); margin: 10px 0; }
+  .plugin .for strong { color: var(--ink); }
+  .plugin .url {
+    font-size: 11px; color: var(--brand); text-decoration: none;
+    word-break: break-all; display: block; margin-top: 8px;
+    padding: 6px 8px; background: var(--brand-soft); border-radius: 6px;
+  }
+  .plugin .tag {
+    position: absolute; top: -8px; right: 14px;
+    font-size: 10px; font-weight: 800; padding: 3px 8px;
+    border-radius: 999px; letter-spacing: .06em; text-transform: uppercase;
+  }
+  .plugin .tag.critical { background: var(--red); color: #fff; }
+  .plugin .tag.recommended { background: var(--brand); color: #fff; }
+  .plugin .tag.optional { background: var(--yellow); color: #fff; }
+  .plugin .tag.owned { background: var(--green); color: #fff; }
+
+  /* Section header pill */
+  .sec-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 1px solid var(--line);
+    padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 600;
+    color: var(--ink-soft); margin-left: 10px;
+  }
+  .sec-pill.red { background: var(--red-soft); color: var(--red); border-color: transparent; }
+  .sec-pill.brand { background: var(--brand-soft); color: var(--brand); border-color: transparent; }
+  .sec-pill.yellow { background: var(--yellow-soft); color: var(--yellow); border-color: transparent; }
+  .sec-pill.green { background: var(--green-soft); color: var(--green); border-color: transparent; }
+
+  /* Cost summary */
+  .cost-row { display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid var(--line-soft); font-size: 14px; }
+  .cost-row:last-child { border-bottom: none; padding-top: 14px;
+    margin-top: 6px; border-top: 2px solid var(--ink); font-weight: 800; font-size: 15px; }
+  .cost-row .price { color: var(--brand); font-weight: 700; }
+
+  /* Install order */
+  .order { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .order .step {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; position: relative;
+  }
+  .order .step .n {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--brand), var(--accent));
+    color: #fff; font-weight: 800; font-size: 14px;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 8px;
+  }
+  .order .step h5 { margin: 0 0 4px; font-size: 13px; }
+  .order .step p { margin: 0; font-size: 11.5px; color: var(--ink-soft); line-height: 1.4; }
+
+  /* Callout */
+  .callout {
+    border-left: 4px solid var(--yellow); background: var(--yellow-soft);
+    padding: 14px 18px; border-radius: 8px; margin: 14px 0; color: #713f12;
+  }
+  .callout.green { border-color: var(--green); background: var(--green-soft); color: #14532d; }
+  .callout.blue { border-color: var(--brand); background: var(--brand-soft); color: #1e3a8a; }
+  .callout.red { border-color: var(--red); background: var(--red-soft); color: #7f1d1d; }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 14px; }
+
+  /* Pills */
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600;
+  }
+  .pill.green { background: var(--green-soft); color: var(--green); }
+  .pill.brand { background: var(--brand-soft); color: var(--brand); }
+  .pill.accent { background: var(--accent-soft); color: var(--accent); }
+  .pill.red { background: var(--red-soft); color: var(--red); }
+  .pill.yellow { background: var(--yellow-soft); color: var(--yellow); }
+  .pill.gold { background: var(--gold-soft); color: var(--gold); }
+
+  footer { padding: 20px 0 60px; color: var(--muted); font-size: 12px; text-align: center; }
+
+  @media (max-width: 1000px) {
+    .plugins { grid-template-columns: 1fr; }
+    .order { grid-template-columns: repeat(2,1fr); }
+    .hero-stats { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 700px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; }
+    .main { padding: 24px; }
+    .order { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar">
+  <h1>🛒 Plugin Shopping</h1>
+  <div class="sub">Premium plugins required for BizJump<br>Curated, prioritized, priced</div>
+  <nav>
+    <div class="group">By Priority</div>
+    <a href="#critical">🔴 Critical (must have)</a>
+    <a href="#recommended">🔵 Recommended</a>
+    <a href="#optional">🟡 Optional / Phase 2</a>
+    <a href="#owned">🟢 Already in Stack</a>
+
+    <div class="group">Reference</div>
+    <a href="#cost">💰 Total Cost Breakdown</a>
+    <a href="#order">📦 Install Order</a>
+    <a href="#tips">💡 Money-Saving Tips</a>
+    <a href="#alternatives">🔄 Free Alternatives</a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🛒 Premium Plugin Shopping List</h1>
+  <p>Every paid plugin BizJump needs — organized by priority, with vendor links and exact pricing.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">10</div><div class="label">Critical plugins</div></div>
+    <div class="hero-stat"><div class="num">6</div><div class="label">Recommended</div></div>
+    <div class="hero-stat"><div class="num">5</div><div class="label">Optional / Phase 2</div></div>
+    <div class="hero-stat"><div class="num">~$1,560</div><div class="label">Year 1 max budget</div></div>
+  </div>
+</div>
+
+<!-- ─────────── CRITICAL ─────────── -->
+<section class="card" id="critical">
+  <h2>🔴 Critical — Must Have for v1 <span class="sec-pill red">Cannot skip</span></h2>
+  <div class="desc">
+    Without these, the spec is not deliverable. Buy these in <strong>Phase 0</strong> before you start coding.
+  </div>
+
+  <div class="plugins">
+
+    <div class="plugin critical">
+      <span class="tag critical">Critical</span>
+      <div class="top">
+        <div>
+          <div class="name">ACF Pro (Advanced Custom Fields)</div>
+          <div class="vendor">by WP Engine / Delicious Brains</div>
+        </div>
+        <div class="price">$49/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> All custom user/business fields — Business Name, Entity Type, State, Filing Status, EIN Status, Registered Agent, Formation Date. <strong>The data foundation of the entire dashboard.</strong>
+      </div>
+      <a class="url" href="https://www.advancedcustomfields.com/pro/" target="_blank">advancedcustomfields.com/pro</a>
+    </div>
+
+    <div class="plugin critical">
+      <span class="tag critical">Critical</span>
+      <div class="top">
+        <div>
+          <div class="name">WooCommerce Subscriptions</div>
+          <div class="vendor">by Automattic (official)</div>
+        </div>
+        <div class="price">$249/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Recurring services — Formation Package, Registered Agent (yearly), monthly compliance retainers. Powers §4 Service Management entirely.
+      </div>
+      <a class="url" href="https://woocommerce.com/products/woocommerce-subscriptions/" target="_blank">woocommerce.com/products/woocommerce-subscriptions</a>
+    </div>
+
+    <div class="plugin critical">
+      <span class="tag critical">Critical</span>
+      <div class="top">
+        <div>
+          <div class="name">WP File Download Pro</div>
+          <div class="vendor">by JoomUnited</div>
+        </div>
+        <div class="price once">$39 once</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> §2 Document Hub. Per-user folders, status tags (Ready/Pending/Processing), upload/download UI. <strong>One-time purchase</strong> — best deal in the stack.
+      </div>
+      <a class="url" href="https://www.joomunited.com/wordpress-products/wp-file-download" target="_blank">joomunited.com/wordpress-products/wp-file-download</a>
+    </div>
+
+    <div class="plugin critical">
+      <span class="tag critical">Critical</span>
+      <div class="top">
+        <div>
+          <div class="name">The Events Calendar Pro</div>
+          <div class="vendor">by The Events Calendar</div>
+        </div>
+        <div class="price">$99/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> §3 Compliance Center calendar view. Recurring events (annual reports, quarterly tax filings), color-coded statuses, monthly/yearly views.
+      </div>
+      <a class="url" href="https://theeventscalendar.com/products/wordpress-events-calendar/" target="_blank">theeventscalendar.com/products/wordpress-events-calendar</a>
+    </div>
+
+    <div class="plugin critical">
+      <span class="tag critical">Critical</span>
+      <div class="top">
+        <div>
+          <div class="name">Fluent Support Pro</div>
+          <div class="vendor">by WPManageNinja</div>
+        </div>
+        <div class="price">$129/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> §6 Communication Hub — ticket threads with BizJump team, customer portal embed, file attachments. Pairs natively with FluentCRM.
+      </div>
+      <a class="url" href="https://fluentsupport.com/" target="_blank">fluentsupport.com</a>
+    </div>
+
+    <div class="plugin critical">
+      <span class="tag critical">Critical</span>
+      <div class="top">
+        <div>
+          <div class="name">FluentCRM Pro</div>
+          <div class="vendor">by WPManageNinja</div>
+        </div>
+        <div class="price">$129/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Email automations (filing-status-change emails, deadline reminders, welcome series). Lightweight CRM in WP. Powers §9 Notifications.
+      </div>
+      <a class="url" href="https://fluentcrm.com/pricing/" target="_blank">fluentcrm.com/pricing</a>
+    </div>
+
+    <div class="plugin critical">
+      <span class="tag critical">Critical</span>
+      <div class="top">
+        <div>
+          <div class="name">Gravity Forms (Basic or Pro)</div>
+          <div class="vendor">by Rocketgenius</div>
+        </div>
+        <div class="price">$59–259/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Edit Profile form, intake forms, custom service request forms. <strong>Basic ($59)</strong> is enough — Elite ($259) only if you need advanced add-ons.
+      </div>
+      <a class="url" href="https://www.gravityforms.com/pricing/" target="_blank">gravityforms.com/pricing</a>
+    </div>
+
+    <div class="plugin critical">
+      <span class="tag critical">Critical</span>
+      <div class="top">
+        <div>
+          <div class="name">YITH Customize My Account Pro</div>
+          <div class="vendor">by YITH</div>
+        </div>
+        <div class="price">$50/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> §8 Custom sidebar tabs, §1 Dashboard layout, drag-drop My Account customization without coding every endpoint manually.
+      </div>
+      <a class="url" href="https://yithemes.com/themes/plugins/yith-woocommerce-customize-my-account-page/" target="_blank">yithemes.com/themes/plugins/yith-woocommerce-customize-my-account-page</a>
+    </div>
+
+    <div class="plugin critical">
+      <span class="tag critical">Critical</span>
+      <div class="top">
+        <div>
+          <div class="name">FluentSMTP</div>
+          <div class="vendor">by WPManageNinja</div>
+        </div>
+        <div class="price free">FREE</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Reliable email delivery via Mailgun / SendGrid / Amazon SES. <strong>Free plugin</strong>, but you'll pair it with a free-tier SMTP provider.
+      </div>
+      <a class="url" href="https://wordpress.org/plugins/fluent-smtp/" target="_blank">wordpress.org/plugins/fluent-smtp</a>
+    </div>
+
+    <div class="plugin critical">
+      <span class="tag critical">Critical</span>
+      <div class="top">
+        <div>
+          <div class="name">Notification Plugin (Pro)</div>
+          <div class="vendor">by BracketSpace</div>
+        </div>
+        <div class="price">Free / $39</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> §9 In-app notifications (🔔 bell). Triggers on Woo events, ACF changes, custom CPT actions. Free version covers v1; Pro adds advanced triggers.
+      </div>
+      <a class="url" href="https://bracketspace.com/notification/" target="_blank">bracketspace.com/notification</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────── RECOMMENDED ─────────── -->
+<section class="card" id="recommended">
+  <h2>🔵 Recommended — Should Have <span class="sec-pill brand">Quality of life</span></h2>
+  <div class="desc">
+    Not strictly required to deliver the spec, but make the site faster, safer, and easier to maintain. Add these in <strong>Phase 4–5</strong>.
+  </div>
+
+  <div class="plugins">
+
+    <div class="plugin recommended">
+      <span class="tag recommended">Recommended</span>
+      <div class="top">
+        <div>
+          <div class="name">WP Rocket</div>
+          <div class="vendor">by WP Media</div>
+        </div>
+        <div class="price">$59/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Caching + performance. Critical for a logged-in customer dashboard with lots of dynamic queries. Single-site license.
+      </div>
+      <a class="url" href="https://wp-rocket.me/" target="_blank">wp-rocket.me</a>
+    </div>
+
+    <div class="plugin recommended">
+      <span class="tag recommended">Recommended</span>
+      <div class="top">
+        <div>
+          <div class="name">Wordfence Premium</div>
+          <div class="vendor">by Wordfence (Defiant)</div>
+        </div>
+        <div class="price">$119/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Security. Customer financial/business data is sensitive. Real-time firewall + malware scanning. Alternative: <em>Solid Security Pro ($99)</em>.
+      </div>
+      <a class="url" href="https://www.wordfence.com/products/wordfence-premium/" target="_blank">wordfence.com/products/wordfence-premium</a>
+    </div>
+
+    <div class="plugin recommended">
+      <span class="tag recommended">Recommended</span>
+      <div class="top">
+        <div>
+          <div class="name">UpdraftPlus Premium</div>
+          <div class="vendor">by UpdraftPlus</div>
+        </div>
+        <div class="price">$70/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Automatic encrypted backups to Dropbox / Google Drive / S3. Customer data loss = lawsuit risk for a business-formation service.
+      </div>
+      <a class="url" href="https://updraftplus.com/shop/updraftplus-premium/" target="_blank">updraftplus.com/shop/updraftplus-premium</a>
+    </div>
+
+    <div class="plugin recommended">
+      <span class="tag recommended">Recommended</span>
+      <div class="top">
+        <div>
+          <div class="name">Yoast SEO Premium</div>
+          <div class="vendor">by Yoast</div>
+        </div>
+        <div class="price">$99/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Marketing pages SEO (homepage, services, blog). Internal linking, schema markup, keyword optimization. <em>Skip if not running content marketing.</em>
+      </div>
+      <a class="url" href="https://yoast.com/wordpress/plugins/seo/" target="_blank">yoast.com/wordpress/plugins/seo</a>
+    </div>
+
+    <div class="plugin recommended">
+      <span class="tag recommended">Recommended</span>
+      <div class="top">
+        <div>
+          <div class="name">WooCommerce PDF Invoices &amp; Packing Slips Pro</div>
+          <div class="vendor">by WP Overnight</div>
+        </div>
+        <div class="price">$79/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Branded invoices auto-attached to order emails. Customers expect PDF invoices for accounting / tax purposes.
+      </div>
+      <a class="url" href="https://wpovernight.com/downloads/woocommerce-pdf-invoices-packing-slips-professional/" target="_blank">wpovernight.com/downloads/woocommerce-pdf-invoices-packing-slips-professional</a>
+    </div>
+
+    <div class="plugin recommended">
+      <span class="tag recommended">Recommended</span>
+      <div class="top">
+        <div>
+          <div class="name">Uncanny Automator Pro</div>
+          <div class="vendor">by Uncanny Owl</div>
+        </div>
+        <div class="price">$149/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Cross-plugin automations without code (Zapier-in-WP). Example: "When order is paid → set ACF field → email customer → notify admin in Slack." Saves hours of custom hooks.
+      </div>
+      <a class="url" href="https://automatorplugin.com/pricing/" target="_blank">automatorplugin.com/pricing</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────── OPTIONAL ─────────── -->
+<section class="card" id="optional">
+  <h2>🟡 Optional / Phase 2 <span class="sec-pill yellow">Nice to have later</span></h2>
+  <div class="desc">
+    Ship v1 without these. Revisit in 3–6 months if customers ask for the features.
+  </div>
+
+  <div class="plugins">
+
+    <div class="plugin optional">
+      <span class="tag optional">Optional</span>
+      <div class="top">
+        <div>
+          <div class="name">Gravity PDF (Premium add-ons)</div>
+          <div class="vendor">by Gravity PDF</div>
+        </div>
+        <div class="price">$99–129/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Auto-generate Operating Agreement, Articles of Organization PDFs from form input. Phase 2 — only if BizJump wants self-service document generation.
+      </div>
+      <a class="url" href="https://gravitypdf.com/shop/" target="_blank">gravitypdf.com/shop</a>
+    </div>
+
+    <div class="plugin optional">
+      <span class="tag optional">Optional</span>
+      <div class="top">
+        <div>
+          <div class="name">WP eSignature Pro</div>
+          <div class="vendor">by ApproveMe</div>
+        </div>
+        <div class="price">$159/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Customers e-sign Operating Agreements / contracts inside the dashboard. Pairs with Gravity PDF for end-to-end document workflow.
+      </div>
+      <a class="url" href="https://www.approveme.com/wp-esignature-features/" target="_blank">approveme.com/wp-esignature-features</a>
+    </div>
+
+    <div class="plugin optional">
+      <span class="tag optional">Optional</span>
+      <div class="top">
+        <div>
+          <div class="name">GamiPress Pro</div>
+          <div class="vendor">by GamiPress</div>
+        </div>
+        <div class="price">$149/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Gamify §5 Action Center — points/badges for completing setup/growth tasks. Engagement boost. <em>Free version handles basics.</em>
+      </div>
+      <a class="url" href="https://gamipress.com/pricing/" target="_blank">gamipress.com/pricing</a>
+    </div>
+
+    <div class="plugin optional">
+      <span class="tag optional">Optional</span>
+      <div class="top">
+        <div>
+          <div class="name">WooCommerce Product Add-Ons</div>
+          <div class="vendor">by Automattic</div>
+        </div>
+        <div class="price">$49/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Per-product customization (e.g. "Add expedited filing for $50"). Skip if your add-on services are separate products.
+      </div>
+      <a class="url" href="https://woocommerce.com/products/product-add-ons/" target="_blank">woocommerce.com/products/product-add-ons</a>
+    </div>
+
+    <div class="plugin optional">
+      <span class="tag optional">Optional</span>
+      <div class="top">
+        <div>
+          <div class="name">Advanced Coupons Premium</div>
+          <div class="vendor">by Advanced Coupons</div>
+        </div>
+        <div class="price">$79/yr</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Advanced promo codes, BOGO, scheduled discounts, loyalty points. Skip if BizJump's wizard plugin already handles promos.
+      </div>
+      <a class="url" href="https://advancedcouponsplugin.com/pricing/" target="_blank">advancedcouponsplugin.com/pricing</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────── ALREADY OWNED ─────────── -->
+<section class="card" id="owned">
+  <h2>🟢 Already in Your Stack <span class="sec-pill green">No new spend</span></h2>
+  <div class="desc">
+    These are already paid for in BizJump's setup — no additional cost.
+  </div>
+
+  <div class="plugins">
+
+    <div class="plugin owned">
+      <span class="tag owned">Owned</span>
+      <div class="top">
+        <div>
+          <div class="name">WoodMart Theme</div>
+          <div class="vendor">by Xtemos (ThemeForest)</div>
+        </div>
+        <div class="price free">Already owned</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> §11 Top Bar (Header Builder), site-wide theme, footer. Header/Footer Builder is the source of truth — don't build navbar/footer Elementor widgets.
+      </div>
+    </div>
+
+    <div class="plugin owned">
+      <span class="tag owned">Owned</span>
+      <div class="top">
+        <div>
+          <div class="name">Elementor Pro</div>
+          <div class="vendor">by Elementor</div>
+        </div>
+        <div class="price free">Already owned</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Marketing pages, pricing page, landing pages. Custom widgets if needed for dashboard sections.
+      </div>
+    </div>
+
+    <div class="plugin owned">
+      <span class="tag owned">Owned</span>
+      <div class="top">
+        <div>
+          <div class="name">CartFlows Pro</div>
+          <div class="vendor">by Brainstorm Force</div>
+        </div>
+        <div class="price free">Already owned</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Optimized checkout flow, upsells, order bumps for service add-ons. Already configured in BizJump.
+      </div>
+    </div>
+
+    <div class="plugin owned">
+      <span class="tag owned">Owned</span>
+      <div class="top">
+        <div>
+          <div class="name">WooCommerce (free core)</div>
+          <div class="vendor">by Automattic</div>
+        </div>
+        <div class="price free">FREE</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Foundation of orders, products, customers, payments, My Account base. Free — only Subscriptions add-on is paid.
+      </div>
+    </div>
+
+    <div class="plugin owned">
+      <span class="tag owned">Owned</span>
+      <div class="top">
+        <div>
+          <div class="name">Wizard Plugin (existing)</div>
+          <div class="vendor">BizJump custom</div>
+        </div>
+        <div class="price free">Already built</div>
+      </div>
+      <div class="for">
+        <strong>Used for:</strong> Multi-step entity formation flow on the marketing side. Feeds initial business data into ACF user fields at checkout.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────── COST BREAKDOWN ─────────── -->
+<section class="card" id="cost">
+  <h2>💰 Total Cost Breakdown</h2>
+  <div class="desc">Year 1 spending by tier. Year 2+ is lower because most renewals are discounted.</div>
+
+  <h3>🔴 Critical Stack (Year 1)</h3>
+  <div class="cost-row"><span>ACF Pro</span><span class="price">$49</span></div>
+  <div class="cost-row"><span>WooCommerce Subscriptions</span><span class="price">$249</span></div>
+  <div class="cost-row"><span>WP File Download Pro <span class="pill accent">one-time</span></span><span class="price">$39</span></div>
+  <div class="cost-row"><span>The Events Calendar Pro</span><span class="price">$99</span></div>
+  <div class="cost-row"><span>Fluent Support Pro</span><span class="price">$129</span></div>
+  <div class="cost-row"><span>FluentCRM Pro</span><span class="price">$129</span></div>
+  <div class="cost-row"><span>Gravity Forms Basic</span><span class="price">$59</span></div>
+  <div class="cost-row"><span>YITH Customize My Account Pro</span><span class="price">$50</span></div>
+  <div class="cost-row"><span>FluentSMTP <span class="pill green">free</span></span><span class="price">$0</span></div>
+  <div class="cost-row"><span>Notification Pro</span><span class="price">$39</span></div>
+  <div class="cost-row"><span><strong>Critical subtotal</strong></span><span class="price"><strong>$842</strong></span></div>
+
+  <h3 style="margin-top: 24px;">🔵 Recommended Add-Ons</h3>
+  <div class="cost-row"><span>WP Rocket</span><span class="price">$59</span></div>
+  <div class="cost-row"><span>Wordfence Premium</span><span class="price">$119</span></div>
+  <div class="cost-row"><span>UpdraftPlus Premium</span><span class="price">$70</span></div>
+  <div class="cost-row"><span>Yoast SEO Premium <span class="pill yellow">skip if no content marketing</span></span><span class="price">$99</span></div>
+  <div class="cost-row"><span>WooCommerce PDF Invoices Pro</span><span class="price">$79</span></div>
+  <div class="cost-row"><span>Uncanny Automator Pro</span><span class="price">$149</span></div>
+  <div class="cost-row"><span><strong>Recommended subtotal</strong></span><span class="price"><strong>$575</strong></span></div>
+
+  <h3 style="margin-top: 24px;">🟡 Optional / Phase 2</h3>
+  <div class="cost-row"><span>Gravity PDF Premium</span><span class="price">$129</span></div>
+  <div class="cost-row"><span>WP eSignature Pro</span><span class="price">$159</span></div>
+  <div class="cost-row"><span>GamiPress Pro</span><span class="price">$149</span></div>
+  <div class="cost-row"><span>WooCommerce Product Add-Ons</span><span class="price">$49</span></div>
+  <div class="cost-row"><span>Advanced Coupons Premium</span><span class="price">$79</span></div>
+  <div class="cost-row"><span><strong>Optional subtotal</strong></span><span class="price"><strong>$565</strong></span></div>
+
+  <div style="background: linear-gradient(135deg, var(--green-soft), #fff); border: 2px solid var(--green); border-radius: 12px; padding: 18px 22px; margin-top: 22px;">
+    <div class="cost-row" style="border: none; padding: 6px 0; font-size: 16px;"><span><strong>📊 Year 1 — Critical only (minimum viable)</strong></span><span class="price" style="font-size: 18px;">$842</span></div>
+    <div class="cost-row" style="border: none; padding: 6px 0; font-size: 16px;"><span><strong>📊 Year 1 — Critical + Recommended (production-grade)</strong></span><span class="price" style="font-size: 18px;">$1,417</span></div>
+    <div class="cost-row" style="border: none; padding: 6px 0; font-size: 16px;"><span><strong>📊 Year 1 — Everything (max scope)</strong></span><span class="price" style="font-size: 18px;">$1,982</span></div>
+  </div>
+
+  <div class="callout blue">
+    <strong>📌 Year 2+ pricing</strong>
+    Drops to ~$960/yr for production-grade tier. WP File Download is one-time. Many vendors offer 30–50% renewal discounts (FluentCRM, ACF, Gravity Forms all do). UpdraftPlus offers lifetime ($195).
+  </div>
+</section>
+
+<!-- ─────────── INSTALL ORDER ─────────── -->
+<section class="card" id="order">
+  <h2>📦 Install Order</h2>
+  <div class="desc">Buy + install in this exact order so dependencies are ready when you need them.</div>
+
+  <div class="order">
+    <div class="step">
+      <div class="n">1</div>
+      <h5>ACF Pro</h5>
+      <p>FIRST. Everything depends on the data model.</p>
+    </div>
+    <div class="step">
+      <div class="n">2</div>
+      <h5>YITH Customize My Account</h5>
+      <p>Sets up the dashboard tab structure.</p>
+    </div>
+    <div class="step">
+      <div class="n">3</div>
+      <h5>WooCommerce Subscriptions</h5>
+      <p>Create service products before building Service Mgmt.</p>
+    </div>
+    <div class="step">
+      <div class="n">4</div>
+      <h5>Gravity Forms</h5>
+      <p>Needed for Edit Profile and intake forms.</p>
+    </div>
+    <div class="step">
+      <div class="n">5</div>
+      <h5>WP File Download Pro</h5>
+      <p>Document Hub plugin.</p>
+    </div>
+    <div class="step">
+      <div class="n">6</div>
+      <h5>The Events Calendar Pro</h5>
+      <p>Compliance Center calendar.</p>
+    </div>
+    <div class="step">
+      <div class="n">7</div>
+      <h5>FluentCRM Pro</h5>
+      <p>Email + automation engine.</p>
+    </div>
+    <div class="step">
+      <div class="n">8</div>
+      <h5>Fluent Support Pro</h5>
+      <p>Pairs with FluentCRM — install after.</p>
+    </div>
+    <div class="step">
+      <div class="n">9</div>
+      <h5>FluentSMTP + Mailgun</h5>
+      <p>Configure email delivery.</p>
+    </div>
+    <div class="step">
+      <div class="n">10</div>
+      <h5>Notification Pro</h5>
+      <p>In-app 🔔 notifications.</p>
+    </div>
+    <div class="step">
+      <div class="n">11</div>
+      <h5>Recommended tier</h5>
+      <p>WP Rocket + Wordfence + UpdraftPlus + PDF Invoices last.</p>
+    </div>
+    <div class="step">
+      <div class="n">12</div>
+      <h5>Optional / Phase 2</h5>
+      <p>Add only after v1 launches and customers request features.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── MONEY-SAVING TIPS ─────────── -->
+<section class="card" id="tips">
+  <h2>💡 Money-Saving Tips</h2>
+  <div class="desc">Ways to reduce the bill without compromising the build.</div>
+
+  <ul style="font-size: 14px; line-height: 1.8;">
+    <li><strong>Bundle deals:</strong> WPManageNinja sells <strong>FluentCRM + Fluent Support + FluentForms</strong> as a bundle — saves ~$100 vs. buying separately.</li>
+    <li><strong>YITH bundle:</strong> If you need 3+ YITH plugins, the <strong>YITH Membership</strong> ($299/yr) covers all 100+ plugins. Worth it for multi-site agencies.</li>
+    <li><strong>Lifetime deals:</strong> WP File Download ($39 once), GamiPress (LTD on AppSumo sometimes), UpdraftPlus ($195 lifetime).</li>
+    <li><strong>Renewal discounts:</strong> ACF, Gravity Forms, FluentCRM, WP Rocket all offer 30–50% off renewals — set calendar reminders before they auto-renew at full price.</li>
+    <li><strong>Free SMTP tier:</strong> Mailgun (5,000 emails/mo free), SendGrid (100/day free), Amazon SES ($0.10 / 1000) — pick free unless volume exceeds.</li>
+    <li><strong>Gravity Forms Basic vs Elite:</strong> Basic is enough for v1. Don't pay for Elite unless you need its specific add-ons (Stripe, PayPal Pro, Mailchimp etc.).</li>
+    <li><strong>Skip Yoast Premium:</strong> Yoast Free covers the basics. Only buy Premium if running serious content marketing.</li>
+  </ul>
+
+  <div class="callout green">
+    <strong>💰 Realistic year-1 target: ~$842</strong>
+    Critical tier only is enough to deliver the spec. Add Recommended tier ($+575) only after launch when you're sure the site is performing well and needs hardening.
+  </div>
+</section>
+
+<!-- ─────────── FREE ALTERNATIVES ─────────── -->
+<section class="card" id="alternatives">
+  <h2>🔄 Free / Cheaper Alternatives</h2>
+  <div class="desc">If budget is tight, here are the trade-offs you can make.</div>
+
+  <ul style="font-size: 14px; line-height: 1.8;">
+    <li><strong>WooCommerce Subscriptions ($249) →</strong> <code>YITH Subscriptions</code> ($79.99) — 70% cheaper, slightly fewer features. Adequate for BizJump's needs.</li>
+    <li><strong>ACF Pro ($49) →</strong> <code>Meta Box</code> (free core + paid extensions) — comparable functionality, Meta Box has better dev workflows for some use cases.</li>
+    <li><strong>Gravity Forms ($59) →</strong> <code>Fluent Forms Pro</code> ($59) — same vendor as FluentCRM/Support, stays inside the Fluent family.</li>
+    <li><strong>The Events Calendar Pro ($99) →</strong> <code>Modern Events Calendar Lite</code> (free) or build calendar manually with FullCalendar.js.</li>
+    <li><strong>WP Rocket ($59) →</strong> <code>LiteSpeed Cache</code> (free) — only works on LiteSpeed servers but is excellent there.</li>
+    <li><strong>Wordfence Premium ($119) →</strong> <code>Wordfence Free</code> — covers ~80% of paid features, just no real-time firewall updates.</li>
+    <li><strong>UpdraftPlus Premium ($70) →</strong> Most managed WordPress hosts (Kinsta, WP Engine, SiteGround) include automatic backups.</li>
+    <li><strong>Uncanny Automator ($149) →</strong> <code>AutomatorWP</code> (free core) — open-source alternative, slightly less polished.</li>
+  </ul>
+
+  <div class="callout">
+    <strong>⚠️ Don't cheap out on these</strong>
+    <strong>FluentCRM, Fluent Support, ACF Pro, Subscriptions plugin</strong> — these are core to the dashboard's functionality. Cutting corners here means rebuilding later. The $700ish on the critical tier is the right place to spend money.
+  </div>
+</section>
+
+<footer>
+  Premium Plugin Shopping List · BizJump Business Command Center · Last updated for current spec
+</footer>
+
+</main>
+</div>
+</body>
+</html>

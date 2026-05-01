@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BizJump — Build Workflow & System Design</title>
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --ink: #0f172a;
+    --ink-soft: #475569;
+    --muted: #94a3b8;
+    --line: #e2e8f0;
+    --line-soft: #eef2f7;
+    --brand: #2563eb;
+    --brand-soft: #dbeafe;
+    --accent: #7c3aed;
+    --accent-soft: #ede9fe;
+    --green: #16a34a;
+    --green-soft: #dcfce7;
+    --yellow: #ca8a04;
+    --yellow-soft: #fef9c3;
+    --red: #dc2626;
+    --red-soft: #fee2e2;
+    --orange: #ea580c;
+    --orange-soft: #ffedd5;
+    --blue: #0284c7;
+    --blue-soft: #e0f2fe;
+    --pink: #db2777;
+    --pink-soft: #fce7f3;
+    --shadow: 0 6px 20px -10px rgba(15,23,42,.18);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-family: "JetBrains Mono","SF Mono",Menlo,Consolas,monospace; font-size: 12.5px; }
+
+  .app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  .sidebar {
+    background: linear-gradient(180deg, #0f172a, #1e293b);
+    color: #e2e8f0; padding: 28px 22px;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  }
+  .sidebar h1 { font-size: 18px; margin: 0 0 4px; color: #fff; letter-spacing: -.01em; }
+  .sidebar .sub { font-size: 12px; color: #94a3b8; margin-bottom: 22px; }
+  .sidebar nav a {
+    display: block; padding: 8px 12px; color: #cbd5e1; text-decoration: none;
+    border-radius: 8px; font-size: 13px; margin-bottom: 2px;
+  }
+  .sidebar nav a:hover { background: #334155; color: #fff; }
+  .sidebar nav .group { font-size: 11px; text-transform: uppercase;
+    letter-spacing: .08em; color: #64748b; padding: 14px 12px 6px; }
+
+  .main { padding: 36px 48px; max-width: 1200px; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #db2777 0%, #ea580c 50%, #2563eb 100%);
+    color: #fff; padding: 36px; border-radius: var(--radius);
+    margin-bottom: 28px; box-shadow: var(--shadow);
+  }
+  .hero h1 { margin: 0 0 6px; font-size: 32px; letter-spacing: -.02em; }
+  .hero p { margin: 6px 0; opacity: .95; font-size: 16px; }
+
+  /* Card */
+  section.card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 28px 30px; margin-bottom: 22px;
+    box-shadow: var(--shadow); scroll-margin-top: 20px;
+  }
+  section.card > h2 {
+    font-size: 22px; margin: 0 0 4px; letter-spacing: -.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  section.card > h2 .num {
+    background: var(--brand-soft); color: var(--brand);
+    font-size: 13px; padding: 4px 10px; border-radius: 8px; font-weight: 700;
+  }
+  section.card .desc {
+    color: var(--ink-soft); margin: 8px 0 18px; font-size: 14px;
+    border-left: 3px solid var(--brand-soft); padding-left: 12px;
+  }
+  section.card h3 { font-size: 15px; margin: 22px 0 10px; }
+
+  /* ─────────── ARCHITECTURE DIAGRAM ─────────── */
+  .arch {
+    background: linear-gradient(180deg, #f8fafc, #fff);
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 24px; margin: 14px 0;
+  }
+  .arch-row {
+    display: flex; gap: 14px; align-items: stretch;
+    margin-bottom: 14px;
+  }
+  .arch-row:last-child { margin-bottom: 0; }
+  .arch-actor {
+    flex: 0 0 130px; background: #fff; border: 2px solid var(--line);
+    border-radius: 10px; padding: 14px 12px; text-align: center;
+    display: flex; flex-direction: column; justify-content: center; gap: 4px;
+  }
+  .arch-actor .icon { font-size: 30px; }
+  .arch-actor .name { font-weight: 700; font-size: 13.5px; }
+  .arch-actor .role { font-size: 11.5px; color: var(--muted); }
+  .arch-actor.user { border-color: var(--brand); background: var(--brand-soft); }
+  .arch-actor.admin { border-color: var(--accent); background: var(--accent-soft); }
+  .arch-arrow {
+    flex: 0 0 60px; display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 20px;
+  }
+  .arch-stack {
+    flex: 1; background: #fff; border: 2px solid var(--line);
+    border-radius: 10px; padding: 14px;
+  }
+  .arch-stack h4 { margin: 0 0 10px; font-size: 13px; color: var(--ink); }
+  .arch-stack .layer {
+    background: #f8fafc; border: 1px solid var(--line-soft);
+    border-radius: 6px; padding: 8px 10px; margin-bottom: 6px;
+    font-size: 12.5px; display: flex; align-items: center; gap: 8px;
+  }
+  .arch-stack .layer .badge {
+    font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 700;
+  }
+  .arch-stack .layer.fe { background: var(--blue-soft); border-color: #bae6fd; }
+  .arch-stack .layer.fe .badge { background: var(--blue); color: #fff; }
+  .arch-stack .layer.be { background: var(--accent-soft); border-color: #ddd6fe; }
+  .arch-stack .layer.be .badge { background: var(--accent); color: #fff; }
+  .arch-stack .layer.db { background: var(--green-soft); border-color: #bbf7d0; }
+  .arch-stack .layer.db .badge { background: var(--green); color: #fff; }
+  .arch-stack .layer.ext { background: var(--orange-soft); border-color: #fed7aa; }
+  .arch-stack .layer.ext .badge { background: var(--orange); color: #fff; }
+
+  /* ─────────── DATA MODEL ─────────── */
+  .data-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .data-box {
+    background: #fff; border: 2px solid var(--line); border-radius: 10px; padding: 14px 16px;
+  }
+  .data-box.user { border-color: var(--brand); }
+  .data-box.product { border-color: var(--green); }
+  .data-box.cpt { border-color: var(--accent); }
+  .data-box.plugin { border-color: var(--orange); }
+  .data-box h4 { margin: 0 0 4px; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+  .data-box .src { font-size: 11px; color: var(--muted); margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: .04em; }
+  .data-box ul { margin: 0; padding-left: 16px; font-size: 12.5px; color: var(--ink-soft); }
+  .data-box ul li { margin: 3px 0; }
+
+  /* ─────────── PHASES ROADMAP ─────────── */
+  .phases { position: relative; }
+  .phase {
+    display: grid; grid-template-columns: 90px 1fr; gap: 18px;
+    margin-bottom: 18px; align-items: stretch;
+  }
+  .phase-num {
+    background: linear-gradient(135deg, var(--brand), var(--accent));
+    color: #fff; border-radius: 12px; padding: 14px 8px;
+    text-align: center; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .phase-num .label { font-size: 10px; text-transform: uppercase;
+    letter-spacing: .08em; opacity: .9; }
+  .phase-num .n { font-size: 26px; font-weight: 800; line-height: 1; margin: 4px 0; }
+  .phase-num .days { font-size: 11px; opacity: .9; }
+  .phase-body {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 22px;
+  }
+  .phase-body h3 { margin: 0 0 4px; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+  .phase-body .why { color: var(--ink-soft); font-size: 13px; margin: 4px 0 12px;
+    font-style: italic; }
+  .phase-body ul { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--ink); }
+  .phase-body ul li { margin: 4px 0; }
+  .phase-body ul li strong { color: var(--ink); }
+  .phase-body .out {
+    background: var(--green-soft); color: #14532d;
+    border-left: 3px solid var(--green); padding: 8px 12px;
+    border-radius: 6px; margin-top: 12px; font-size: 12.5px;
+  }
+
+  /* ─────────── BUILD ORDER TIMELINE ─────────── */
+  .build-order {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin: 14px 0;
+  }
+  .step-tile {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; position: relative;
+  }
+  .step-tile .step-n {
+    width: 26px; height: 26px; border-radius: 7px;
+    background: var(--brand-soft); color: var(--brand);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px; margin-bottom: 8px;
+  }
+  .step-tile h5 { margin: 0 0 4px; font-size: 13px; }
+  .step-tile p { margin: 0; font-size: 11.5px; color: var(--ink-soft); line-height: 1.4; }
+  .step-tile.foundation .step-n { background: var(--accent-soft); color: var(--accent); }
+  .step-tile.feature .step-n { background: var(--brand-soft); color: var(--brand); }
+  .step-tile.aggregate .step-n { background: var(--green-soft); color: var(--green); }
+  .step-tile.polish .step-n { background: var(--yellow-soft); color: var(--yellow); }
+
+  /* ─────────── FRONTEND vs BACKEND ─────────── */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .split-col {
+    background: #fff; border: 2px solid var(--line); border-radius: 12px;
+    padding: 18px 22px;
+  }
+  .split-col.fe { border-color: var(--blue); background: linear-gradient(180deg, #f0f9ff, #fff); }
+  .split-col.be { border-color: var(--accent); background: linear-gradient(180deg, #faf5ff, #fff); }
+  .split-col h3 { margin: 0 0 4px; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+  .split-col .sub { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 12px; font-style: italic; }
+  .split-col ul { margin: 0; padding-left: 18px; font-size: 13px; color: var(--ink); }
+
+  /* ─────────── DATA FLOW ─────────── */
+  .flow {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px; margin: 14px 0;
+  }
+  .flow-step {
+    display: grid; grid-template-columns: 50px 1fr; gap: 14px; padding: 12px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-step .n {
+    background: var(--brand); color: #fff; width: 36px; height: 36px;
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px;
+  }
+  .flow-step .body h5 { margin: 0 0 2px; font-size: 14px; }
+  .flow-step .body p { margin: 0; font-size: 12.5px; color: var(--ink-soft); }
+  .flow-step .body code { font-size: 11.5px; }
+
+  /* Callout */
+  .callout {
+    border-left: 4px solid var(--yellow); background: var(--yellow-soft);
+    padding: 14px 18px; border-radius: 8px; margin: 14px 0; color: #713f12;
+  }
+  .callout.green { border-color: var(--green); background: var(--green-soft); color: #14532d; }
+  .callout.blue { border-color: var(--brand); background: var(--brand-soft); color: #1e3a8a; }
+  .callout.red { border-color: var(--red); background: var(--red-soft); color: #7f1d1d; }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 14px; }
+
+  /* Pills */
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 600;
+  }
+  .pill.green { background: var(--green-soft); color: var(--green); }
+  .pill.brand { background: var(--brand-soft); color: var(--brand); }
+  .pill.accent { background: var(--accent-soft); color: var(--accent); }
+  .pill.orange { background: var(--orange-soft); color: var(--orange); }
+
+  /* FAQ */
+  .faq-item {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 18px; margin-bottom: 10px;
+  }
+  .faq-item h4 { margin: 0 0 6px; font-size: 14px; color: var(--brand); }
+  .faq-item p { margin: 0; font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+
+  footer { padding: 20px 0 60px; color: var(--muted); font-size: 12px; text-align: center; }
+
+  @media (max-width: 1000px) {
+    .data-grid, .build-order, .split { grid-template-columns: 1fr; }
+    .build-order { grid-template-columns: repeat(2, 1fr); }
+    .arch-row { flex-direction: column; }
+    .arch-actor { flex: 1; }
+    .arch-arrow { transform: rotate(90deg); }
+  }
+  @media (max-width: 700px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; }
+    .main { padding: 24px; }
+    .build-order { grid-template-columns: 1fr; }
+    .phase { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar">
+  <h1>🗺 Build Workflow</h1>
+  <div class="sub">Step-by-step roadmap<br>From confused to launched</div>
+  <nav>
+    <div class="group">The Plan</div>
+    <a href="#big-picture">🌍 Big Picture (Architecture)</a>
+    <a href="#data-model">🗄 Data Model (Where data lives)</a>
+    <a href="#data-flow">💧 Data Flow (User → Screen)</a>
+
+    <div class="group">Sequential Build</div>
+    <a href="#phases">📅 6 Phases (Start → Finish)</a>
+    <a href="#order">🎯 Frontend Build Order</a>
+    <a href="#split">⚖️ Frontend vs Backend</a>
+
+    <div class="group">Reference</div>
+    <a href="#tomorrow">☀️ Start Tomorrow Morning</a>
+    <a href="#faq">❓ Common Confusions</a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🗺 Your Build Roadmap</h1>
+  <p>From "I'm confused — where do I start?" to a launched dashboard. Six phases. One path.</p>
+  <p style="font-size: 14px; opacity: .9;">Read top-to-bottom. Each section builds on the previous one.</p>
+</div>
+
+<!-- ─────────── BIG PICTURE ─────────── -->
+<section class="card" id="big-picture">
+  <h2><span class="num">🌍</span> The Big Picture — How Everything Connects</h2>
+  <div class="desc">
+    Before writing any code, understand <strong>who</strong> talks to <strong>what</strong>. There are only 3 actors.
+  </div>
+
+  <div class="arch">
+
+    <!-- Customer row -->
+    <div class="arch-row">
+      <div class="arch-actor user">
+        <div class="icon">👤</div>
+        <div class="name">Customer</div>
+        <div class="role">(Browser)</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-stack">
+        <h4>📺 FRONTEND — What customer sees (My Account dashboard)</h4>
+        <div class="layer fe"><span class="badge">FE</span> Top Bar (logo · 🔔 · support · account)</div>
+        <div class="layer fe"><span class="badge">FE</span> Sidebar Menu (8 items)</div>
+        <div class="layer fe"><span class="badge">FE</span> Section pages (Dashboard / Docs / Compliance / Services / Action / Messages / Profile)</div>
+      </div>
+    </div>
+
+    <!-- Down arrow -->
+    <div style="text-align: center; color: var(--muted); font-size: 22px; margin: 4px 0;">↕</div>
+
+    <!-- WordPress core row -->
+    <div class="arch-row">
+      <div class="arch-actor">
+        <div class="icon">🌐</div>
+        <div class="name">WordPress</div>
+        <div class="role">(Server)</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-stack">
+        <h4>⚙️ BACKEND — What runs on your server</h4>
+        <div class="layer be"><span class="badge">PLUGIN</span> WooCommerce — orders, customers, products</div>
+        <div class="layer be"><span class="badge">PLUGIN</span> ACF Pro — custom user/business fields</div>
+        <div class="layer be"><span class="badge">PLUGIN</span> WooCommerce Subscriptions — services & add-ons</div>
+        <div class="layer be"><span class="badge">PLUGIN</span> WP File Download — document hub</div>
+        <div class="layer be"><span class="badge">PLUGIN</span> The Events Calendar — compliance dates</div>
+        <div class="layer be"><span class="badge">PLUGIN</span> Fluent Support — ticket / chat</div>
+        <div class="layer be"><span class="badge">PLUGIN</span> FluentCRM — emails & reminders</div>
+        <div class="layer db"><span class="badge">DB</span> MySQL Database — all data persists here</div>
+      </div>
+    </div>
+
+    <!-- Down arrow -->
+    <div style="text-align: center; color: var(--muted); font-size: 22px; margin: 4px 0;">↕</div>
+
+    <!-- Admin row -->
+    <div class="arch-row">
+      <div class="arch-actor admin">
+        <div class="icon">👨‍💼</div>
+        <div class="name">BizJump Admin</div>
+        <div class="role">(WP Admin)</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-stack">
+        <h4>🛠 ADMIN PANEL — Where your team works</h4>
+        <div class="layer ext"><span class="badge">ADMIN</span> Mark Filing Status (Preparing → Filed → Approved)</div>
+        <div class="layer ext"><span class="badge">ADMIN</span> Mark EIN Status (In Progress / Completed)</div>
+        <div class="layer ext"><span class="badge">ADMIN</span> Upload customer documents</div>
+        <div class="layer ext"><span class="badge">ADMIN</span> Reply to support tickets</div>
+        <div class="layer ext"><span class="badge">ADMIN</span> Add compliance reminders</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <strong>💡 The key insight</strong>
+    Customer NEVER directly touches the database. They click in the browser → WordPress reads/writes data → admin team manages the same data from inside WP Admin. <strong>Both sides see the same truth.</strong>
+  </div>
+</section>
+
+<!-- ─────────── DATA MODEL ─────────── -->
+<section class="card" id="data-model">
+  <h2><span class="num">🗄</span> Where Does Data Live? (Data Model)</h2>
+  <div class="desc">
+    This is the foundation. Every piece of data the dashboard shows lives in one of these 4 buckets. Build this <em>first</em> — everything else reads from it.
+  </div>
+
+  <div class="data-grid">
+
+    <div class="data-box user">
+      <h4>👤 1. User Profile (ACF fields)</h4>
+      <div class="src">Stored in: WordPress user_meta table</div>
+      <ul>
+        <li>Business Name</li>
+        <li>Entity Type (LLC / Corp / etc.)</li>
+        <li>State</li>
+        <li>Formation Date</li>
+        <li>EIN Number</li>
+        <li>Registered Agent</li>
+        <li>Filing Status (admin-controlled)</li>
+        <li>EIN Status (admin-controlled)</li>
+      </ul>
+    </div>
+
+    <div class="data-box product">
+      <h4>🛒 2. Products & Orders (WooCommerce)</h4>
+      <div class="src">Stored in: Woo's products & orders tables</div>
+      <ul>
+        <li>Formation Package (subscription product)</li>
+        <li>Registered Agent (subscription)</li>
+        <li>EIN Filing (one-time service)</li>
+        <li>Add-ons: Operating Agreement, Bank Setup, Social Media, etc.</li>
+        <li>Customer's active services = their orders</li>
+      </ul>
+    </div>
+
+    <div class="data-box cpt">
+      <h4>📅 3. Custom Post Types (CPTs)</h4>
+      <div class="src">Stored in: WP posts table</div>
+      <ul>
+        <li><code>compliance_item</code> — deadlines per user (Annual Report, Tax, etc.)</li>
+        <li><code>action_task</code> — checklist items (Apply for EIN, Open bank, etc.)</li>
+        <li><code>notification</code> — log of in-app alerts per user</li>
+      </ul>
+    </div>
+
+    <div class="data-box plugin">
+      <h4>📁 4. Plugin-Owned Data</h4>
+      <div class="src">Stored in: each plugin's tables</div>
+      <ul>
+        <li>Documents → WP File Download (per-user folders)</li>
+        <li>Tickets / chat → Fluent Support tables</li>
+        <li>Email automations → FluentCRM tables</li>
+        <li>Calendar events → The Events Calendar</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="callout green">
+    <strong>✅ Why this matters</strong>
+    Once these 4 buckets exist, every screen in the dashboard is just <em>"read from bucket X and display"</em>. No screen needs new data — it just <strong>presents</strong> data that already lives in the system.
+  </div>
+</section>
+
+<!-- ─────────── DATA FLOW ─────────── -->
+<section class="card" id="data-flow">
+  <h2><span class="num">💧</span> Data Flow — How Data Moves From Database to Screen</h2>
+  <div class="desc">
+    A concrete example: <strong>customer logs in and sees their Filing Status</strong>. Here's every step that happens.
+  </div>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="n">1</div>
+      <div class="body">
+        <h5>Admin marks a status (one time)</h5>
+        <p>Your team opens WP Admin → Users → Edit user → ACF field "Filing Status" → selects <code>Filed with State</code>. Saved to <code>wp_usermeta</code>.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="n">2</div>
+      <div class="body">
+        <h5>Customer logs into their account</h5>
+        <p>WordPress authenticates them → loads <code>/my-account/dashboard/</code></p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="n">3</div>
+      <div class="body">
+        <h5>The dashboard template runs PHP</h5>
+        <p>Custom template calls <code>get_field('filing_status', 'user_' . $user_id)</code> → returns <code>"Filed with State"</code></p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="n">4</div>
+      <div class="body">
+        <h5>HTML renders</h5>
+        <p>Template outputs the status pill: <span class="pill brand">Filed with State</span> + progress bar at 66%</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="n">5</div>
+      <div class="body">
+        <h5>FluentCRM fires automation (optional)</h5>
+        <p>If status changed since last visit, an email "Your business has been filed!" is sent. Notification CPT row created → shown in 🔔 bell icon.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <strong>📝 Same pattern works for everything</strong>
+    Documents, services, compliance items, action tasks — all follow this exact loop:
+    <code>admin updates → DB stores → customer page reads → HTML renders</code>. You build the loop once, reuse it 7 times for the 7 sections.
+  </div>
+</section>
+
+<!-- ─────────── 6 PHASES ─────────── -->
+<section class="card" id="phases">
+  <h2><span class="num">📅</span> The 6 Phases — Start to Finish</h2>
+  <div class="desc">
+    Do these phases in order. <strong>Don't skip ahead.</strong> Each phase unblocks the next. Total: ~3 weeks of focused work.
+  </div>
+
+  <div class="phases">
+
+    <!-- Phase 0 -->
+    <div class="phase">
+      <div class="phase-num" style="background: linear-gradient(135deg,#64748b,#475569);">
+        <div class="label">Phase</div>
+        <div class="n">0</div>
+        <div class="days">~1 day</div>
+      </div>
+      <div class="phase-body">
+        <h3>🛠 Foundation Setup</h3>
+        <div class="why">Get the toolbox ready before building anything.</div>
+        <ul>
+          <li>Install <strong>ACF Pro</strong>, <strong>WooCommerce Subscriptions</strong>, <strong>WP File Download</strong>, <strong>The Events Calendar</strong>, <strong>Fluent Support</strong>, <strong>FluentCRM</strong>, <strong>Gravity Forms</strong></li>
+          <li>Configure SMTP (FluentSMTP + Mailgun/SendGrid free tier)</li>
+          <li>Verify WoodMart theme is active and Header/Footer Builder is wired</li>
+          <li>Create staging branch / test environment</li>
+        </ul>
+        <div class="out">✅ Done when: all plugins installed, WP-Admin shows their menus, test email sends successfully</div>
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="phase">
+      <div class="phase-num" style="background: linear-gradient(135deg,#7c3aed,#6d28d9);">
+        <div class="label">Phase</div>
+        <div class="n">1</div>
+        <div class="days">~2 days</div>
+      </div>
+      <div class="phase-body">
+        <h3>🗄 Build the Data Model</h3>
+        <div class="why">Define every field, product, and CPT BEFORE building any UI. The UI just renders this data.</div>
+        <ul>
+          <li><strong>ACF field group "Business Profile":</strong> attach to User → fields for Business Name, Entity Type, State, Formation Date, EIN, Registered Agent, Filing Status (select), EIN Status (select)</li>
+          <li><strong>WooCommerce products:</strong> create Formation Package, Registered Agent, EIN Filing as Subscription products. Add-ons (Operating Agmt, Bank Setup, etc.) as one-time purchases</li>
+          <li><strong>CPT <code>compliance_item</code>:</strong> fields = title, due date, status, assigned user</li>
+          <li><strong>CPT <code>action_task</code>:</strong> fields = title, category (Setup/Growth/Compliance), completed (bool), assigned user</li>
+        </ul>
+        <div class="out">✅ Done when: you can edit a test user in WP Admin and fill in business data. Test products show in Woo.</div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase">
+      <div class="phase-num" style="background: linear-gradient(135deg,#ea580c,#c2410c);">
+        <div class="label">Phase</div>
+        <div class="n">2</div>
+        <div class="days">~3 days</div>
+      </div>
+      <div class="phase-body">
+        <h3>👨‍💼 Backend Tools (Admin Panel)</h3>
+        <div class="why">Your team must be able to manage everything from WP-Admin BEFORE the customer-facing UI exists.</div>
+        <ul>
+          <li>Customize User Edit page (ACF fields visible & editable)</li>
+          <li>Bulk action: "Send filing-update email" from Users list</li>
+          <li>Document upload: assign documents to specific users via WP File Download</li>
+          <li>Compliance items list + bulk-assign by state/entity</li>
+          <li>Action tasks: create the master list (Apply for EIN, Open Bank, etc.)</li>
+          <li>Configure Fluent Support agent inbox</li>
+        </ul>
+        <div class="out">✅ Done when: admin team can do their job entirely from WP-Admin even with no frontend yet</div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase">
+      <div class="phase-num" style="background: linear-gradient(135deg,#2563eb,#1d4ed8);">
+        <div class="label">Phase</div>
+        <div class="n">3</div>
+        <div class="days">~7 days</div>
+      </div>
+      <div class="phase-body">
+        <h3>📺 Frontend Dashboard (Customer-facing)</h3>
+        <div class="why">Build the 12 sections in a specific order — see "Frontend Build Order" below for why.</div>
+        <ul>
+          <li><strong>Day 1:</strong> Sidebar Menu + Top Bar (the shell)</li>
+          <li><strong>Day 2:</strong> Business Profile (simplest — read-only display + edit form)</li>
+          <li><strong>Day 3:</strong> Document Hub + Service Management (plugin display)</li>
+          <li><strong>Day 4:</strong> Compliance Center (calendar + alerts)</li>
+          <li><strong>Day 5:</strong> Action Center (custom tabbed checklist)</li>
+          <li><strong>Day 6:</strong> Communication Hub (Fluent Support embed)</li>
+          <li><strong>Day 7:</strong> Dashboard Home (aggregates from all above) + Empty States polish</li>
+        </ul>
+        <div class="out">✅ Done when: customer can log in, navigate all sections, see their data, edit profile, download docs</div>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="phase">
+      <div class="phase-num" style="background: linear-gradient(135deg,#16a34a,#15803d);">
+        <div class="label">Phase</div>
+        <div class="n">4</div>
+        <div class="days">~2 days</div>
+      </div>
+      <div class="phase-body">
+        <h3>⚡ Automations &amp; Notifications</h3>
+        <div class="why">Now that everything works manually, automate the "send when X happens" parts.</div>
+        <ul>
+          <li>FluentCRM automation: "When Filing Status changes → send templated email"</li>
+          <li>FluentCRM automation: "Compliance deadline 30 days away → send reminder"</li>
+          <li>FluentCRM automation: "EIN approved → send congrats + next steps"</li>
+          <li>In-app notification: 🔔 bell shows unread count</li>
+          <li>Welcome email after first purchase</li>
+        </ul>
+        <div class="out">✅ Done when: changing a status in admin triggers email + bell notification within seconds</div>
+      </div>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="phase">
+      <div class="phase-num" style="background: linear-gradient(135deg,#db2777,#be185d);">
+        <div class="label">Phase</div>
+        <div class="n">5</div>
+        <div class="days">~2 days</div>
+      </div>
+      <div class="phase-body">
+        <h3>🚀 Testing &amp; Launch</h3>
+        <div class="why">Catch the edge cases before the client does.</div>
+        <ul>
+          <li>Create 3 test users in different states / different entity types — verify each sees the right deadlines</li>
+          <li>Test empty states (new user with no docs, no services, no compliance)</li>
+          <li>Test mobile responsiveness on all 7 sections</li>
+          <li>Run through the customer journey: register → buy package → see dashboard → upload doc → message support</li>
+          <li>Backup & deploy to production</li>
+        </ul>
+        <div class="out">🎉 Done when: a real test customer can complete their full first session without you helping</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────── FRONTEND BUILD ORDER ─────────── -->
+<section class="card" id="order">
+  <h2><span class="num">🎯</span> Frontend Build Order — Why This Sequence?</h2>
+  <div class="desc">
+    Inside Phase 3, build sections in this order. <strong>Dashboard Home is LAST</strong> because it depends on everything else.
+  </div>
+
+  <div class="build-order">
+    <div class="step-tile foundation">
+      <div class="step-n">1</div>
+      <h5>Sidebar Menu (§8)</h5>
+      <p>The skeleton that holds every other section. Build this first or you have nowhere to put pages.</p>
+    </div>
+    <div class="step-tile foundation">
+      <div class="step-n">2</div>
+      <h5>Top Bar (§11)</h5>
+      <p>Logo, notifications bell, support button, account menu. Lives on every page.</p>
+    </div>
+    <div class="step-tile feature">
+      <div class="step-n">3</div>
+      <h5>Business Profile (§7)</h5>
+      <p>Simplest section — just shows ACF data. Good warm-up. Tests your data model.</p>
+    </div>
+    <div class="step-tile feature">
+      <div class="step-n">4</div>
+      <h5>Document Hub (§2)</h5>
+      <p>Drop in WP File Download shortcode + style. Mostly plugin-driven.</p>
+    </div>
+    <div class="step-tile feature">
+      <div class="step-n">5</div>
+      <h5>Service Management (§4)</h5>
+      <p>Lists customer's Woo subscriptions + add-on cards. Use Woo Subscriptions templates.</p>
+    </div>
+    <div class="step-tile feature">
+      <div class="step-n">6</div>
+      <h5>Compliance Center (§3)</h5>
+      <p>Lists compliance_item CPT entries assigned to user + calendar. Status pills.</p>
+    </div>
+    <div class="step-tile feature">
+      <div class="step-n">7</div>
+      <h5>Action Center (§5)</h5>
+      <p>Custom tabbed checklist (Setup/Growth/Compliance). Checkbox toggles action_task completion.</p>
+    </div>
+    <div class="step-tile feature">
+      <div class="step-n">8</div>
+      <h5>Communication Hub (§6)</h5>
+      <p>Embed Fluent Support's customer portal shortcode. Style to match.</p>
+    </div>
+    <div class="step-tile aggregate">
+      <div class="step-n">9</div>
+      <h5>Dashboard Home (§1)</h5>
+      <p>★ Build LAST. Pulls 1 widget from each section above. If they work, this works.</p>
+    </div>
+    <div class="step-tile aggregate">
+      <div class="step-n">10</div>
+      <h5>Notifications System (§9)</h5>
+      <p>🔔 bell + dropdown. Reads notification CPT entries.</p>
+    </div>
+    <div class="step-tile polish">
+      <div class="step-n">11</div>
+      <h5>Empty States (§10)</h5>
+      <p>Polish pass — replace "no data" with friendly copy from spec.</p>
+    </div>
+    <div class="step-tile polish">
+      <div class="step-n">12</div>
+      <h5>Support Access (§12)</h5>
+      <p>Sticky "Contact Support" button visible everywhere. Last polish item.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>🧠 The principle</strong>
+    Build the <strong>foundation</strong> (1–2) → then individual <strong>features</strong> (3–8) → then the <strong>aggregator</strong> page that summarizes everything (9–10) → then <strong>polish</strong> (11–12). This way each step depends only on what's already done.
+  </div>
+</section>
+
+<!-- ─────────── FRONTEND vs BACKEND SPLIT ─────────── -->
+<section class="card" id="split">
+  <h2><span class="num">⚖️</span> Frontend vs Backend — Who Does What?</h2>
+  <div class="desc">
+    A common confusion. Here's the clean split.
+  </div>
+
+  <div class="split">
+
+    <div class="split-col fe">
+      <h3>📺 FRONTEND (Customer side)</h3>
+      <div class="sub">What the customer sees & clicks in their browser</div>
+      <ul>
+        <li>Custom My Account pages (built with PHP templates + HTML/CSS)</li>
+        <li>Sidebar navigation, top bar, page layouts</li>
+        <li><strong>READS</strong> data from the database via WP functions</li>
+        <li><strong>NEVER</strong> directly writes critical data (filing status, etc.)</li>
+        <li>Customer can: edit profile, upload docs, message support, mark action tasks done, view services, buy add-ons</li>
+        <li>Built with: PHP templates, CSS, optional JavaScript for interactivity</li>
+      </ul>
+    </div>
+
+    <div class="split-col be">
+      <h3>⚙️ BACKEND (Admin / Server side)</h3>
+      <div class="sub">What runs invisibly + WP Admin where your team works</div>
+      <ul>
+        <li>Database (MySQL) stores everything</li>
+        <li>WP-Admin where BizJump team manages users, products, status</li>
+        <li>Plugins do their work (Woo processes orders, FluentCRM sends emails, Fluent Support routes tickets)</li>
+        <li>Cron jobs run scheduled reminders</li>
+        <li>Hooks/triggers fire when things change (status update → email)</li>
+        <li>Admin can: edit any user's data, mark filing status, upload docs, reply to tickets, view all customers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <strong>📌 Where does data come from? — The simple answer</strong>
+    <strong>Customer creates account</strong> → some fields are entered by them (name, email, business name during signup form). <strong>BizJump admin fills the rest</strong> manually as filings progress (Filing Status, EIN, document uploads). <strong>Plugins generate data</strong> automatically (Woo creates orders, Fluent Support creates tickets). Everything lands in the same database. Frontend reads from it.
+  </div>
+</section>
+
+<!-- ─────────── START TOMORROW ─────────── -->
+<section class="card" id="tomorrow">
+  <h2><span class="num">☀️</span> Start Tomorrow Morning — First 4 Hours</h2>
+  <div class="desc">
+    If you wake up tomorrow ready to start, do exactly this. No thinking required.
+  </div>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="n">1</div>
+      <div class="body">
+        <h5>Hour 1 — Install plugins</h5>
+        <p>Buy + install: ACF Pro, WP File Download Pro, WooCommerce Subscriptions. Activate. Verify menus appear in WP-Admin.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="n">2</div>
+      <div class="body">
+        <h5>Hour 2 — Build the ACF field group</h5>
+        <p>Custom Fields → Add New → Name it "Business Profile" → add 8 fields (Business Name, Entity Type select, State select, Formation Date, EIN, Registered Agent, Filing Status select, EIN Status select) → Location: User Form. Save.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="n">3</div>
+      <div class="body">
+        <h5>Hour 3 — Test data</h5>
+        <p>Create a test user "Demo Customer". Edit their profile. Fill in all fields. Save. Reload. Verify the data persisted.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="n">4</div>
+      <div class="body">
+        <h5>Hour 4 — Create test Woo products</h5>
+        <p>Add products: "Formation Package" ($299/mo subscription), "Registered Agent" ($99/yr subscription), "EIN Filing" ($79 one-time), 2–3 add-ons. Don't worry about pricing — these are test data.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <strong>🎯 By end of day 1, you have</strong>
+    A working data foundation. Phase 0 + Phase 1 partially done. Tomorrow you continue with the rest of Phase 1 then move into Phase 2 (admin tools).
+  </div>
+</section>
+
+<!-- ─────────── FAQ ─────────── -->
+<section class="card" id="faq">
+  <h2><span class="num">❓</span> Common Confusions — Cleared Up</h2>
+  <div class="desc">Things that trip people up on builds like this.</div>
+
+  <div class="faq-item">
+    <h4>"Where does the customer's business data come from?"</h4>
+    <p>Three sources: <strong>(1) the customer types it during checkout</strong> (business name, entity type — captured via Gravity Form on the order page); <strong>(2) BizJump admin fills it in</strong> as filings happen (Filing Status, EIN); <strong>(3) plugins generate it automatically</strong> (Woo creates the order, FluentCRM logs the email). All of it ends up in the WP database.</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>"Do I build frontend or backend first?"</h4>
+    <p><strong>Backend first, always.</strong> Build the data model (Phase 1) and admin tools (Phase 2) before any customer-facing screen. The frontend is just a "view" of backend data — without backend data to show, frontend has nothing to render.</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>"How do customers see real-time updates?"</h4>
+    <p>They don't, technically. When admin updates a status, it saves to the DB. The next time the customer loads their dashboard, the new status shows. For "live" feel, FluentCRM sends them an email + creates an in-app notification, so they get notified to come check.</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>"What if the client wants something not in the spec?"</h4>
+    <p>Reference back to the FEASIBILITY-ANALYSIS.html doc — anything outside the 92% scope is a separate change request. Document it, scope it, price it. Don't accept "just one more thing" verbally.</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>"Why is Dashboard Home built last?"</h4>
+    <p>Because it shows summaries of every other section. If Compliance shows "3 deadlines coming up" on the home page, that data only exists once the Compliance section is built. Build the parts first, then the dashboard that aggregates them.</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>"Where do I put my custom code?"</h4>
+    <p>Either a <strong>child theme</strong> (for template overrides) or a <strong>custom plugin</strong> (for functionality). Don't edit core WordPress, WoodMart, or any plugin files directly — updates will wipe your changes. The "Action Center" mini-plugin should be its own custom plugin folder.</p>
+  </div>
+</section>
+
+<footer>
+  Build Workflow · BizJump Business Command Center · Read top-to-bottom, build in order.
+</footer>
+
+</main>
+</div>
+</body>
+</html>

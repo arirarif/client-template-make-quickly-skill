@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — BizJump</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-500:#F97316;--orange-600:#EA580C;
+  --indigo-50:#EEF2FF;--indigo-500:#6366F1;
+  --slate-50:#F8FAFC;--slate-100:#F1F5F9;--slate-200:#E2E8F0;--slate-300:#CBD5E1;
+  --slate-400:#94A3B8;--slate-500:#64748B;--slate-600:#475569;--slate-700:#334155;
+  --slate-800:#1E293B;--slate-900:#0F172A;
+  --cream:#F2EDE7;
+  --shadow-xs:0 1px 3px rgba(15,23,42,.06);--shadow-sm:0 2px 6px rgba(15,23,42,.08);
+  --shadow-md:0 4px 14px rgba(15,23,42,.10);
+  --shadow-orange-btn:0 4px 14px rgba(249,115,22,.32);
+  --font:'Inter','Plus Jakarta Sans',sans-serif;--fontd:'Plus Jakarta Sans','Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);font-size:16px;line-height:1.6;color:var(--slate-600);background:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+
+.navbar{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--slate-200);box-shadow:var(--shadow-xs)}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:var(--fontd);font-size:22px;font-weight:800;color:var(--slate-900);display:flex;align-items:center;gap:8px}
+.nav-logo-icon{width:30px;height:30px;background:var(--orange-500);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff}
+.nav-logo em{font-style:normal;color:var(--orange-500)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--slate-500);transition:color .15s}
+.nav-links a:hover{color:var(--slate-900)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.btn-signin{font-size:13px;font-weight:600;color:var(--slate-600);padding:7px 16px;border-radius:8px;border:1.5px solid var(--slate-200);background:transparent;cursor:pointer}
+.btn-nav-primary{font-size:13px;font-weight:600;color:#fff;padding:8px 18px;border-radius:8px;background:var(--orange-500);border:none;cursor:pointer;box-shadow:var(--shadow-orange-btn);transition:all .2s}
+.btn-nav-primary:hover{background:var(--orange-600);transform:translateY(-1px)}
+
+.checkout-hero{background:var(--cream);padding:48px 0 36px}
+.crumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--slate-500);margin-bottom:14px}
+.crumbs a:hover{color:var(--orange-600)}
+.crumb-sep{color:var(--slate-300)}
+.checkout-hero h1{font-family:var(--fontd);font-size:clamp(28px,3.4vw,40px);font-weight:800;color:var(--slate-900);letter-spacing:-.02em}
+
+.cart-steps{background:#fff;border-bottom:1px solid var(--slate-200);padding:22px 0}
+.cart-steps-inner{display:flex;align-items:center;justify-content:center;gap:0}
+.cs-item{display:flex;align-items:center;gap:10px;padding:0 18px}
+.cs-num{width:32px;height:32px;border-radius:50%;background:#fff;border:2px solid var(--slate-300);color:var(--slate-400);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;font-family:var(--fontd)}
+.cs-item.completed .cs-num{background:var(--indigo-500);border-color:var(--indigo-500);color:#fff}
+.cs-item.active .cs-num{background:var(--orange-500);border-color:var(--orange-500);color:#fff;box-shadow:var(--shadow-orange-btn)}
+.cs-label{font-size:13px;font-weight:600;color:var(--slate-400)}
+.cs-item.active .cs-label{color:var(--orange-600)}
+.cs-item.completed .cs-label{color:var(--indigo-600)}
+.cs-arrow{width:36px;height:1px;background:var(--slate-200);margin:0 4px}
+
+.checkout-section{padding:56px 0 80px}
+.empty-card{background:#fff;border:1px solid var(--slate-200);border-radius:18px;padding:80px 32px 70px;text-align:center;max-width:680px;margin:0 auto;box-shadow:var(--shadow-md)}
+.empty-icon{width:96px;height:96px;border-radius:50%;background:var(--slate-50);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;color:var(--slate-400);border:2px dashed var(--slate-200)}
+.empty-h{font-family:var(--fontd);font-size:26px;font-weight:800;color:var(--slate-900);margin-bottom:12px;letter-spacing:-.01em}
+.empty-text{font-size:15px;color:var(--slate-500);max-width:480px;margin:0 auto 28px;line-height:1.7}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--orange-500);color:#fff;font-size:15px;font-weight:700;padding:14px 30px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;box-shadow:var(--shadow-orange-btn);transition:all .2s}
+.btn-primary:hover{background:var(--orange-600);transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--slate-700);font-size:14px;font-weight:600;padding:13px 22px;border-radius:10px;border:1.5px solid var(--slate-200);background:#fff;cursor:pointer;text-decoration:none;margin-left:8px;transition:all .2s}
+.btn-ghost:hover{border-color:var(--slate-300);background:var(--slate-50)}
+
+.footer{background:var(--slate-900);padding:60px 0 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
+.footer-logo{font-family:var(--fontd);font-size:20px;font-weight:800;color:#fff;margin-bottom:12px}
+.footer-logo em{font-style:normal;color:var(--orange-500)}
+.footer-brand p{font-size:13px;color:var(--slate-500);line-height:1.65;max-width:240px}
+.fcol h4{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-500);margin-bottom:14px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fcol a{font-size:13px;color:var(--slate-500);transition:color .15s}
+.fcol a:hover{color:var(--slate-200)}
+.footer-bottom{border-top:1px solid var(--slate-800);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:var(--slate-600)}
+.footer-legal{display:flex;gap:16px}
+.footer-legal a{font-size:12px;color:var(--slate-600)}
+
+@media (max-width:920px){.nav-links{display:none}.cs-label{display:none}.cs-arrow{width:18px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.footer-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      Biz<em>Jump</em>
+    </div>
+    <ul class="nav-links">
+      <li><a href="formation-landing.html">Form a Business</a></li>
+      <li><a href="about-us.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact-us.html">Contact</a></li>
+      <li><a href="shop.html">Shop</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-signin">Sign In</button>
+      <a href="my-account.html" class="btn-nav-primary" style="text-decoration:none">My Account</a>
+    </div>
+  </div>
+</nav>
+
+<section class="checkout-hero">
+  <div class="container">
+    <div class="crumbs"><a href="formation-landing.html">Home</a><span class="crumb-sep">/</span><a href="cart.html">Cart</a><span class="crumb-sep">/</span><span>Checkout</span></div>
+    <h1>Checkout</h1>
+  </div>
+</section>
+
+<div class="cart-steps">
+  <div class="container">
+    <div class="cart-steps-inner">
+      <div class="cs-item completed"><div class="cs-num"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="cs-label">Cart</span></div>
+      <div class="cs-arrow"></div>
+      <div class="cs-item active"><div class="cs-num">2</div><span class="cs-label">Checkout</span></div>
+      <div class="cs-arrow"></div>
+      <div class="cs-item"><div class="cs-num">3</div><span class="cs-label">Order Complete</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="checkout-section">
+  <div class="container">
+    <div class="empty-card">
+      <div class="empty-icon">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      <h2 class="empty-h">Nothing to check out yet</h2>
+      <p class="empty-text">Your cart is empty, so there's nothing to pay for. Add a service or formation package to your cart, then come back here to complete your order.</p>
+      <a href="cart.html" class="btn-primary">
+        Return to cart
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="formation-landing.html" class="btn-ghost">Form a business</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Biz<em>Jump</em></div>
+        <p>America's trusted business formation service. We make starting a business fast, simple, and affordable.</p>
+      </div>
+      <div class="fcol"><h4>Services</h4><ul>
+        <li><a href="#">Form an LLC</a></li><li><a href="#">Form a Corporation</a></li>
+        <li><a href="#">Registered Agent</a></li><li><a href="#">EIN Filing</a></li>
+      </ul></div>
+      <div class="fcol"><h4>Resources</h4><ul>
+        <li><a href="#">Business Name Search</a></li><li><a href="#">State Requirements</a></li>
+        <li><a href="blog.html">Business Guide</a></li><li><a href="#">FAQ</a></li>
+      </ul></div>
+      <div class="fcol"><h4>Company</h4><ul>
+        <li><a href="about-us.html">About Us</a></li><li><a href="#">Customer Reviews</a></li>
+        <li><a href="contact-us.html">Contact</a></li><li><a href="#">Affiliate Program</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 BizJump Inc. All rights reserved.</span>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

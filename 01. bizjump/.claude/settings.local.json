@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.bizjump.com)",
+      "WebFetch(domain:www.legalzoom.com)",
+      "PowerShell(Test-Path *)",
+      "PowerShell(Get-ChildItem -Path \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/01. bizjump\" -Recurse -File | Where-Object { $_.Length -gt 50MB } | Select-Object FullName, @{N='SizeMB';E={[math]::Round\\($_.Length/1MB,2\\)}} | Format-Table -AutoSize)",
+      "PowerShell(Get-ChildItem -Path \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/01. bizjump\" -Recurse -File | Where-Object { $_.Length -gt 25MB } | ForEach-Object { \"$\\([math]::Round\\($_.Length/1MB,2\\)\\) MB  $\\($_.FullName.Substring\\(67\\)\\)\" })",
+      "Bash(git submodule *)",
+      "PowerShell(Get-ChildItem -Path \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/01. bizjump\" -Recurse -Directory -Filter \".git\" -Force | ForEach-Object { $_.FullName })",
+      "PowerShell($total = \\(Get-ChildItem -Path \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/01. bizjump\" -Recurse -File | Measure-Object -Property Length -Sum\\).Sum; \"$\\([math]::Round\\($total/1MB,2\\)\\) MB total\"; \"$\\(\\(Get-ChildItem -Path \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/01. bizjump\" -Recurse -File\\).Count\\) files total\")",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\arira\\\\Desktop\\\\All-Fiverr-project-code\\\\00001. client-template-make-quickly-skill-main\\\\01. bizjump\" -Recurse -Directory -Force -Filter \".git\" -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })"
+    ]
+  }
+}

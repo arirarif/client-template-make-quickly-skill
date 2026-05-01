@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BizJump — Jump-start Your Business in Minutes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-200:#FED7AA;
+  --orange-400:#FB923C;--orange-500:#F97316;--orange-600:#EA580C;--orange-700:#C2410C;
+  --indigo-50:#EEF2FF;--indigo-100:#E0E7FF;--indigo-500:#6366F1;--indigo-600:#F97316;
+  --slate-50:#F8FAFC;--slate-100:#F1F5F9;--slate-200:#E2E8F0;--slate-300:#CBD5E1;
+  --slate-400:#94A3B8;--slate-500:#64748B;--slate-600:#475569;--slate-700:#334155;
+  --slate-800:#1E293B;--slate-900:#0F172A;--white:#FFFFFF;
+  --cream:#F2EDE7;--cream-dark:#EAE3DB;
+  --shadow-xs:0 1px 3px rgba(15,23,42,.06);
+  --shadow-sm:0 2px 6px rgba(15,23,42,.08);
+  --shadow-md:0 4px 14px rgba(15,23,42,.10);
+  --shadow-lg:0 8px 28px rgba(15,23,42,.13);
+  --shadow-orange-btn:0 4px 14px rgba(249,115,22,.32);
+  --shadow-orange-hover:0 6px 22px rgba(249,115,22,.44);
+  --font:'Inter','Plus Jakarta Sans',sans-serif;
+  --fontd:'Plus Jakarta Sans','Inter',sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);font-size:16px;line-height:1.6;color:var(--slate-600);background:var(--white);-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+.container-sm{max-width:860px;margin:0 auto;padding:0 24px}
+.container-xs{max-width:760px;margin:0 auto;padding:0 24px}
+
+/* ── NAVBAR ───────────────────────────────────── */
+.navbar{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--slate-200);box-shadow:var(--shadow-xs)}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:var(--fontd);font-size:22px;font-weight:800;color:var(--slate-900);display:flex;align-items:center;gap:8px}
+.nav-logo-icon{width:30px;height:30px;background:var(--orange-500);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff}
+.nav-logo em{font-style:normal;color:var(--orange-500)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--slate-500);transition:color .15s}
+.nav-links a:hover{color:var(--slate-900)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.btn-signin{font-size:13px;font-weight:600;color:var(--slate-600);padding:7px 16px;border-radius:8px;border:1.5px solid var(--slate-200);background:transparent;cursor:pointer;transition:all .15s}
+.btn-signin:hover{background:var(--slate-50);border-color:var(--slate-300)}
+.btn-nav-primary{font-size:13px;font-weight:600;color:#fff;padding:8px 18px;border-radius:8px;background:var(--orange-500);border:none;cursor:pointer;box-shadow:var(--shadow-orange-btn);transition:all .2s}
+.btn-nav-primary:hover{background:var(--orange-600);box-shadow:var(--shadow-orange-hover);transform:translateY(-1px)}
+
+/* ── HERO ZONE ────────────────────────────────── */
+.hero-zone{background:var(--cream);padding:56px 0 64px}
+.hero-headline{font-family:var(--fontd);font-size:clamp(34px,4.6vw,58px);font-weight:800;line-height:1.08;letter-spacing:-.025em;color:var(--slate-900);margin-bottom:14px;max-width:820px}
+.hero-sub{font-size:clamp(16px,1.6vw,20px);color:var(--slate-600);margin-bottom:36px;max-width:600px}
+
+/* Tabs */
+.entity-tabs{display:flex;gap:6px;background:#fff;padding:6px;border-radius:14px;box-shadow:var(--shadow-sm);max-width:680px;margin-bottom:0;border:1px solid rgba(15,23,42,.06)}
+.entity-tab{flex:1;padding:13px 14px;border:none;background:transparent;font-family:var(--fontd);font-size:14px;font-weight:700;color:var(--slate-500);border-radius:10px;cursor:pointer;transition:all .2s;letter-spacing:.01em}
+.entity-tab:hover{color:var(--slate-800);background:var(--slate-50)}
+.entity-tab.is-active{background:var(--orange-500);color:#fff;box-shadow:var(--shadow-orange-btn)}
+
+/* Tab panel */
+.entity-panel-wrap{margin-top:22px;background:#fff;border:1px solid rgba(15,23,42,.07);border-radius:18px;padding:32px 36px;box-shadow:var(--shadow-sm);max-width:840px}
+.entity-panel{display:none}
+.entity-panel.is-active{display:block;animation:fadeIn .25s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.ep-headline{font-family:var(--fontd);font-size:clamp(18px,1.9vw,22px);font-weight:700;color:var(--slate-900);line-height:1.4;margin-bottom:20px}
+.ep-headline strong{color:var(--orange-600)}
+.ep-bullets{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px}
+.ep-bullets li{display:flex;align-items:flex-start;gap:11px;font-size:15px;color:var(--slate-700);line-height:1.55}
+.ep-bullets li::before{content:'';flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--orange-50);color:var(--orange-600);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23EA580C' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");background-repeat:no-repeat;background-position:center;background-size:11px;margin-top:2px}
+.ep-cta{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:var(--orange-500);color:#fff;font-family:var(--font);font-size:15px;font-weight:700;border-radius:10px;border:none;cursor:pointer;text-decoration:none;box-shadow:var(--shadow-orange-btn);transition:all .2s;letter-spacing:.01em}
+.ep-cta:hover{background:var(--orange-600);box-shadow:var(--shadow-orange-hover);transform:translateY(-1px)}
+
+.help-line{display:flex;align-items:center;gap:8px;margin-top:24px;font-size:14px;color:var(--slate-600)}
+.help-line a{color:var(--orange-600);font-weight:600;text-decoration:underline;text-underline-offset:3px;transition:color .15s}
+.help-line a:hover{color:var(--orange-700)}
+.help-line svg{color:var(--orange-500);flex-shrink:0}
+
+/* ── SECTION ──────────────────────────────────── */
+.section{padding:80px 0}
+.section-alt{background:var(--slate-50)}
+.section-cream{background:var(--cream)}
+.section-dark{background:var(--slate-900);color:#fff}
+
+.section-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-500);margin-bottom:12px}
+.section-title{font-family:var(--fontd);font-size:clamp(26px,3.4vw,40px);font-weight:800;line-height:1.18;letter-spacing:-.02em;color:var(--slate-900);margin-bottom:18px}
+.section-title-on-dark{color:#fff}
+
+/* ── EASY WAY (incorporate) ───────────────────── */
+.incorp-wrap{max-width:780px;margin:0 auto;text-align:center}
+.incorp-wrap p{font-size:16px;color:var(--slate-600);line-height:1.78;margin-bottom:18px}
+.incorp-wrap p:last-child{margin-bottom:0}
+.incorp-wrap p strong{color:var(--slate-900);font-weight:700}
+.incorp-pricetag{display:inline-block;background:var(--orange-50);color:var(--orange-700);padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.02em;border:1px solid var(--orange-100);margin-bottom:18px}
+
+/* ── LEGACY SECTION ───────────────────────────── */
+.legacy-zone{background:linear-gradient(135deg,var(--slate-900) 0%,var(--slate-800) 100%);color:#fff;padding:96px 0;text-align:center;position:relative;overflow:hidden}
+.legacy-zone::before{content:'';position:absolute;top:-30%;left:-20%;width:560px;height:560px;background:radial-gradient(circle,rgba(249,115,22,.15) 0%,transparent 70%);border-radius:50%}
+.legacy-zone::after{content:'';position:absolute;bottom:-30%;right:-15%;width:480px;height:480px;background:radial-gradient(circle,rgba(99,102,241,.12) 0%,transparent 70%);border-radius:50%}
+.legacy-inner{position:relative;z-index:1;max-width:740px;margin:0 auto;padding:0 24px}
+.legacy-headline{font-family:var(--fontd);font-size:clamp(28px,4vw,46px);font-weight:800;line-height:1.15;letter-spacing:-.02em;color:#fff;margin-bottom:24px}
+.legacy-body{font-size:17px;color:rgba(255,255,255,.78);line-height:1.78;margin-bottom:18px}
+.legacy-tag{display:inline-block;font-family:var(--fontd);font-size:18px;font-weight:700;color:var(--orange-400);margin-top:14px}
+
+/* ── TRUST STRIP (since 1998) ─────────────────── */
+.trust-strip{background:var(--cream);padding:48px 0;text-align:center;border-top:1px solid var(--cream-dark);border-bottom:1px solid var(--cream-dark)}
+.trust-strip p{font-family:var(--fontd);font-size:clamp(17px,2.1vw,22px);font-weight:600;color:var(--slate-800);line-height:1.5;max-width:760px;margin:0 auto}
+.trust-strip p strong{color:var(--orange-600);font-weight:800}
+.trust-tag{display:block;margin-top:10px;font-size:14px;color:var(--slate-500);font-weight:500}
+
+/* ── SECONDARY ENTITIES ───────────────────────── */
+.sec-intro{max-width:680px;margin:0 auto 36px;text-align:center;font-size:16px;color:var(--slate-500);line-height:1.7}
+.sec-tabs{display:flex;gap:6px;background:#fff;padding:6px;border-radius:14px;box-shadow:var(--shadow-sm);max-width:680px;margin:0 auto;border:1px solid rgba(15,23,42,.06)}
+.sec-tab{flex:1;padding:13px 14px;border:none;background:transparent;font-family:var(--fontd);font-size:14px;font-weight:700;color:var(--slate-500);border-radius:10px;cursor:pointer;transition:all .2s}
+.sec-tab:hover{color:var(--slate-800);background:var(--slate-50)}
+.sec-tab.is-active{background:var(--indigo-600);color:#fff}
+.sec-panel-wrap{margin-top:22px;background:#fff;border:1px solid rgba(15,23,42,.07);border-radius:18px;padding:32px 36px;box-shadow:var(--shadow-sm);max-width:840px;margin-left:auto;margin-right:auto}
+.sec-panel{display:none}
+.sec-panel.is-active{display:block;animation:fadeIn .25s ease-out}
+.sec-headline{font-family:var(--fontd);font-size:clamp(18px,1.9vw,22px);font-weight:700;color:var(--slate-900);line-height:1.4;margin-bottom:18px}
+.sec-bullets{list-style:none;display:flex;flex-direction:column;gap:11px}
+.sec-bullets li{display:flex;align-items:flex-start;gap:11px;font-size:15px;color:var(--slate-700);line-height:1.55}
+.sec-bullets li::before{content:'';flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--indigo-50);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F97316' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");background-repeat:no-repeat;background-position:center;background-size:11px;margin-top:2px}
+.sec-quote-line{margin-top:32px;text-align:center;background:var(--slate-50);border:1px solid var(--slate-200);border-radius:12px;padding:20px 24px;max-width:760px;margin-left:auto;margin-right:auto}
+.sec-quote-line p{font-size:15px;color:var(--slate-700)}
+.sec-quote-line a{color:var(--orange-600);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+/* ── FAQ ──────────────────────────────────────── */
+.faq-list{display:flex;flex-direction:column;gap:10px;max-width:760px;margin:0 auto}
+.faq-item{background:#fff;border:1px solid var(--slate-200);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-xs)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;font-family:var(--fontd);font-size:15px;font-weight:700;color:var(--slate-900);transition:background .15s;gap:12px;user-select:none}
+.faq-q:hover{background:var(--slate-50)}
+.faq-icon{width:24px;height:24px;background:var(--slate-100);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--slate-500);flex-shrink:0;transition:all .25s}
+.faq-item.open .faq-icon{background:var(--orange-500);color:#fff;transform:rotate(45deg)}
+.faq-item.open{border-color:var(--orange-200);box-shadow:0 4px 18px rgba(249,115,22,.10)}
+.faq-a{padding:0 24px;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;font-size:15px;color:var(--slate-600);line-height:1.72}
+.faq-item.open .faq-a{max-height:280px;padding:0 24px 22px}
+
+/* ── AI GUIDE ─────────────────────────────────── */
+.ai-zone{background:linear-gradient(135deg,var(--slate-900) 0%,var(--slate-800) 100%);color:#fff;padding:80px 0;text-align:center;position:relative;overflow:hidden}
+.ai-zone::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(249,115,22,.18) 0%,transparent 60%)}
+.ai-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 24px}
+.ai-orb{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.ai-headline{font-family:var(--fontd);font-size:clamp(28px,3.6vw,42px);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:14px;line-height:1.18}
+.ai-sub{font-size:17px;color:rgba(255,255,255,.85);line-height:1.6;margin-bottom:30px}
+.ai-input-mock{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.95);padding:8px 8px 8px 22px;border-radius:14px;max-width:520px;margin:0 auto;box-shadow:0 12px 40px rgba(0,0,0,.18)}
+.ai-input-mock input{flex:1;border:none;background:transparent;outline:none;font-size:15px;color:var(--slate-700);padding:10px 0;font-family:var(--font)}
+.ai-input-mock input::placeholder{color:var(--slate-400)}
+.ai-send{padding:11px 22px;background:var(--orange-500);color:#fff;font-size:14px;font-weight:700;border-radius:10px;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px;box-shadow:var(--shadow-orange-btn)}
+.ai-send:hover{background:var(--orange-600);transform:translateY(-1px)}
+
+/* ── COMMAND CENTER ───────────────────────────── */
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1080px;margin:0 auto}
+.cmd-text .section-eyebrow{margin-bottom:14px}
+.cmd-text p{font-size:16px;color:var(--slate-600);line-height:1.75;margin-bottom:16px}
+.cmd-cta{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:13px 26px;background:var(--slate-900);color:#fff;font-size:15px;font-weight:700;border-radius:10px;border:none;cursor:pointer;text-decoration:none;transition:all .2s}
+.cmd-cta:hover{background:var(--slate-700);transform:translateY(-1px)}
+
+.cmd-mock{background:#fff;border:1px solid var(--slate-200);border-radius:18px;padding:22px;box-shadow:var(--shadow-lg)}
+.cmd-mock-bar{display:flex;align-items:center;gap:6px;padding-bottom:14px;border-bottom:1px solid var(--slate-100);margin-bottom:18px}
+.cmd-dot{width:9px;height:9px;border-radius:50%;background:var(--slate-200)}
+.cmd-dot.r{background:#FB7185}.cmd-dot.y{background:#FBBF24}.cmd-dot.g{background:#34D399}
+.cmd-mock-title{margin-left:8px;font-size:12px;color:var(--slate-400);font-weight:600}
+.cmd-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--slate-50);border:1px solid var(--slate-100);border-radius:10px;margin-bottom:10px}
+.cmd-row:last-child{margin-bottom:0}
+.cmd-row-label{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:600;color:var(--slate-700)}
+.cmd-row-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cmd-row-icon.o{background:var(--orange-50);color:var(--orange-500)}
+.cmd-row-icon.i{background:var(--indigo-50);color:var(--indigo-500)}
+.cmd-row-icon.g{background:#ECFDF5;color:#10B981}
+.cmd-row-meta{font-size:12px;color:var(--slate-400);font-weight:500}
+.cmd-pill{padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700}
+.cmd-pill.due{background:#FEF3C7;color:#B45309}
+.cmd-pill.ok{background:#D1FAE5;color:#047857}
+.cmd-pill.attn{background:#FEE2E2;color:#B91C1C}
+
+/* ── FOOTER ───────────────────────────────────── */
+.footer{background:var(--slate-900);padding:60px 0 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
+.footer-logo{font-family:var(--fontd);font-size:20px;font-weight:800;color:#fff;margin-bottom:12px}
+.footer-logo em{font-style:normal;color:var(--orange-500)}
+.footer-brand p{font-size:13px;color:var(--slate-500);line-height:1.65;max-width:240px}
+.fcol h4{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-500);margin-bottom:14px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fcol a{font-size:13px;color:var(--slate-500);transition:color .15s}
+.fcol a:hover{color:var(--slate-200)}
+.footer-bottom{border-top:1px solid var(--slate-800);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:var(--slate-600)}
+.footer-legal{display:flex;gap:16px}
+.footer-legal a{font-size:12px;color:var(--slate-600);transition:color .15s}
+.footer-legal a:hover{color:var(--slate-300)}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width:920px){
+  .nav-links{display:none}
+  .entity-tabs,.sec-tabs{flex-wrap:wrap}
+  .entity-tab,.sec-tab{flex:1 1 calc(50% - 6px)}
+  .cmd-grid{grid-template-columns:1fr;gap:36px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .entity-panel-wrap,.sec-panel-wrap{padding:24px 22px}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      Biz<em>Jump</em>
+    </div>
+    <ul class="nav-links">
+      <li><a href="demo-landing.html">Overview</a></li>
+      <li><a href="#entities">LLC</a></li>
+      <li><a href="#entities">Corporation</a></li>
+      <li><a href="#more-entities">Other Entities</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-signin">Sign In</button>
+      <button class="btn-nav-primary">My Account</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ZONE ──────────────────────────────────── -->
+<section class="hero-zone" id="entities">
+  <div class="container">
+    <h1 class="hero-headline">Jump-start your business in minutes</h1>
+    <p class="hero-sub">Choose the structure that best fits your goals.</p>
+
+    <!-- 4 entity tabs -->
+    <div class="entity-tabs" role="tablist">
+      <button class="entity-tab is-active" data-tab="llc"  role="tab" aria-selected="true">LLC</button>
+      <button class="entity-tab" data-tab="ccorp" role="tab" aria-selected="false">Corporation</button>
+      <button class="entity-tab" data-tab="scorp" role="tab" aria-selected="false">S-Corp</button>
+      <button class="entity-tab" data-tab="np"    role="tab" aria-selected="false">Not-for-Profit</button>
+    </div>
+
+    <!-- Tab panels -->
+    <div class="entity-panel-wrap">
+
+      <!-- LLC -->
+      <div class="entity-panel is-active" data-panel="llc">
+        <p class="ep-headline"><strong>Limited Liability Company (LLC)</strong> — the simplest and most flexible business structure. Protect your personal assets without the complexity of a corporation.</p>
+        <ul class="ep-bullets">
+          <li>Personal liability protection</li>
+          <li>Pass-through taxation (profits taxed once at the individual level)</li>
+          <li>Flexible management structure</li>
+          <li>No board of directors or formal corporate requirements</li>
+        </ul>
+        <a href="demo-wizard.html?entity=llc" class="ep-cta">
+          Start my LLC
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- C Corp -->
+      <div class="entity-panel" data-panel="ccorp">
+        <p class="ep-headline"><strong>C Corporation (C Corp)</strong> — a structured business designed for growth and raising money. Best for companies planning to scale or bring in investors.</p>
+        <ul class="ep-bullets">
+          <li>Strong personal liability protection</li>
+          <li>Company pays its own taxes (separate from owners)</li>
+          <li>Can raise money by selling shares</li>
+          <li>No limit on number of shareholders</li>
+          <li>Requires a board of directors and formal structure</li>
+        </ul>
+        <a href="demo-wizard.html?entity=ccorp" class="ep-cta">
+          Start my C-Corp
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- S Corp -->
+      <div class="entity-panel" data-panel="scorp">
+        <p class="ep-headline"><strong>S Corporation (S Corp)</strong> — a tax status that helps avoid double taxation while maintaining a structured business setup. Best for small to mid-sized businesses.</p>
+        <ul class="ep-bullets">
+          <li>Personal liability protection</li>
+          <li>Pass-through taxation (profits taxed once)</li>
+          <li>Potential self-employment tax savings</li>
+          <li>Maximum of 100 shareholders</li>
+          <li>Shareholders must be U.S. citizens or residents</li>
+          <li>Can convert to a C Corporation as the business grows</li>
+        </ul>
+        <a href="demo-wizard.html?entity=scorp" class="ep-cta">
+          Start my S-Corp
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Nonprofit -->
+      <div class="entity-panel" data-panel="np">
+        <p class="ep-headline"><strong>Nonprofit Corporation (Not-for-Profit)</strong> — an organization formed to serve a public or community purpose rather than generate profit for owners.</p>
+        <ul class="ep-bullets">
+          <li>No owners or shareholders</li>
+          <li>Profits are reinvested into the organization's mission</li>
+          <li>Eligible for tax-exempt status (if approved)</li>
+          <li>Can receive donations and grants</li>
+          <li>Requires a board of directors and formal governance structure</li>
+        </ul>
+        <a href="demo-wizard.html?entity=nonprofit" class="ep-cta">
+          Start my Non-profit
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div><!-- /entity-panel-wrap -->
+
+    <!-- Need help line -->
+    <p class="help-line">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Need Help? <a href="#">Talk to A Representative</a>
+    </p>
+
+  </div>
+</section>
+
+<!-- ── EASY WAY TO INCORPORATE ────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="incorp-wrap">
+      <span class="incorp-pricetag">Starting at $99 + state fees</span>
+      <h2 class="section-title">The easy way to incorporate your business in any 50 state</h2>
+      <p>Starting at <strong>$99 plus state fees</strong> (paid directly to the state), BizJump makes starting your business fast, simple, and stress-free. No confusing steps. No unnecessary extras—just a clear path to getting up and running.</p>
+      <p>You only pay for what you need. <strong>No hidden fees. No surprise add-ons. No upselling.</strong></p>
+      <p>From day one, your dedicated BizJump specialist handles everything—from name search and filings to securing your EIN—so you can focus on building your business.</p>
+      <p>And we don't stop there. As you grow, we support you with <strong>business banking, digital launch tools, access to funding, and tax guidance</strong>—all with ongoing priority support.</p>
+      <p>Start your business the right way—with a partner that keeps it simple, affordable, and built for your success.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── LEGACY SECTION ─────────────────────────────── -->
+<section class="legacy-zone">
+  <div class="legacy-inner">
+    <h2 class="legacy-headline">Build something greater than yourself.</h2>
+    <p class="legacy-body">Create a business that lasts beyond you—one that carries your vision, extends your influence, and builds lasting wealth for years to come. This is more than starting a company.</p>
+    <p class="legacy-body">It's about creating a legacy that endures.</p>
+    <span class="legacy-tag">Welcome to BizJump. Let's build what lasts.</span>
+  </div>
+</section>
+
+<!-- ── TRUST STRIP ────────────────────────────────── -->
+<div class="trust-strip">
+  <div class="container">
+    <p>Since 1998, BizJump small business experts have helped more than <strong>3,000+ entrepreneurs</strong> turn ideas into successful businesses.<span class="trust-tag">Your journey starts here.</span></p>
+  </div>
+</div>
+
+<!-- ── WE FORM ALMOST ANY TYPE ────────────────────── -->
+<section class="section section-alt" id="more-entities">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:14px">
+      <span class="section-eyebrow">More Options</span>
+      <h2 class="section-title">We form almost any type of business</h2>
+    </div>
+    <p class="sec-intro">While not as common as the options above, these specialized business structures are necessary in certain situations—and yes, we can form them too.</p>
+
+    <div class="sec-tabs" role="tablist">
+      <button class="sec-tab is-active" data-sec="dba" role="tab" aria-selected="true">DBA</button>
+      <button class="sec-tab" data-sec="pc"  role="tab" aria-selected="false">Professional Corporations</button>
+      <button class="sec-tab" data-sec="bcorp" role="tab" aria-selected="false">B-Corporation</button>
+      <button class="sec-tab" data-sec="llp" role="tab" aria-selected="false">LLP</button>
+    </div>
+
+    <div class="sec-panel-wrap">
+
+      <!-- DBA -->
+      <div class="sec-panel is-active" data-secp="dba">
+        <p class="sec-headline"><strong style="color:var(--indigo-600)">Doing Business As (DBA)</strong> — a simple way to operate your business under a different name without forming a separate legal entity.</p>
+        <ul class="sec-bullets">
+          <li>No separate legal entity (operates under your existing business or personal name)</li>
+          <li>Quick and low-cost registration</li>
+          <li>Allows you to brand your business with a professional name</li>
+          <li>Can be used with sole proprietorships, LLCs, or corporations</li>
+        </ul>
+      </div>
+
+      <!-- PC -->
+      <div class="sec-panel" data-secp="pc">
+        <p class="sec-headline"><strong style="color:var(--indigo-600)">Professional Corporation (PC)</strong> — a business structure for licensed professionals that require state licensing, offering liability protection while meeting regulatory requirements.</p>
+        <ul class="sec-bullets">
+          <li>Personal liability protection for business debts</li>
+          <li>Designed for licensed professionals (e.g., doctors, lawyers, accountants)</li>
+          <li>Owners must hold valid state licenses in their profession</li>
+          <li>Structured with a board of directors and formal corporate requirements</li>
+        </ul>
+      </div>
+
+      <!-- B Corp -->
+      <div class="sec-panel" data-secp="bcorp">
+        <p class="sec-headline"><strong style="color:var(--indigo-600)">B Corporation (Benefit Corporation)</strong> — combines the advantages of a traditional corporation with a mission-driven focus similar to a nonprofit.</p>
+        <ul class="sec-bullets">
+          <li>Full benefits of a regular corporation (liability protection, ability to raise capital)</li>
+          <li>Focus on social and environmental impact</li>
+          <li>Legal protection to consider stakeholders, not just shareholders</li>
+          <li>Requires transparency and impact reporting</li>
+        </ul>
+      </div>
+
+      <!-- LLP -->
+      <div class="sec-panel" data-secp="llp">
+        <p class="sec-headline"><strong style="color:var(--indigo-600)">Limited Liability Partnership (LLP)</strong> — a business structure where partners share management while protecting themselves from certain liabilities.</p>
+        <ul class="sec-bullets">
+          <li>Personal liability protection for each partner</li>
+          <li>Flexible management—partners can run the business directly</li>
+          <li>Pass-through taxation (profits taxed once)</li>
+          <li>Common for licensed professionals (e.g., lawyers, accountants)</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="sec-quote-line">
+      <p>Contact us directly for a custom quote to set up either a B-Corp, DBA, Professional Corporation, or LLP. <a href="#">Get a custom quote →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────── -->
+<section class="section" id="faq">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px">
+      <span class="section-eyebrow">FAQ</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What's the difference between an LLC and a corporation?
+          <div class="faq-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a">An LLC is simpler and more flexible, with fewer formal requirements and pass-through taxation by default. A corporation is more structured, requires a board of directors, and is better suited for raising capital and scaling.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What's the difference between a C corporation and an S corporation?
+          <div class="faq-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a">A C corporation is taxed separately from its owners (which can lead to double taxation). An S corporation avoids this by passing profits directly to owners for single-level taxation, but it has ownership limits and eligibility rules.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What's the main difference between a sole proprietorship and an LLC?
+          <div class="faq-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a">A sole proprietorship is the simplest structure but offers no separation between you and the business. An LLC creates a legal separation, protecting your personal assets from business liabilities.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          How are different business types taxed?
+          <div class="faq-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a">Sole proprietorships, partnerships, LLCs (by default), and S corporations typically use pass-through taxation, where profits are taxed once at the owner level. C corporations are taxed at the corporate level, and shareholders may also pay taxes on dividends.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Which business types give me personal liability protection?
+          <div class="faq-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a">LLCs, corporations (C and S), LLPs, and professional corporations generally provide personal liability protection. Sole proprietorships and general partnerships do not.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AI BUSINESS GUIDE ──────────────────────────── -->
+<section class="ai-zone">
+  <div class="ai-inner">
+    <div class="ai-orb">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 00-3 3v1H7a3 3 0 00-3 3v9a3 3 0 003 3h10a3 3 0 003-3V9a3 3 0 00-3-3h-2V5a3 3 0 00-3-3z"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M9 17h6"/></svg>
+    </div>
+    <h2 class="ai-headline">Your personal AI Business Guide</h2>
+    <p class="ai-sub">Get instant answers to your business questions.</p>
+    <div class="ai-input-mock">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--slate-400)"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      <input type="text" placeholder="Ask anything about starting your business…">
+      <button class="ai-send">
+        Ask
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMAND CENTER ─────────────────────────────── -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="cmd-grid">
+
+      <div class="cmd-text">
+        <span class="section-eyebrow">Client Dashboard</span>
+        <h2 class="section-title">Your Business Command Center</h2>
+        <p>All your essentials, updates, and reminders—organized in one place to keep your business running smoothly.</p>
+        <p>Stay on top of state requirements and tax obligations with deadlines, filings, and alerts centralized in a single dashboard—ensuring nothing is missed and your business remains fully compliant.</p>
+        <a href="#" class="cmd-cta">
+          Open Client Dashboard
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Dashboard mockup -->
+      <div class="cmd-mock">
+        <div class="cmd-mock-bar">
+          <div class="cmd-dot r"></div><div class="cmd-dot y"></div><div class="cmd-dot g"></div>
+          <span class="cmd-mock-title">Dashboard · Sunrise Ventures LLC</span>
+        </div>
+
+        <div class="cmd-row">
+          <div class="cmd-row-label">
+            <div class="cmd-row-icon o"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <div>Annual Report Filing
+              <div class="cmd-row-meta">Due in 14 days · Texas</div>
+            </div>
+          </div>
+          <span class="cmd-pill due">Action needed</span>
+        </div>
+
+        <div class="cmd-row">
+          <div class="cmd-row-label">
+            <div class="cmd-row-icon i"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+            <div>EIN Confirmed
+              <div class="cmd-row-meta">From IRS · Apr 12, 2026</div>
+            </div>
+          </div>
+          <span class="cmd-pill ok">Complete</span>
+        </div>
+
+        <div class="cmd-row">
+          <div class="cmd-row-label">
+            <div class="cmd-row-icon g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div>Operating Agreement
+              <div class="cmd-row-meta">Signed by 2 of 2 members</div>
+            </div>
+          </div>
+          <span class="cmd-pill ok">Complete</span>
+        </div>
+
+        <div class="cmd-row">
+          <div class="cmd-row-label">
+            <div class="cmd-row-icon o"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <div>Quarterly Tax Reminder
+              <div class="cmd-row-meta">Q2 estimate · Jun 15</div>
+            </div>
+          </div>
+          <span class="cmd-pill attn">Reminder</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Biz<em>Jump</em></div>
+        <p>Helping entrepreneurs jump-start the business they were meant to build — since 1998.</p>
+      </div>
+      <div class="fcol">
+        <h4>Form a Business</h4>
+        <ul>
+          <li><a href="demo-wizard.html?entity=llc">LLC</a></li>
+          <li><a href="demo-wizard.html?entity=ccorp">C-Corp</a></li>
+          <li><a href="demo-wizard.html?entity=scorp">S-Corp</a></li>
+          <li><a href="demo-wizard.html?entity=nonprofit">Non-profit</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Other Entities</h4>
+        <ul>
+          <li><a href="#more-entities">DBA</a></li>
+          <li><a href="#more-entities">Professional Corp</a></li>
+          <li><a href="#more-entities">B-Corporation</a></li>
+          <li><a href="#more-entities">LLP</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Talk to a Representative</a></li>
+          <li><a href="#">AI Business Guide</a></li>
+          <li><a href="#">Client Dashboard</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 BizJump Inc. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Entity tabs (hero) */
+document.querySelectorAll('.entity-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const key=btn.dataset.tab;
+    document.querySelectorAll('.entity-tab').forEach(b=>{b.classList.toggle('is-active',b===btn);b.setAttribute('aria-selected',b===btn);});
+    document.querySelectorAll('.entity-panel').forEach(p=>{p.classList.toggle('is-active',p.dataset.panel===key);});
+  });
+});
+
+/* Secondary entity tabs */
+document.querySelectorAll('.sec-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const key=btn.dataset.sec;
+    document.querySelectorAll('.sec-tab').forEach(b=>{b.classList.toggle('is-active',b===btn);b.setAttribute('aria-selected',b===btn);});
+    document.querySelectorAll('.sec-panel').forEach(p=>{p.classList.toggle('is-active',p.dataset.secp===key);});
+  });
+});
+
+/* FAQ */
+function toggleFaq(el){
+  const item=el.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>

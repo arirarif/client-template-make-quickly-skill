@@ -1,0 +1,177 @@
+<!--
+=======================================================
+  WIDGET 06 — bjw-entity-types
+  WHERE TO PASTE:
+    Elementor → Add Section (Boxed, max-width 1120px)
+    Section settings:
+      Background: #f9fafb (light gray)
+      Padding Top/Bottom: 88px
+    Add 1 column → HTML Widget → paste everything below
+=======================================================
+-->
+
+<style>
+.bjw06-wrap {
+  font-family: 'Inter', sans-serif;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Section header */
+.bjw06-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.bjw06-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: #2563eb;
+  margin-bottom: 10px; display: block;
+}
+.bjw06-title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800; color: #111827;
+  line-height: 1.18; letter-spacing: -0.8px;
+  margin-bottom: 14px;
+}
+.bjw06-sub {
+  font-size: 17px; color: #6b7280;
+  max-width: 500px; margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* Grid */
+.bjw06-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Card */
+.bjw06-card {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow .25s, transform .25s, border-color .25s;
+  position: relative;
+  overflow: hidden;
+}
+.bjw06-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: #2563eb;
+  transform: scaleX(0);
+  transition: transform .3s;
+}
+.bjw06-card:hover::before { transform: scaleX(1); }
+.bjw06-card:hover {
+  box-shadow: 0 6px 32px rgba(0,0,0,.12);
+  transform: translateY(-5px);
+  border-color: #2563eb;
+}
+
+/* Icon */
+.bjw06-icon {
+  width: 60px; height: 60px; border-radius: 14px;
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+}
+.bjw06-card:nth-child(1) .bjw06-icon { background: #eff6ff; }
+.bjw06-card:nth-child(2) .bjw06-icon { background: #fef3c7; }
+.bjw06-card:nth-child(3) .bjw06-icon { background: #f0fdf4; }
+.bjw06-card:nth-child(4) .bjw06-icon { background: #fdf2f8; }
+
+.bjw06-card h3 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 18px; font-weight: 700; color: #111827;
+  margin-bottom: 8px;
+}
+.bjw06-card p {
+  font-size: 14px; color: #6b7280;
+  line-height: 1.6; margin-bottom: 16px;
+}
+.bjw06-tag {
+  display: inline-block;
+  background: #f0f4ff; color: #2563eb;
+  font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 100px;
+  letter-spacing: .5px;
+}
+
+/* Scroll reveal */
+.bjw06-card { opacity: 0; transform: translateY(24px); }
+.bjw06-card.bjw06-visible { opacity: 1; transform: none; }
+.bjw06-card { transition: opacity .5s ease, transform .5s ease, box-shadow .25s, border-color .25s; }
+.bjw06-card:nth-child(2) { transition-delay: .1s; }
+.bjw06-card:nth-child(3) { transition-delay: .2s; }
+.bjw06-card:nth-child(4) { transition-delay: .3s; }
+
+/* Responsive */
+@media (max-width: 1024px) { .bjw06-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+  .bjw06-wrap { padding: 0 16px; }
+  .bjw06-sub { font-size: 15px; }
+}
+@media (max-width: 480px) { .bjw06-grid { grid-template-columns: 1fr; } }
+</style>
+
+<div class="bjw06-wrap">
+
+  <!-- Section Header -->
+  <div class="bjw06-header">
+    <span class="bjw06-label">Choose Your Entity</span>
+    <h2 class="bjw06-title">What Type of Business<br>Are You Forming?</h2>
+    <p class="bjw06-sub">Not sure which is right for you? Each structure has unique tax and liability benefits.</p>
+  </div>
+
+  <!-- Cards Grid -->
+  <div class="bjw06-grid">
+
+    <div class="bjw06-card">
+      <div class="bjw06-icon">🏢</div>
+      <h3>LLC</h3>
+      <p>Limited Liability Company — the most popular choice. Protects personal assets with flexible management and pass-through taxation.</p>
+      <span class="bjw06-tag">Most Common</span>
+    </div>
+
+    <div class="bjw06-card">
+      <div class="bjw06-icon">📊</div>
+      <h3>C-Corporation</h3>
+      <p>Best for businesses seeking outside investment or planning to go public. Separate tax entity with strong liability protection.</p>
+      <span class="bjw06-tag">Investor-Ready</span>
+    </div>
+
+    <div class="bjw06-card">
+      <div class="bjw06-icon">💼</div>
+      <h3>S-Corporation</h3>
+      <p>Pass-through taxation with corporate protection. Ideal for small businesses wanting to avoid double taxation on profits.</p>
+      <span class="bjw06-tag">Tax Efficient</span>
+    </div>
+
+    <div class="bjw06-card">
+      <div class="bjw06-icon">💛</div>
+      <h3>Non-Profit</h3>
+      <p>Form a 501(c)(3) organization for charitable, educational, or social causes. Tax-exempt status and public credibility.</p>
+      <span class="bjw06-tag">Tax Exempt</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var cards = document.querySelectorAll('.bjw06-card');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bjw06-visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  cards.forEach(function(c){ obs.observe(c); });
+})();
+</script>

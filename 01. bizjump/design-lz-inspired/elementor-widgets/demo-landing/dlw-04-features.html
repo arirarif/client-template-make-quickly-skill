@@ -1,0 +1,139 @@
+<!--
+=======================================================
+  WIDGET DLW-04 — Features / Why BizJump (Demo Landing)
+  WHERE TO PASTE:
+    Elementor → Add New Section → Stretch: NO
+    Section padding: 0 (HTML handles padding + slate-50 bg)
+    Add 1 column → drag HTML Widget → paste below
+=======================================================
+-->
+
+<style>
+.dlw04-section { padding: 88px 0; background: #F8FAFC; font-family: 'Inter', sans-serif; }
+.dlw04-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.dlw04-header { text-align: center; margin-bottom: 56px; }
+.dlw04-label {
+  display: inline-block; font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #F97316; margin-bottom: 12px;
+}
+.dlw04-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 800; color: #0F172A;
+  line-height: 1.2; letter-spacing: -.02em;
+  margin: 0 0 14px;
+}
+.dlw04-sub {
+  font-size: 17px; color: #64748B;
+  max-width: 520px; margin: 0 auto; line-height: 1.65;
+}
+
+.dlw04-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.dlw04-card {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 32px 28px;
+  box-shadow: 0 2px 6px rgba(15,23,42,0.08);
+  transition: box-shadow .25s, transform .25s;
+}
+.dlw04-card:hover {
+  box-shadow: 0 4px 14px rgba(15,23,42,0.10);
+  transform: translateY(-2px);
+}
+.dlw04-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.dlw04-icon.dlw04-orange { background: #FFF7ED; color: #F97316; }
+.dlw04-icon.dlw04-indigo { background: #EEF2FF; color: #6366F1; }
+.dlw04-feat-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 17px; font-weight: 700;
+  color: #1E293B; margin-bottom: 10px;
+}
+.dlw04-desc {
+  font-size: 14px; color: #64748B;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .dlw04-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+@media (max-width: 600px) {
+  .dlw04-section { padding: 64px 0; }
+  .dlw04-header { margin-bottom: 40px; }
+  .dlw04-grid { grid-template-columns: 1fr; gap: 16px; }
+  .dlw04-card { padding: 26px 22px; }
+}
+</style>
+
+<section class="dlw04-section">
+  <div class="dlw04-inner">
+
+    <div class="dlw04-header">
+      <span class="dlw04-label">Why BizJump</span>
+      <h2 class="dlw04-title">Everything You Need to Launch</h2>
+      <p class="dlw04-sub">We take care of the legal paperwork, so you can focus on what matters — building your business.</p>
+    </div>
+
+    <div class="dlw04-grid">
+
+      <div class="dlw04-card">
+        <div class="dlw04-icon dlw04-orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        </div>
+        <div class="dlw04-feat-title">Fast, Simple Filing</div>
+        <p class="dlw04-desc">Answer a few questions and we'll prepare and file your LLC documents with the state — typically in one business day.</p>
+      </div>
+
+      <div class="dlw04-card">
+        <div class="dlw04-icon dlw04-indigo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="dlw04-feat-title">Registered Agent Service</div>
+        <p class="dlw04-desc">Every LLC needs a registered agent. We'll serve as yours, ensuring you never miss an important legal document.</p>
+      </div>
+
+      <div class="dlw04-card">
+        <div class="dlw04-icon dlw04-orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="dlw04-feat-title">Fast Turnaround</div>
+        <p class="dlw04-desc">Standard processing in 3–5 days. Pro customers get priority handling — expedited to as fast as 24 hours.</p>
+      </div>
+
+      <div class="dlw04-card">
+        <div class="dlw04-icon dlw04-indigo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div class="dlw04-feat-title">EIN / Tax ID Filing</div>
+        <p class="dlw04-desc">Get your federal Employer Identification Number — required to open a business bank account and hire employees.</p>
+      </div>
+
+      <div class="dlw04-card">
+        <div class="dlw04-icon dlw04-orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
+        </div>
+        <div class="dlw04-feat-title">Operating Agreement</div>
+        <p class="dlw04-desc">A custom operating agreement to protect your personal assets and define how your LLC is managed.</p>
+      </div>
+
+      <div class="dlw04-card">
+        <div class="dlw04-icon dlw04-indigo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="dlw04-feat-title">Expert Support</div>
+        <p class="dlw04-desc">Real humans available 7 days a week. Have a question? Our formation specialists are here to help.</p>
+      </div>
+
+    </div>
+  </div>
+</section>

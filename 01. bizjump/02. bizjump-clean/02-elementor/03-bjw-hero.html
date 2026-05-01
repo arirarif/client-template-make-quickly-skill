@@ -1,0 +1,260 @@
+<!--
+=======================================================
+  WIDGET 03 — bjw-hero
+  WHERE TO PASTE:
+    Elementor → Add New Section → Full Width (Stretch)
+    Section settings:
+      Layout → Content Width: Full Width, Stretch Section: YES
+      Background: Classic → Color: #0f2156
+      (the HTML handles the gradient + orbs internally)
+      Padding: 0 on all sides (HTML handles spacing)
+    Add 1 column → drag HTML Widget → paste everything below
+=======================================================
+-->
+
+<style>
+/* ── Hero Wrapper ── */
+.bjw03-hero {
+  background: linear-gradient(155deg, #0f2156 0%, #1e3a8a 55%, #1d4ed8 100%);
+  color: #fff;
+  padding: 96px 32px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Grid pattern overlay */
+.bjw03-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* Glow orbs */
+.bjw03-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); pointer-events: none;
+}
+.bjw03-orb-1 {
+  width: 400px; height: 400px;
+  background: rgba(37,99,235,.35);
+  top: -120px; left: -80px;
+}
+.bjw03-orb-2 {
+  width: 300px; height: 300px;
+  background: rgba(249,115,22,.15);
+  bottom: -60px; right: -40px;
+}
+
+/* Inner content */
+.bjw03-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Badge */
+.bjw03-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.9);
+  font-size: 13px; font-weight: 600;
+  padding: 7px 18px; border-radius: 100px;
+  margin-bottom: 28px; letter-spacing: .3px;
+}
+.bjw03-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px #4ade80;
+  animation: bjw03blink 1.8s ease-in-out infinite;
+}
+@keyframes bjw03blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* Heading */
+.bjw03-h1 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(34px, 5.5vw, 62px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 22px;
+  color: #fff;
+}
+.bjw03-h1 .bjw03-static { display: block; }
+
+/* Word Cycle */
+.bjw03-cycle-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  height: 1.12em;
+  min-width: 260px;
+  border-bottom: 3px solid #f97316;
+}
+.bjw03-word {
+  display: block;
+  color: #fbbf24;
+  font-weight: 800;
+}
+.bjw03-word.bjw03-enter { animation: bjw03Enter .5s cubic-bezier(.22,1,.36,1) forwards; }
+.bjw03-word.bjw03-exit  { animation: bjw03Exit  .4s cubic-bezier(.55,0,1,.45) forwards; }
+@keyframes bjw03Enter { from{opacity:0;transform:translateY(24px) skewY(4deg)} to{opacity:1;transform:none} }
+@keyframes bjw03Exit  { from{opacity:1;transform:none} to{opacity:0;transform:translateY(-24px) skewY(-4deg)} }
+
+/* Sub */
+.bjw03-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,.78);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+
+/* Buttons */
+.bjw03-btns {
+  display: flex; gap: 16px;
+  justify-content: center; flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+.bjw03-btn-primary {
+  background: #f97316; color: #fff;
+  padding: 16px 40px; border-radius: 10px;
+  font-size: 17px; font-weight: 700;
+  text-decoration: none; display: inline-block;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(249,115,22,.4);
+  font-family: 'Inter', sans-serif;
+}
+.bjw03-btn-primary:hover {
+  background: #ea6c00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(249,115,22,.5);
+  color: #fff;
+}
+.bjw03-btn-outline {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,.45);
+  color: #fff; padding: 14px 36px;
+  border-radius: 10px;
+  font-size: 17px; font-weight: 600;
+  text-decoration: none; display: inline-block;
+  transition: background .2s, border-color .2s;
+  font-family: 'Inter', sans-serif;
+}
+.bjw03-btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); color: #fff; }
+
+/* Trust badges */
+.bjw03-trust {
+  display: flex; gap: 28px;
+  justify-content: center; flex-wrap: wrap;
+}
+.bjw03-trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13.5px; color: rgba(255,255,255,.72); font-weight: 500;
+}
+.bjw03-check {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(74,222,128,.15);
+  border: 1px solid #4ade80;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 10px; color: #4ade80;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .bjw03-hero { padding: 64px 16px 52px; }
+  .bjw03-h1 { font-size: clamp(30px, 8vw, 42px); letter-spacing: -.5px; }
+  .bjw03-cycle-wrap { min-width: 0; width: auto; }
+  .bjw03-sub { font-size: 16px; }
+  .bjw03-btns { flex-direction: column; align-items: center; gap: 12px; }
+  .bjw03-btn-primary, .bjw03-btn-outline {
+    width: 100%; max-width: 320px; text-align: center; font-size: 16px;
+  }
+  .bjw03-trust { gap: 12px; }
+  .bjw03-orb-1 { width: 200px; height: 200px; top: -60px; left: -60px; }
+  .bjw03-orb-2 { width: 150px; height: 150px; }
+}
+@media (max-width: 480px) {
+  .bjw03-trust { flex-direction: column; align-items: center; }
+  .bjw03-badge { font-size: 12px; padding: 6px 14px; }
+}
+</style>
+
+<div class="bjw03-hero">
+  <div class="bjw03-orb bjw03-orb-1"></div>
+  <div class="bjw03-orb bjw03-orb-2"></div>
+  <div class="bjw03-inner">
+
+    <!-- Badge -->
+    <div class="bjw03-badge">
+      <span class="bjw03-dot"></span>
+      Trusted by 15,000+ Entrepreneurs
+    </div>
+
+    <!-- Headline with word cycle -->
+    <h1 class="bjw03-h1">
+      <span class="bjw03-static">Launch Your</span>
+      <span class="bjw03-cycle-wrap">
+        <span class="bjw03-word" id="bjw03Word">LLC</span>
+      </span>
+      <span class="bjw03-static">in All 50 States</span>
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="bjw03-sub">
+      BizJump handles your entire business formation — online, fast, and at flat-rate pricing.
+      No hidden fees, no lawyers, no paperwork confusion.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="bjw03-btns">
+      <a href="/incorporate/" class="bjw03-btn-primary">Start For Free →</a>
+      <a href="#pricing" class="bjw03-btn-outline">View Pricing</a>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="bjw03-trust">
+      <div class="bjw03-trust-item">
+        <div class="bjw03-check">✓</div> No Hidden Fees
+      </div>
+      <div class="bjw03-trust-item">
+        <div class="bjw03-check">✓</div> SSL Secured Checkout
+      </div>
+      <div class="bjw03-trust-item">
+        <div class="bjw03-check">✓</div> 100% Money-Back Guarantee
+      </div>
+      <div class="bjw03-trust-item">
+        <div class="bjw03-check">✓</div> All 50 States
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var words  = ['LLC','Corporation','S-Corp','Non-Profit'];
+  var idx    = 0;
+  var el     = document.getElementById('bjw03Word');
+  if (!el) return;
+
+  function cycle() {
+    el.classList.remove('bjw03-enter');
+    el.classList.add('bjw03-exit');
+    setTimeout(function(){
+      idx = (idx + 1) % words.length;
+      el.textContent = words[idx];
+      el.classList.remove('bjw03-exit');
+      el.classList.add('bjw03-enter');
+    }, 420);
+  }
+  setInterval(cycle, 2800);
+})();
+</script>

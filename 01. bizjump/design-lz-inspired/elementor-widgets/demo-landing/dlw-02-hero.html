@@ -1,0 +1,212 @@
+<!--
+=======================================================
+  WIDGET DLW-02 — Hero (Demo Landing)
+  WHERE TO PASTE:
+    Elementor → Add New Section → Stretch Section: YES
+    Section Layout → Content Width: Full Width
+    Section padding: 0 (HTML handles bg image + overlay + padding)
+    Add 1 column → drag HTML Widget → paste everything below
+  IMAGE:
+    Default uses Unsplash CDN. To swap, replace the URL inside
+    .dlw02-hero { background-image: url(...) }.
+=======================================================
+-->
+
+<style>
+.dlw02-hero {
+  position: relative;
+  min-height: 600px;
+  display: flex; align-items: center;
+  padding: 100px 0 88px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=85');
+  background-size: cover;
+  background-position: center 30%;
+}
+.dlw02-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(108deg,
+    rgba(9,14,26,0.90) 0%,
+    rgba(9,14,26,0.78) 42%,
+    rgba(9,14,26,0.38) 75%,
+    rgba(9,14,26,0.15) 100%);
+  z-index: 1;
+}
+.dlw02-hero::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 120px;
+  background: linear-gradient(to top, rgba(9,14,26,0.35), transparent);
+  z-index: 1;
+}
+.dlw02-inner {
+  position: relative; z-index: 2;
+  max-width: 1160px; margin: 0 auto; padding: 0 24px;
+  width: 100%;
+}
+.dlw02-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(249,115,22,0.18);
+  color: #FB923C;
+  font-size: 13px; font-weight: 600;
+  padding: 6px 16px; border-radius: 999px;
+  border: 1px solid rgba(249,115,22,0.32);
+  margin-bottom: 24px;
+  backdrop-filter: blur(4px);
+}
+.dlw02-badge::before {
+  content: ''; width: 6px; height: 6px;
+  border-radius: 50%; background: #FB923C;
+  box-shadow: 0 0 6px rgba(249,115,22,0.7);
+}
+.dlw02-h1 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: clamp(36px, 4.5vw, 62px);
+  font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #fff; max-width: 640px;
+  margin: 0 0 20px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.dlw02-h1 em { font-style: normal; color: #FB923C; }
+.dlw02-sub {
+  font-size: 18px; font-weight: 400;
+  color: rgba(255,255,255,0.72);
+  max-width: 500px; margin: 0 0 38px;
+  line-height: 1.68;
+}
+.dlw02-cta {
+  display: flex; align-items: center;
+  justify-content: flex-start; gap: 14px; flex-wrap: wrap;
+}
+.dlw02-btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #F97316; color: #fff;
+  font-size: 16px; font-weight: 600;
+  padding: 15px 36px; border-radius: 10px;
+  border: none; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(249,115,22,0.35);
+  transition: all .2s ease; white-space: nowrap;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+}
+.dlw02-btn-primary:hover {
+  background: #EA580C;
+  box-shadow: 0 6px 22px rgba(249,115,22,0.45);
+  transform: translateY(-2px);
+}
+.dlw02-btn-primary svg { transition: transform .2s; }
+.dlw02-btn-primary:hover svg { transform: translateX(3px); }
+.dlw02-btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.90);
+  font-size: 16px; font-weight: 600;
+  padding: 14px 32px; border-radius: 10px;
+  border: 1.5px solid rgba(255,255,255,0.30);
+  cursor: pointer; transition: all .2s ease;
+  white-space: nowrap; backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+}
+.dlw02-btn-secondary:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.55);
+}
+.dlw02-note {
+  margin-top: 22px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.38);
+}
+.dlw02-note b { color: rgba(255,255,255,0.60); }
+.dlw02-stats {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 44px; flex-wrap: wrap;
+}
+.dlw02-pill {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  padding: 7px 16px;
+  backdrop-filter: blur(8px);
+}
+.dlw02-pill strong {
+  font-size: 14px; font-weight: 700; color: #fff;
+}
+.dlw02-pill span {
+  font-size: 12px; color: rgba(255,255,255,0.55);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .dlw02-hero { padding: 72px 0 60px; min-height: 520px; }
+  .dlw02-h1 { font-size: clamp(30px, 7vw, 44px); }
+  .dlw02-sub { font-size: 16px; margin-bottom: 28px; }
+  .dlw02-btn-primary, .dlw02-btn-secondary {
+    padding: 13px 26px; font-size: 15px;
+  }
+  .dlw02-stats { gap: 8px; margin-top: 32px; }
+  .dlw02-pill { padding: 6px 12px; }
+  .dlw02-pill strong { font-size: 13px; }
+  .dlw02-pill span { font-size: 11px; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .dlw02-hero { padding: 60px 0 50px; }
+  .dlw02-cta { flex-direction: column; align-items: stretch; gap: 10px; }
+  .dlw02-btn-primary, .dlw02-btn-secondary { justify-content: center; width: 100%; }
+  .dlw02-note { font-size: 12px; }
+}
+</style>
+
+<section class="dlw02-hero">
+  <div class="dlw02-inner">
+
+    <div class="dlw02-badge">
+      #1 Business Formation Service &nbsp;·&nbsp; 4M+ Businesses Formed
+    </div>
+
+    <h1 class="dlw02-h1">Start Your LLC<br>the <em>Right Way</em></h1>
+
+    <p class="dlw02-sub">BizJump handles all the paperwork so you can focus on building your business. Fast, simple, and trusted by entrepreneurs across all 50 states.</p>
+
+    <div class="dlw02-cta">
+      <a href="#" class="dlw02-btn-primary">
+        Form My LLC Now
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#" class="dlw02-btn-secondary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="10 15 15 12 10 9"/></svg>
+        See How It Works
+      </a>
+    </div>
+
+    <p class="dlw02-note">State fee not included &nbsp;·&nbsp; <b>100% satisfaction guarantee</b> &nbsp;·&nbsp; No hidden fees</p>
+
+    <div class="dlw02-stats">
+      <div class="dlw02-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#F97316"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <strong>4M+</strong>
+        <span>Businesses formed</span>
+      </div>
+      <div class="dlw02-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <strong>4.7 / 5</strong>
+        <span>Customer rating</span>
+      </div>
+      <div class="dlw02-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#F97316"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <strong>24 hrs</strong>
+        <span>Expedited filing</span>
+      </div>
+      <div class="dlw02-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#F97316"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <strong>256-bit</strong>
+        <span>SSL encrypted</span>
+      </div>
+    </div>
+
+  </div>
+</section>

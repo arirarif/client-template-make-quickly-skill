@@ -1,0 +1,204 @@
+<!--
+=======================================================
+  WIDGET DLW-03 — Pricing Cards (Demo Landing)
+  WHERE TO PASTE:
+    Elementor → Add New Section → Stretch: NO (default)
+    Section padding: 0 (HTML handles padding)
+    Background: White
+    Add 1 column → drag HTML Widget → paste below
+=======================================================
+-->
+
+<style>
+.dlw03-section { padding: 88px 0; background: #FFFFFF; font-family: 'Inter', sans-serif; }
+.dlw03-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.dlw03-header { text-align: center; margin-bottom: 56px; }
+.dlw03-label {
+  display: inline-block; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #F97316; margin-bottom: 12px;
+}
+.dlw03-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 800; color: #0F172A;
+  line-height: 1.2; letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+.dlw03-sub {
+  font-size: 17px; color: #64748B;
+  max-width: 520px; margin: 0 auto;
+  line-height: 1.65;
+}
+
+.dlw03-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.dlw03-card {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 36px 32px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.10);
+  position: relative;
+  transition: box-shadow .25s, transform .25s;
+}
+.dlw03-card:hover {
+  box-shadow: 0 8px 28px rgba(15,23,42,0.12);
+  transform: translateY(-3px);
+}
+.dlw03-card.dlw03-featured {
+  border: 2px solid #F97316;
+  box-shadow: 0 8px 32px rgba(249,115,22,0.14);
+  transform: translateY(-6px);
+}
+.dlw03-card.dlw03-featured:hover {
+  box-shadow: 0 16px 48px rgba(249,115,22,0.20);
+  transform: translateY(-8px);
+}
+.dlw03-recommended {
+  position: absolute; top: -14px; left: 50%;
+  transform: translateX(-50%);
+  background: #F97316; color: #fff;
+  font-size: 12px; font-weight: 700;
+  padding: 4px 16px; border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(249,115,22,0.35);
+}
+.dlw03-name {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #94A3B8; margin-bottom: 8px;
+}
+.dlw03-price {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 42px; font-weight: 800;
+  color: #0F172A; line-height: 1; margin-bottom: 4px;
+}
+.dlw03-price sup {
+  font-size: 22px; vertical-align: super; font-weight: 700;
+}
+.dlw03-note {
+  font-size: 13px; color: #94A3B8; margin-bottom: 24px;
+}
+.dlw03-divider {
+  height: 1px; background: #E2E8F0; margin: 24px 0;
+}
+.dlw03-features {
+  list-style: none; padding: 0; margin: 0 0 28px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.dlw03-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: #475569; line-height: 1.5;
+}
+.dlw03-check {
+  width: 18px; height: 18px;
+  background: #EEF2FF; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+  color: #6366F1;
+}
+.dlw03-btn {
+  width: 100%; padding: 13px;
+  border-radius: 10px;
+  font-size: 15px; font-weight: 600;
+  cursor: pointer; border: none;
+  transition: all .2s;
+  font-family: 'Inter', sans-serif;
+  display: block; text-align: center;
+  text-decoration: none;
+}
+.dlw03-btn-outline {
+  background: #fff; color: #334155;
+  border: 1.5px solid #CBD5E1;
+}
+.dlw03-btn-outline:hover { background: #F8FAFC; border-color: #94A3B8; }
+.dlw03-btn-orange {
+  background: #F97316; color: #fff;
+  box-shadow: 0 4px 16px rgba(249,115,22,0.35);
+}
+.dlw03-btn-orange:hover {
+  background: #EA580C;
+  box-shadow: 0 6px 22px rgba(249,115,22,0.45);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .dlw03-grid { grid-template-columns: 1fr; gap: 32px; max-width: 460px; margin: 0 auto; }
+  .dlw03-card.dlw03-featured { transform: none; }
+  .dlw03-card.dlw03-featured:hover { transform: translateY(-3px); }
+}
+@media (max-width: 600px) {
+  .dlw03-section { padding: 64px 0; }
+  .dlw03-header { margin-bottom: 40px; }
+  .dlw03-card { padding: 28px 22px; }
+  .dlw03-price { font-size: 36px; }
+}
+</style>
+
+<section class="dlw03-section">
+  <div class="dlw03-inner">
+
+    <div class="dlw03-header">
+      <span class="dlw03-label">Pricing</span>
+      <h2 class="dlw03-title">Choose Your Formation Package</h2>
+      <p class="dlw03-sub">All plans include LLC formation, registered agent for 30 days, and operating agreement template.</p>
+    </div>
+
+    <div class="dlw03-grid">
+
+      <!-- Basic -->
+      <div class="dlw03-card">
+        <div class="dlw03-name">Basic</div>
+        <div class="dlw03-price"><sup>$</sup>0</div>
+        <div class="dlw03-note">+ state filing fee</div>
+        <div class="dlw03-divider"></div>
+        <ul class="dlw03-features">
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>State articles of organization</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Name availability search</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Online order status tracking</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Email support</li>
+        </ul>
+        <a href="#" class="dlw03-btn dlw03-btn-outline">Get Started Free</a>
+      </div>
+
+      <!-- Pro (Featured) -->
+      <div class="dlw03-card dlw03-featured">
+        <div class="dlw03-recommended">Most Popular</div>
+        <div class="dlw03-name">Pro</div>
+        <div class="dlw03-price"><sup>$</sup>149</div>
+        <div class="dlw03-note">+ state filing fee</div>
+        <div class="dlw03-divider"></div>
+        <ul class="dlw03-features">
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Basic</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Registered agent — 1 year included</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Operating agreement</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>EIN / Tax ID filing</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Priority processing</li>
+        </ul>
+        <a href="#" class="dlw03-btn dlw03-btn-orange">Get Started</a>
+      </div>
+
+      <!-- Premium -->
+      <div class="dlw03-card">
+        <div class="dlw03-name">Premium</div>
+        <div class="dlw03-price"><sup>$</sup>299</div>
+        <div class="dlw03-note">+ state filing fee</div>
+        <div class="dlw03-divider"></div>
+        <ul class="dlw03-features">
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Pro</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Business bank account setup</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Business credit card</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Domain + business email</li>
+          <li><span class="dlw03-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Dedicated account manager</li>
+        </ul>
+        <a href="#" class="dlw03-btn dlw03-btn-outline">Get Started</a>
+      </div>
+
+    </div>
+  </div>
+</section>

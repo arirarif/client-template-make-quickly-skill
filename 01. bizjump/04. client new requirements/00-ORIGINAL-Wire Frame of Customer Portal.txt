@@ -1,0 +1,249 @@
+﻿VISUAL WIREFRAME
+BizJump Client Dashboard
+System Name: Business Command Center
+
+
+1. DASHBOARD HOME (MAIN VIEW)
+ Do figma wireframe ui ux design for saas, ai dashboard, crm by Varunib | Fiverr 
+
+	  
+
+	
+
+Layout Structure
+Top Bar
+* Logo (left) 
+* Notifications | Support | Account (right) 
+Sidebar (Left)
+* Dashboard 
+* Documents 
+* Compliance 
+* Services 
+* Action Plan 
+* Messages 
+* Settings 
+________________
+
+
+Main Content Grid
+LEFT COLUMN (70%)
+[Business Status Card]
+* Business Name 
+* Entity Type 
+* State 
+* Filing Status (progress bar) 
+* EIN Status 
+________________
+
+
+[Action Plan – Next Steps]
+* Checklist: 
+   * Apply for EIN 
+   * Download Documents 
+   * Open Bank Account 
+   * Set Up Compliance 
+Button: View Full Action Plan
+________________
+
+
+RIGHT COLUMN (30%)
+[Quick Summary Card]
+* Formation Progress % 
+* Next Deadline 
+* Active Services Count 
+________________
+
+
+[Notifications Panel]
+* Filing update 
+* Reminder alerts
+2. DOCUMENT HUB
+  
+
+	  
+
+	  
+
+	  
+
+	
+
+
+
+Layout
+Header
+Your Business Documents
+Main Table
+Document
+	Type
+	Date
+	Status
+	Action
+	Buttons
+* Upload Document 
+* Download All 
+________________
+
+
+UX Behavior
+* Click row → preview document 
+* Status tags: Ready / Pending / Processing 
+
+
+
+
+
+
+
+
+
+
+3. COMPLIANCE CENTER
+
+
+  
+
+	  
+
+	  
+
+	
+
+Layout
+Top Section: Alerts
+* Annual Report Due 
+* Tax Filing Reminder 
+* State Requirement 
+Status Colors:
+* Green → On Track 
+* Yellow → Action Needed 
+* Red → Overdue 
+________________
+
+
+Calendar View
+* Monthly compliance timeline 
+________________
+
+
+Buttons
+* View Full Calendar 
+* Add Compliance Service
+4. SERVICE MANAGEMENT PANEL
+
+
+  
+
+	  
+
+	  
+
+	Layout
+Active Services (Top)
+* Formation Package 
+* EIN Filing 
+* Registered Agent 
+________________
+
+
+Available Add-Ons (Cards)
+* Operating Agreement 
+* Bank Setup 
+* Social Media Setup 
+* Google Business Setup 
+________________
+
+
+Buttons
+* Add Service 
+* Upgrade Package
+
+
+
+
+5. ACTION CENTER 
+  
+
+	  
+
+	  
+
+	Layout
+Tabs or Sections
+Setup
+* EIN 
+* Bank Account 
+* Accounting 
+Growth
+* Social Media 
+* Google Business 
+* Website 
+Compliance
+* Annual Reports 
+* Tax Filings 
+________________
+
+
+Interaction
+* Checkbox → Mark Complete 
+* Expand → View instructions 
+
+
+
+
+6. COMMUNICATION HUB
+  
+
+	  
+
+	  
+
+	
+
+Layout
+
+
+Left Panel
+
+
+Conversations list
+
+
+Main Panel
+
+
+Message thread with BizJump
+Buttons
+Send Message
+Upload File
+
+
+________________
+
+
+
+
+7. BUSINESS PROFILE PAGE
+
+
+  
+
+	  
+
+	  
+
+	
+
+
+
+Layout
+Fields
+Business Name
+Entity Type
+State
+EIN
+Formation Date
+Button
+
+
+Edit Information

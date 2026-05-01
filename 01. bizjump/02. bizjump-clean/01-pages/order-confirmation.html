@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed — BizJump</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f2156; --blue: #1e3a8a; --blue-mid: #2563eb; --blue-lt: #eff6ff;
+    --orange: #f97316; --orange-dk: #ea6c00;
+    --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb; --gray-300: #d1d5db;
+    --gray-500: #6b7280; --gray-700: #374151; --gray-900: #111827;
+    --green: #16a34a; --green-lt: #f0fdf4; --white: #ffffff; --radius: 10px;
+  }
+  body { font-family: 'Inter', sans-serif; color: var(--gray-900); background: var(--gray-50); min-height: 100vh; display: flex; flex-direction: column; }
+
+  /* NAV */
+  nav {
+    background: rgba(255,255,255,.97); border-bottom: 1px solid var(--gray-100);
+    padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 68px;
+    box-shadow: 0 1px 8px rgba(0,0,0,.06);
+  }
+  .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--orange); }
+
+  /* MAIN */
+  main { flex: 1; padding: 64px 16px; }
+  .wrap { max-width: 680px; margin: 0 auto; }
+
+  /* SUCCESS HEADER */
+  .success-icon {
+    width: 88px; height: 88px; border-radius: 50%;
+    background: var(--green-lt); border: 3px solid var(--green);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; margin: 0 auto 28px;
+  }
+  .success-header { text-align: center; margin-bottom: 40px; }
+  .success-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 800; color: var(--gray-900);
+    letter-spacing: -0.8px; margin-bottom: 12px;
+  }
+  .success-header p { font-size: 17px; color: var(--gray-500); line-height: 1.7; max-width: 480px; margin: 0 auto; }
+
+  /* ORDER SUMMARY CARD */
+  .order-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 16px; padding: 36px; margin-bottom: 24px;
+    box-shadow: 0 2px 16px rgba(0,0,0,.06);
+  }
+  .order-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px; font-weight: 700; color: var(--gray-900);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+  }
+  .order-num {
+    background: var(--blue-lt); color: var(--blue-mid);
+    font-size: 13px; font-weight: 700; padding: 3px 12px;
+    border-radius: 100px;
+  }
+  .order-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 0; border-bottom: 1px solid var(--gray-100);
+    font-size: 15px;
+  }
+  .order-row:last-child { border-bottom: none; }
+  .order-row .label { color: var(--gray-500); }
+  .order-row .value { font-weight: 600; color: var(--gray-900); }
+  .order-total {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 0 0; margin-top: 8px; border-top: 2px solid var(--gray-200);
+    font-size: 18px; font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .order-total .total-val { color: var(--navy); }
+
+  /* NEXT STEPS */
+  .steps-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 16px; padding: 36px; margin-bottom: 24px;
+    box-shadow: 0 2px 16px rgba(0,0,0,.06);
+  }
+  .steps-title { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--gray-900); margin-bottom: 24px; }
+  .step-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 24px; }
+  .step-item:last-child { margin-bottom: 0; }
+  .step-badge {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--navy); color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-text h4 { font-size: 15px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+  .step-text p { font-size: 14px; color: var(--gray-500); line-height: 1.65; }
+  .step-eta { display: inline-block; background: var(--blue-lt); color: var(--blue-mid); font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 100px; margin-top: 6px; }
+
+  /* EMAIL NOTICE */
+  .email-notice {
+    background: var(--green-lt); border: 1px solid #bbf7d0;
+    border-radius: var(--radius); padding: 16px 20px;
+    font-size: 14px; color: #166534; line-height: 1.65;
+    margin-bottom: 24px; display: flex; gap: 12px; align-items: flex-start;
+  }
+  .email-notice .email-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ACTIONS */
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; }
+  .btn-primary {
+    background: var(--orange); color: #fff; border: none;
+    border-radius: var(--radius); padding: 14px 28px;
+    font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif;
+    text-decoration: none; display: inline-block; cursor: pointer;
+    transition: background .2s, transform .15s;
+    box-shadow: 0 3px 12px rgba(249,115,22,.3);
+  }
+  .btn-primary:hover { background: var(--orange-dk); transform: translateY(-1px); color: #fff; }
+  .btn-outline {
+    background: transparent; color: var(--blue); border: 2px solid var(--blue);
+    border-radius: var(--radius); padding: 12px 24px;
+    font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif;
+    text-decoration: none; display: inline-block; cursor: pointer;
+    transition: background .2s, color .2s;
+  }
+  .btn-outline:hover { background: var(--blue); color: #fff; }
+
+  /* SUPPORT */
+  .support-note { text-align: center; font-size: 14px; color: var(--gray-500); line-height: 1.7; }
+  .support-note a { color: var(--blue-mid); font-weight: 600; text-decoration: none; }
+  .support-note a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer { background: var(--gray-900); color: rgba(255,255,255,.5); padding: 24px 32px; text-align: center; font-size: 13px; margin-top: auto; }
+  footer a { color: rgba(255,255,255,.5); text-decoration: none; margin: 0 8px; transition: color .2s; }
+  footer a:hover { color: rgba(255,255,255,.8); }
+
+  @media (max-width: 600px) {
+    .order-card, .steps-card { padding: 24px 20px; }
+    .actions { flex-direction: column; align-items: stretch; }
+    .actions a, .actions button { text-align: center; }
+    nav { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="homepage.html" class="nav-logo">Biz<span>Jump</span></a>
+  <span style="font-size:13px;color:#6b7280;font-weight:500">&#128274; Secured Checkout</span>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <!-- SUCCESS ICON + HEADER -->
+    <div class="success-header">
+      <div class="success-icon">&#10003;</div>
+      <h1>Your order is confirmed!</h1>
+      <p>Thank you for choosing BizJump. We've received your formation request and our team is already on it.</p>
+    </div>
+
+    <!-- EMAIL NOTICE -->
+    <div class="email-notice">
+      <span class="email-icon">&#128140;</span>
+      <span>A confirmation email has been sent to your email address with your order details and next steps. Please check your inbox (and spam folder if needed).</span>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div class="order-card">
+      <div class="order-card-title">
+        Order Summary
+        <span class="order-num" id="orderNum">BJ-2026-0001</span>
+      </div>
+      <div class="order-row"><span class="label">Entity Type</span><span class="value" id="confEntity">LLC</span></div>
+      <div class="order-row"><span class="label">State of Formation</span><span class="value" id="confState">—</span></div>
+      <div class="order-row"><span class="label">Service Plan</span><span class="value" id="confPlan">—</span></div>
+      <div class="order-row"><span class="label">Payment Status</span><span class="value" style="color:#16a34a">&#10003; Paid</span></div>
+      <div class="order-total">
+        <span>Estimated Total</span>
+        <span class="total-val" id="confTotal">—</span>
+      </div>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="steps-card">
+      <div class="steps-title">What happens next?</div>
+
+      <div class="step-item">
+        <div class="step-badge">1</div>
+        <div class="step-text">
+          <h4>Name Availability Check</h4>
+          <p>We verify your desired business name is available in your state. If there's an issue we'll contact you immediately.</p>
+          <span class="step-eta">&#9889; Within 1 business hour</span>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-badge">2</div>
+        <div class="step-text">
+          <h4>Document Preparation</h4>
+          <p>Your BizJump specialist prepares and reviews all required state formation documents for accuracy.</p>
+          <span class="step-eta">&#9889; Same business day</span>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-badge">3</div>
+        <div class="step-text">
+          <h4>State Filing</h4>
+          <p>We submit your Articles of Formation to the Secretary of State. Processing time varies by state (typically 1–14 business days).</p>
+          <span class="step-eta" id="turnaround">Based on your plan</span>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-badge">4</div>
+        <div class="step-text">
+          <h4>Document Delivery</h4>
+          <p>Once approved by the state, your official formation documents are delivered digitally to your BizJump dashboard and email.</p>
+          <span class="step-eta">&#128274; Secure digital delivery</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="actions">
+      <a href="dashboard.html" class="btn-primary">View My Dashboard &rarr;</a>
+      <a href="contact.html" class="btn-outline">Contact Support</a>
+      <a href="homepage.html" class="btn-outline">Back to Home</a>
+    </div>
+
+    <!-- SUPPORT NOTE -->
+    <div class="support-note">
+      Questions about your order? Email us at <a href="mailto:support@bizjump.com">support@bizjump.com</a><br>
+      or visit our <a href="contact.html">Contact page</a>. We respond within 1 business day.
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  &copy; 2026 BizJump. All rights reserved. &mdash; BizJump is not a law firm and does not provide legal advice.
+  <br style="margin-bottom:8px">
+  <a href="privacy-policy.html">Privacy</a>
+  <a href="terms-of-service.html">Terms</a>
+  <a href="refund-policy.html">Refund Policy</a>
+  <a href="contact.html">Contact</a>
+</footer>
+
+<script>
+  // Read URL params from wizard
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var entity = params.get('entity') || 'LLC';
+    var state  = params.get('state')  || '—';
+    var plan   = params.get('plan')   || '—';
+    var total  = params.get('total')  || '—';
+
+    document.getElementById('confEntity').textContent = entity;
+    document.getElementById('confState').textContent  = state;
+    document.getElementById('confPlan').textContent   = plan;
+    document.getElementById('confTotal').textContent  = total;
+
+    // Random order number for demo
+    var num = 'BJ-2026-' + String(Math.floor(1000 + Math.random() * 9000));
+    document.getElementById('orderNum').textContent = num;
+
+    // Turnaround based on plan
+    var ta = { Basic: '7-10 business days', Pro: '5 business days', Premium: '1 business day (rush)', Enterprise: '1 business day (rush)' };
+    var turnaround = ta[plan] || 'Based on your plan';
+    document.getElementById('turnaround').textContent = '&#9889; ' + turnaround;
+  })();
+</script>
+</body>
+</html>

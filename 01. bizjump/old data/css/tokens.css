@@ -1,0 +1,230 @@
+/* ═══════════════════════════════════════════════════
+   BIZJUMP — Design Tokens & Global Reset
+   Aesthetic: Dark OLED + Glassmorphism trust sections
+   ═══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+img  { display: block; max-width: 100%; }
+a    { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul, ol { list-style: none; }
+
+/* ── Color tokens ── */
+:root {
+  /* Backgrounds */
+  --bg-dark:       #050914;
+  --bg-dark-2:     #0a1128;
+  --bg-light:      #f8faff;
+  --bg-light-2:    #ffffff;
+
+  /* Brand */
+  --accent:        #0057FF;
+  --accent-lt:     #3378FF;
+  --accent-dim:    rgba(0, 87, 255, 0.12);
+  --accent-glow:   rgba(0, 87, 255, 0.35);
+  --highlight:     #00D4FF;
+  --highlight-dim: rgba(0, 212, 255, 0.12);
+
+  /* Text on dark */
+  --text-dark:     #ffffff;
+  --text-dark-2:   rgba(255,255,255,0.72);
+  --text-dark-3:   rgba(255,255,255,0.40);
+
+  /* Text on light */
+  --text-light:    #0a1128;
+  --text-light-2:  #3d4f72;
+  --text-light-3:  #8494b3;
+
+  /* Borders */
+  --border-dark:   rgba(255,255,255,0.08);
+  --border-dark-2: rgba(255,255,255,0.14);
+  --border-light:  rgba(10,17,40,0.10);
+  --border-light-2:rgba(10,17,40,0.18);
+
+  /* Semantic */
+  --success:       #10b981;
+  --gold:          #f59e0b;
+  --danger:        #ef4444;
+
+  /* Shadows */
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.18);
+  --shadow-md:  0 8px 32px rgba(0,0,0,0.28);
+  --shadow-lg:  0 20px 60px rgba(0,0,0,0.40);
+  --shadow-glow:0 0 48px rgba(0,87,255,0.25);
+
+  /* Radii */
+  --r-sm:   8px;
+  --r:      12px;
+  --r-lg:   20px;
+  --r-xl:   28px;
+  --r-pill: 9999px;
+
+  /* Spacing (4px grid) */
+  --sp-4:   4px;
+  --sp-8:   8px;
+  --sp-12:  12px;
+  --sp-16:  16px;
+  --sp-24:  24px;
+  --sp-32:  32px;
+  --sp-48:  48px;
+  --sp-64:  64px;
+  --sp-96:  96px;
+  --sp-128: 128px;
+
+  /* Layout */
+  --max-w: 1200px;
+  --max-w-sm: 960px;
+}
+
+/* ── Body base ── */
+body {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Type scale ── */
+.t-12 { font-size: 12px; }
+.t-14 { font-size: 14px; }
+.t-16 { font-size: 16px; }
+.t-18 { font-size: 18px; }
+.t-20 { font-size: 20px; }
+.t-24 { font-size: 24px; }
+.t-30 { font-size: 30px; }
+.t-36 { font-size: 36px; }
+.t-48 { font-size: 48px; }
+.t-64 { font-size: clamp(40px, 5.5vw, 64px); }
+
+/* ── Heading font ── */
+h1, h2, h3, h4,
+.heading { font-family: 'Space Grotesk', sans-serif; }
+
+/* ── Utility ── */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-32);
+}
+.container-sm {
+  max-width: var(--max-w-sm);
+  margin: 0 auto;
+  padding: 0 var(--sp-32);
+}
+
+/* Sections alternate bg */
+.section-dark  { background: var(--bg-dark); }
+.section-dark-2{ background: var(--bg-dark-2); }
+.section-light { background: var(--bg-light); }
+.section-white { background: var(--bg-light-2); }
+
+/* Reveal animation base (JS adds .is-visible) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal-delay-1 { transition-delay: 0.10s; }
+.reveal-delay-2 { transition-delay: 0.20s; }
+.reveal-delay-3 { transition-delay: 0.30s; }
+.reveal-delay-4 { transition-delay: 0.40s; }
+
+/* Glass card */
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-dark-2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--r-lg);
+}
+
+/* Accent gradient text */
+.grad-text {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--highlight) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  padding: 0 var(--sp-24);
+  height: 52px;
+  border-radius: var(--r-pill);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.22,1,0.36,1);
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+.btn-primary:hover {
+  background: var(--accent-lt);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--accent-glow);
+}
+.btn-ghost-dark {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1.5px solid var(--border-dark-2);
+}
+.btn-ghost-dark:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.btn-ghost-light {
+  background: transparent;
+  color: var(--text-light);
+  border: 1.5px solid var(--border-light-2);
+}
+.btn-ghost-light:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.btn-sm { height: 40px; padding: 0 var(--sp-16); font-size: 13px; }
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.badge-accent  { background: var(--accent-dim);    color: var(--accent);    border: 1px solid rgba(0,87,255,0.25); }
+.badge-success { background: rgba(16,185,129,0.12); color: var(--success);  border: 1px solid rgba(16,185,129,0.25); }
+.badge-gold    { background: rgba(245,158,11,0.12); color: var(--gold);     border: 1px solid rgba(245,158,11,0.25); }
+
+/* ── Responsive helpers ── */
+@media (max-width: 768px) {
+  .container,
+  .container-sm { padding: 0 var(--sp-16); }
+}
+@media (max-width: 480px) {
+  .container,
+  .container-sm { padding: 0 var(--sp-12); }
+}

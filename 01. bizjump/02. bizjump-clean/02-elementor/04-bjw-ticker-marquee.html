@@ -1,0 +1,76 @@
+<!--
+=======================================================
+  WIDGET 04 — bjw-ticker-marquee
+  WHERE TO PASTE:
+    Elementor → Add Section (Full Width, Stretch: YES)
+    Padding: 0 on all sides
+    Add 1 column → HTML Widget → paste everything below
+=======================================================
+-->
+
+<style>
+.bjw04-ticker {
+  background: #2563eb;
+  padding: 14px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  font-family: 'Inter', sans-serif;
+}
+.bjw04-track {
+  display: flex;
+  width: max-content;
+  animation: bjw04scroll 28s linear infinite;
+  white-space: nowrap;
+}
+.bjw04-track:hover { animation-play-state: paused; }
+.bjw04-item {
+  display: inline-flex; align-items: center;
+  padding: 0 32px;
+  font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,.9);
+  text-transform: uppercase; letter-spacing: 1.5px;
+  flex-shrink: 0;
+}
+.bjw04-item::after {
+  content: '✦';
+  margin-left: 32px;
+  color: #f97316;
+  font-size: 10px;
+}
+@keyframes bjw04scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
+
+<div class="bjw04-ticker" aria-hidden="true">
+  <div class="bjw04-track">
+    <!-- Set 1 -->
+    <span class="bjw04-item">LLC Formation</span>
+    <span class="bjw04-item">Corporation</span>
+    <span class="bjw04-item">S-Corp Filing</span>
+    <span class="bjw04-item">Non-Profit</span>
+    <span class="bjw04-item">EIN / Tax ID</span>
+    <span class="bjw04-item">Registered Agent</span>
+    <span class="bjw04-item">Operating Agreement</span>
+    <span class="bjw04-item">All 50 States</span>
+    <span class="bjw04-item">Flat-Rate Pricing</span>
+    <span class="bjw04-item">Business Financing</span>
+    <span class="bjw04-item">Digital Marketing</span>
+    <span class="bjw04-item">Accounting &amp; Tax</span>
+    <!-- Set 2 (duplicate for seamless loop) -->
+    <span class="bjw04-item">LLC Formation</span>
+    <span class="bjw04-item">Corporation</span>
+    <span class="bjw04-item">S-Corp Filing</span>
+    <span class="bjw04-item">Non-Profit</span>
+    <span class="bjw04-item">EIN / Tax ID</span>
+    <span class="bjw04-item">Registered Agent</span>
+    <span class="bjw04-item">Operating Agreement</span>
+    <span class="bjw04-item">All 50 States</span>
+    <span class="bjw04-item">Flat-Rate Pricing</span>
+    <span class="bjw04-item">Business Financing</span>
+    <span class="bjw04-item">Digital Marketing</span>
+    <span class="bjw04-item">Accounting &amp; Tax</span>
+  </div>
+</div>

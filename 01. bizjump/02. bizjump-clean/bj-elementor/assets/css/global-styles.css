@@ -1,0 +1,88 @@
+/* ================================================================
+   BizJump Elementor Plugin — Global Styles
+   Version: 1.0.0
+   ================================================================ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── Design Tokens ── */
+.bj-section {
+    --bj-navy:      #0f2156;
+    --bj-blue:      #1e3a8a;
+    --bj-blue-mid:  #2563eb;
+    --bj-blue-lt:   #eff6ff;
+    --bj-orange:    #f97316;
+    --bj-orange-dk: #ea6c00;
+    --bj-green:     #16a34a;
+    --bj-red:       #ef4444;
+    --bj-gray-50:   #f9fafb;
+    --bj-gray-100:  #f3f4f6;
+    --bj-gray-200:  #e5e7eb;
+    --bj-gray-400:  #9ca3af;
+    --bj-gray-600:  #6b7280;
+    --bj-gray-800:  #111827;
+    --bj-font-body: 'Inter', sans-serif;
+    --bj-font-head: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+/* ── Base Section ── */
+.bj-section {
+    font-family: var(--bj-font-body);
+    box-sizing: border-box;
+}
+
+.bj-section *,
+.bj-section *::before,
+.bj-section *::after {
+    box-sizing: inherit;
+}
+
+/* ── Container ── */
+.bj-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+@media (max-width: 768px) {
+    .bj-container {
+        padding: 0 16px;
+    }
+}
+
+/* ── Label (uppercase eyebrow) ── */
+.bj-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+/* ── Scroll Reveal ── */
+.bj-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.bj-reveal.bj-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ── Utility: visually-hidden ── */
+.bj-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}

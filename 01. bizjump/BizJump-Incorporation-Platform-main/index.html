@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BizJump — Project Workflow Mind Map</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0f1117;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  header {
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    padding: 24px 32px;
+    text-align: center;
+  }
+  header h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+  header p { color: rgba(255,255,255,0.75); margin-top: 6px; font-size: 1rem; }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: #1e2130;
+    border: 2px solid #2d3150;
+    color: #a0a8c8;
+    padding: 10px 22px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: #7c3aed;
+    border-color: #7c3aed;
+    color: #fff;
+  }
+
+  .view { display: none; padding: 20px 32px 40px; }
+  .view.active { display: block; }
+
+  /* ── MIND MAP ── */
+  .mindmap-wrap {
+    overflow: auto;
+    background: #131624;
+    border-radius: 16px;
+    padding: 40px;
+    min-height: 600px;
+  }
+  svg.mindmap { display: block; margin: auto; }
+
+  /* ── FLOW VIEW ── */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .flow-step {
+    background: #1e2130;
+    border: 2px solid #2d3150;
+    border-radius: 14px;
+    padding: 18px 28px;
+    width: 100%;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .flow-step:hover { border-color: #7c3aed; }
+  .flow-step .step-num {
+    display: inline-block;
+    background: #7c3aed;
+    color: #fff;
+    border-radius: 50%;
+    width: 32px; height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  .flow-step .step-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #e0e4ff;
+  }
+  .flow-step .step-detail {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    color: #8891b5;
+    line-height: 1.7;
+  }
+  .flow-step .step-detail span {
+    display: inline-block;
+    background: #252840;
+    border-radius: 6px;
+    padding: 3px 10px;
+    margin: 3px 3px 3px 0;
+    font-size: 0.82rem;
+    color: #a8b0d8;
+  }
+  .arrow {
+    width: 2px;
+    height: 32px;
+    background: linear-gradient(to bottom, #7c3aed, #2563eb);
+    margin: 0 auto;
+    position: relative;
+  }
+  .arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 10px solid #2563eb;
+  }
+
+  /* ── PLUGINS VIEW ── */
+  .plugins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .plugin-card {
+    background: #1e2130;
+    border: 2px solid #2d3150;
+    border-radius: 14px;
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .plugin-card:hover { border-color: #7c3aed; transform: translateY(-3px); }
+  .plugin-card .p-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .plugin-card .p-name { font-size: 1rem; font-weight: 700; color: #e0e4ff; }
+  .plugin-card .p-purpose { font-size: 0.85rem; color: #8891b5; margin-top: 6px; line-height: 1.5; }
+  .plugin-card .p-cost {
+    display: inline-block;
+    margin-top: 12px;
+    background: #252840;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    color: #7c3aed;
+    font-weight: 700;
+  }
+
+  /* ── CAPABILITY VIEW ── */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .cap-card {
+    background: #1e2130;
+    border-radius: 14px;
+    padding: 18px;
+    border-left: 4px solid #22c55e;
+  }
+  .cap-card.medium { border-left-color: #f59e0b; }
+  .cap-card.hard { border-left-color: #ef4444; }
+  .cap-card .cap-feature { font-weight: 700; color: #e0e4ff; font-size: 0.95rem; }
+  .cap-card .cap-level {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .cap-card .cap-level.easy { background: #14532d; color: #86efac; }
+  .cap-card .cap-level.medium { background: #451a03; color: #fcd34d; }
+  .cap-card .cap-level.hard { background: #450a0a; color: #fca5a5; }
+  .cap-card .cap-desc { font-size: 0.83rem; color: #8891b5; margin-top: 8px; line-height: 1.5; }
+
+  .section-title {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #e0e4ff;
+    margin-bottom: 24px;
+  }
+  .section-title span { color: #7c3aed; }
+</style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+    <span style="font-size:1.3rem;font-weight:900;letter-spacing:-0.5px;">BizJump</span>
+    <a href="BizJump_Visual_Prototype.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.25);color:#fff;padding:8px 20px;border-radius:30px;font-size:0.88rem;font-weight:700;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.22)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'">🌐 Live Website Prototype →</a>
+  </div>
+  <h1>🚀 BizJump Incorporation Platform</h1>
+  <p>Project Workflow · WooCommerce Implementation · Capability Map</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('flow')">📋 User Flow</button>
+  <button class="tab-btn" onclick="showTab('mindmap')">🗺️ Mind Map</button>
+  <button class="tab-btn" onclick="showTab('plugins')">🔧 Plugins Stack</button>
+  <button class="tab-btn" onclick="showTab('capability')">✅ Capability Check</button>
+</div>
+
+<!-- ══════════════════ USER FLOW TAB ══════════════════ -->
+<div id="tab-flow" class="view active">
+  <p class="section-title">📋 Complete <span>User Journey</span> — From Landing to Formation</p>
+  <div class="flow">
+
+    <div class="flow-step">
+      <div style="display:flex;align-items:center;">
+        <span class="step-num">1</span>
+        <span class="step-title">User Lands on Incorporation Page</span>
+      </div>
+      <div class="step-detail">
+        User visits bizjump.com/service/incorporation/ and sees the guided wizard start button.
+        <br><span>CartFlows Funnel Start</span><span>Elementor Page Design</span>
+      </div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="flow-step">
+      <div style="display:flex;align-items:center;">
+        <span class="step-num">2</span>
+        <span class="step-title">Select Entity Type</span>
+      </div>
+      <div class="step-detail">
+        User selects the type of business entity they want to form.
+        <br><span>LLC</span><span>C-Corp</span><span>S-Corp</span><span>Non-Profit</span><span>Other → Custom Quote</span>
+        <br>Plugin: <span>WooCommerce Product Add-ons</span>
+      </div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="flow-step">
+      <div style="display:flex;align-items:center;">
+        <span class="step-num">3</span>
+        <span class="step-title">Select Formation State</span>
+      </div>
+      <div class="step-detail">
+        Dropdown of all 50 US states. Each state shows its filing fee which is automatically added to the price.
+        <br><span>50-State Dropdown</span><span>Dynamic State Fee Added</span><span>Price Updates Live</span>
+      </div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="flow-step">
+      <div style="display:flex;align-items:center;">
+        <span class="step-num">4</span>
+        <span class="step-title">Choose Service Package</span>
+      </div>
+      <div class="step-detail">
+        User picks one of 4 tiers displayed in a comparison table layout.
+        <br><span>Basic</span><span>Pro</span><span>Premium</span><span>Enterprise</span>
+        <br>Plugin: <span>WooCommerce Products</span><span>CartFlows Step</span>
+      </div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="flow-step">
+      <div style="display:flex;align-items:center;">
+        <span class="step-num">5</span>
+        <span class="step-title">Select Add-On Services</span>
+      </div>
+      <div class="step-detail">
+        Optional extras that update the order total in real-time as checked.
+        <br><span>Registered Agent ↺</span><span>EIN Filing</span><span>Operating Agreement</span>
+        <br><span>Website Hosting ↺</span><span>Compliance Monitoring ↺</span><span>Bank Account Setup</span>
+        <br><em style="color:#6b7aad;font-size:0.8rem;">↺ = Recurring subscription</em>
+      </div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="flow-step">
+      <div style="display:flex;align-items:center;">
+        <span class="step-num">6</span>
+        <span class="step-title">Enter Business Details</span>
+      </div>
+      <div class="step-detail">
+        Custom checkout fields collect formation-specific information.
+        <br><span>Company Name</span><span>Backup Name (if unavailable)</span><span>Business Purpose</span>
+        <br><span>Business Address</span><span>Optional Document Upload</span>
+        <br>Plugin: <span>Checkout Field Editor</span>
+      </div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="flow-step">
+      <div style="display:flex;align-items:center;">
+        <span class="step-num">7</span>
+        <span class="step-title">Enter Contact Person Details</span>
+      </div>
+      <div class="step-detail">
+        Who BizJump should contact about this order.
+        <br><span>First + Last Name</span><span>Email</span><span>Phone (+1 US)</span>
+        <br><span>Contact Address</span><span>SMS Consent Checkbox</span>
+      </div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="flow-step">
+      <div style="display:flex;align-items:center;">
+        <span class="step-num">8</span>
+        <span class="step-title">Review Order & Pay</span>
+      </div>
+      <div class="step-detail">
+        Full order summary shown with all selections and final price. User completes payment.
+        <br><span>Stripe (Card)</span><span>PayPal</span><span>ACH Bank Transfer</span>
+        <br><span>Processing Time Shown</span><span>Legal Disclaimers</span>
+      </div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="flow-step" style="border-color:#22c55e;">
+      <div style="display:flex;align-items:center;">
+        <span class="step-num" style="background:#22c55e;">✓</span>
+        <span class="step-title" style="color:#86efac;">Post-Purchase Automation</span>
+      </div>
+      <div class="step-detail">
+        Everything that happens automatically after payment is confirmed.
+        <br><span>✉️ Confirmation Email</span><span>👤 CRM Contact Created (FluentCRM)</span>
+        <br><span>📋 Order Sent to Admin</span><span>🔁 Subscriptions Activated</span>
+        <br><span>📊 Dashboard Access Given</span><span>📁 Formation Process Begins</span>
+      </div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="flow-step" style="border-color:#2563eb;">
+      <div style="display:flex;align-items:center;">
+        <span class="step-num" style="background:#2563eb;">👤</span>
+        <span class="step-title" style="color:#93c5fd;">Client Dashboard</span>
+      </div>
+      <div class="step-detail">
+        Customer logs into My Account to monitor their formation.
+        <br><span>View Order Status</span><span>Upload Documents</span><span>Track Progress</span>
+        <br><span>Download Deliverables</span><span>Manage Subscriptions</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════ MIND MAP TAB ══════════════════ -->
+<div id="tab-mindmap" class="view">
+  <p class="section-title">🗺️ Full <span>Project Mind Map</span></p>
+  <div class="mindmap-wrap">
+    <svg class="mindmap" width="1200" height="900" viewBox="0 0 1200 900">
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#4b5280"/>
+        </marker>
+      </defs>
+
+      <!-- CENTER -->
+      <ellipse cx="600" cy="450" rx="100" ry="48" fill="#7c3aed"/>
+      <text x="600" y="444" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">🚀 BizJump</text>
+      <text x="600" y="462" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11">Incorporation Platform</text>
+
+      <!-- BRANCH: USER FLOW (top) -->
+      <line x1="600" y1="402" x2="600" y2="260" stroke="#7c3aed" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="510" y="220" width="180" height="40" rx="20" fill="#312e81"/>
+      <text x="600" y="245" text-anchor="middle" fill="#c4b5fd" font-size="12" font-weight="700">📋 User Wizard Flow</text>
+
+      <!-- Sub-nodes of User Flow -->
+      <line x1="510" y1="240" x2="370" y2="200" stroke="#4338ca" stroke-width="1.5"/>
+      <rect x="270" y="180" width="100" height="30" rx="15" fill="#1e1b4b"/>
+      <text x="320" y="200" text-anchor="middle" fill="#a5b4fc" font-size="10">Entity Type</text>
+
+      <line x1="510" y1="240" x2="370" y2="160" stroke="#4338ca" stroke-width="1.5"/>
+      <rect x="270" y="140" width="100" height="30" rx="15" fill="#1e1b4b"/>
+      <text x="320" y="160" text-anchor="middle" fill="#a5b4fc" font-size="10">State Selection</text>
+
+      <line x1="690" y1="240" x2="830" y2="200" stroke="#4338ca" stroke-width="1.5"/>
+      <rect x="828" y="180" width="110" height="30" rx="15" fill="#1e1b4b"/>
+      <text x="883" y="200" text-anchor="middle" fill="#a5b4fc" font-size="10">Package Tier</text>
+
+      <line x1="690" y1="240" x2="830" y2="160" stroke="#4338ca" stroke-width="1.5"/>
+      <rect x="828" y="140" width="110" height="30" rx="15" fill="#1e1b4b"/>
+      <text x="883" y="160" text-anchor="middle" fill="#a5b4fc" font-size="10">Add-On Services</text>
+
+      <!-- BRANCH: TECH STACK (right) -->
+      <line x1="700" y1="450" x2="870" y2="350" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="870" y="318" width="180" height="40" rx="20" fill="#1e3a8a"/>
+      <text x="960" y="343" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">🔧 Tech Stack</text>
+
+      <line x1="1050" y1="338" x2="1090" y2="290" stroke="#1d4ed8" stroke-width="1.5"/>
+      <rect x="1088" y="270" width="100" height="28" rx="14" fill="#1e2130"/>
+      <text x="1138" y="289" text-anchor="middle" fill="#60a5fa" font-size="10">CartFlows</text>
+
+      <line x1="1050" y1="338" x2="1090" y2="330" stroke="#1d4ed8" stroke-width="1.5"/>
+      <rect x="1088" y="312" width="100" height="28" rx="14" fill="#1e2130"/>
+      <text x="1138" y="331" text-anchor="middle" fill="#60a5fa" font-size="10">Product Add-ons</text>
+
+      <line x1="1050" y1="338" x2="1090" y2="370" stroke="#1d4ed8" stroke-width="1.5"/>
+      <rect x="1088" y="354" width="100" height="28" rx="14" fill="#1e2130"/>
+      <text x="1138" y="373" text-anchor="middle" fill="#60a5fa" font-size="10">WC Subscriptions</text>
+
+      <!-- BRANCH: PAYMENTS (right-bottom) -->
+      <line x1="700" y1="470" x2="870" y2="540" stroke="#0891b2" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="870" y="515" width="160" height="40" rx="20" fill="#0c4a6e"/>
+      <text x="950" y="540" text-anchor="middle" fill="#67e8f9" font-size="12" font-weight="700">💳 Payments</text>
+
+      <line x1="1030" y1="535" x2="1090" y2="510" stroke="#0e7490" stroke-width="1.5"/>
+      <rect x="1088" y="494" width="90" height="28" rx="14" fill="#1e2130"/>
+      <text x="1133" y="513" text-anchor="middle" fill="#67e8f9" font-size="10">Stripe (Card)</text>
+
+      <line x1="1030" y1="535" x2="1090" y2="540" stroke="#0e7490" stroke-width="1.5"/>
+      <rect x="1088" y="524" width="90" height="28" rx="14" fill="#1e2130"/>
+      <text x="1133" y="543" text-anchor="middle" fill="#67e8f9" font-size="10">PayPal</text>
+
+      <line x1="1030" y1="535" x2="1090" y2="570" stroke="#0e7490" stroke-width="1.5"/>
+      <rect x="1088" y="554" width="90" height="28" rx="14" fill="#1e2130"/>
+      <text x="1133" y="573" text-anchor="middle" fill="#67e8f9" font-size="10">ACH (Stripe)</text>
+
+      <!-- BRANCH: POST PURCHASE (bottom) -->
+      <line x1="600" y1="498" x2="600" y2="620" stroke="#16a34a" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="500" y="620" width="200" height="40" rx="20" fill="#14532d"/>
+      <text x="600" y="645" text-anchor="middle" fill="#86efac" font-size="12" font-weight="700">⚡ Post-Purchase Automation</text>
+
+      <line x1="500" y1="640" x2="370" y2="700" stroke="#15803d" stroke-width="1.5"/>
+      <rect x="260" y="682" width="110" height="28" rx="14" fill="#1e2130"/>
+      <text x="315" y="701" text-anchor="middle" fill="#86efac" font-size="10">Confirm Email</text>
+
+      <line x1="500" y1="640" x2="370" y2="740" stroke="#15803d" stroke-width="1.5"/>
+      <rect x="260" y="722" width="110" height="28" rx="14" fill="#1e2130"/>
+      <text x="315" y="741" text-anchor="middle" fill="#86efac" font-size="10">CRM Contact</text>
+
+      <line x1="700" y1="640" x2="830" y2="700" stroke="#15803d" stroke-width="1.5"/>
+      <rect x="828" y="682" width="120" height="28" rx="14" fill="#1e2130"/>
+      <text x="888" y="701" text-anchor="middle" fill="#86efac" font-size="10">Order to Admin</text>
+
+      <line x1="700" y1="640" x2="830" y2="740" stroke="#15803d" stroke-width="1.5"/>
+      <rect x="828" y="722" width="120" height="28" rx="14" fill="#1e2130"/>
+      <text x="888" y="741" text-anchor="middle" fill="#86efac" font-size="10">Subscriptions Start</text>
+
+      <!-- BRANCH: DASHBOARDS (left) -->
+      <line x1="500" y1="450" x2="330" y2="350" stroke="#d97706" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="200" y="318" width="130" height="40" rx="20" fill="#451a03"/>
+      <text x="265" y="343" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="700">📊 Dashboards</text>
+
+      <line x1="200" y1="338" x2="130" y2="295" stroke="#92400e" stroke-width="1.5"/>
+      <rect x="20" y="278" width="110" height="28" rx="14" fill="#1e2130"/>
+      <text x="75" y="297" text-anchor="middle" fill="#fcd34d" font-size="10">Client Dashboard</text>
+
+      <line x1="200" y1="338" x2="130" y2="338" stroke="#92400e" stroke-width="1.5"/>
+      <rect x="20" y="320" width="110" height="28" rx="14" fill="#1e2130"/>
+      <text x="75" y="339" text-anchor="middle" fill="#fcd34d" font-size="10">Admin Panel</text>
+
+      <line x1="200" y1="338" x2="130" y2="378" stroke="#92400e" stroke-width="1.5"/>
+      <rect x="20" y="362" width="110" height="28" rx="14" fill="#1e2130"/>
+      <text x="75" y="381" text-anchor="middle" fill="#fcd34d" font-size="10">Order Statuses</text>
+
+      <!-- BRANCH: SERVICES (left-bottom) -->
+      <line x1="500" y1="470" x2="330" y2="560" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="190" y="535" width="140" height="40" rx="20" fill="#450a0a"/>
+      <text x="260" y="560" text-anchor="middle" fill="#fca5a5" font-size="12" font-weight="700">📦 4 Service Tiers</text>
+
+      <line x1="190" y1="555" x2="110" y2="520" stroke="#991b1b" stroke-width="1.5"/>
+      <rect x="10" y="505" width="100" height="28" rx="14" fill="#1e2130"/>
+      <text x="60" y="524" text-anchor="middle" fill="#fca5a5" font-size="10">Basic</text>
+
+      <line x1="190" y1="555" x2="110" y2="550" stroke="#991b1b" stroke-width="1.5"/>
+      <rect x="10" y="535" width="100" height="28" rx="14" fill="#1e2130"/>
+      <text x="60" y="554" text-anchor="middle" fill="#fca5a5" font-size="10">Pro</text>
+
+      <line x1="190" y1="555" x2="110" y2="580" stroke="#991b1b" stroke-width="1.5"/>
+      <rect x="10" y="565" width="100" height="28" rx="14" fill="#1e2130"/>
+      <text x="60" y="584" text-anchor="middle" fill="#fca5a5" font-size="10">Premium</text>
+
+      <line x1="190" y1="555" x2="110" y2="612" stroke="#991b1b" stroke-width="1.5"/>
+      <rect x="10" y="596" width="100" height="28" rx="14" fill="#1e2130"/>
+      <text x="60" y="615" text-anchor="middle" fill="#fca5a5" font-size="10">Enterprise</text>
+
+    </svg>
+  </div>
+</div>
+
+<!-- ══════════════════ PLUGINS TAB ══════════════════ -->
+<div id="tab-plugins" class="view">
+  <p class="section-title">🔧 Complete <span>Plugin Stack</span> You Need</p>
+  <div class="plugins-grid">
+    <div class="plugin-card">
+      <div class="p-icon">🛒</div>
+      <div class="p-name">WooCommerce</div>
+      <div class="p-purpose">Core e-commerce engine. Powers all products, cart, checkout, orders, and customer accounts.</div>
+      <span class="p-cost">Free</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">🧙</div>
+      <div class="p-name">CartFlows</div>
+      <div class="p-purpose">Builds the multi-step wizard/funnel experience. Replaces the standard WooCommerce shop → cart → checkout flow with a guided, step-by-step process.</div>
+      <span class="p-cost">~$99/yr (Pro)</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">➕</div>
+      <div class="p-name">WooCommerce Product Add-ons</div>
+      <div class="p-purpose">Enables dynamic add-ons (entity type, state selection, optional services) that update the price in real-time as the user makes selections.</div>
+      <span class="p-cost">~$79/yr</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">🔄</div>
+      <div class="p-name">WooCommerce Subscriptions</div>
+      <div class="p-purpose">Handles recurring billing for Registered Agent, Website Hosting, and Compliance Monitoring services. Annual or monthly billing.</div>
+      <span class="p-cost">~$279/yr</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">📝</div>
+      <div class="p-name">Checkout Field Editor</div>
+      <div class="p-purpose">Adds custom fields to checkout: company name, business purpose, contact person, address, SMS consent, document upload, etc.</div>
+      <span class="p-cost">Free / Pro ~$49</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">💳</div>
+      <div class="p-name">WooCommerce Stripe Gateway</div>
+      <div class="p-purpose">Accepts credit/debit cards and ACH bank transfers at checkout. Official Stripe plugin for WooCommerce.</div>
+      <span class="p-cost">Free</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">🅿️</div>
+      <div class="p-name">WooCommerce PayPal Payments</div>
+      <div class="p-purpose">Adds PayPal as a payment option at checkout. Official PayPal plugin for WooCommerce.</div>
+      <span class="p-cost">Free</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">📧</div>
+      <div class="p-name">FluentCRM</div>
+      <div class="p-purpose">CRM + email automation. Creates customer records on purchase, tags by plan/entity/state, and triggers email sequences based on order status changes.</div>
+      <span class="p-cost">Free / Pro ~$129/yr</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">📁</div>
+      <div class="p-name">WooCommerce Upload Files</div>
+      <div class="p-purpose">Lets customers upload documents (e.g., existing articles of incorporation) during checkout or from their dashboard.</div>
+      <span class="p-cost">~$49</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">⚖️</div>
+      <div class="p-name">WP Legal Pages</div>
+      <div class="p-purpose">Generates Privacy Policy, Terms of Service, and Refund Policy pages with customizable templates.</div>
+      <span class="p-cost">Free / Pro</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">🤖</div>
+      <div class="p-name">Google reCAPTCHA for WP</div>
+      <div class="p-purpose">Protects checkout and forms from bots and spam submissions.</div>
+      <span class="p-cost">Free</span>
+    </div>
+    <div class="plugin-card">
+      <div class="p-icon">🎨</div>
+      <div class="p-name">Elementor (Page Builder)</div>
+      <div class="p-purpose">Used with CartFlows to design the wizard step pages — comparison tables, card selectors, and step layouts that look professional.</div>
+      <span class="p-cost">Free / Pro ~$59/yr</span>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:30px;color:#6b7aad;font-size:0.9rem;">
+    💰 Estimated total plugin budget: <strong style="color:#e0e4ff;">~$700–$900/year</strong> for all premium plugins
+  </div>
+</div>
+
+<!-- ══════════════════ CAPABILITY TAB ══════════════════ -->
+<div id="tab-capability" class="view">
+  <p class="section-title">✅ Can You <span>Do This Project?</span> — Feature-by-Feature</p>
+
+  <div style="text-align:center;background:#14532d;border-radius:12px;padding:16px 24px;max-width:600px;margin:0 auto 32px;border:2px solid #16a34a;">
+    <div style="font-size:1.4rem;font-weight:800;color:#86efac;">YES — You Can Deliver This ✓</div>
+    <div style="color:#a7f3d0;margin-top:6px;font-size:0.9rem;">This is 80% plugin configuration + 20% customization. No custom app needed.</div>
+  </div>
+
+  <div class="cap-grid">
+    <div class="cap-card">
+      <div class="cap-feature">WooCommerce Setup + 4 Products</div>
+      <span class="cap-level easy">Easy</span>
+      <div class="cap-desc">Standard WooCommerce product creation. Create 4 products or use Variable Product with 4 variations.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-feature">CartFlows Wizard Flow</div>
+      <span class="cap-level medium">Medium</span>
+      <div class="cap-desc">Requires CartFlows Pro. Configure multi-step funnel with each step as a separate page. Learning curve if new to CartFlows.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-feature">Dynamic Pricing (Add-ons)</div>
+      <span class="cap-level medium">Medium</span>
+      <div class="cap-desc">WooCommerce Product Add-ons handles this. Setup takes time but no custom coding required.</div>
+    </div>
+    <div class="cap-card hard">
+      <div class="cap-feature">State-Based Fee Logic (50 states)</div>
+      <span class="cap-level hard">Hardest Part</span>
+      <div class="cap-desc">Need to configure price modifiers for all 50 states × entity types. Either manual entry in Product Add-ons or a small custom function. Most time-consuming task.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-feature">WooCommerce Subscriptions</div>
+      <span class="cap-level medium">Medium</span>
+      <div class="cap-desc">Plugin handles all recurring billing. Needs correct setup so one-time and recurring items work together in the same checkout.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-feature">Custom Checkout Fields</div>
+      <span class="cap-level medium">Medium</span>
+      <div class="cap-desc">Checkout Field Editor plugin makes this manageable. File upload field may need an additional plugin.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-feature">Stripe + PayPal + ACH</div>
+      <span class="cap-level medium">Medium</span>
+      <div class="cap-desc">All three are official WooCommerce plugins. Setup is straightforward — mainly API key configuration and testing.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-feature">Client Dashboard</div>
+      <span class="cap-level medium">Medium</span>
+      <div class="cap-desc">WooCommerce My Account handles basics. Custom tabs for formation status and document downloads need some PHP or a My Account plugin.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-feature">Custom Order Statuses</div>
+      <span class="cap-level easy">Easy</span>
+      <div class="cap-desc">A small plugin or a few lines of code. WooCommerce makes adding custom statuses straightforward.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-feature">FluentCRM + Email Automation</div>
+      <span class="cap-level medium">Medium</span>
+      <div class="cap-desc">FluentCRM has a WooCommerce integration built in. Setting up trigger-based email sequences takes time but no coding.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-feature">Legal Pages + SSL + reCAPTCHA</div>
+      <span class="cap-level easy">Easy</span>
+      <div class="cap-desc">Plugin-based. WP Legal Pages, hosting SSL, and reCAPTCHA plugin. Quick to set up.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-feature">Overall Project Delivery</div>
+      <span class="cap-level medium">Achievable</span>
+      <div class="cap-desc">If you know WooCommerce, this is a large but doable project. Estimated 35–70 hours depending on design scope. All tools are proven and documented.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showTab(name) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>

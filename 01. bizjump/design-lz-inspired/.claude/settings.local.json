@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php *)",
+      "PowerShell($zip = \"C:\\\\Users\\\\arira\\\\Desktop\\\\All-Fiverr-project-code\\\\00001. client-template-make-quickly-skill-main\\\\01. bizjump\\\\design-lz-inspired\\\\bizjump-wizard.zip\"; Add-Type -AssemblyName System.IO.Compression.FileSystem; $z = [System.IO.Compression.ZipFile]::OpenRead\\($zip\\); $z.Entries | Select-Object FullName, Length | Format-Table -AutoSize; $z.Dispose\\(\\))",
+      "PowerShell(Add-Type -AssemblyName System.IO.Compression.FileSystem; foreach \\($z in @\\(\"bizjump-wizard.zip\",\"bj-lz-elementor.zip\"\\)\\) { $p = \"C:\\\\Users\\\\arira\\\\Desktop\\\\All-Fiverr-project-code\\\\00001. client-template-make-quickly-skill-main\\\\01. bizjump\\\\design-lz-inspired\\\\$z\"; Write-Output \"=== $z ===\"; $a = [System.IO.Compression.ZipFile]::OpenRead\\($p\\); $a.Entries | Select-Object -First 3 FullName | Format-Table -AutoSize; $a.Dispose\\(\\) })"
+    ]
+  }
+}

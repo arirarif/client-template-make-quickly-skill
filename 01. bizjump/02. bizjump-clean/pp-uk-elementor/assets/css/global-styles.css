@@ -1,0 +1,170 @@
+/*
+ * PERFORMANCE PEPTIDE UK — GLOBAL STYLES
+ * Auto-loaded by pp-uk-elementor plugin on frontend + Elementor preview.
+ */
+
+/* ── GOOGLE FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── RESET (scoped to pp- elements) ── */
+.pp-section *, .pp-section *::before, .pp-section *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.pp-section img, .pp-section svg { display: block; max-width: 100%; }
+.pp-section a { color: inherit; text-decoration: none; }
+.pp-section button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+.pp-section ul { list-style: none; }
+
+/* ── DESIGN TOKENS ── */
+:root {
+  --pp-bg:        #FAFAF8;
+  --pp-surface:   #FFFFFF;
+  --pp-surface-2: #F2F2EF;
+  --pp-border:    #E5E5E0;
+  --pp-border-2:  #D4D4CE;
+
+  --pp-ink:   #0A0A0A;
+  --pp-ink-2: #3D3D3B;
+  --pp-ink-3: #787874;
+  --pp-ink-4: #ABABA8;
+
+  --pp-accent:   #1E3A5F;
+  --pp-accent-2: #E8EEF5;
+
+  --pp-ok:   #1A6B3A;
+  --pp-warn: #8A5200;
+  --pp-err:  #8B1A1A;
+
+  --pp-f-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --pp-f-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  --pp-sp-4:   4px;  --pp-sp-8:   8px;  --pp-sp-12: 12px; --pp-sp-16: 16px;
+  --pp-sp-24: 24px;  --pp-sp-32: 32px;  --pp-sp-48: 48px; --pp-sp-64: 64px;
+  --pp-sp-96: 96px;  --pp-sp-128: 128px;
+
+  --pp-r-sm: 2px;
+  --pp-r:    4px;
+  --pp-r-lg: 8px;
+
+  --pp-sh-1: 0 1px 2px rgba(10,10,10,.04);
+  --pp-sh-2: 0 4px 12px rgba(10,10,10,.06);
+  --pp-sh-3: 0 12px 32px rgba(10,10,10,.08);
+
+  --pp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── SECTION BASE ── */
+.pp-section {
+  font-family: var(--pp-f-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--pp-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.pp-section h1,.pp-section h2,.pp-section h3,.pp-section h4 {
+  font-family: var(--pp-f-sans);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--pp-ink);
+}
+.pp-section h1 { font-size: clamp(40px, 5vw, 56px); }
+.pp-section h2 { font-size: clamp(28px, 3.4vw, 40px); }
+.pp-section h3 { font-size: 20px; letter-spacing: -0.01em; }
+.pp-section h4 { font-size: 16px; letter-spacing: 0; }
+.pp-section p  { color: var(--pp-ink-2); }
+
+/* ── LAYOUT ── */
+.pp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: var(--pp-sp-24);
+  padding-right: var(--pp-sp-24);
+  width: 100%;
+}
+.pp-pad    { padding-top: var(--pp-sp-96);  padding-bottom: var(--pp-sp-96); }
+.pp-pad-lg { padding-top: var(--pp-sp-128); padding-bottom: var(--pp-sp-128); }
+
+/* ── EYEBROW ── */
+.pp-eyebrow {
+  font-family: var(--pp-f-mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--pp-ink-3);
+  display: inline-block;
+  margin-bottom: var(--pp-sp-16);
+}
+.pp-section-head { max-width: 640px; margin-bottom: var(--pp-sp-48); }
+.pp-section-head p { margin-top: var(--pp-sp-16); font-size: 17px; color: var(--pp-ink-2); }
+
+/* ── BUTTONS ── */
+.pp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pp-sp-8);
+  padding: 14px 28px;
+  font-family: var(--pp-f-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: var(--pp-r);
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 150ms var(--pp-ease), color 150ms var(--pp-ease), border-color 150ms var(--pp-ease);
+  line-height: 1;
+}
+.pp-btn-primary   { background: var(--pp-ink); color: var(--pp-bg); }
+.pp-btn-primary:hover { background: #1e1e1e; color: var(--pp-bg); }
+.pp-btn-secondary { background: transparent; color: var(--pp-ink); border-color: var(--pp-ink); }
+.pp-btn-secondary:hover { background: var(--pp-ink); color: var(--pp-bg); }
+.pp-btn-ghost     { background: transparent; color: var(--pp-ink); padding: 10px 0; }
+.pp-btn-ghost:hover { color: var(--pp-accent); }
+.pp-btn-sm  { padding: 10px 16px; font-size: 13px; }
+.pp-btn-blk { width: 100%; }
+
+/* ── SCROLL REVEAL ── */
+.pp-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms var(--pp-ease), transform 600ms var(--pp-ease);
+}
+.pp-reveal.pp-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-section *, .pp-section *::before, .pp-section *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .pp-reveal { opacity: 1; transform: none; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .pp-section h1 { font-size: clamp(32px, 6vw, 44px); }
+  .pp-section h2 { font-size: clamp(24px, 4.5vw, 32px); }
+  .pp-pad    { padding-top: var(--pp-sp-64); padding-bottom: var(--pp-sp-64); }
+  .pp-pad-lg { padding-top: var(--pp-sp-64); padding-bottom: var(--pp-sp-96); }
+  .pp-section-head { margin-bottom: var(--pp-sp-32); }
+  .pp-section-head p { font-size: 16px; }
+}
+@media (max-width: 768px) {
+  .pp-container { padding-left: var(--pp-sp-16); padding-right: var(--pp-sp-16); }
+}
+@media (max-width: 560px) {
+  :root { --pp-sp-96: 64px; --pp-sp-128: 80px; }
+  .pp-section h1 { font-size: clamp(28px, 7vw, 36px); line-height: 1.2; }
+  .pp-section h2 { font-size: clamp(22px, 6vw, 28px); }
+  .pp-section h3 { font-size: 18px; }
+  .pp-pad    { padding-top: 56px; padding-bottom: 56px; }
+  .pp-btn    { padding: 12px 20px; font-size: 13px; }
+}
+@media (max-width: 400px) {
+  .pp-container { padding-left: var(--pp-sp-12); padding-right: var(--pp-sp-12); }
+}
+@media (hover: none) {
+  .pp-section a:hover, .pp-section button:hover { transform: none; }
+}

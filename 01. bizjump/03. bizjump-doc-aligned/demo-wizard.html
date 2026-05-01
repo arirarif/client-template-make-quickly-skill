@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BizJump — Start Your Business Formation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-200:#FED7AA;
+  --orange-400:#FB923C;--orange-500:#F97316;--orange-600:#EA580C;--orange-700:#C2410C;
+  --indigo-50:#EEF2FF;--indigo-100:#E0E7FF;--indigo-500:#6366F1;--indigo-600:#4F46E5;
+  --slate-50:#F8FAFC;--slate-100:#F1F5F9;--slate-200:#E2E8F0;--slate-300:#CBD5E1;
+  --slate-400:#94A3B8;--slate-500:#64748B;--slate-600:#475569;--slate-700:#334155;
+  --slate-800:#1E293B;--slate-900:#0F172A;--white:#FFFFFF;
+  --shadow-xs:0 1px 3px rgba(15,23,42,.06);
+  --shadow-sm:0 2px 6px rgba(15,23,42,.08);
+  --shadow-md:0 4px 14px rgba(15,23,42,.10);
+  --shadow-lg:0 8px 28px rgba(15,23,42,.12);
+  --shadow-orange-btn:0 4px 16px rgba(249,115,22,.35);
+  --shadow-orange-btn-hov:0 6px 22px rgba(249,115,22,.45);
+  --font:'Inter','Plus Jakarta Sans',sans-serif;
+  --font-d:'Plus Jakarta Sans','Inter',sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--slate-50);color:var(--slate-600);min-height:100vh;-webkit-font-smoothing:antialiased}
+button{font-family:inherit}
+
+/* ── NAVBAR ─────────────────────────────────── */
+.navbar{background:var(--white);border-bottom:1px solid var(--slate-200);box-shadow:var(--shadow-xs)}
+.navbar-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-d);font-size:20px;font-weight:800;color:var(--slate-900)}
+.nav-logo span{color:var(--orange-500)}
+.nav-secure{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--slate-400)}
+.nav-secure svg{color:var(--indigo-500)}
+.nav-back{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--slate-400);text-decoration:none;transition:color .15s}
+.nav-back:hover{color:var(--slate-700)}
+
+/* ── HERO ─────────────────────────────────── */
+.wizard-hero{background:#fff;border-bottom:1px solid var(--slate-200);padding:32px 0 28px;text-align:center}
+.wizard-hero h1{font-family:var(--font-d);font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--slate-900);margin-bottom:6px;letter-spacing:-.02em}
+.wizard-hero p{font-size:15px;color:var(--slate-400)}
+
+/* ── STEP PROGRESS ────────────────────────── */
+.step-progress{background:#fff;border-bottom:1px solid var(--slate-200);padding:20px 0}
+.step-progress-inner{max-width:880px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:0}
+.step-item{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;flex:1}
+.step-item:not(:last-child)::after{content:'';position:absolute;top:18px;left:calc(50% + 18px);right:calc(-50% + 18px);height:2px;background:var(--slate-200);z-index:0}
+.step-item.completed:not(:last-child)::after{background:var(--indigo-500)}
+.step-circle{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;z-index:1;transition:all .3s}
+.step-item.inactive .step-circle{background:#fff;border:2px solid var(--slate-300);color:var(--slate-400)}
+.step-item.active .step-circle{background:var(--orange-500);border:2px solid var(--orange-500);color:#fff;box-shadow:var(--shadow-orange-btn)}
+.step-item.completed .step-circle{background:var(--indigo-500);border:2px solid var(--indigo-500);color:#fff}
+.step-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.step-item.inactive .step-label{color:var(--slate-400)}
+.step-item.active .step-label{color:var(--orange-500)}
+.step-item.completed .step-label{color:var(--indigo-500)}
+
+/* ── LAYOUT (2-col when sidebar visible) ───── */
+.wizard-body{max-width:1200px;margin:36px auto;padding:0 24px 80px}
+.wizard-layout{display:grid;grid-template-columns:1fr;gap:28px;transition:grid-template-columns .3s ease}
+.wizard-layout.has-sidebar{grid-template-columns:minmax(0,1fr) 340px}
+
+/* ── CARD ─────────────────────────────────── */
+.wizard-card{background:#fff;border:1px solid var(--slate-200);border-radius:20px;box-shadow:var(--shadow-md);overflow:hidden;max-width:760px;margin:0 auto}
+.wizard-layout.has-sidebar .wizard-card{margin:0}
+.wizard-card-header{padding:36px 40px 0}
+.step-number-tag{display:inline-flex;align-items:center;gap:6px;background:var(--orange-50);color:var(--orange-600);font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;border:1px solid var(--orange-100);margin-bottom:14px}
+.wizard-card-header h2{font-family:var(--font-d);font-size:clamp(20px,2.4vw,26px);font-weight:800;color:var(--slate-900);margin-bottom:8px;letter-spacing:-.02em}
+.wizard-card-header p{font-size:15px;color:var(--slate-500);line-height:1.6}
+.wizard-card-body{padding:32px 40px}
+.wizard-card-footer{padding:24px 40px;border-top:1px solid var(--slate-100);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.progress-bar-wrap{height:4px;background:var(--slate-100);border-radius:99px;margin:18px 40px 0;overflow:hidden}
+.progress-bar-fill{height:100%;background:var(--orange-500);border-radius:99px;transition:width .4s ease}
+
+/* ── ENTITY GRID ──────────────────────────── */
+.entity-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.entity-card{border:1.5px solid var(--slate-200);border-radius:14px;padding:20px;cursor:pointer;transition:all .2s;position:relative;background:#fff;display:flex;align-items:flex-start;gap:14px}
+.entity-card:hover{border-color:var(--slate-300);background:var(--slate-50)}
+.entity-card.selected{border-color:var(--orange-500);background:var(--orange-50);box-shadow:0 0 0 3px rgba(249,115,22,.10)}
+.entity-icon{width:44px;height:44px;border-radius:10px;background:var(--slate-100);display:flex;align-items:center;justify-content:center;color:var(--slate-500);flex-shrink:0;transition:all .2s}
+.entity-card.selected .entity-icon{background:var(--orange-100);color:var(--orange-500)}
+.entity-info{flex:1;min-width:0}
+.entity-name{font-size:15px;font-weight:700;color:var(--slate-800);margin-bottom:4px}
+.entity-card.selected .entity-name{color:var(--orange-700)}
+.entity-desc{font-size:13px;color:var(--slate-500);line-height:1.5}
+.entity-check{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;background:var(--orange-500);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.5);transition:all .2s}
+.entity-card.selected .entity-check{opacity:1;transform:scale(1)}
+.entity-check svg{color:#fff}
+.entity-popular{position:absolute;top:-9px;left:14px;background:var(--indigo-500);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.04em}
+
+/* ── STATE STEP ───────────────────────────── */
+.state-wrap{max-width:520px;margin:0 auto}
+.state-label{display:block;font-size:13px;font-weight:600;color:var(--slate-700);margin-bottom:8px}
+.state-select{width:100%;padding:14px 16px;font-size:15px;font-family:var(--font);color:var(--slate-800);background:#fff;border:1.5px solid var(--slate-200);border-radius:10px;outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.state-select:focus{border-color:var(--orange-400);box-shadow:0 0 0 3px rgba(249,115,22,.12)}
+
+.state-fee-display{margin-top:18px;padding:18px 22px;background:var(--orange-50);border:1.5px solid var(--orange-200);border-radius:14px;display:none}
+.state-fee-display.is-visible{display:block;animation:fadeUp .25s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.state-fee-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.state-fee-label{font-size:13px;font-weight:700;color:var(--orange-700);text-transform:uppercase;letter-spacing:.04em}
+.state-fee-amount{font-family:var(--font-d);font-size:28px;font-weight:800;color:var(--orange-600)}
+.state-fee-note{font-size:12px;color:var(--slate-600);line-height:1.55;margin-top:4px}
+
+.state-popular{margin-top:28px}
+.state-popular-label{font-size:12px;font-weight:700;color:var(--slate-500);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.state-quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.state-quick{padding:12px 14px;background:#fff;border:1.5px solid var(--slate-200);border-radius:10px;font-size:13px;font-weight:600;color:var(--slate-700);cursor:pointer;transition:all .2s;text-align:left;display:flex;flex-direction:column;gap:2px}
+.state-quick:hover{border-color:var(--orange-400);background:var(--orange-50);color:var(--orange-700)}
+.state-quick.is-active{border-color:var(--orange-500);background:var(--orange-50);color:var(--orange-700)}
+.state-quick-fee{font-size:11px;color:var(--slate-400);font-weight:500}
+.state-quick.is-active .state-quick-fee{color:var(--orange-600)}
+
+/* ── PACKAGE / ADDON / FORM ───────────────── */
+.package-list,.addon-list{display:flex;flex-direction:column;gap:14px}
+.package-card,.addon-card{border:1.5px solid var(--slate-200);border-radius:14px;padding:20px 24px;cursor:pointer;display:flex;align-items:center;gap:20px;transition:all .2s;background:#fff;position:relative}
+.package-card:hover,.addon-card:hover{border-color:var(--slate-300);background:var(--slate-50)}
+.package-card.selected{border-color:var(--orange-500);background:var(--orange-50);box-shadow:0 0 0 3px rgba(249,115,22,.10)}
+.addon-card.selected{border-color:var(--indigo-500);background:var(--indigo-50);box-shadow:0 0 0 3px rgba(99,102,241,.10)}
+.package-radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--slate-300);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.package-card.selected .package-radio{border-color:var(--orange-500);background:var(--orange-500)}
+.package-radio-dot{width:8px;height:8px;background:#fff;border-radius:50%;opacity:0;transition:opacity .2s}
+.package-card.selected .package-radio-dot{opacity:1}
+.addon-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--slate-300);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;color:transparent}
+.addon-card.selected .addon-check{border-color:var(--indigo-500);background:var(--indigo-500);color:#fff}
+.package-info,.addon-info{flex:1;min-width:0}
+.package-name-row{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.package-name,.addon-name{font-size:16px;font-weight:700;color:var(--slate-800)}
+.package-card.selected .package-name{color:var(--orange-700)}
+.addon-card.selected .addon-name{color:var(--indigo-700,#3730A3)}
+.package-badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.04em}
+.package-badge.popular{background:var(--indigo-50);color:var(--indigo-600)}
+.package-badge.best{background:var(--orange-50);color:var(--orange-600);border:1px solid var(--orange-100)}
+.package-desc,.addon-desc{font-size:13px;color:var(--slate-500);line-height:1.5}
+.package-price,.addon-price{text-align:right;flex-shrink:0}
+.package-price-main,.addon-price-main{font-family:var(--font-d);font-size:24px;font-weight:800;color:var(--slate-900);line-height:1}
+.addon-price-main{font-size:18px}
+.package-price-note,.addon-price-note{font-size:11px;color:var(--slate-400);margin-top:2px}
+
+/* ── FORM FIELDS ──────────────────────────── */
+.form-group{margin-bottom:22px}
+.form-group:last-child{margin-bottom:0}
+.form-label{display:block;font-size:13px;font-weight:600;color:var(--slate-700);margin-bottom:8px}
+.form-input,.form-textarea{width:100%;padding:13px 16px;font-size:15px;font-family:var(--font);color:var(--slate-800);background:#fff;border:1.5px solid var(--slate-200);border-radius:10px;outline:none;transition:border-color .2s,box-shadow .2s}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--slate-400)}
+.form-input:focus,.form-textarea:focus{border-color:var(--orange-400);box-shadow:0 0 0 3px rgba(249,115,22,.12)}
+.form-textarea{resize:vertical;min-height:88px;font-family:var(--font)}
+.form-hint{margin-top:6px;font-size:12px;color:var(--slate-400);display:flex;align-items:center;gap:5px}
+.form-hint svg{color:var(--indigo-500)}
+.input-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+.info-note{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:var(--slate-50);border:1px solid var(--slate-200);border-radius:10px;font-size:13px;color:var(--slate-500);line-height:1.55;margin-top:18px}
+.info-note svg{color:var(--indigo-500);flex-shrink:0;margin-top:1px}
+
+/* ── REVIEW STEP ──────────────────────────── */
+.review-list{border:1px solid var(--slate-200);border-radius:12px;overflow:hidden}
+.review-row{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--slate-100);gap:12px;font-size:14px}
+.review-row:last-child{border-bottom:none}
+.review-row:nth-child(even){background:var(--slate-50)}
+.review-label{font-size:13px;font-weight:600;color:var(--slate-500);white-space:nowrap}
+.review-value{font-size:14px;font-weight:600;color:var(--slate-800);text-align:right;flex:1;margin-left:12px}
+.review-edit{font-size:12px;color:var(--indigo-500);cursor:pointer;font-weight:600;transition:color .15s}
+.review-edit:hover{color:var(--indigo-600)}
+
+/* ── BUTTONS ──────────────────────────────── */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--orange-500);color:#fff;font-family:var(--font);font-size:15px;font-weight:600;padding:13px 32px;border-radius:10px;border:none;cursor:pointer;box-shadow:var(--shadow-orange-btn);transition:all .2s ease;white-space:nowrap}
+.btn-primary:hover:not(:disabled){background:var(--orange-600);box-shadow:var(--shadow-orange-btn-hov);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.btn-back{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--slate-500);font-family:var(--font);font-size:14px;font-weight:600;padding:10px 18px;border-radius:10px;border:1.5px solid var(--slate-200);cursor:pointer;transition:all .2s}
+.btn-back:hover{border-color:var(--slate-300);background:var(--slate-50);color:var(--slate-700)}
+
+/* ── PANEL TRANSITION ─────────────────────── */
+.step-panel{display:none;animation:fadeSlide .3s ease}
+.step-panel.active{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
+
+/* ── DONE STATE ───────────────────────────── */
+.done-wrap{text-align:center;padding:60px 40px}
+.done-icon{width:72px;height:72px;background:var(--indigo-50);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;color:var(--indigo-500)}
+.done-wrap h2{font-family:var(--font-d);font-size:26px;font-weight:800;color:var(--slate-900);margin-bottom:12px}
+.done-wrap p{font-size:15px;color:var(--slate-500);max-width:420px;margin:0 auto 24px;line-height:1.65}
+.done-badge{display:inline-flex;align-items:center;gap:8px;background:var(--orange-50);border:1px solid var(--orange-100);padding:10px 20px;border-radius:999px;font-size:13px;font-weight:600;color:var(--orange-600)}
+
+/* ════════════════════════════════════════════
+   SIDEBAR (CALCULATION BOX)
+   TEMPORARILY HIDDEN — DOM + JS state preserved.
+   To restore: delete the four !important rules below.
+════════════════════════════════════════════ */
+.calc-sidebar{display:none!important}
+.wizard-layout.has-sidebar .calc-sidebar{display:none!important}
+.wizard-layout.has-sidebar{grid-template-columns:1fr!important}
+.wizard-layout.has-sidebar .wizard-card{margin:0 auto!important}
+
+.calc-card{background:#fff;border:1px solid var(--slate-200);border-radius:18px;box-shadow:var(--shadow-md);position:sticky;top:24px;overflow:hidden}
+.calc-header{padding:20px 22px 14px;background:linear-gradient(135deg,var(--slate-900) 0%,var(--slate-800) 100%);color:#fff}
+.calc-header-title{font-family:var(--font-d);font-size:14px;font-weight:700;color:#fff;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+.calc-header-sub{font-size:12px;color:rgba(255,255,255,.6)}
+
+.calc-meta{padding:18px 22px;border-bottom:1px solid var(--slate-100);display:flex;flex-direction:column;gap:8px}
+.calc-meta-row{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px}
+.calc-meta-label{color:var(--slate-400);font-weight:500}
+.calc-meta-value{font-weight:700;color:var(--slate-800)}
+.calc-meta-value.muted{color:var(--slate-300);font-weight:500}
+
+.calc-lines{padding:16px 22px;border-bottom:1px solid var(--slate-100);min-height:50px}
+.calc-line{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:8px 0;font-size:13px}
+.calc-line:first-child{padding-top:0}
+.calc-line:last-child{padding-bottom:0}
+.calc-line-label{color:var(--slate-600);line-height:1.4}
+.calc-line-price{font-weight:700;color:var(--slate-800);white-space:nowrap}
+.calc-line.empty{color:var(--slate-300);font-style:italic;justify-content:center;padding:8px 0}
+
+.calc-total{padding:18px 22px;background:var(--slate-50);display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--slate-100)}
+.calc-total-label{font-family:var(--font-d);font-size:13px;font-weight:700;color:var(--slate-700);text-transform:uppercase;letter-spacing:.04em}
+.calc-total-value{font-family:var(--font-d);font-size:24px;font-weight:800;color:var(--orange-500)}
+.calc-foot{padding:14px 22px;font-size:11px;color:var(--slate-400);line-height:1.55;text-align:center}
+
+.calc-trust{padding:12px 22px 18px;display:flex;flex-direction:column;gap:8px}
+.calc-trust-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--slate-500);font-weight:500}
+.calc-trust-item svg{color:var(--indigo-500);flex-shrink:0}
+
+/* trust footer */
+.trust-footer{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:32px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--slate-400)}
+.trust-item svg{color:var(--indigo-500)}
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media (max-width:980px){
+  .wizard-layout.has-sidebar{grid-template-columns:1fr}
+  .calc-card{position:static;margin-top:24px}
+}
+@media (max-width:640px){
+  .entity-grid{grid-template-columns:1fr}
+  .state-quick-grid{grid-template-columns:1fr 1fr}
+  .step-progress-inner{gap:0;justify-content:flex-start;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+  .step-progress-inner::-webkit-scrollbar{display:none}
+  .step-item{min-width:78px;flex:0 0 auto}
+  .wizard-card-header,.wizard-card-body,.wizard-card-footer{padding-left:24px;padding-right:24px}
+  .progress-bar-wrap{margin-left:24px;margin-right:24px}
+  .input-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ──────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="nav-logo">Biz<span>Jump</span></div>
+    <div style="display:flex;align-items:center;gap:18px">
+      <a href="formation-landing.html" class="nav-back">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Change entity type
+      </a>
+      <div class="nav-secure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Secure &amp; encrypted
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── WIZARD HERO ─────────────────────────────────── -->
+<div class="wizard-hero">
+  <h1 id="wizard-hero-title">Start Your Business Formation</h1>
+  <p id="wizard-hero-sub">Answer a few questions — takes less than 10 minutes</p>
+</div>
+
+<!-- ── STEP PROGRESS ──────────────────────────────── -->
+<div class="step-progress">
+  <div class="step-progress-inner">
+    <div class="step-item active" id="prog-1"><div class="step-circle">1</div><div class="step-label">Entity</div></div>
+    <div class="step-item inactive" id="prog-2"><div class="step-circle">2</div><div class="step-label">State</div></div>
+    <div class="step-item inactive" id="prog-3"><div class="step-circle">3</div><div class="step-label">Plan</div></div>
+    <div class="step-item inactive" id="prog-4"><div class="step-circle">4</div><div class="step-label">Add-Ons</div></div>
+    <div class="step-item inactive" id="prog-5"><div class="step-circle">5</div><div class="step-label">Details</div></div>
+    <div class="step-item inactive" id="prog-6"><div class="step-circle">6</div><div class="step-label">Review</div></div>
+  </div>
+</div>
+
+<!-- ── WIZARD BODY ─────────────────────────────────── -->
+<div class="wizard-body">
+  <div class="wizard-layout" id="wizard-layout">
+
+    <!-- LEFT: wizard card -->
+    <div class="wizard-card" id="wizard-card">
+
+      <!-- ════ STEP 1: Entity ════ -->
+      <div class="step-panel active" id="panel-1">
+        <div class="wizard-card-header">
+          <div class="step-number-tag">Step 1 of 6</div>
+          <h2>What type of business do you want to form?</h2>
+          <p>Choose the structure that best fits your goals.</p>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:16%"></div></div>
+        <div class="wizard-card-body">
+          <div class="entity-grid">
+            <div class="entity-card selected" data-entity="llc" data-label="LLC" onclick="selectEntity(this)">
+              <div class="entity-popular">Most Popular</div>
+              <div class="entity-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+              <div class="entity-info">
+                <div class="entity-name">LLC</div>
+                <div class="entity-desc">Personal liability protection with flexible management.</div>
+              </div>
+              <div class="entity-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="entity-card" data-entity="ccorp" data-label="C-Corp" onclick="selectEntity(this)">
+              <div class="entity-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+              <div class="entity-info">
+                <div class="entity-name">Corporation (C-Corp)</div>
+                <div class="entity-desc">Built for growth, raising money, and scaling with shareholders.</div>
+              </div>
+              <div class="entity-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="entity-card" data-entity="scorp" data-label="S-Corp" onclick="selectEntity(this)">
+              <div class="entity-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+              <div class="entity-info">
+                <div class="entity-name">S Corporation</div>
+                <div class="entity-desc">Avoid double taxation while keeping a structured setup.</div>
+              </div>
+              <div class="entity-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="entity-card" data-entity="nonprofit" data-label="Non-profit" onclick="selectEntity(this)">
+              <div class="entity-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+              <div class="entity-info">
+                <div class="entity-name">Not-for-Profit</div>
+                <div class="entity-desc">Serve a public or community purpose with potential 501(c)(3) status.</div>
+              </div>
+              <div class="entity-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+          </div>
+        </div>
+        <div class="wizard-card-footer">
+          <div></div>
+          <button class="btn-primary" onclick="goToStep(2)">
+            Continue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ════ STEP 2: State ════ -->
+      <div class="step-panel" id="panel-2">
+        <div class="wizard-card-header">
+          <div class="step-number-tag">Step 2 of 6</div>
+          <h2>Where are you forming your business?</h2>
+          <p>Select your state of formation. Filing fees vary by state — you'll see your exact fee below.</p>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:33%"></div></div>
+        <div class="wizard-card-body">
+          <div class="state-wrap">
+            <label class="state-label" for="state-select">State of Formation</label>
+            <select id="state-select" class="state-select" onchange="onStateChange(this.value)">
+              <option value="">— Select a State —</option>
+              <!-- options injected by JS -->
+            </select>
+
+            <!-- Live state-fee display -->
+            <div class="state-fee-display" id="state-fee-display">
+              <div class="state-fee-row">
+                <span class="state-fee-label">State Filing Fee</span>
+                <span class="state-fee-amount" id="state-fee-amount">$0</span>
+              </div>
+              <p class="state-fee-note">This is a government fee paid directly to <strong id="state-fee-name">the state</strong> — not BizJump's service fee.</p>
+            </div>
+
+            <div class="state-popular">
+              <div class="state-popular-label">Popular states</div>
+              <div class="state-quick-grid">
+                <button type="button" class="state-quick" data-code="DE" onclick="quickPick('DE')"><span>Delaware</span><span class="state-quick-fee">$90 filing fee</span></button>
+                <button type="button" class="state-quick" data-code="WY" onclick="quickPick('WY')"><span>Wyoming</span><span class="state-quick-fee">$100 filing fee</span></button>
+                <button type="button" class="state-quick" data-code="FL" onclick="quickPick('FL')"><span>Florida</span><span class="state-quick-fee">$125 filing fee</span></button>
+                <button type="button" class="state-quick" data-code="TX" onclick="quickPick('TX')"><span>Texas</span><span class="state-quick-fee">$300 filing fee</span></button>
+                <button type="button" class="state-quick" data-code="CA" onclick="quickPick('CA')"><span>California</span><span class="state-quick-fee">$70 filing fee</span></button>
+                <button type="button" class="state-quick" data-code="NY" onclick="quickPick('NY')"><span>New York</span><span class="state-quick-fee">$200 filing fee</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wizard-card-footer">
+          <button class="btn-back" onclick="goToStep(1)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back
+          </button>
+          <button class="btn-primary" id="btn-state-next" onclick="goToStep(3)" disabled>
+            Continue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ════ STEP 3: Plan ════ -->
+      <div class="step-panel" id="panel-3">
+        <div class="wizard-card-header">
+          <div class="step-number-tag">Step 3 of 6</div>
+          <h2>Choose your formation package</h2>
+          <p>All prices are one-time service fees. State filing fee is separate and shown in your order summary.</p>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:50%"></div></div>
+        <div class="wizard-card-body">
+          <div class="package-list">
+            <div class="package-card" data-plan="basic" data-label="Basic" data-price="0" onclick="selectPackage(this)">
+              <div class="package-radio"><div class="package-radio-dot"></div></div>
+              <div class="package-info">
+                <div class="package-name-row"><div class="package-name">Basic</div></div>
+                <div class="package-desc">Articles of formation + name search + order tracking</div>
+              </div>
+              <div class="package-price"><div class="package-price-main">$0</div><div class="package-price-note">+ state fee</div></div>
+            </div>
+            <div class="package-card selected" data-plan="pro" data-label="Pro" data-price="149" onclick="selectPackage(this)">
+              <div class="package-radio"><div class="package-radio-dot"></div></div>
+              <div class="package-info">
+                <div class="package-name-row"><div class="package-name">Pro</div><span class="package-badge popular">Most Popular</span></div>
+                <div class="package-desc">Everything in Basic + Registered Agent, EIN, Operating Agreement</div>
+              </div>
+              <div class="package-price"><div class="package-price-main">$149</div><div class="package-price-note">+ state fee</div></div>
+            </div>
+            <div class="package-card" data-plan="premium" data-label="Premium" data-price="299" onclick="selectPackage(this)">
+              <div class="package-radio"><div class="package-radio-dot"></div></div>
+              <div class="package-info">
+                <div class="package-name-row"><div class="package-name">Premium</div><span class="package-badge best">Best Value</span></div>
+                <div class="package-desc">Everything in Pro + Business bank account, domain, dedicated manager</div>
+              </div>
+              <div class="package-price"><div class="package-price-main">$299</div><div class="package-price-note">+ state fee</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="wizard-card-footer">
+          <button class="btn-back" onclick="goToStep(2)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back
+          </button>
+          <button class="btn-primary" onclick="goToStep(4)">
+            Continue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ════ STEP 4: Add-Ons ════ -->
+      <div class="step-panel" id="panel-4">
+        <div class="wizard-card-header">
+          <div class="step-number-tag">Step 4 of 6</div>
+          <h2>Customize your formation</h2>
+          <p>Optional services to add to your order. Some may already be included in your plan.</p>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:66%"></div></div>
+        <div class="wizard-card-body">
+          <div class="addon-list">
+            <div class="addon-card" data-addon="ein" data-label="EIN Filing" data-price="79" onclick="toggleAddon(this)">
+              <div class="addon-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="addon-info">
+                <div class="addon-name">EIN Filing</div>
+                <div class="addon-desc">Get your federal Employer Identification Number from the IRS.</div>
+              </div>
+              <div class="addon-price"><div class="addon-price-main">$79</div><div class="addon-price-note">one-time</div></div>
+            </div>
+            <div class="addon-card" data-addon="ra" data-label="Registered Agent" data-price="129" onclick="toggleAddon(this)">
+              <div class="addon-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="addon-info">
+                <div class="addon-name">Registered Agent (1 yr)</div>
+                <div class="addon-desc">Receive legal mail on behalf of your business — required in every state.</div>
+              </div>
+              <div class="addon-price"><div class="addon-price-main">$129</div><div class="addon-price-note">/year</div></div>
+            </div>
+            <div class="addon-card" data-addon="opagree" data-label="Operating Agreement" data-price="49" onclick="toggleAddon(this)">
+              <div class="addon-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="addon-info">
+                <div class="addon-name">Operating Agreement</div>
+                <div class="addon-desc">Customizable template for member roles, voting, profit distribution.</div>
+              </div>
+              <div class="addon-price"><div class="addon-price-main">$49</div><div class="addon-price-note">one-time</div></div>
+            </div>
+            <div class="addon-card" data-addon="bankacct" data-label="Business Bank Account Setup" data-price="0" onclick="toggleAddon(this)">
+              <div class="addon-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="addon-info">
+                <div class="addon-name">Business Bank Account Setup</div>
+                <div class="addon-desc">We pre-fill your application with our partner bank. No monthly fees.</div>
+              </div>
+              <div class="addon-price"><div class="addon-price-main">Free</div><div class="addon-price-note">included</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="wizard-card-footer">
+          <button class="btn-back" onclick="goToStep(3)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back
+          </button>
+          <button class="btn-primary" onclick="goToStep(5)">
+            Continue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ════ STEP 5: Details ════ -->
+      <div class="step-panel" id="panel-5">
+        <div class="wizard-card-header">
+          <div class="step-number-tag">Step 5 of 6</div>
+          <h2>Tell us about your business</h2>
+          <p>This information will appear on your official state filing documents.</p>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:83%"></div></div>
+        <div class="wizard-card-body">
+          <div class="form-group">
+            <label class="form-label">Business Name</label>
+            <input id="biz-name" type="text" class="form-input" placeholder="e.g. Sunrise Ventures">
+            <div class="form-hint">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              We'll check availability in your selected state automatically.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Business Address</label>
+            <textarea class="form-textarea" placeholder="Street, City, State, ZIP"></textarea>
+          </div>
+          <div class="input-row">
+            <div class="form-group" style="margin-bottom:0">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-input" placeholder="John">
+            </div>
+            <div class="form-group" style="margin-bottom:0">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" placeholder="Smith">
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:22px">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="you@example.com">
+          </div>
+          <div class="info-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Your information is protected by 256-bit SSL encryption and will never be sold to third parties.
+          </div>
+        </div>
+        <div class="wizard-card-footer">
+          <button class="btn-back" onclick="goToStep(4)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back
+          </button>
+          <button class="btn-primary" onclick="goToStep(6)">
+            Review Order <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ════ STEP 6: Review ════ -->
+      <div class="step-panel" id="panel-6">
+        <div class="wizard-card-header">
+          <div class="step-number-tag">Step 6 of 6</div>
+          <h2>Review your order</h2>
+          <p>Everything look right? You can edit any details before completing.</p>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>
+        <div class="wizard-card-body">
+          <div class="review-list" id="review-list">
+            <!-- populated by JS -->
+          </div>
+          <div class="info-note" style="margin-top:18px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            100% satisfaction guarantee. If we make an error, we'll correct it at no extra charge.
+          </div>
+        </div>
+        <div class="wizard-card-footer">
+          <button class="btn-back" onclick="goToStep(5)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back
+          </button>
+          <button class="btn-primary" onclick="completePurchase()">
+            <span>Complete Purchase — <span id="btn-final-total">$0</span></span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ════ DONE STATE ════ -->
+      <div class="step-panel" id="panel-done">
+        <div class="done-wrap">
+          <div class="done-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h2>Order Confirmed!</h2>
+          <p>We've received your order. Your formation will be filed with the state within 1 business day.</p>
+          <div class="done-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Estimated completion: 1–3 business days
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.wizard-card -->
+
+    <!-- RIGHT: Calc / Order Summary Sidebar (hidden on Step 1) -->
+    <aside class="calc-sidebar">
+      <div class="calc-card">
+        <div class="calc-header">
+          <div class="calc-header-title">Your Order</div>
+          <div class="calc-header-sub">Live estimate — updates as you go</div>
+        </div>
+
+        <div class="calc-meta">
+          <div class="calc-meta-row">
+            <span class="calc-meta-label">Entity</span>
+            <span class="calc-meta-value" id="calc-entity">—</span>
+          </div>
+          <div class="calc-meta-row">
+            <span class="calc-meta-label">State</span>
+            <span class="calc-meta-value muted" id="calc-state">Not selected</span>
+          </div>
+          <div class="calc-meta-row">
+            <span class="calc-meta-label">Plan</span>
+            <span class="calc-meta-value" id="calc-plan">—</span>
+          </div>
+        </div>
+
+        <div class="calc-lines" id="calc-lines">
+          <div class="calc-line empty">No items yet</div>
+        </div>
+
+        <div class="calc-total">
+          <span class="calc-total-label">Estimated Total</span>
+          <span class="calc-total-value" id="calc-total">$0</span>
+        </div>
+
+        <p class="calc-foot">Final total includes state filing fee paid directly to the state.</p>
+
+        <div class="calc-trust">
+          <div class="calc-trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> 256-bit SSL encrypted</div>
+          <div class="calc-trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 100% satisfaction guarantee</div>
+          <div class="calc-trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Expert support 7 days/week</div>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /.wizard-layout -->
+</div>
+
+<script>
+/* ═════════════════════════════════════════════
+   STATE FEE DATA (USD)
+═════════════════════════════════════════════ */
+const STATE_FEES = {
+  AL:['Alabama',200],AK:['Alaska',250],AZ:['Arizona',50],AR:['Arkansas',45],
+  CA:['California',70],CO:['Colorado',50],CT:['Connecticut',120],DE:['Delaware',90],
+  FL:['Florida',125],GA:['Georgia',100],HI:['Hawaii',50],ID:['Idaho',100],
+  IL:['Illinois',150],IN:['Indiana',95],IA:['Iowa',50],KS:['Kansas',160],
+  KY:['Kentucky',40],LA:['Louisiana',100],ME:['Maine',175],MD:['Maryland',100],
+  MA:['Massachusetts',500],MI:['Michigan',50],MN:['Minnesota',135],MS:['Mississippi',50],
+  MO:['Missouri',50],MT:['Montana',35],NE:['Nebraska',105],NV:['Nevada',425],
+  NH:['New Hampshire',100],NJ:['New Jersey',125],NM:['New Mexico',50],NY:['New York',200],
+  NC:['North Carolina',125],ND:['North Dakota',135],OH:['Ohio',99],OK:['Oklahoma',100],
+  OR:['Oregon',100],PA:['Pennsylvania',125],RI:['Rhode Island',150],SC:['South Carolina',110],
+  SD:['South Dakota',150],TN:['Tennessee',300],TX:['Texas',300],UT:['Utah',54],
+  VT:['Vermont',125],VA:['Virginia',100],WA:['Washington',200],WV:['West Virginia',100],
+  WI:['Wisconsin',130],WY:['Wyoming',100]
+};
+
+/* ═════════════════════════════════════════════
+   STATE
+═════════════════════════════════════════════ */
+const state = {
+  step:1,
+  entity:'llc',entityLabel:'LLC',
+  stateCode:'',stateName:'',stateFee:0,
+  plan:'pro',planLabel:'Pro',planPrice:149,
+  addons:[]   // [{key,label,price}]
+};
+
+const TOTAL_STEPS = 6;
+
+const entityHero = {
+  llc:        { title:'Form Your LLC',           sub:'Personal liability protection with flexible management — most popular for small business owners.' },
+  ccorp:      { title:'Form Your Corporation',   sub:'Issue stock, attract investors, and build a scalable corporate structure.' },
+  scorp:      { title:'Form Your S-Corp',        sub:'Pass-through taxation with corporate liability protection.' },
+  nonprofit:  { title:'Form Your Non-profit',    sub:'Pursue your mission with potential 501(c)(3) tax-exempt status.' }
+};
+
+/* ═════════════════════════════════════════════
+   INIT
+═════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded',function(){
+  // populate state dropdown
+  const sel = document.getElementById('state-select');
+  Object.entries(STATE_FEES).sort((a,b)=>a[1][0].localeCompare(b[1][0])).forEach(([code,[name,fee]])=>{
+    const opt = document.createElement('option');
+    opt.value = code;
+    opt.textContent = name + ' — $' + fee + ' filing fee';
+    sel.appendChild(opt);
+  });
+
+  // pre-select entity from URL
+  const params = new URLSearchParams(window.location.search);
+  const entityParam = (params.get('entity')||'llc').toLowerCase();
+  const card = document.querySelector('[data-entity="'+entityParam+'"]');
+  if(card) selectEntity(card);
+
+  updateLayout();
+  updateSidebar();
+});
+
+/* ═════════════════════════════════════════════
+   STEP NAV
+═════════════════════════════════════════════ */
+function goToStep(step){
+  document.getElementById('panel-'+state.step).classList.remove('active');
+  for(let i=1;i<=TOTAL_STEPS;i++){
+    const prog = document.getElementById('prog-'+i);
+    prog.className = 'step-item';
+    if(i<step){
+      prog.classList.add('completed');
+      prog.querySelector('.step-circle').innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    } else if(i===step){
+      prog.classList.add('active');
+      prog.querySelector('.step-circle').textContent = i;
+    } else {
+      prog.classList.add('inactive');
+      prog.querySelector('.step-circle').textContent = i;
+    }
+  }
+  state.step = step;
+  document.getElementById('panel-'+step).classList.add('active');
+  updateLayout();
+  updateSidebar();
+  if(step===6) renderReview();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* sidebar visibility = visible from step 2 onward */
+function updateLayout(){
+  const layout = document.getElementById('wizard-layout');
+  if(state.step >= 2 && state.step <= TOTAL_STEPS){
+    layout.classList.add('has-sidebar');
+  } else {
+    layout.classList.remove('has-sidebar');
+  }
+}
+
+/* ═════════════════════════════════════════════
+   STEP 1: Entity selection
+═════════════════════════════════════════════ */
+function selectEntity(el){
+  document.querySelectorAll('.entity-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.entity = el.dataset.entity;
+  state.entityLabel = el.dataset.label;
+  const info = entityHero[state.entity];
+  if(info){
+    document.getElementById('wizard-hero-title').textContent = info.title;
+    document.getElementById('wizard-hero-sub').textContent = info.sub;
+  }
+  updateSidebar();
+}
+
+/* ═════════════════════════════════════════════
+   STEP 2: State selection
+═════════════════════════════════════════════ */
+function onStateChange(code){
+  if(!code || !STATE_FEES[code]){
+    state.stateCode = ''; state.stateName = ''; state.stateFee = 0;
+    document.getElementById('state-fee-display').classList.remove('is-visible');
+    document.getElementById('btn-state-next').disabled = true;
+  } else {
+    const [name,fee] = STATE_FEES[code];
+    state.stateCode = code; state.stateName = name; state.stateFee = fee;
+    document.getElementById('state-fee-amount').textContent = '$' + fee.toFixed(2);
+    document.getElementById('state-fee-name').textContent = name;
+    document.getElementById('state-fee-display').classList.add('is-visible');
+    document.getElementById('btn-state-next').disabled = false;
+  }
+  // sync popular pick highlight
+  document.querySelectorAll('.state-quick').forEach(b=>b.classList.toggle('is-active',b.dataset.code===code));
+  updateSidebar();
+}
+function quickPick(code){
+  document.getElementById('state-select').value = code;
+  onStateChange(code);
+}
+
+/* ═════════════════════════════════════════════
+   STEP 3: Plan
+═════════════════════════════════════════════ */
+function selectPackage(el){
+  document.querySelectorAll('.package-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.plan = el.dataset.plan;
+  state.planLabel = el.dataset.label;
+  state.planPrice = parseFloat(el.dataset.price);
+  updateSidebar();
+}
+
+/* ═════════════════════════════════════════════
+   STEP 4: Add-ons
+═════════════════════════════════════════════ */
+function toggleAddon(el){
+  const key = el.dataset.addon;
+  const i = state.addons.findIndex(a=>a.key===key);
+  if(i>-1){
+    state.addons.splice(i,1);
+    el.classList.remove('selected');
+  } else {
+    state.addons.push({ key, label: el.dataset.label, price: parseFloat(el.dataset.price) });
+    el.classList.add('selected');
+  }
+  updateSidebar();
+}
+
+/* ═════════════════════════════════════════════
+   SIDEBAR (LIVE CALC BOX)
+═════════════════════════════════════════════ */
+function fmt(n){ return '$' + Number(n).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,','); }
+
+function updateSidebar(){
+  document.getElementById('calc-entity').textContent = state.entityLabel || '—';
+  const stEl = document.getElementById('calc-state');
+  if(state.stateName){
+    stEl.textContent = state.stateName;
+    stEl.classList.remove('muted');
+  } else {
+    stEl.textContent = 'Not selected';
+    stEl.classList.add('muted');
+  }
+  document.getElementById('calc-plan').textContent = state.planLabel || '—';
+
+  const lines = document.getElementById('calc-lines');
+  lines.innerHTML = '';
+
+  // plan line
+  if(state.plan){
+    const li = document.createElement('div');
+    li.className = 'calc-line';
+    li.innerHTML = '<span class="calc-line-label">' + state.planLabel + ' plan</span><span class="calc-line-price">' + fmt(state.planPrice) + '</span>';
+    lines.appendChild(li);
+  }
+
+  // state fee line
+  if(state.stateFee > 0){
+    const li = document.createElement('div');
+    li.className = 'calc-line';
+    li.innerHTML = '<span class="calc-line-label">' + state.stateName + ' state filing fee</span><span class="calc-line-price">' + fmt(state.stateFee) + '</span>';
+    lines.appendChild(li);
+  }
+
+  // add-on lines
+  state.addons.forEach(a=>{
+    const li = document.createElement('div');
+    li.className = 'calc-line';
+    li.innerHTML = '<span class="calc-line-label">' + a.label + '</span><span class="calc-line-price">' + (a.price>0?fmt(a.price):'Free') + '</span>';
+    lines.appendChild(li);
+  });
+
+  if(!lines.children.length){
+    lines.innerHTML = '<div class="calc-line empty">No items yet</div>';
+  }
+
+  const addonTotal = state.addons.reduce((s,a)=>s+(a.price||0),0);
+  const total = state.planPrice + state.stateFee + addonTotal;
+  document.getElementById('calc-total').textContent = fmt(total);
+
+  const finalBtn = document.getElementById('btn-final-total');
+  if(finalBtn) finalBtn.textContent = fmt(total);
+}
+
+/* ═════════════════════════════════════════════
+   STEP 6: Review render
+═════════════════════════════════════════════ */
+function renderReview(){
+  const list = document.getElementById('review-list');
+  list.innerHTML = '';
+  const rows = [
+    { label:'Entity Type',     value: state.entityLabel,                 step:1 },
+    { label:'State',           value: state.stateName + ' (' + state.stateCode + ')', step:2 },
+    { label:'Plan',            value: state.planLabel + ' — ' + fmt(state.planPrice), step:3 },
+    { label:'State Filing Fee',value: fmt(state.stateFee),               step:2, noEdit:true },
+    { label:'Business Name',   value: (document.getElementById('biz-name').value || 'Sunrise Ventures'), step:5 }
+  ];
+  state.addons.forEach(a=>rows.push({ label:'Add-on', value: a.label + ' · ' + (a.price>0?fmt(a.price):'Free'), step:4 }));
+
+  const addonTotal = state.addons.reduce((s,a)=>s+(a.price||0),0);
+  const total = state.planPrice + state.stateFee + addonTotal;
+  rows.push({ label:'Total Due Today', value: fmt(total), step:null, isTotal:true });
+
+  rows.forEach(r=>{
+    const row = document.createElement('div');
+    row.className = 'review-row';
+    if(r.isTotal){
+      row.style.background = 'var(--orange-50)';
+      row.style.borderTop = '1px solid var(--orange-200)';
+      row.innerHTML = '<div class="review-label" style="color:var(--orange-700)">'+r.label+'</div>'+
+                      '<div class="review-value" style="color:var(--orange-600);font-size:18px;font-family:var(--font-d);font-weight:800">'+r.value+'</div>';
+    } else {
+      row.innerHTML = '<div class="review-label">'+r.label+'</div>'+
+                      '<div class="review-value">'+r.value+'</div>'+
+                      (r.noEdit||r.step==null?'':'<div class="review-edit" onclick="goToStep('+r.step+')">Edit</div>');
+    }
+    list.appendChild(row);
+  });
+}
+
+/* ═════════════════════════════════════════════
+   COMPLETE
+═════════════════════════════════════════════ */
+function completePurchase(){
+  document.getElementById('panel-6').classList.remove('active');
+  document.getElementById('panel-done').classList.add('active');
+  document.getElementById('wizard-layout').classList.remove('has-sidebar');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

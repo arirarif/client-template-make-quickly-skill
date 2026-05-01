@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BizJump — Launch Your Business Online | Incorporation in All 50 States</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════
+   TOKENS
+════════════════════════════════════════════════════ */
+:root {
+  --navy:      #0f2156;
+  --blue:      #1e3a8a;
+  --blue-mid:  #2563eb;
+  --blue-lt:   #eff6ff;
+  --blue-xlt:  #f0f4ff;
+  --orange:    #f97316;
+  --orange-dk: #ea6c00;
+  --green:     #16a34a;
+  --red:       #ef4444;
+  --gray-50:   #f9fafb;
+  --gray-100:  #f3f4f6;
+  --gray-200:  #e5e7eb;
+  --gray-300:  #d1d5db;
+  --gray-500:  #6b7280;
+  --gray-700:  #374151;
+  --gray-900:  #111827;
+  --white:     #ffffff;
+  --radius-sm: 6px;
+  --radius:    10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.06);
+  --shadow:    0 2px 16px rgba(0,0,0,.08);
+  --shadow-md: 0 6px 32px rgba(0,0,0,.12);
+  --shadow-blue: 0 8px 32px rgba(37,99,235,.18);
+}
+
+/* ════════════════════════════════════════════════════
+   RESET & BASE
+════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--gray-900);
+  background: var(--white);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4,h5 { font-family: 'Space Grotesk', sans-serif; }
+a { text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ════════════════════════════════════════════════════
+   SHARED UTILITIES
+════════════════════════════════════════════════════ */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+.section    { padding: 88px 0; }
+.section-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--blue-mid);
+  margin-bottom: 10px; display: block;
+}
+.section-title {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800; color: var(--gray-900);
+  line-height: 1.18; letter-spacing: -0.8px;
+  margin-bottom: 14px;
+}
+.section-sub {
+  font-size: 17px; color: var(--gray-500);
+  line-height: 1.75; max-width: 540px;
+}
+.text-center { text-align: center; }
+.text-center .section-sub { margin: 0 auto; }
+
+/* Scroll-reveal utility */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ════════════════════════════════════════════════════
+   ANNOUNCEMENT BAR
+════════════════════════════════════════════════════ */
+.ann-bar {
+  background: var(--navy);
+  color: rgba(255,255,255,.9);
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: .1px;
+}
+.ann-bar strong { color: #fbbf24; }
+.ann-bar a { color: var(--orange); font-weight: 700; margin-left: 6px; }
+.ann-bar a:hover { text-decoration: underline; }
+
+/* ════════════════════════════════════════════════════
+   NAVIGATION
+════════════════════════════════════════════════════ */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--gray-100);
+  transition: box-shadow .3s;
+}
+.nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+.nav-inner {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 23px; font-weight: 800;
+  color: var(--navy); letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--orange); }
+.nav-links {
+  display: flex; gap: 36px; list-style: none;
+}
+.nav-links a {
+  color: var(--gray-700); font-size: 15px; font-weight: 500;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-login {
+  color: var(--gray-700); font-size: 15px; font-weight: 500;
+  transition: color .2s; cursor: pointer;
+}
+.nav-login:hover { color: var(--blue); }
+.btn-primary {
+  background: var(--orange);
+  color: #fff;
+  padding: 11px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 15px; font-weight: 700;
+  display: inline-block;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 3px 12px rgba(249,115,22,.3);
+}
+.btn-primary:hover {
+  background: var(--orange-dk);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(249,115,22,.4);
+}
+.btn-lg {
+  padding: 16px 40px;
+  font-size: 17px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(249,115,22,.4);
+}
+.btn-outline-white {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,.45);
+  color: #fff; padding: 14px 36px;
+  border-radius: var(--radius);
+  font-size: 17px; font-weight: 600;
+  display: inline-block;
+  transition: background .2s, border-color .2s;
+  cursor: pointer;
+}
+.btn-outline-white:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,.1);
+}
+.btn-outline-navy {
+  background: transparent;
+  border: 2px solid var(--blue);
+  color: var(--blue); padding: 13px 28px;
+  border-radius: var(--radius);
+  font-size: 15px; font-weight: 600;
+  display: inline-block;
+  transition: background .2s, color .2s;
+  cursor: pointer;
+}
+.btn-outline-navy:hover { background: var(--blue); color: #fff; }
+.btn-blue {
+  background: var(--blue-mid);
+  color: #fff; padding: 13px 28px;
+  border-radius: var(--radius);
+  font-size: 15px; font-weight: 600;
+  display: inline-block;
+  transition: background .2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-blue:hover { background: var(--blue); }
+
+/* Hamburger (mobile) */
+.nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-toggle span { width: 22px; height: 2px; background: var(--gray-700); border-radius: 2px; transition: .2s; }
+.mobile-menu {
+  display: none;
+  position: fixed; inset: 0; top: 68px; z-index: 199;
+  background: rgba(255,255,255,.98);
+  padding: 32px;
+  flex-direction: column; gap: 24px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: var(--gray-900); font-size: 20px; font-weight: 600;
+  padding: 12px 0; border-bottom: 1px solid var(--gray-100);
+}
+
+/* ════════════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════════════ */
+.hero {
+  background: linear-gradient(155deg, var(--navy) 0%, #1e3a8a 55%, #1d4ed8 100%);
+  color: #fff;
+  padding: 96px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+/* subtle grid pattern */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+/* glow orbs */
+.hero-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); pointer-events: none;
+}
+.hero-orb-1 {
+  width: 400px; height: 400px;
+  background: rgba(37,99,235,.35);
+  top: -120px; left: -80px;
+}
+.hero-orb-2 {
+  width: 300px; height: 300px;
+  background: rgba(249,115,22,.15);
+  bottom: -60px; right: -40px;
+}
+.hero-inner { position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.9);
+  font-size: 13px; font-weight: 600;
+  padding: 7px 18px; border-radius: 100px;
+  margin-bottom: 28px; letter-spacing: .3px;
+}
+.hero-badge .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px #4ade80;
+  animation: blink 1.8s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+.hero h1 {
+  font-size: clamp(36px, 5.5vw, 62px);
+  font-weight: 800; line-height: 1.1;
+  letter-spacing: -1.5px; margin-bottom: 22px;
+}
+.hero h1 .static { display: block; }
+.hero h1 .cycle-wrap {
+  display: inline-block; overflow: hidden;
+  vertical-align: bottom; height: 1.12em;
+  min-width: 260px;
+  border-bottom: 3px solid var(--orange);
+}
+.cycle-word {
+  display: block; color: #fbbf24;
+  font-weight: 800;
+}
+.cycle-word.tc-enter { animation: tcEnter .5s cubic-bezier(.22,1,.36,1) forwards; }
+.cycle-word.tc-exit  { animation: tcExit  .4s cubic-bezier(.55,0,1,.45) forwards; }
+@keyframes tcEnter { from{opacity:0;transform:translateY(24px) skewY(4deg)} to{opacity:1;transform:none} }
+@keyframes tcExit  { from{opacity:1;transform:none} to{opacity:0;transform:translateY(-24px) skewY(-4deg)} }
+
+.hero-sub {
+  font-size: 18px; color: rgba(255,255,255,.78);
+  max-width: 540px; margin: 0 auto 40px; line-height: 1.75;
+}
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
+.hero-trust {
+  display: flex; gap: 28px; justify-content: center;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13.5px; color: rgba(255,255,255,.72); font-weight: 500;
+}
+.trust-item .check {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(74,222,128,.15); border: 1px solid #4ade80;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 10px; color: #4ade80;
+}
+
+/* ════════════════════════════════════════════════════
+   TICKER / MARQUEE
+════════════════════════════════════════════════════ */
+.ticker {
+  background: var(--blue-mid);
+  padding: 14px 0; overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.ticker-track {
+  display: flex; gap: 0;
+  animation: tickerScroll 28s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  display: flex; align-items: center; gap: 20px;
+  padding: 0 32px;
+  font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,.9);
+  text-transform: uppercase; letter-spacing: 1.5px;
+  flex-shrink: 0;
+}
+.ticker-item::after {
+  content: '✦';
+  color: var(--orange); font-size: 10px;
+}
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ════════════════════════════════════════════════════
+   STATS STRIP
+════════════════════════════════════════════════════ */
+.stats {
+  padding: 56px 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-100);
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; text-align: center;
+}
+.stat-item {
+  padding: 24px 16px;
+  border-right: 1px solid var(--gray-100);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 42px; font-weight: 800;
+  color: var(--navy); line-height: 1;
+  letter-spacing: -1px;
+  display: flex; align-items: flex-end; justify-content: center; gap: 2px;
+}
+.stat-num .suffix { font-size: 24px; margin-bottom: 3px; }
+.stat-label { font-size: 14px; color: var(--gray-500); margin-top: 8px; font-weight: 500; }
+.stat-sub { font-size: 12px; color: var(--gray-300); margin-top: 3px; }
+
+/* ════════════════════════════════════════════════════
+   ENTITY TYPES
+════════════════════════════════════════════════════ */
+.entities { background: var(--gray-50); }
+.entities-header { text-align: center; margin-bottom: 52px; }
+.entities-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.entity-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow .25s, transform .25s, border-color .25s;
+  position: relative; overflow: hidden;
+}
+.entity-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--blue-mid);
+  transform: scaleX(0);
+  transition: transform .3s;
+}
+.entity-card:hover::before { transform: scaleX(1); }
+.entity-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-5px);
+  border-color: var(--blue-mid);
+}
+.entity-icon {
+  width: 60px; height: 60px; border-radius: 14px;
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+}
+.entity-card:nth-child(1) .entity-icon { background: #eff6ff; }
+.entity-card:nth-child(2) .entity-icon { background: #fef3c7; }
+.entity-card:nth-child(3) .entity-icon { background: #f0fdf4; }
+.entity-card:nth-child(4) .entity-icon { background: #fdf2f8; }
+.entity-card h3 {
+  font-size: 18px; font-weight: 700; color: var(--gray-900);
+  margin-bottom: 8px;
+}
+.entity-card p { font-size: 14px; color: var(--gray-500); line-height: 1.6; margin-bottom: 16px; }
+.entity-tag {
+  display: inline-block;
+  background: var(--blue-xlt); color: var(--blue-mid);
+  font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 100px;
+  letter-spacing: .5px;
+}
+
+/* ════════════════════════════════════════════════════
+   HOW IT WORKS
+════════════════════════════════════════════════════ */
+.hiw { background: var(--white); }
+.hiw-header { text-align: center; margin-bottom: 64px; }
+.hiw-header .section-sub { margin: 0 auto; }
+.hiw-steps {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; position: relative;
+  counter-reset: step;
+}
+.hiw-connector {
+  position: absolute; top: 44px;
+  left: calc(33.33% / 2 + 24px); right: calc(33.33% / 2 + 24px);
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--blue-mid) 0, var(--blue-mid) 8px, transparent 8px, transparent 16px);
+}
+.step-card {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 32px 48px;
+  position: relative;
+}
+.step-num {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: var(--navy); color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 30px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 28px; flex-shrink: 0;
+  position: relative; z-index: 1;
+  box-shadow: 0 6px 24px rgba(15,33,86,.3);
+  transition: transform .3s, box-shadow .3s;
+}
+.step-card:hover .step-num {
+  transform: scale(1.08);
+  box-shadow: 0 10px 36px rgba(15,33,86,.4);
+}
+.step-card h3 {
+  font-size: 19px; font-weight: 700; color: var(--gray-900);
+  margin-bottom: 12px;
+}
+.step-card p { font-size: 15px; color: var(--gray-500); line-height: 1.65; }
+
+/* ════════════════════════════════════════════════════
+   PRICING
+════════════════════════════════════════════════════ */
+.pricing { background: var(--gray-50); }
+.pricing-header { text-align: center; margin-bottom: 16px; }
+.pricing-header .section-sub { margin: 0 auto 32px; }
+.pricing-notice {
+  max-width: 680px; margin: 0 auto 48px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 4px solid #f59e0b;
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  font-size: 14px; color: var(--gray-700); line-height: 1.6;
+}
+.pricing-notice strong { color: #92400e; }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.plan-card {
+  background: var(--white);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  position: relative;
+  transition: box-shadow .3s, transform .3s, border-color .3s;
+}
+.plan-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-6px);
+}
+.plan-card.featured {
+  border-color: var(--blue-mid);
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-8px);
+}
+.plan-card.featured:hover { transform: translateY(-12px); }
+.featured-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--blue-mid); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  padding: 5px 18px; border-radius: 100px; white-space: nowrap;
+  text-transform: uppercase;
+}
+.plan-tier {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--gray-500); margin-bottom: 6px;
+}
+.plan-name { font-size: 22px; font-weight: 800; color: var(--gray-900); margin-bottom: 4px; }
+.plan-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 42px; font-weight: 800;
+  color: var(--navy); line-height: 1;
+  margin: 16px 0 4px;
+}
+.plan-price sup { font-size: 20px; vertical-align: super; }
+.plan-price sub { font-size: 15px; color: var(--gray-500); font-weight: 500; }
+.plan-state-fee {
+  font-size: 13px; color: var(--gray-500); margin-bottom: 6px;
+}
+.plan-billing {
+  font-size: 13px; color: var(--gray-500); margin-bottom: 20px;
+}
+.plan-billing strong { color: var(--gray-700); }
+.plan-desc {
+  font-size: 14px; color: var(--gray-600);
+  line-height: 1.6; margin-bottom: 24px;
+  padding-bottom: 20px; border-bottom: 1px solid var(--gray-100);
+  min-height: 64px;
+}
+.plan-time {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--blue-xlt); color: var(--blue-mid);
+  font-size: 12px; font-weight: 700;
+  padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
+}
+.plan-time::before { content: '⚡'; }
+.plan-features { list-style: none; margin-bottom: 28px; }
+.plan-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--gray-700);
+  padding: 8px 0; border-bottom: 1px solid var(--gray-50);
+  line-height: 1.5;
+}
+.plan-features li:last-child { border-bottom: none; }
+.plan-features li .check-icon { color: var(--green); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+.plan-btn {
+  display: block; text-align: center; width: 100%;
+  padding: 14px; border-radius: var(--radius);
+  font-size: 15px; font-weight: 700;
+  cursor: pointer; border: none;
+  transition: all .2s;
+}
+.plan-btn-blue { background: var(--blue-mid); color: #fff; }
+.plan-btn-blue:hover { background: var(--blue); }
+.plan-btn-orange { background: var(--orange); color: #fff; box-shadow: 0 4px 16px rgba(249,115,22,.35); }
+.plan-btn-orange:hover { background: var(--orange-dk); }
+.plan-btn-outline { background: transparent; border: 2px solid var(--blue); color: var(--blue); }
+.plan-btn-outline:hover { background: var(--blue); color: #fff; }
+.pricing-footer {
+  text-align: center; margin-top: 32px;
+  font-size: 14px; color: var(--gray-500);
+}
+
+/* ════════════════════════════════════════════════════
+   WHY BIZJUMP
+════════════════════════════════════════════════════ */
+.why { background: var(--white); }
+.why-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
+}
+.why-features { display: flex; flex-direction: column; gap: 32px; }
+.feature-item { display: flex; gap: 20px; align-items: flex-start; }
+.feature-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: var(--blue-xlt);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 22px;
+  transition: transform .3s;
+}
+.feature-item:hover .feature-icon { transform: scale(1.1) rotate(-4deg); }
+.feature-text h4 { font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 6px; }
+.feature-text p { font-size: 14.5px; color: var(--gray-500); line-height: 1.65; }
+
+.compare-card {
+  background: var(--gray-50);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow);
+}
+.compare-card h3 {
+  font-size: 18px; font-weight: 700; color: var(--gray-900);
+  margin-bottom: 24px;
+}
+.compare-table { width: 100%; }
+.compare-table thead th {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--gray-500);
+  padding: 0 0 12px; text-align: left;
+}
+.compare-table thead th:not(:first-child) { text-align: center; }
+.compare-table tbody tr { border-top: 1px solid var(--gray-200); }
+.compare-table td {
+  padding: 12px 0; font-size: 14px;
+  color: var(--gray-700);
+}
+.compare-table td:not(:first-child) { text-align: center; }
+.yes { color: var(--green); font-weight: 700; font-size: 16px; }
+.no  { color: var(--red);   font-weight: 700; font-size: 16px; }
+.val-biz { font-weight: 700; color: var(--navy); font-size: 14px; }
+.val-comp { color: var(--gray-500); font-size: 14px; }
+
+/* ════════════════════════════════════════════════════
+   SERVICES BEYOND INCORPORATION
+════════════════════════════════════════════════════ */
+.services { background: var(--blue-xlt); }
+.services-header { text-align: center; margin-bottom: 52px; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.service-card {
+  background: var(--white);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: box-shadow .25s, transform .25s;
+  cursor: pointer;
+}
+.service-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+.service-icon {
+  font-size: 32px; margin-bottom: 16px;
+  display: block;
+}
+.service-card h4 { font-size: 17px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
+.service-card p { font-size: 14px; color: var(--gray-500); line-height: 1.65; margin-bottom: 16px; }
+.service-link {
+  font-size: 14px; font-weight: 600; color: var(--blue-mid);
+  display: flex; align-items: center; gap: 4px;
+}
+.service-link:hover { color: var(--blue); }
+
+/* ════════════════════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════════════════════ */
+.testimonials { background: var(--white); }
+.test-header { text-align: center; margin-bottom: 52px; }
+.test-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.test-card {
+  background: var(--gray-50);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: box-shadow .25s, transform .25s;
+}
+.test-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.test-stars { color: #f59e0b; font-size: 15px; margin-bottom: 14px; }
+.test-text {
+  font-size: 15px; color: var(--gray-700); line-height: 1.75;
+  margin-bottom: 20px; font-style: italic;
+}
+.test-author { display: flex; align-items: center; gap: 12px; }
+.test-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--blue-mid); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px; font-weight: 700;
+}
+.test-name { font-size: 14px; font-weight: 700; color: var(--gray-900); }
+.test-role { font-size: 13px; color: var(--gray-500); }
+
+/* ════════════════════════════════════════════════════
+   CTA SECTION
+════════════════════════════════════════════════════ */
+.cta-section {
+  background: linear-gradient(155deg, var(--navy) 0%, #1e3a8a 60%, #1d4ed8 100%);
+  color: #fff; text-align: center;
+  padding: 96px 32px;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(249,115,22,.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(37,99,235,.2) 0%, transparent 50%);
+}
+.cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+.cta-section h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 800; margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+.cta-section p {
+  font-size: 18px; color: rgba(255,255,255,.75);
+  margin-bottom: 40px; line-height: 1.7;
+}
+.cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.cta-note {
+  margin-top: 20px;
+  font-size: 13px; color: rgba(255,255,255,.5);
+}
+
+/* ════════════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════════════ */
+footer {
+  background: #0a0e1a;
+  color: rgba(255,255,255,.65);
+  padding: 72px 0 0;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.footer-brand {}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px; font-weight: 800;
+  color: #fff; display: block; margin-bottom: 14px;
+  letter-spacing: -.5px;
+}
+.footer-logo span { color: var(--orange); }
+.footer-brand-desc {
+  font-size: 14px; line-height: 1.8; margin-bottom: 20px;
+  color: rgba(255,255,255,.55);
+}
+.footer-contact-line {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: rgba(255,255,255,.6);
+  margin-bottom: 8px;
+}
+.footer-contact-line a { color: rgba(255,255,255,.6); transition: color .2s; }
+.footer-contact-line a:hover { color: #fff; }
+.footer-socials {
+  display: flex; gap: 10px; margin-top: 20px;
+}
+.social-btn {
+  width: 38px; height: 38px; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.65); font-size: 14px;
+  transition: background .2s, color .2s; cursor: pointer;
+  text-decoration: none;
+}
+.social-btn:hover { background: var(--orange); color: #fff; border-color: var(--orange); }
+
+.footer-col h5 {
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: rgba(255,255,255,.9); margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 11px; }
+.footer-col ul li a {
+  color: rgba(255,255,255,.55); font-size: 14px;
+  transition: color .2s;
+}
+.footer-col ul li a:hover { color: #fff; }
+
+.footer-newsletter h5 {
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: rgba(255,255,255,.9); margin-bottom: 10px;
+}
+.footer-newsletter p {
+  font-size: 13.5px; color: rgba(255,255,255,.5); margin-bottom: 16px; line-height: 1.6;
+}
+.newsletter-form { display: flex; gap: 0; }
+.newsletter-input {
+  flex: 1; padding: 11px 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-right: none;
+  background: rgba(255,255,255,.06);
+  color: #fff; font-size: 14px;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  outline: none;
+}
+.newsletter-input::placeholder { color: rgba(255,255,255,.3); }
+.newsletter-input:focus { border-color: var(--orange); background: rgba(255,255,255,.09); }
+.newsletter-btn {
+  background: var(--orange); color: #fff;
+  border: none; padding: 11px 18px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  transition: background .2s;
+}
+.newsletter-btn:hover { background: var(--orange-dk); }
+
+.footer-bottom {
+  padding: 24px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+  font-size: 13px;
+}
+.footer-bottom-left { color: rgba(255,255,255,.4); }
+.footer-bottom-right {
+  display: flex; gap: 20px;
+}
+.footer-bottom-right a {
+  color: rgba(255,255,255,.4); transition: color .2s;
+}
+.footer-bottom-right a:hover { color: rgba(255,255,255,.8); }
+.footer-disclaimer {
+  background: rgba(0,0,0,.3);
+  padding: 14px 32px;
+  font-size: 12px;
+  color: rgba(255,255,255,.3);
+  line-height: 1.6; text-align: center;
+}
+
+/* ════════════════════════════════════════════════════
+   HERO — ENTITY QUICK BUTTONS
+════════════════════════════════════════════════════ */
+.hero-entity-btns {
+  display: flex; gap: 12px;
+  justify-content: center; flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.hero-entity-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.1);
+  border: 1.5px solid rgba(255,255,255,.28);
+  color: #fff; padding: 13px 24px;
+  border-radius: 8px;
+  font-size: 15px; font-weight: 600;
+  text-decoration: none;
+  transition: background .2s, border-color .2s, transform .15s;
+  font-family: 'Inter', sans-serif;
+}
+.hero-entity-btn:hover {
+  background: var(--orange); border-color: var(--orange);
+  color: #fff; transform: translateY(-2px);
+}
+.hero-entity-icon { font-size: 18px; }
+.hero-help {
+  font-size: 14px; color: rgba(255,255,255,.55);
+  margin-bottom: 44px;
+}
+.hero-help-link {
+  color: rgba(255,255,255,.8); font-weight: 600;
+  text-decoration: underline; text-underline-offset: 3px;
+  transition: color .2s;
+}
+.hero-help-link:hover { color: #fff; }
+
+/* ════════════════════════════════════════════════════
+   ENTITY CARDS — ENHANCED (client bullets + CTA)
+════════════════════════════════════════════════════ */
+.entity-card { text-align: left; }
+.entity-card-top { text-align: center; }
+.entity-full-desc {
+  font-size: 13px; color: var(--gray-500);
+  line-height: 1.6; margin-bottom: 14px;
+}
+.entity-bullets { list-style: none; margin-bottom: 20px; }
+.entity-bullets li {
+  display: flex; align-items: flex-start; gap: 7px;
+  font-size: 13px; color: var(--gray-700);
+  padding: 3px 0; line-height: 1.5;
+}
+.entity-bullets li::before {
+  content: '✔'; color: var(--green);
+  font-size: 11px; flex-shrink: 0; margin-top: 2px;
+}
+.entity-cta-btn {
+  display: block; width: 100%;
+  padding: 12px 16px;
+  background: var(--orange); color: #fff;
+  border: none; border-radius: var(--radius-sm);
+  font-size: 14px; font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  text-align: center; text-decoration: none;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+  box-shadow: 0 3px 10px rgba(249,115,22,.3);
+}
+.entity-cta-btn:hover { background: var(--orange-dk); transform: translateY(-1px); color: #fff; }
+
+/* ════════════════════════════════════════════════════
+   THE EASY WAY SECTION
+════════════════════════════════════════════════════ */
+.easy-way { background: var(--white); border-top: 1px solid var(--gray-100); }
+.easy-way-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
+}
+.easy-way-text .section-title { margin-bottom: 28px; }
+.easy-way-text p {
+  font-size: 15.5px; color: var(--gray-700);
+  line-height: 1.85; margin-bottom: 16px;
+}
+.easy-way-text p strong { color: var(--navy); }
+.easy-way-text .easy-cta { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+.easy-visual {
+  background: linear-gradient(155deg, var(--navy) 0%, #1e3a8a 60%, #1d4ed8 100%);
+  border-radius: var(--radius-lg); padding: 48px 40px; color: #fff;
+  position: relative; overflow: hidden;
+}
+.easy-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.easy-stats { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 32px; }
+.easy-stat-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 44px; font-weight: 800; color: #fff;
+  line-height: 1; margin-bottom: 6px;
+}
+.easy-stat-num span { color: var(--orange); }
+.easy-stat-label { font-size: 14px; color: rgba(255,255,255,.65); }
+.easy-stat-divider { width: 40px; height: 1px; background: rgba(255,255,255,.15); }
+
+/* ════════════════════════════════════════════════════
+   LEGACY / BUILD SOMETHING GREATER
+════════════════════════════════════════════════════ */
+.legacy {
+  position: relative; background: var(--navy);
+  color: #fff; overflow: hidden; padding: 0;
+}
+.legacy-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1400&q=80');
+  background-size: cover; background-position: center top;
+  opacity: 0.2;
+}
+.legacy-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(15,33,86,.93) 0%, rgba(30,58,138,.87) 55%, rgba(15,33,86,.80) 100%);
+}
+.legacy-inner { position: relative; z-index: 1; padding: 96px 0; }
+.legacy-content { max-width: 700px; }
+.legacy-content h2 {
+  font-size: clamp(30px, 4.5vw, 52px);
+  font-weight: 800; line-height: 1.15;
+  letter-spacing: -1px; margin-bottom: 24px; color: #fff;
+}
+.legacy-content h2 em { font-style: normal; color: #fbbf24; }
+.legacy-content p {
+  font-size: 17px; color: rgba(255,255,255,.78);
+  line-height: 1.85; margin-bottom: 16px;
+}
+.legacy-since {
+  margin-top: 36px; padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  font-size: 15px; color: rgba(255,255,255,.6);
+}
+.legacy-since strong { color: var(--orange); font-style: normal; }
+
+/* ════════════════════════════════════════════════════
+   WE FORM ALMOST ANY TYPE — SPECIALIZED ENTITIES
+════════════════════════════════════════════════════ */
+.specialized { background: var(--gray-50); }
+.specialized-header { text-align: center; margin-bottom: 48px; }
+.specialized-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.spec-card {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg); padding: 28px 22px;
+  transition: box-shadow .25s, transform .25s;
+}
+.spec-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.spec-card h3 { font-size: 18px; font-weight: 700; color: var(--gray-900); margin-bottom: 10px; }
+.spec-desc { font-size: 13px; color: var(--gray-500); line-height: 1.6; margin-bottom: 16px; }
+.spec-bullets { list-style: none; }
+.spec-bullets li {
+  display: flex; align-items: flex-start; gap: 7px;
+  font-size: 13px; color: var(--gray-700);
+  padding: 3px 0; line-height: 1.5;
+}
+.spec-bullets li::before {
+  content: '✔'; color: var(--green);
+  font-size: 11px; flex-shrink: 0; margin-top: 2px;
+}
+.spec-callout {
+  max-width: 760px; margin: 40px auto 0;
+  background: var(--blue-lt); border: 1.5px solid var(--blue-mid);
+  border-radius: var(--radius-lg); padding: 28px 36px;
+  text-align: center;
+}
+.spec-callout p {
+  font-size: 17px; font-weight: 600; color: var(--navy);
+  line-height: 1.6; margin-bottom: 20px;
+}
+
+/* ════════════════════════════════════════════════════
+   FAQ ACCORDION
+════════════════════════════════════════════════════ */
+.faq { background: var(--white); }
+.faq-header { text-align: center; margin-bottom: 52px; }
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--gray-200); }
+.faq-q {
+  width: 100%; display: flex; align-items: center;
+  justify-content: space-between; gap: 16px;
+  padding: 22px 0;
+  font-size: 16px; font-weight: 600; color: var(--gray-900);
+  background: transparent; border: none; cursor: pointer;
+  text-align: left; font-family: 'Space Grotesk', sans-serif;
+  transition: color .2s;
+}
+.faq-q:hover { color: var(--blue-mid); }
+.faq-icon {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--blue-lt); color: var(--blue-mid);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 18px; font-weight: 300;
+  transition: transform .3s, background .2s, color .2s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: var(--blue-mid); color: #fff; }
+.faq-a {
+  font-size: 15px; color: var(--gray-600);
+  line-height: 1.85; padding: 0 40px 22px 0;
+  display: none;
+}
+.faq-item.open .faq-a { display: block; }
+
+/* ════════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════════ */
+
+/* ── Tablet (≤1024px) ── */
+@media (max-width: 1024px) {
+  .pricing-grid    { grid-template-columns: repeat(2, 1fr); }
+  .entities-grid   { grid-template-columns: repeat(2, 1fr); }
+  .services-grid   { grid-template-columns: repeat(2, 1fr); }
+  .test-grid       { grid-template-columns: repeat(2, 1fr); }
+  .why-grid        { grid-template-columns: 1fr; gap: 40px; }
+  .footer-top      { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .plan-card.featured { transform: translateY(-4px); }
+}
+
+/* ── Mobile (≤768px) ── */
+@media (max-width: 768px) {
+  /* Layout */
+  .container  { padding: 0 16px; }
+  .section    { padding: 56px 0; }
+  .section-sub { max-width: 100%; font-size: 15px; }
+
+  /* Announcement bar */
+  .ann-bar { font-size: 12px; padding: 8px 12px; }
+  .ann-bar br { display: block; }
+
+  /* Nav */
+  .nav-links { display: none; }
+  .nav-right  { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-inner  { height: 60px; }
+
+  /* Hero */
+  .hero { padding: 64px 0 52px; }
+  .hero h1 { letter-spacing: -0.5px; font-size: clamp(30px, 8vw, 42px); }
+  .hero h1 .cycle-wrap { min-width: 0; width: auto; }
+  .hero-sub { font-size: 16px; padding: 0 4px; }
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-btns .btn-primary,
+  .hero-btns .btn-outline-white {
+    width: 100%; max-width: 320px;
+    text-align: center; padding: 14px 24px;
+    font-size: 16px;
+  }
+  .hero-trust { gap: 12px; }
+  .trust-item { font-size: 12.5px; }
+  .hero-badge { font-size: 12px; padding: 6px 14px; }
+  .hero-orb-1 { width: 200px; height: 200px; top: -60px; left: -60px; }
+  .hero-orb-2 { width: 150px; height: 150px; bottom: -30px; right: -30px; }
+
+  /* Stats */
+  .stats { padding: 40px 0; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .stat-item {
+    border-right: none;
+    border-bottom: 1px solid var(--gray-100);
+    padding: 20px 12px;
+  }
+  .stat-item:nth-child(odd)  { border-right: 1px solid var(--gray-100); }
+  .stat-item:nth-child(3),
+  .stat-item:nth-child(4)    { border-bottom: none; }
+  .stat-num { font-size: 34px; }
+
+  /* Entities */
+  .entities-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .entity-card { padding: 24px 16px; }
+  .entity-icon { width: 48px; height: 48px; font-size: 22px; margin-bottom: 14px; }
+
+  /* How it works */
+  .hiw-steps     { grid-template-columns: 1fr; gap: 0; }
+  .hiw-connector { display: none; }
+  .step-card     { padding: 0 16px 40px; }
+  .step-num      { width: 72px; height: 72px; font-size: 24px; margin-bottom: 20px; }
+
+  /* Pricing */
+  .pricing-grid     { grid-template-columns: 1fr; gap: 16px; }
+  .plan-card        { padding: 28px 20px; }
+  .plan-card.featured { transform: none; box-shadow: var(--shadow-blue); }
+  .plan-price       { font-size: 36px; }
+  .plan-desc        { min-height: auto; }
+  .pricing-notice   { font-size: 13px; padding: 12px 16px; }
+
+  /* Why BizJump */
+  .why-grid       { grid-template-columns: 1fr; gap: 32px; }
+  .compare-card   { padding: 24px 16px; overflow-x: auto; }
+  .compare-table  { min-width: 420px; }
+
+  /* Services */
+  .services-grid { grid-template-columns: 1fr; gap: 14px; }
+  .service-card  { padding: 22px 20px; }
+
+  /* Testimonials */
+  .test-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  /* CTA */
+  .cta-section { padding: 64px 16px; }
+  .cta-btns {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .cta-btns .btn-primary,
+  .cta-btns .btn-outline-white {
+    width: 100%; max-width: 320px;
+    text-align: center;
+  }
+
+  /* Footer */
+  .footer-top       { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
+  .footer-bottom    { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-bottom-right { flex-wrap: wrap; gap: 12px; }
+  .footer-disclaimer { padding: 14px 16px; font-size: 11px; }
+  .newsletter-form  { flex-wrap: nowrap; }
+  .newsletter-input { min-width: 0; }
+
+  /* Section headers center on mobile */
+  .entities-header,
+  .hiw-header,
+  .pricing-header,
+  .services-header,
+  .test-header { text-align: center; }
+  .entities-header .section-sub,
+  .hiw-header .section-sub,
+  .pricing-header .section-sub,
+  .services-header .section-sub,
+  .test-header .section-sub { margin: 0 auto; }
+
+  /* Disable 3D tilt on touch devices */
+  .plan-card, .entity-card, .service-card, .test-card, .spec-card {
+    transform: none !important;
+  }
+
+  /* Hero entity buttons */
+  .hero-entity-btns { gap: 8px; }
+  .hero-entity-btn { font-size: 14px; padding: 11px 16px; }
+
+  /* Easy way */
+  .easy-way-grid { grid-template-columns: 1fr; gap: 40px; }
+  .easy-visual { padding: 36px 28px; }
+  .easy-stat-num { font-size: 36px; }
+
+  /* Legacy */
+  .legacy-inner { padding: 64px 0; }
+
+  /* Specialized */
+  .specialized-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .spec-callout { padding: 22px 20px; }
+
+  /* FAQ */
+  .faq-q { font-size: 15px; padding: 18px 0; }
+  .faq-a { font-size: 14px; padding-right: 0; }
+}
+
+/* ── Small Mobile (≤480px) — extra overrides ── */
+@media (max-width: 480px) {
+  .specialized-grid { grid-template-columns: 1fr; }
+  .hero-entity-btns { flex-direction: column; align-items: center; }
+  .hero-entity-btn { width: 100%; max-width: 280px; justify-content: center; }
+}
+
+/* ── Small Mobile (≤480px) ── */
+@media (max-width: 480px) {
+  .entities-grid { grid-template-columns: 1fr; gap: 12px; }
+  .hero-trust    { flex-direction: column; align-items: center; gap: 8px; }
+  .hero h1       { font-size: clamp(28px, 9vw, 36px); }
+  .hero h1 .cycle-wrap { display: block; height: auto; overflow: visible; border-bottom: none; }
+  .cycle-word    { color: #fbbf24; }
+  .section-title { font-size: clamp(24px, 7vw, 32px); }
+  .stat-num      { font-size: 30px; }
+  .plan-price    { font-size: 32px; }
+  .plan-btn      { padding: 13px 12px; font-size: 14px; }
+  .footer-socials .social-btn { width: 42px; height: 42px; }
+  .ann-bar       { display: none; } /* hide on very small — saves space */
+  .test-text     { font-size: 14px; }
+  .why-features  { gap: 24px; }
+  .feature-icon  { width: 44px; height: 44px; font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     ANNOUNCEMENT BAR
+═══════════════════════════════════════ -->
+<div class="ann-bar">
+  <strong>🎉 Limited Time:</strong> Free Registered Agent for 1 Year on Premium &amp; Enterprise plans —
+  <a href="incorporation-landing.html">Start Now →</a>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+<header class="nav" id="mainNav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="homepage.html" class="nav-logo">Biz<span>Jump</span></a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#" class="nav-login">Log In</a>
+        <a href="incorporation-landing.html" class="btn-primary">Start Your Business →</a>
+      </div>
+      <div class="nav-toggle" id="navToggle" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="#how-it-works" onclick="toggleMenu()">How It Works</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  <a href="#" onclick="toggleMenu()">Log In</a>
+  <a href="incorporation-landing.html" class="btn-primary" style="text-align:center; display:block;">Start Your Business →</a>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Trusted by 15,000+ Entrepreneurs · Since 1998
+      </div>
+      <h1>
+        <span class="static">Jump-start your business</span>
+        <span class="static">in minutes</span>
+      </h1>
+      <p class="hero-sub">
+        Choose the structure that best fits your goals.
+      </p>
+
+      <!-- Entity quick-select buttons -->
+      <div class="hero-entity-btns">
+        <a href="incorporate.html?entity=llc" class="hero-entity-btn">
+          <span class="hero-entity-icon">🏢</span> Start my LLC
+        </a>
+        <a href="incorporate.html?entity=ccorp" class="hero-entity-btn">
+          <span class="hero-entity-icon">📈</span> Start my C-Corp
+        </a>
+        <a href="incorporate.html?entity=scorp" class="hero-entity-btn">
+          <span class="hero-entity-icon">💼</span> Start my S-Corp
+        </a>
+        <a href="incorporate.html?entity=nonprofit" class="hero-entity-btn">
+          <span class="hero-entity-icon">❤️</span> Start my Non-Profit
+        </a>
+      </div>
+
+      <p class="hero-help">
+        <a href="contact.html" class="hero-help-link">Need Help? / Talk to A Representative</a>
+      </p>
+
+      <div class="hero-trust">
+        <div class="trust-item"><div class="check">✓</div> No Hidden Fees</div>
+        <div class="trust-item"><div class="check">✓</div> SSL Secured Checkout</div>
+        <div class="trust-item"><div class="check">✓</div> 100% Money-Back Guarantee</div>
+        <div class="trust-item"><div class="check">✓</div> All 50 States</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TICKER
+═══════════════════════════════════════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker">
+    <span class="ticker-item">LLC Formation</span>
+    <span class="ticker-item">Corporation</span>
+    <span class="ticker-item">S-Corp Filing</span>
+    <span class="ticker-item">Non-Profit</span>
+    <span class="ticker-item">EIN / Tax ID</span>
+    <span class="ticker-item">Registered Agent</span>
+    <span class="ticker-item">Operating Agreement</span>
+    <span class="ticker-item">All 50 States</span>
+    <span class="ticker-item">Flat-Rate Pricing</span>
+    <span class="ticker-item">Business Financing</span>
+    <span class="ticker-item">Digital Marketing</span>
+    <span class="ticker-item">Accounting &amp; Tax</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">LLC Formation</span>
+    <span class="ticker-item">Corporation</span>
+    <span class="ticker-item">S-Corp Filing</span>
+    <span class="ticker-item">Non-Profit</span>
+    <span class="ticker-item">EIN / Tax ID</span>
+    <span class="ticker-item">Registered Agent</span>
+    <span class="ticker-item">Operating Agreement</span>
+    <span class="ticker-item">All 50 States</span>
+    <span class="ticker-item">Flat-Rate Pricing</span>
+    <span class="ticker-item">Business Financing</span>
+    <span class="ticker-item">Digital Marketing</span>
+    <span class="ticker-item">Accounting &amp; Tax</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     STATS
+═══════════════════════════════════════ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num"><span class="counter" data-target="3000">0</span><span class="suffix">+</span></div>
+        <div class="stat-label">Businesses Formed</div>
+        <div class="stat-sub">Since 1998</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num"><span class="counter" data-target="50">0</span></div>
+        <div class="stat-label">States Supported</div>
+        <div class="stat-sub">All across the USA</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num"><span class="counter" data-target="25">0</span><span class="suffix">+</span></div>
+        <div class="stat-label">Years of Experience</div>
+        <div class="stat-sub">Trusted since 1998</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num">$<span class="counter" data-target="0">0</span></div>
+        <div class="stat-label">Hidden Fees</div>
+        <div class="stat-sub">Always transparent</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     ENTITY TYPES
+═══════════════════════════════════════ -->
+<section class="section entities" id="services">
+  <div class="container">
+    <div class="entities-header reveal">
+      <span class="section-label">Choose Your Entity</span>
+      <h2 class="section-title">What Type of Business<br>Are You Forming?</h2>
+      <p class="section-sub">Not sure which is right for you? Each structure has unique tax and liability benefits.</p>
+    </div>
+    <div class="entities-grid">
+
+      <!-- LLC -->
+      <div class="entity-card reveal">
+        <div class="entity-card-top">
+          <div class="entity-icon">🏢</div>
+          <h3>LLC</h3>
+          <span class="entity-tag">Most Popular</span>
+        </div>
+        <div class="entity-card-body">
+          <p class="entity-full-desc">Limited Liability Company (LLC) — the simplest and most flexible business structure. Protect your personal assets without the complexity of a corporation.</p>
+          <ul class="entity-bullets">
+            <li>Personal liability protection</li>
+            <li>Pass-through taxation (profits taxed once at the individual level)</li>
+            <li>Flexible management structure</li>
+            <li>No board of directors or formal corporate requirements</li>
+          </ul>
+        </div>
+        <a href="incorporate.html?entity=llc" class="entity-cta-btn">Start my LLC</a>
+      </div>
+
+      <!-- C-Corporation -->
+      <div class="entity-card reveal reveal-delay-1">
+        <div class="entity-card-top">
+          <div class="entity-icon">📈</div>
+          <h3>C-Corporation</h3>
+          <span class="entity-tag">Investor-Ready</span>
+        </div>
+        <div class="entity-card-body">
+          <p class="entity-full-desc">C Corporation (C Corp) — a structured business designed for growth and raising money. Best for companies planning to scale or bring in investors.</p>
+          <ul class="entity-bullets">
+            <li>Strong personal liability protection</li>
+            <li>Company pays its own taxes (separate from owners)</li>
+            <li>Can raise money by selling shares</li>
+            <li>No limit on number of shareholders</li>
+            <li>Requires a board of directors and formal structure</li>
+          </ul>
+        </div>
+        <a href="incorporate.html?entity=ccorp" class="entity-cta-btn">Start my C-Corp</a>
+      </div>
+
+      <!-- S-Corporation -->
+      <div class="entity-card reveal reveal-delay-2">
+        <div class="entity-card-top">
+          <div class="entity-icon">💼</div>
+          <h3>S-Corporation</h3>
+          <span class="entity-tag">Tax Efficient</span>
+        </div>
+        <div class="entity-card-body">
+          <p class="entity-full-desc">S Corporation (S Corp) — a tax status that helps avoid double taxation while maintaining a structured business setup. Best for small to mid-sized businesses.</p>
+          <ul class="entity-bullets">
+            <li>Personal liability protection</li>
+            <li>Pass-through taxation (profits taxed once)</li>
+            <li>Potential self-employment tax savings</li>
+            <li>Maximum of 100 shareholders</li>
+            <li>Shareholders must be U.S. citizens or residents</li>
+            <li>Can convert to a C Corporation as the business grows</li>
+          </ul>
+        </div>
+        <a href="incorporate.html?entity=scorp" class="entity-cta-btn">Start my S-Corp</a>
+      </div>
+
+      <!-- Non-Profit -->
+      <div class="entity-card reveal reveal-delay-3">
+        <div class="entity-card-top">
+          <div class="entity-icon">❤️</div>
+          <h3>Non-Profit</h3>
+          <span class="entity-tag">Tax Exempt</span>
+        </div>
+        <div class="entity-card-body">
+          <p class="entity-full-desc">Nonprofit Corporation (Not-for-Profit) — an organization formed to serve a public or community purpose rather than generate profit for owners.</p>
+          <ul class="entity-bullets">
+            <li>No owners or shareholders</li>
+            <li>Profits are reinvested into the organization's mission</li>
+            <li>Eligible for tax-exempt status (if approved)</li>
+            <li>Can receive donations and grants</li>
+            <li>Requires a board of directors and formal governance structure</li>
+          </ul>
+        </div>
+        <a href="incorporate.html?entity=nonprofit" class="entity-cta-btn">Start my Non-Profit</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     THE EASY WAY TO INCORPORATE
+═══════════════════════════════════════ -->
+<section class="section easy-way">
+  <div class="container">
+    <div class="easy-way-grid">
+
+      <div class="easy-way-text reveal">
+        <span class="section-label">Why BizJump</span>
+        <h2 class="section-title">The easy way to incorporate your business<br>in any 50 state</h2>
+        <p>Starting at <strong>$99 plus state fees</strong> (paid directly to the state), BizJump makes starting your business fast, simple, and stress-free. No confusing steps. No unnecessary extras — just a clear path to getting up and running.</p>
+        <p>You only pay for what you need. <strong>No hidden fees. No surprise add-ons. No upselling.</strong></p>
+        <p>From day one, your dedicated BizJump specialist handles everything — from name search and filings to securing your EIN — so you can focus on building your business.</p>
+        <p>And we don't stop there. As you grow, we support you with business banking, digital launch tools, access to funding, and tax guidance — all with ongoing priority support.</p>
+        <p><strong>Start your business the right way — with a partner that keeps it simple, affordable, and built for your success.</strong></p>
+        <div class="easy-cta">
+          <a href="incorporation-landing.html" class="btn-primary">Start For Free →</a>
+          <a href="contact.html" class="btn-outline-navy">Talk to a Specialist</a>
+        </div>
+      </div>
+
+      <div class="easy-visual reveal reveal-delay-2">
+        <div class="easy-stats">
+          <div>
+            <div class="easy-stat-num">$<span>99</span></div>
+            <div class="easy-stat-label">Starting price — one-time, flat-rate</div>
+          </div>
+          <div class="easy-stat-divider"></div>
+          <div>
+            <div class="easy-stat-num"><span>50</span></div>
+            <div class="easy-stat-label">States supported across the USA</div>
+          </div>
+          <div class="easy-stat-divider"></div>
+          <div>
+            <div class="easy-stat-num"><span>1</span> Day</div>
+            <div class="easy-stat-label">Rush filing available on Premium & Enterprise</div>
+          </div>
+          <div class="easy-stat-divider"></div>
+          <div>
+            <div class="easy-stat-num">$<span>0</span></div>
+            <div class="easy-stat-label">Hidden fees — always 100% transparent pricing</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     BUILD SOMETHING GREATER — LEGACY
+═══════════════════════════════════════ -->
+<section class="legacy">
+  <div class="legacy-bg"></div>
+  <div class="legacy-overlay"></div>
+  <div class="container legacy-inner">
+    <div class="legacy-content reveal">
+      <h2>Build something<br><em>greater than yourself.</em></h2>
+      <p>Create a business that lasts beyond you — one that carries your vision, extends your influence, and builds lasting wealth for years to come. This is more than starting a company.</p>
+      <p>It's about creating a legacy that endures.</p>
+      <p>Welcome to BizJump. Let's build what lasts.</p>
+      <div class="legacy-since">
+        <strong>Since 1998,</strong> BizJump small business experts have helped more than <strong>3,000+ entrepreneurs</strong> turn ideas into successful businesses.<br>
+        Your journey starts here.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════ -->
+<section class="section hiw" id="how-it-works">
+  <div class="container">
+    <div class="hiw-header reveal">
+      <span class="section-label">Simple Process</span>
+      <h2 class="section-title">Form Your Business in 3 Steps</h2>
+      <p class="section-sub">No lawyers, no confusing paperwork. Our guided online wizard walks you through everything in minutes.</p>
+    </div>
+    <div class="hiw-steps">
+      <div class="hiw-connector"></div>
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h3>Choose Your Entity &amp; State</h3>
+        <p>Tell us what type of business you're forming and which state you want to incorporate in. Our wizard guides you step by step.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">2</div>
+        <h3>Pick a Plan &amp; Add-Ons</h3>
+        <p>Select the service tier that fits your needs — Basic, Pro, Premium, or Enterprise. Add extras like EIN, Registered Agent, or compliance monitoring.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">3</div>
+        <h3>We File — You Launch</h3>
+        <p>We handle all state paperwork and filings on your behalf. You receive your formation documents and you're ready to do business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PRICING
+═══════════════════════════════════════ -->
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-header reveal">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">Simple, Flat-Rate Pricing</h2>
+      <p class="section-sub">No hourly rates. No surprise invoices. State filing fees are always shown separately and clearly.</p>
+    </div>
+    <div class="pricing-notice reveal">
+      <strong>A note on competitor pricing:</strong> Many services advertise "$0 + state fees" but later charge $200–$350/year in compliance and monitoring fees.
+      BizJump shows you exactly what you pay — only for what you choose. No fine print, no pressure.
+    </div>
+    <div class="pricing-grid">
+
+      <!-- BASIC -->
+      <div class="plan-card reveal">
+        <div class="plan-tier">Basic</div>
+        <div class="plan-name">Starter</div>
+        <div class="plan-price"><sup>$</sup>99<sub></sub></div>
+        <div class="plan-state-fee">+ state filing fee</div>
+        <div class="plan-billing"><strong>One-time payment</strong></div>
+        <div class="plan-desc">Corporate formation only. Ideal for DIY entrepreneurs who can handle post-incorporation tasks themselves.</div>
+        <div class="plan-time">7–10 Day Processing</div>
+        <ul class="plan-features">
+          <li><span class="check-icon">✓</span> Articles of Formation Filed with State</li>
+          <li><span class="check-icon">✓</span> Business Name Availability Check</li>
+          <li><span class="check-icon">✓</span> Digital Document Delivery</li>
+        </ul>
+        <a href="incorporation-landing.html" class="plan-btn plan-btn-outline">Get Started</a>
+      </div>
+
+      <!-- PRO -->
+      <div class="plan-card reveal reveal-delay-1">
+        <div class="plan-tier">Pro</div>
+        <div class="plan-name">Professional</div>
+        <div class="plan-price"><sup>$</sup>195</div>
+        <div class="plan-state-fee">+ state filing fee</div>
+        <div class="plan-billing"><strong>One-time payment</strong></div>
+        <div class="plan-desc">All Basic features + essential filings. Ideal for entrepreneurs who want all initial startup tasks handled.</div>
+        <div class="plan-time">5 Day Processing</div>
+        <ul class="plan-features">
+          <li><span class="check-icon">✓</span> Everything in Basic</li>
+          <li><span class="check-icon">✓</span> EIN / Federal Tax ID Filing</li>
+          <li><span class="check-icon">✓</span> Operating Agreement</li>
+        </ul>
+        <a href="incorporation-landing.html" class="plan-btn plan-btn-blue">Get Started</a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="plan-card featured reveal reveal-delay-2">
+        <div class="featured-badge">⭐ Most Popular</div>
+        <div class="plan-tier">Premium</div>
+        <div class="plan-name">Complete</div>
+        <div class="plan-price"><sup>$</sup>295</div>
+        <div class="plan-state-fee">+ state filing fee</div>
+        <div class="plan-billing"><strong>One-time payment</strong></div>
+        <div class="plan-desc">All Pro features + 1st-year compliance management. Best value for hands-off business formation.</div>
+        <div class="plan-time">Rush — 1 Day Processing</div>
+        <ul class="plan-features">
+          <li><span class="check-icon">✓</span> Everything in Pro</li>
+          <li><span class="check-icon">✓</span> Rush Corporate Filing</li>
+          <li><span class="check-icon">✓</span> Compliance Document Templates</li>
+          <li><span class="check-icon">✓</span> 1st Year Compliance Managed</li>
+        </ul>
+        <a href="incorporation-landing.html" class="plan-btn plan-btn-orange">Get Started</a>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="plan-card reveal reveal-delay-3">
+        <div class="plan-tier">Enterprise</div>
+        <div class="plan-name">Full Service</div>
+        <div class="plan-price"><sup>$</sup>295</div>
+        <div class="plan-state-fee">+ state filing fee + $29/month</div>
+        <div class="plan-billing"><strong>One-time + monthly subscription</strong></div>
+        <div class="plan-desc">Everything in Premium + ongoing web presence, accounting setup, and monthly support for serious founders.</div>
+        <div class="plan-time">Rush — 1 Day Processing</div>
+        <ul class="plan-features">
+          <li><span class="check-icon">✓</span> Everything in Premium</li>
+          <li><span class="check-icon">✓</span> Free Website + Domain</li>
+          <li><span class="check-icon">✓</span> Accounting System Setup</li>
+          <li><span class="check-icon">✓</span> Ongoing Hosting &amp; Support</li>
+        </ul>
+        <a href="incorporation-landing.html" class="plan-btn plan-btn-outline">Get Started</a>
+      </div>
+
+    </div>
+    <p class="pricing-footer">
+      Processing time begins upon receipt of complete information and does not include Secretary of State processing (1–14 business days).
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     WE FORM ALMOST ANY TYPE
+═══════════════════════════════════════ -->
+<section class="section specialized">
+  <div class="container">
+
+    <div class="specialized-header reveal">
+      <span class="section-label">Specialized Structures</span>
+      <h2 class="section-title">We form almost any type of business</h2>
+      <p class="section-sub" style="margin:0 auto">While not as common as the options above, these specialized business structures are necessary in certain situations — and yes, we can form them too.</p>
+    </div>
+
+    <div class="specialized-grid">
+
+      <!-- DBA -->
+      <div class="spec-card reveal">
+        <h3>DBA</h3>
+        <p class="spec-desc">Doing Business As (DBA) — a simple way to operate your business under a different name without forming a separate legal entity.</p>
+        <ul class="spec-bullets">
+          <li>No separate legal entity (operates under your existing business or personal name)</li>
+          <li>Quick and low-cost registration</li>
+          <li>Allows you to brand your business with a professional name</li>
+          <li>Can be used with sole proprietorships, LLCs, or corporations</li>
+        </ul>
+      </div>
+
+      <!-- Professional Corporations -->
+      <div class="spec-card reveal reveal-delay-1">
+        <h3>Professional Corporations</h3>
+        <p class="spec-desc">Professional Corporation (PC) — a business structure for licensed professionals that require state licensing, offering liability protection while meeting regulatory requirements.</p>
+        <ul class="spec-bullets">
+          <li>Personal liability protection for business debts</li>
+          <li>Designed for licensed professionals (e.g., doctors, lawyers, accountants)</li>
+          <li>Owners must hold valid state licenses in their profession</li>
+          <li>Structured with a board of directors and formal corporate requirements</li>
+        </ul>
+      </div>
+
+      <!-- B-Corporation -->
+      <div class="spec-card reveal reveal-delay-2">
+        <h3>B-Corporation</h3>
+        <p class="spec-desc">B Corporation (Benefit Corporation) — combines the advantages of a traditional corporation with a mission-driven focus similar to a nonprofit.</p>
+        <ul class="spec-bullets">
+          <li>Full benefits of a regular corporation (liability protection, ability to raise capital)</li>
+          <li>Focus on social and environmental impact</li>
+          <li>Legal protection to consider stakeholders, not just shareholders</li>
+          <li>Requires transparency and impact reporting</li>
+        </ul>
+      </div>
+
+      <!-- LLP -->
+      <div class="spec-card reveal reveal-delay-3">
+        <h3>LLP</h3>
+        <p class="spec-desc">Limited Liability Partnership (LLP) — a business structure where partners share management while protecting themselves from certain liabilities.</p>
+        <ul class="spec-bullets">
+          <li>Personal liability protection for each partner</li>
+          <li>Flexible management — partners can run the business directly</li>
+          <li>Pass-through taxation (profits taxed once)</li>
+          <li>Common for licensed professionals (e.g., lawyers, accountants)</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Custom Quote Callout -->
+    <div class="spec-callout reveal">
+      <p>Contact us directly for a custom quote to set up either a B-Corp, DBA, Professional Corporation, or LLP.</p>
+      <a href="contact.html" class="btn-primary">Request a Custom Quote →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FAQ
+═══════════════════════════════════════ -->
+<section class="section faq">
+  <div class="container">
+
+    <div class="faq-header reveal">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What's the difference between an LLC and a corporation?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          An LLC is simpler and more flexible, with fewer formal requirements and pass-through taxation by default. A corporation is more structured, requires a board of directors, and is better suited for raising capital and scaling.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What's the difference between a C corporation and an S corporation?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          A C corporation is taxed separately from its owners (which can lead to double taxation). An S corporation avoids this by passing profits directly to owners for single-level taxation, but it has ownership limits and eligibility rules.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What's the main difference between a sole proprietorship and an LLC?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          A sole proprietorship is the simplest structure but offers no separation between you and the business. An LLC creates a legal separation, protecting your personal assets from business liabilities.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How are different business types taxed?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Sole proprietorships, partnerships, LLCs (by default), and S corporations typically use pass-through taxation, where profits are taxed once at the owner level. C corporations are taxed at the corporate level, and shareholders may also pay taxes on dividends.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Which business types give me personal liability protection?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          LLCs, corporations (C and S), LLPs, and professional corporations generally provide personal liability protection. Sole proprietorships and general partnerships do not.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     WHY BIZJUMP
+═══════════════════════════════════════ -->
+<section class="section why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="reveal">
+        <span class="section-label">Why BizJump</span>
+        <h2 class="section-title">Transparent. Fast.<br>Built for Founders.</h2>
+        <p class="section-sub" style="margin-bottom:40px">
+          We built BizJump for entrepreneurs who want results — not confusing legal jargon, hidden fees, or unnecessary upsells.
+        </p>
+        <div class="why-features">
+          <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-text">
+              <h4>Fast Formation — As Quick as 1 Day</h4>
+              <p>Rush processing available. Most premium orders are filed the same business day. No waiting weeks.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">💰</div>
+            <div class="feature-text">
+              <h4>Flat-Rate, 100% Transparent Pricing</h4>
+              <p>You see every cost before you pay — including state fees. No surprise invoices, no upsells at checkout.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🛡️</div>
+            <div class="feature-text">
+              <h4>Money-Back Guarantee</h4>
+              <p>If we make an error in your filing, we fix it for free or refund you completely. Zero risk.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🤝</div>
+            <div class="feature-text">
+              <h4>Real Consultants, Real Support</h4>
+              <p>Since 1998, our trained consultants work one-on-one with entrepreneurs — not just automated forms.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="compare-card">
+          <h3>BizJump vs. Competitors</h3>
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>BizJump</th>
+                <th>Others</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Starting Price</td>
+                <td><span class="val-biz">$99</span></td>
+                <td><span class="val-comp">$0* then $150–$350/yr</span></td>
+              </tr>
+              <tr>
+                <td>Hidden Fees</td>
+                <td><span class="yes">✗ None</span></td>
+                <td><span class="no">✓ Common</span></td>
+              </tr>
+              <tr>
+                <td>Rush Processing</td>
+                <td><span class="val-biz">1 Day</span></td>
+                <td><span class="val-comp">3–5 Days</span></td>
+              </tr>
+              <tr>
+                <td>All 50 States</td>
+                <td><span class="yes">✓ Yes</span></td>
+                <td><span class="yes">✓ Yes</span></td>
+              </tr>
+              <tr>
+                <td>Real Consultants</td>
+                <td><span class="yes">✓ Yes</span></td>
+                <td><span class="no">✗ Automated Only</span></td>
+              </tr>
+              <tr>
+                <td>Money-Back Guarantee</td>
+                <td><span class="yes">✓ Yes</span></td>
+                <td><span class="val-comp">Limited</span></td>
+              </tr>
+              <tr>
+                <td>Experience</td>
+                <td><span class="val-biz">25+ Years</span></td>
+                <td><span class="val-comp">Varies</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SERVICES BEYOND INCORPORATION
+═══════════════════════════════════════ -->
+<section class="section services">
+  <div class="container">
+    <div class="services-header reveal">
+      <span class="section-label">All Services</span>
+      <h2 class="section-title">We Help You Start, Manage<br>&amp; Grow Your Business</h2>
+      <p class="section-sub">BizJump is more than incorporation. Our platform covers everything an entrepreneur needs.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon">🏢</span>
+        <h4>Business Incorporation</h4>
+        <p>Form your LLC, Corporation, S-Corp, or Non-Profit in any of the 50 states. We handle all paperwork and state filings.</p>
+        <a href="incorporation-landing.html" class="service-link">Start incorporating →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">💵</span>
+        <h4>Business Financing</h4>
+        <p>Access capital to fuel your growth. We connect you with the right financing options for your stage and industry.</p>
+        <a href="#" class="service-link">Explore financing →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">📈</span>
+        <h4>Digital Marketing</h4>
+        <p>Get your business found online. From SEO and social media to paid ads — our team drives real results for small businesses.</p>
+        <a href="#" class="service-link">Grow online →</a>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">📋</span>
+        <h4>Business Planning</h4>
+        <p>A solid plan opens doors to financing and partnerships. Our consultants help you build a bankable business plan.</p>
+        <a href="#" class="service-link">Build your plan →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">🧾</span>
+        <h4>Accounting &amp; Tax</h4>
+        <p>Stay compliant and organized. From bookkeeping to tax filing, our accounting services keep your finances clean.</p>
+        <a href="#" class="service-link">View accounting →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">📊</span>
+        <h4>Credit Repair &amp; Analysis</h4>
+        <p>Improve your business credit profile. Our experts analyze your credit and create a strategy to strengthen it.</p>
+        <a href="#" class="service-link">Fix your credit →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════ -->
+<section class="section testimonials">
+  <div class="container">
+    <div class="test-header reveal">
+      <span class="section-label">Client Stories</span>
+      <h2 class="section-title">Trusted by 3,000+ Entrepreneurs</h2>
+      <p class="section-sub">Real founders who launched with BizJump and never looked back.</p>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"I had my LLC formed in under a week. The process was incredibly simple and the pricing was completely transparent — no surprise fees like other services I tried."</p>
+        <div class="test-author">
+          <div class="test-avatar">MJ</div>
+          <div>
+            <div class="test-name">Marcus J.</div>
+            <div class="test-role">LLC Owner · New York</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal reveal-delay-1">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"BizJump helped me form my corporation AND set up my accounting system. Having one team handle everything saved me so much time and stress."</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:#f59e0b">RP</div>
+          <div>
+            <div class="test-name">Rachel P.</div>
+            <div class="test-role">C-Corp Founder · Texas</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal reveal-delay-2">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"I've used them for two businesses now. The consultants actually know what they're talking about, unlike those automated services that just fill out forms."</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:#16a34a">DK</div>
+          <div>
+            <div class="test-name">David K.</div>
+            <div class="test-role">Serial Entrepreneur · Florida</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CTA
+═══════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <h2>Ready to Launch Your Business?</h2>
+    <p>Join 3,000+ entrepreneurs who chose BizJump for fast, transparent, and stress-free business formation.</p>
+    <div class="cta-btns">
+      <a href="incorporation-landing.html" class="btn-primary btn-lg">Start Your Business →</a>
+      <a href="#pricing" class="btn-outline-white">Compare Plans</a>
+    </div>
+    <p class="cta-note">Takes less than 10 minutes · Flat-rate pricing · No hidden fees</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <span class="footer-logo">Biz<span>Jump</span></span>
+        <p class="footer-brand-desc">
+          Since 1998, BizJump has helped over 3,000 entrepreneurs launch and grow successful businesses across all 50 states.
+          Our expert consultants provide personalized support — from incorporation to digital marketing, accounting, and beyond.
+        </p>
+        <div class="footer-contact-line">
+          <span>📧</span>
+          <a href="mailto:contact@bizjump.com">contact@bizjump.com</a>
+        </div>
+        <div class="footer-contact-line">
+          <span>🌐</span>
+          <a href="https://www.bizjump.com" target="_blank" rel="noopener">www.bizjump.com</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://twitter.com/BizjumpAcademy" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter">𝕏</a>
+          <a href="https://www.facebook.com/BizJump-Institute-138247823203572/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">f</a>
+          <a href="https://www.pinterest.com/bizjumpacademy/" target="_blank" rel="noopener" class="social-btn" aria-label="Pinterest">P</a>
+        </div>
+      </div>
+
+      <!-- Services Column -->
+      <div class="footer-col">
+        <h5>Incorporation</h5>
+        <ul>
+          <li><a href="incorporation-landing.html">LLC Formation</a></li>
+          <li><a href="incorporation-landing.html">Corporation (C-Corp)</a></li>
+          <li><a href="incorporation-landing.html">S-Corporation</a></li>
+          <li><a href="incorporation-landing.html">Non-Profit</a></li>
+          <li><a href="incorporation-landing.html">Registered Agent</a></li>
+          <li><a href="incorporation-landing.html">EIN / Tax ID</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Column -->
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About BizJump</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#">Business Financing</a></li>
+          <li><a href="#">Digital Marketing</a></li>
+          <li><a href="#">Accounting &amp; Tax</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">My Account</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter Column -->
+      <div class="footer-newsletter">
+        <h5>Stay Informed</h5>
+        <p>Get business tips, formation guides, and state fee updates — free to your inbox.</p>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Your email address">
+          <button class="newsletter-btn" type="button">→</button>
+        </div>
+        <div style="margin-top:24px">
+          <h5 style="margin-bottom:12px">Legal</h5>
+          <ul style="list-style:none">
+            <li style="margin-bottom:8px"><a href="privacy-policy.html" style="color:rgba(255,255,255,.55);font-size:14px;transition:color .2s">Privacy Policy</a></li>
+            <li style="margin-bottom:8px"><a href="terms-of-service.html" style="color:rgba(255,255,255,.55);font-size:14px;transition:color .2s">Terms of Service</a></li>
+            <li><a href="refund-policy.html" style="color:rgba(255,255,255,.55);font-size:14px;transition:color .2s">Refund Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">© 2026 BizJump. All rights reserved. · We accelerate your business.</div>
+      <div class="footer-bottom-right">
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms-of-service.html">Terms</a>
+        <a href="refund-policy.html">Refund</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legal Disclaimer -->
+  <div class="footer-disclaimer">
+    BizJump is not a law firm and does not provide legal, tax, or financial advice. Use of our services does not create an attorney-client relationship.
+    Information provided is for general informational purposes only. Always consult a qualified professional for legal or tax matters.
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════ -->
+<script>
+/* ── MOBILE NAV ── */
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+
+/* ── NAV SCROLL SHADOW ── */
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  nav.classList.toggle('scrolled', window.scrollY > 16);
+}, { passive: true });
+
+/* ── FAQ ACCORDION ── */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // close all
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── SCROLL REVEAL (IntersectionObserver) ── */
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => revealObserver.observe(el));
+
+/* ── ANIMATED COUNTERS ── */
+function animateCounter(el, target, duration = 1600) {
+  const start = performance.now();
+  const update = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+    el.textContent = Math.floor(eased * target).toLocaleString();
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = target.toLocaleString();
+  };
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const target = parseInt(e.target.dataset.target, 10);
+      animateCounter(e.target, target);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+/* ── CARD 3D TILT (desktop/mouse only) ── */
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+if (!isTouchDevice) {
+  document.querySelectorAll('.plan-card, .entity-card, .service-card, .test-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(600px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg) translateY(-5px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+/* ── CLOSE MOBILE MENU ON SCROLL ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('mobileMenu').classList.remove('open');
+}, { passive: true });
+</script>
+</body>
+</html>

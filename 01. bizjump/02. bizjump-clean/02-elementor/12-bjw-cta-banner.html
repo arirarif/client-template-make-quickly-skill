@@ -1,0 +1,146 @@
+<!--
+=======================================================
+  WIDGET 12 — bjw-cta-banner
+  WHERE TO PASTE:
+    Elementor → Add Section (Full Width, Stretch: YES)
+    Section settings:
+      Background: Classic → Color: #0a0e1a (dark navy)
+      Padding: 0 (HTML handles spacing)
+    Add 1 column → HTML Widget → paste everything below
+=======================================================
+-->
+
+<style>
+.bjw12-cta {
+  background: linear-gradient(130deg, #0a0e1a 0%, #0f2156 45%, #1e3a8a 100%);
+  padding: 88px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Glow orbs */
+.bjw12-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(90px); pointer-events: none;
+}
+.bjw12-orb-1 {
+  width: 420px; height: 420px;
+  background: rgba(37,99,235,.25);
+  top: -100px; left: -60px;
+}
+.bjw12-orb-2 {
+  width: 320px; height: 320px;
+  background: rgba(249,115,22,.12);
+  bottom: -80px; right: -40px;
+}
+
+/* Inner */
+.bjw12-inner {
+  position: relative; z-index: 1;
+  max-width: 680px; margin: 0 auto;
+}
+
+.bjw12-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: #93c5fd;
+  margin-bottom: 16px; display: block;
+}
+.bjw12-title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(30px, 4.5vw, 52px);
+  font-weight: 800; color: #fff;
+  letter-spacing: -1.2px; line-height: 1.12;
+  margin-bottom: 20px;
+}
+.bjw12-title span { color: #f97316; }
+.bjw12-sub {
+  font-size: 18px; color: rgba(255,255,255,.7);
+  line-height: 1.7; margin-bottom: 44px;
+}
+
+/* Buttons */
+.bjw12-btns {
+  display: flex; gap: 16px;
+  justify-content: center; flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.bjw12-btn-primary {
+  background: #f97316; color: #fff;
+  padding: 18px 48px; border-radius: 10px;
+  font-size: 17px; font-weight: 700;
+  text-decoration: none; display: inline-block;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  box-shadow: 0 4px 24px rgba(249,115,22,.45);
+  font-family: 'Inter', sans-serif;
+}
+.bjw12-btn-primary:hover {
+  background: #ea6c00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(249,115,22,.55);
+  color: #fff;
+}
+.bjw12-btn-outline {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,.4);
+  color: #fff; padding: 16px 40px;
+  border-radius: 10px; font-size: 17px; font-weight: 600;
+  text-decoration: none; display: inline-block;
+  transition: background .2s, border-color .2s;
+  font-family: 'Inter', sans-serif;
+}
+.bjw12-btn-outline:hover {
+  border-color: #fff; background: rgba(255,255,255,.08); color: #fff;
+}
+
+/* Trust micro-row */
+.bjw12-trust {
+  display: flex; gap: 24px;
+  justify-content: center; flex-wrap: wrap;
+}
+.bjw12-trust-item {
+  font-size: 13px; color: rgba(255,255,255,.6);
+  display: flex; align-items: center; gap: 6px;
+}
+.bjw12-trust-item span { color: #4ade80; font-weight: 700; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .bjw12-cta { padding: 64px 16px; }
+  .bjw12-btns { flex-direction: column; align-items: center; gap: 12px; }
+  .bjw12-btn-primary, .bjw12-btn-outline {
+    width: 100%; max-width: 300px; text-align: center; font-size: 16px;
+  }
+  .bjw12-trust { gap: 12px; }
+  .bjw12-sub { font-size: 16px; }
+}
+</style>
+
+<div class="bjw12-cta">
+  <div class="bjw12-orb bjw12-orb-1"></div>
+  <div class="bjw12-orb bjw12-orb-2"></div>
+  <div class="bjw12-inner">
+
+    <span class="bjw12-label">Ready to Launch?</span>
+
+    <h2 class="bjw12-title">Your Business Starts<br>in <span>Minutes</span>, Not Weeks</h2>
+
+    <p class="bjw12-sub">
+      Join 3,500+ entrepreneurs who chose the smarter way to incorporate.
+      Flat-rate pricing. All 50 states. No surprises.
+    </p>
+
+    <div class="bjw12-btns">
+      <a href="/incorporate/" class="bjw12-btn-primary">Start Your LLC For Free →</a>
+      <a href="#pricing" class="bjw12-btn-outline">Compare Plans</a>
+    </div>
+
+    <div class="bjw12-trust">
+      <div class="bjw12-trust-item"><span>✓</span> No hidden fees</div>
+      <div class="bjw12-trust-item"><span>✓</span> 100% money-back guarantee</div>
+      <div class="bjw12-trust-item"><span>✓</span> SSL secured</div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/arira/.claude/projects/c--Users-arira-Desktop-All-Fiverr-project-code-00001--client-template-make-quickly-skill-main/memory/**)",
+      "Read(//c/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/**)",
+      "Read(//c/Users/arira/Desktop/All-Fiverr-project-code/**)",
+      "Bash(php -l bj-elementor.php)",
+      "Bash(php -l includes/class-bj-elementor.php)",
+      "Bash(php -l widgets/class-widget-announcement-bar.php)",
+      "Bash(php -l widgets/class-widget-hero.php)",
+      "Bash(php -l widgets/class-widget-ticker-marquee.php)",
+      "Bash(python3)",
+      "Read(//c/Users/arira/Desktop/**)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\arira\\Desktop\\All-Fiverr-project-code\\00001. client-template-make-quickly-skill-main\\02. bizjump-clean"
+    ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
+  }
+}

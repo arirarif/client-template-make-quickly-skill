@@ -1,0 +1,155 @@
+<!--
+=======================================================
+  WIDGET 07 — bjw-how-it-works
+  WHERE TO PASTE:
+    Elementor → Add Section (Boxed)
+    Section settings:
+      Background: #ffffff
+      Padding Top/Bottom: 88px
+    Add 1 column → HTML Widget → paste everything below
+=======================================================
+-->
+
+<style>
+.bjw07-wrap {
+  font-family: 'Inter', sans-serif;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Header */
+.bjw07-header { text-align: center; margin-bottom: 64px; }
+.bjw07-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: #2563eb;
+  margin-bottom: 10px; display: block;
+}
+.bjw07-title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800; color: #111827;
+  line-height: 1.18; letter-spacing: -0.8px;
+  margin-bottom: 14px;
+}
+.bjw07-sub {
+  font-size: 17px; color: #6b7280;
+  max-width: 520px; margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* Steps container */
+.bjw07-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+/* Dashed connector line between steps */
+.bjw07-connector {
+  position: absolute;
+  top: 44px;
+  left: calc(33.33% / 2 + 24px);
+  right: calc(33.33% / 2 + 24px);
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #2563eb 0, #2563eb 8px,
+    transparent 8px, transparent 16px
+  );
+}
+
+/* Individual step */
+.bjw07-step {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  padding: 0 32px 48px;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.bjw07-step.bjw07-visible { opacity: 1; transform: none; }
+.bjw07-step:nth-child(3) { transition-delay: .15s; }
+.bjw07-step:nth-child(4) { transition-delay: .3s; }
+
+/* Step number circle */
+.bjw07-num {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: #0f2156; color: #fff;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 30px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 28px; flex-shrink: 0;
+  position: relative; z-index: 1;
+  box-shadow: 0 6px 24px rgba(15,33,86,.3);
+  transition: transform .3s, box-shadow .3s;
+}
+.bjw07-step:hover .bjw07-num {
+  transform: scale(1.08);
+  box-shadow: 0 10px 36px rgba(15,33,86,.4);
+}
+.bjw07-step h3 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 19px; font-weight: 700; color: #111827;
+  margin-bottom: 12px;
+}
+.bjw07-step p {
+  font-size: 15px; color: #6b7280; line-height: 1.65;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bjw07-wrap { padding: 0 16px; }
+  .bjw07-steps { grid-template-columns: 1fr; gap: 0; }
+  .bjw07-connector { display: none; }
+  .bjw07-step { padding: 0 16px 40px; }
+  .bjw07-num { width: 72px; height: 72px; font-size: 24px; margin-bottom: 20px; }
+  .bjw07-sub { font-size: 15px; }
+}
+</style>
+
+<div class="bjw07-wrap">
+
+  <!-- Header -->
+  <div class="bjw07-header">
+    <span class="bjw07-label">Simple Process</span>
+    <h2 class="bjw07-title">Form Your Business in 3 Steps</h2>
+    <p class="bjw07-sub">No lawyers, no confusing paperwork. Our guided online wizard walks you through everything in minutes.</p>
+  </div>
+
+  <!-- Steps -->
+  <div class="bjw07-steps">
+    <div class="bjw07-connector"></div>
+
+    <div class="bjw07-step">
+      <div class="bjw07-num">1</div>
+      <h3>Choose Your Entity &amp; State</h3>
+      <p>Tell us what type of business you're forming and which state you want to incorporate in. Our wizard guides every step.</p>
+    </div>
+
+    <div class="bjw07-step">
+      <div class="bjw07-num">2</div>
+      <h3>Pick a Plan &amp; Add-Ons</h3>
+      <p>Select the service tier that fits your needs — Basic, Pro, Premium, or Enterprise. Add extras like EIN, Registered Agent, or compliance monitoring.</p>
+    </div>
+
+    <div class="bjw07-step">
+      <div class="bjw07-num">3</div>
+      <h3>We File — You Launch</h3>
+      <p>We handle all state paperwork and filings on your behalf. You receive your formation documents ready to do business.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var steps = document.querySelectorAll('.bjw07-step');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bjw07-visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  steps.forEach(function(s){ obs.observe(s); });
+})();
+</script>

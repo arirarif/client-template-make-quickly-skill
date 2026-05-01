@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BizJump — Feasibility Analysis</title>
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --ink: #0f172a;
+    --ink-soft: #475569;
+    --muted: #94a3b8;
+    --line: #e2e8f0;
+    --line-soft: #eef2f7;
+    --brand: #2563eb;
+    --brand-soft: #dbeafe;
+    --accent: #7c3aed;
+    --green: #16a34a;
+    --green-soft: #dcfce7;
+    --yellow: #ca8a04;
+    --yellow-soft: #fef9c3;
+    --red: #dc2626;
+    --red-soft: #fee2e2;
+    --blue: #0284c7;
+    --blue-soft: #e0f2fe;
+    --shadow: 0 6px 20px -10px rgba(15,23,42,.18);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-family: "JetBrains Mono","SF Mono",Menlo,Consolas,monospace; font-size: 13px; }
+
+  .app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  .sidebar {
+    background: linear-gradient(180deg, #0f172a, #1e293b);
+    color: #e2e8f0; padding: 28px 22px;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  }
+  .sidebar h1 { font-size: 18px; margin: 0 0 4px; color: #fff; letter-spacing: -.01em; }
+  .sidebar .sub { font-size: 12px; color: #94a3b8; margin-bottom: 22px; }
+  .sidebar nav a {
+    display: block; padding: 8px 12px; color: #cbd5e1; text-decoration: none;
+    border-radius: 8px; font-size: 13px; margin-bottom: 2px;
+  }
+  .sidebar nav a:hover { background: #334155; color: #fff; }
+  .sidebar nav .group { font-size: 11px; text-transform: uppercase;
+    letter-spacing: .08em; color: #64748b; padding: 14px 12px 6px; }
+
+  .main { padding: 36px 48px; max-width: 1180px; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #16a34a 0%, #2563eb 100%);
+    color: #fff; padding: 36px; border-radius: var(--radius);
+    margin-bottom: 28px; box-shadow: var(--shadow);
+  }
+  .hero h1 { margin: 0 0 6px; font-size: 32px; letter-spacing: -.02em; }
+  .hero p { margin: 6px 0; opacity: .95; }
+  .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 22px; }
+  .hero-stat {
+    background: rgba(255,255,255,.15); border-radius: 12px; padding: 16px;
+    backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.18);
+  }
+  .hero-stat .num { font-size: 30px; font-weight: 800; letter-spacing: -.02em; }
+  .hero-stat .label { font-size: 12px; opacity: .9; text-transform: uppercase; letter-spacing: .08em; }
+
+  /* Card */
+  section.card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 28px 30px; margin-bottom: 22px;
+    box-shadow: var(--shadow); scroll-margin-top: 20px;
+  }
+  section.card > h2 {
+    font-size: 22px; margin: 0 0 4px; letter-spacing: -.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  section.card .desc {
+    color: var(--ink-soft); margin: 8px 0 18px; font-size: 14px;
+    border-left: 3px solid var(--brand-soft); padding-left: 12px;
+  }
+  section.card h3 { font-size: 15px; margin: 22px 0 10px; }
+
+  /* Tables */
+  table.data {
+    width: 100%; border-collapse: collapse; margin: 8px 0 14px;
+    background: #fff; border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  table.data th, table.data td {
+    text-align: left; padding: 12px 14px; font-size: 13.5px;
+    border-bottom: 1px solid var(--line-soft); vertical-align: top;
+  }
+  table.data th { background: #f8fafc; color: var(--ink-soft); font-weight: 600; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .04em; }
+  table.data tr:last-child td { border-bottom: none; }
+  table.data tr:hover { background: #fafbfd; }
+
+  /* Pills */
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  }
+  .pill.green { background: var(--green-soft); color: var(--green); }
+  .pill.yellow { background: var(--yellow-soft); color: var(--yellow); }
+  .pill.red { background: var(--red-soft); color: var(--red); }
+  .pill.blue { background: var(--blue-soft); color: var(--blue); }
+  .pill.brand { background: var(--brand-soft); color: var(--brand); }
+  .pill.accent { background: #ede9fe; color: var(--accent); }
+
+  /* Progress */
+  .pct-cell { display: flex; align-items: center; gap: 10px; min-width: 130px; }
+  .pct-bar { flex: 1; height: 8px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
+  .pct-bar > span { display: block; height: 100%; border-radius: 999px; }
+  .pct-bar .green { background: linear-gradient(90deg,#16a34a,#22c55e); }
+  .pct-bar .yellow { background: linear-gradient(90deg,#ca8a04,#eab308); }
+  .pct-bar .blue { background: linear-gradient(90deg,#2563eb,#7c3aed); }
+  .pct-num { font-size: 13px; font-weight: 700; min-width: 38px; }
+  .pct-num.green { color: var(--green); }
+  .pct-num.yellow { color: var(--yellow); }
+  .pct-num.blue { color: var(--brand); }
+
+  /* Path comparison */
+  .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .path {
+    background: #fff; border: 2px solid var(--line); border-radius: 12px; padding: 22px;
+  }
+  .path.recommended { border-color: var(--green); background: linear-gradient(180deg, #f0fdf4, #fff); }
+  .path h3 { margin-top: 0; display: flex; align-items: center; gap: 8px; }
+  .path .badge-rec { background: var(--green); color: #fff; padding: 3px 10px;
+    border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .path ul { padding-left: 18px; font-size: 13.5px; color: var(--ink-soft); }
+  .path .pros { color: var(--green); }
+  .path .cons { color: var(--red); }
+
+  /* Callout */
+  .callout {
+    border-left: 4px solid var(--yellow); background: var(--yellow-soft);
+    padding: 16px 20px; border-radius: 8px; margin: 14px 0; color: #713f12;
+  }
+  .callout.green { border-color: var(--green); background: var(--green-soft); color: #14532d; }
+  .callout.blue { border-color: var(--brand); background: var(--brand-soft); color: #1e3a8a; }
+  .callout.red { border-color: var(--red); background: var(--red-soft); color: #7f1d1d; }
+  .callout strong { display: block; margin-bottom: 6px; }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 14px 0; }
+  .step {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px;
+    text-align: left;
+  }
+  .step .letter {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--brand-soft); color: var(--brand);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px; margin-bottom: 10px;
+  }
+  .step h4 { margin: 0 0 6px; font-size: 14px; }
+  .step p { margin: 0; font-size: 13px; color: var(--ink-soft); }
+
+  /* Cost summary */
+  .cost-row { display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid var(--line-soft); }
+  .cost-row:last-child { border-bottom: none; font-weight: 700; padding-top: 12px; }
+  .cost-row .price { color: var(--brand); font-weight: 700; font-size: 14px; }
+
+  footer { padding: 20px 0 60px; color: var(--muted); font-size: 12px; text-align: center; }
+
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; }
+    .main { padding: 24px; }
+    .paths, .steps, .hero-stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar">
+  <h1>📊 Feasibility</h1>
+  <div class="sub">BizJump WP/WooCommerce Build<br>Realistic delivery analysis</div>
+  <nav>
+    <div class="group">Sections</div>
+    <a href="#summary">Executive Summary</a>
+    <a href="#feasibility">Section-by-Section %</a>
+    <a href="#stack">Plugin Stack</a>
+    <a href="#crm">CRM / External</a>
+    <a href="#gaps">The 8–15% Gap</a>
+    <a href="#cost">Total Cost</a>
+    <a href="#proposal">Pitch to Client</a>
+    <a href="#next">Next Steps</a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Feasibility Analysis — Realistic Delivery</h1>
+  <p>How much of the BizJump Business Command Center can we ship on WordPress + WooCommerce — and what we'd use to do it.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">92%</div><div class="label">Spec achievable</div></div>
+    <div class="hero-stat"><div class="num">~$800/yr</div><div class="label">Plugin stack cost</div></div>
+    <div class="hero-stat"><div class="num">8–15%</div><div class="label">Manual / no-API gap</div></div>
+  </div>
+</div>
+
+<!-- Executive summary -->
+<section class="card" id="summary">
+  <h2>📌 Executive Summary</h2>
+  <div class="desc">
+    The honest read on what's buildable, what's industry-standard, and where the lines get drawn.
+  </div>
+
+  <div class="callout green">
+    <strong>✅ Good news</strong>
+    The vast majority of the spec maps cleanly onto existing WordPress + WooCommerce plugins. Sections like Documents, Services, Profile, Notifications, and Sidebar are essentially solved problems with off-the-shelf plugins. We can deliver <strong>85–90% of the spec in production-ready form</strong> using a curated stack.
+  </div>
+
+  <div class="callout">
+    <strong>⚠️ The catch — automation has limits</strong>
+    Filing Status, EIN Status, and per-state compliance deadlines <strong>cannot be auto-fetched</strong> — there's no public API from the IRS or state agencies. These will be <strong>manually managed by BizJump's admin team</strong> via the dashboard backend. <em>This is exactly how Northwest, Bizee, and Incfile operate</em> — it's industry-standard, not a shortcut.
+  </div>
+
+  <div class="callout blue">
+    <strong>🎯 Bottom line</strong>
+    Frame the deliverable as: <em>"A fully functional dashboard with 92% feature parity to the spec. The 8% that requires real-time IRS/state APIs (which don't exist publicly) is admin-managed — same as every competitor in the space."</em>
+  </div>
+</section>
+
+<!-- Section-by-section -->
+<section class="card" id="feasibility">
+  <h2>📋 Section-by-Section Feasibility</h2>
+  <div class="desc">Each section of the spec mapped to a plugin/approach with realistic delivery %.</div>
+
+  <table class="data">
+    <thead>
+      <tr><th>§</th><th>Section</th><th>% Doable</th><th>How</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>Dashboard Home</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:95%"></span></div><span class="pct-num green">95%</span></div></td>
+        <td>Custom My Account endpoint + <strong>ACF Pro</strong> for fields + custom CSS for progress bar</td>
+        <td>Filing/EIN status = manual update by your admin</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>Document Hub</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:90%"></span></div><span class="pct-num green">90%</span></div></td>
+        <td><strong>WP File Download Pro</strong> OR <strong>Frontend File Manager</strong> OR <strong>WP Customer Area</strong></td>
+        <td>Per-user file delivery built-in</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>Compliance Center</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="yellow" style="width:70%"></span></div><span class="pct-num yellow">70%</span></div></td>
+        <td><strong>The Events Calendar Pro</strong> + custom CPT + <strong>FluentCRM</strong> for reminders</td>
+        <td>"Smart" deadlines need a manual state DB or admin entry — no public API exists</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>Service Management</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:100%"></span></div><span class="pct-num green">100%</span></div></td>
+        <td><strong>WooCommerce Subscriptions</strong> ($249/yr) OR <strong>YITH Subscriptions</strong> (~$80)</td>
+        <td>This is literally what Woo Subs does</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><strong>Action Center</strong> ⭐</td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:85%"></span></div><span class="pct-num green">85%</span></div></td>
+        <td>Custom mini-plugin OR <strong>GamiPress</strong> (free) OR <strong>GravityKit DataTables</strong></td>
+        <td>UI is easy. The action <em>content</em> needs to be authored once</td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td><strong>Communication Hub</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:90%"></span></div><span class="pct-num green">90%</span></div></td>
+        <td><strong>Fluent Support</strong> ($129/yr) OR <strong>Awesome Support</strong> OR <strong>Crisp Chat</strong> (free)</td>
+        <td>Fluent Support = best fit (in-WP, ticket threads)</td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td><strong>Business Profile</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:100%"></span></div><span class="pct-num green">100%</span></div></td>
+        <td><strong>ACF Pro</strong> + custom My Account tab + <strong>Gravity Forms</strong> for editing</td>
+        <td>Trivial</td>
+      </tr>
+      <tr>
+        <td><strong>8</strong></td>
+        <td><strong>Sidebar Menu</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:100%"></span></div><span class="pct-num green">100%</span></div></td>
+        <td><strong>YITH Customize My Account</strong> OR custom hooks</td>
+        <td>Standard Woo customization</td>
+      </tr>
+      <tr>
+        <td><strong>9</strong></td>
+        <td><strong>Notifications</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:95%"></span></div><span class="pct-num green">95%</span></div></td>
+        <td><strong>Notification</strong> plugin (free) + <strong>FluentCRM</strong> for email/SMS</td>
+        <td>Triggered on order/status changes</td>
+      </tr>
+      <tr>
+        <td><strong>10</strong></td>
+        <td><strong>Empty States</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:100%"></span></div><span class="pct-num green">100%</span></div></td>
+        <td>Just CSS/HTML</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>11</strong></td>
+        <td><strong>Top Bar</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:100%"></span></div><span class="pct-num green">100%</span></div></td>
+        <td><strong>WoodMart Header Builder</strong> (already in stack)</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>12</strong></td>
+        <td><strong>Support Access</strong></td>
+        <td><div class="pct-cell"><div class="pct-bar"><span class="green" style="width:100%"></span></div><span class="pct-num green">100%</span></div></td>
+        <td>Same as §6 — sticky button</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout green">
+    <strong>📊 Realistic overall delivery: 92%</strong>
+    Average across all 12 sections, weighted by complexity.
+  </div>
+</section>
+
+<!-- Plugin stack -->
+<section class="card" id="stack">
+  <h2>🧰 Recommended Plugin Stack</h2>
+  <div class="desc">Battle-tested combo that covers everything in the spec without custom-building from scratch.</div>
+
+  <table class="data">
+    <thead>
+      <tr><th>Need</th><th>Plugin</th><th>Cost</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Custom fields</td><td><strong>ACF Pro</strong></td><td><span class="pill brand">$49/yr</span></td><td>The standard for custom data layers</td></tr>
+      <tr><td>My Account customization</td><td><strong>YITH Customize My Account</strong></td><td><span class="pill brand">$50/yr</span></td><td>Drag-drop tabs without coding</td></tr>
+      <tr><td>Document hub</td><td><strong>WP File Download Pro</strong></td><td><span class="pill brand">$39 once</span></td><td>Best UI, per-user folders, status tags</td></tr>
+      <tr><td>Subscriptions / services</td><td><strong>WooCommerce Subscriptions</strong></td><td><span class="pill brand">$249/yr</span></td><td>First-party Woo plugin</td></tr>
+      <tr><td>Calendar</td><td><strong>The Events Calendar Pro</strong></td><td><span class="pill brand">$99/yr</span></td><td>Battle-tested</td></tr>
+      <tr><td>Tickets / chat</td><td><strong>Fluent Support</strong></td><td><span class="pill brand">$129/yr</span></td><td>Same vendor as FluentCRM, integrates seamlessly</td></tr>
+      <tr><td>CRM + email automation</td><td><strong>FluentCRM</strong></td><td><span class="pill brand">$129/yr</span></td><td>In-WP, no external SaaS, native Woo integration</td></tr>
+      <tr><td>Forms</td><td><strong>Gravity Forms</strong></td><td><span class="pill brand">$59/yr</span></td><td>For Edit Profile + service request forms</td></tr>
+      <tr><td>In-app notifications</td><td><strong>Notification</strong></td><td><span class="pill green">Free</span></td><td>Triggers on any WP/Woo event</td></tr>
+      <tr><td>Action plan UI</td><td><strong>Custom mini-plugin</strong></td><td><span class="pill green">$0 build</span></td><td>~6–8 hrs of dev work</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CRM -->
+<section class="card" id="crm">
+  <h2>🔌 CRM &amp; External Integrations — Two Paths</h2>
+  <div class="desc">Pick one path. Path A is recommended for this project.</div>
+
+  <div class="paths">
+    <div class="path recommended">
+      <h3>Path A — All-in-WordPress <span class="badge-rec">RECOMMENDED</span></h3>
+      <p style="margin: 0 0 10px; color: var(--ink-soft); font-size: 13.5px;">
+        Everything lives inside WordPress. One login. One database. No monthly SaaS fees.
+      </p>
+      <h4 style="font-size: 12px; margin: 14px 0 6px;">Stack</h4>
+      <ul>
+        <li><strong>FluentCRM</strong> — CRM, knows every Woo customer automatically</li>
+        <li><strong>Fluent Support</strong> — ticketing, talks to FluentCRM</li>
+        <li><strong>FluentSMTP</strong> + Mailgun/SendGrid free tier — email</li>
+      </ul>
+      <h4 style="font-size: 12px; margin: 14px 0 6px;" class="pros">✅ Pros</h4>
+      <ul>
+        <li>One login, one database, no Zapier middleman</li>
+        <li>~$258/yr total CRM cost</li>
+        <li>Native Woo integration (no sync issues)</li>
+      </ul>
+      <h4 style="font-size: 12px; margin: 14px 0 6px;" class="cons">❌ Cons</h4>
+      <ul>
+        <li>Less powerful than HubSpot/Salesforce at huge scale</li>
+      </ul>
+    </div>
+
+    <div class="path">
+      <h3>Path B — External CRM Bridge</h3>
+      <p style="margin: 0 0 10px; color: var(--ink-soft); font-size: 13.5px;">
+        For if the client insists on a brand-name CRM (HubSpot, Pipedrive, Salesforce).
+      </p>
+      <h4 style="font-size: 12px; margin: 14px 0 6px;">Stack</h4>
+      <ul>
+        <li><strong>HubSpot</strong> (free tier) or <strong>Pipedrive</strong> as the CRM</li>
+        <li><strong>Zapier</strong> or <strong>Make.com</strong> ($20/mo) to sync Woo orders → CRM</li>
+        <li>Communication via HubSpot inbox or Intercom</li>
+      </ul>
+      <h4 style="font-size: 12px; margin: 14px 0 6px;" class="pros">✅ Pros</h4>
+      <ul>
+        <li>More powerful pipeline / marketing tools</li>
+        <li>Brand-name client confidence</li>
+      </ul>
+      <h4 style="font-size: 12px; margin: 14px 0 6px;" class="cons">❌ Cons</h4>
+      <ul>
+        <li>Monthly cost ($20–$50+/mo for Zapier alone)</li>
+        <li>Two systems to maintain</li>
+        <li>More failure points (sync delays, API limits)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout green" style="margin-top: 18px;">
+    <strong>💡 My recommendation: Path A</strong>
+    For a business-formation service with structured workflows, FluentCRM + Fluent Support is purpose-built and dramatically cheaper. You can always add HubSpot later if the client outgrows it.
+  </div>
+</section>
+
+<!-- Gaps -->
+<section class="card" id="gaps">
+  <h2>⚠️ The 8–15% You Can't Fully Automate</h2>
+  <div class="desc">These items <em>look</em> like they should be automatic, but no public API exists. Sell them as "managed by BizJump's filing team" — that's how every competitor works.</div>
+
+  <table class="data">
+    <thead>
+      <tr><th>What the client expects to be automatic</th><th>Reality</th><th>Solution</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Filing Status updates</strong> (Preparing → Filed → Approved)</td>
+        <td>No state Secretary of State has a public API for this</td>
+        <td>Admin marks status when team files — same as Northwest, Bizee, Incfile</td>
+      </tr>
+      <tr>
+        <td><strong>EIN Status</strong></td>
+        <td>IRS does not expose an API</td>
+        <td>Admin marks "In Progress" when applied, "Completed" when EIN received</td>
+      </tr>
+      <tr>
+        <td><strong>Auto-generated compliance deadlines per state</strong></td>
+        <td>50 states × multiple entity types — no central database</td>
+        <td>One-time content task: hand-curate state requirements (~1 day research). Stored as templates that auto-populate based on user's state + entity type</td>
+      </tr>
+      <tr>
+        <td><strong>Document auto-generation</strong> (Articles, Operating Agreement)</td>
+        <td>Possible with WP Form-to-PDF plugins</td>
+        <td>Add as <em>optional later phase</em>. Legal accuracy is the client's responsibility either way</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Cost -->
+<section class="card" id="cost">
+  <h2>💰 Total Cost (Year 1)</h2>
+  <div class="desc">Plugin licenses only. Does not include your dev time, hosting, or domain.</div>
+
+  <div class="cost-row"><span>ACF Pro</span><span class="price">$49</span></div>
+  <div class="cost-row"><span>YITH Customize My Account</span><span class="price">$50</span></div>
+  <div class="cost-row"><span>WP File Download Pro</span><span class="price">$39</span></div>
+  <div class="cost-row"><span>WooCommerce Subscriptions</span><span class="price">$249</span></div>
+  <div class="cost-row"><span>The Events Calendar Pro</span><span class="price">$99</span></div>
+  <div class="cost-row"><span>Fluent Support</span><span class="price">$129</span></div>
+  <div class="cost-row"><span>FluentCRM</span><span class="price">$129</span></div>
+  <div class="cost-row"><span>Gravity Forms</span><span class="price">$59</span></div>
+  <div class="cost-row"><span>Notification (free)</span><span class="price">$0</span></div>
+  <div class="cost-row"><span>Action plan custom plugin (your dev time)</span><span class="price">$0 license</span></div>
+  <div class="cost-row"><span><strong>TOTAL (Year 1)</strong></span><span class="price">~$803</span></div>
+
+  <div class="callout blue" style="margin-top: 16px;">
+    <strong>💡 Year 2+ cost</strong>
+    Drops to ~$764/yr (WP File Download is one-time). Many plugins offer renewal discounts of 30–50%.
+  </div>
+</section>
+
+<!-- Pitch -->
+<section class="card" id="proposal">
+  <h2>🎯 What to Pitch the Client</h2>
+  <div class="desc">Suggested framing — protects you from scope creep and matches reality.</div>
+
+  <div class="callout blue" style="font-size: 14.5px; line-height: 1.7;">
+    <strong>📣 Recommended message</strong>
+    "We'll deliver a fully functional dashboard that matches <strong>92%+ of your spec</strong> using the WordPress / WooCommerce stack. The remaining <strong>8% that requires real-time API integration</strong> with the IRS or state agencies (filing status, EIN status) will be <strong>admin-managed</strong> — your team marks status as filings progress, the same way Northwest, Bizee, and Incfile operate. This is industry-standard and gives <em>you</em> full control over what customers see."
+  </div>
+
+  <h3>Why this framing works</h3>
+  <ul>
+    <li><strong>Honest</strong> — you're not promising magic that can't be delivered</li>
+    <li><strong>Reassuring</strong> — naming competitors who do the same thing normalizes the limitation</li>
+    <li><strong>Empowering</strong> — "you have full control" reframes the limitation as a feature</li>
+    <li><strong>Scope-protecting</strong> — sets a clear boundary on what's in/out of v1</li>
+  </ul>
+</section>
+
+<!-- Next steps -->
+<section class="card" id="next">
+  <h2>🚀 Next Steps — Pick One</h2>
+  <div class="desc">What you'd like me to do next.</div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="letter">A</div>
+      <h4>Build a one-page proposal / SOW</h4>
+      <p>A polished document you can send to the client with this breakdown — pricing, deliverables, timeline.</p>
+    </div>
+    <div class="step">
+      <div class="letter">B</div>
+      <h4>Start scoping implementation</h4>
+      <p>Plugin install order, data model, custom field structure, My Account tab routing — ready to start coding.</p>
+    </div>
+    <div class="step">
+      <div class="letter">C</div>
+      <h4>Save analysis to memory</h4>
+      <p>Persist the chosen stack and decision rationale so future sessions don't re-debate this.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Feasibility Analysis · BizJump Business Command Center · WordPress + WooCommerce stack
+</footer>
+
+</main>
+</div>
+</body>
+</html>

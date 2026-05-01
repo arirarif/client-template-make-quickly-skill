@@ -1,0 +1,128 @@
+<!--
+=======================================================
+  WIDGET 02 — bjw-nav-header
+  TYPE: WoodMart Header Builder (NOT an HTML widget)
+  WHERE: WordPress Admin → Appearance → Customize → Header → Header Builder
+
+  This is a settings guide — no code needed.
+  WoodMart builds the nav visually using drag-and-drop rows.
+=======================================================
+
+STEP-BY-STEP: WoodMart Header Builder
+
+──────────────────────────────────────────
+STEP 1 — Open Header Builder
+──────────────────────────────────────────
+  WordPress Admin → Appearance → Customize
+  → Header → Header Builder
+
+──────────────────────────────────────────
+STEP 2 — Enable Sticky Header
+──────────────────────────────────────────
+  Header → Sticky Header → ON
+  Sticky behavior: Shrink on scroll
+
+──────────────────────────────────────────
+STEP 3 — Main Header Row Layout
+──────────────────────────────────────────
+  Main Row → 3 columns:
+    LEFT   → Logo element
+    CENTER → Navigation Menu element
+    RIGHT  → [ Login / Register ] + [ Button ]
+
+──────────────────────────────────────────
+STEP 4 — Logo Settings
+──────────────────────────────────────────
+  Element: Logo
+  Option A — Text Logo (if no image logo yet):
+    Use WoodMart "Custom HTML" element:
+    <a href="/" style="font-family:'Space Grotesk',sans-serif;
+       font-size:22px;font-weight:800;color:#0f2156;
+       letter-spacing:-0.5px;text-decoration:none;">
+       Biz<span style="color:#f97316">Jump</span>
+    </a>
+  Option B — Upload logo image:
+    WoodMart → Logo → Upload image (recommended: SVG or PNG 2x)
+    Retina logo: upload @2x version
+
+──────────────────────────────────────────
+STEP 5 — Navigation Menu
+──────────────────────────────────────────
+  Element: Navigation / Menu
+  Menu to use: Create a WordPress menu called "Main Navigation"
+  Add these pages:
+    • Services        → link to /#services
+    • Pricing         → link to /#pricing
+    • How It Works    → link to /#how-it-works
+    • Contact         → link to /contact/
+  Style:
+    Font size: 15px | Weight: 500 | Color: #374151
+    Hover color: #1e3a8a
+    Underline on hover: none
+
+──────────────────────────────────────────
+STEP 6 — Login / Register Link
+──────────────────────────────────────────
+  Element: Account (WoodMart built-in)
+  OR Custom HTML element:
+    <a href="/my-account/"
+       style="font-family:'Inter',sans-serif;font-size:15px;
+       font-weight:500;color:#374151;text-decoration:none;">
+       Log In
+    </a>
+
+──────────────────────────────────────────
+STEP 7 — CTA Button ("Start Your Business")
+──────────────────────────────────────────
+  Element: Button (WoodMart Header Button element)
+  Text: Start Your Business →
+  Link: /incorporate/
+  Style settings:
+    Background: #f97316
+    Text color: #ffffff
+    Font size: 15px | Font weight: 700
+    Border radius: 6px
+    Padding: 10px 22px
+    Hover background: #ea6c00
+
+──────────────────────────────────────────
+STEP 8 — Header Styling
+──────────────────────────────────────────
+  Background: #ffffff (white)
+  Border bottom: 1px solid #f3f4f6
+  Height: 68px
+  Enable blur/transparency on scroll: YES (WoodMart → Sticky → Transparent)
+  Box shadow on scroll: 0 2px 20px rgba(0,0,0,.08)
+
+──────────────────────────────────────────
+STEP 9 — Mobile Header
+──────────────────────────────────────────
+  WoodMart → Mobile Header → Enable hamburger menu
+  Breakpoint: 768px
+  Mobile logo: same as desktop
+  Hamburger color: #374151
+  Mobile menu drawer: slides from left
+  Mobile menu items: same 4 items as desktop
+  Add CTA button at bottom of mobile menu:
+    Text: Start Your Business → | Link: /incorporate/
+    Full width: YES | Background: #f97316
+
+──────────────────────────────────────────
+STEP 10 — Custom CSS (Advanced tab in Customizer)
+──────────────────────────────────────────
+  Paste this in Appearance → Customize → Additional CSS:
+
+  /* BizJump Nav — sticky blur */
+  .woodmart-sticky-header.is-sticky .site-header {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255,255,255,.95) !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,.08);
+    transition: box-shadow .3s, background .3s;
+  }
+
+  /* Nav link hover */
+  .woodmart-nav > li > a:hover {
+    color: #1e3a8a !important;
+  }
+-->
