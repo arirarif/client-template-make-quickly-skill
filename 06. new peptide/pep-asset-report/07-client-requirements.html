@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>07 · Client Requirements — Asset Report</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+  /* page-specific tweaks */
+  .urgency-banner {
+    background: var(--red);
+    color: #fff;
+    border: 4px solid #000;
+    border-radius: 22px;
+    padding: 20px 24px;
+    box-shadow: 6px 6px 0 #000;
+    font: 900 16px Arial, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin: 0 0 24px;
+  }
+  .urgency-banner strong { font-size: 22px; display: block; margin-bottom: 4px; }
+
+  .req-card {
+    background: var(--paper);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 26px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 #000;
+    position: relative;
+    padding-left: 80px;
+  }
+  .req-card .num {
+    position: absolute;
+    top: 22px; left: 22px;
+    width: 44px; height: 44px;
+    background: var(--red);
+    color: #fff;
+    border: 3px solid #000;
+    border-radius: 999px;
+    display: grid; place-items: center;
+    font: 900 18px Impact, Arial, sans-serif;
+    box-shadow: 3px 3px 0 #000;
+  }
+  .req-card.priority-high .num { background: var(--red); }
+  .req-card.priority-med  .num { background: var(--gold); color: #000; }
+  .req-card.priority-low  .num { background: var(--glow); color: #000; }
+  .req-card h3 { margin: 0 0 8px; font: 900 20px Arial, sans-serif; text-transform: uppercase; }
+  .req-card .quote {
+    background: var(--vault);
+    color: var(--paper);
+    border-left: 5px solid var(--gold);
+    padding: 10px 14px;
+    margin: 10px 0;
+    font: 800 14px Arial, sans-serif;
+    font-style: italic;
+    line-height: 1.45;
+    border-radius: 0 12px 12px 0;
+  }
+  .req-card .fix {
+    background: var(--green);
+    border: 3px solid #000;
+    border-radius: 14px;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font: 800 14px Arial, sans-serif;
+    line-height: 1.45;
+    box-shadow: 3px 3px 0 #000;
+  }
+  .req-card .fix strong { font-weight: 900; text-transform: uppercase; display: block; font-size: 11px; letter-spacing: .06em; margin-bottom: 4px; }
+
+  .req-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  @media (max-width: 760px) { .req-grid { grid-template-columns: 1fr; } }
+
+  .screenshot-card {
+    background: var(--paper);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 24px;
+    padding: 18px;
+    box-shadow: 8px 8px 0 #000;
+    text-align: center;
+  }
+  .screenshot-card img {
+    max-width: 100%;
+    max-height: 600px;
+    border: 4px solid #000;
+    border-radius: 18px;
+    display: block;
+    margin: 0 auto;
+  }
+  .screenshot-card .caption {
+    margin: 12px 0 0;
+    font: 900 12px Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .screenshot-card .annotation {
+    background: var(--red);
+    color: #fff;
+    border: 3px solid #000;
+    border-radius: 12px;
+    padding: 8px 12px;
+    margin: 10px 0 0;
+    font: 800 12px Arial, sans-serif;
+    box-shadow: 3px 3px 0 #000;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <span class="brand">⚛ Performance Peptides · Asset Report</span>
+    <nav class="nav-pills">
+      <a href="00-index.html">Overview</a>
+      <a href="01-reconstitution-guide.html">01 · Guide</a>
+      <a href="02-icon-pack.html">02 · Icons</a>
+      <a href="03-coa-pdfs.html">03 · COAs</a>
+      <a href="04-disclaimer.html">04 · Disclaimer</a>
+      <a href="05-white-logo.html">05 · White Logo</a>
+      <a href="06-deployment-plan.html">06 · Deploy</a>
+      <a href="07-client-requirements.html" class="active">07 · Client Reqs</a>
+    </nav>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <span class="pill">📨 Client Update · 11 May 2026</span>
+  <h1>Client Says.<br>Fix These.<br>Now.</h1>
+  <p class="lead">Latest message from <strong>Frostyjon UK</strong>. Client is frustrated — project overdue, USA / lab-testing copy is fabricated, branding is patchy. Clean list of every change required, in priority order, with exact fixes.</p>
+</section>
+
+<!-- URGENCY -->
+<section class="wrap section">
+  <div class="urgency-banner">
+    <strong>⏱ Timeline pressure</strong>
+    Project scheduled for 7 days · Currently 1 month in · Client expects rapid turnaround on these fixes
+  </div>
+</section>
+
+<!-- TOP-LINE TRUTH -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">The new brand truth</p>
+      <h2>Stop Saying.<br>Start Saying.</h2>
+    </div>
+  </div>
+
+  <div class="req-grid">
+    <article class="card red">
+      <h3 style="color:#fff;">❌ STOP SAYING</h3>
+      <ul style="margin:0; padding-left:20px; font:800 15px Arial,sans-serif; line-height:1.5; color:#fff;">
+        <li>"USA-synthesised"</li>
+        <li>"US-based lab"</li>
+        <li>"Shipped same-day from our US lab"</li>
+        <li>"Third-party tested"</li>
+        <li>"HPLC verified"</li>
+        <li>"Lab-verified purity"</li>
+        <li>Any mention of testing / labs / certificates</li>
+        <li>Any mention of USA / America</li>
+      </ul>
+    </article>
+
+    <article class="card glow">
+      <h3>✅ START SAYING</h3>
+      <ul style="margin:0; padding-left:20px; font:800 15px Arial,sans-serif; line-height:1.5;">
+        <li><strong>"Stocked in the UK"</strong></li>
+        <li><strong>"Available quickly"</strong></li>
+        <li><strong>"Fast UK dispatch"</strong></li>
+        <li>"Order before 3pm for same-day dispatch"</li>
+        <li>"UK warehouse"</li>
+        <li>"Research-grade peptides"</li>
+        <li>Plain truth. No fabricated claims.</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="alert" style="margin-top:24px;">
+    <strong>⚠ Reality check:</strong> Products are <em>manufactured in China</em> but the client doesn't want to push that either. Default story is: <strong>"Stocked in UK · Dispatched quickly"</strong>. Nothing more, nothing less.
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Client-sent screenshots · 11 May 2026</p>
+      <h2>The Offending Block.</h2>
+    </div>
+  </div>
+
+  <div class="req-grid">
+    <article class="screenshot-card">
+      <img src="../pep/pep-update/01.jpeg" alt="Shop page mobile screenshot showing US lab references">
+      <p class="caption">Screenshot 01 · Mobile shop page</p>
+      <span class="annotation">"USA-synthesised" + "US lab" must be removed</span>
+    </article>
+
+    <article class="screenshot-card">
+      <img src="../pep/pep-update/02.jpeg" alt="Atomic Blue card with USA-synthesised + 3rd Party Tested stats">
+      <p class="caption">Screenshot 02 · "The Lab Behind Every Vial" card</p>
+      <span class="annotation">DROP from shop page · keep on homepage only</span>
+    </article>
+  </div>
+
+  <div class="alert warn">
+    <strong>📌 Client's exact words:</strong>
+    <em>"Drop this block from the main shop / it's pointless and annoying me with the US based nonsense. Leave the block on the home page."</em>
+  </div>
+</section>
+
+<!-- 9 REQUIREMENTS -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">9 specific fixes · In priority order</p>
+      <h2>The Punch List.</h2>
+    </div>
+  </div>
+
+  <div class="req-grid">
+
+    <!-- 1 -->
+    <article class="req-card priority-high">
+      <span class="num">1</span>
+      <h3>Drop "Lab Behind Every Vial" card from Shop</h3>
+      <div class="quote">"Drop this block from the main shop / it's pointless and annoying me with the US based nonsense. Leave the block on the home page."</div>
+      <div class="fix"><strong>Fix</strong> Remove the hero-card section from <code>02-woodmart-child/woocommerce/archive-product.php</code>. Keep it in the homepage Elementor build.</div>
+    </article>
+
+    <!-- 2 -->
+    <article class="req-card priority-high">
+      <span class="num">2</span>
+      <h3>Remove ALL USA / lab-testing copy</h3>
+      <div class="quote">"What's going on with USA references? And please can you drop all the heavy pushing about testing. Our products are made in china but I don't want to push that either. Let's stick to the truth, it's stocked in the UK and it's available quickly."</div>
+      <div class="fix"><strong>Fix</strong> Find/replace across all templates + Elementor widgets: kill "USA-synthesised", "US lab", "third-party tested", "HPLC verified". Replace stats with: <em>"UK Stock"</em>, <em>"Fast Dispatch"</em>, <em>"Research Grade"</em>.</div>
+    </article>
+
+    <!-- 3 -->
+    <article class="req-card priority-high">
+      <span class="num">3</span>
+      <h3>Switch pricing to £ GBP</h3>
+      <div class="quote">"I need the pricing to be in £ GBP"</div>
+      <div class="fix"><strong>Fix</strong> WooCommerce → Settings → General → Currency → <strong>Pound Sterling (£)</strong>. Currency position → Left. Decimal sep → "."</div>
+    </article>
+
+    <!-- 4 -->
+    <article class="req-card priority-high">
+      <span class="num">4</span>
+      <h3>Fix top menu bar — no blue block</h3>
+      <div class="quote">"I need the menu bar at the top fixing, I have no desire for a big blue block at the top of the page."</div>
+      <div class="fix"><strong>Fix</strong> WoodMart Header Builder → remove the dark hero-band behind the nav. Use transparent / paper background instead. Make logo + nav sit on the seamless main background.</div>
+    </article>
+
+    <!-- 5 -->
+    <article class="req-card priority-high">
+      <span class="num">5</span>
+      <h3>Seamless background, no repeating</h3>
+      <div class="quote">"I presume that you can make the background as one piece so the page glides over the top like the example one? It's currently all a bit patchy looking as the background is repeated per section."</div>
+      <div class="fix"><strong>Fix</strong> Move the vault-grid + radial-glow background from per-section <code>.pp-bg-vault</code> to a single <code>body</code>-level fixed background. Remove the per-section gradients in all custom Elementor widgets.</div>
+    </article>
+
+    <!-- 6 -->
+    <article class="req-card priority-med">
+      <span class="num">6</span>
+      <h3>Font readability on white</h3>
+      <div class="quote">"The fonts are a bit hard to read when rolled over white isn't quite working"</div>
+      <div class="fix"><strong>Fix</strong> Audit white-background sections — ensure body copy is <code>#000</code> not <code>#071b2d</code>, and the Impact display font has enough weight contrast. Add a <code>color: #000 !important</code> rule for <code>.pp-light-section p</code>.</div>
+    </article>
+
+    <!-- 7 -->
+    <article class="req-card priority-med">
+      <span class="num">7</span>
+      <h3>Update product images</h3>
+      <div class="quote">"I need the images updating"</div>
+      <div class="fix"><strong>Fix</strong> Client has been making infographics for all products. Wait for delivery, then bulk-upload via WP Media Library + set as featured images. Likely arriving via Fiverr attachments.</div>
+    </article>
+
+    <!-- 8 -->
+    <article class="req-card priority-med">
+      <span class="num">8</span>
+      <h3>Acknowledge client's Fiverr uploads</h3>
+      <div class="quote">"I have uploaded multiple files via Fiverr for you without acknowledgment by you."</div>
+      <div class="fix"><strong>Fix</strong> Reply on Fiverr — list each file received, confirm what's been integrated, what's queued. Builds trust + buys time.</div>
+    </article>
+
+    <!-- 9 -->
+    <article class="req-card priority-low">
+      <span class="num">9</span>
+      <h3>Blog page for SEO (future)</h3>
+      <div class="quote">"I feel like a blog page could prove useful if we decide that we want to rank on google. Is that something we easily add at any point"</div>
+      <div class="fix"><strong>Fix</strong> Confirm to client: "Yes — already supported. Blog template + single-post + auto-TOC are already built in the child theme. Just add posts via WP → Posts → Add New whenever you're ready."</div>
+    </article>
+
+  </div>
+</section>
+
+<!-- SUMMARY TABLE -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Quick scan · Status &amp; effort</p>
+      <h2>Action Plan.</h2>
+    </div>
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th class="num-col">#</th>
+        <th>Requirement</th>
+        <th>Priority</th>
+        <th>Effort</th>
+        <th>File(s) to edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="num-col">1</td>
+        <td><strong>Drop hero card from shop</strong></td>
+        <td><span class="chip red">🔴 High</span></td>
+        <td>5 min</td>
+        <td><code>archive-product.php</code></td>
+      </tr>
+      <tr>
+        <td class="num-col">2</td>
+        <td><strong>Remove USA / testing copy</strong></td>
+        <td><span class="chip red">🔴 High</span></td>
+        <td>30 min</td>
+        <td>All Elementor widgets, templates, PDP hooks</td>
+      </tr>
+      <tr>
+        <td class="num-col">3</td>
+        <td><strong>Switch to £ GBP</strong></td>
+        <td><span class="chip red">🔴 High</span></td>
+        <td>2 min</td>
+        <td>WC Settings → General</td>
+      </tr>
+      <tr>
+        <td class="num-col">4</td>
+        <td><strong>Fix menu bar (no blue block)</strong></td>
+        <td><span class="chip red">🔴 High</span></td>
+        <td>15 min</td>
+        <td>WoodMart Header Builder</td>
+      </tr>
+      <tr>
+        <td class="num-col">5</td>
+        <td><strong>Seamless body background</strong></td>
+        <td><span class="chip red">🔴 High</span></td>
+        <td>30 min</td>
+        <td><code>atomic-blue.css</code> + Elementor widget CSS</td>
+      </tr>
+      <tr>
+        <td class="num-col">6</td>
+        <td><strong>Font readability on white</strong></td>
+        <td><span class="chip gold">🟡 Med</span></td>
+        <td>15 min</td>
+        <td><code>atomic-blue.css</code></td>
+      </tr>
+      <tr>
+        <td class="num-col">7</td>
+        <td><strong>Update product images</strong></td>
+        <td><span class="chip gold">🟡 Med</span></td>
+        <td>Per-product</td>
+        <td>WP Media Library + product admin</td>
+      </tr>
+      <tr>
+        <td class="num-col">8</td>
+        <td><strong>Acknowledge Fiverr uploads</strong></td>
+        <td><span class="chip gold">🟡 Med</span></td>
+        <td>10 min</td>
+        <td>Fiverr message</td>
+      </tr>
+      <tr>
+        <td class="num-col">9</td>
+        <td><strong>Blog page (future)</strong></td>
+        <td><span class="chip glow">🟢 Low</span></td>
+        <td>Already built</td>
+        <td>Just confirm to client</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- DO RIGHT NOW -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">If you only have 60 minutes</p>
+      <h2>Do These 5 First.</h2>
+    </div>
+  </div>
+
+  <ol class="steps">
+    <li><strong>Switch currency to £ GBP</strong> (2 min) — WC Settings. Single biggest "feel" improvement for a UK client.</li>
+    <li><strong>Drop the hero card from shop archive</strong> (5 min) — single block-comment-out in <code>archive-product.php</code>.</li>
+    <li><strong>Global find-replace USA / lab / testing copy</strong> (30 min) — sweep all 16 Elementor widgets + page templates + PDP hooks.</li>
+    <li><strong>Reply to client on Fiverr</strong> (10 min) — acknowledge file uploads, list what's been integrated, list what's queued. Crucial for trust.</li>
+    <li><strong>Set expectations</strong> — confirm new ETA for the seamless background + menu bar fixes (next 2-3 days).</li>
+  </ol>
+</section>
+
+<!-- FINAL ALERT -->
+<section class="wrap section">
+  <div class="alert">
+    <strong>⚖ Be honest about the testing stuff:</strong> The reconstitution guide (asset 01) and disclaimer poster (asset 04) are still 100% on-brand and don't make false claims. They stay. But anywhere ELSE the site says "third-party tested" or "HPLC verified" — kill it. Replace with "Research grade" or just remove.
+  </div>
+</section>
+
+<div class="wrap page-nav">
+  <a class="prev" href="06-deployment-plan.html">← 06 · Deploy</a>
+  <a class="home" href="00-index.html">⚛ Home</a>
+  <span></span>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="brand-foot">⚛ Performance Peptides</span>
+    <p>Client Requirements · Frostyjon UK · 11 May 2026 · 9 items</p>
+  </div>
+</footer>
+
+</body>
+</html>

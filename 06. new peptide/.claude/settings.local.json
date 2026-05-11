@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk 'NR==104 || NR==106 || NR==107 || \\(NR>=108 && NR<=110\\) || NR==111 || NR==118 || NR==233' \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/06. new peptide/performance-peptides-atomic-blue-updated-nav.html\")",
+      "Bash(awk 'NR==112 || NR==113 || NR==114 || NR==115 || NR==116 || NR==117 || NR==118 || NR==119 || NR==120' \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/06. new peptide/performance-peptides-atomic-blue-updated-nav.html\")",
+      "Bash(awk 'NR==236 || NR==237 || \\(NR>=238 && NR<=283\\)' \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/06. new peptide/performance-peptides-atomic-blue-updated-nav.html\")",
+      "Bash(awk 'NR==104' \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/06. new peptide/performance-peptides-atomic-blue-updated-nav.html\")",
+      "Bash(awk 'NR==105 || NR==106' \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/06. new peptide/performance-peptides-atomic-blue-updated-nav.html\")",
+      "Bash(awk 'NR==284 || NR==285' \"C:/Users/arira/Desktop/All-Fiverr-project-code/00001. client-template-make-quickly-skill-main/06. new peptide/performance-peptides-atomic-blue-updated-nav.html\")",
+      "Bash(npx skills *)",
+      "Bash(npx *)",
+      "PowerShell(Get-ChildItem -Recurse -File -Path \".\" | Sort-Object LastWriteTime -Descending | Select-Object -First 25 | ForEach-Object { \"$\\($_.LastWriteTime.ToString\\('yyyy-MM-dd HH:mm'\\)\\) $\\($_.FullName.Replace\\(\\(Get-Location\\).Path + '\\\\', ''\\)\\)\" })",
+      "Bash(git add *)"
+    ]
+  }
+}

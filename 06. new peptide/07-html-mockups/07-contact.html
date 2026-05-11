@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Performance Peptides</title>
+<link rel="stylesheet" href="00-atomic-blue.css">
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: flex-start; }
+  .contact-info { background: var(--panel); color: #000; border: 4px solid #000; border-radius: 36px; padding: 32px; box-shadow: 10px 10px 0 #000; }
+  .contact-info h3 { font: 900 28px Arial, sans-serif; text-transform: uppercase; margin: 0 0 18px; }
+  .info-row { display: flex; gap: 14px; padding: 14px 0; border-bottom: 2px dashed rgba(0,0,0,.15); }
+  .info-row:last-of-type { border-bottom: 0; }
+  .info-row .ico { font-size: 28px; line-height: 1; }
+  .info-row strong { display: block; font: 900 14px Arial, sans-serif; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
+  .info-row span { font: 800 15px Arial, sans-serif; }
+
+  .contact-form { background: var(--paper); color: #000; border: 4px solid #000; border-radius: 36px; padding: 32px; box-shadow: 10px 10px 0 #000; }
+  .contact-form h3 { font: 900 28px Arial, sans-serif; text-transform: uppercase; margin: 0 0 18px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .map { margin-top: 30px; height: 320px; background: var(--deep); border: 4px solid #000; border-radius: 36px; box-shadow: 10px 10px 0 #000; display: grid; place-items: center; position: relative; overflow: hidden; }
+  .map .pin { font-size: 80px; filter: drop-shadow(4px 4px 0 #000); }
+  .map .pin-label { position: absolute; bottom: 24px; left: 24px; background: var(--glow); color: #000; border: 4px solid #000; border-radius: 999px; padding: 10px 18px; font: 900 13px Arial, sans-serif; text-transform: uppercase; box-shadow: 4px 4px 0 #000; }
+
+  @media (max-width: 980px) { .contact-grid, .row-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="wrap"><span>⚡ 20% launch code: Vault20</span><span>Research use only. Not for human consumption.</span><span>🚚 Order before 3pm for same-day dispatch</span></div></header>
+
+<nav class="wrap nav">
+  <a href="#" class="logo">⚛ PERFORMANCE PEPTIDES</a>
+  <div class="links">
+    <a href="../performance-peptides-atomic-blue-updated-nav.html">Home</a>
+    <a href="../performance-peptides-shop-peptides-atomic-blue (1).html">Shop</a>
+    <a href="08-blog-archive.html">Blog</a>
+    <a href="06-about.html">About</a>
+    <a href="07-contact.html">Contact</a>
+  </div>
+  <div class="icons">
+    <a href="10-search-results.html" class="icon-btn">🔍</a>
+    <a href="04-account.html" class="icon-btn">👤</a>
+    <a href="01-cart.html" class="icon-btn cart">🛒</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="wrap hero">
+    <div>
+      <span class="pill">📬 We Read Every Message</span>
+      <h1>Talk To<br>The Vault.</h1>
+      <p class="lead">Questions on purity, reconstitution, bulk pricing, COAs, or anything else? Drop us a line — a chemist or our customer-science team will reply within one business day.</p>
+    </div>
+    <div class="hero-card-wrap">
+      <div class="hero-card">
+        <span class="badge">24h Reply</span>
+        <h2 style="margin-top: 0;">Real Humans.<br>Real Answers.</h2>
+        <p>No tickets, no chatbots, no copy-paste replies. You message us, an actual person on our team writes back.</p>
+        <div class="stats">
+          <div class="stat">99%<span>Reply Rate</span></div>
+          <div class="stat">12h<span>Avg. Response</span></div>
+          <div class="stat">4.9<span>★ Rating</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" style="padding-top: 0;">
+    <div class="contact-grid">
+
+      <!-- LEFT: info -->
+      <aside class="contact-info">
+        <h3>Direct Lines</h3>
+        <div class="info-row"><span class="ico">📍</span><div><strong>Lab &amp; HQ</strong><span>1411 Vault Avenue<br>Boulder, CO 80301 · USA</span></div></div>
+        <div class="info-row"><span class="ico">📧</span><div><strong>General</strong><span>hello@performancepeptides.com</span></div></div>
+        <div class="info-row"><span class="ico">🔬</span><div><strong>Research / Bulk</strong><span>science@performancepeptides.com</span></div></div>
+        <div class="info-row"><span class="ico">📦</span><div><strong>Order Status</strong><span>orders@performancepeptides.com</span></div></div>
+        <div class="info-row"><span class="ico">🕒</span><div><strong>Hours</strong><span>Mon–Fri · 9 AM – 6 PM MT<br>Same-day dispatch cutoff: 3 PM</span></div></div>
+      </aside>
+
+      <!-- RIGHT: form -->
+      <form class="contact-form">
+        <h3>Send a Message</h3>
+        <div class="row-2">
+          <div class="field"><label>First Name</label><input type="text" required></div>
+          <div class="field"><label>Last Name</label><input type="text" required></div>
+        </div>
+        <div class="row-2">
+          <div class="field"><label>Email</label><input type="email" required></div>
+          <div class="field"><label>Subject</label>
+            <select>
+              <option>General Question</option>
+              <option>Order Status</option>
+              <option>Bulk / Wholesale</option>
+              <option>Research Collaboration</option>
+              <option>Press &amp; Media</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label>Message</label><textarea placeholder="Tell us what you need…"></textarea></div>
+        <div class="field"><label><input type="checkbox" style="width:auto; box-shadow:none; padding:0; margin-right:8px;"> I confirm this enquiry is for research use only.</label></div>
+        <button type="submit" class="btn" style="width:100%;">Send Message →</button>
+      </form>
+    </div>
+
+    <!-- MAP -->
+    <div class="map">
+      <span class="pin">📍</span>
+      <span class="pin-label">Boulder, CO · USA</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="#" class="logo">⚛ PERFORMANCE PEPTIDES</a>
+      <p>USA-synthesised, ≥99% pure peptides for clinical research. All products are sold strictly for laboratory research. Not for human consumption.</p>
+    </div>
+    <div class="footer-cols">
+      <div><h4>Shop</h4><a href="#">All Products</a><a href="#">New Arrivals</a><a href="#">Bestsellers</a></div>
+      <div><h4>Company</h4><a href="06-about.html">About</a><a href="07-contact.html">Contact</a><a href="08-blog-archive.html">Blog</a></div>
+      <div><h4>Help</h4><a href="#">Shipping</a><a href="#">Returns</a><a href="#">FAQ</a></div>
+    </div>
+  </div>
+  <div class="wrap copyright">© 2025 Performance Peptides · All rights reserved</div>
+</footer>
+
+</body>
+</html>

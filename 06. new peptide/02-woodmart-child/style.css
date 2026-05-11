@@ -1,0 +1,23 @@
+/*
+Theme Name:     WoodMart Child — Atomic Blue
+Theme URI:      https://performancepeptides.local/
+Description:    WoodMart child theme implementing the Performance Peptides "Atomic Blue" design. Custom shop archive + product card via WooCommerce template overrides. Header/footer continue to use WoodMart's Header/Footer Builder.
+Author:         Performance Peptides
+Author URI:     https://performancepeptides.local/
+Template:       woodmart
+Version:        1.0.0
+Text Domain:    woodmart-child
+*/
+
+/* Atomic Blue palette — single source of truth.
+   Detailed shop styles live in assets/css/atomic-blue-shop.css */
+:root {
+    --pp-ink:    #050710;
+    --pp-vault:  #071b2d;
+    --pp-panel:  #d7f5ff;
+    --pp-paper:  #eefcff;
+    --pp-glow:   #46f0ff;
+    --pp-gold:   #ffd166;
+    --pp-red:    #ff4d6d;
+    --pp-deep:   #0d314d;
+}

@@ -1,0 +1,1667 @@
+/* ==========================================================================
+   Atomic Blue — Unified Design System
+   Loaded on every Atomic Blue page (shop, cart, checkout, single product,
+   about, contact, blog archive, single post). Everything is scoped under
+   `body.atomic-blue` so it never leaks into WoodMart's own admin pages,
+   builder previews, or other templates.
+   Mirrors `07-html-mockups/00-atomic-blue.css` plus the page-specific
+   blocks each mockup defined inline.
+   ========================================================================== */
+
+:root {
+    --pp-ink:    #050710;
+    --pp-vault:  #071b2d;
+    --pp-panel:  #d7f5ff;
+    --pp-paper:  #eefcff;
+    --pp-glow:   #46f0ff;
+    --pp-gold:   #ffd166;
+    --pp-red:    #ff4d6d;
+    --pp-deep:   #0d314d;
+}
+
+/* ---------- LAYOUT BREAKOUT ----------
+   Force WoodMart's container / col / sidebar wrappers to full-width on
+   every Atomic Blue page so our hero / grids / 2-col layouts have the
+   space they need. Matches the proven shop-page fix. */
+body.atomic-blue .main-page-wrapper,
+body.atomic-blue .website-wrapper,
+body.atomic-blue .main-page-wrapper .container,
+body.atomic-blue .main-page-wrapper > .row,
+body.atomic-blue .row.content-row,
+body.atomic-blue main.site-main,
+body.atomic-blue main.site-main > .container,
+body.atomic-blue main.site-main > .row,
+body.atomic-blue .container,
+body.atomic-blue .container-fluid,
+body.atomic-blue .site-content {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+body.atomic-blue .col-content,
+body.atomic-blue .site-content > .col-md-9,
+body.atomic-blue .site-content > .col-lg-9,
+body.atomic-blue main .col-md-9,
+body.atomic-blue main .col-lg-9,
+body.atomic-blue main .col-md-8,
+body.atomic-blue main .col-lg-8 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+body.atomic-blue .sidebar-container,
+body.atomic-blue aside.sidebar-container,
+body.atomic-blue .widget-area,
+body.atomic-blue .col-md-3.sidebar-container,
+body.atomic-blue .col-lg-3.sidebar-container {
+    display: none !important;
+}
+
+/* ---------- BACKGROUND BREAKTHROUGH ----------
+   WoodMart paints white inside its wrappers, covering the body's vault
+   color and the cyan/gold glow overlays. Force them transparent. */
+body.atomic-blue {
+    background: var(--pp-vault) !important;
+    margin: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', Arial, sans-serif;
+    color: var(--pp-paper);
+    overflow-x: hidden;
+}
+body.atomic-blue .website-wrapper,
+body.atomic-blue .main-page-wrapper,
+body.atomic-blue main.site-main,
+body.atomic-blue .site-content,
+body.atomic-blue #wrapper,
+body.atomic-blue #page,
+body.atomic-blue .content-area,
+body.atomic-blue .row.content-row,
+body.atomic-blue main .container {
+    background: transparent !important;
+}
+
+body.atomic-blue::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none; opacity: .3;
+    background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size: 36px 36px;
+    z-index: 0;
+}
+body.atomic-blue::after {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 12%, rgba(70,240,255,.28), transparent 32%),
+        radial-gradient(circle at 78% 0%,  rgba(255,209,102,.22), transparent 34%),
+        linear-gradient(rgba(238,252,255,.05) 50%, transparent 50%);
+    background-size: auto, auto, 100% 4px;
+    z-index: 0;
+}
+
+/* ---------- BASE ---------- */
+body.atomic-blue main { position: relative; z-index: 1; }
+body.atomic-blue main a { color: inherit; text-decoration: none; cursor: pointer; }
+body.atomic-blue * { box-sizing: border-box; }
+
+body.atomic-blue .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- HERO ---------- */
+body.atomic-blue .hero {
+    display: grid;
+    grid-template-columns: 1.08fr .92fr;
+    gap: 52px;
+    align-items: center;
+    padding: 34px 20px 58px;
+}
+body.atomic-blue .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 4px solid #000;
+    background: var(--pp-gold);
+    color: #000;
+    box-shadow: 5px 5px 0 #000;
+    transform: rotate(-1deg);
+    font: 900 14px Arial, sans-serif;
+    text-transform: uppercase;
+}
+body.atomic-blue h1 {
+    margin: 28px 0 0;
+    font-size: clamp(56px, 8vw, 112px);
+    line-height: .86;
+    text-transform: uppercase;
+    letter-spacing: -.04em;
+    text-shadow: 7px 7px 0 #000;
+    color: var(--pp-paper);
+}
+body.atomic-blue .lead {
+    max-width: 720px;
+    margin: 24px 0 0;
+    font: 800 clamp(20px, 2.2vw, 28px) Arial, sans-serif;
+    line-height: 1.2;
+    color: var(--pp-panel);
+}
+body.atomic-blue .actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 34px; }
+
+/* ---------- BUTTONS ---------- */
+body.atomic-blue .btn,
+body.atomic-blue .ab-btn {
+    display: inline-block;
+    border: 4px solid #000;
+    border-radius: 18px;
+    padding: 16px 24px;
+    box-shadow: 7px 7px 0 #000;
+    background: var(--pp-glow);
+    color: #000;
+    font: 900 15px Arial, sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .15s;
+    text-decoration: none;
+}
+body.atomic-blue .btn.secondary,
+body.atomic-blue .ab-btn.secondary { background: var(--pp-panel); }
+body.atomic-blue .btn.gold,
+body.atomic-blue .ab-btn.gold { background: var(--pp-gold); }
+body.atomic-blue .btn.danger,
+body.atomic-blue .ab-btn.danger { background: var(--pp-red); color: var(--pp-paper); }
+body.atomic-blue .btn:hover,
+body.atomic-blue .ab-btn:hover,
+body.atomic-blue .add:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 #000; }
+
+body.atomic-blue .add {
+    background: var(--pp-glow);
+    border: 4px solid #000;
+    border-radius: 13px;
+    padding: 9px 15px;
+    font: 900 13px Arial, sans-serif;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 #000;
+    cursor: pointer;
+    color: #000;
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* ---------- HERO CARD ---------- */
+body.atomic-blue .hero-card-wrap { position: relative; }
+body.atomic-blue .hero-card-wrap::before {
+    content: "";
+    position: absolute; inset: -24px;
+    border-radius: 48px;
+    background: var(--pp-gold);
+    border: 4px solid #000;
+    transform: rotate(3deg);
+}
+body.atomic-blue .hero-card {
+    position: relative;
+    background: var(--pp-panel);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 48px;
+    padding: 32px;
+    box-shadow: 12px 12px 0 #000;
+    overflow: hidden;
+}
+body.atomic-blue .badge {
+    position: absolute; top: 18px; right: 18px;
+    background: var(--pp-red);
+    border: 4px solid #000;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font: 900 14px Arial, sans-serif;
+    text-transform: uppercase;
+    color: #000;
+}
+body.atomic-blue .atom { display: block; height: 220px; max-width: 100%; object-fit: contain; margin: 0 auto; }
+
+body.atomic-blue h2 {
+    margin: 0;
+    font-size: clamp(38px, 5vw, 68px);
+    line-height: .95;
+    text-transform: uppercase;
+    text-shadow: 5px 5px 0 #000;
+    color: var(--pp-paper);
+}
+body.atomic-blue .hero-card h2 { margin-top: 12px; font-size: 42px; text-shadow: none; color: var(--pp-ink); }
+body.atomic-blue .hero-card p  { font: 800 18px Arial, sans-serif; line-height: 1.25; color: var(--pp-ink); }
+
+body.atomic-blue .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+body.atomic-blue .stat {
+    background: var(--pp-vault);
+    color: var(--pp-glow);
+    border: 4px solid #000;
+    border-radius: 20px;
+    padding: 12px;
+    text-align: center;
+    font: 900 22px Arial, sans-serif;
+}
+body.atomic-blue .stat span {
+    color: var(--pp-paper);
+    font-size: 11px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 2px;
+}
+
+/* ---------- SECTIONS ---------- */
+body.atomic-blue .section { padding: 70px 20px; }
+body.atomic-blue .section-head {
+    display: flex; justify-content: space-between; align-items: end; gap: 20px;
+    margin-bottom: 28px;
+}
+body.atomic-blue .eyebrow {
+    font: 900 14px Arial, sans-serif;
+    color: var(--pp-glow);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin: 0 0 8px;
+}
+body.atomic-blue .stock {
+    border: 2px solid var(--pp-glow);
+    background: rgba(0,0,0,.35);
+    border-radius: 999px;
+    color: var(--pp-glow);
+    padding: 10px 18px;
+    font: 900 14px Arial, sans-serif;
+}
+body.atomic-blue .featured {
+    background: var(--pp-deep);
+    border: 4px solid #000;
+    border-radius: 42px;
+    padding: 30px;
+    box-shadow: 10px 10px 0 #000;
+}
+
+/* ---------- GENERIC PAPER CARD ---------- */
+body.atomic-blue .card {
+    background: var(--pp-paper);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 30px;
+    padding: 22px;
+    box-shadow: 7px 7px 0 #000;
+}
+
+/* ---------- TAGS / CHIPS ---------- */
+body.atomic-blue .tag {
+    background: var(--pp-red);
+    border: 3px solid #000;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font: 900 11px Arial, sans-serif;
+    text-transform: uppercase;
+    color: #000;
+    display: inline-block;
+}
+body.atomic-blue .chip {
+    border: 3px solid #000;
+    background: var(--pp-panel);
+    color: #000;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font: 900 12px Arial, sans-serif;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0 #000;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+}
+body.atomic-blue .chip:hover { transform: translate(1px,1px); box-shadow: 2px 2px 0 #000; }
+body.atomic-blue .chip.active { background: var(--pp-glow); }
+
+/* ---------- FORM CONTROLS ---------- */
+body.atomic-blue .field { display: block; margin-bottom: 16px; }
+body.atomic-blue .field label,
+body.atomic-blue .form-row label {
+    display: block;
+    font: 900 12px Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 6px;
+    color: #000;
+}
+body.atomic-blue .field input,
+body.atomic-blue .field textarea,
+body.atomic-blue .field select,
+body.atomic-blue .form-row input.input-text,
+body.atomic-blue .form-row textarea,
+body.atomic-blue .form-row select,
+body.atomic-blue .select2-container--default .select2-selection--single {
+    width: 100%;
+    border: 4px solid #000 !important;
+    border-radius: 14px !important;
+    background: #fff !important;
+    padding: 14px 16px !important;
+    font: 800 16px Arial, sans-serif !important;
+    color: #000 !important;
+    box-shadow: 4px 4px 0 #000;
+    height: auto !important;
+}
+body.atomic-blue .field textarea,
+body.atomic-blue .form-row textarea { min-height: 140px; resize: vertical; }
+body.atomic-blue .field input:focus,
+body.atomic-blue .field textarea:focus,
+body.atomic-blue .field select:focus,
+body.atomic-blue .form-row input.input-text:focus { outline: 3px solid var(--pp-glow); outline-offset: 2px; }
+body.atomic-blue .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+body.atomic-blue .form-card {
+    background: var(--pp-paper);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 7px 7px 0 #000;
+    margin-bottom: 24px;
+}
+body.atomic-blue .form-card h3 { font: 900 22px Arial, sans-serif; text-transform: uppercase; margin: 0 0 18px; color: var(--pp-ink); }
+
+/* ---------- 2-COL LAYOUT ---------- */
+body.atomic-blue .two-col {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 32px;
+    align-items: flex-start;
+}
+body.atomic-blue .two-col aside.summary-card { position: sticky; top: 20px; }
+
+/* ---------- WC BUTTON OVERRIDES ----------
+   WC ships its own button classes (`.checkout-button`, `.button.alt`,
+   `.wc-forward`, `.wc-backward`) on cart-totals.php's "Proceed to
+   Checkout" link, the "Update Cart" button, etc. Map them all to the
+   .btn aesthetic so nothing in the cart/checkout flow looks default. */
+body.atomic-blue .wc-proceed-to-checkout { margin-top: 14px; }
+body.atomic-blue .wc-proceed-to-checkout a.checkout-button,
+body.atomic-blue a.checkout-button.button.alt,
+body.atomic-blue .button.wc-forward,
+body.atomic-blue .button.wc-backward,
+body.atomic-blue .button.alt {
+    display: inline-block !important;
+    border: 4px solid #000 !important;
+    border-radius: 18px !important;
+    padding: 16px 24px !important;
+    box-shadow: 7px 7px 0 #000 !important;
+    background: var(--pp-glow) !important;
+    color: #000 !important;
+    font: 900 15px Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: .15s;
+    line-height: 1;
+}
+body.atomic-blue .wc-proceed-to-checkout a.checkout-button:hover,
+body.atomic-blue .button.wc-forward:hover,
+body.atomic-blue .button.alt:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 #000 !important;
+}
+
+/* Cart-totals table — WC ships a `.shop_table.shop_table_responsive`
+   pattern for cart subtotals/shipping/total. Apply our paper-card
+   look for consistency. */
+body.atomic-blue .cart_totals table.shop_table {
+    width: 100%;
+    border: 0 !important;
+    border-collapse: separate;
+    background: transparent;
+    margin: 0;
+}
+body.atomic-blue .cart_totals table.shop_table th,
+body.atomic-blue .cart_totals table.shop_table td {
+    padding: 10px 0 !important;
+    border-bottom: 2px dashed rgba(0,0,0,.15) !important;
+    font: 800 15px Arial, sans-serif !important;
+    color: var(--pp-ink) !important;
+    background: transparent !important;
+}
+body.atomic-blue .cart_totals table.shop_table tr.order-total td,
+body.atomic-blue .cart_totals table.shop_table tr.order-total th {
+    font: 900 22px Arial, sans-serif !important;
+    border-top: 3px solid #000 !important;
+    border-bottom: 0 !important;
+    padding-top: 16px !important;
+}
+body.atomic-blue .cart_totals h2 { display: none; } /* "Cart totals" heading — we already have h3 "Order Summary" above. */
+
+/* Shipping calculator inside cart-totals */
+body.atomic-blue .shipping-calculator-button {
+    color: var(--pp-deep) !important;
+    text-decoration: underline !important;
+    font: 800 13px Arial, sans-serif;
+}
+
+/* Buy Now placement — sit beside Add to Cart, share the same row. */
+body.atomic-blue form.cart .pp-buy-now {
+    margin-left: 8px;
+}
+body.atomic-blue form.cart .pp-buy-now:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 #000;
+}
+
+/* Atomic-meta-chips wrapper — already styled via .chip, just ensure
+   it sits in the right place between H1 and price. */
+body.atomic-blue .pdp-info .atomic-meta-chips {
+    margin: 16px 0 8px;
+}
+
+/* Checkout review order table — WC renders a full <table> for the
+   order summary. Strip the table chrome and style it as clean rows. */
+body.atomic-blue .woocommerce-checkout-review-order-table {
+    width: 100%;
+    border: 0 !important;
+    background: transparent;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+body.atomic-blue .woocommerce-checkout-review-order-table th,
+body.atomic-blue .woocommerce-checkout-review-order-table td {
+    padding: 8px 0 !important;
+    border: 0 !important;
+    border-bottom: 2px dashed rgba(0,0,0,.15) !important;
+    background: transparent !important;
+    font: 800 14px Arial, sans-serif !important;
+    color: var(--pp-ink) !important;
+    text-align: left;
+}
+body.atomic-blue .woocommerce-checkout-review-order-table thead { display: none; }
+body.atomic-blue .woocommerce-checkout-review-order-table tfoot tr.order-total th,
+body.atomic-blue .woocommerce-checkout-review-order-table tfoot tr.order-total td {
+    font: 900 22px Arial, sans-serif !important;
+    border-top: 3px solid #000 !important;
+    border-bottom: 0 !important;
+    padding-top: 16px !important;
+}
+
+/* Checkout billing/shipping form headings — h3 inside .form-card */
+body.atomic-blue .form-card h3,
+body.atomic-blue .woocommerce-billing-fields h3,
+body.atomic-blue .woocommerce-shipping-fields h3,
+body.atomic-blue .woocommerce-additional-fields h3 {
+    font: 900 22px Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    margin: 0 0 18px !important;
+    color: var(--pp-ink) !important;
+    text-shadow: none !important;
+}
+
+/* Place Order button at the bottom of checkout */
+body.atomic-blue #place_order {
+    width: 100%;
+    margin-top: 18px;
+}
+
+/* Form row spacing inside checkout */
+body.atomic-blue .woocommerce-billing-fields .form-row,
+body.atomic-blue .woocommerce-shipping-fields .form-row,
+body.atomic-blue .woocommerce-additional-fields .form-row {
+    margin-bottom: 14px;
+}
+
+/* Two-column form rows (first/last name etc) */
+body.atomic-blue .form-row.form-row-first { float: none; width: calc(50% - 7px); display: inline-block; margin-right: 14px; }
+body.atomic-blue .form-row.form-row-last  { float: none; width: calc(50% - 7px); display: inline-block; margin-right: 0; }
+@media (max-width: 620px) {
+    body.atomic-blue .form-row.form-row-first,
+    body.atomic-blue .form-row.form-row-last { width: 100%; margin-right: 0; }
+}
+
+/* Hide the "Update cart" button text-only label that WC outputs and
+   replace its baseline appearance with our btn look — already handled
+   by the .button.alt overrides above; this just ensures the cart's
+   non-alt button (Update Cart) also styles correctly. */
+body.atomic-blue button.button[name="update_cart"] {
+    background: var(--pp-panel) !important;
+    color: #000 !important;
+}
+
+/* ---------- SUMMARY CARD (cart / checkout) ---------- */
+body.atomic-blue .summary-card {
+    background: var(--pp-paper); color: #000;
+    border: 4px solid #000; border-radius: 30px;
+    padding: 26px;
+    box-shadow: 7px 7px 0 #000;
+}
+body.atomic-blue .summary-card h3 {
+    font: 900 22px Arial, sans-serif;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+    color: var(--pp-ink);
+}
+body.atomic-blue .summary-row {
+    display: flex; justify-content: space-between;
+    font: 800 15px Arial, sans-serif;
+    padding: 10px 0;
+    border-bottom: 2px dashed rgba(0,0,0,.15);
+    color: var(--pp-ink);
+}
+body.atomic-blue .summary-row.total {
+    font: 900 22px Arial, sans-serif;
+    border-bottom: 0;
+    padding-top: 16px;
+    border-top: 3px solid #000;
+    margin-top: 8px;
+}
+
+/* ---------- CART TABLE ---------- */
+body.atomic-blue .cart-table,
+body.atomic-blue .woocommerce-cart-form table.shop_table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--pp-paper);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 7px 7px 0 #000;
+}
+body.atomic-blue .woocommerce-cart-form table.shop_table th,
+body.atomic-blue .woocommerce-cart-form table.shop_table td,
+body.atomic-blue .cart-table th,
+body.atomic-blue .cart-table td {
+    padding: 18px 16px;
+    text-align: left;
+    font: 800 15px Arial, sans-serif;
+    border-bottom: 3px solid #000;
+    color: var(--pp-ink);
+}
+body.atomic-blue .woocommerce-cart-form table.shop_table th,
+body.atomic-blue .cart-table th {
+    background: var(--pp-panel);
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: .06em;
+}
+body.atomic-blue .woocommerce-cart-form table.shop_table tr:last-child td,
+body.atomic-blue .cart-table tr:last-child td { border-bottom: 0; }
+
+body.atomic-blue .cart-table .qty,
+body.atomic-blue .quantity input.qty,
+body.atomic-blue .qty {
+    width: 64px;
+    border: 3px solid #000 !important;
+    border-radius: 10px !important;
+    padding: 6px 8px !important;
+    font: 900 14px Arial, sans-serif !important;
+    text-align: center;
+    background: #fff !important;
+    color: #000 !important;
+    height: auto !important;
+}
+body.atomic-blue .cart-table .thumb,
+body.atomic-blue .product-thumbnail img {
+    width: 72px; height: 72px;
+    border: 3px solid #000;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #fff, var(--pp-panel));
+    display: grid; place-items: center;
+    font-size: 24px;
+    object-fit: contain;
+    padding: 4px;
+}
+body.atomic-blue .cart-table .remove,
+body.atomic-blue .product-remove a.remove {
+    background: var(--pp-red);
+    border: 3px solid #000;
+    border-radius: 999px;
+    width: 32px; height: 32px;
+    display: grid; place-items: center;
+    cursor: pointer;
+    color: #000 !important;
+    font: 900 18px Arial, sans-serif !important;
+    text-decoration: none !important;
+    line-height: 1;
+}
+body.atomic-blue .product-remove a.remove:hover { background: #000; color: var(--pp-red) !important; }
+
+body.atomic-blue .coupon-row,
+body.atomic-blue .cart .coupon {
+    display: flex; gap: 8px; margin-top: 18px; align-items: center;
+}
+body.atomic-blue .coupon-row input,
+body.atomic-blue .cart .coupon input {
+    flex: 1;
+    border: 4px solid #000 !important;
+    border-radius: 12px !important;
+    padding: 12px 14px !important;
+    font: 800 14px Arial, sans-serif !important;
+    background: #fff !important;
+    box-shadow: 4px 4px 0 #000;
+    color: #000 !important;
+}
+body.atomic-blue .cart .coupon button { /* will get .btn class */ }
+
+body.atomic-blue .cart-actions {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-top: 20px;
+}
+body.atomic-blue .cart-actions .btn { width: 100%; text-align: center; }
+
+/* ---------- PAYMENT OPTIONS (checkout) ---------- */
+body.atomic-blue .pay-options { display: grid; gap: 10px; }
+body.atomic-blue .pay-option,
+body.atomic-blue ul.payment_methods li {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px;
+    border: 4px solid #000;
+    border-radius: 16px;
+    box-shadow: 4px 4px 0 #000;
+    cursor: pointer;
+    background: var(--pp-paper);
+    color: var(--pp-ink);
+    list-style: none;
+    margin: 0 0 10px;
+}
+body.atomic-blue ul.payment_methods { padding: 0; margin: 0; }
+body.atomic-blue ul.payment_methods li.wc_payment_method label {
+    font: 900 14px Arial, sans-serif !important;
+    text-transform: uppercase;
+    margin: 0;
+    cursor: pointer;
+}
+body.atomic-blue ul.payment_methods li input[type="radio"] {
+    accent-color: var(--pp-glow);
+    transform: scale(1.4);
+}
+body.atomic-blue ul.payment_methods li.wc_payment_method.payment_method_active,
+body.atomic-blue .pay-option.active { background: var(--pp-glow); }
+body.atomic-blue .payment_box {
+    background: var(--pp-panel) !important;
+    border: 3px solid #000 !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+    margin: 10px 0 !important;
+    color: #000 !important;
+}
+
+/* ---------- SINGLE PRODUCT (PDP) ---------- */
+body.atomic-blue .pdp { padding: 60px 20px 40px; }
+body.atomic-blue .pdp .gallery,
+body.atomic-blue .pdp .woocommerce-product-gallery {
+    background: var(--pp-paper);
+    border: 4px solid #000;
+    border-radius: 36px;
+    padding: 30px;
+    box-shadow: 10px 10px 0 #000;
+}
+body.atomic-blue .pdp .woocommerce-product-gallery__image img {
+    border: 4px solid #000;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #fff, var(--pp-panel));
+}
+body.atomic-blue .pdp .gallery .main-img {
+    height: 380px;
+    background: linear-gradient(135deg, #fff, var(--pp-panel));
+    border: 4px solid #000;
+    border-radius: 28px;
+    display: grid; place-items: center;
+    font-size: 140px;
+    position: relative;
+}
+body.atomic-blue .pdp .thumbs,
+body.atomic-blue .pdp .flex-control-thumbs {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px !important;
+    margin: 14px 0 0 !important;
+    padding: 0 !important;
+    list-style: none;
+}
+body.atomic-blue .pdp .flex-control-thumbs li {
+    width: auto !important;
+    margin: 0 !important;
+}
+body.atomic-blue .pdp .flex-control-thumbs img {
+    height: 80px;
+    border: 4px solid #000;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #fff, var(--pp-panel));
+    cursor: pointer;
+    width: 100%;
+    object-fit: contain;
+    padding: 4px;
+}
+body.atomic-blue .pdp .flex-control-thumbs img.flex-active { background: var(--pp-glow); }
+
+body.atomic-blue .pdp-info p.formula { color: var(--pp-glow); margin: 0; opacity: 1; font: 900 11px Arial, sans-serif; text-transform: uppercase; letter-spacing: .06em; }
+body.atomic-blue .pdp-info h1,
+body.atomic-blue .pdp-info .product_title { font-size: clamp(44px, 5vw, 78px); margin: 10px 0 0 !important; line-height: .9; }
+body.atomic-blue .pdp-info .price,
+body.atomic-blue .pdp-info p.price {
+    font: 900 42px Arial, sans-serif !important;
+    color: var(--pp-glow) !important;
+    margin: 18px 0 !important;
+    display: block;
+}
+body.atomic-blue .pdp-info .price del { opacity: .5; font-size: 22px; margin-right: 6px; }
+body.atomic-blue .pdp-info .price ins { text-decoration: none; }
+
+body.atomic-blue .pdp-info .short-desc,
+body.atomic-blue .pdp-info .woocommerce-product-details__short-description {
+    font: 800 17px Arial, sans-serif;
+    line-height: 1.4;
+    color: var(--pp-panel);
+}
+
+body.atomic-blue .qty-row,
+body.atomic-blue form.cart {
+    display: flex; gap: 12px; align-items: center;
+    margin: 22px 0 8px;
+    flex-wrap: wrap;
+}
+body.atomic-blue form.cart .quantity { margin: 0 !important; }
+body.atomic-blue form.cart button.single_add_to_cart_button {
+    background: var(--pp-glow) !important;
+    border: 4px solid #000 !important;
+    border-radius: 18px !important;
+    padding: 18px 28px !important;
+    box-shadow: 7px 7px 0 #000 !important;
+    color: #000 !important;
+    font: 900 15px Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    cursor: pointer;
+    height: auto !important;
+}
+body.atomic-blue form.cart button.single_add_to_cart_button:hover { transform: translate(2px,2px); box-shadow: 3px 3px 0 #000 !important; }
+
+body.atomic-blue .info-block {
+    background: var(--pp-paper);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 26px;
+    padding: 24px;
+    box-shadow: 6px 6px 0 #000;
+    margin-top: 18px;
+}
+body.atomic-blue .info-block h3 { font: 900 18px Arial, sans-serif; text-transform: uppercase; margin: 0 0 8px; color: var(--pp-ink); }
+body.atomic-blue .info-block dl { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; margin: 0; font: 800 14px Arial, sans-serif; }
+body.atomic-blue .info-block dt { opacity: .65; text-transform: uppercase; font-size: 12px; }
+body.atomic-blue .info-block dd { margin: 0; }
+
+/* PDP tabs */
+body.atomic-blue .woocommerce-tabs { margin-top: 50px; }
+body.atomic-blue .woocommerce-tabs ul.tabs.wc-tabs {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin: 0 0 18px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    list-style: none;
+}
+body.atomic-blue .woocommerce-tabs ul.tabs.wc-tabs::before,
+body.atomic-blue .woocommerce-tabs ul.tabs.wc-tabs::after { display: none !important; }
+body.atomic-blue .woocommerce-tabs ul.tabs.wc-tabs li {
+    border: 3px solid #000 !important;
+    background: var(--pp-panel) !important;
+    color: #000 !important;
+    border-radius: 999px !important;
+    padding: 0 !important;
+    font: 900 12px Arial, sans-serif;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0 #000;
+    margin: 0 !important;
+}
+body.atomic-blue .woocommerce-tabs ul.tabs.wc-tabs li::before,
+body.atomic-blue .woocommerce-tabs ul.tabs.wc-tabs li::after { display: none !important; }
+body.atomic-blue .woocommerce-tabs ul.tabs.wc-tabs li a {
+    padding: 10px 14px !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    display: block;
+}
+body.atomic-blue .woocommerce-tabs ul.tabs.wc-tabs li.active { background: var(--pp-gold) !important; }
+body.atomic-blue .woocommerce-tabs .panel,
+body.atomic-blue .tab-pane {
+    background: var(--pp-paper);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 7px 7px 0 #000;
+    font: 800 16px Arial, sans-serif;
+    line-height: 1.5;
+}
+body.atomic-blue .woocommerce-tabs .panel h2,
+body.atomic-blue .tab-pane h4 {
+    font: 900 22px Arial, sans-serif !important;
+    text-transform: uppercase;
+    margin: 0 0 10px !important;
+    text-shadow: none !important;
+    color: var(--pp-ink) !important;
+}
+
+/* ---------- PRODUCT CARD ---------- */
+body.atomic-blue .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: stretch;
+}
+/* Inside the sidebar shop layout, drop to 3 cols since the sidebar
+   takes ~300px of horizontal space. */
+body.atomic-blue-shop .shop-content .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+body.atomic-blue .product {
+    background: var(--pp-paper);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 30px;
+    padding: 18px;
+    box-shadow: 7px 7px 0 #000;
+    display: flex; flex-direction: column;
+}
+body.atomic-blue .product-photo {
+    height: 220px;
+    background: linear-gradient(135deg, rgba(255,255,255,.92), var(--pp-panel));
+    border: 4px solid #000;
+    border-radius: 26px;
+    display: grid; place-items: center;
+    position: relative; overflow: hidden;
+    font-size: 44px;
+}
+body.atomic-blue .product-photo img {
+    max-height: 200px;
+    max-width: 96%;
+    object-fit: contain;
+}
+body.atomic-blue .formula { margin: 16px 0 0; font: 900 11px Arial, sans-serif; opacity: .72; text-transform: uppercase; }
+body.atomic-blue .product h3 { font-size: 26px; line-height: .95; margin: 14px 0 8px; text-transform: uppercase; min-height: 52px; color: var(--pp-ink); text-shadow: none; }
+body.atomic-blue .product h3 a { color: inherit; }
+body.atomic-blue .product-desc { margin: 0; min-height: 60px; font: 800 13px Arial, sans-serif; line-height: 1.28; opacity: .88; color: var(--pp-ink); }
+body.atomic-blue .buy { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 18px; }
+body.atomic-blue .price { font: 900 24px Arial, sans-serif; }
+body.atomic-blue .price del { opacity: .5; margin-right: 6px; }
+body.atomic-blue .price ins { text-decoration: none; }
+
+/* ---------- CATEGORY / VALUE / TEAM CARDS ---------- */
+body.atomic-blue .value-card {
+    background: var(--pp-panel); color: #000;
+    border: 4px solid #000; border-radius: 30px;
+    padding: 26px;
+    box-shadow: 7px 7px 0 #000;
+}
+body.atomic-blue .value-card .ico { font-size: 48px; margin-bottom: 12px; display: block; }
+body.atomic-blue .value-card h3 { font: 900 22px Arial, sans-serif; text-transform: uppercase; margin: 0 0 8px; color: var(--pp-ink); text-shadow: none; }
+body.atomic-blue .value-card p { font: 800 14px Arial, sans-serif; line-height: 1.4; margin: 0; }
+
+body.atomic-blue .team-card {
+    background: var(--pp-paper); color: #000;
+    border: 4px solid #000; border-radius: 30px;
+    padding: 22px;
+    box-shadow: 7px 7px 0 #000;
+    text-align: center;
+}
+body.atomic-blue .team-card .face {
+    width: 110px; height: 110px;
+    margin: 0 auto 14px;
+    border: 4px solid #000;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--pp-glow), var(--pp-gold));
+    display: grid; place-items: center;
+    font-size: 50px;
+    box-shadow: 5px 5px 0 #000;
+}
+body.atomic-blue .team-card h3 { font: 900 22px Arial, sans-serif; text-transform: uppercase; margin: 0 0 4px; color: var(--pp-ink); text-shadow: none; }
+body.atomic-blue .team-card .role { font: 900 12px Arial, sans-serif; text-transform: uppercase; opacity: .7; margin: 0 0 10px; letter-spacing: .06em; }
+body.atomic-blue .team-card p { font: 800 14px Arial, sans-serif; margin: 0; line-height: 1.4; }
+
+/* ---------- ABOUT SECTIONS ---------- */
+body.atomic-blue .story-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px; align-items: stretch;
+}
+body.atomic-blue .story-grid .card { padding: 30px; }
+body.atomic-blue .story-grid h3 { font: 900 28px Arial, sans-serif; text-transform: uppercase; margin: 0 0 12px; color: var(--pp-ink); }
+body.atomic-blue .story-grid p { font: 800 16px Arial, sans-serif; line-height: 1.4; }
+
+body.atomic-blue .stat-strip {
+    background: var(--pp-gold); color: #000;
+    border: 4px solid #000; border-radius: 36px;
+    padding: 36px;
+    box-shadow: 10px 10px 0 #000;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+}
+body.atomic-blue .stat-strip .num { font: 900 56px Arial, sans-serif; line-height: 1; }
+body.atomic-blue .stat-strip .lbl { font: 900 13px Arial, sans-serif; text-transform: uppercase; margin-top: 6px; }
+
+body.atomic-blue .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+body.atomic-blue .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+body.atomic-blue .lab-tour {
+    background: var(--pp-deep);
+    border: 4px solid #000;
+    border-radius: 42px;
+    padding: 40px;
+    box-shadow: 10px 10px 0 #000;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px; align-items: center;
+}
+body.atomic-blue .lab-tour .lab-img {
+    height: 320px;
+    background: linear-gradient(135deg, var(--pp-glow), var(--pp-panel));
+    border: 4px solid #000;
+    border-radius: 32px;
+    display: grid; place-items: center;
+    font-size: 140px;
+}
+
+/* ---------- CONTACT ---------- */
+body.atomic-blue .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: flex-start; }
+body.atomic-blue .contact-info {
+    background: var(--pp-panel); color: #000;
+    border: 4px solid #000; border-radius: 36px;
+    padding: 32px; box-shadow: 10px 10px 0 #000;
+}
+body.atomic-blue .contact-info h3 { font: 900 28px Arial, sans-serif; text-transform: uppercase; margin: 0 0 18px; color: var(--pp-ink); text-shadow: none; }
+body.atomic-blue .info-row {
+    display: flex; gap: 14px;
+    padding: 14px 0;
+    border-bottom: 2px dashed rgba(0,0,0,.15);
+}
+body.atomic-blue .info-row:last-of-type { border-bottom: 0; }
+body.atomic-blue .info-row .ico { font-size: 28px; line-height: 1; }
+body.atomic-blue .info-row strong { display: block; font: 900 14px Arial, sans-serif; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
+body.atomic-blue .info-row span { font: 800 15px Arial, sans-serif; }
+
+body.atomic-blue .contact-form {
+    background: var(--pp-paper); color: #000;
+    border: 4px solid #000; border-radius: 36px;
+    padding: 32px; box-shadow: 10px 10px 0 #000;
+}
+body.atomic-blue .contact-form h3 { font: 900 28px Arial, sans-serif; text-transform: uppercase; margin: 0 0 18px; color: var(--pp-ink); text-shadow: none; }
+
+body.atomic-blue .map {
+    margin-top: 30px; height: 320px;
+    background: var(--pp-deep);
+    border: 4px solid #000; border-radius: 36px;
+    box-shadow: 10px 10px 0 #000;
+    display: grid; place-items: center;
+    position: relative; overflow: hidden;
+}
+body.atomic-blue .map .pin { font-size: 80px; filter: drop-shadow(4px 4px 0 #000); }
+body.atomic-blue .map .pin-label {
+    position: absolute; bottom: 24px; left: 24px;
+    background: var(--pp-glow); color: #000;
+    border: 4px solid #000; border-radius: 999px;
+    padding: 10px 18px;
+    font: 900 13px Arial, sans-serif;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 #000;
+}
+
+/* ---------- BLOG ARCHIVE ---------- */
+body.atomic-blue .blog-filters {
+    background: var(--pp-paper); color: #000;
+    border-top: 4px solid #000; border-bottom: 4px solid #000;
+    box-shadow: 0 -8px 0 rgba(0,0,0,.35), 0 8px 0 rgba(0,0,0,.35);
+    padding: 26px 0;
+}
+body.atomic-blue .blog-filters .wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+
+body.atomic-blue .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+body.atomic-blue .blog-card {
+    background: var(--pp-paper); color: #000;
+    border: 4px solid #000; border-radius: 30px;
+    box-shadow: 7px 7px 0 #000;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    text-decoration: none;
+}
+body.atomic-blue .blog-thumb {
+    height: 200px;
+    background: linear-gradient(135deg, var(--pp-glow), var(--pp-panel));
+    border-bottom: 4px solid #000;
+    display: grid; place-items: center;
+    font-size: 80px;
+    position: relative;
+    overflow: hidden;
+}
+body.atomic-blue .blog-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+body.atomic-blue .blog-thumb .news-date { position: absolute; top: 14px; left: 14px; }
+body.atomic-blue .blog-card-body {
+    padding: 24px;
+    display: flex; flex-direction: column;
+    gap: 10px; flex: 1;
+}
+body.atomic-blue .blog-card .news-type { font: 900 11px Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; opacity: .72; margin: 0; color: var(--pp-ink); }
+body.atomic-blue .blog-card h3 { font: 900 24px Arial, sans-serif; line-height: .95; text-transform: uppercase; margin: 0; color: var(--pp-ink); text-shadow: none; }
+body.atomic-blue .blog-card p { font: 800 14px Arial, sans-serif; line-height: 1.35; opacity: .85; margin: 0 0 6px; color: var(--pp-ink); }
+body.atomic-blue .blog-card .read-more {
+    margin-top: auto;
+    align-self: flex-start;
+    background: var(--pp-glow); color: #000;
+    border: 4px solid #000; border-radius: 13px;
+    padding: 9px 13px;
+    font: 900 13px Arial, sans-serif;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 #000;
+}
+body.atomic-blue .news-date {
+    align-self: flex-start;
+    background: var(--pp-gold); color: #000;
+    border: 3px solid #000; border-radius: 999px;
+    padding: 6px 12px;
+    font: 900 12px Arial, sans-serif;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0 #000;
+    display: inline-block;
+}
+
+/* ---------- NEWS CARD ---------- */
+body.atomic-blue .news-card {
+    background: var(--pp-paper); color: #000;
+    border: 4px solid #000; border-radius: 30px;
+    padding: 22px;
+    box-shadow: 7px 7px 0 #000;
+    display: flex; flex-direction: column; gap: 10px;
+}
+body.atomic-blue .news-type { font: 900 11px Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; opacity: .72; }
+body.atomic-blue .news-card h3 { font-size: 26px; line-height: .92; text-transform: uppercase; margin: 0; color: var(--pp-ink); text-shadow: none; }
+body.atomic-blue .news-card p  { font: 800 14px Arial, sans-serif; line-height: 1.3; opacity: .88; margin: 0 0 4px; color: var(--pp-ink); }
+body.atomic-blue .news-card a.read-more {
+    margin-top: auto;
+    align-self: flex-start;
+    background: var(--pp-glow); color: #000;
+    border: 4px solid #000; border-radius: 13px;
+    padding: 9px 13px;
+    font: 900 13px Arial, sans-serif;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 #000;
+}
+
+/* ---------- SINGLE BLOG ---------- */
+body.atomic-blue .post-hero { padding: 50px 20px 30px; }
+body.atomic-blue .post-hero .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+body.atomic-blue .post-hero h1 { font-size: clamp(44px, 6vw, 92px); margin: 10px 0 0; }
+body.atomic-blue .post-cover {
+    height: 420px;
+    background: linear-gradient(135deg, var(--pp-gold), var(--pp-glow));
+    border: 4px solid #000; border-radius: 36px;
+    box-shadow: 12px 12px 0 #000;
+    display: grid; place-items: center;
+    font-size: 200px;
+    margin-bottom: 60px;
+    overflow: hidden;
+}
+body.atomic-blue .post-cover img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+body.atomic-blue .post-layout {
+    display: grid; grid-template-columns: 2.4fr 1fr;
+    gap: 40px; align-items: flex-start;
+}
+body.atomic-blue .post-body {
+    background: var(--pp-paper); color: #000;
+    border: 4px solid #000; border-radius: 36px;
+    padding: 44px;
+    box-shadow: 10px 10px 0 #000;
+}
+body.atomic-blue .post-body h2 { font: 900 36px Arial, sans-serif; text-transform: uppercase; margin: 36px 0 12px; text-shadow: none; color: var(--pp-ink); }
+body.atomic-blue .post-body h3 { font: 900 24px Arial, sans-serif; text-transform: uppercase; margin: 28px 0 8px; color: var(--pp-ink); text-shadow: none; }
+body.atomic-blue .post-body p,
+body.atomic-blue .post-body li { font: 800 17px Arial, sans-serif; line-height: 1.55; color: var(--pp-ink); }
+body.atomic-blue .post-body p { margin: 0 0 16px; }
+body.atomic-blue .post-body ul { padding-left: 22px; }
+body.atomic-blue .post-body blockquote {
+    border-left: 6px solid var(--pp-glow);
+    background: var(--pp-panel);
+    padding: 18px 22px;
+    margin: 22px 0;
+    font: 900 18px Arial, sans-serif;
+    line-height: 1.4;
+    border-radius: 12px;
+    color: var(--pp-ink);
+}
+body.atomic-blue .post-body code {
+    background: var(--pp-vault); color: var(--pp-glow);
+    padding: 2px 8px; border-radius: 6px;
+    font: 800 14px monospace;
+}
+body.atomic-blue .post-body img { max-width: 100%; height: auto; border: 4px solid #000; border-radius: 24px; margin: 28px 0; }
+
+body.atomic-blue .sidebar-post {
+    display: flex; flex-direction: column; gap: 20px;
+    position: sticky; top: 20px;
+}
+body.atomic-blue .author-card {
+    background: var(--pp-paper); color: #000;
+    border: 4px solid #000; border-radius: 28px;
+    padding: 22px; box-shadow: 7px 7px 0 #000;
+    text-align: center;
+}
+body.atomic-blue .author-card .face {
+    width: 96px; height: 96px;
+    margin: 0 auto 12px;
+    border: 4px solid #000; border-radius: 999px;
+    background: linear-gradient(135deg, var(--pp-glow), var(--pp-gold));
+    display: grid; place-items: center;
+    font-size: 44px;
+    box-shadow: 4px 4px 0 #000;
+    overflow: hidden;
+}
+body.atomic-blue .author-card .face img { width: 100%; height: 100%; object-fit: cover; }
+body.atomic-blue .author-card h4 { font: 900 18px Arial, sans-serif; text-transform: uppercase; margin: 0 0 4px; color: var(--pp-ink); }
+body.atomic-blue .author-card .role { font: 900 11px Arial, sans-serif; text-transform: uppercase; opacity: .65; margin: 0 0 8px; letter-spacing: .06em; }
+body.atomic-blue .author-card p { font: 800 13px Arial, sans-serif; line-height: 1.4; margin: 0; }
+
+body.atomic-blue .toc {
+    background: var(--pp-gold); color: #000;
+    border: 4px solid #000; border-radius: 28px;
+    padding: 22px; box-shadow: 7px 7px 0 #000;
+}
+body.atomic-blue .toc h4 { font: 900 14px Arial, sans-serif; text-transform: uppercase; margin: 0 0 12px; letter-spacing: .06em; }
+body.atomic-blue .toc a { display: block; font: 800 14px Arial, sans-serif; padding: 6px 0; border-bottom: 2px dashed rgba(0,0,0,.2); color: #000; }
+body.atomic-blue .toc a:last-child { border-bottom: 0; }
+body.atomic-blue .toc a:hover { text-decoration: underline; }
+
+body.atomic-blue .related-posts {
+    background: var(--pp-deep); color: var(--pp-paper);
+    border: 4px solid #000; border-radius: 28px;
+    padding: 22px; box-shadow: 7px 7px 0 #000;
+}
+body.atomic-blue .related-posts h4 { font: 900 14px Arial, sans-serif; text-transform: uppercase; color: var(--pp-glow); margin: 0 0 12px; letter-spacing: .06em; }
+body.atomic-blue .related-posts a { display: block; font: 800 14px Arial, sans-serif; line-height: 1.3; padding: 8px 0; border-bottom: 2px dashed rgba(255,255,255,.15); color: var(--pp-paper); }
+body.atomic-blue .related-posts a:last-child { border-bottom: 0; }
+
+/* ---------- PAGINATION ---------- */
+body.atomic-blue .pagination,
+body.atomic-blue .woocommerce-pagination {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 36px;
+}
+body.atomic-blue .pagination a,
+body.atomic-blue .pagination span,
+body.atomic-blue .woocommerce-pagination ul.page-numbers {
+    list-style: none; padding: 0; margin: 0; border: 0;
+    display: inline-flex; flex-wrap: wrap; gap: 10px;
+}
+body.atomic-blue .woocommerce-pagination .page-numbers li { border: 0; }
+body.atomic-blue .pagination a,
+body.atomic-blue .pagination span,
+body.atomic-blue .woocommerce-pagination .page-numbers a,
+body.atomic-blue .woocommerce-pagination .page-numbers span {
+    display: inline-block;
+    border: 3px solid #000;
+    background: var(--pp-panel);
+    color: #000;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font: 900 14px Arial, sans-serif;
+    box-shadow: 3px 3px 0 #000;
+    line-height: 1;
+    text-decoration: none;
+}
+body.atomic-blue .pagination .current,
+body.atomic-blue .woocommerce-pagination .page-numbers.current { background: var(--pp-glow); }
+
+/* ---------- MESSAGES / NOTICES ---------- */
+body.atomic-blue .woocommerce-message,
+body.atomic-blue .woocommerce-info,
+body.atomic-blue .woocommerce-error,
+body.atomic-blue .woocommerce-notice {
+    color: #000 !important;
+    background: var(--pp-paper) !important;
+    border: 4px solid #000 !important;
+    border-radius: 18px !important;
+    padding: 16px 20px !important;
+    box-shadow: 4px 4px 0 #000;
+    margin-bottom: 18px !important;
+    font: 800 15px Arial, sans-serif;
+}
+body.atomic-blue .woocommerce-message::before,
+body.atomic-blue .woocommerce-info::before,
+body.atomic-blue .woocommerce-error::before { display: none !important; }
+
+/* ---------- SHOP LAYOUT (sidebar + content) ---------- */
+body.atomic-blue-shop .shop-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 24px;
+    align-items: flex-start;
+}
+body.atomic-blue-shop .shop-sidebar {
+    position: sticky;
+    top: 20px;
+    background: var(--pp-paper);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 30px;
+    padding: 22px;
+    box-shadow: 7px 7px 0 #000;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+body.atomic-blue-shop .shop-sidebar::-webkit-scrollbar { width: 8px; }
+body.atomic-blue-shop .shop-sidebar::-webkit-scrollbar-thumb { background: #000; border-radius: 4px; }
+body.atomic-blue-shop .sidebar-title {
+    font: 900 22px Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin: 0 0 14px;
+    padding-bottom: 12px;
+    border-bottom: 3px dashed rgba(0,0,0,.18);
+    color: var(--pp-ink);
+}
+body.atomic-blue-shop .pp-sidebar-empty {
+    padding: 12px;
+    background: var(--pp-panel);
+    border: 3px dashed #000;
+    border-radius: 16px;
+    font: 800 13px Arial, sans-serif;
+    line-height: 1.4;
+}
+body.atomic-blue-shop .pp-sidebar-empty p { margin: 0 0 8px; }
+body.atomic-blue-shop .pp-sidebar-empty p:last-child { margin: 0; }
+body.atomic-blue-shop .pp-sidebar-widget + .pp-sidebar-widget {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 3px dashed rgba(0,0,0,.18);
+}
+body.atomic-blue-shop .pp-sidebar-widget-title {
+    font: 900 14px Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin: 0 0 10px;
+    color: var(--pp-ink);
+}
+
+/* ---------- SHOP TOOLBAR (above grid) ---------- */
+body.atomic-blue-shop .shop-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+body.atomic-blue-shop .filter-toggle {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: var(--pp-gold);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 14px;
+    padding: 12px 16px;
+    font: 900 13px Arial, sans-serif;
+    text-transform: uppercase;
+    box-shadow: 5px 5px 0 #000;
+    cursor: pointer;
+}
+body.atomic-blue-shop .filter-toggle:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000;
+}
+body.atomic-blue-shop .pp-sort-wrap select,
+body.atomic-blue-shop .woocommerce-ordering select {
+    border: 4px solid #000 !important;
+    border-radius: 14px !important;
+    background: var(--pp-panel) !important;
+    padding: 10px 14px !important;
+    font: 900 12px Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    color: #000 !important;
+    box-shadow: 4px 4px 0 #000 !important;
+    cursor: pointer;
+}
+body.atomic-blue-shop .pp-active-chips:empty { display: none; }
+body.atomic-blue-shop .pp-active-chips {
+    margin-bottom: 16px;
+}
+body.atomic-blue-shop .pp-posts-found { font-weight: 900; }
+
+/* ---------- FILTEREVERYTHING PRO — atomic-blue skin ---------- */
+/* Each filter block (e.g. Category / Dosage) */
+body.atomic-blue-shop .shop-sidebar .wpc-filters-main-wrap { padding: 0 !important; }
+body.atomic-blue-shop .shop-sidebar .wpc-filters-section,
+body.atomic-blue-shop .shop-sidebar .wpc-filter {
+    background: transparent !important;
+    border: 0 !important;
+    border-top: 3px dashed rgba(0,0,0,.18) !important;
+    padding: 14px 0 !important;
+    margin: 0 !important;
+}
+body.atomic-blue-shop .shop-sidebar .wpc-filters-section:first-of-type,
+body.atomic-blue-shop .shop-sidebar .wpc-filter:first-of-type { border-top: 0 !important; padding-top: 4px !important; }
+
+/* Filter block titles (collapsible heads) */
+body.atomic-blue-shop .shop-sidebar .wpc-filter-title,
+body.atomic-blue-shop .shop-sidebar .widget-title.wpc-filter-title {
+    font: 900 13px Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: .06em !important;
+    color: var(--pp-ink) !important;
+    margin: 0 !important;
+    padding: 6px 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    text-shadow: none !important;
+}
+body.atomic-blue-shop .shop-sidebar .wpc-open-icon::before,
+body.atomic-blue-shop .shop-sidebar .wpc-open-icon::after {
+    background: #000 !important;
+}
+
+/* Filter content body */
+body.atomic-blue-shop .shop-sidebar .wpc-filter-content {
+    padding-top: 10px !important;
+}
+body.atomic-blue-shop .shop-sidebar .wpc-filters-ul-list {
+    max-height: 280px !important;
+    overflow-y: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+body.atomic-blue-shop .shop-sidebar .wpc-filters-ul-list::-webkit-scrollbar { width: 6px; }
+body.atomic-blue-shop .shop-sidebar .wpc-filters-ul-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,.4); border-radius: 3px; }
+
+/* Term rows (checkbox + label + count) */
+body.atomic-blue-shop .shop-sidebar .wpc-term-item {
+    list-style: none !important;
+    padding: 4px 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+}
+body.atomic-blue-shop .shop-sidebar .wpc-term-item label,
+body.atomic-blue-shop .shop-sidebar .wpc-term-item a {
+    font: 800 13px Arial, sans-serif !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+}
+body.atomic-blue-shop .shop-sidebar .wpc-term-name { flex: 1; }
+body.atomic-blue-shop .shop-sidebar .wpc-term-count {
+    margin-left: auto !important;
+    opacity: .55 !important;
+    font: 900 11px Arial, sans-serif !important;
+}
+
+/* Custom checkboxes — atomic-blue square w/ shadow */
+body.atomic-blue-shop .shop-sidebar input[type="checkbox"].wpc-label-input,
+body.atomic-blue-shop .shop-sidebar input[type="radio"].wpc-label-input {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 18px !important; height: 18px !important;
+    border: 3px solid #000 !important;
+    border-radius: 5px !important;
+    background: #fff !important;
+    box-shadow: 2px 2px 0 #000 !important;
+    cursor: pointer !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+}
+body.atomic-blue-shop .shop-sidebar input[type="checkbox"].wpc-label-input:checked {
+    background: var(--pp-glow) !important;
+}
+body.atomic-blue-shop .shop-sidebar input[type="checkbox"].wpc-label-input:checked::after {
+    content: "✓";
+    position: absolute;
+    top: -3px; left: 1px;
+    font: 900 14px Arial, sans-serif;
+    color: #000;
+}
+
+/* Hide FE's built-in label box (we use our own checkbox styling) */
+body.atomic-blue-shop .shop-sidebar .wpc-filter-label-wrapper {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+    color: #000 !important;
+}
+
+/* In-filter search input (e.g. category quick-search) */
+body.atomic-blue-shop .shop-sidebar .wpc-filter-search-field,
+body.atomic-blue-shop .shop-sidebar input[type="text"],
+body.atomic-blue-shop .shop-sidebar input[type="search"],
+body.atomic-blue-shop .shop-sidebar input[type="number"] {
+    border: 3px solid #000 !important;
+    border-radius: 10px !important;
+    background: #fff !important;
+    box-shadow: 2px 2px 0 #000 !important;
+    padding: 8px 10px !important;
+    font: 900 13px Arial, sans-serif !important;
+    color: #000 !important;
+    width: 100% !important;
+    margin-bottom: 8px !important;
+}
+
+/* Range / price slider */
+body.atomic-blue-shop .shop-sidebar .wpc-filters-range-column { width: 48% !important; max-width: none !important; }
+body.atomic-blue-shop .shop-sidebar .ui-slider {
+    background: var(--pp-vault) !important;
+    border: 2px solid #000 !important;
+    border-radius: 999px !important;
+    height: 8px !important;
+}
+body.atomic-blue-shop .shop-sidebar .ui-slider-range { background: var(--pp-glow) !important; }
+body.atomic-blue-shop .shop-sidebar .ui-slider-handle {
+    background: var(--pp-gold) !important;
+    border: 3px solid #000 !important;
+    border-radius: 999px !important;
+    box-shadow: 2px 2px 0 #000 !important;
+    width: 18px !important; height: 18px !important;
+    top: -7px !important;
+}
+
+/* Apply / submit buttons */
+body.atomic-blue-shop .shop-sidebar .wpc-filter-apply-button,
+body.atomic-blue-shop .shop-sidebar .wpc-filters-submit-button-container button {
+    background: var(--pp-glow) !important;
+    color: #000 !important;
+    border: 3px solid #000 !important;
+    border-radius: 14px !important;
+    padding: 11px 14px !important;
+    font: 900 13px Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    box-shadow: 4px 4px 0 #000 !important;
+    cursor: pointer;
+    width: 100% !important;
+}
+body.atomic-blue-shop .shop-sidebar .wpc-filter-apply-button:hover,
+body.atomic-blue-shop .shop-sidebar .wpc-filters-submit-button-container button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000 !important;
+}
+
+/* Reset link inside the chips */
+body.atomic-blue-shop .shop-sidebar .wpc-reset-filters-button,
+body.atomic-blue-shop .pp-active-chips .wpc-reset-filters-button {
+    background: var(--pp-red) !important;
+    color: #000 !important;
+    border: 3px solid #000 !important;
+    border-radius: 14px !important;
+    padding: 8px 12px !important;
+    font: 900 12px Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    box-shadow: 3px 3px 0 #000 !important;
+    text-decoration: none !important;
+}
+
+/* Selected-terms chips above the grid */
+body.atomic-blue-shop .pp-active-chips .wpc-filter-chips-list,
+body.atomic-blue-shop .pp-active-chips .wpc-custom-selected-terms ul {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+body.atomic-blue-shop .pp-active-chips .wpc-filter-chips-list .wpc-chip {
+    background: var(--pp-panel) !important;
+    color: #000 !important;
+    border: 3px solid #000 !important;
+    border-radius: 999px !important;
+    padding: 6px 12px !important;
+    font: 900 11px Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    box-shadow: 2px 2px 0 #000 !important;
+}
+
+/* Swatches / labels (volume / dosage as chips) */
+body.atomic-blue-shop .shop-sidebar .wpc-filters-labels {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+body.atomic-blue-shop .shop-sidebar .wpc-filters-labels .wpc-term-item {
+    padding: 0 !important;
+}
+body.atomic-blue-shop .shop-sidebar .wpc-filters-labels .wpc-term-item label {
+    border: 3px solid #000 !important;
+    background: var(--pp-panel) !important;
+    color: #000 !important;
+    border-radius: 999px !important;
+    padding: 6px 10px !important;
+    font: 900 11px Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    box-shadow: 2px 2px 0 #000 !important;
+    display: inline-flex !important;
+    cursor: pointer !important;
+}
+body.atomic-blue-shop .shop-sidebar .wpc-filters-labels .wpc-term-item input:checked + label {
+    background: var(--pp-glow) !important;
+}
+
+/* Posts-found counter (above grid) */
+body.atomic-blue-shop .pp-posts-found .wpc-posts-found {
+    font: 900 14px Arial, sans-serif !important;
+    color: var(--pp-glow) !important;
+}
+
+/* Mobile drawer overlay */
+body.atomic-blue-shop .pp-sidebar-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 99998;
+}
+html.pp-sidebar-open body.atomic-blue-shop .pp-sidebar-overlay { display: block; }
+
+/* ---------- LEGACY FILTER ROW (still used elsewhere if needed) ---------- */
+body.atomic-blue .search {
+    border: 4px solid #000;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 6px 6px 0 #000;
+    padding: 16px 18px;
+    font: 900 16px Arial, sans-serif;
+    color: #000;
+    width: 100%;
+    display: block;
+}
+body.atomic-blue .chips { display: flex; flex-wrap: wrap; gap: 10px; width: 100%; }
+
+/* ---------- CATEGORY ATOM (in product card) ---------- */
+body.atomic-blue .category-line {
+    display: flex; align-items: center; gap: 8px;
+    margin: 0 0 8px;
+    font: 900 11px Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--pp-ink);
+}
+body.atomic-blue .cat-atom {
+    width: 18px; height: 18px;
+    border: 3px solid #000;
+    border-radius: 999px;
+    display: inline-grid; place-items: center;
+    background: var(--pp-glow);
+    box-shadow: 2px 2px 0 #000;
+    color: #000;
+    font-size: 12px; line-height: 1;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1100px) {
+    body.atomic-blue .product-grid { grid-template-columns: repeat(3, 1fr); }
+    body.atomic-blue .blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 980px) {
+    body.atomic-blue .hero { grid-template-columns: 1fr; }
+    body.atomic-blue .product-grid { grid-template-columns: repeat(2, 1fr); }
+    body.atomic-blue-shop .shop-content .product-grid { grid-template-columns: repeat(2, 1fr); }
+    body.atomic-blue .two-col,
+    body.atomic-blue .row-2,
+    body.atomic-blue .story-grid,
+    body.atomic-blue .lab-tour,
+    body.atomic-blue .contact-grid,
+    body.atomic-blue .post-layout { grid-template-columns: 1fr; }
+    body.atomic-blue .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    body.atomic-blue .values,
+    body.atomic-blue .team-grid,
+    body.atomic-blue .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    body.atomic-blue .sidebar-post { position: static; }
+
+    /* Shop layout: sidebar becomes a slide-in drawer on mobile */
+    body.atomic-blue-shop .shop-layout { grid-template-columns: 1fr; }
+    body.atomic-blue-shop .filter-toggle { display: inline-flex; }
+    body.atomic-blue-shop .shop-sidebar {
+        position: fixed;
+        top: 0; left: -100%;
+        width: 320px;
+        max-width: 90vw;
+        height: 100vh;
+        max-height: none;
+        z-index: 99999;
+        border-radius: 0 30px 30px 0;
+        transition: left .25s ease;
+        margin: 0;
+    }
+    body.atomic-blue-shop .shop-sidebar.is-open { left: 0; }
+    html.pp-sidebar-open { overflow: hidden; }
+    html.pp-sidebar-open body.atomic-blue-shop::after {
+        content: "";
+        position: fixed; inset: 0;
+        background: rgba(0,0,0,.55);
+        z-index: 99998;
+    }
+}
+@media (max-width: 620px) {
+    body.atomic-blue .product-grid,
+    body.atomic-blue .blog-grid,
+    body.atomic-blue .values,
+    body.atomic-blue .team-grid { grid-template-columns: 1fr; }
+    body.atomic-blue-shop .shop-content .product-grid { grid-template-columns: 1fr; }
+    body.atomic-blue .stats,
+    body.atomic-blue .stat-strip { grid-template-columns: 1fr; }
+    body.atomic-blue .section-head { flex-direction: column; align-items: flex-start; }
+    body.atomic-blue .featured { padding: 18px; border-radius: 28px; }
+    body.atomic-blue h1 { font-size: clamp(40px, 12vw, 64px); }
+    body.atomic-blue-shop .shop-toolbar { gap: 8px; }
+}

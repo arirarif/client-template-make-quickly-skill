@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | Performance Peptides</title>
+<link rel="stylesheet" href="00-atomic-blue.css">
+<style>
+  .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: stretch; }
+  .story-grid .card { padding: 30px; }
+  .story-grid h3 { font: 900 28px Arial, sans-serif; text-transform: uppercase; margin: 0 0 12px; }
+  .story-grid p { font: 800 16px Arial, sans-serif; line-height: 1.4; }
+
+  .stat-strip { background: var(--gold); color: #000; border: 4px solid #000; border-radius: 36px; padding: 36px; box-shadow: 10px 10px 0 #000; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .stat-strip .num { font: 900 56px Arial, sans-serif; line-height: 1; }
+  .stat-strip .lbl { font: 900 13px Arial, sans-serif; text-transform: uppercase; margin-top: 6px; }
+
+  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .value-card { background: var(--panel); color: #000; border: 4px solid #000; border-radius: 30px; padding: 26px; box-shadow: 7px 7px 0 #000; }
+  .value-card .ico { font-size: 48px; margin-bottom: 12px; display: block; }
+  .value-card h3 { font: 900 22px Arial, sans-serif; text-transform: uppercase; margin: 0 0 8px; }
+  .value-card p { font: 800 14px Arial, sans-serif; line-height: 1.4; margin: 0; }
+
+  .lab-tour { background: var(--deep); border: 4px solid #000; border-radius: 42px; padding: 40px; box-shadow: 10px 10px 0 #000; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+  .lab-tour .lab-img { height: 320px; background: linear-gradient(135deg, var(--glow), var(--panel)); border: 4px solid #000; border-radius: 32px; display: grid; place-items: center; font-size: 140px; }
+  .lab-tour h2 { color: var(--paper); }
+
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .team-card { background: var(--paper); color: #000; border: 4px solid #000; border-radius: 30px; padding: 22px; box-shadow: 7px 7px 0 #000; text-align: center; }
+  .team-card .face { width: 110px; height: 110px; margin: 0 auto 14px; border: 4px solid #000; border-radius: 999px; background: linear-gradient(135deg, var(--glow), var(--gold)); display: grid; place-items: center; font-size: 50px; box-shadow: 5px 5px 0 #000; }
+  .team-card h3 { font: 900 22px Arial, sans-serif; text-transform: uppercase; margin: 0 0 4px; }
+  .team-card .role { font: 900 12px Arial, sans-serif; text-transform: uppercase; opacity: .7; margin: 0 0 10px; letter-spacing: .06em; }
+  .team-card p { font: 800 14px Arial, sans-serif; margin: 0; line-height: 1.4; }
+
+  @media (max-width: 980px) {
+    .story-grid, .lab-tour { grid-template-columns: 1fr; }
+    .stat-strip, .values, .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    .stat-strip, .values, .team-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="wrap"><span>⚡ 20% launch code: Vault20</span><span>Research use only. Not for human consumption.</span><span>🚚 Order before 3pm for same-day dispatch</span></div></header>
+
+<nav class="wrap nav">
+  <a href="#" class="logo">⚛ PERFORMANCE PEPTIDES</a>
+  <div class="links">
+    <a href="../performance-peptides-atomic-blue-updated-nav.html">Home</a>
+    <a href="../performance-peptides-shop-peptides-atomic-blue (1).html">Shop</a>
+    <a href="08-blog-archive.html">Blog</a>
+    <a href="06-about.html">About</a>
+    <a href="07-contact.html">Contact</a>
+  </div>
+  <div class="icons">
+    <a href="10-search-results.html" class="icon-btn">🔍</a>
+    <a href="04-account.html" class="icon-btn">👤</a>
+    <a href="01-cart.html" class="icon-btn cart">🛒</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="wrap hero">
+    <div>
+      <span class="pill">⚛ Since 2020 · USA Lab</span>
+      <h1>The Vault.<br>Behind The Science.</h1>
+      <p class="lead">Performance Peptides is a USA-based research peptide supplier built by chemists, for researchers. Every vial leaves our lab third-party tested, COA-verified, and dispatched same-day.</p>
+      <div class="actions">
+        <a href="../performance-peptides-shop-peptides-atomic-blue (1).html" class="btn">Browse the Vault →</a>
+        <a href="07-contact.html" class="btn secondary">Talk to a Chemist</a>
+      </div>
+    </div>
+    <div class="hero-card-wrap">
+      <div class="hero-card">
+        <span class="badge">Our Pledge</span>
+        <svg class="atom" viewBox="0 0 220 220" aria-hidden="true">
+          <ellipse cx="110" cy="110" rx="92" ry="32" fill="none" stroke="#000" stroke-width="6"/>
+          <ellipse cx="110" cy="110" rx="92" ry="32" fill="none" stroke="#000" stroke-width="6" transform="rotate(60 110 110)"/>
+          <ellipse cx="110" cy="110" rx="92" ry="32" fill="none" stroke="#000" stroke-width="6" transform="rotate(-60 110 110)"/>
+          <circle cx="110" cy="110" r="16" fill="#46f0ff" stroke="#000" stroke-width="6"/>
+        </svg>
+        <h2>Research Grade. Lab Verified.</h2>
+        <p>Every vial tested by a third-party lab. Full COAs published with every order. Zero compromises on purity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="wrap section">
+    <div class="section-head"><div><p class="eyebrow">Our Story</p><h2>Built By Chemists.<br>Not Marketers.</h2></div></div>
+    <div class="story-grid">
+      <article class="card">
+        <h3>The Beginning</h3>
+        <p>We started Performance Peptides because, as researchers ourselves, we couldn't find a supplier we'd trust to put on our own benches. Half the market was untested grey-zone product, and the other half was overpriced gatekept catalogue chemistry.</p>
+      </article>
+      <article class="card">
+        <h3>The Mission</h3>
+        <p>Build the best research peptide supply on the planet. ≥99% purity, third-party verified. Same-day shipping. Honest, plain-English product pages. No mystery oils, no fairy-dust dosing, no shipping delays.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="wrap section" style="padding-top: 0;">
+    <div class="stat-strip">
+      <div><div class="num">99%</div><div class="lbl">Min. HPLC Purity</div></div>
+      <div><div class="num">52</div><div class="lbl">Compounds in Vault</div></div>
+      <div><div class="num">14k+</div><div class="lbl">Orders Shipped</div></div>
+      <div><div class="num">24h</div><div class="lbl">Average Dispatch</div></div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="wrap section">
+    <div class="section-head"><div><p class="eyebrow">What We Stand For</p><h2>Three Non-Negotiables.</h2></div></div>
+    <div class="values">
+      <article class="value-card">
+        <span class="ico">🔬</span>
+        <h3>Verified Purity</h3>
+        <p>Every batch sent to an independent third-party lab. HPLC, mass-spec, endotoxin. COAs linked on every product page.</p>
+      </article>
+      <article class="value-card">
+        <span class="ico">🚚</span>
+        <h3>Same-Day Dispatch</h3>
+        <p>Order before 3 PM, ships the same day. Tracked, discreet, ice-packed where it matters. No drop-shipping, no middlemen.</p>
+      </article>
+      <article class="value-card">
+        <span class="ico">💬</span>
+        <h3>Real Support</h3>
+        <p>Questions about reconstitution, storage, or comparative protocols? Talk to an actual chemist, not a chatbot. Reply within 24h.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- LAB TOUR -->
+  <section class="wrap section" style="padding-top: 0;">
+    <div class="lab-tour">
+      <div class="lab-img">🔬</div>
+      <div>
+        <p class="eyebrow" style="color: var(--gold);">The Lab</p>
+        <h2>USA-based. Climate-controlled. ISO-aligned.</h2>
+        <p style="font:800 16px Arial,sans-serif; line-height:1.45; margin: 16px 0;">Our 4,000 sq ft facility is purpose-built for solid-phase peptide synthesis and lyophilisation. All vials are filled, capped, and labelled in-house with full traceability from raw amino acid to finished product.</p>
+        <a href="07-contact.html" class="btn">Schedule a Lab Visit →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="wrap section">
+    <div class="section-head"><div><p class="eyebrow">The Bench</p><h2>The Humans Behind The Vault.</h2></div></div>
+    <div class="team-grid">
+      <article class="team-card">
+        <div class="face">🧑‍🔬</div>
+        <h3>Dr. M. Alvarez</h3>
+        <p class="role">Lead Chemist · PhD Biochem</p>
+        <p>15 years in solid-phase peptide synthesis. Owns purity. Drinks too much coffee.</p>
+      </article>
+      <article class="team-card">
+        <div class="face">👩‍🔬</div>
+        <h3>S. Chen</h3>
+        <p class="role">QC &amp; Analytical · MSc</p>
+        <p>Runs every HPLC sequence personally. Has never met a vial she trusts on faith.</p>
+      </article>
+      <article class="team-card">
+        <div class="face">🧑‍💻</div>
+        <h3>J. Park</h3>
+        <p class="role">Customer Science</p>
+        <p>Replies to every research-use question. Knows the catalogue cold. Recommends stacks honestly.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="#" class="logo">⚛ PERFORMANCE PEPTIDES</a>
+      <p>USA-synthesised, ≥99% pure peptides for clinical research. All products are sold strictly for laboratory research. Not for human consumption.</p>
+    </div>
+    <div class="footer-cols">
+      <div><h4>Shop</h4><a href="#">All Products</a><a href="#">New Arrivals</a><a href="#">Bestsellers</a></div>
+      <div><h4>Company</h4><a href="06-about.html">About</a><a href="07-contact.html">Contact</a><a href="08-blog-archive.html">Blog</a></div>
+      <div><h4>Help</h4><a href="#">Shipping</a><a href="#">Returns</a><a href="#">FAQ</a></div>
+    </div>
+  </div>
+  <div class="wrap copyright">© 2025 Performance Peptides · All rights reserved</div>
+</footer>
+
+</body>
+</html>

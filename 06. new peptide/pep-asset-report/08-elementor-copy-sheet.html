@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>08 · Elementor Copy-Paste Sheet</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+  .widget-block {
+    background: var(--paper);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 8px 8px 0 #000;
+    margin-bottom: 30px;
+  }
+  .widget-block.skip { background: var(--green); }
+  .widget-block.changed { background: var(--paper); }
+  .widget-block .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 3px dashed rgba(0,0,0,.2);
+  }
+  .widget-block .head h3 {
+    margin: 0;
+    font: 900 24px Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+  }
+  .widget-block .tag {
+    background: var(--red);
+    color: #fff;
+    border: 3px solid #000;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font: 900 11px Arial, sans-serif;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0 #000;
+  }
+  .widget-block .tag.ok { background: var(--green); color: #000; }
+  .widget-block .tag.changed { background: var(--gold); color: #000; }
+
+  .field-row {
+    margin: 16px 0;
+    padding: 14px;
+    background: rgba(0,0,0,.04);
+    border: 2px dashed rgba(0,0,0,.18);
+    border-radius: 14px;
+  }
+  .field-row .field-label {
+    font: 900 12px Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin: 0 0 10px;
+    color: var(--ink);
+    opacity: .8;
+  }
+  .change-row {
+    display: grid;
+    grid-template-columns: 1fr 36px 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+  .change-row .old {
+    background: rgba(255,77,109,.15);
+    border: 3px solid var(--red);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font: 800 13px Arial, sans-serif;
+    line-height: 1.4;
+    text-decoration: line-through;
+    text-decoration-color: var(--red);
+    color: #555;
+  }
+  .change-row .arrow {
+    text-align: center;
+    font: 900 24px Impact, Arial, sans-serif;
+    color: var(--ink);
+  }
+  .change-row .new {
+    background: rgba(91,224,123,.18);
+    border: 3px solid var(--green);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font: 800 13px Arial, sans-serif;
+    line-height: 1.4;
+    color: #000;
+    position: relative;
+    padding-right: 60px;
+  }
+  .change-row .new .copy-btn {
+    position: absolute;
+    top: 8px; right: 8px;
+    background: #000;
+    color: var(--green);
+    border: 0;
+    border-radius: 8px;
+    padding: 4px 8px;
+    font: 900 10px Arial, sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .change-row .new .copy-btn:hover { background: var(--ink); }
+  .change-row .new .copy-btn.copied { background: var(--green); color: #000; }
+  .change-row .unchanged {
+    grid-column: 1 / -1;
+    background: rgba(70,240,255,.15);
+    border: 3px dashed var(--glow);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font: 800 13px Arial, sans-serif;
+    color: #000;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .toc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 30px 0;
+  }
+  .toc a {
+    background: var(--panel);
+    border: 4px solid #000;
+    border-radius: 14px;
+    padding: 12px 16px;
+    font: 900 13px Arial, sans-serif;
+    text-transform: uppercase;
+    color: #000;
+    box-shadow: 4px 4px 0 #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .toc a:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 #000; }
+  .toc a.skip { background: var(--green); }
+  .toc a.changed { background: var(--gold); }
+  .toc a .badge-mini {
+    font: 900 10px Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+  .toc a.skip .badge-mini { background: #000; color: var(--green); }
+
+  @media (max-width: 760px) {
+    .change-row { grid-template-columns: 1fr; }
+    .change-row .arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <span class="brand">⚛ Performance Peptides · Asset Report</span>
+    <nav class="nav-pills">
+      <a href="00-index.html">Overview</a>
+      <a href="07-client-requirements.html">07 · Client Reqs</a>
+      <a href="08-elementor-copy-sheet.html" class="active">08 · Copy Sheet</a>
+    </nav>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <span class="pill">📋 Copy-Paste Reference Sheet</span>
+  <h1>Update Existing.<br>Elementor Widgets.<br>Fast.</h1>
+  <p class="lead">All Elementor widget defaults are now UK-focused, but <strong>widgets you already placed on the live site still show OLD content</strong> (Elementor stores per-instance values in the database). Use this sheet to update each existing placement in 2 minutes per widget.</p>
+</section>
+
+<section class="wrap section">
+  <div class="alert info">
+    <strong>💡 How to use:</strong> Open the page in Elementor → click the widget → look up the widget below → click the green <strong>COPY</strong> button → paste into the matching control field → Update. Skip green widgets — they don't need changes.
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Jump to widget · 16 total</p>
+      <h2>Table of Contents.</h2>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#w01" class="skip">01 — Hero <span class="badge-mini">✓ SKIP</span></a>
+    <a href="#w02" class="skip">02 — Trust Strip <span class="badge-mini">✓ SKIP</span></a>
+    <a href="#w03" class="skip">03 — Categories <span class="badge-mini">✓ SKIP</span></a>
+    <a href="#w04" class="skip">04 — Featured Products <span class="badge-mini">✓ SKIP</span></a>
+    <a href="#w05" class="skip">05 — Newsletter <span class="badge-mini">✓ SKIP</span></a>
+    <a href="#w06" class="skip">06 — News Carousel <span class="badge-mini">✓ SKIP</span></a>
+    <a href="#w07" class="skip">07 — Footer <span class="badge-mini">✓ SKIP</span></a>
+    <a href="#w08" class="changed">08 — About Hero <span class="badge-mini">CHANGE</span></a>
+    <a href="#w09" class="changed">09 — Story Grid <span class="badge-mini">CHANGE</span></a>
+    <a href="#w10" class="changed">10 — Stat Strip <span class="badge-mini">CHANGE</span></a>
+    <a href="#w11" class="changed">11 — Values Grid <span class="badge-mini">CHANGE</span></a>
+    <a href="#w12" class="changed">12 — Lab Tour <span class="badge-mini">CHANGE</span></a>
+    <a href="#w13" class="changed">13 — Team Grid <span class="badge-mini">CHANGE</span></a>
+    <a href="#w14" class="changed">14 — Contact Hero <span class="badge-mini">CHANGE</span></a>
+    <a href="#w15" class="changed">15 — Contact Info <span class="badge-mini">CHANGE</span></a>
+    <a href="#w16" class="changed">16 — Contact Map <span class="badge-mini">CHANGE</span></a>
+  </div>
+</section>
+
+<section class="wrap section">
+
+  <!-- 01-07 SKIP -->
+  <article class="widget-block skip" id="w01">
+    <div class="head"><h3>01 — Hero</h3><span class="tag ok">✓ NO CHANGES</span></div>
+    <p style="font:800 14px Arial,sans-serif;margin:0;">Already UK-focused. "Direct from UK based supplies", "UK Stock" stat. Leave existing placement as-is.</p>
+  </article>
+
+  <article class="widget-block skip" id="w02">
+    <div class="head"><h3>02 — Trust Strip</h3><span class="tag ok">✓ NO CHANGES</span></div>
+    <p style="font:800 14px Arial,sans-serif;margin:0;">Already on-brand: 🚚 Fast UK Dispatch · ✅ Research Use Only · ⭐ Quality Focused. No USA / testing claims. Leave as-is.</p>
+  </article>
+
+  <article class="widget-block skip" id="w03">
+    <div class="head"><h3>03 — Categories</h3><span class="tag ok">✓ NO CHANGES</span></div>
+    <p style="font:800 14px Arial,sans-serif;margin:0;">Pulls categories from WooCommerce. No static USA copy. Leave as-is.</p>
+  </article>
+
+  <article class="widget-block skip" id="w04">
+    <div class="head"><h3>04 — Featured Products</h3><span class="tag ok">✓ NO CHANGES</span></div>
+    <p style="font:800 14px Arial,sans-serif;margin:0;">Pulls live WooCommerce products. No static copy. Leave as-is.</p>
+  </article>
+
+  <article class="widget-block skip" id="w05">
+    <div class="head"><h3>05 — Newsletter</h3><span class="tag ok">✓ NO CHANGES</span></div>
+    <p style="font:800 14px Arial,sans-serif;margin:0;">"Join the research club" + "Get launch offers, restock alerts" — neutral, no USA claims. Leave as-is.</p>
+  </article>
+
+  <article class="widget-block skip" id="w06">
+    <div class="head"><h3>06 — News Carousel</h3><span class="tag ok">✓ NO CHANGES</span></div>
+    <p style="font:800 14px Arial,sans-serif;margin:0;">"Industry signal · Latest research peptide news" — neutral. Leave as-is.</p>
+  </article>
+
+  <article class="widget-block skip" id="w07">
+    <div class="head"><h3>07 — Footer</h3><span class="tag ok">✓ NO CHANGES</span></div>
+    <p style="font:800 14px Arial,sans-serif;margin:0;">Compliance copy ("supplied strictly for laboratory research use only. Not for human or veterinary use.") is required legal text, not a marketing claim. Leave as-is.</p>
+  </article>
+
+  <!-- 08 ABOUT HERO -->
+  <article class="widget-block changed" id="w08">
+    <div class="head"><h3>08 — About Hero</h3><span class="tag changed">CHANGE 6 FIELDS</span></div>
+
+    <div class="field-row">
+      <p class="field-label">Pill text</p>
+      <div class="change-row">
+        <div class="old">⚛ Since 2020 · USA Lab</div>
+        <div class="arrow">→</div>
+        <div class="new">⚛ Stocked in the UK · Dispatched Fast<button class="copy-btn" data-copy="⚛ Stocked in the UK · Dispatched Fast">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Headline (H1)</p>
+      <div class="change-row">
+        <div class="old">The Vault.<br>Behind The Science.</div>
+        <div class="arrow">→</div>
+        <div class="new">The Vault.<br>UK Stocked.<button class="copy-btn" data-copy="The Vault.&#10;UK Stocked.">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Lead copy</p>
+      <div class="change-row">
+        <div class="old">Performance Peptides is a USA-based research peptide supplier built by chemists, for researchers. Every vial leaves our lab third-party tested, COA-verified, and dispatched same-day.</div>
+        <div class="arrow">→</div>
+        <div class="new">Performance Peptides is a UK-stocked research peptide supplier built for researchers who value fast turnaround. Order before 3pm on a working day and we ship the same day.<button class="copy-btn" data-copy="Performance Peptides is a UK-stocked research peptide supplier built for researchers who value fast turnaround. Order before 3pm on a working day and we ship the same day.">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Secondary button text</p>
+      <div class="change-row">
+        <div class="old">Talk to a Chemist</div>
+        <div class="arrow">→</div>
+        <div class="new">Get In Touch<button class="copy-btn" data-copy="Get In Touch">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Card heading</p>
+      <div class="change-row">
+        <div class="old">Research Grade. Lab Verified.</div>
+        <div class="arrow">→</div>
+        <div class="new">UK Stock. Fast Dispatch.<button class="copy-btn" data-copy="UK Stock. Fast Dispatch.">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Card copy</p>
+      <div class="change-row">
+        <div class="old">Every vial tested by a third-party lab. Full COAs published with every order. Zero compromises on purity.</div>
+        <div class="arrow">→</div>
+        <div class="new">Every product on the site is physically held in our UK warehouse. Order before 3pm on a working day and it ships the same day.<button class="copy-btn" data-copy="Every product on the site is physically held in our UK warehouse. Order before 3pm on a working day and it ships the same day.">COPY</button></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 09 STORY GRID -->
+  <article class="widget-block changed" id="w09">
+    <div class="head"><h3>09 — Story Grid</h3><span class="tag changed">CHANGE 3 FIELDS</span></div>
+
+    <div class="field-row">
+      <p class="field-label">Heading</p>
+      <div class="change-row">
+        <div class="old">Built By Chemists.<br>Not Marketers.</div>
+        <div class="arrow">→</div>
+        <div class="new">Built By Researchers.<br>For Researchers.<button class="copy-btn" data-copy="Built By Researchers.&#10;For Researchers.">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Card 1 · "The Beginning" copy</p>
+      <div class="change-row">
+        <div class="old">We started Performance Peptides because, as researchers ourselves, we couldn't find a supplier we'd trust to put on our own benches. Half the market was untested grey-zone product, the other half overpriced gatekept catalogue chemistry.</div>
+        <div class="arrow">→</div>
+        <div class="new">We started Performance Peptides because, as researchers ourselves, we wanted a UK supplier that was simple to order from and quick to deliver. No clunky checkouts, no waiting weeks for stock, no jargon.<button class="copy-btn" data-copy="We started Performance Peptides because, as researchers ourselves, we wanted a UK supplier that was simple to order from and quick to deliver. No clunky checkouts, no waiting weeks for stock, no jargon.">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Card 2 · "The Mission" copy</p>
+      <div class="change-row">
+        <div class="old">Build the best research peptide supply on the planet. ≥99% purity, third-party verified. Same-day shipping. Honest, plain-English product pages. No mystery oils, no fairy-dust dosing, no shipping delays.</div>
+        <div class="arrow">→</div>
+        <div class="new">Build the easiest UK research peptide store to use. Plain-English product pages, stock you can actually order today, same-day dispatch on working days. No nonsense, no shipping delays, no surprises at checkout.<button class="copy-btn" data-copy="Build the easiest UK research peptide store to use. Plain-English product pages, stock you can actually order today, same-day dispatch on working days. No nonsense, no shipping delays, no surprises at checkout.">COPY</button></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 10 STAT STRIP -->
+  <article class="widget-block changed" id="w10">
+    <div class="head"><h3>10 — Stat Strip</h3><span class="tag changed">CHANGE 2 STATS</span></div>
+
+    <div class="field-row">
+      <p class="field-label">Stat 1 (number + label)</p>
+      <div class="change-row">
+        <div class="old">99% · Min. HPLC Purity</div>
+        <div class="arrow">→</div>
+        <div class="new">UK · Held In Stock<button class="copy-btn" data-copy="UK">COPY NUM</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Number: <code>UK</code> · Label: <code>Held In Stock</code></p>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Stat 3 (number + label)</p>
+      <div class="change-row">
+        <div class="old">14k+ · Orders Shipped</div>
+        <div class="arrow">→</div>
+        <div class="new">3PM · Same-Day Cutoff<button class="copy-btn" data-copy="3PM">COPY NUM</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Number: <code>3PM</code> · Label: <code>Same-Day Cutoff</code></p>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Stat 2 + 4 (unchanged)</p>
+      <div class="change-row"><div class="unchanged">Keep: <strong>52 · Compounds in Vault</strong> &amp; <strong>24h · Average Dispatch</strong></div></div>
+    </div>
+  </article>
+
+  <!-- 11 VALUES GRID -->
+  <article class="widget-block changed" id="w11">
+    <div class="head"><h3>11 — Values Grid</h3><span class="tag changed">CHANGE 3 CARDS</span></div>
+
+    <div class="field-row">
+      <p class="field-label">Card 1 · Icon + Title + Copy</p>
+      <div class="change-row">
+        <div class="old">🔬 · Verified Purity · "Every batch sent to an independent third-party lab. HPLC, mass-spec, endotoxin. COAs linked on every product page."</div>
+        <div class="arrow">→</div>
+        <div class="new">🇬🇧 · UK Stock · "Every product on the site is physically held in our UK warehouse. What you see is what we can ship — no drop-shipping, no overseas waits."<button class="copy-btn" data-copy="Every product on the site is physically held in our UK warehouse. What you see is what we can ship — no drop-shipping, no overseas waits.">COPY COPY</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Icon: <code>🇬🇧</code> · Title: <code>UK Stock</code></p>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Card 2 · Same-Day Dispatch copy</p>
+      <div class="change-row">
+        <div class="old">Order before 3 PM, ships the same day. Tracked, discreet, ice-packed where it matters. No drop-shipping, no middlemen.</div>
+        <div class="arrow">→</div>
+        <div class="new">Order before 3pm on a working day and it ships the same day. Tracked &amp; discreet — usually next-day delivery within the UK.<button class="copy-btn" data-copy="Order before 3pm on a working day and it ships the same day. Tracked & discreet — usually next-day delivery within the UK.">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Card 3 · Real Support copy</p>
+      <div class="change-row">
+        <div class="old">Questions about reconstitution, storage, or comparative protocols? Talk to an actual chemist, not a chatbot. Reply within 24 h.</div>
+        <div class="arrow">→</div>
+        <div class="new">Questions about reconstitution, storage or product info? Drop us a message and a real person on our team will reply within one working day.<button class="copy-btn" data-copy="Questions about reconstitution, storage or product info? Drop us a message and a real person on our team will reply within one working day.">COPY</button></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 12 LAB TOUR -->
+  <article class="widget-block changed" id="w12">
+    <div class="head"><h3>12 — Lab Tour</h3><span class="tag changed">CHANGE 5 FIELDS</span></div>
+
+    <div class="field-row">
+      <p class="field-label">Emoji fallback</p>
+      <div class="change-row">
+        <div class="old">🔬</div>
+        <div class="arrow">→</div>
+        <div class="new">📦<button class="copy-btn" data-copy="📦">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Eyebrow</p>
+      <div class="change-row">
+        <div class="old">The Lab</div>
+        <div class="arrow">→</div>
+        <div class="new">The Warehouse<button class="copy-btn" data-copy="The Warehouse">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Heading</p>
+      <div class="change-row">
+        <div class="old">USA-based. Climate-controlled. ISO-aligned.</div>
+        <div class="arrow">→</div>
+        <div class="new">UK Based. Climate-controlled. Ready To Ship.<button class="copy-btn" data-copy="UK Based. Climate-controlled. Ready To Ship.">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Copy</p>
+      <div class="change-row">
+        <div class="old">Our 4,000 sq ft facility is purpose-built for solid-phase peptide synthesis and lyophilisation. All vials are filled, capped, and labelled in-house with full traceability from raw amino acid to finished product.</div>
+        <div class="arrow">→</div>
+        <div class="new">Our UK fulfilment site is climate-controlled and stocked daily. Orders are picked, packed and dispatched the same day on working days — so you don't sit waiting on customs or international shipping.<button class="copy-btn" data-copy="Our UK fulfilment site is climate-controlled and stocked daily. Orders are picked, packed and dispatched the same day on working days — so you don't sit waiting on customs or international shipping.">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Button text</p>
+      <div class="change-row">
+        <div class="old">Schedule a Lab Visit →</div>
+        <div class="arrow">→</div>
+        <div class="new">Get In Touch →<button class="copy-btn" data-copy="Get In Touch →">COPY</button></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 13 TEAM GRID -->
+  <article class="widget-block changed" id="w13">
+    <div class="head"><h3>13 — Team Grid</h3><span class="tag changed">REPLACE ALL 3 CARDS</span></div>
+
+    <div class="field-row">
+      <p class="field-label">Member 1</p>
+      <div class="change-row">
+        <div class="old">🧑‍🔬 · Dr. M. Alvarez · Lead Chemist · PhD Biochem · "15 years in solid-phase peptide synthesis. Owns purity. Drinks too much coffee."</div>
+        <div class="arrow">→</div>
+        <div class="new">📦 · Fulfilment · UK Warehouse Team · "Picks, packs and ships every order from our UK warehouse. Same-day dispatch on working days when you order before 3pm."<button class="copy-btn" data-copy="Picks, packs and ships every order from our UK warehouse. Same-day dispatch on working days when you order before 3pm.">COPY BIO</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Face: <code>📦</code> · Name: <code>Fulfilment</code> · Role: <code>UK Warehouse Team</code></p>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Member 2</p>
+      <div class="change-row">
+        <div class="old">👩‍🔬 · S. Chen · QC &amp; Analytical · MSc · "Runs every HPLC sequence personally. Has never met a vial she trusts on faith."</div>
+        <div class="arrow">→</div>
+        <div class="new">💬 · Support · Customer Care · "Real people answering real questions on reconstitution, storage and product info. We reply within one working day."<button class="copy-btn" data-copy="Real people answering real questions on reconstitution, storage and product info. We reply within one working day.">COPY BIO</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Face: <code>💬</code> · Name: <code>Support</code> · Role: <code>Customer Care</code></p>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Member 3</p>
+      <div class="change-row">
+        <div class="old">🧑‍💻 · J. Park · Customer Science · "Replies to every research-use question. Knows the catalogue cold. Recommends stacks honestly."</div>
+        <div class="arrow">→</div>
+        <div class="new">🛒 · Operations · Stock &amp; Logistics · "Keeps the UK stock list accurate and the catalogue current. If it's on the site, it's in the warehouse — not on a boat."<button class="copy-btn" data-copy="Keeps the UK stock list accurate and the catalogue current. If it's on the site, it's in the warehouse — not on a boat.">COPY BIO</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Face: <code>🛒</code> · Name: <code>Operations</code> · Role: <code>Stock &amp; Logistics</code></p>
+    </div>
+  </article>
+
+  <!-- 14 CONTACT HERO -->
+  <article class="widget-block changed" id="w14">
+    <div class="head"><h3>14 — Contact Hero</h3><span class="tag changed">CHANGE 4 FIELDS</span></div>
+
+    <div class="field-row">
+      <p class="field-label">Lead copy</p>
+      <div class="change-row">
+        <div class="old">Questions on purity, reconstitution, bulk pricing, COAs, or anything else? Drop us a line — a chemist or our customer-science team will reply within one business day.</div>
+        <div class="arrow">→</div>
+        <div class="new">Questions on stock, dispatch, reconstitution, bulk pricing, or anything else? Drop us a line — a real person from our UK team will reply within one working day.<button class="copy-btn" data-copy="Questions on stock, dispatch, reconstitution, bulk pricing, or anything else? Drop us a line — a real person from our UK team will reply within one working day.">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Mini stat 1 (number + label)</p>
+      <div class="change-row">
+        <div class="old">99% · Reply Rate</div>
+        <div class="arrow">→</div>
+        <div class="new">UK · Based Team<button class="copy-btn" data-copy="UK">COPY</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Value: <code>UK</code> · Label: <code>Based Team</code></p>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Mini stat 2 (number + label)</p>
+      <div class="change-row">
+        <div class="old">12h · Avg. Response</div>
+        <div class="arrow">→</div>
+        <div class="new">24h · Avg. Reply<button class="copy-btn" data-copy="24h">COPY</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Value: <code>24h</code> · Label: <code>Avg. Reply</code></p>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Mini stat 3 (number + label)</p>
+      <div class="change-row">
+        <div class="old">4.9 · ★ Rating</div>
+        <div class="arrow">→</div>
+        <div class="new">9–6 · Mon–Fri<button class="copy-btn" data-copy="9–6">COPY</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Value: <code>9–6</code> · Label: <code>Mon–Fri</code></p>
+    </div>
+  </article>
+
+  <!-- 15 CONTACT INFO -->
+  <article class="widget-block changed" id="w15">
+    <div class="head"><h3>15 — Contact Info &amp; Form</h3><span class="tag changed">CHANGE 5 ROWS</span></div>
+
+    <div class="field-row">
+      <p class="field-label">Row 1 · Address</p>
+      <div class="change-row">
+        <div class="old">📍 · Lab &amp; HQ · "1411 Vault Avenue, Boulder, CO 80301 · USA"</div>
+        <div class="arrow">→</div>
+        <div class="new">📍 · UK Warehouse · "United Kingdom · Address on request"<button class="copy-btn" data-copy="United Kingdom · Address on request">COPY VAL</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Label: <code>UK Warehouse</code></p>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Row 2 · General email</p>
+      <div class="change-row">
+        <div class="old">📧 · General · hello@performancepeptides.com</div>
+        <div class="arrow">→</div>
+        <div class="new">📧 · General · hello@performancepeptidesuk.com<button class="copy-btn" data-copy="hello@performancepeptidesuk.com">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Row 3 · Bulk / Trade email</p>
+      <div class="change-row">
+        <div class="old">🔬 · Research / Bulk · science@performancepeptides.com</div>
+        <div class="arrow">→</div>
+        <div class="new">🛒 · Bulk / Trade · trade@performancepeptidesuk.com<button class="copy-btn" data-copy="trade@performancepeptidesuk.com">COPY</button></div>
+      </div>
+      <p style="font:800 11px Arial,sans-serif;opacity:.6;margin:6px 0 0;">Icon: <code>🛒</code> · Label: <code>Bulk / Trade</code></p>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Row 4 · Orders email</p>
+      <div class="change-row">
+        <div class="old">📦 · Order Status · orders@performancepeptides.com</div>
+        <div class="arrow">→</div>
+        <div class="new">📦 · Order Status · orders@performancepeptidesuk.com<button class="copy-btn" data-copy="orders@performancepeptidesuk.com">COPY</button></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <p class="field-label">Row 5 · Hours</p>
+      <div class="change-row">
+        <div class="old">🕒 · Hours · "Mon–Fri · 9 AM – 6 PM MT<br>Same-day dispatch cutoff: 3 PM"</div>
+        <div class="arrow">→</div>
+        <div class="new">🕒 · Hours · "Mon–Fri · 9 AM – 6 PM GMT<br>Same-day dispatch cutoff: 3 PM"<button class="copy-btn" data-copy="Mon–Fri · 9 AM – 6 PM GMT&#10;Same-day dispatch cutoff: 3 PM">COPY</button></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 16 CONTACT MAP -->
+  <article class="widget-block changed" id="w16">
+    <div class="head"><h3>16 — Contact Map</h3><span class="tag changed">CHANGE 1 FIELD</span></div>
+
+    <div class="field-row">
+      <p class="field-label">Label pill text</p>
+      <div class="change-row">
+        <div class="old">Boulder, CO · USA</div>
+        <div class="arrow">→</div>
+        <div class="new">United Kingdom<button class="copy-btn" data-copy="United Kingdom">COPY</button></div>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- FINAL ALERT -->
+<section class="wrap section">
+  <div class="alert ok">
+    <strong>✓ When done:</strong> Hard-refresh the live site (Ctrl+Shift+R). Spot-check the About + Contact pages. Every USA / lab / testing / Boulder reference should be gone. If you see anything that slipped through, it's a hardcoded value in Elementor that needs the manual override above.
+  </div>
+</section>
+
+<div class="wrap page-nav">
+  <a class="prev" href="07-client-requirements.html">← 07 · Client Reqs</a>
+  <a class="home" href="00-index.html">⚛ Home</a>
+  <span></span>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="brand-foot">⚛ Performance Peptides</span>
+    <p>Copy-paste sheet · 9 widgets changed · 7 skip · Updates existing Elementor placements</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const text = btn.dataset.copy;
+      try {
+        await navigator.clipboard.writeText(text);
+        const orig = btn.textContent;
+        btn.textContent = '✓ COPIED';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.classList.remove('copied');
+        }, 1500);
+      } catch (err) {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        btn.textContent = '✓ COPIED';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'COPY'; btn.classList.remove('copied'); }, 1500);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

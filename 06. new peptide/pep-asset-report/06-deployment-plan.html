@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06 · Deployment Plan — Asset Report</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <span class="brand">⚛ Performance Peptides · Asset Report</span>
+    <nav class="nav-pills">
+      <a href="00-index.html">Overview</a>
+      <a href="01-reconstitution-guide.html">01 · Guide</a>
+      <a href="02-icon-pack.html">02 · Icons</a>
+      <a href="03-coa-pdfs.html">03 · COAs</a>
+      <a href="04-disclaimer.html">04 · Disclaimer</a>
+      <a href="05-white-logo.html">05 · White Logo</a>
+      <a href="06-deployment-plan.html" class="active">06 · Deploy</a>
+    </nav>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <span class="pill">🚀 Asset 06 · Deployment Roadmap</span>
+  <h1>From Files.<br>To Live Site.<br>In 4 Jobs.</h1>
+  <p class="lead">Concrete sequence to roll all 5 assets onto the live WooCommerce store. Each job has copy-paste code, time estimates, and a verification step.</p>
+</section>
+
+<!-- AT A GLANCE -->
+<section class="wrap section">
+  <div class="stat-strip">
+    <div class="stat"><div class="num">4</div><div class="lbl">Jobs</div></div>
+    <div class="stat"><div class="num">~80</div><div class="lbl">Minutes Total</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl">Files Edited</div></div>
+    <div class="stat"><div class="num">0</div><div class="lbl">Plugins Needed</div></div>
+  </div>
+</section>
+
+<!-- JOB 1 -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Job 1 · ~20 minutes · Highest impact</p>
+      <h2>Auto-Inject 01 + 04.</h2>
+    </div>
+    <span class="chip green" style="font-size:13px;padding:8px 14px;box-shadow:3px 3px 0 #000;">PRIORITY 1</span>
+  </div>
+
+  <p style="font:800 16px Arial,sans-serif;line-height:1.5;color:var(--panel);max-width:800px;">Hook into WooCommerce's product gallery filter and inject the reconstitution guide + disclaimer onto <strong>every product page automatically</strong> — no manual upload per product.</p>
+
+  <h3 style="color:var(--gold); margin-top:24px;">📁 File to edit: <code style="background:#000;color:var(--gold);padding:4px 10px;border-radius:6px;">02-woodmart-child/functions.php</code></h3>
+
+  <pre><code><span class="cmt">/* =====================================================================
+   Auto-inject the on-brand reconstitution guide + disclaimer poster
+   into every product gallery. Hooks into WooCommerce's gallery filter
+   so the images appear right after the product's own photo.
+
+   Setup: upload pep/01.png and pep/04.png to Media Library, then
+   replace the two attachment IDs below.
+   ===================================================================== */</span>
+<span class="kw">add_filter</span>( <span class="str">'woocommerce_single_product_image_gallery_classes'</span>, <span class="str">'__return_value'</span>, 10 );
+
+<span class="kw">add_filter</span>( <span class="str">'woocommerce_product_get_gallery_image_ids'</span>, <span class="str">'pp_atomic_pdp_brand_images'</span>, 10, 2 );
+<span class="kw">function</span> pp_atomic_pdp_brand_images( $gallery_ids, $product ) {
+    <span class="cmt">// Replace with real Media Library attachment IDs after upload.</span>
+    $reconstitution_id = 1234; <span class="cmt">// pep/01.png</span>
+    $disclaimer_id     = 1235; <span class="cmt">// pep/04.png</span>
+
+    <span class="cmt">// Inject brand images at the START of the gallery (right after the
+    // featured image) so they're the first thing customers swipe to.</span>
+    <span class="kw">if</span> ( $reconstitution_id ) {
+        <span class="kw">array_unshift</span>( $gallery_ids, $reconstitution_id );
+    }
+    <span class="kw">if</span> ( $disclaimer_id ) {
+        $gallery_ids[] = $disclaimer_id; <span class="cmt">// last image</span>
+    }
+
+    <span class="kw">return</span> <span class="kw">array_unique</span>( $gallery_ids );
+}</code></pre>
+
+  <ul class="bullets" style="margin-top:20px;">
+    <li>Upload <code>pep/01.png</code> and <code>pep/04.png</code> to <strong>Media Library</strong></li>
+    <li>Note both attachment IDs (visible in URL when editing the media)</li>
+    <li>Replace <code>1234</code> and <code>1235</code> with real IDs</li>
+    <li>Visit any product → confirm: product photo → reconstitution guide → disclaimer in gallery</li>
+  </ul>
+</section>
+
+<!-- JOB 2 -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Job 2 · ~30 minutes · Manual click-through OR scripted</p>
+      <h2>Attach 20 COAs.</h2>
+    </div>
+    <span class="chip gold" style="font-size:13px;padding:8px 14px;box-shadow:3px 3px 0 #000;">PRIORITY 2</span>
+  </div>
+
+  <p style="font:800 16px Arial,sans-serif;line-height:1.5;color:var(--panel);max-width:800px;">Two paths — pick the one you prefer.</p>
+
+  <div class="asset-grid" style="margin-top:18px;">
+
+    <article class="card panel">
+      <h3>🖱 Path A · Manual (20 min)</h3>
+      <p>For each of the 20 products:</p>
+      <ol style="padding-left:20px; margin:0; font:800 14px Arial,sans-serif; line-height:1.5;">
+        <li>Open product in WP admin</li>
+        <li>Scroll to <em>Product Data → Atomic Blue Specs</em> meta box</li>
+        <li>Click "Upload COA" → pick the matching PDF</li>
+        <li>Save</li>
+      </ol>
+      <p style="margin-top:14px;"><strong>Pros:</strong> No code · safest · no risk of mismatched files</p>
+      <p><strong>Cons:</strong> Repetitive · ~60s per product</p>
+    </article>
+
+    <article class="card glow">
+      <h3>⚡ Path B · Scripted (5 min)</h3>
+      <p>Bulk-upload PDFs first, then run a one-off auto-match script (see full script on <a href="03-coa-pdfs.html" style="font-weight:900; border-bottom:3px solid #000;">COA page</a>).</p>
+      <ol style="padding-left:20px; margin:0; font:800 14px Arial,sans-serif; line-height:1.5;">
+        <li>FTP / SFTP <code>pep/03/</code> into <code>wp-content/uploads/coas/</code></li>
+        <li>Drop the auto-match snippet into <code>functions.php</code></li>
+        <li>Visit <code>/?run-coa-import=1</code> once as admin</li>
+        <li>Delete the snippet</li>
+      </ol>
+      <p style="margin-top:14px;"><strong>Pros:</strong> 5 min total · reusable for future batches</p>
+      <p><strong>Cons:</strong> Needs SKU mapping to be correct</p>
+    </article>
+  </div>
+</section>
+
+<!-- JOB 3 -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Job 3 · ~15 minutes · Site-wide</p>
+      <h2>Install Favicon Pack.</h2>
+    </div>
+    <span class="chip glow" style="font-size:13px;padding:8px 14px;box-shadow:3px 3px 0 #000;">PRIORITY 3</span>
+  </div>
+
+  <p style="font:800 16px Arial,sans-serif;line-height:1.5;color:var(--panel);max-width:800px;">Two-step: WP-managed icon via Customizer + extra <code style="background:#000;color:var(--glow);padding:2px 6px;border-radius:4px;">&lt;head&gt;</code> tags for Apple-touch + PWA support.</p>
+
+  <h3 style="color:var(--gold); margin-top:24px;">Step A · WP Customizer (Site Icon)</h3>
+  <ol class="steps">
+    <li>Go to <strong>Appearance → Customize → Site Identity</strong></li>
+    <li>Click "Site Icon" → upload <code>pep/02/icon-512.png</code></li>
+    <li>WP auto-generates 16, 32, 192, 270 sizes from this one upload</li>
+    <li>Publish</li>
+  </ol>
+
+  <h3 style="color:var(--gold); margin-top:32px;">Step B · Extra head tags for Apple + PWA</h3>
+  <p style="font:800 15px Arial,sans-serif;color:var(--panel);">Copy <code>pep/02/</code> into <code>02-woodmart-child/assets/icons/</code>, then add this to <code>functions.php</code>:</p>
+
+  <pre><code><span class="kw">add_action</span>( <span class="str">'wp_head'</span>, <span class="str">'pp_atomic_favicon_tags'</span>, 5 );
+<span class="kw">function</span> pp_atomic_favicon_tags() {
+    $base = <span class="kw">get_stylesheet_directory_uri</span>() . <span class="str">'/assets/icons/'</span>;
+    ?&gt;
+    &lt;link rel=<span class="str">"shortcut icon"</span> href=<span class="str">"&lt;?php echo esc_url( $base . 'favicon.ico' ); ?&gt;"</span>&gt;
+    &lt;link rel=<span class="str">"apple-touch-icon"</span> sizes=<span class="str">"180x180"</span> href=<span class="str">"&lt;?php echo esc_url( $base . 'icon-180.png' ); ?&gt;"</span>&gt;
+    &lt;link rel=<span class="str">"icon"</span> type=<span class="str">"image/png"</span> sizes=<span class="str">"512x512"</span> href=<span class="str">"&lt;?php echo esc_url( $base . 'icon-512.png' ); ?&gt;"</span>&gt;
+    &lt;link rel=<span class="str">"manifest"</span> href=<span class="str">"&lt;?php echo esc_url( $base . 'manifest.json' ); ?&gt;"</span>&gt;
+    &lt;meta name=<span class="str">"theme-color"</span> content=<span class="str">"#071b2d"</span>&gt;
+    &lt;?php
+}</code></pre>
+</section>
+
+<!-- JOB 4 -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Job 4 · ~15 minutes · Visual / brand</p>
+      <h2>Swap White Logo.</h2>
+    </div>
+    <span class="chip red" style="font-size:13px;padding:8px 14px;box-shadow:3px 3px 0 #000;">PRIORITY 4 · VERIFY FIRST</span>
+  </div>
+
+  <div class="alert">
+    <strong>⛔ Block:</strong> Don't run this job until you've confirmed the white logo files <em>actually</em> have white pixels. See <a href="05-white-logo.html" style="font-weight:900; border-bottom:3px solid #fff;">Asset 05 page</a> for the verification recipe.
+  </div>
+
+  <ol class="steps">
+    <li>Open <code>PP ATOM WIDE LOGO white.png</code> in image editor → eyedrop pixel → confirm <code style="background:#fff;color:#000;padding:2px 6px;border-radius:4px;">#FFFFFF</code>. If <code>#000000</code>, STOP and request real white from client.</li>
+    <li>Upload both PNGs to Media Library.</li>
+    <li><strong>Desktop header:</strong> WoodMart → Theme Settings → Header → Logo → upload wide lockup.</li>
+    <li><strong>Mobile header:</strong> WoodMart → Theme Settings → Mobile Header → Logo → upload atom-only.</li>
+    <li><strong>Footer:</strong> Appearance → Customize → Footer Builder → Logo widget → upload wide lockup.</li>
+    <li><strong>Emails:</strong> WooCommerce → Settings → Emails → Header image → upload wide lockup.</li>
+    <li>Hard-refresh on desktop + mobile + open a test order receipt to verify.</li>
+  </ol>
+</section>
+
+<!-- TIMELINE -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Suggested sequence · One sitting</p>
+      <h2>Deployment Timeline.</h2>
+    </div>
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th class="num-col">Order</th>
+        <th>Job</th>
+        <th>Time</th>
+        <th>Why this order</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="num-col">1</td>
+        <td><strong>Verify white logo (05)</strong></td>
+        <td>5 min</td>
+        <td>Unblock job #4 early — gives client time to send real white if needed</td>
+      </tr>
+      <tr>
+        <td class="num-col">2</td>
+        <td><strong>Install favicons (Job 3)</strong></td>
+        <td>15 min</td>
+        <td>Site-wide change — get it done before product pages get traffic</td>
+      </tr>
+      <tr>
+        <td class="num-col">3</td>
+        <td><strong>Auto-inject 01 + 04 (Job 1)</strong></td>
+        <td>20 min</td>
+        <td>Highest customer-facing impact, single code change</td>
+      </tr>
+      <tr>
+        <td class="num-col">4</td>
+        <td><strong>Attach COAs (Job 2)</strong></td>
+        <td>30 min</td>
+        <td>Per-product work — do last, while final visual review happens</td>
+      </tr>
+      <tr>
+        <td class="num-col">5</td>
+        <td><strong>Swap white logo (Job 4)</strong></td>
+        <td>15 min</td>
+        <td>Final visual polish — assumes job #1 unblocked it</td>
+      </tr>
+      <tr style="background:var(--gold);">
+        <td class="num-col"><strong>=</strong></td>
+        <td><strong>TOTAL</strong></td>
+        <td><strong>~85 min</strong></td>
+        <td>All 5 assets live</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- DONE STATE -->
+<section class="wrap section">
+  <div class="alert ok">
+    <strong>✓ When all 4 jobs complete:</strong>
+    <ul style="margin:10px 0 0; padding-left:24px;">
+      <li>Every product page shows reconstitution guide + disclaimer automatically</li>
+      <li>20 products have a "📥 Download COA" button on PDP</li>
+      <li>Browser tabs / iOS share / Android home-screen all show the PP logo</li>
+      <li>Header + footer + emails all use white logo on dark background</li>
+      <li>Customers get a fully on-brand experience from search → checkout → receipt</li>
+    </ul>
+  </div>
+</section>
+
+<div class="wrap page-nav">
+  <a class="prev" href="05-white-logo.html">← 05 · White Logo</a>
+  <a class="home" href="00-index.html">⚛ Home</a>
+  <span></span>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="brand-foot">⚛ Performance Peptides</span>
+    <p>Deployment Plan · 4 jobs · ~85 min · Brings all 5 assets live</p>
+  </div>
+</footer>
+
+</body>
+</html>

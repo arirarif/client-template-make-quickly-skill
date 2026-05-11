@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 · Disclaimer — Asset Report</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <span class="brand">⚛ Performance Peptides · Asset Report</span>
+    <nav class="nav-pills">
+      <a href="00-index.html">Overview</a>
+      <a href="01-reconstitution-guide.html">01 · Guide</a>
+      <a href="02-icon-pack.html">02 · Icons</a>
+      <a href="03-coa-pdfs.html">03 · COAs</a>
+      <a href="04-disclaimer.html" class="active">04 · Disclaimer</a>
+      <a href="05-white-logo.html">05 · White Logo</a>
+      <a href="06-deployment-plan.html">06 · Deploy</a>
+    </nav>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <span class="pill">⚛ Asset 04 · Themed Disclaimer</span>
+  <h1>Important Terms.<br>On-Brand.<br>Hard To Miss.</h1>
+  <p class="lead">Retro-styled legal disclaimer poster covering Research Use Only, Not Medical Products, Compliance, No Returns, Mixed Items, and Your Agreement. Goes on every product page as image #3 in the gallery.</p>
+</section>
+
+<!-- PREVIEW -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Full preview</p>
+      <h2>The Asset.</h2>
+    </div>
+    <span class="chip green" style="font-size:13px;padding:8px 14px;box-shadow:3px 3px 0 #000;">✓ READY TO USE</span>
+  </div>
+
+  <div class="card" style="text-align:center; padding:18px;">
+    <img src="../pep/04.png" alt="Important Terms & Disclaimer poster" style="max-width:500px; width:100%; display:block; margin:0 auto; border:4px solid #000; border-radius:18px;">
+    <p style="margin:14px 0 0; font:900 12px Arial,sans-serif; text-transform:uppercase; letter-spacing:.06em; opacity:.7;">Source: <code style="background:#000;color:var(--glow);padding:2px 6px;border-radius:4px;">06. new peptide/pep/04.png</code></p>
+  </div>
+</section>
+
+<!-- 6 SECTIONS BREAKDOWN -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Anatomy · 6 legal sections</p>
+      <h2>What's Inside.</h2>
+    </div>
+  </div>
+
+  <div class="asset-grid">
+
+    <article class="card panel">
+      <h3>🔬 Research Use Only</h3>
+      <p>All products are exclusively sold for research purposes. They are not intended for human use, therapeutic, diagnostic, or clinical application.</p>
+    </article>
+
+    <article class="card panel">
+      <h3>🧪 Not Medical Products</h3>
+      <p>None of the products listed on our website are medical products, nor should they be marketed or used as such.</p>
+    </article>
+
+    <article class="card panel">
+      <h3>🛡 Compliance &amp; Responsibility</h3>
+      <p>The buyer is responsible for ensuring compliance with all relevant laws and regulations. Performance Peptides holds no liability for misuse of products or any adverse outcomes.</p>
+    </article>
+
+    <article class="card panel">
+      <h3>📦 No Returns</h3>
+      <p>Due to the nature of the products we sell, we do not accept returned products.</p>
+    </article>
+
+    <article class="card panel">
+      <h3>💉 No Replacements for Mixed Items</h3>
+      <p>We are unable to replace items that have been mixed or used. To qualify for a replacement, the vial must be returned in its original, unopened condition.</p>
+    </article>
+
+    <article class="card panel">
+      <h3>📋 Your Agreement</h3>
+      <p>Your purchase signifies your understanding and agreement to these terms.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- METADATA -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Technical details</p>
+      <h2>File Metadata.</h2>
+    </div>
+  </div>
+
+  <div class="asset-grid">
+    <article class="card glow">
+      <h3>📄 File Info</h3>
+      <p><strong>Path:</strong> <code style="background:#000;color:var(--glow);padding:2px 6px;border-radius:4px;">pep/04.png</code></p>
+      <p><strong>Format:</strong> PNG · vertical poster orientation</p>
+      <p><strong>Style:</strong> Vintage retro poster matching atomic-blue aesthetic</p>
+      <p><strong>Top corners:</strong> PP atom logos</p>
+      <p><strong>Bottom banner:</strong> "Thank you for supporting Responsible Research!"</p>
+    </article>
+
+    <article class="card gold">
+      <h3>🎯 Where it goes</h3>
+      <p><strong>Primary:</strong> Image #3 in every product gallery (after the product photo + reconstitution guide).</p>
+      <p><strong>Secondary:</strong> Bottom of every product description, before the FAQ section.</p>
+      <p><strong>Optional:</strong> Standalone <code style="background:#000;color:var(--gold);padding:2px 6px;border-radius:4px;">/terms/</code> page combining disclaimer + full terms text.</p>
+    </article>
+
+    <article class="card red">
+      <h3 style="color:#fff;">⚖ Legal weight</h3>
+      <p style="color:#fff;">This is a <strong>compliance display</strong>, not a substitute for proper Terms &amp; Conditions in the footer. Make sure the footer ALSO links to a full Terms / Privacy / Shipping page.</p>
+      <p style="color:#fff;">For UK / EU compliance, this disclaimer must be visible BEFORE checkout — placing it on each product page satisfies that.</p>
+    </article>
+  </div>
+</section>
+
+<!-- USAGE RECIPE -->
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Step-by-step · How to wire it in</p>
+      <h2>Deployment Recipe.</h2>
+    </div>
+  </div>
+
+  <ol class="steps">
+    <li>Upload <code>pep/04.png</code> to <strong>WP Media Library</strong>. Note its attachment ID.</li>
+    <li>Open <code>02-woodmart-child/functions.php</code> and the <code>pp_atomic_pdp_brand_images()</code> hook will append both assets (01 + 04) to the product gallery automatically.</li>
+    <li>Replace the placeholder <code>$disclaimer_id = 1235;</code> with the real attachment ID.</li>
+    <li>Visit any product page → confirm the disclaimer appears as image #3 in the gallery.</li>
+    <li>Recommended extra: Add an <code>&lt;img&gt;</code> tag at the bottom of every product short description (via Woo's <code>woocommerce_short_description</code> filter) for extra prominence.</li>
+  </ol>
+</section>
+
+<div class="wrap page-nav">
+  <a class="prev" href="03-coa-pdfs.html">← 03 · COAs</a>
+  <a class="home" href="00-index.html">⚛ Home</a>
+  <a href="05-white-logo.html">Next: 05 · White Logo →</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="brand-foot">⚛ Performance Peptides</span>
+    <p>Asset 04 of 5 · Themed Disclaimer</p>
+  </div>
+</footer>
+
+</body>
+</html>

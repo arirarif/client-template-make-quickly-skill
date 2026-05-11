@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | Performance Peptides</title>
+<link rel="stylesheet" href="00-atomic-blue.css">
+<style>
+  .blog-filters { background: var(--paper); color: #000; border-top: 4px solid #000; border-bottom: 4px solid #000; box-shadow: 0 -8px 0 rgba(0,0,0,.35), 0 8px 0 rgba(0,0,0,.35); padding: 26px 0; }
+  .blog-filters .wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .blog-card { background: var(--paper); color: #000; border: 4px solid #000; border-radius: 30px; box-shadow: 7px 7px 0 #000; display: flex; flex-direction: column; overflow: hidden; }
+  .blog-thumb { height: 200px; background: linear-gradient(135deg, var(--glow), var(--panel)); border-bottom: 4px solid #000; display: grid; place-items: center; font-size: 80px; position: relative; }
+  .blog-thumb .news-date { position: absolute; top: 14px; left: 14px; }
+  .blog-card-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .blog-card .news-type { font: 900 11px Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; opacity: .72; margin: 0; }
+  .blog-card h3 { font: 900 24px Arial, sans-serif; line-height: .95; text-transform: uppercase; margin: 0; }
+  .blog-card p { font: 800 14px Arial, sans-serif; line-height: 1.35; opacity: .85; margin: 0 0 6px; }
+  .blog-card .read-more { margin-top: auto; align-self: flex-start; background: var(--glow); color: #000; border: 4px solid #000; border-radius: 13px; padding: 9px 13px; font: 900 13px Arial, sans-serif; text-transform: uppercase; box-shadow: 4px 4px 0 #000; }
+
+  .pagination { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 36px; }
+  .pagination a, .pagination span { border: 3px solid #000; background: var(--panel); color: #000; border-radius: 12px; padding: 10px 14px; font: 900 14px Arial, sans-serif; box-shadow: 3px 3px 0 #000; }
+  .pagination .current { background: var(--glow); }
+
+  @media (max-width: 980px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .blog-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="wrap"><span>⚡ 20% launch code: Vault20</span><span>Research use only. Not for human consumption.</span><span>🚚 Order before 3pm for same-day dispatch</span></div></header>
+
+<nav class="wrap nav">
+  <a href="#" class="logo">⚛ PERFORMANCE PEPTIDES</a>
+  <div class="links">
+    <a href="../performance-peptides-atomic-blue-updated-nav.html">Home</a>
+    <a href="../performance-peptides-shop-peptides-atomic-blue (1).html">Shop</a>
+    <a href="08-blog-archive.html">Blog</a>
+    <a href="06-about.html">About</a>
+    <a href="07-contact.html">Contact</a>
+  </div>
+  <div class="icons">
+    <a href="10-search-results.html" class="icon-btn">🔍</a>
+    <a href="04-account.html" class="icon-btn">👤</a>
+    <a href="01-cart.html" class="icon-btn cart">🛒</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="wrap hero">
+    <div>
+      <span class="pill">📡 The Lab Notes</span>
+      <h1>Vault Updates.<br>Protocol Drops.</h1>
+      <p class="lead">Reconstitution guides, deep-dive compound profiles, lab notes, and the occasional research roundup. Written by chemists, for researchers.</p>
+    </div>
+    <div class="hero-card-wrap">
+      <div class="hero-card">
+        <span class="badge">Weekly</span>
+        <h2 style="margin-top: 0;">Skim or Deep-Dive.</h2>
+        <p>Quick takes for busy days, long-form lab notes when you've got the time. Pick your poison.</p>
+        <div class="stats">
+          <div class="stat">87<span>Articles</span></div>
+          <div class="stat">12<span>Categories</span></div>
+          <div class="stat">7k+<span>Subscribers</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="blog-filters">
+    <div class="wrap">
+      <a href="#" class="chip active">All</a>
+      <a href="#" class="chip">Reconstitution</a>
+      <a href="#" class="chip">Compound Profiles</a>
+      <a href="#" class="chip">Storage &amp; Stability</a>
+      <a href="#" class="chip">Research Roundup</a>
+      <a href="#" class="chip">Lab Notes</a>
+      <a href="#" class="chip">Protocols</a>
+      <a href="#" class="chip">News</a>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="wrap section">
+    <div class="section-head"><div><p class="eyebrow">Latest · 87 Articles</p><h2>Fresh From The Bench</h2></div><span class="stock">Updated Weekly</span></div>
+
+    <div class="blog-grid">
+      <!-- 9 cards -->
+      <a href="09-single-blog.html" class="blog-card">
+        <div class="blog-thumb"><span class="news-date">Mar 14</span>🧪</div>
+        <div class="blog-card-body">
+          <p class="news-type">Reconstitution</p>
+          <h3>The Bac Water Drip: Why Slow Reconstitution Matters</h3>
+          <p>Fast-reconstituting a peptide can shear the chain. Here's why the slow drip is industry standard.</p>
+          <span class="read-more">Read →</span>
+        </div>
+      </a>
+
+      <a href="09-single-blog.html" class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,var(--gold),var(--panel));"><span class="news-date">Mar 11</span>🔬</div>
+        <div class="blog-card-body">
+          <p class="news-type">Compound Profiles</p>
+          <h3>BPC-157: What 12 Years of Research Actually Says</h3>
+          <p>Cutting through the noise. Here's the published literature on BPC-157, with citations.</p>
+          <span class="read-more">Read →</span>
+        </div>
+      </a>
+
+      <a href="09-single-blog.html" class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,var(--red),var(--gold));"><span class="news-date">Mar 7</span>📋</div>
+        <div class="blog-card-body">
+          <p class="news-type">Storage &amp; Stability</p>
+          <h3>How Long Is Your Reconstituted Peptide Actually Good For?</h3>
+          <p>The 28-day rule is a guideline, not a law. Here's what temperature and pH actually do.</p>
+          <span class="read-more">Read →</span>
+        </div>
+      </a>
+
+      <a href="09-single-blog.html" class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,var(--panel),var(--glow));"><span class="news-date">Mar 3</span>🧠</div>
+        <div class="blog-card-body">
+          <p class="news-type">Research Roundup</p>
+          <h3>February's Top 5 Peptide Papers</h3>
+          <p>GLP-1 vs Semaglutide head-to-head, new BPC research, and a Cerebrolysin meta-analysis.</p>
+          <span class="read-more">Read →</span>
+        </div>
+      </a>
+
+      <a href="09-single-blog.html" class="blog-card">
+        <div class="blog-thumb"><span class="news-date">Feb 28</span>💉</div>
+        <div class="blog-card-body">
+          <p class="news-type">Protocols</p>
+          <h3>Healing Stack Protocol: BPC-157 + TB-500</h3>
+          <p>The two-peptide tissue-repair stack we get the most questions about. Here's the standard literature dose.</p>
+          <span class="read-more">Read →</span>
+        </div>
+      </a>
+
+      <a href="09-single-blog.html" class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,var(--gold),var(--red));"><span class="news-date">Feb 24</span>🛡️</div>
+        <div class="blog-card-body">
+          <p class="news-type">Lab Notes</p>
+          <h3>Inside Our HPLC Workflow</h3>
+          <p>Every batch we ship gets HPLC + mass-spec verified. Here's exactly how that runs in our lab.</p>
+          <span class="read-more">Read →</span>
+        </div>
+      </a>
+
+      <a href="09-single-blog.html" class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,var(--glow),var(--gold));"><span class="news-date">Feb 19</span>⚡</div>
+        <div class="blog-card-body">
+          <p class="news-type">News</p>
+          <h3>New Vault Drop: Cerebrolysin &amp; Cagrilintide Now In Stock</h3>
+          <p>Two long-requested compounds finally back. Both COA-verified and shipping today.</p>
+          <span class="read-more">Read →</span>
+        </div>
+      </a>
+
+      <a href="09-single-blog.html" class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,var(--panel),var(--gold));"><span class="news-date">Feb 12</span>📊</div>
+        <div class="blog-card-body">
+          <p class="news-type">Compound Profiles</p>
+          <h3>Semaglutide vs Tirzepatide: The Numbers</h3>
+          <p>Trial-by-trial comparison of weight management endpoints. With a clean data table.</p>
+          <span class="read-more">Read →</span>
+        </div>
+      </a>
+
+      <a href="09-single-blog.html" class="blog-card">
+        <div class="blog-thumb"><span class="news-date">Feb 6</span>🧊</div>
+        <div class="blog-card-body">
+          <p class="news-type">Storage &amp; Stability</p>
+          <h3>Why We Lyophilise (And You Should Care)</h3>
+          <p>Lyophilisation isn't a buzzword. Here's what it actually does to peptide shelf life.</p>
+          <span class="read-more">Read →</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- PAGINATION -->
+    <nav class="pagination">
+      <span class="current">1</span>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">…</a>
+      <a href="#">10</a>
+      <a href="#">→</a>
+    </nav>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="#" class="logo">⚛ PERFORMANCE PEPTIDES</a>
+      <p>USA-synthesised, ≥99% pure peptides for clinical research. All products are sold strictly for laboratory research. Not for human consumption.</p>
+    </div>
+    <div class="footer-cols">
+      <div><h4>Shop</h4><a href="#">All Products</a><a href="#">New Arrivals</a><a href="#">Bestsellers</a></div>
+      <div><h4>Company</h4><a href="06-about.html">About</a><a href="07-contact.html">Contact</a><a href="08-blog-archive.html">Blog</a></div>
+      <div><h4>Help</h4><a href="#">Shipping</a><a href="#">Returns</a><a href="#">FAQ</a></div>
+    </div>
+  </div>
+  <div class="wrap copyright">© 2025 Performance Peptides · All rights reserved</div>
+</footer>
+
+</body>
+</html>
