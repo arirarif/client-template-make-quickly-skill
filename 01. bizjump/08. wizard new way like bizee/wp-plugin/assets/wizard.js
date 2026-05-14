@@ -613,8 +613,10 @@ function renderSidebar(){
 
 /* ==========  STATE DROPDOWN HELPER FOR FORMS  ========== */
 function populateStateSelects(){
-  $$('select.state-dropdown, #contact-state, #irs-state, #license-state, #billing-state').forEach(sel=>{
-    if(!sel || sel.options.length>1)return;
+  // Note: #license-state is a <strong> (state-name display, not a select) —
+  // exclude it. Guard tagName so any non-SELECT match in future is no-op.
+  $$('select.state-dropdown, #contact-state, #irs-state, #billing-state').forEach(sel=>{
+    if(!sel || sel.tagName !== 'SELECT' || sel.options.length>1) return;
     sel.innerHTML='<option value="">Select State</option>';
     Object.keys(STATES).forEach(s=>{
       const o=document.createElement('option');o.value=s;o.textContent=s;
