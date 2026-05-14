@@ -68,6 +68,24 @@ function isAddonVisible(addon){
   return Array.isArray(addon.entities) && addon.entities.includes(state.entity);
 }
 
+/* Canonicalize URL-supplied entity into one of: LLC / C-Corporation / S-Corporation / Nonprofit */
+function normalizeEntity(raw){
+  const key = String(raw || '').toLowerCase().replace(/[\s_-]/g,'').replace(/corporation$/,'corp');
+  // key now compact: "llc", "ccorp", "scorp", "nonprofit", "notforprofit", etc.
+  if(key === 'llc') return 'LLC';
+  if(key === 'ccorp' || key === 'corporation' || key === 'corp' || key === 'c') return 'C-Corporation';
+  if(key === 'scorp' || key === 's') return 'S-Corporation';
+  if(key === 'nonprofit' || key === 'notforprofit' || key === 'np') return 'Nonprofit';
+  return 'LLC'; // safe default
+}
+
+/* Match URL-supplied state to a canonical state name in STATES (case-insensitive). */
+function normalizeState(raw){
+  if(!raw) return state.stateName;
+  const lower = String(raw).toLowerCase();
+  return Object.keys(STATES).find(s => s.toLowerCase() === lower) || state.stateName;
+}
+
 /* ==========  STEP 4 — Contact (new in v2)  ========== */
 function initContactStep(){
   // populate state dropdown if empty; default to formation state
@@ -693,8 +711,9 @@ window.addEventListener('load',()=>{
   try {
     const p = new URLSearchParams(window.location.search);
     const e = p.get('entity'); const s = p.get('state');
-    if(e) state.entity    = e;
-    if(s) state.stateName = s;
+    // Normalize entity to canonical case (URL might pass "llc" / "c-corp" / "s-corp" / "nonprofit")
+    if(e) state.entity    = normalizeEntity(e);
+    if(s) state.stateName = normalizeState(s);
   } catch(_) { /* older browsers: ignore */ }
 
   if(document.querySelector('#hero-entity')){
