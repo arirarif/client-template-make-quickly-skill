@@ -1,0 +1,1825 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BizJump — Start Your Business With Confidence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========  DESIGN TOKENS  ========== */
+:root{
+  --bz-orange:#FF6B35; --bz-orange-hover:#E5552A; --bz-orange-light:#FFF1EB;
+  --bz-black:#1A1A1A; --bz-g900:#2D2D2D; --bz-g600:#666; --bz-g400:#999; --bz-g200:#E5E5E5; --bz-g100:#F5F5F5; --bz-white:#FFF;
+  --bz-green:#10B981; --bz-green-light:#D1FAE5;
+  --bz-teal-bg:#E0F2F1; --bz-teal-border:#5EEAD4;
+  --bz-blue-bg:#DBEAFE; --bz-blue-text:#1E40AF; --bz-blue-pill:#E0F2FE;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-pill:999px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.05); --shadow-md:0 4px 12px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);font-size:16px;line-height:1.5;color:var(--bz-g900);background:var(--bz-g100)}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:inherit;font-size:16px}
+a{color:var(--bz-orange);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ==========  BUTTONS  ========== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;border-radius:var(--radius-md);font-size:16px;font-weight:600;transition:all .15s}
+.btn-primary{background:var(--bz-orange);color:#fff}
+.btn-primary:hover{background:var(--bz-orange-hover)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.btn-secondary{background:#fff;color:var(--bz-g900);border:1px solid var(--bz-g200)}
+.btn-secondary:hover{background:var(--bz-g100)}
+.btn-large{height:56px;padding:0 36px;font-size:17px}
+.btn-full{width:100%}
+
+/* ==========  TOP BAR  ========== */
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--bz-g200);height:64px}
+.topbar-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 24px;gap:24px}
+.topbar-logo{display:flex;align-items:baseline;gap:8px}
+.topbar-logo .brand{font-size:22px;font-weight:800;color:var(--bz-orange);letter-spacing:-.5px}
+.topbar-logo .brand-sub{font-size:10px;font-weight:500;color:var(--bz-g600);text-transform:uppercase;letter-spacing:.5px}
+.topbar-progress{flex:1;display:flex;align-items:center;gap:12px;max-width:600px}
+.topbar-progress-label{font-size:14px;font-weight:600;color:var(--bz-g900);white-space:nowrap}
+.topbar-progress-track{flex:1;height:6px;background:var(--bz-g200);border-radius:var(--radius-pill);overflow:hidden}
+.topbar-progress-fill{height:100%;background:var(--bz-orange);border-radius:var(--radius-pill);width:0;transition:width .4s ease-out}
+.topbar-phone{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid var(--bz-g200);border-radius:var(--radius-pill);font-size:14px;font-weight:600;color:var(--bz-g900)}
+
+/* ==========  HOMEPAGE HERO  ========== */
+.hero{min-height:100vh;background:#fff;padding:80px 24px}
+.hero-inner{max-width:1200px;margin:0 auto}
+.hero-logo{display:flex;align-items:baseline;gap:10px;margin-bottom:64px}
+.hero-logo .brand{font-size:28px;font-weight:800;color:var(--bz-orange);letter-spacing:-.5px}
+.hero-logo .brand-sub{font-size:12px;font-weight:500;color:var(--bz-g600);text-transform:uppercase;letter-spacing:.5px}
+.hero-headline-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:48px;align-items:start}
+.hero-headline{font-size:56px;font-weight:800;line-height:1.05;color:var(--bz-black);letter-spacing:-1.5px}
+.hero-headline .accent{color:var(--bz-orange)}
+.hero-side-text{font-size:18px;color:var(--bz-g600);line-height:1.55;font-weight:500;padding-top:8px}
+.hero-side-text strong{color:var(--bz-black);font-weight:700}
+.hero-card{background:#fff;border:1px solid var(--bz-g200);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-md)}
+.hero-card-title{font-size:36px;font-weight:800;color:var(--bz-black);margin-bottom:8px;letter-spacing:-.5px}
+.hero-card-sub{font-size:16px;color:var(--bz-g600);margin-bottom:32px}
+.hero-controls{display:grid;grid-template-columns:1fr 1fr auto;gap:16px;align-items:end}
+.control-group{position:relative}
+.control-label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--bz-g600);margin-bottom:6px;padding-left:4px}
+.control-chip{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--bz-orange);color:#fff;font-size:12px;font-weight:700}
+.control-input{height:56px;padding:0 44px 0 16px;border:1px solid var(--bz-g200);border-radius:var(--radius-md);background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>") no-repeat right 16px center;appearance:none;font-size:16px;color:var(--bz-g900);width:100%;font-weight:500}
+.control-input:focus{outline:none;border-color:var(--bz-orange);box-shadow:0 0 0 3px var(--bz-orange-light)}
+.hero-fee{margin-top:20px;font-size:14px;color:var(--bz-g600)}
+.hero-fee strong{color:var(--bz-black);font-weight:700}
+.hero-trust{margin-top:48px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;padding:24px 0;border-top:1px solid var(--bz-g200);position:relative}
+.hero-trust-text{font-size:16px;color:var(--bz-g600);font-weight:500}
+.hero-trust-text .hl{background:var(--bz-orange-light);color:var(--bz-orange);font-weight:700;padding:2px 8px;border-radius:4px}
+
+/* ==========  WIZARD LAYOUT  ========== */
+.wizard{display:none;min-height:100vh}
+.wizard.active{display:block}
+.step-banner{background:#fff;padding:48px 24px;border-bottom:1px solid var(--bz-g200);text-align:center}
+.step-banner-inner{max-width:900px;margin:0 auto}
+.step-banner h1{font-size:36px;font-weight:800;color:var(--bz-black);letter-spacing:-.5px;margin-bottom:12px;text-transform:uppercase}
+.step-banner h1 .accent{color:var(--bz-orange)}
+.step-banner p{font-size:16px;color:var(--bz-g600);margin-bottom:24px}
+.step-banner-controls{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.step-banner-controls .control-input{height:48px;min-width:180px}
+.step-banner-controls .control-chip{width:20px;height:20px;font-size:11px}
+.step-banner-controls .control-pill{display:inline-flex;align-items:center;gap:8px;padding:0 16px;height:48px;border:1px solid var(--bz-g200);border-radius:var(--radius-md);background:#fff;font-size:15px;font-weight:500}
+
+.wizard-body{max-width:1200px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start}
+.wizard-body.single-col{grid-template-columns:1fr;max-width:1200px}
+
+/* form card */
+.card{background:#fff;border:1px solid var(--bz-g200);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm)}
+.card-title{font-size:24px;font-weight:700;color:var(--bz-black);margin-bottom:8px}
+.card-intro{font-size:15px;color:var(--bz-g600);margin-bottom:24px;line-height:1.55}
+.card + .card{margin-top:24px}
+
+/* form fields */
+.field{margin-bottom:20px}
+.field-label{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--bz-g900);margin-bottom:8px}
+.field-tooltip{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border:1px solid var(--bz-g400);border-radius:50%;font-size:10px;color:var(--bz-g400);font-weight:600;cursor:help}
+.field-helper{font-size:13px;color:var(--bz-g600);margin-top:6px}
+.field-counter{font-size:12px;color:var(--bz-g400);font-weight:500;margin-left:4px}
+.input,.select,.textarea{width:100%;height:48px;padding:0 16px;border:1px solid var(--bz-g200);border-radius:var(--radius-md);background:#fff;font-size:15px;color:var(--bz-g900);transition:border-color .15s,box-shadow .15s}
+.textarea{min-height:96px;padding:12px 16px;resize:vertical;font-family:inherit;line-height:1.5}
+.input:focus,.select:focus,.textarea:focus{outline:none;border-color:var(--bz-orange);box-shadow:0 0 0 3px var(--bz-orange-light)}
+.select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+
+/* radio cards */
+.radio-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.radio-card{position:relative;border:1px solid var(--bz-g200);border-radius:var(--radius-md);padding:20px;cursor:pointer;background:#fff;transition:all .15s;display:flex;gap:14px;align-items:flex-start}
+.radio-card:hover{border-color:var(--bz-g400)}
+.radio-card.selected{border:2px solid var(--bz-orange);background:var(--bz-orange-light);padding:19px}
+.radio-card-dot{flex-shrink:0;width:20px;height:20px;border:1.5px solid var(--bz-g400);border-radius:50%;margin-top:1px;position:relative;transition:all .15s}
+.radio-card.selected .radio-card-dot{border-color:var(--bz-orange);border-width:6px}
+.radio-card-body{flex:1}
+.radio-card-title{font-size:16px;font-weight:600;color:var(--bz-g900);margin-bottom:4px}
+.radio-card-sub{font-size:13px;color:var(--bz-g600);line-height:1.45}
+.radio-card-price{font-size:18px;font-weight:700;color:var(--bz-g900);margin-left:auto}
+.radio-card.selected .radio-card-price{color:var(--bz-orange)}
+.radio-card-date{margin-top:8px;font-size:14px}
+.radio-card-date-label{color:var(--bz-g600)}
+.radio-card-date-val{color:var(--bz-orange);font-weight:700}
+
+/* info boxes */
+.info{display:flex;gap:10px;padding:14px 16px;border-radius:0 var(--radius-md) var(--radius-md) 0;font-size:13px;line-height:1.5;margin-bottom:16px}
+.info-teal{background:var(--bz-teal-bg);border-left:4px solid var(--bz-teal-border);color:var(--bz-g900)}
+.info-blue{background:var(--bz-blue-bg);border-left:4px solid var(--bz-blue-text);color:var(--bz-blue-text)}
+.info-icon{flex-shrink:0;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px}
+
+/* footnote */
+.footnote{font-size:12px;color:var(--bz-g600);margin-top:12px;line-height:1.5}
+
+/* buttons row */
+.actions{display:flex;justify-content:space-between;align-items:center;margin-top:32px;gap:12px}
+.actions-3{display:flex;justify-content:space-between;align-items:center;margin-top:32px;gap:12px;flex-wrap:wrap}
+.actions-3 .group{display:flex;gap:12px}
+
+/* additional explanation accordion */
+.faq-card{background:#fff;border:1px solid var(--bz-g200);border-radius:var(--radius-lg);margin-top:24px;overflow:hidden}
+.faq-title{padding:20px 24px 12px;font-size:14px;font-weight:700;color:var(--bz-g400);text-transform:uppercase;letter-spacing:.5px}
+.faq-item{border-top:1px solid var(--bz-g200)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 24px;font-size:15px;font-weight:500;color:var(--bz-g900);text-align:left}
+.faq-q:hover{background:var(--bz-g100)}
+.faq-q .chev{font-size:18px;color:var(--bz-g400);transition:transform .3s}
+.faq-item.open .faq-q .chev{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease-out;padding:0 24px}
+.faq-item.open .faq-a{max-height:1600px;padding:0 24px 18px}
+.faq-a p{font-size:14px;color:var(--bz-g600);line-height:1.6}
+
+/* ==========  SIDEBAR  ========== */
+.sidebar{position:sticky;top:88px;background:#fff;border:1px solid var(--bz-g200);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-sm)}
+.sidebar-biz-pill{display:inline-block;padding:6px 14px;background:var(--bz-blue-pill);color:var(--bz-blue-text);border-radius:var(--radius-pill);font-size:13px;font-weight:600;margin-bottom:16px}
+.sidebar-title{font-size:20px;font-weight:700;color:var(--bz-g900);margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--bz-g200)}
+.sidebar-line{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:14px;color:var(--bz-g900);gap:8px}
+.sidebar-line .label{flex:1;color:var(--bz-g900)}
+.sidebar-line .val{font-weight:500;flex-shrink:0;text-align:right}
+.sidebar-line .val.free{color:var(--bz-g600)}
+.sidebar-line.muted .label{color:var(--bz-g600)}
+.sidebar-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;flex-shrink:0}
+.sidebar-icon.empty{color:var(--bz-orange)}
+.sidebar-icon.empty::after{content:"";width:14px;height:14px;border:1.5px solid var(--bz-orange);border-radius:3px;display:block}
+.sidebar-icon.check::after{content:"✓";color:var(--bz-orange);font-weight:700;font-size:16px}
+.sidebar-phone-support{padding:12px 0;margin-top:4px;font-size:13px;color:var(--bz-g900)}
+.sidebar-phone-support .hours{display:block;font-size:12px;color:var(--bz-g600);margin-top:4px;line-height:1.4}
+.sidebar-total{display:flex;justify-content:space-between;align-items:baseline;padding-top:16px;margin-top:8px;border-top:1px solid var(--bz-g200);font-weight:700}
+.sidebar-total .label{font-size:16px;color:var(--bz-g900)}
+.sidebar-total .val{font-size:20px;color:var(--bz-black)}
+.sidebar-recurring{margin-top:12px;font-size:12px;color:var(--bz-g600);line-height:1.5}
+.sidebar-action{margin-top:24px;padding-top:24px;border-top:1px solid var(--bz-g200)}
+.sidebar-terms{display:flex;gap:8px;font-size:13px;color:var(--bz-g600);line-height:1.5;margin-bottom:16px}
+.sidebar-terms input{margin-top:3px;flex-shrink:0}
+.sidebar-reviews{margin-top:16px;text-align:center;font-size:12px;color:var(--bz-g600)}
+.sidebar-reviews .stars{color:#FFB400;font-size:16px;letter-spacing:1px}
+.sidebar-reviews-row{display:flex;justify-content:center;gap:12px;margin-top:8px;font-size:11px;color:var(--bz-g600)}
+.sidebar-reviews-row .badge{display:inline-block;padding:2px 8px;background:var(--bz-g100);border-radius:4px;font-weight:600}
+
+/* ==========  STEPS  ========== */
+.step{display:none;animation:fadeIn .3s ease-out}
+.step.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ==========  PACKAGE TABLE (Step 1)  ========== */
+.pkg-table{background:#fff;border:1px solid var(--bz-g200);border-radius:var(--radius-lg);overflow:hidden}
+.pkg-header{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;border-bottom:1px solid var(--bz-g200)}
+.pkg-header-cell{padding:32px 16px 24px;text-align:center;position:relative;border-left:1px solid var(--bz-g200);background:#fff}
+.pkg-header-cell:first-child{text-align:left;border-left:none;display:flex;align-items:center;padding-left:32px;font-size:16px;font-weight:700;color:var(--bz-black)}
+.pkg-header-cell.recommended{background:var(--bz-orange-light);border-top:3px solid var(--bz-orange)}
+.pkg-ribbon{position:absolute;top:-3px;right:-3px;background:var(--bz-orange);color:#fff;font-size:11px;font-weight:700;padding:5px 14px;border-radius:0 0 0 var(--radius-md);box-shadow:var(--shadow-sm);text-transform:uppercase;letter-spacing:.5px;transform:rotate(0)}
+.pkg-tier-name{font-size:16px;font-weight:700;color:var(--bz-g900);margin-bottom:14px}
+.pkg-tier-price{font-size:32px;font-weight:800;color:var(--bz-black);line-height:1;margin-bottom:4px}
+.pkg-tier-price .currency{font-size:20px}
+.pkg-tier-fee{font-size:12px;color:var(--bz-g600);margin-bottom:14px}
+.pkg-tier-speed{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--bz-g900);background:var(--bz-g100);padding:6px 12px;border-radius:var(--radius-pill);font-weight:600}
+.pkg-row{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;border-bottom:1px solid var(--bz-g200)}
+.pkg-row:last-child{border-bottom:none}
+.pkg-cell{padding:14px 16px;font-size:14px;text-align:center;border-left:1px solid var(--bz-g200);display:flex;align-items:center;justify-content:center;min-height:54px}
+.pkg-cell:first-child{text-align:left;border-left:none;padding-left:32px;justify-content:flex-start;color:var(--bz-g900);font-weight:500}
+.pkg-cell.recommended{background:var(--bz-orange-light)}
+.pkg-cell .feat-sub{font-size:12px;color:var(--bz-g600);display:block;font-weight:400;margin-top:2px}
+.pkg-check{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--bz-orange);color:#fff;border-radius:50%;font-size:13px;font-weight:700}
+.pkg-cell.recommended .pkg-check{background:var(--bz-orange)}
+.pkg-dash{color:var(--bz-g400);font-size:18px}
+.pkg-in-tier{font-size:12px;color:var(--bz-g600);font-style:italic}
+.pkg-add{display:inline-flex;align-items:center;gap:4px;background:transparent;color:var(--bz-orange);font-weight:700;font-size:14px;border:1px dashed var(--bz-orange);padding:6px 12px;border-radius:var(--radius-md);cursor:pointer}
+.pkg-add:hover{background:var(--bz-orange-light)}
+.pkg-add.added{background:var(--bz-orange);color:#fff;border-style:solid}
+.pkg-footer{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr}
+.pkg-footer-cell{padding:24px 16px;border-left:1px solid var(--bz-g200);text-align:center}
+.pkg-footer-cell:first-child{border-left:none}
+.pkg-footer-cell.recommended{background:var(--bz-orange-light)}
+.pkg-select{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 20px;height:44px;background:#fff;color:var(--bz-orange);border:2px solid var(--bz-orange);border-radius:var(--radius-md);font-weight:700;font-size:14px;cursor:pointer;width:100%}
+.pkg-select:hover{background:var(--bz-orange);color:#fff}
+.pkg-select.selected{background:var(--bz-orange);color:#fff}
+.pkg-footer-cell.recommended .pkg-select{background:var(--bz-orange);color:#fff}
+.pkg-footer-cell.recommended .pkg-select:hover{background:var(--bz-orange-hover);border-color:var(--bz-orange-hover)}
+
+/* full-width section header inside pkg-table */
+.pkg-section{display:block !important;border-bottom:1px solid var(--bz-g200);background:var(--bz-g100);padding:10px 32px;font-size:12px;font-weight:700;color:var(--bz-g600);text-transform:uppercase;letter-spacing:.5px}
+/* non-clickable info chip (e.g. "+$99/year", "Free setup + $29/mo") */
+.pkg-info{display:inline-flex;align-items:center;background:var(--bz-g100);color:var(--bz-g900);font-weight:600;font-size:13px;padding:6px 12px;border-radius:var(--radius-md);border:1px solid var(--bz-g200);text-align:center;line-height:1.2}
+/* always-included filing row — state-fee + speed stacked */
+.pkg-cell-stack{flex-direction:column;gap:4px;font-size:13px}
+.pkg-cell-stack .state-fee-display{font-weight:700;color:var(--bz-g900)}
+.pkg-cell-stack small{color:var(--bz-g600);font-size:12px}
+
+/* ==========  PACKAGE POSITION COPY  ========== */
+.pkg-pitch{background:#fff;border:1px solid var(--bz-g200);border-radius:var(--radius-lg);padding:24px 32px;margin-bottom:24px;font-size:14px;color:var(--bz-g600);line-height:1.6}
+.pkg-pitch strong{color:var(--bz-black);font-weight:700}
+
+/* ==========  FOOTER (homepage)  ========== */
+.footer{background:#fff;border-top:1px solid var(--bz-g200);padding:24px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;gap:20px;font-size:13px;color:var(--bz-g600)}
+.footer-inner a{color:var(--bz-g600)}
+
+/* ==========  RESPONSIVE  ========== */
+@media (max-width:900px){
+  .hero-headline-row{grid-template-columns:1fr;gap:16px}
+  .hero-headline{font-size:40px}
+  .hero-controls{grid-template-columns:1fr;gap:12px}
+  .wizard-body{grid-template-columns:1fr}
+  .sidebar{position:static;top:auto}
+  .pkg-header,.pkg-row,.pkg-footer{grid-template-columns:1fr 1fr;overflow-x:auto}
+  .pkg-cell:first-child{padding-left:16px}
+  .field-row,.field-row-3,.radio-cards{grid-template-columns:1fr}
+  .step-banner h1{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- ==========  HOMEPAGE HERO (initial view)  ========== -->
+<section id="screen-home" class="hero">
+<div class="hero-inner">
+  <div class="hero-logo">
+    <span class="brand">bizjump</span>
+    <span class="brand-sub">trusted business formation</span>
+  </div>
+
+  <div class="hero-headline-row">
+    <h1 class="hero-headline">Start Your Business<br>With <span class="accent">Confidence</span></h1>
+    <p class="hero-side-text"><strong>Your big idea deserves a bold execution.</strong> Say goodbye to stress and hello to your new business.</p>
+  </div>
+
+  <div class="hero-card">
+    <h2 class="hero-card-title">Launch Your LLC in Days</h2>
+    <p class="hero-card-sub">Transparent pricing. No "$0" hooks. No surprise renewals.</p>
+
+    <div class="hero-controls">
+      <div class="control-group">
+        <label class="control-label"><span class="control-chip">1</span> Pick Entity</label>
+        <select id="hero-entity" class="control-input">
+          <option value="">Pick Entity</option>
+          <option value="LLC" selected>LLC</option>
+          <option value="S-Corporation">S-Corporation</option>
+          <option value="C-Corporation">C-Corporation</option>
+          <option value="Nonprofit">Nonprofit</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label class="control-label"><span class="control-chip">2</span> Select State</label>
+        <select id="hero-state" class="control-input">
+          <option value="">Select State</option>
+        </select>
+      </div>
+      <button id="hero-start" class="btn btn-primary btn-large">Start My Business →</button>
+    </div>
+
+    <div id="hero-fee" class="hero-fee" style="display:none"></div>
+  </div>
+
+  <div class="hero-trust">
+    <span class="hero-trust-text">Owned <span class="hl">Since 2020</span>. With <span class="hl">Over 500+ Entrepreneurs</span> Served!</span>
+  </div>
+</div>
+
+<div class="footer" style="margin-top:64px">
+  <div class="footer-inner">
+    <a href="#">Contact</a><a href="#">Legal Disclaimer</a><a href="#">Site Map</a><a href="#">Affiliates</a><a href="#">Glossary</a><a href="#">Privacy Policy</a><a href="#">Cookies Settings</a>
+  </div>
+</div>
+</section>
+
+<!-- ==========  WIZARD  ========== -->
+<section id="screen-wizard" class="wizard">
+
+<!-- top bar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-logo">
+      <span class="brand">bizjump</span>
+      <span class="brand-sub">formerly incfile</span>
+    </div>
+    <div class="topbar-progress">
+      <span class="topbar-progress-label">Your Progress:</span>
+      <div class="topbar-progress-track"><div id="progress-fill" class="topbar-progress-fill"></div></div>
+    </div>
+    <a href="tel:18445555555" class="topbar-phone">📞 1 (844) 555-5555</a>
+  </div>
+</div>
+
+<!-- ==========  STEP 1 — PACKAGE SELECTION  ========== -->
+<div id="step-1" class="step active">
+  <div class="step-banner">
+    <div class="step-banner-inner">
+      <h1>YOU BRING THE IDEA. WE'LL <span class="accent">MAKE IT OFFICIAL.</span></h1>
+      <p>500+ businesses formed. Choose your entity type and state to get started.</p>
+      <div class="step-banner-controls">
+        <span class="control-pill"><span class="control-chip">1</span> <span id="banner-entity">LLC</span></span>
+        <span class="control-pill"><span class="control-chip">2</span> <span id="banner-state">Florida</span></span>
+        <button class="btn btn-secondary" onclick="goHome()">Change</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wizard-body single-col">
+    <div>
+      <div class="pkg-pitch">
+        Many competitors advertise <strong>$0 + state fees</strong>, then charge $200–$350/year in surprise compliance fees, registered-agent renewals, and "annual maintenance" fees that auto-charge your card. <strong>We don't.</strong> Choose a package, pay once, get exactly what's listed. We email you when it's time to renew anything — <strong>we never auto-charge</strong>.
+      </div>
+
+      <div class="pkg-table">
+        <div class="pkg-header">
+          <div class="pkg-header-cell">Business Formation Packages</div>
+          <div class="pkg-header-cell">
+            <div class="pkg-tier-name">Basic</div>
+            <div class="pkg-tier-price"><span class="currency">$</span>99</div>
+            <div class="pkg-tier-fee">+ <span class="state-fee-display">$87.50</span> state fee</div>
+            <div class="pkg-tier-speed">⏰ 7 days</div>
+          </div>
+          <div class="pkg-header-cell">
+            <div class="pkg-tier-name">Pro</div>
+            <div class="pkg-tier-price"><span class="currency">$</span>195</div>
+            <div class="pkg-tier-fee">+ <span class="state-fee-display">$87.50</span> state fee</div>
+            <div class="pkg-tier-speed">⏰ 2 days</div>
+          </div>
+          <div class="pkg-header-cell recommended">
+            <span class="pkg-ribbon">★ Recommended</span>
+            <div class="pkg-tier-name">Premium</div>
+            <div class="pkg-tier-price"><span class="currency">$</span>395</div>
+            <div class="pkg-tier-fee">+ <span class="state-fee-display">$87.50</span> state fee</div>
+            <div class="pkg-tier-speed">⏰ 24 hours</div>
+          </div>
+        </div>
+
+        <!-- Always-included filing row (state fees per tier) -->
+        <div id="pkg-row-filing"></div>
+
+        <!-- Dynamic addon rows (rendered by renderPackageRows()) -->
+        <div id="pkg-rows"></div>
+
+        <div class="pkg-footer">
+          <div class="pkg-footer-cell"></div>
+          <div class="pkg-footer-cell"><button class="pkg-select" onclick="selectPlan('basic')">Get Started</button></div>
+          <div class="pkg-footer-cell"><button class="pkg-select" onclick="selectPlan('pro')">Get Started</button></div>
+          <div class="pkg-footer-cell recommended"><button class="pkg-select" onclick="selectPlan('premium')">Get Started ★</button></div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-title">Frequently Asked Questions</div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>01 — What is included in the formation package?</span><span class="chev">⌄</span></button><div class="faq-a"><p>All packages include the essentials needed to legally form your business: preparation and filing of your formation documents, business name verification, digital delivery of approved documents, filing status updates, and secure client portal access. Our higher-tier packages — Pro and Premium — also include additional services such as EIN filing and other startup support services, bundled at significantly lower pricing than purchased separately. Of course, clients may also select additional services within any package based on their specific business needs.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>02 — Which package should I choose?</span><span class="chev">⌄</span></button><div class="faq-a"><p><strong>Basic</strong> — Ideal for experienced founders who only need business formation services and can handle the remaining setup steps themselves.<br><strong>Pro</strong> — Best for busy entrepreneurs who want additional setup support while still managing a few tasks independently.<br><strong>Premium</strong> — Designed for founders who want a more complete setup experience with expedited processing and broader hands-on support from our team.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>03 — Why are state fees separate?</span><span class="chev">⌄</span></button><div class="faq-a"><p>State filing fees are government charges paid directly to the Secretary of State. These fees vary by state and entity type and are not included in BizJump's service fees.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>04 — Do I need an EIN?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Almost all businesses require an EIN to open a business bank account, hire employees, process payroll, or file taxes.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>05 — What is a Registered Agent?</span><span class="chev">⌄</span></button><div class="faq-a"><p>A Registered Agent receives legal notices and official government correspondence on behalf of your business.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>06 — Do I need a Registered Agent?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Most states legally require it. You may act as your own RA using your business address; using your home creates privacy concerns.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>07 — What are Compliance Alerts?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Reminders about annual reports, filing deadlines, and Secretary of State compliance requirements.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>08 — How fast is filing?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Varies by package and Secretary of State speed. Some states also charge $50–$100+ expedited fees.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>09 — Can BizJump guarantee state approval?</span><span class="chev">⌄</span></button><div class="faq-a"><p>No. Final approval is determined by the Secretary of State; if your name is unavailable we work with you on an alternative.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>10 — Do I need a business bank account?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Yes — separating personal/business finances is strongly recommended.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>11 — Can BizJump help with taxes?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Yes — CPA-supported tax filing, accounting setup, bookkeeping, and tax planning.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>12 — Can you help set up my website and social media?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Yes — website + hosting, Google Business Profile, and social account setup.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>13 — Are monthly fees refundable?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Subscriptions are cancellable per terms; government filing fees are non-refundable once submitted.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>14 — Is BizJump a law firm?</span><span class="chev">⌄</span></button><div class="faq-a"><p>No — BizJump is not a law firm and does not provide legal advice.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==========  STEP 2 — COMPANY INFORMATION  ========== -->
+<div id="step-2" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title">Company Information</h2>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="biz-name">What's the name of your business? <span class="field-tooltip" title="Enter your desired business name. We'll verify availability with the state.">i</span></label>
+            <input id="biz-name" class="input" type="text" placeholder="e.g. Acme Holdings" oninput="state.business.name=this.value;renderSidebar()">
+          </div>
+          <div class="field">
+            <label class="field-label" for="biz-designator">Designator <span class="field-tooltip" title="The legal suffix of your business name — depends on entity type.">i</span></label>
+            <select id="biz-designator" class="select" onchange="state.business.designator=this.value"></select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="biz-purpose">Business Purpose <span class="field-counter" id="purpose-counter">You have 100 characters left</span></label>
+          <textarea id="biz-purpose" class="textarea" maxlength="100" placeholder="Please provide brief description of Business Purpose" oninput="state.business.purpose=this.value;document.getElementById('purpose-counter').textContent='You have '+(100-this.value.length)+' characters left'"></textarea>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="biz-naics">Tell us what industry your business is in? <span class="field-tooltip" title="NAICS code helps us file correctly with the IRS and state.">i</span></label>
+          <select id="biz-naics" class="select" onchange="state.business.naics=this.value">
+            <option value="">Select Business Type/Industry</option>
+            <option value="541-Professional">Professional Services (541)</option>
+            <option value="722-Food">Food Services (722)</option>
+            <option value="335-Manufacturing">Manufacturing — Electric Equipment (335)</option>
+            <option value="811-Repair">Repair & Maintenance (811)</option>
+            <option value="453-Retail">Retail (453)</option>
+            <option value="611-Education">Education Services (611)</option>
+            <option value="621-Health">Health Care (621)</option>
+            <option value="236-Construction">Construction (236)</option>
+            <option value="518-Tech">Tech / Software (518)</option>
+            <option value="other">Other</option>
+          </select>
+          <div class="field-helper">e.g. hair salon, accountant, bar owner, social media…</div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next ›</button>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-title">Additional Explanation</div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>Are there any restrictions on Company Name Choice?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Your company name must be distinguishable from other businesses already registered in your state. Certain words such as "doctor" may also require additional state approval or professional licensing.</p><p>To help avoid delays:</p><ul><li>Avoid names that are too similar to existing registered businesses</li><li>Do not include restricted words such as "Bank," "Insurance," or "University" unless properly authorized</li><li>Special characters and punctuation may be restricted in some states</li></ul><p>We recommend you have 2–3 alternative names in case your first choice is unavailable. We will reach out to you via email if your first name is not approved.</p><p><strong>Important Note:</strong> Approval of a company name is determined solely by the state filing office. A name being available online or as a domain name does not guarantee state approval.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>What if my company name is unavailable?</span><span class="chev">⌄</span></button><div class="faq-a"><p>If your requested company name is unavailable, we will contact you to request an alternative name. Our team will continue working with you until a name is approved by the state.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>Does my company name need to end with "LLC" or "INC"?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Yes. Most states require incorporated businesses to include a legal designator showing the type of entity. These designators help identify the legal structure of the business to the public and the state.</p><p>Allowable endings include:</p><ul><li>For C-Corp, S-Corp &amp; Nonprofit Corporations: <strong>INC, CORPORATION, INCORPORATED, CORP</strong></li><li>For LLCs: <strong>LLC, LIMITED LIABILITY COMPANY</strong></li></ul><p>The most common designators are "LLC" for Limited Liability Companies and "INC" for Corporations.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>Why is the Business Purpose and Industry Needed?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Your business purpose and industry classification help determine the correct type of business entity and filing requirements for your company. Certain industries are regulated and may require specialized entity structures, additional licenses, or state approvals before formation can be completed.</p><p>For example:</p><ul><li>Medical practices, legal firms, accounting firms, architects, and certain licensed professionals may need to form a <strong>PLLC</strong> (Professional Limited Liability Company) or <strong>Professional Corporation</strong> instead of a standard LLC or Corporation.</li><li>Non-profit organizations may require additional IRS and state filings.</li><li>Financial, insurance, transportation, healthcare, and childcare businesses may require special state licenses or regulatory approvals.</li></ul><p>Providing accurate business purpose information also helps ensure:</p><ul><li>Your company is formed correctly from the beginning</li><li>The proper state documents are filed</li><li>Banking and tax setup is completed properly</li><li>You avoid delays or rejections from the Secretary of State</li></ul><p>If your business requires a specialized entity type or additional compliance steps, the BizJump team will help guide you through the process.</p></div></div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 3 — STATE FILING TIME  ========== -->
+<div id="step-3" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title">State Filing Time</h2>
+        <p class="card-intro">The typical state filing time for <strong id="filing-state-name">Florida</strong> is <strong id="filing-state-time">3 weeks</strong>. In a hurry? <span id="filing-state-name-2">Florida</span> offers an expedited filing option as well. Select the filing time that best meets your needs.</p>
+
+        <div class="radio-cards">
+          <div id="filing-rush-card" class="radio-card" data-type="expedited" data-price="50">
+            <div class="radio-card-dot"></div>
+            <div class="radio-card-body">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:12px"><div class="radio-card-title">3 business days filing time.</div><div class="radio-card-price" id="filing-rush-price">$50</div></div>
+              <div class="radio-card-date"><span class="radio-card-date-label">Estimated Formation Date:</span><br><span class="radio-card-date-val" id="rush-date">Thursday, May 14*</span></div>
+            </div>
+          </div>
+          <div class="radio-card" onclick="selectFilingTime(this,'standard',0)">
+            <div class="radio-card-dot"></div>
+            <div class="radio-card-body">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:12px"><div class="radio-card-title">Standard filing time.</div><div class="radio-card-price">$0</div></div>
+              <div class="radio-card-date"><span class="radio-card-date-label">Estimated Formation Date:</span><br><span class="radio-card-date-val" id="std-date">Wednesday, June 10*</span></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="footnote">* These dates are estimations based on current state turnaround times and are subject to change based on state processing.</p>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <button id="filing-next" class="btn btn-primary" onclick="nextStep()" disabled>Next ›</button>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 4 — CONTACT (NEW)  ========== -->
+<div id="step-4" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title">Who is the main contact for this new business?</h2>
+        <p class="card-intro">This is who we'll contact if more info is needed during the filing process. This person could also be an owner for the new business.</p>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="ct-first">First Name</label>
+            <input id="ct-first" class="input" type="text" placeholder="First name" oninput="state.contact.firstName=this.value;validateContact()">
+          </div>
+          <div class="field">
+            <label class="field-label" for="ct-last">Last Name</label>
+            <input id="ct-last" class="input" type="text" placeholder="Last name" oninput="state.contact.lastName=this.value;validateContact()">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="ct-email">Email</label>
+            <input id="ct-email" class="input" type="email" placeholder="you@example.com" oninput="state.contact.email=this.value;validateContact()">
+          </div>
+          <div class="field">
+            <label class="field-label" for="ct-phone">Mobile Phone (US +1)</label>
+            <input id="ct-phone" class="input" type="tel" placeholder="(555) 555-5555" oninput="state.contact.phone=this.value;validateContact()">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="ct-street1">Street Address</label>
+          <input id="ct-street1" class="input" type="text" placeholder="123 Main Street" oninput="state.contact.street1=this.value;validateContact()">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="ct-street2">Address 2 <span class="field-helper" style="font-weight:400;color:var(--bz-g400)">(Optional)</span></label>
+          <input id="ct-street2" class="input" type="text" placeholder="Apt, suite, unit, etc." oninput="state.contact.street2=this.value">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="ct-city">City</label>
+            <input id="ct-city" class="input" type="text" placeholder="City" oninput="state.contact.city=this.value;validateContact()">
+          </div>
+          <div class="field">
+            <label class="field-label" for="ct-state">State</label>
+            <select id="ct-state" class="select state-select" onchange="state.contact.state=this.value;validateContact()"></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ct-county">County <span class="field-helper" style="font-weight:400;color:var(--bz-g400)">(Optional)</span></label>
+            <input id="ct-county" class="input" type="text" placeholder="County" oninput="state.contact.county=this.value">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="ct-country">Country</label>
+            <select id="ct-country" class="select" onchange="state.contact.country=this.value">
+              <option value="US" selected>United States</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ct-zip">Zip Code</label>
+            <input id="ct-zip" class="input" type="text" inputmode="numeric" maxlength="10" placeholder="Zip" oninput="state.contact.zip=this.value;validateContact()">
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <button id="contact-next" class="btn btn-primary" onclick="nextStep()" disabled>Next ›</button>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 13 — ORDER SUMMARY REVIEW  ========== -->
+<div id="step-13" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <div style="margin-bottom:20px"><div class="sidebar-biz-pill" id="review-biz-pill">Your Business LLC</div></div>
+        <h2 class="card-title" style="margin-bottom:24px">Order Summary</h2>
+
+        <div id="review-sections"></div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next ›</button>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 13 — BILLING & PAYMENT  ========== -->
+<div id="step-14" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title">Billing Information</h2>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--bz-g200);border-radius:var(--radius-md);padding:16px;margin-bottom:24px">
+          <label style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600"><input type="radio" name="paymethod" checked style="accent-color:var(--bz-orange)"> Add a Credit Card</label>
+          <div style="display:flex;gap:8px;align-items:center;font-size:13px;color:var(--bz-g600)">
+            <span style="background:#1A56DB;color:#fff;padding:3px 8px;border-radius:3px;font-weight:700;font-size:11px">VISA</span>
+            <span style="background:#016FD0;color:#fff;padding:3px 8px;border-radius:3px;font-weight:700;font-size:11px">AMEX</span>
+            <span style="background:#EB001B;color:#fff;padding:3px 8px;border-radius:3px;font-weight:700;font-size:11px">MC</span>
+            <span>+ more</span>
+          </div>
+        </div>
+
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:14px;color:var(--bz-black)">Credit Card Information</h3>
+        <div class="field"><label class="field-label">Cardholder Full Name</label><input class="input" type="text" placeholder="Full Name"></div>
+        <div class="field"><label class="field-label">Card Number</label><input class="input" type="text" placeholder="1234 1234 1234 1234"></div>
+        <div class="field-row">
+          <div class="field"><label class="field-label">Expiry Date</label><input class="input" type="text" placeholder="MM/YY"></div>
+          <div class="field"><label class="field-label">CVV/CVC</label><input class="input" type="text" placeholder="3 digits"></div>
+        </div>
+
+        <h3 style="font-size:16px;font-weight:700;margin:24px 0 14px;color:var(--bz-black)">Billing Address</h3>
+        <div class="field"><label class="field-label">Country</label><select class="select"><option>United States of America (United States)</option></select></div>
+        <div class="field-row">
+          <div class="field"><label class="field-label">Street Address</label><input class="input" type="text"></div>
+          <div class="field"><label class="field-label">Address (Cont) <span style="font-weight:400;color:var(--bz-g400)">Optional</span></label><input class="input" type="text"></div>
+        </div>
+        <div class="field-row-3">
+          <div class="field"><label class="field-label">City</label><input class="input" type="text"></div>
+          <div class="field"><label class="field-label">State</label><select class="select" id="billing-state"></select></div>
+          <div class="field"><label class="field-label">ZIP Code</label><input class="input" type="text"></div>
+        </div>
+
+        <div class="info info-blue"><span class="info-icon">ⓘ</span><div><strong>Billing Information</strong> — In order to avoid delays and/or the cancellation of your order, ensure that the billing address provided matches the payment card used.</div></div>
+
+        <div class="actions" style="justify-content:flex-start"><button class="btn btn-secondary" onclick="prevStep()">‹ Back</button></div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-title">Additional Explanation</div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>What is the cancellation policy for my order?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Full refund within 24 hours of order placement, before state filing begins. After state filing begins, refunds depend on how much of the work has been completed — contact us via support.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>Can I edit my order after it's been placed?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Yes, you can request edits via your dashboard or by contacting support. Note: state filings already submitted cannot be modified — you would need to file an amendment after formation.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>What happens after I pay?</span><span class="chev">⌄</span></button><div class="faq-a"><p>You'll get a confirmation email, your customer dashboard will be activated, and our team will start preparing your formation documents within 1 business day.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>How can I track my order?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Your dashboard shows real-time order status — pending review, submitted to state, awaiting state response, completed. You'll also get email updates at each stage.</p></div></div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 14 — CONFIRMATION  ========== -->
+<div id="step-15" class="step">
+  <div class="wizard-body single-col">
+    <div style="max-width:700px;margin:0 auto;text-align:center;padding:64px 0">
+      <div style="font-size:64px;margin-bottom:24px">🎉</div>
+      <h1 style="font-size:36px;font-weight:800;color:var(--bz-black);margin-bottom:12px;letter-spacing:-.5px">Welcome to BizJump, <span id="confirm-name">friend</span>!</h1>
+      <p style="font-size:18px;color:var(--bz-g600);margin-bottom:32px">Your order has been placed successfully.</p>
+
+      <div class="card" style="text-align:left;margin-bottom:24px">
+        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bz-g200)"><strong>Order Number</strong><span id="confirm-order-num" style="font-family:monospace;color:var(--bz-orange);font-weight:700">BJ-204508</span></div>
+        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bz-g200)"><strong>Business Name</strong><span id="confirm-biz-name">Your Business LLC</span></div>
+        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bz-g200)"><strong>State of Formation</strong><span id="confirm-state">Florida</span></div>
+        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bz-g200)"><strong>Package</strong><span id="confirm-plan">Pro</span></div>
+        <div style="display:flex;justify-content:space-between;padding:10px 0"><strong>Total Paid</strong><span id="confirm-total" style="color:var(--bz-orange);font-weight:700">$0.00</span></div>
+      </div>
+
+      <p style="font-size:15px;color:var(--bz-g600);margin-bottom:24px">Your filing is in queue. We'll email you the moment the state confirms.</p>
+      <button class="btn btn-primary btn-large" onclick="alert('Dashboard would open here.')">Go to Dashboard →</button>
+      <div style="margin-top:24px"><a href="#" onclick="location.reload();return false">Start a new order</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==========  STEP 8 — EIN / TAX ID  ========== -->
+<div id="step-9" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title">EIN / Tax Identification Number Information</h2>
+        <p class="card-intro">An Employer Identification Number (EIN) is a nine-digit number assigned by the IRS, used to identify your business. We will apply and obtain your EIN from the IRS electronically. This is the fastest way to get your EIN.</p>
+
+        <div class="field"><label class="field-label">I am a foreign individual and do not have a social security number</label>
+          <div class="radio-cards">
+            <div class="radio-card" onclick="setEINForeign(this,true)"><div class="radio-card-dot"></div><div class="radio-card-body"><div class="radio-card-title">Yes</div></div></div>
+            <div class="radio-card selected" onclick="setEINForeign(this,false)"><div class="radio-card-dot"></div><div class="radio-card-body"><div class="radio-card-title">No</div></div></div>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field"><label class="field-label">First Name</label><input class="input" type="text" oninput="state.ein.firstName=this.value"></div>
+          <div class="field"><label class="field-label">Last Name</label><input class="input" type="text" oninput="state.ein.lastName=this.value"></div>
+        </div>
+
+        <div class="field"><label class="field-label">Identification number by which I will obtain the EIN</label>
+          <div class="radio-cards">
+            <div class="radio-card selected" onclick="setEINIdType(this,'ssn')"><div class="radio-card-dot"></div><div class="radio-card-body"><div class="radio-card-title">SSN</div></div></div>
+            <div class="radio-card" onclick="setEINIdType(this,'itin')"><div class="radio-card-dot"></div><div class="radio-card-body"><div class="radio-card-title">ITIN</div></div></div>
+          </div>
+        </div>
+
+        <div class="field" style="max-width:280px">
+          <label class="field-label">SSN <span class="field-tooltip" title="The IRS needs your SSN to verify your identity and prevent fraud.">i</span></label>
+          <input class="input" type="text" placeholder="000-00-0000" oninput="state.ein.idNumber=this.value">
+        </div>
+
+        <h3 style="font-size:16px;font-weight:700;margin:24px 0 12px;color:var(--bz-black)">IRS Contact Address</h3>
+        <p style="font-size:14px;color:var(--bz-g600);margin-bottom:12px">The IRS requires a physical street address to issue your EIN.</p>
+        <ul style="list-style:disc;padding-left:20px;font-size:13px;color:var(--bz-g600);margin-bottom:16px;line-height:1.7">
+          <li>PO Boxes are not accepted.</li>
+          <li>This address is used only by the IRS to mail your official EIN Confirmation Letter.</li>
+          <li>It is your responsibility to provide a valid, deliverable address.</li>
+          <li>After the EIN is issued, the confirmation letter may take a couple of weeks to arrive.</li>
+        </ul>
+
+        <div class="radio-cards">
+          <div class="radio-card selected" onclick="setEINAddr(this,'company')"><div class="radio-card-dot"></div><div class="radio-card-body"><div class="radio-card-title">Use the assigned company address provided by BizJump</div></div></div>
+          <div class="radio-card" onclick="setEINAddr(this,'own')"><div class="radio-card-dot"></div><div class="radio-card-body"><div class="radio-card-title">Use a different address</div></div></div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next ›</button>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 9 — SMALL BUSINESS BANKING  ========== -->
+<div id="step-10" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title">Setting up Small Business Banking</h2>
+        <p style="font-size:14px;color:var(--bz-g600);font-style:italic;margin-bottom:18px">No-Fee Business Banking for the Modern Business</p>
+        <p class="card-intro">When forming a business, separating your business and personal accounts is a crucial step to protecting your assets. <strong>Relay</strong> is an online business banking and money management platform that helps small businesses take control of their cash flow.</p>
+        <p style="font-size:13px;color:var(--bz-g600);margin-bottom:20px">*With Relay, you can apply in a few minutes, once your state formation and EIN are complete.</p>
+
+        <div style="border:1px solid var(--bz-g200);border-radius:var(--radius-md);padding:24px;margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+            <div style="font-size:28px;font-weight:800;color:var(--bz-orange);font-style:italic">Relay</div>
+            <a href="#" style="font-size:13px;color:var(--bz-g600)">Disclaimer</a>
+          </div>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:14px">
+            <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> No account fees or minimums</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Up to 20 individual checking accounts to help you control projects, budgets, and taxes</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Have employees? Issue up to 50 Visa debit cards to keep your business moving</li>
+            <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> FDIC insured*</li>
+          </ul>
+        </div>
+
+        <div style="background:var(--bz-g100);border-radius:var(--radius-md);padding:20px;margin-bottom:8px">
+          <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:10px"><strong style="font-size:14px">John</strong><span style="font-size:12px;color:var(--bz-g400)">4 days ago</span></div>
+          <p style="font-size:14px;line-height:1.55;color:var(--bz-g900)">"Relay has been perfect for our small business. We are able to have multiple accounts to separate funds into different categories and they do not charge any fees per account. We are able to get physical cards for each account sent to us easily as well as generate virtual cards instantly for any account."</p>
+        </div>
+
+        <div class="actions-3">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <div class="group">
+            <button class="btn btn-secondary" onclick="setBanking('ask_later')">Ask me later</button>
+            <button class="btn btn-primary" onclick="setBanking('yes')">Yes, I'm interested ›</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 10 — TAX STRATEGY CONSULTATION  ========== -->
+<div id="step-11" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title">Tax Strategy / Free Consultation</h2>
+        <p class="card-intro">This consultation can help you identify important tax deductions and provide insight into the IRS tax classification of your new business. <strong>The offer is completely free of charge and does not obligate you in any way.</strong></p>
+
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:12px">What you'll learn:</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px">
+          <div style="display:flex;gap:8px;font-size:14px"><span style="color:var(--bz-green);font-weight:700">✓</span>How your LLC is taxed</div>
+          <div style="display:flex;gap:8px;font-size:14px"><span style="color:var(--bz-green);font-weight:700">✓</span>Business bookkeeping requirements</div>
+          <div style="display:flex;gap:8px;font-size:14px"><span style="color:var(--bz-green);font-weight:700">✓</span>How to choose the proper IRS tax election</div>
+          <div style="display:flex;gap:8px;font-size:14px"><span style="color:var(--bz-green);font-weight:700">✓</span>How to reduce the chance of an IRS audit</div>
+          <div style="display:flex;gap:8px;font-size:14px"><span style="color:var(--bz-green);font-weight:700">✓</span>Commonly missed tax deductions</div>
+          <div style="display:flex;gap:8px;font-size:14px"><span style="color:var(--bz-green);font-weight:700">✓</span>How to reduce self-employment taxes</div>
+        </div>
+
+        <div class="radio-cards">
+          <div class="radio-card" onclick="setTaxConsult(this,'no')"><div class="radio-card-dot"></div><div class="radio-card-body"><div class="radio-card-title">I'm not interested at this time.</div></div></div>
+          <div class="radio-card" onclick="setTaxConsult(this,'yes')"><div class="radio-card-dot"></div><div class="radio-card-body"><div class="radio-card-title">Yes, I would like the Business Tax Consultation <span style="color:var(--bz-green);font-weight:700">(FREE)</span></div></div></div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <button id="tax-next" class="btn btn-primary" onclick="nextStep()" disabled>Next ›</button>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-title">Additional Explanation</div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>Is a Tax Strategy / Free Consultation something I should consider?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Incorporating a new business can burden owners with complicated tax filing. As a client you are entitled to receive a free 30-minute consultation with a certified tax professional who can answer questions regarding tax obligations of your company.</p></div></div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 11 — BUSINESS LICENSE RESEARCH  ========== -->
+<div id="step-12" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <div style="display:flex;gap:18px;align-items:flex-start;margin-bottom:20px">
+          <div style="font-size:48px;line-height:1">📋</div>
+          <div>
+            <h2 class="card-title" id="license-title" style="margin-bottom:8px">We've identified <strong style="color:var(--bz-orange)">2 licenses</strong> for your business in <strong id="license-state">Florida</strong></h2>
+            <p style="font-size:14px;color:var(--bz-g600);line-height:1.55">As a business owner, you are responsible for making sure your business has the proper federal, state and local licenses to operate legally. To make this easier:</p>
+          </div>
+        </div>
+
+        <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:10px;font-size:14px">
+          <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span>Team of licensing specialists will conduct the research for you</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span>We'll determine all the licenses you need to stay compliant</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span>We'll upload the research results along with a guide to next steps to your dashboard</li>
+        </ul>
+
+        <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--bz-g100);border-radius:var(--radius-md);margin-bottom:24px">
+          <div style="display:flex">
+            <div style="width:32px;height:32px;border-radius:50%;background:#FF9F43;border:2px solid #fff;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700">A</div>
+            <div style="width:32px;height:32px;border-radius:50%;background:#54A0FF;border:2px solid #fff;margin-left:-8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700">J</div>
+            <div style="width:32px;height:32px;border-radius:50%;background:#10B981;border:2px solid #fff;margin-left:-8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700">M</div>
+          </div>
+          <p style="font-size:14px;color:var(--bz-g900);line-height:1.5"><strong>Join the 500+ business owners</strong> who have gained peace of mind with this package.</p>
+        </div>
+
+        <div class="radio-cards">
+          <div class="radio-card" onclick="setLicense(this,'no')"><div class="radio-card-dot"></div><div class="radio-card-body"><div class="radio-card-title">No thanks, I'd do the work myself</div></div></div>
+          <div class="radio-card" onclick="setLicense(this,'yes')"><div class="radio-card-dot"></div><div class="radio-card-body"><div class="radio-card-title">Yes, please do the research for me <span style="color:var(--bz-orange);font-weight:700">($99)</span></div></div></div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next ›</button>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-title">Additional Explanation</div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>When will my Business License Research Package be ready?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Typically within 5–7 business days. Our team researches federal, state, county, and city license requirements for your specific industry and address, then uploads a PDF report to your dashboard with next-step instructions for each license.</p></div></div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 5 — PREMIUM SERVICE BUNDLE  ========== -->
+<div id="step-6" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title">Premium Service Bundle</h2>
+        <p class="card-intro">Upgrade for only <strong>$99</strong> to receive these 2 premium services — <strong>up to $330 value!</strong></p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+          <div style="border:1px solid var(--bz-g200);border-radius:var(--radius-md);padding:20px">
+            <div style="display:flex;align-items:start;gap:14px">
+              <div style="font-size:32px;line-height:1">📄</div>
+              <div style="flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;margin-bottom:6px">
+                  <div style="font-size:15px;font-weight:700">25+ Contract Library</div>
+                  <div style="font-size:13px;color:var(--bz-g400);text-decoration:line-through;font-weight:600">$150</div>
+                </div>
+                <div style="font-size:13px;color:var(--bz-g600);line-height:1.5">Affordable, lawyer-approved business documents.</div>
+              </div>
+            </div>
+          </div>
+          <div style="border:1px solid var(--bz-g200);border-radius:var(--radius-md);padding:20px">
+            <div style="display:flex;align-items:start;gap:14px">
+              <div style="font-size:32px;line-height:1">📱</div>
+              <div style="flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;margin-bottom:6px">
+                  <div style="font-size:15px;font-weight:700">Business Phone Number</div>
+                  <div style="font-size:13px;color:var(--bz-g400);text-decoration:line-through;font-weight:600">$180</div>
+                </div>
+                <div style="font-size:13px;color:var(--bz-g600);line-height:1.5">An all-in-one app for calls, texts, and contact management.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid var(--bz-g200);padding-top:16px">
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding:6px 0"><span>Subtotal:</span><span>$330</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding:6px 0;color:var(--bz-green);font-weight:600"><span>Package Discount:</span><span>-$231</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:20px;font-weight:800;padding:12px 0;border-top:1px solid var(--bz-g200);margin-top:8px"><span>Package Total:</span><span>$99</span></div>
+        </div>
+
+        <div class="actions-3" style="justify-content:space-between">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <div class="group">
+            <button class="btn btn-secondary" onclick="declineBundle()">No thanks</button>
+            <button class="btn btn-primary" onclick="acceptBundle()">Get limited time offer ›</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 6 — MEMBERS INFORMATION  ========== -->
+<div id="step-7" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title" id="members-title">Please provide Members Information</h2>
+
+        <div class="field" style="max-width:240px">
+          <label class="field-label">Number of Members/Owners</label>
+          <select class="select" id="member-count" onchange="changeMemberCount(this.value)">
+            <option value="1" selected>1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+          </select>
+        </div>
+
+        <div id="members-list"></div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next ›</button>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-title">Additional Explanation</div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>What information is included in the Articles of Organization for an LLC?</span><span class="chev">⌄</span></button><div class="faq-a"><p>Most states require the LLC name, principal address, registered agent name and address, and the names of members or managers. Some states (like NY) require additional information such as the business purpose.</p></div></div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 7 — REGISTERED AGENT  ========== -->
+<div id="step-8" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title">Your registered agent</h2>
+        <p class="card-intro"><strong id="ra-state-name">Florida</strong> requires every <strong id="ra-entity-name">LLC</strong> to have a registered agent. A registered agent receives legal and state mail for your business, so you don't have to.</p>
+
+        <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:14px">
+          <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Receives legal documents and notices for your business</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Keeps your home address off public records</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Scans, uploads, and alerts you when documents arrive</li>
+        </ul>
+
+        <div class="radio-cards">
+          <div class="radio-card selected" onclick="selectRA(this,'bizjump')">
+            <div class="radio-card-dot"></div>
+            <div class="radio-card-body"><div class="radio-card-title">Use BizJump as my registered agent <span style="font-weight:400;color:var(--bz-g600)">(first year included)</span></div></div>
+          </div>
+          <div class="radio-card" onclick="selectRA(this,'own')">
+            <div class="radio-card-dot"></div>
+            <div class="radio-card-body"><div class="radio-card-title">I'll be my own registered agent</div></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next ›</button>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-title">Additional Explanation</div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>Your first year is included</span><span class="chev">⌄</span></button><div class="faq-a"><p>Year 1: included free with your package. Year 2 onward: $99/year, billed only when you choose to renew. We email a reminder 30 days before your year ends. <strong>We never auto-charge.</strong></p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>Keep your address private</span><span class="chev">⌄</span></button><div class="faq-a"><p>Our address is listed on your public formation document instead of your home address. Less spam mail, less risk of legal documents being served at your house.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>Never miss a document that matters</span><span class="chev">⌄</span></button><div class="faq-a"><p>We scan and upload every piece of mail to your dashboard within 1 business day and email you immediately when something urgent arrives (lawsuits, state notices, IRS letters).</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>Available during business hours</span><span class="chev">⌄</span></button><div class="faq-a"><p>Our team is available Monday–Friday 9 A.M. to 6 P.M. CST to accept your mail and certified delivery.</p></div></div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+<!-- ==========  STEP 4 — COMPANY ADDRESS  ========== -->
+<div id="step-5" class="step">
+  <div class="wizard-body">
+    <div>
+      <div class="card">
+        <h2 class="card-title">Company Address Information</h2>
+        <p class="card-intro">Formation documents are often publicly available and may include business or owner addresses. Many businesses choose to use a virtual address service for privacy.</p>
+
+        <!-- Virtual Address sub-card -->
+        <div style="border:1px solid var(--bz-g200);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;position:relative">
+          <div style="display:inline-block;position:absolute;top:-12px;right:24px;background:var(--bz-green);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:var(--radius-sm);text-transform:uppercase;letter-spacing:.5px">First Month Free</div>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:14px;color:var(--bz-black)">Virtual Address</h3>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start">
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--bz-g900)">
+              <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Keep your address off public records</li>
+              <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Real physical address for your business</li>
+              <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Compliant with state mail requirements</li>
+              <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Unlimited mail scans with instant alerts</li>
+              <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> 24/7 access to your mail online</li>
+            </ul>
+            <div style="font-size:48px;line-height:1">📱</div>
+          </div>
+          <div class="radio-cards" style="margin-top:20px;margin-bottom:12px">
+            <div class="radio-card selected" onclick="selectVirtualAddress(this,true)">
+              <div class="radio-card-dot"></div>
+              <div class="radio-card-body"><div class="radio-card-title">Use Virtual Address</div></div>
+            </div>
+            <div class="radio-card" onclick="selectVirtualAddress(this,false)">
+              <div class="radio-card-dot"></div>
+              <div class="radio-card-body"><div class="radio-card-title">I'll use my own address</div></div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--bz-g600);margin-top:8px">First month of Virtual Address free; then <strong>$29/month</strong>. Renew manually each year. We never auto-charge.</p>
+          <p style="font-size:12px;color:var(--bz-g400);margin-top:6px">Some States may require an amendment after cancellation.</p>
+          <div class="info info-blue" style="margin-top:16px"><span class="info-icon">ⓘ</span><div>USPS regulations require that we verify your identity and address before we can open and scan your mail. You will be able to complete this process and sign the corresponding USPS Form 1583 from your dashboard.</div></div>
+        </div>
+
+        <!-- Contact Address -->
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;color:var(--bz-black)">Contact Address</h3>
+        <label style="display:flex;align-items:center;gap:10px;margin:8px 0 14px;font-weight:600;color:var(--bz-g900);cursor:pointer">
+          <input type="checkbox" id="same-as-contact" checked onchange="toggleSameAsContact(this.checked)" style="width:18px;height:18px;accent-color:var(--bz-orange)">
+          <span>Same as Contact person</span>
+        </label>
+        <p style="font-size:14px;color:var(--bz-g600);margin-bottom:20px">Please provide the address of the person whom we may contact for State, IRS, or legal correspondence relating to your business.</p>
+
+        <div id="company-addr-fields">
+        <div class="field-row">
+          <div class="field"><label class="field-label">First Name</label><input class="input addr-input" data-key="firstName" type="text" oninput="state.address.firstName=this.value"></div>
+          <div class="field"><label class="field-label">Last Name</label><input class="input addr-input" data-key="lastName" type="text" oninput="state.address.lastName=this.value"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label class="field-label">Email</label><input class="input addr-input" data-key="email" type="email" oninput="state.address.email=this.value"></div>
+          <div class="field"><label class="field-label">Phone</label><input class="input addr-input" data-key="phone" type="tel" oninput="state.address.phone=this.value" placeholder="+1 (555) 555-5555"></div>
+        </div>
+
+        <div class="field"><label class="field-label">Country</label><select class="select addr-input" data-key="country" onchange="state.address.country=this.value"><option value="US">United States of America (United States)</option></select></div>
+        <div class="field-row">
+          <div class="field"><label class="field-label">Street Address</label><input class="input addr-input" data-key="street1" type="text" oninput="state.address.street1=this.value"></div>
+          <div class="field"><label class="field-label">Address (Cont) <span style="font-weight:400;color:var(--bz-g400)">Optional</span></label><input class="input addr-input" data-key="street2" type="text" oninput="state.address.street2=this.value"></div>
+        </div>
+        <div class="field-row-3">
+          <div class="field"><label class="field-label">City</label><input class="input addr-input" data-key="city" type="text" oninput="state.address.city=this.value"></div>
+          <div class="field"><label class="field-label">State</label><select class="select addr-input state-dropdown" data-key="state" id="contact-state" onchange="state.address.state=this.value"></select></div>
+          <div class="field"><label class="field-label">Zip Code</label><input class="input addr-input" data-key="zip" type="text" oninput="state.address.zip=this.value"></div>
+        </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next ›</button>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-title">Additional Explanation</div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>How will this address be used?</span><span class="chev">⌄</span></button><div class="faq-a"><p>The contact address is used by us, the state, and the IRS to send you correspondence. The company address (Virtual or your own) is what appears on your formation document.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q"><span>How does my Free 1 month Trial work?</span><span class="chev">⌄</span></button><div class="faq-a"><p>You get one month of Virtual Address free. After that, $29/month — but only if you choose to renew. We never auto-charge. You'll get an email reminder 30 days before your first month ends.</p></div></div>
+      </div>
+    </div>
+    <aside class="sidebar sidebar-root"></aside>
+  </div>
+</div>
+
+</section>
+
+<script>
+/* ==========  STATES DATA (per-entity: LLC / Corp / Nonprofit + Expedited)  ========== */
+const STATES = {
+  'Alabama':       { llc:183, corp:183, nonprofit:183,  expedited: 60 },
+  'Alaska':        { llc:250, corp:250, nonprofit: 50,  expedited: 85 },
+  'Arizona':       { llc: 50, corp: 60, nonprofit: 40,  expedited: 70 },
+  'Arkansas':      { llc: 45, corp: 45, nonprofit: 50,  expedited: 60 },
+  'California':    { llc: 70, corp:115, nonprofit: 45,  expedited:385 },
+  'Colorado':      { llc: 50, corp: 50, nonprofit: 50,  expedited: 60 },
+  'Connecticut':   { llc:185, corp:315, nonprofit:165,  expedited: 85 },
+  'Delaware':      { llc: 90, corp: 89, nonprofit: 89,  expedited: 85 },
+  'Florida':       { llc:125, corp: 70, nonprofit: 70,  expedited:135 },
+  'Georgia':       { llc:100, corp:100, nonprofit:100,  expedited:135 },
+  'Hawaii':        { llc: 51, corp: 51, nonprofit: 26,  expedited: 60 },
+  'Idaho':         { llc:100, corp:100, nonprofit: 30,  expedited: 75 },
+  'Illinois':      { llc:150, corp:180, nonprofit: 55,  expedited:135 },
+  'Indiana':       { llc: 91, corp: 91, nonprofit: 30,  expedited: 35 },
+  'Iowa':          { llc: 50, corp: 50, nonprofit: 20,  expedited: 85 },
+  'Kansas':        { llc:165, corp: 90, nonprofit: 20,  expedited: 35 },
+  'Kentucky':      { llc: 90, corp:100, nonprofit: 58,  expedited: 75 },
+  'Louisiana':     { llc:105, corp:170, nonprofit:165,  expedited: 65 },
+  'Maine':         { llc:175, corp:145, nonprofit: 40,  expedited: 85 },
+  'Maryland':      { llc:125, corp:145, nonprofit:195,  expedited: 85 },
+  'Massachusetts': { llc:520, corp:290, nonprofit: 40,  expedited: 55 },
+  'Michigan':      { llc: 60, corp: 50, nonprofit: 20,  expedited: 85 },
+  'Minnesota':     { llc:155, corp:155, nonprofit: 90,  expedited: 85 },
+  'Mississippi':   { llc: 52, corp: 52, nonprofit: 52,  expedited: 35 },
+  'Missouri':      { llc: 52, corp: 60, nonprofit: 27,  expedited: 85 },
+  'Montana':       { llc: 70, corp: 70, nonprofit: 20,  expedited: 55 },
+  'Nebraska':      { llc:109, corp: 67, nonprofit: 22,  expedited: 35 },
+  'Nevada':        { llc: 75, corp: 75, nonprofit: 50,  expedited:160 },
+  'New Hampshire': { llc:100, corp:100, nonprofit: 25,  expedited: 60 },
+  'New Jersey':    { llc:130, corp:130, nonprofit: 75,  expedited: 60 },
+  'New Mexico':    { llc: 50, corp:100, nonprofit: 25,  expedited: 35 },
+  'New York':      { llc:200, corp:125, nonprofit: 75,  expedited: 60 },
+  'North Carolina':{ llc:127, corp:127, nonprofit: 62,  expedited:135 },
+  'North Dakota':  { llc:135, corp:100, nonprofit: 40,  expedited: 85 },
+  'Ohio':          { llc: 99, corp: 99, nonprofit: 99,  expedited:135 },
+  'Oklahoma':      { llc:104, corp: 50, nonprofit: 25,  expedited: 60 },
+  'Oregon':        { llc:100, corp:100, nonprofit: 50,  expedited:135 },
+  'Pennsylvania':  { llc:125, corp:125, nonprofit:125,  expedited:135 },
+  'Rhode Island':  { llc:156, corp:238, nonprofit:37.5, expedited: 85 },
+  'South Carolina':{ llc:110, corp:235, nonprofit: 25,  expedited: 35 },
+  'South Dakota':  { llc:150, corp:150, nonprofit: 30,  expedited: 35 },
+  'Tennessee':     { llc:309, corp:105, nonprofit:100,  expedited: 35 },
+  'Texas':         { llc:300, corp:300, nonprofit: 25,  expedited: 60 },
+  'Utah':          { llc: 76, corp: 76, nonprofit: 36,  expedited:110 },
+  'Vermont':       { llc:125, corp:125, nonprofit:125,  expedited: 85 },
+  'Virginia':      { llc:103, corp: 77, nonprofit: 75,  expedited:135 },
+  'Washington':    { llc:180, corp:180, nonprofit: 30,  expedited: 85 },
+  'West Virginia': { llc:100, corp:100, nonprofit: 25,  expedited: 60 },
+  'Wisconsin':     { llc:130, corp:100, nonprofit: 35,  expedited:135 },
+  'Wyoming':       { llc:102, corp:102, nonprofit: 25,  expedited: 35 },
+  // PLACEHOLDER — client to confirm DC fees (not in xlsx)
+  'District of Columbia': { llc:220, corp:220, nonprofit: 80, expedited: 50 }
+};
+const PLANS = {
+  basic:   { label:'Basic',   price: 99, speed:'7 days'    },
+  pro:     { label:'Pro',     price:195, speed:'2 days'    },
+  premium: { label:'Premium', price:395, speed:'24 hours'  }
+};
+const DESIGNATORS = {
+  'LLC':           ['LLC', 'LIMITED LIABILITY COMPANY'],
+  'C-Corporation': ['INC', 'CORPORATION', 'INCORPORATED', 'CORP'],
+  'S-Corporation': ['INC', 'CORPORATION', 'INCORPORATED', 'CORP'],
+  'Nonprofit':     ['INC', 'CORPORATION', 'INCORPORATED', 'CORP']
+};
+const SECTIONS = {
+  corporate: 'Corporate Add-Ons + Compliance',
+  taxes:     'Business and Taxes',
+  web:       'Website & Marketing'
+};
+const ADDONS = [
+  // section A — Corporate Add-Ons + Compliance
+  { id:'expedited_filing', section:'corporate', label:'Bizjump Expedited Filing',
+    desc:'Priority processing and fast-track submission to the state for approval. Standard state filing may take 2–3 weeks, while most states offer fee-based expedited service that can reduce formation time to as little as 1–3 business days.',
+    price:{ basic:25,  pro:'included', premium:'included' }, entities:'all' },
+  { id:'ein',  section:'corporate', label:'EIN Business Tax Number',
+    desc:'We obtain your IRS Employer Identification Number for banking, payroll, and taxes. Required for most business entities.',
+    price:{ basic:75,  pro:'included', premium:'included' }, entities:'all' },
+  { id:'ra',   section:'corporate', label:'Registered Agent Service',
+    desc:'We receive legal notices and state correspondence on your behalf and forward them to you.',
+    price:{ basic:'99/year', pro:'99/year', premium:'included' }, entities:'all' },
+  { id:'compliance_alerts', section:'corporate', label:'Compliance Alerts',
+    desc:'Ongoing Email reminders for Secretary of State compliance reports, deadlines, and required filings.',
+    price:{ basic:75,  pro:'included', premium:'included' }, entities:'all' },
+  { id:'corp_kit', section:'corporate', label:'Executive Corporate Kit',
+    desc:'Physical binder with printed documents, stock certificates, and company seal.',
+    price:{ basic:125, pro:125, premium:75 }, entities:'all' },
+  { id:'bylaws', section:'corporate', label:'Corporate Bylaws',
+    desc:'Governing rules for corporations including officers, meetings, and voting.',
+    price:{ basic:75,  pro:75, premium:'included' },
+    entities:['C-Corporation','S-Corporation'] },
+  { id:'oa', section:'corporate', label:'Operating Agreement',
+    desc:'Legal document defining ownership, roles, and management structure of your LLC. Often required by banks.',
+    price:{ basic:75,  pro:75, premium:'included' },
+    entities:['LLC'] },
+  { id:'shareholder', section:'corporate', label:'Shareholder Agreement',
+    desc:'Defines shareholder rights, ownership transfers, and dispute resolution.',
+    price:{ basic:75,  pro:75, premium:'included' },
+    entities:['C-Corporation','S-Corporation'] },
+  { id:'bank_setup', section:'corporate', label:'Business Bank Account Setup',
+    desc:'Assistance opening your business bank account with required documentation.',
+    price:{ basic:150, pro:150, premium:150 }, entities:'all' },
+
+  // section B — Business and Taxes
+  { id:'form_2553', section:'taxes', label:'IRS Form 2553 (S-Corp Election)',
+    desc:'File IRS election for S-Corporation taxation (pass-through taxation). Owners must be U.S. citizens or residents.',
+    price:{ basic:75,  pro:75, premium:75 },
+    entities:['S-Corporation'] },
+  { id:'501c3', section:'taxes', label:'IRS EZ-501(c)(3) Tax-Exempt Filing',
+    desc:'We prepare and file for federal tax-exempt status with the IRS.',
+    price:{ basic:395, pro:395, premium:395 },
+    entities:['Nonprofit'] },
+  { id:'first_year_cpa', section:'taxes', label:'First Year Tax Filing (CPA)',
+    desc:'CPA prepares and files first-year business tax return (70% discount). Personal taxes separate for C-Corp & S-Corp.',
+    price:{ basic:200, pro:200, premium:200 }, entities:'all' },
+  { id:'biz_plan', section:'taxes', label:'Business Plan Consultation',
+    desc:'Professional guidance to help refine your business idea, research startup requirements including licensing, and overall business plan structure, including SWOT analysis. Deliverable includes a 3–5-page business plan summary document prepared after completion of a short questionnaire.',
+    price:{ basic:175, pro:175, premium:175 }, entities:'all' },
+  { id:'accounting', section:'taxes', label:'Accounting System Setup & Tax Planning',
+    desc:'Setup accounting structure and provide basic tax planning guidance.',
+    price:{ basic:125, pro:125, premium:'included' }, entities:'all' },
+
+  // section C — Website and Marketing
+  { id:'website', section:'web', label:'Basic Corporate Website',
+    desc:'Professional 5-page website with hosting and ongoing maintenance.',
+    price:{ basic:'free+29mo', pro:'free+29mo', premium:'free+29mo' }, entities:'all' },
+  { id:'social', section:'web', label:'Social Media Marketing Setup',
+    desc:'We create and configure your business social media accounts so your brand is professionally positioned online and ready to attract customers. Includes setup of Facebook, Instagram, LinkedIn, and YouTube business accounts.',
+    price:{ basic:125, pro:125, premium:125 }, entities:'all' },
+  { id:'gbp', section:'web', label:'Google Business Profile Setup',
+    desc:'We set up and optimize your Google Business Profile to help customers find your business online through Google Search and Maps. Includes Google Business Profile configuration and basic Google Analytics setup.',
+    price:{ basic:125, pro:125, premium:125 }, entities:'all' }
+];
+const STATE_PROCESSING = {"Florida":"3 weeks","Texas":"4 weeks","California":"3-4 weeks","Delaware":"2 weeks","Wyoming":"1-2 weeks","New York":"4-6 weeks","Nevada":"3 weeks","Connecticut":"3 weeks"};
+
+/* ==========  WIZARD STATE  ========== */
+const state = {
+  entity:'LLC',
+  stateName:'Florida',
+  stateFee:125,             // computed via getStateFee(stateName, entity)
+  expeditedFee:135,         // computed via getExpeditedFee(stateName)
+  plan:null,
+  inlineAddons:{},
+  filingTime:null,
+  business:{name:'',designator:'LLC',purpose:'',naics:''},
+  // NEW — contact-person captured at Step 3b (reused on Step 5 via sameAsContact)
+  contact:{firstName:'',lastName:'',email:'',phone:'',street1:'',street2:'',city:'',state:'',county:'',country:'US',zip:''},
+  address:{useVirtualAddress:true,sameAsContact:true,firstName:'',lastName:'',email:'',phone:'',street1:'',street2:'',city:'',state:'',country:'US',zip:''},
+  premiumBundle:null,
+  members:[{type:'individual',firstName:'',lastName:'',useAssignedAddress:true,ownership:100}],
+  registeredAgent:'bizjump',
+  ein:{isForeign:false,idType:'ssn',idNumber:'',irsAddress:'company'},
+  banking:null,
+  taxConsultation:null,
+  licenseResearch:null,
+  consent:{legal:false,marketing:false,sms:false},
+  currentStep:1,
+  totalSteps:14             // bumped from 13 for new Contact step (3b)
+};
+
+/* ==========  HELPERS  ========== */
+function $(sel){return document.querySelector(sel)}
+function $$(sel){return document.querySelectorAll(sel)}
+function fmt(n){return '$'+n.toFixed(2).replace(/\.00$/,'')}
+
+/* ==========  PER-ENTITY FEE LOOKUPS  ========== */
+function getStateFee(stateName, entity){
+  const r = STATES[stateName]; if(!r) return 0;
+  if(entity === 'LLC')        return r.llc;
+  if(entity === 'Nonprofit')  return r.nonprofit;
+  return r.corp; // C-Corp + S-Corp both use Corporation filing fee
+}
+function getExpeditedFee(stateName){
+  return STATES[stateName]?.expedited ?? 50;
+}
+function refreshStateFee(){
+  state.stateFee     = getStateFee(state.stateName, state.entity);
+  state.expeditedFee = getExpeditedFee(state.stateName);
+}
+function applyDesignators(){
+  const list = DESIGNATORS[state.entity] || ['LLC'];
+  const sel  = document.querySelector('#biz-designator');
+  if(!sel) return;
+  const prev = sel.value;
+  sel.innerHTML = list.map(d => `<option value="${d}"${d===prev?' selected':''}>${d}</option>`).join('');
+  if(!list.includes(prev)) { sel.value = list[0]; state.business.designator = list[0]; }
+}
+function isAddonVisible(addon){
+  if(addon.entities === 'all') return true;
+  return Array.isArray(addon.entities) && addon.entities.includes(state.entity);
+}
+
+/* ==========  STEP 4 — Contact (new in v2)  ========== */
+function initContactStep(){
+  // populate state dropdown if empty; default to formation state
+  const sel = document.querySelector('#ct-state');
+  if(sel && !sel.options.length){
+    sel.innerHTML = '<option value="">Select state</option>' +
+      Object.keys(STATES).map(s => `<option value="${s}">${s}</option>`).join('');
+  }
+  if(sel && !state.contact.state){
+    state.contact.state = state.stateName;
+    sel.value = state.stateName;
+  }
+  validateContact();
+}
+function validateContact(){
+  const c = state.contact;
+  const ok =
+    c.firstName.trim() && c.lastName.trim() &&
+    /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.email.trim()) &&
+    c.phone.trim().length >= 7 &&
+    c.street1.trim() && c.city.trim() && c.state.trim() &&
+    /^\d{5}(-\d{4})?$/.test(c.zip.trim());
+  const btn = document.querySelector('#contact-next');
+  if(btn) btn.disabled = !ok;
+  return !!ok;
+}
+
+/* ==========  STEP 5 — Address: "Same as Contact" prefill  ========== */
+function syncAddressFieldsFromState(){
+  document.querySelectorAll('#company-addr-fields .addr-input').forEach(el => {
+    const key = el.dataset.key;
+    if(key && key in state.address) el.value = state.address[key] ?? '';
+  });
+}
+function toggleSameAsContact(checked){
+  state.address.sameAsContact = checked;
+  const root = document.querySelector('#company-addr-fields');
+  if(!root) return;
+  if(checked){
+    // copy from state.contact into state.address
+    ['firstName','lastName','email','phone','street1','street2','city','state','country','zip'].forEach(k => {
+      state.address[k] = state.contact[k] || '';
+    });
+    syncAddressFieldsFromState();
+  }
+  root.querySelectorAll('.addr-input').forEach(el => { el.disabled = checked; });
+}
+function initAddressStep(){
+  // Make sure state-dropdown is populated before prefilling
+  populateStateSelects();
+  const cb = document.querySelector('#same-as-contact');
+  const checked = state.address.sameAsContact !== false;
+  if(cb) cb.checked = checked;
+  toggleSameAsContact(checked);
+}
+
+/* ==========  STEP 1 — render addon table from ADDONS data  ========== */
+function renderPackageCell(addon, tierKey, isRecommended){
+  const val = addon.price[tierKey];
+  const rec = isRecommended ? ' recommended' : '';
+  let inner;
+  if(val === 'included')        inner = '<span class="pkg-check">✓</span>';
+  else if(val === 'free+29mo')  inner = '<span class="pkg-info">Free setup<br>+ $29/mo</span>';
+  else if(val === '99/year')    inner = '<span class="pkg-info">+$99/year</span>';
+  else                          inner = `<button class="pkg-add" onclick="toggleInlineAddon(this,'${addon.id}',${val})">+$${val}</button>`;
+  return `<div class="pkg-cell${rec}">${inner}</div>`;
+}
+function renderPackageRows(){
+  refreshStateFee();
+  const fee = fmt(state.stateFee);
+
+  // Always-included filing row — state fee + speed per tier
+  const filing = document.querySelector('#pkg-row-filing');
+  if(filing){
+    filing.className = 'pkg-row';
+    filing.innerHTML = `
+      <div class="pkg-cell">Prepare &amp; File Articles of Organization / Incorporation<span class="feat-sub">Filed directly with your Secretary of State</span></div>
+      <div class="pkg-cell pkg-cell-stack"><span class="state-fee-display">${fee}</span> state fees<small>7 days</small><span class="pkg-check">✓</span></div>
+      <div class="pkg-cell pkg-cell-stack"><span class="state-fee-display">${fee}</span> state fees<small>2 days</small><span class="pkg-check">✓</span></div>
+      <div class="pkg-cell pkg-cell-stack recommended"><span class="state-fee-display">${fee}</span> state fees<small>24 hours</small><span class="pkg-check">✓</span></div>`;
+  }
+
+  // Dynamic addon rows, grouped by section
+  const container = document.querySelector('#pkg-rows');
+  if(!container) return;
+  let html = '';
+  ['corporate','taxes','web'].forEach(sec => {
+    const rows = ADDONS.filter(a => a.section === sec && isAddonVisible(a));
+    if(!rows.length) return;
+    html += `<div class="pkg-row pkg-section">${SECTIONS[sec]}</div>`;
+    rows.forEach(addon => {
+      html += `<div class="pkg-row">
+        <div class="pkg-cell" title="${addon.desc.replace(/"/g,'&quot;')}">${addon.label}<span class="feat-sub">${addon.desc.length>110?addon.desc.slice(0,107)+'…':addon.desc}</span></div>
+        ${renderPackageCell(addon,'basic',false)}
+        ${renderPackageCell(addon,'pro',false)}
+        ${renderPackageCell(addon,'premium',true)}
+      </div>`;
+    });
+  });
+  container.innerHTML = html;
+
+  // Sidebar uses state.stateFee directly — also refresh fee-display chips in header
+  document.querySelectorAll('.state-fee-display').forEach(el => el.textContent = fee);
+}
+
+/* ==========  STATE DROPDOWN INIT  ========== */
+function initStates(){
+  const sel = $('#hero-state');
+  Object.keys(STATES).forEach(s=>{
+    const opt=document.createElement('option');
+    opt.value=s;opt.textContent=s;
+    if(s==='Florida')opt.selected=true;
+    sel.appendChild(opt);
+  });
+}
+
+/* ==========  HOMEPAGE → WIZARD  ========== */
+function updateHeroFee(){
+  const s = $('#hero-state').value;
+  const e = $('#hero-entity').value;
+  const feeBox = $('#hero-fee');
+  if(s && STATES[s]){
+    const fee = getStateFee(s, e);
+    feeBox.innerHTML = `${s} state filing fee: <strong>${fmt(fee)}</strong> <span style="color:var(--bz-g400);font-size:12px">· Paid directly to the state. Non-refundable once submitted.</span>`;
+    feeBox.style.display='block';
+  } else {
+    feeBox.style.display='none';
+  }
+}
+
+function startWizard(){
+  state.entity = $('#hero-entity').value || 'LLC';
+  state.stateName = $('#hero-state').value || 'Florida';
+  refreshStateFee();
+  $$('.state-fee-display').forEach(el=>el.textContent=fmt(state.stateFee));
+  $('#banner-entity').textContent = state.entity;
+  $('#banner-state').textContent = state.stateName;
+  $('#screen-home').style.display='none';
+  $('#screen-wizard').classList.add('active');
+  setStep(1);
+  window.scrollTo(0,0);
+}
+
+function goHome(){
+  $('#screen-home').style.display='block';
+  $('#screen-wizard').classList.remove('active');
+  window.scrollTo(0,0);
+}
+
+/* ==========  STEP NAVIGATION  ========== */
+function setStep(n){
+  state.currentStep = n;
+  $$('.step').forEach(el=>el.classList.remove('active'));
+  const target = $('#step-'+n);
+  if(target)target.classList.add('active');
+  // progress
+  const pct = Math.min(100,(n/state.totalSteps)*100);
+  $('#progress-fill').style.width = pct+'%';
+  window.scrollTo(0,0);
+  renderSidebar();
+  populateStateSelects();
+  if(n===1) renderPackageRows();
+  if(n===2) applyDesignators();
+  if(n===3) setupFilingDates();
+  if(n===4) initContactStep();
+  if(n===5) initAddressStep();
+  if(n===6){
+    // skip premium bundle if Premium plan already includes it
+    if(state.plan && state.plan.id==='premium'){
+      setTimeout(()=>nextStep(),50);
+    }
+  }
+  if(n===7) renderMembers();
+  if(n===12){
+    const ls=$('#license-state'); if(ls) ls.textContent=state.stateName;
+  }
+  if(n===13) renderReview();
+}
+
+function nextStep(){ setStep(state.currentStep+1); }
+function prevStep(){ if(state.currentStep>1) setStep(state.currentStep-1); }
+
+/* ==========  STEP 1 — package + inline addons  ========== */
+function selectPlan(planId){
+  state.plan = {id:planId,...PLANS[planId]};
+  // visual selected state
+  $$('.pkg-select').forEach(b=>b.classList.remove('selected'));
+  event.target.classList.add('selected');
+  renderSidebar();
+  // auto-advance after a short pause
+  setTimeout(()=>nextStep(),500);
+}
+
+function toggleInlineAddon(btn,id,price){
+  event.stopPropagation();
+  if(state.inlineAddons[id]){
+    delete state.inlineAddons[id];
+    btn.classList.remove('added');
+    btn.textContent = '+$'+price;
+  } else {
+    state.inlineAddons[id] = {id,price,label:labelFor(id)};
+    btn.classList.add('added');
+    btn.textContent = '✓ Added';
+  }
+  renderSidebar();
+}
+function labelFor(id){
+  return {form2553:'IRS Form 2553',expedited:'Expedited Filing',contracts:'Compliance Templates'}[id]||id;
+}
+
+/* ==========  STEP 3 — filing time  ========== */
+function selectFilingTime(card,type,price){
+  $$('#step-3 .radio-card').forEach(c=>c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.filingTime = {type,price};
+  $('#filing-next').disabled = false;
+  renderSidebar();
+}
+
+/* ==========  STEP 4 — virtual address  ========== */
+function selectVirtualAddress(card,useVirtual){
+  $$('#step-5 .radio-card').forEach(c=>c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.address.useVirtualAddress = useVirtual;
+  renderSidebar();
+}
+
+/* ==========  STEP 5 — bundle  ========== */
+function acceptBundle(){state.premiumBundle={price:99};renderSidebar();nextStep();}
+function declineBundle(){state.premiumBundle=null;renderSidebar();nextStep();}
+
+/* ==========  STEP 6 — members  ========== */
+function changeMemberCount(n){
+  const c = parseInt(n);
+  state.members = [];
+  const pct = Math.floor(100/c);
+  for(let i=0;i<c;i++){
+    state.members.push({type:'individual',firstName:'',lastName:'',useAssignedAddress:true,ownership: i===c-1 ? 100-pct*(c-1) : pct});
+  }
+  renderMembers();
+}
+function renderMembers(){
+  const list = $('#members-list'); if(!list) return;
+  // populate title with biz name
+  const t = $('#members-title');
+  if(t) t.textContent = 'Please provide Members Information for '+(state.business.name||'Your Business')+' '+state.business.designator;
+
+  list.innerHTML = state.members.map((m,i)=>`
+    <div style="background:var(--bz-g100);padding:6px 14px;border-radius:var(--radius-pill);display:inline-block;font-size:13px;font-weight:600;color:var(--bz-blue-text);background:var(--bz-blue-pill);margin:24px 0 16px">Member ${i+1}</div>
+    <div class="radio-cards">
+      <div class="radio-card ${m.type==='individual'?'selected':''}" onclick="setMemberType(${i},'individual')">
+        <div class="radio-card-dot"></div>
+        <div class="radio-card-body"><div class="radio-card-title">Individual</div><div class="radio-card-sub">Select if Member is a person.</div></div>
+      </div>
+      <div class="radio-card ${m.type==='company'?'selected':''}" onclick="setMemberType(${i},'company')">
+        <div class="radio-card-dot"></div>
+        <div class="radio-card-body"><div class="radio-card-title">Company</div><div class="radio-card-sub">Select if Member is a company.</div></div>
+      </div>
+    </div>
+    ${state.address.useVirtualAddress?`
+    <label style="display:flex;gap:10px;align-items:center;padding:14px 16px;border:1px solid var(--bz-g200);border-radius:var(--radius-md);background:#fff;font-size:14px;cursor:pointer;margin-bottom:16px">
+      <input type="checkbox" ${m.useAssignedAddress?'checked':''} onchange="state.members[${i}].useAssignedAddress=this.checked;renderMembers()">
+      <span>Use the assigned company address provided by BizJump</span>
+    </label>`:''}
+    <div class="field-row">
+      <div class="field"><label class="field-label">First Name</label><input class="input" value="${m.firstName}" oninput="state.members[${i}].firstName=this.value"></div>
+      <div class="field"><label class="field-label">Last Name</label><input class="input" value="${m.lastName}" oninput="state.members[${i}].lastName=this.value"></div>
+    </div>
+    <div class="field" style="max-width:200px"><label class="field-label">Ownership %</label><input class="input" type="number" value="${m.ownership}" min="0" max="100" oninput="state.members[${i}].ownership=parseInt(this.value)||0"></div>
+    ${m.useAssignedAddress && state.address.useVirtualAddress ? `<div class="info info-teal"><span class="info-icon">ⓘ</span><div>You have selected for BizJump to provide you with a company address. We will use the company address for the member information in order to shield your personal information from being publicly available.</div></div>`:''}
+  `).join('');
+}
+function setMemberType(i,type){state.members[i].type=type;renderMembers();}
+
+/* ==========  STEP 7 — RA  ========== */
+function selectRA(card,which){
+  $$('#step-8 .radio-card').forEach(c=>c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.registeredAgent = which;
+  // set state name in copy
+  const rn = $('#ra-state-name'); if(rn) rn.textContent=state.stateName;
+  const re = $('#ra-entity-name'); if(re) re.textContent=state.entity;
+  renderSidebar();
+}
+
+/* ==========  STEP 8 — EIN  ========== */
+function setEINForeign(card,yes){
+  $$('#step-9 .radio-cards').forEach((rcs,idx)=>{if(idx===0){rcs.querySelectorAll('.radio-card').forEach(c=>c.classList.remove('selected'));}});
+  card.classList.add('selected');
+  state.ein.isForeign=yes;
+}
+function setEINIdType(card,type){
+  $$('#step-9 .radio-cards')[1].querySelectorAll('.radio-card').forEach(c=>c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.ein.idType=type;
+}
+function setEINAddr(card,which){
+  $$('#step-9 .radio-cards')[2].querySelectorAll('.radio-card').forEach(c=>c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.ein.irsAddress=which;
+}
+
+/* ==========  STEP 9 — banking  ========== */
+function setBanking(choice){state.banking=choice;renderSidebar();nextStep();}
+
+/* ==========  STEP 10 — tax consult  ========== */
+function setTaxConsult(card,choice){
+  $$('#step-11 .radio-card').forEach(c=>c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.taxConsultation=choice;
+  $('#tax-next').disabled=false;
+  renderSidebar();
+}
+
+/* ==========  STEP 11 — license research  ========== */
+function setLicense(card,choice){
+  $$('#step-12 .radio-card').forEach(c=>c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.licenseResearch=choice;
+  // populate state name in title
+  const ls=$('#license-state'); if(ls) ls.textContent=state.stateName;
+  renderSidebar();
+}
+
+/* ==========  STEP 12 — review render  ========== */
+function renderReview(){
+  refreshStateFee();
+  const root = $('#review-sections'); if(!root) return;
+  const c = state.contact;
+  const m = state.members;
+  const bizPill = $('#review-biz-pill');
+  if(bizPill) bizPill.textContent = (state.business.name||'Your Business')+' '+state.business.designator;
+
+  const sections = [
+    {title:'Formation Info', edit:1, rows:[
+      ['State of Formation', state.stateName],
+      ['Entity Type', state.entity]
+    ]},
+    {title:'Contact Info', edit:4, rows:[
+      ['Full Name', (c.firstName+' '+c.lastName).trim()||'—'],
+      ['Address', [c.street1,c.city,c.state,c.zip].filter(Boolean).join(', ')||'—'],
+      ['Phone Number', c.phone||'—'],
+      ['Email Address', c.email||'—']
+    ]},
+    {title:'Agent Info', edit:8, rows:[
+      [state.registeredAgent==='bizjump'?'You have selected BizJump to provide you with a Registered Agent.':'You are your own Registered Agent.', state.registeredAgent==='bizjump'?'First Year Free':'']
+    ]},
+    {title:'Company Info', edit:2, rows:[
+      ['Company Name', (state.business.name||'—')+' '+state.business.designator],
+      ['Business Purpose', state.business.purpose||'—'],
+      ['NAICS', state.business.naics||'—']
+    ]},
+    {title:'Member Info', edit:7, members: m},
+  ];
+  if(state.licenseResearch==='yes'){
+    sections.push({title:'Business Licenses and Permits', edit:12, rows:[['Research this location', state.stateName]]});
+  }
+  if(state.plan && state.plan.id!=='basic'){
+    sections.push({title:'EIN / Tax Info', edit:9, rows:[
+      ['Name', (state.ein.firstName||'')+' '+(state.ein.lastName||'')||(c.firstName+' '+c.lastName)],
+      ['ID Type', state.ein.idType?.toUpperCase()||'SSN'],
+      ['ID Number', state.ein.idNumber||'—']
+    ]});
+  }
+
+  root.innerHTML = sections.map(s=>`
+    <div style="padding:18px 0;border-bottom:1px solid var(--bz-g200)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <h3 style="font-size:15px;font-weight:700;color:var(--bz-black)">${s.title}</h3>
+        <a href="#" onclick="setStep(${s.edit});return false" style="font-size:13px;color:var(--bz-orange);font-weight:600">Edit</a>
+      </div>
+      ${s.rows?s.rows.map(r=>`<div style="display:flex;justify-content:space-between;font-size:14px;padding:4px 0"><span style="color:var(--bz-g600)">${r[0]}</span><span style="color:var(--bz-g900);font-weight:500;text-align:right">${r[1]}</span></div>`).join(''):''}
+      ${s.members?s.members.map((mem,i)=>`<div style="background:var(--bz-blue-pill);color:var(--bz-blue-text);padding:5px 12px;border-radius:var(--radius-pill);display:inline-block;font-size:12px;font-weight:600;margin:8px 0 4px">Member ${i+1}</div><div style="display:flex;justify-content:space-between;font-size:14px;padding:4px 0"><span style="color:var(--bz-g600)">Name</span><span style="color:var(--bz-g900);font-weight:500">${(mem.firstName+' '+mem.lastName).trim()||'—'}</span></div><div style="display:flex;justify-content:space-between;font-size:14px;padding:4px 0"><span style="color:var(--bz-g600)">Ownership</span><span style="color:var(--bz-g900);font-weight:500">${mem.ownership}%</span></div>`).join(''):''}
+    </div>
+  `).join('');
+}
+
+/* ==========  STEP 14 — confirmation populate  ========== */
+function populateConfirmation(){
+  refreshStateFee();
+  const c = state.contact;
+  $('#confirm-name').textContent = c.firstName||'friend';
+  $('#confirm-biz-name').textContent = (state.business.name||'Your Business')+' '+state.business.designator;
+  $('#confirm-state').textContent = state.stateName;
+  $('#confirm-plan').textContent = state.plan?.label||'—';
+  $('#confirm-order-num').textContent = 'BJ-'+Math.floor(100000+Math.random()*900000);
+
+  // compute total
+  let total = (state.plan?.price||0) + state.stateFee;
+  Object.values(state.inlineAddons).forEach(a=>total+=a.price);
+  if(state.filingTime) total += state.filingTime.price;
+  if(state.premiumBundle) total += state.premiumBundle.price;
+  if(state.licenseResearch==='yes') total += 99;
+  $('#confirm-total').textContent = fmt(total);
+}
+
+/* ==========  SIDEBAR RENDER  ========== */
+function renderSidebar(){
+  refreshStateFee();
+  const sidebars = $$('.sidebar-root');
+  if(!sidebars.length) return;
+  let lines=[];
+  lines.push(`<div class="sidebar-line"><span class="label">Entity Type</span><span class="val">${state.entity}</span></div>`);
+  if(state.plan){
+    lines.push(`<div class="sidebar-line"><span class="label">${state.plan.label} Package</span><span class="val">${fmt(state.plan.price)}</span></div>`);
+  }
+  lines.push(`<div class="sidebar-line"><span class="label">${state.stateName} State Filing Fee</span><span class="val">${fmt(state.stateFee)}</span></div>`);
+
+  Object.values(state.inlineAddons).forEach(a=>{
+    lines.push(`<div class="sidebar-line"><span class="label">${a.label}</span><span class="val">${fmt(a.price)}</span></div>`);
+  });
+
+  // filing time
+  if(state.filingTime){
+    if(state.filingTime.price>0){
+      lines.push(`<div class="sidebar-line"><span class="label">Expedited Filing</span><span class="val">${fmt(state.filingTime.price)}</span></div>`);
+    }
+  }
+  // virtual address (shown once user has reached the address step)
+  if(state.address.useVirtualAddress && state.currentStep>=5){
+    lines.push(`<div class="sidebar-line"><span class="label">Business Address (1st Month)</span><span class="val free">Free</span></div>`);
+  }
+  // premium bundle
+  if(state.premiumBundle){
+    lines.push(`<div class="sidebar-line"><span class="label">Premium Upgrade</span><span class="val">${fmt(state.premiumBundle.price)}</span></div>`);
+    lines.push(`<div class="sidebar-line"><span class="label">Compliance Templates</span><span class="val free">Free</span></div>`);
+    lines.push(`<div class="sidebar-line"><span class="label">Business Phone Service</span><span class="val free">Free</span></div>`);
+  }
+  // included service indicators based on plan
+  const planId = state.plan?.id;
+  const inclEIN = planId && planId!=='basic';
+  const inclOA = planId && planId!=='basic';
+  if(inclOA){
+    const passed = state.currentStep>4;
+    lines.push(`<div class="sidebar-line"><span class="label">Operating Agreement</span><span class="sidebar-icon ${passed?'check':'empty'}"></span></div>`);
+  }
+  if(inclEIN){
+    const passed = state.currentStep>9;
+    lines.push(`<div class="sidebar-line"><span class="label">EIN / Tax ID #</span><span class="sidebar-icon ${passed?'check':'empty'}"></span></div>`);
+  }
+  // banking
+  if(state.banking==='yes'){
+    lines.push(`<div class="sidebar-line"><span class="label">Business Banking</span><span class="sidebar-icon check"></span></div>`);
+  }
+  // RA
+  if(state.currentStep>=7 && state.registeredAgent==='bizjump'){
+    lines.push(`<div class="sidebar-line"><span class="label">Registered Agent (1st Year)</span><span class="val free">Free</span></div>`);
+  }
+  // license
+  if(state.licenseResearch==='yes'){
+    lines.push(`<div class="sidebar-line"><span class="label">License Research</span><span class="val">$99</span></div>`);
+  }
+  // tax consultation (free)
+  if(state.taxConsultation==='yes'){
+    lines.push(`<div class="sidebar-line"><span class="label">Tax Consultation</span><span class="val free">Free</span></div>`);
+  }
+
+  // phone support always-on
+  lines.push(`<div class="sidebar-phone-support">Phone Support<span class="hours">Available Monday – Friday<br>9 A.M. – 6 P.M. CST</span></div>`);
+
+  // total
+  let total = 0;
+  if(state.plan) total += state.plan.price;
+  total += state.stateFee;
+  Object.values(state.inlineAddons).forEach(a=>total+=a.price);
+  if(state.filingTime) total += state.filingTime.price;
+  if(state.premiumBundle) total += state.premiumBundle.price;
+  if(state.licenseResearch==='yes') total += 99;
+
+  // business name pill at top of sidebar at step 13
+  const pill = (state.currentStep>=12 && state.business.name)
+    ? `<div class="sidebar-biz-pill">${state.business.name} ${state.business.designator}</div>` : '';
+
+  const showAction = state.currentStep===13;
+
+  const html = `
+    ${pill}
+    <div class="sidebar-title">Order Summary</div>
+    ${lines.join('')}
+    <div class="sidebar-total"><span class="label">Total:</span><span class="val">${fmt(total)}</span></div>
+    ${state.registeredAgent==='bizjump'&&state.currentStep>=7?'<div class="sidebar-recurring">Year 2+: $99/yr (manual renewal). Never auto-charged.</div>':''}
+    ${showAction?`
+      <div class="sidebar-action">
+        <label class="sidebar-terms"><input type="checkbox" id="terms-cb" onchange="state.consent.legal=this.checked"> <span>I agree to the <a href="#">Legal Statement</a> and <a href="#">Cancellation Policy</a></span></label>
+        <button class="btn btn-primary btn-full" onclick="completePay()">Complete & Pay</button>
+        <div class="sidebar-reviews">
+          <div class="stars">★★★★½ 4.7</div>
+          <div>Based on 500+ reviews</div>
+          <div class="sidebar-reviews-row"><span class="badge">Trustpilot</span><span class="badge">ShopperApproved</span></div>
+        </div>
+      </div>
+    `:''}
+  `;
+  sidebars.forEach(sb=>sb.innerHTML=html);
+}
+
+/* ==========  STATE DROPDOWN HELPER FOR FORMS  ========== */
+function populateStateSelects(){
+  $$('select.state-dropdown, #contact-state, #irs-state, #license-state, #billing-state').forEach(sel=>{
+    if(!sel || sel.options.length>1)return;
+    sel.innerHTML='<option value="">Select State</option>';
+    Object.keys(STATES).forEach(s=>{
+      const o=document.createElement('option');o.value=s;o.textContent=s;
+      if(s===state.stateName)o.selected=true;
+      sel.appendChild(o);
+    });
+  });
+}
+
+/* ==========  FILING TIME DATE COMPUTE  ========== */
+function setupFilingDates(){
+  refreshStateFee();
+  const fsn = $('#filing-state-name'); const fsn2 = $('#filing-state-name-2'); const fst = $('#filing-state-time');
+  if(fsn) fsn.textContent = state.stateName;
+  if(fsn2) fsn2.textContent = state.stateName;
+  const proc = STATE_PROCESSING[state.stateName] || '3 weeks';
+  if(fst) fst.textContent = proc;
+  // expedited fee per state
+  const expedited = state.expeditedFee;
+  const rushCard = $('#filing-rush-card');
+  const rushPrice = $('#filing-rush-price');
+  if(rushCard){
+    rushCard.dataset.price = expedited;
+    rushCard.onclick = function(){ selectFilingTime(this,'rush',expedited); };
+  }
+  if(rushPrice) rushPrice.textContent = '$'+expedited;
+  // compute dates
+  const today = new Date();
+  const fmtDate = d => d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+  function addBizDays(d,n){const r=new Date(d);let added=0;while(added<n){r.setDate(r.getDate()+1);if(r.getDay()!==0 && r.getDay()!==6)added++;}return r}
+  const rushD = $('#rush-date'); const stdD = $('#std-date');
+  if(rushD) rushD.textContent = fmtDate(addBizDays(today,3))+'*';
+  // standard: parse "N weeks" or "N-N weeks"
+  const m = proc.match(/(\d+)(?:-\d+)?\s*weeks?/);
+  const weeks = m?parseInt(m[1]):3;
+  const stdDate = new Date(today); stdDate.setDate(stdDate.getDate()+weeks*7);
+  if(stdD) stdD.textContent = fmtDate(stdDate)+'*';
+}
+
+function completePay(){
+  if(!state.consent.legal){
+    alert('Please agree to the Legal Statement and Cancellation Policy to continue.');
+    return;
+  }
+  populateConfirmation();
+  setStep(15); // confirmation
+}
+
+/* ==========  BOOTSTRAP  ========== */
+window.addEventListener('load',()=>{
+  initStates();
+  $('#hero-entity').addEventListener('change',updateHeroFee);
+  $('#hero-state').addEventListener('change',updateHeroFee);
+  $('#hero-start').addEventListener('click',startWizard);
+  updateHeroFee();
+});
+</script>
+
+</body>
+</html>

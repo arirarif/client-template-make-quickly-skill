@@ -1,0 +1,193 @@
+=== SOURCE FILE: 02. inc wizard p2a (1).docx ===
+
+--- PARAGRAPHS ---
+Frequently Asked Questions
+1. What is included in the formation package?
+All packages include the essentials needed to legally form your business: preparation and filing of your formation documents, business name verification, digital delivery of approved documents, filing status updates, and secure client portal access. Our higher-tier packages — Pro and Premium — also include additional services, such as EIN filing and other startup support services, bundled at significantly lower pricing than purchased separately. Of course, clients may also select additional services within any package based on their specific business needs.
+2. Which package should I choose?
+• Basic – Ideal for experienced founders who only need business formation services and can handle the remaining setup steps themselves.
+• Pro – Best for busy entrepreneurs who want additional setup support while still managing a few tasks independently.
+• Premium – Designed for founders who want a more complete setup experience with expedited processing and broader hands-on support from our team.
+3. Why are state fees separate?
+State filing fees are government charges paid directly to the Secretary of State. These fees vary by state and entity type and are not included in BizJump’s service fees.
+4. Do I need an EIN?
+Almost all businesses require an EIN (Employer Identification Number) to open a business bank account, hire employees, process payroll, or file taxes.
+5. What is a Registered Agent?
+A Registered Agent receives legal notices and official government correspondence on behalf of your business.
+6. Do I need a Registered Agent?
+Most states legally require businesses to maintain a Registered Agent during the life of the company. You may act as your own Registered Agent by using your business address. However, if you are using your home address, your personal address information may become publicly available, which can create privacy concerns.
+7. What are Compliance Alerts?
+Compliance Alerts provide reminders about annual reports, filing deadlines, and important Secretary of State compliance requirements to help keep your business in good standing.
+8. How fast is filing?
+Estimated filing times vary based on the package selected and the processing speed of the Secretary of State. Some states also charge additional expedited processing fees, which may range from approximately $50 to $100 or more.
+9. Can BizJump guarantee state approval?
+No. Final approval is determined solely by the Secretary of State and depends on factors such as name availability and compliance with state requirements. If your requested business name is unavailable, we will work with you to select an alternative.
+10. Do I need a business bank account?
+Yes. Separating personal and business finances is strongly recommended for liability protection, accounting accuracy, and tax purposes.
+11. Can BizJump help with taxes?
+Yes. We offer CPA-supported tax filing services, accounting setup, bookkeeping guidance, and tax planning support.
+12. Can you help set up my website and social media?
+Yes. BizJump offers website setup and hosting, Google Business Profile setup, and social media business account configuration services.
+13. Are monthly fees refundable?
+Monthly service subscriptions may be canceled according to the terms of the service agreement. Government filing fees are generally non-refundable once submitted to the state.
+14. Is BizJump a law firm?
+No. BizJump is not a law firm and does not provide legal advice. All information provided is for educational and business support purposes only.
+
+--- TABLE 0 (32 rows x 6 cols) ---
+  R0 C0: bizjump
+  R0 C1: Led by Real Small Business Experts Since 1998
+  R0 C2: Led by Real Small Business Experts Since 1998
+  R0 C3: Led by Real Small Business Experts Since 1998
+  R0 C4: Led by Real Small Business Experts Since 1998
+  R0 C5: Led by Real Small Business Experts Since 1998
+  R1 C0: Select your Formation Package / (One time formation fee) / You can also choose additional services as needed
+  R1 C1: Select your Formation Package / (One time formation fee) / You can also choose additional services as needed
+  R1 C2: Select your Formation Package / (One time formation fee) / You can also choose additional services as needed
+  R1 C3: Select your Formation Package / (One time formation fee) / You can also choose additional services as needed
+  R1 C4: Select your Formation Package / (One time formation fee) / You can also choose additional services as needed
+  R2 C2: Entity Type / LLC
+  R2 C3: State / New York
+  R4 C0: Business Formation Packages
+  R4 C1: Business Formation Packages
+  R4 C2: Basic
+  R4 C3: Pro
+  R4 C4: Premium
+  R4 C5: Order Summary / Basic package: / $99 / New York state fee: / $205 / Total:$355 / Continue
+  R5 C0: Business Formation Packages
+  R5 C1: Business Formation Packages
+  R5 C2: $99
+  R5 C3: $195
+  R5 C4: $395
+  R5 C5: Order Summary / Basic package: / $99 / New York state fee: / $205 / Total:$355 / Continue
+  R6 C0: Prepare & File Articles of Organization/Incorporation 🅘 / The official document filed with the state to legally create your business entity. / What you receive: / Digital Document Delivery of your approved state formation documents. / Statement of Organizer/Incorporator / Business Name Availability Search and Verification / Email Support During Formation Process / Filing Status Updates / Secure Online Client Portal Access
+  R6 C1: Prepare & File Articles of Organization/Incorporation 🅘 / The official document filed with the state to legally create your business entity. / What you receive: / Digital Document Delivery of your approved state formation documents. / Statement of Organizer/Incorporator / Business Name Availability Search and Verification / Email Support During Formation Process / Filing Status Updates / Secure Online Client Portal Access
+  R6 C2: +$205 state fees
+  R6 C3: +$205 state fees
+  R6 C4: +$205 state fees
+  R6 C5: Order Summary / Basic package: / $99 / New York state fee: / $205 / Total:$355 / Continue
+  R7 C0: Prepare & File Articles of Organization/Incorporation 🅘 / The official document filed with the state to legally create your business entity. / What you receive: / Digital Document Delivery of your approved state formation documents. / Statement of Organizer/Incorporator / Business Name Availability Search and Verification / Email Support During Formation Process / Filing Status Updates / Secure Online Client Portal Access
+  R7 C1: Prepare & File Articles of Organization/Incorporation 🅘 / The official document filed with the state to legally create your business entity. / What you receive: / Digital Document Delivery of your approved state formation documents. / Statement of Organizer/Incorporator / Business Name Availability Search and Verification / Email Support During Formation Process / Filing Status Updates / Secure Online Client Portal Access
+  R7 C2: 7 days
+  R7 C3: 2 days
+  R7 C4: 24 hours
+  R7 C5: Order Summary / Basic package: / $99 / New York state fee: / $205 / Total:$355 / Continue
+  R8 C0: Prepare & File Articles of Organization/Incorporation 🅘 / The official document filed with the state to legally create your business entity. / What you receive: / Digital Document Delivery of your approved state formation documents. / Statement of Organizer/Incorporator / Business Name Availability Search and Verification / Email Support During Formation Process / Filing Status Updates / Secure Online Client Portal Access
+  R8 C1: Prepare & File Articles of Organization/Incorporation 🅘 / The official document filed with the state to legally create your business entity. / What you receive: / Digital Document Delivery of your approved state formation documents. / Statement of Organizer/Incorporator / Business Name Availability Search and Verification / Email Support During Formation Process / Filing Status Updates / Secure Online Client Portal Access
+  R8 C5: Order Summary / Basic package: / $99 / New York state fee: / $205 / Total:$355 / Continue
+  R9 C0: Prepare & File Articles of Organization/Incorporation 🅘 / The official document filed with the state to legally create your business entity. / What you receive: / Digital Document Delivery of your approved state formation documents. / Statement of Organizer/Incorporator / Business Name Availability Search and Verification / Email Support During Formation Process / Filing Status Updates / Secure Online Client Portal Access
+  R9 C1: Prepare & File Articles of Organization/Incorporation 🅘 / The official document filed with the state to legally create your business entity. / What you receive: / Digital Document Delivery of your approved state formation documents. / Statement of Organizer/Incorporator / Business Name Availability Search and Verification / Email Support During Formation Process / Filing Status Updates / Secure Online Client Portal Access
+  R9 C2: ✔️
+  R9 C3: ✔️
+  R9 C4: ✔️
+  R9 C5: Order Summary / Basic package: / $99 / New York state fee: / $205 / Total:$355 / Continue
+  R10 C0: Corporate Add-Ons + Compliance
+  R10 C1: Corporate Add-Ons + Compliance
+  R10 C5: Order Summary / Basic package: / $99 / New York state fee: / $205 / Total:$355 / Continue
+  R11 C0: Bizjump Expedited Filing 🅘 / Priority processing and fast-track submission to the state for approval. Standard state filing may take 2–3 weeks, while most states offer fee-based expedited service that can reduce formation time to as little as 1–3 business days.
+  R11 C1: Bizjump Expedited Filing 🅘 / Priority processing and fast-track submission to the state for approval. Standard state filing may take 2–3 weeks, while most states offer fee-based expedited service that can reduce formation time to as little as 1–3 business days.
+  R11 C2: +$25
+  R11 C3: ✔️
+  R11 C4: ✔️
+  R11 C5: Order Summary / Basic package: / $99 / New York state fee: / $205 / Total:$355 / Continue
+  R12 C0: EIN Business Tax Number🅘 / We obtain your IRS Employer Identification Number for banking, payroll, and taxes. Required for most business entities.
+  R12 C1: EIN Business Tax Number🅘 / We obtain your IRS Employer Identification Number for banking, payroll, and taxes. Required for most business entities.
+  R12 C2: +$75
+  R12 C3: ✔️
+  R12 C4: ✔️
+  R12 C5: Order Summary / Basic package: / $99 / New York state fee: / $205 / Total:$355 / Continue
+  R13 C0: Registered Agent Service 🅘 / We receive legal notices and state correspondence on your behalf and forward them to you.
+  R13 C1: Registered Agent Service 🅘 / We receive legal notices and state correspondence on your behalf and forward them to you.
+  R13 C2: +$99/year
+  R13 C3: +$99/year
+  R13 C4: ✔️
+  R13 C5: Instructions
+  R14 C0: Compliance Alerts 🅘 / Ongoing Email reminders for Secretary of State compliance reports, deadlines, and required filings.
+  R14 C1: Compliance Alerts 🅘 / Ongoing Email reminders for Secretary of State compliance reports, deadlines, and required filings.
+  R14 C2: +$75
+  R14 C3: ✔️
+  R14 C4: ✔️
+  R14 C5: all
+  R15 C0: Executive Corporate Kit🅘 / Physical binder with printed documents, stock certificates, and company seal.
+  R15 C1: Executive Corporate Kit🅘 / Physical binder with printed documents, stock certificates, and company seal.
+  R15 C2: +$125
+  R15 C3: +$125
+  R15 C4: +$75
+  R15 C5: all
+  R16 C0: Corporate Bylaws🅘 / Governing rules for corporations including officers, meetings, and voting.
+  R16 C1: Corporate Bylaws🅘 / Governing rules for corporations including officers, meetings, and voting.
+  R16 C2: +$75
+  R16 C3: +$75
+  R16 C4: ✔️
+  R16 C5: c-corp/s-corp only
+  R17 C0: Operating Agreement🅘 / Legal document defining ownership, roles, and management structure of your LLC. Often required by banks.
+  R17 C1: Operating Agreement🅘 / Legal document defining ownership, roles, and management structure of your LLC. Often required by banks.
+  R17 C2: +$75
+  R17 C3: +$75
+  R17 C4: ✔️
+  R17 C5: LLC only
+  R18 C0: Shareholder Agreement🅘 / Defines shareholder rights, ownership transfers, and dispute resolution.
+  R18 C1: Shareholder Agreement🅘 / Defines shareholder rights, ownership transfers, and dispute resolution.
+  R18 C2: +$75
+  R18 C3: +$75
+  R18 C4: ✔️
+  R18 C5: c-corp/s-corp only
+  R19 C0: Business Bank Account Setup🅘 / Assistance opening your business bank account with required documentation.
+  R19 C1: Business Bank Account Setup🅘 / Assistance opening your business bank account with required documentation.
+  R19 C2: +$150
+  R19 C3: +$150
+  R19 C4: +$150
+  R19 C5: all
+  R20 C0: BUSINESS AND TAXES
+  R20 C1: BUSINESS AND TAXES
+  R20 C5: all
+  R21 C0: IRS Form 2553 (S-Corp Election) 🅘 / File IRS election for S-Corporation taxation (pass-through taxation). Owners must be U.S. citizens or residents.
+  R21 C1: IRS Form 2553 (S-Corp Election) 🅘 / File IRS election for S-Corporation taxation (pass-through taxation). Owners must be U.S. citizens or residents.
+  R21 C2: +$75
+  R21 C3: +$75
+  R21 C4: +$75
+  R21 C5: Only when someone select S-Copr
+  R22 C0: IRS EZ-501(c)(3) Tax-Exempt Filing🅘 / We prepare and file for federal tax-exempt status with the IRS.
+  R22 C1: IRS EZ-501(c)(3) Tax-Exempt Filing🅘 / We prepare and file for federal tax-exempt status with the IRS.
+  R22 C2: +$395
+  R22 C3: +$395
+  R22 C4: +$395
+  R22 C5: Not for profit only
+  R23 C0: First Year Tax Filing (CPA) 🅘 / CPA prepares and files first-year business tax return (70% discount). Personal taxes separate for C-Corp & S-Corp
+  R23 C1: First Year Tax Filing (CPA) 🅘 / CPA prepares and files first-year business tax return (70% discount). Personal taxes separate for C-Corp & S-Corp
+  R23 C2: +$200
+  R23 C3: +$200
+  R23 C4: +$200
+  R23 C5: all
+  R24 C0: Business plan consultation🅘 / Professional guidance to help refine your business idea, research startup requirement including licensing, and overall business plan structure, including SWOT analysis. Deliverable includes a 3–5-page business plan summary document prepared after completion of a short questionnaire.
+  R24 C1: Business plan consultation🅘 / Professional guidance to help refine your business idea, research startup requirement including licensing, and overall business plan structure, including SWOT analysis. Deliverable includes a 3–5-page business plan summary document prepared after completion of a short questionnaire.
+  R24 C2: +$175
+  R24 C3: +$175
+  R24 C4: +$175
+  R24 C5: all
+  R25 C0: Accounting System Setup & Tax Planning🅘 / Setup accounting structure and provide basic tax planning guidance
+  R25 C1: Accounting System Setup & Tax Planning🅘 / Setup accounting structure and provide basic tax planning guidance
+  R25 C2: +$125
+  R25 C3: +$125
+  R25 C4: ✔️
+  R25 C5: all
+  R26 C0: WEBSITE & MARKETING
+  R26 C1: WEBSITE & MARKETING
+  R27 C5: all
+  R28 C0: Basic Corporate Website🅘 / Professional 5-page website with hosting and ongoing maintenance
+  R28 C1: Basic Corporate Website🅘 / Professional 5-page website with hosting and ongoing maintenance
+  R28 C2: Free  setup+ $29/month
+  R28 C3: Free  setup+ $29/month
+  R28 C4: Free  setup+ $29/month
+  R28 C5: all
+  R29 C0: Social Media Marketing Setup🅘 / We create and configure your business social media accounts so your brand is professionally positioned online and ready to attract customers. Includes setup of Facebook, Instagram, LinkedIn, and YouTube business accounts.
+  R29 C1: Social Media Marketing Setup🅘 / We create and configure your business social media accounts so your brand is professionally positioned online and ready to attract customers. Includes setup of Facebook, Instagram, LinkedIn, and YouTube business accounts.
+  R29 C2: +$125
+  R29 C3: +$125
+  R29 C4: +$125
+  R29 C5: all
+  R30 C0: Google Business Profile Setup🅘 / We set up and optimize your Google Business Profile to help customers find your business online through Google Search and Maps. Includes Google Business Profile configuration and basic Google Analytics setup.
+  R30 C1: Google Business Profile Setup🅘 / We set up and optimize your Google Business Profile to help customers find your business online through Google Search and Maps. Includes Google Business Profile configuration and basic Google Analytics setup.
+  R30 C2: +$125
+  R30 C3: +$125
+  R30 C4: +$125
+  R30 C5: all

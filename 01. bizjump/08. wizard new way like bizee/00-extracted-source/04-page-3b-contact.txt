@@ -1,0 +1,18 @@
+=== SOURCE FILE: 04. incwiz 3bcontact information (1).docx ===
+
+--- PARAGRAPHS ---
+
+--- TABLE 0 (7 rows x 2 cols) ---
+  R0 C0: Who is the main contact for this new business? / This is who we’ll contact if more info is needed during the filing process. This person could also be an owner for the new business.
+  R0 C1: Who is the main contact for this new business? / This is who we’ll contact if more info is needed during the filing process. This person could also be an owner for the new business.
+  R1 C0: First Name
+  R1 C1: Last Name
+  R2 C0: Email
+  R2 C1: Mobile Phone / United States +1
+  R3 C0: Street Address
+  R3 C1: Address 2
+  R4 C0: City
+  R4 C1: State
+  R5 C0: County
+  R5 C1: Country
+  R6 C0: <Back

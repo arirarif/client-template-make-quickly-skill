@@ -1,0 +1,16 @@
+=== SOURCE FILE: 05. incwiz p4 upsell (1).docx ===
+
+--- PARAGRAPHS ---
+
+--- TABLE 0 (8 rows x 2 cols) ---
+  R0 C0: State Expedited Filing
+  R0 C1: State Expedited Filing
+  R1 C0: Company Address Information / Formation documents are often publicly available and may include business or owner addresses. Many businesses choose to use a virtual address service for privacy.
+  R1 C1: Company Address Information / Formation documents are often publicly available and may include business or owner addresses. Many businesses choose to use a virtual address service for privacy.
+  R2 C0: First Month Free / Virtual Address / ✓Keep your address off public records / ✓Real physical address for your business / ✓Compliant with state mail requirements / ✓Unlimited mail scans with instant alerts / ✓24/7 access to your mail online
+  R2 C1: 📱
+  R3 C0: Use Virtual Address / First month of Virtual Address free; then $29/month. Renew manually each year. We never auto-charge. / Some States may require an amendment after cancellation.
+  R3 C1: I'll use my own address
+  R4 C1: Contact Address /  Same as Contact person / Please provide the address of the person whom we may contact for State, IRS, or legal correspondence relating to your business. / First Name / Last Name / Email / Phone / CountryUnited States of America (United States) / Street Address / Address (Cont)Optional / City / State / Zip Code
+  R5 C0: ⓘ /  /  /  /  / USPS regulations require that we verify your identity and address before we can open and scan your mail. You will be able to complete this process and sign the corresponding USPS Form 1583 from your dashboard.
+  R5 C1: ⓘ /  /  /  /  / USPS regulations require that we verify your identity and address before we can open and scan your mail. You will be able to complete this process and sign the corresponding USPS Form 1583 from your dashboard.
