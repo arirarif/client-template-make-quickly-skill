@@ -295,19 +295,20 @@ $show_wizard = ( $bjw_view === 'wizard' || $bjw_view === 'auto' );
             <input id="ct-email" class="input" type="email" placeholder="you@example.com" oninput="state.contact.email=this.value;validateContact()">
           </div>
           <div class="field">
-            <label class="field-label" for="ct-phone">Mobile Phone (US +1)</label>
+            <label class="field-label" for="ct-phone">Mobile Phone <span class="field-helper" style="font-weight:400;color:var(--bz-g400);margin-left:4px">United States +1</span></label>
             <input id="ct-phone" class="input" type="tel" placeholder="(555) 555-5555" oninput="state.contact.phone=this.value;validateContact()">
           </div>
         </div>
 
-        <div class="field">
-          <label class="field-label" for="ct-street1">Street Address</label>
-          <input id="ct-street1" class="input" type="text" placeholder="123 Main Street" oninput="state.contact.street1=this.value;validateContact()">
-        </div>
-
-        <div class="field">
-          <label class="field-label" for="ct-street2">Address 2 <span class="field-helper" style="font-weight:400;color:var(--bz-g400)">(Optional)</span></label>
-          <input id="ct-street2" class="input" type="text" placeholder="Apt, suite, unit, etc." oninput="state.contact.street2=this.value">
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="ct-street1">Street Address</label>
+            <input id="ct-street1" class="input" type="text" placeholder="123 Main Street" oninput="state.contact.street1=this.value;validateContact()">
+          </div>
+          <div class="field">
+            <label class="field-label" for="ct-street2">Address 2 <span class="field-helper" style="font-weight:400;color:var(--bz-g400)">(Optional)</span></label>
+            <input id="ct-street2" class="input" type="text" placeholder="Apt, suite, unit, etc." oninput="state.contact.street2=this.value">
+          </div>
         </div>
 
         <div class="field-row">
@@ -324,23 +325,24 @@ $show_wizard = ( $bjw_view === 'wizard' || $bjw_view === 'auto' );
               <?php endforeach; ?>
             </select>
           </div>
+        </div>
+
+        <div class="field-row">
           <div class="field">
             <label class="field-label" for="ct-county">County <span class="field-helper" style="font-weight:400;color:var(--bz-g400)">(Optional)</span></label>
             <input id="ct-county" class="input" type="text" placeholder="County" oninput="state.contact.county=this.value">
           </div>
-        </div>
-
-        <div class="field-row">
           <div class="field">
             <label class="field-label" for="ct-country">Country</label>
             <select id="ct-country" class="select" onchange="state.contact.country=this.value">
               <option value="US" selected>United States</option>
             </select>
           </div>
-          <div class="field">
-            <label class="field-label" for="ct-zip">Zip Code</label>
-            <input id="ct-zip" class="input" type="text" inputmode="numeric" maxlength="10" placeholder="Zip" oninput="state.contact.zip=this.value;validateContact()">
-          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="ct-zip">Zip Code</label>
+          <input id="ct-zip" class="input" type="text" inputmode="numeric" maxlength="10" placeholder="Zip" oninput="state.contact.zip=this.value;validateContact()">
         </div>
 
         <div class="actions">
