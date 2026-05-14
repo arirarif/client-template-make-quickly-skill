@@ -235,6 +235,24 @@ a:hover{text-decoration:underline}
 .addon-info-btn:hover,.addon-info-btn[aria-expanded="true"]{border-color:var(--bz-orange);color:var(--bz-orange);background:var(--bz-orange-light)}
 .addon-info-popover{margin-top:10px;padding:10px 14px;background:var(--bz-orange-light);border-left:3px solid var(--bz-orange);border-radius:var(--radius-sm);font-size:13px;color:var(--bz-g900);line-height:1.6;font-weight:400;text-align:left}
 
+/* ==========  STEP 5 — section banner + 2-col address grid  ========== */
+.step-section-banner{background:#fff;border:1px solid var(--bz-g200);border-radius:var(--radius-lg);padding:14px 24px;margin-bottom:18px;font-size:18px;font-weight:700;color:var(--bz-black);text-align:center;letter-spacing:.3px}
+.addr-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.addr-grid-left,.addr-grid-right{min-width:0}
+.virtual-addr-card{border:1px solid var(--bz-g200);border-radius:var(--radius-lg);padding:24px;position:relative;background:#fff}
+.virtual-addr-badge{position:absolute;top:-12px;right:24px;background:var(--bz-green);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:var(--radius-sm);text-transform:uppercase;letter-spacing:.5px;display:inline-block}
+.virtual-addr-title{font-size:18px;font-weight:700;margin-bottom:14px;color:var(--bz-black)}
+.virtual-addr-row{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start}
+.virtual-addr-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--bz-g900)}
+.virtual-addr-list li{display:flex;gap:8px;align-items:flex-start;line-height:1.4}
+.virtual-addr-list .check{color:var(--bz-green);font-weight:700;flex-shrink:0}
+.virtual-addr-icon{font-size:48px;line-height:1}
+.addr-fields-stack .field{margin-bottom:14px}
+.addr-fields-stack .field:last-child{margin-bottom:0}
+@media (max-width:900px){
+  .addr-grid{grid-template-columns:1fr}
+}
+
 /* ==========  PACKAGE POSITION COPY  ========== */
 .pkg-pitch{background:#fff;border:1px solid var(--bz-g200);border-radius:var(--radius-lg);padding:24px 32px;margin-bottom:24px;font-size:14px;color:var(--bz-g600);line-height:1.6}
 .pkg-pitch strong{color:var(--bz-black);font-weight:700}

@@ -3,7 +3,7 @@
  * Plugin Name:     BizJump Wizard
  * Plugin URI:      https://bizjump.com
  * Description:     Bizee-style incorporation wizard with per-entity state fees, 3 plan tiers, entity-gated add-ons, contact-step prefill, and WooCommerce checkout. V4 — built from scratch matching the 08/index.html prototype.
- * Version:         4.2.1
+ * Version:         4.2.2
  * Author:          BizJump Dev
  * Text Domain:     bizjump-wizard
  * Requires at least: 6.0
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'BJW_VERSION', '4.2.1' );
+define( 'BJW_VERSION', '4.2.2' );
 define( 'BJW_DIR',     plugin_dir_path( __FILE__ ) );
 define( 'BJW_URL',     plugin_dir_url( __FILE__ ) );
 define( 'BJW_FILE',    __FILE__ );

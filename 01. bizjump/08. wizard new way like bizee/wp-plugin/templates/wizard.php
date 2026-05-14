@@ -763,72 +763,75 @@ $show_wizard = ( $bjw_view === 'wizard' || $bjw_view === 'auto' );
   </div>
 </div>
 
-<!-- ==========  STEP 4 — COMPANY ADDRESS  ========== -->
+<!-- ==========  STEP 5 — COMPANY ADDRESS (+ Virtual Address upsell)  ========== -->
 <div id="step-5" class="step">
   <div class="wizard-body">
     <div>
+      <!-- Top section banner (per client doc 05. incwiz p4 upsell.docx) -->
+      <div class="step-section-banner">State Expedited Filing</div>
+
       <div class="card">
         <h2 class="card-title">Company Address Information</h2>
         <p class="card-intro">Formation documents are often publicly available and may include business or owner addresses. Many businesses choose to use a virtual address service for privacy.</p>
 
-        <!-- Virtual Address sub-card -->
-        <div style="border:1px solid var(--bz-g200);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;position:relative">
-          <div style="display:inline-block;position:absolute;top:-12px;right:24px;background:var(--bz-green);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:var(--radius-sm);text-transform:uppercase;letter-spacing:.5px">First Month Free</div>
-          <h3 style="font-size:18px;font-weight:700;margin-bottom:14px;color:var(--bz-black)">Virtual Address</h3>
-          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start">
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--bz-g900)">
-              <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Keep your address off public records</li>
-              <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Real physical address for your business</li>
-              <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Compliant with state mail requirements</li>
-              <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> Unlimited mail scans with instant alerts</li>
-              <li style="display:flex;gap:8px"><span style="color:var(--bz-green);font-weight:700">✓</span> 24/7 access to your mail online</li>
-            </ul>
-            <div style="font-size:48px;line-height:1">📱</div>
-          </div>
-          <div class="radio-cards" style="margin-top:20px;margin-bottom:12px">
-            <div class="radio-card selected" onclick="selectVirtualAddress(this,true)">
-              <div class="radio-card-dot"></div>
-              <div class="radio-card-body"><div class="radio-card-title">Use Virtual Address</div></div>
+        <!-- 2-col grid: Virtual Address (left) | Contact Address (right) -->
+        <div class="addr-grid">
+
+          <!-- LEFT: Virtual Address upsell -->
+          <div class="addr-grid-left">
+            <div class="virtual-addr-card">
+              <div class="virtual-addr-badge">First Month Free</div>
+              <h3 class="virtual-addr-title">Virtual Address</h3>
+              <div class="virtual-addr-row">
+                <ul class="virtual-addr-list">
+                  <li><span class="check">✓</span> Keep your address off public records</li>
+                  <li><span class="check">✓</span> Real physical address for your business</li>
+                  <li><span class="check">✓</span> Compliant with state mail requirements</li>
+                  <li><span class="check">✓</span> Unlimited mail scans with instant alerts</li>
+                  <li><span class="check">✓</span> 24/7 access to your mail online</li>
+                </ul>
+                <div class="virtual-addr-icon">📱</div>
+              </div>
+              <div class="radio-cards" style="margin-top:20px;margin-bottom:12px">
+                <div class="radio-card selected" onclick="selectVirtualAddress(this,true)">
+                  <div class="radio-card-dot"></div>
+                  <div class="radio-card-body"><div class="radio-card-title">Use Virtual Address</div></div>
+                </div>
+                <div class="radio-card" onclick="selectVirtualAddress(this,false)">
+                  <div class="radio-card-dot"></div>
+                  <div class="radio-card-body"><div class="radio-card-title">I'll use my own address</div></div>
+                </div>
+              </div>
+              <p style="font-size:13px;color:var(--bz-g600);margin-top:8px">First month of Virtual Address free; then <strong>$29/month</strong>. Renew manually each year. We never auto-charge.</p>
+              <p style="font-size:12px;color:var(--bz-g400);margin-top:6px">Some States may require an amendment after cancellation.</p>
+              <div class="info info-blue" style="margin-top:16px"><span class="info-icon">ⓘ</span><div>USPS regulations require that we verify your identity and address before we can open and scan your mail. You will be able to complete this process and sign the corresponding USPS Form 1583 from your dashboard.</div></div>
             </div>
-            <div class="radio-card" onclick="selectVirtualAddress(this,false)">
-              <div class="radio-card-dot"></div>
-              <div class="radio-card-body"><div class="radio-card-title">I'll use my own address</div></div>
+          </div>
+
+          <!-- RIGHT: Contact Address (with Same-as-Contact prefill) -->
+          <div class="addr-grid-right">
+            <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;color:var(--bz-black)">Contact Address</h3>
+            <label style="display:flex;align-items:center;gap:10px;margin:8px 0 14px;font-weight:600;color:var(--bz-g900);cursor:pointer">
+              <input type="checkbox" id="same-as-contact" checked onchange="toggleSameAsContact(this.checked)" style="width:18px;height:18px;accent-color:var(--bz-orange)">
+              <span>Same as Contact person</span>
+            </label>
+            <p style="font-size:14px;color:var(--bz-g600);margin-bottom:20px">Please provide the address of the person whom we may contact for State, IRS, or legal correspondence relating to your business.</p>
+
+            <div id="company-addr-fields" class="addr-fields-stack">
+              <div class="field"><label class="field-label">First Name</label><input class="input addr-input" data-key="firstName" type="text" oninput="state.address.firstName=this.value"></div>
+              <div class="field"><label class="field-label">Last Name</label><input class="input addr-input" data-key="lastName" type="text" oninput="state.address.lastName=this.value"></div>
+              <div class="field"><label class="field-label">Email</label><input class="input addr-input" data-key="email" type="email" oninput="state.address.email=this.value"></div>
+              <div class="field"><label class="field-label">Phone</label><input class="input addr-input" data-key="phone" type="tel" oninput="state.address.phone=this.value" placeholder="+1 (555) 555-5555"></div>
+              <div class="field"><label class="field-label">Country</label><select class="select addr-input" data-key="country" onchange="state.address.country=this.value"><option value="US">United States of America (United States)</option></select></div>
+              <div class="field"><label class="field-label">Street Address</label><input class="input addr-input" data-key="street1" type="text" oninput="state.address.street1=this.value"></div>
+              <div class="field"><label class="field-label">Address (Cont) <span style="font-weight:400;color:var(--bz-g400)">Optional</span></label><input class="input addr-input" data-key="street2" type="text" oninput="state.address.street2=this.value"></div>
+              <div class="field"><label class="field-label">City</label><input class="input addr-input" data-key="city" type="text" oninput="state.address.city=this.value"></div>
+              <div class="field"><label class="field-label">State</label><select class="select addr-input state-dropdown" data-key="state" id="contact-state" onchange="state.address.state=this.value"><option value="">Select State</option><?php foreach ( BJW_State_Fees::all_states() as $st ): ?><option value="<?php echo esc_attr( $st ); ?>"><?php echo esc_html( $st ); ?></option><?php endforeach; ?></select></div>
+              <div class="field"><label class="field-label">Zip Code</label><input class="input addr-input" data-key="zip" type="text" oninput="state.address.zip=this.value"></div>
             </div>
           </div>
-          <p style="font-size:13px;color:var(--bz-g600);margin-top:8px">First month of Virtual Address free; then <strong>$29/month</strong>. Renew manually each year. We never auto-charge.</p>
-          <p style="font-size:12px;color:var(--bz-g400);margin-top:6px">Some States may require an amendment after cancellation.</p>
-          <div class="info info-blue" style="margin-top:16px"><span class="info-icon">ⓘ</span><div>USPS regulations require that we verify your identity and address before we can open and scan your mail. You will be able to complete this process and sign the corresponding USPS Form 1583 from your dashboard.</div></div>
-        </div>
 
-        <!-- Contact Address -->
-        <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;color:var(--bz-black)">Contact Address</h3>
-        <label style="display:flex;align-items:center;gap:10px;margin:8px 0 14px;font-weight:600;color:var(--bz-g900);cursor:pointer">
-          <input type="checkbox" id="same-as-contact" checked onchange="toggleSameAsContact(this.checked)" style="width:18px;height:18px;accent-color:var(--bz-orange)">
-          <span>Same as Contact person</span>
-        </label>
-        <p style="font-size:14px;color:var(--bz-g600);margin-bottom:20px">Please provide the address of the person whom we may contact for State, IRS, or legal correspondence relating to your business.</p>
-
-        <div id="company-addr-fields">
-        <div class="field-row">
-          <div class="field"><label class="field-label">First Name</label><input class="input addr-input" data-key="firstName" type="text" oninput="state.address.firstName=this.value"></div>
-          <div class="field"><label class="field-label">Last Name</label><input class="input addr-input" data-key="lastName" type="text" oninput="state.address.lastName=this.value"></div>
-        </div>
-        <div class="field-row">
-          <div class="field"><label class="field-label">Email</label><input class="input addr-input" data-key="email" type="email" oninput="state.address.email=this.value"></div>
-          <div class="field"><label class="field-label">Phone</label><input class="input addr-input" data-key="phone" type="tel" oninput="state.address.phone=this.value" placeholder="+1 (555) 555-5555"></div>
-        </div>
-
-        <div class="field"><label class="field-label">Country</label><select class="select addr-input" data-key="country" onchange="state.address.country=this.value"><option value="US">United States of America (United States)</option></select></div>
-        <div class="field-row">
-          <div class="field"><label class="field-label">Street Address</label><input class="input addr-input" data-key="street1" type="text" oninput="state.address.street1=this.value"></div>
-          <div class="field"><label class="field-label">Address (Cont) <span style="font-weight:400;color:var(--bz-g400)">Optional</span></label><input class="input addr-input" data-key="street2" type="text" oninput="state.address.street2=this.value"></div>
-        </div>
-        <div class="field-row-3">
-          <div class="field"><label class="field-label">City</label><input class="input addr-input" data-key="city" type="text" oninput="state.address.city=this.value"></div>
-          <div class="field"><label class="field-label">State</label><select class="select addr-input state-dropdown" data-key="state" id="contact-state" onchange="state.address.state=this.value"><option value="">Select State</option><?php foreach ( BJW_State_Fees::all_states() as $st ): ?><option value="<?php echo esc_attr( $st ); ?>"><?php echo esc_html( $st ); ?></option><?php endforeach; ?></select></div>
-          <div class="field"><label class="field-label">Zip Code</label><input class="input addr-input" data-key="zip" type="text" oninput="state.address.zip=this.value"></div>
-        </div>
-        </div>
+        </div><!-- /.addr-grid -->
 
         <div class="actions">
           <button class="btn btn-secondary" onclick="prevStep()">‹ Back</button>
