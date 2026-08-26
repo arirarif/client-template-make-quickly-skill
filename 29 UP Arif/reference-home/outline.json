@@ -1,0 +1,323 @@
+{
+ "url": "https://www.niswafashion.com/",
+ "sections": [
+  {
+   "order": 1,
+   "type": "announcement-bar",
+   "id": "sections--23284456784170__announcement-bar",
+   "bytes": 4009,
+   "headings": [],
+   "textSample": "Fast & Free Shipping on U.S. Orders Over $99 Fast & Free Shipping on U.S. Orders Over $99 SHOP NOW AND PAY LATER W/ SHOP PAY OR AFTERPAY SHOP NOW AND PAY LATER W/ SHOP PAY OR AFTERPAY JOIN OUR EMAIL & SMS LIST FOR EARLY ACCESS TO THE BEST DEALS!",
+   "imageCount": 0,
+   "images": [],
+   "linkCount": 0,
+   "buttons": []
+  },
+  {
+   "order": 2,
+   "type": "header",
+   "id": "sections--23284456784170__header",
+   "bytes": 240891,
+   "headings": [
+    {
+     "level": 1,
+     "text": "Niswa Fashion"
+    }
+   ],
+   "textSample": "NEW MODAL HIJABS APPAREL APPAREL WHAT'S NEW WHAT'S NEW NEW ARRIVALS BEST SELLERS SHOP ALL SHOP ALL New Arrivals Dresses Abayas Swim Tops Bottoms Kids Matching Sets Cardigans Outerwear Skirts SHOP BY EDIT SHOP BY EDIT Back In Stock Evening Plus Size Swim The Br",
+   "imageCount": 22,
+   "images": [
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/niswafashion_4ad2e006-50e4-4914-a892-d65b52526c03.png?v=1740595472&amp;width=1100",
+     "alt": ""
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/15_79bd2f12-2d77-4105-bfcb-664f97b2fead.png?v=1740595514&amp;width=1100",
+     "alt": ""
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/collections/9947171039867405cf9f325c254d2abb.jpg?v=1754506786&amp;width=1100",
+     "alt": "Hijabs"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/collections/WEBSITE_BANNER_EMAILS_-_MARIA_2048_x_1024_px_-4.png?v=1665759741&amp;width=1100",
+     "alt": "$10 HIJABS"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/collections/59_f8332221-4701-4a2c-83ae-5f08f6e28738-ezgif.com-webp-to-jpg-converter.jpg?v=1747321566&amp;width=1100",
+     "alt": "BAMBOO PRINT MODAL"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/collections/Untitled_design_1.png?v=1747322238&amp;width=1100",
+     "alt": "Bamboo Modal"
+    }
+   ],
+   "linkCount": 611,
+   "buttons": [
+    {
+     "href": "/collections/view-all",
+     "label": "SHOP ALL"
+    },
+    {
+     "href": "/collections/view-all",
+     "label": "SHOP BY EDIT"
+    },
+    {
+     "href": "/collections/hijabs-scarves",
+     "label": "View All Hijabs"
+    },
+    {
+     "href": "/collections/metallic-womens-scarves",
+     "label": "Metallic"
+    },
+    {
+     "href": "/collections/sale",
+     "label": "All Sale"
+    },
+    {
+     "href": "https://www.niswafashion.com/collections/view-all?filter.v.price.gte=&filter.v.price.lte=55&sort_by=manual",
+     "label": "Shop Under $50"
+    }
+   ]
+  },
+  {
+   "order": 3,
+   "type": "slideshow_VfnM97",
+   "id": "template--23284460486954__slideshow_VfnM97",
+   "bytes": 4434,
+   "headings": [],
+   "textSample": "",
+   "imageCount": 2,
+   "images": [
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/AURELIA_LINEN_EDIT_2.jpg?v=1785478271&amp;width=3840",
+     "alt": ""
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/upto_20_off_7.jpg?v=1785478265&amp;width=3840",
+     "alt": ""
+    }
+   ],
+   "linkCount": 0,
+   "buttons": []
+  },
+  {
+   "order": 4,
+   "type": "featured_collection_49h8ND",
+   "id": "template--23284460486954__featured_collection_49h8ND",
+   "bytes": 20246,
+   "headings": [
+    {
+     "level": 2,
+     "text": "Shop New Arrivals"
+    }
+   ],
+   "textSample": "Shop New Arrivals Aurelia Linen Convertible Dress - Blush Aurelia Linen Convertible Dress - Blush Regular price Tk 21,900.00 Regular price Sale price Tk 21,900.00 Choose options Quick view Aurelia Linen Two Piece Set - Blush Aurelia Linen Two Piece Set - Blush",
+   "imageCount": 6,
+   "images": [
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/CCB2A751-D231-47BC-ACFD-964BAB72B0E1_1_201_a.jpg?v=1785350116&amp;width=1100",
+     "alt": "Aurelia Linen Convertible Dress - Blush"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/Image_20260703040808_2502_3.jpg?v=1785396337&amp;width=1100",
+     "alt": "Aurelia Linen Convertible Dress - Blush"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/5DAA10C6-A3B2-4915-958A-272127A92F96_1_201_a.jpg?v=1785354390&amp;width=1100",
+     "alt": "Aurelia Linen Two Piece Set - Blush"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/Image_20260703040806_2501_3.jpg?v=1785396431&amp;width=1100",
+     "alt": "Aurelia Linen Two Piece Set - Blush"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/AF60B50F-B8E1-45DC-B690-572ADF827054_1_201_a_947b722a-86d2-4ade-965e-eaa67cd57b05.jpg?v=1785348637&amp;width=1100",
+     "alt": "Aurelia Linen Convertible Dress - Wheat"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/Image_20260703040810_2503_3.jpg?v=1785396413&amp;width=1100",
+     "alt": "Aurelia Linen Convertible Dress - Wheat"
+    }
+   ],
+   "linkCount": 7,
+   "buttons": [
+    {
+     "href": "/collections/new-arrivals",
+     "label": "SHOP NOW"
+    }
+   ]
+  },
+  {
+   "order": 5,
+   "type": "gallery_tegMbq",
+   "id": "template--23284460486954__gallery_tegMbq",
+   "bytes": 6817,
+   "headings": [],
+   "textSample": "Abayas Elegance Redefined Abayas Dresses For Every Body, Every Occasion Dresses Hijabs Infinite Colors, Endless Styles Hijabs",
+   "imageCount": 3,
+   "images": [
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/209A6725.jpg?v=1771419875&amp;width=3840",
+     "alt": ""
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/209A7419.jpg?v=1771444153&amp;width=3840",
+     "alt": ""
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/209A6123.jpg?v=1770967794&amp;width=3840",
+     "alt": ""
+    }
+   ],
+   "linkCount": 3,
+   "buttons": []
+  },
+  {
+   "order": 6,
+   "type": "164257168464d44431",
+   "id": "template--23284460486954__164257168464d44431",
+   "bytes": 4499,
+   "headings": [],
+   "textSample": "40,000+ Happy Customers Your Trusted Fashion Source Women Operated For women, by women Giving Back Supporting Emergency Relief projects with every purchase throughout this month of Ramadan",
+   "imageCount": 3,
+   "images": [
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/costumer.png?v=1709642731&width=40",
+     "alt": ""
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/hijab.png?v=1709642731&width=40",
+     "alt": ""
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/first-aid-kit.png?v=1709642730&width=40",
+     "alt": ""
+    }
+   ],
+   "linkCount": 0,
+   "buttons": []
+  },
+  {
+   "order": 7,
+   "type": "c97ebf4d-9926-4564-a60e-3b40f7b8d5aa",
+   "id": "template--23284460486954__c97ebf4d-9926-4564-a60e-3b40f7b8d5aa",
+   "bytes": 31535,
+   "headings": [
+    {
+     "level": 2,
+     "text": "BEST SELLERS"
+    }
+   ],
+   "textSample": "BEST SELLERS Seville Layered Satin Gown - Glistening Ivory Ivory Seville Layered Satin Gown - Glistening Ivory Regular price Tk 23,500.00 Regular price Sale price Tk 23,500.00 Choose options Quick view Marseille Embroidered Maxi Gown Multi Color Marseille Embr",
+   "imageCount": 8,
+   "images": [
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/products/0I4A0147_182b219c-6d21-4efb-abef-8486155c964e.jpg?v=1635304901&amp;width=1100",
+     "alt": "Seville Layered Satin Gown - Glistening Ivory"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/Seville_Maxi_Dress_-_Ivory.png?v=1743815378&amp;width=1100",
+     "alt": "Seville Layered Satin Gown - Glistening Ivory"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/A2E7D115-3BB2-43A4-B900-65FAF4B652AF_1_105_c.jpg?v=1770822416&amp;width=1100",
+     "alt": "Marseille Embroidered Maxi Gown"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/152011708586638_.pic_hd_1.jpg?v=1770822416&amp;width=1100",
+     "alt": "Marseille Embroidered Maxi Gown"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/products/0I4A2664.jpg?v=1635304487&amp;width=1100",
+     "alt": "Imelda Batwing Dress - Midnight Blue"
+    },
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/products/28201630193154_.pic_hd.jpg?v=1635232506&amp;width=1100",
+     "alt": "Imelda Batwing Dress - Midnight Blue"
+    }
+   ],
+   "linkCount": 13,
+   "buttons": [
+    {
+     "href": "/collections/back-in-stock",
+     "label": "View all"
+    }
+   ]
+  },
+  {
+   "order": 8,
+   "type": "image_banner_RJrRrG",
+   "id": "template--23284460486954__image_banner_RJrRrG",
+   "bytes": 2518,
+   "headings": [],
+   "textSample": "Liquid error (sections/image-banner line 77): invalid url input",
+   "imageCount": 1,
+   "images": [
+    {
+     "src": "https://www.niswafashion.com/cdn/shop/files/small_banner_7_1.jpg?v=1730395478&amp;width=2500",
+     "alt": ""
+    }
+   ],
+   "linkCount": 0,
+   "buttons": []
+  },
+  {
+   "order": 9,
+   "type": "1699019302da02496c",
+   "id": "template--23284460486954__1699019302da02496c",
+   "bytes": 1189,
+   "headings": [],
+   "textSample": "",
+   "imageCount": 0,
+   "images": [],
+   "linkCount": 0,
+   "buttons": []
+  },
+  {
+   "order": 10,
+   "type": "footer",
+   "id": "sections--23284456653098__footer",
+   "bytes": 99608,
+   "headings": [],
+   "textSample": "SUPPORT Shipping & Delivery Return & Refund Policy FAQs Size Chart Brand Ambassador Reviews Contact Us Privacy Policy MORE About Us Shop Under $50 Shop Under $100 Gift Card Rewards Blog CONTACT US Need assistance? Contact us at helpdesk@niswafashion.com , and ",
+   "imageCount": 0,
+   "images": [],
+   "linkCount": 255,
+   "buttons": [
+    {
+     "href": "/pages/reviews",
+     "label": "Reviews"
+    },
+    {
+     "href": "https://www.niswafashion.com/collections/view-all?filter.v.price.gte=&filter.v.price.lte=55&sort_by=manual",
+     "label": "Shop Under $50"
+    },
+    {
+     "href": "https://www.niswafashion.com/collections/view-all?filter.v.price.gte=&filter.v.price.lte=105&sort_by=manual",
+     "label": "Shop Under $100"
+    },
+    {
+     "href": "#",
+     "label": "Albania (ALL L)"
+    },
+    {
+     "href": "#",
+     "label": "Wallis & Futuna (XPF Fr)"
+    }
+   ]
+  },
+  {
+   "order": 11,
+   "type": "cookie-banner",
+   "id": "sections--23284458029354__cookie-banner",
+   "bytes": 29187,
+   "headings": [],
+   "textSample": "We use cookies and similar technologies to provide the best experience on our website. Privacy Policy Accept No Choosing a selection results in a full page refresh.",
+   "imageCount": 0,
+   "images": [],
+   "linkCount": 1,
+   "buttons": []
+  }
+ ]
+}

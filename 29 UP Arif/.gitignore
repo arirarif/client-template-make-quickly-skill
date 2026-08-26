@@ -1,0 +1,27 @@
+.unlazy/
+.unlazy-hook-state.json
+.claude/settings.local.json
+.env
+
+# Local copy of the site's media library — 326 originals, ~309 MB.
+# Recoverable at any time by re-running images/download-media.mjs against the
+# WordPress export, so it does not belong in version control.
+images/uploads/
+images/manifest.json
+
+# Cached upstream product feed (~3.4 MB), re-fetchable via fetch-feed.mjs.
+svpi-importer/build/reference-feed.json
+
+# Third-party vendor bundles — not our work, ~1,900 files between them.
+#   DIVI/            premium Divi plugins/themes supplied by the client. Several
+#                    are nulled builds (divi-ecommerce-pro patches its own licence
+#                    status in code), so they do not belong in version control.
+#   molti-ecommerce/ vendor demo child theme, kept only as a reference example.
+DIVI/
+molti-ecommerce/
+
+# Built theme zips — reproducible via niswah-boutique/build/pack.ps1
+*.zip
+
+# WordPress media export used to recover the library (1.5 MB)
+niswahboutique.WordPress.*.xml

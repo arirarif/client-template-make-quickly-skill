@@ -1,0 +1,990 @@
+/*
+ Theme Name:     Niswah Boutique
+ Theme URI:      https://niswahboutique.com/
+ Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
+ Author:         Built for Niswah Boutique
+ Template:       Divi
+ Version:        0.9.1
+ Text Domain:    niswah-boutique
+*/
+
+/* =========================================================================
+   1. BRAND TOKENS
+   Palette derived from the Niswah Boutique logo.
+   Type scale + spacing measured from the design reference (see 03-DESIGN-SPEC.md).
+   ========================================================================= */
+
+:root {
+  /* Colour */
+  --nb-burgundy:   #6E1423;  /* primary — logo wordmark */
+  --nb-gold:       #C6A15B;  /* accent — logo gradient */
+  --nb-terracotta: #B24D2E;  /* secondary accent / hover */
+  --nb-ivory:      #FAF3EA;  /* editorial background */
+  --nb-espresso:   #241512;  /* text / dark surfaces */
+  --nb-white:      #FFFFFF;
+
+  /* Type */
+  --nb-font-head: "Marcellus", Georgia, "Times New Roman", serif;
+  --nb-font-body: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --nb-body-size: 16px;
+  --nb-body-weight: 300;
+  --nb-body-lh: 1.8;
+  --nb-body-ls: 0.6px;
+
+  --nb-h2-size: 36px;
+  --nb-h2-lh: 1.3;
+  --nb-h2-ls: 0.54px;
+
+  /* Layout */
+  --nb-content-width: 1600px;
+  --nb-gutter: 50px;
+  --nb-grid-col-gap: 20px;
+  --nb-grid-row-gap: 55px;
+
+  /* Header */
+  --nb-ticker-h: 40px;
+}
+
+/* =========================================================================
+   2. GLOBAL TYPOGRAPHY
+   Mirrors the Divi Customizer settings so the values live in one readable
+   place. Divi's own settings still win in the builder UI — these are the
+   safety net for anything Divi does not cover.
+   ========================================================================= */
+
+body,
+.et_pb_module,
+input,
+textarea,
+select,
+button {
+  font-family: var(--nb-font-body);
+  letter-spacing: var(--nb-body-ls);
+}
+
+body {
+  font-size: var(--nb-body-size);
+  font-weight: var(--nb-body-weight);
+  line-height: var(--nb-body-lh);
+  color: var(--nb-espresso);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--nb-font-head);
+  color: var(--nb-espresso);
+  letter-spacing: var(--nb-h2-ls);
+}
+
+h2 {
+  font-size: var(--nb-h2-size);
+  line-height: var(--nb-h2-lh);
+}
+
+a {
+  color: var(--nb-burgundy);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--nb-terracotta);
+}
+
+/* =========================================================================
+   3. LAYOUT WIDTH
+   Reference container is 1600px with a 50px gutter.
+   ========================================================================= */
+
+.et_pb_row {
+  max-width: var(--nb-content-width);
+}
+
+@media (min-width: 981px) {
+  .et_pb_row {
+    padding-left: var(--nb-gutter);
+    padding-right: var(--nb-gutter);
+  }
+}
+
+/* =========================================================================
+   4. HEADER
+   Ticker sits at a fixed 40px. Nothing here should introduce a horizontal
+   scrollbar, so the page container is clipped.
+   ========================================================================= */
+
+#page-container {
+  overflow-x: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   Header geometry.
+
+   The reference header is 128px (40px ticker + 88px brand band). We cannot hit
+   88px honestly: their logo is a flat text wordmark at roughly 8.2:1, ours is a
+   stacked lockup (Arabic over Latin, plus the emblem) at 1161x516 = 2.25:1.
+   Constraining ours to the reference's ~44px logo height forces it to 99px
+   wide, at which point the wordmark is unreadable. So the logo is held at 56px
+   and the band lands near 150px. Matching 128px exactly needs a horizontal
+   logo variant (emblem left, wordmark right) — a design asset, not a CSS fix.
+
+   !important is required on the logo height: Divi emits per-module CSS for
+   et_pb_menu_0_tb_header AFTER this stylesheet, and at equal specificity the
+   later rule wins. This is the one place we cannot win on cascade order.
+   ------------------------------------------------------------------------- */
+
+.nb-header .et_pb_menu__logo img {
+  max-height: 56px !important;
+  width: auto !important;
+}
+
+.nb-header .et_pb_menu__logo,
+.nb-header .et_pb_menu__logo-wrap {
+  height: auto !important;
+}
+
+/* Icons ride on the logo line, hard right, rather than taking a third row.
+   Divi renders them as direct children of .et_pb_menu__wrap — there is no
+   .et_pb_menu__icons wrapper, which is why an earlier attempt did nothing. */
+@media (min-width: 981px) {
+  .nb-header .et_pb_menu_inner_container { position: relative; }
+
+  .nb-header .et_pb_menu__wrap { justify-content: center; }
+
+  /* Offsets resolve against .et_pb_menu_inner_container (the nearest positioned
+     ancestor), whose top edge is the top of the logo band — not against
+     .et_pb_menu__wrap. A negative offset therefore pushed the icons up into the
+     ticker. Centring them on the 56px logo band means (56 - 25) / 2 ~= 15px. */
+  .nb-header .et_pb_menu__wrap > .et_pb_menu__icon {
+    position: absolute;
+    top: 15px;
+    height: auto;
+    margin: 0;
+  }
+
+  .nb-header .et_pb_menu__wrap > .et_pb_menu__cart-button { right: 0; }
+  .nb-header .et_pb_menu__wrap > .et_pb_menu__search-button { right: 92px; }
+
+  .nb-header .et_pb_menu__menu > nav > ul { justify-content: center; }
+
+  /* Nav row: tighten from Divi's 69px to ~40px. */
+  .nb-header .et_pb_menu__menu > nav > ul > li > a {
+    padding-top: 4px;
+    padding-bottom: 8px;
+    line-height: 1.6em;
+  }
+}
+
+/* Underline grows from the centre on hover. */
+.nb-header .et_pb_menu__menu > nav > ul > li > a { position: relative; }
+
+.nb-header .et_pb_menu__menu > nav > ul > li > a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 0;
+  height: 1px;
+  background: var(--nb-burgundy);
+  transition: width 0.28s ease, left 0.28s ease;
+}
+
+.nb-header .et_pb_menu__menu > nav > ul > li > a:hover::after {
+  left: 0;
+  width: 100%;
+}
+
+/* Mobile: hamburger left, logo centred, cart right — one compact row.
+   -------------------------------------------------------------------------
+   Divi's own responsive rules for the menu module are NOT reliably present on
+   this site: measured at a 400px viewport the desktop nav computed to
+   display:block, the closed mobile menu computed to display:block, and the
+   search container rendered despite carrying Divi's own --disabled class. The
+   result was a 655px header showing the whole nav twice as a plain bulleted
+   list. So the mobile state is enforced here rather than inherited. */
+@media (max-width: 980px) {
+  .nb-header .et_pb_menu__logo img { max-height: 38px !important; }
+
+  .nb-header .et_pb_menu_inner_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  .nb-header .et_pb_menu__logo-wrap { order: 2; margin: 0 auto; flex: 0 1 auto; }
+  .nb-header .et_pb_menu__wrap { order: 3; width: auto; flex: 0 0 auto; }
+  .nb-header .et_mobile_nav_menu { order: 1; flex: 0 0 auto; display: block; }
+
+  /* The desktop nav must not render at all below 980px. */
+  .nb-header .et_pb_menu__menu { display: none !important; }
+
+  /* A closed mobile menu stays closed. Divi toggles .opened on tap. */
+  .nb-header .mobile_nav.closed .et_mobile_menu { display: none !important; }
+  .nb-header .mobile_nav.opened .et_mobile_menu { display: block !important; }
+
+  /* Search panel only appears when Divi opens it. */
+  .nb-header .et_pb_menu__search-container--disabled,
+  .nb-header .et_pb_menu__search-container:not(.et_pb_menu__search-container--visible) {
+    display: none !important;
+  }
+
+  /* Hamburger stays visible and tappable. */
+  .nb-header .mobile_menu_bar { display: block; position: relative; }
+
+  /* The dropdown panel spans the header rather than the hamburger's own width,
+     which is what made it a 129px-wide column of wrapped links. */
+  .nb-header .et_mobile_nav_menu .et_mobile_menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+    background: var(--nb-white);
+    border-top: 1px solid var(--nb-line, #E8E2D9);
+    padding: 6px 0;
+  }
+
+  .nb-header .et_mobile_nav_menu .et_mobile_menu li a {
+    padding: 12px 18px;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+  }
+}
+
+/* Ticker bar — dense, letterspaced, always legible on the deep background. */
+.nb-ticker .et_pb_text {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.78px;
+  line-height: 1.25;
+  color: var(--nb-white);
+  margin: 0;
+}
+
+/* Primary nav — 18px / 300 / 0.6px, per the measured reference. */
+.et_pb_menu .et-menu > li > a {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+  color: var(--nb-espresso);
+}
+
+.et_pb_menu .et-menu > li > a:hover {
+  color: var(--nb-burgundy);
+  opacity: 1;
+}
+
+/* Header icons (search / cart) share the body text colour. */
+.et_pb_menu .et_pb_menu__icon {
+  color: var(--nb-espresso);
+}
+
+/* =========================================================================
+   5. WOOCOMMERCE — product card
+   Measured from the reference on 2026-08-26:
+     card image 460x690  -> 2:3 portrait, object-fit cover
+     two images per card -> second crossfades in on hover
+     title 14.4px / 400 / ls 0.54px / serif, sentence case (NOT uppercase)
+     grid gaps 20px column, 55px row, borderless
+   ========================================================================= */
+
+.woocommerce ul.products,
+ul.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: var(--nb-grid-col-gap);
+  row-gap: var(--nb-grid-row-gap);
+  margin: 0;
+}
+
+/* WooCommerce clears its float layout with ::before/::after on ul.products.
+   In a grid container those pseudo-elements are GRID ITEMS, so ::before
+   silently consumed the first cell and shunted every card one place along —
+   leaving an empty top-left slot and wrapping the last card onto a new row.
+   The float layout they exist for is gone, so they can go too. */
+.woocommerce ul.products::before,
+.woocommerce ul.products::after,
+ul.products::before,
+ul.products::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Divi's shop module emits per-instance CSS AFTER this stylesheet that gives
+   li.product a fixed percentage width for its own float layout. In a grid that
+   leaves each card sitting at ~140px inside a 460px cell. Since we cannot load
+   later than Divi's generated CSS, this is one of the few places !important is
+   the right tool rather than a shortcut. */
+.woocommerce ul.products li.product,
+.et_pb_shop ul.products li.product,
+ul.products li.product {
+  position: relative;      /* anchors the sale badge and slide-up button */
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  float: none !important;
+  clear: none !important;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: none;
+  text-align: center;
+}
+
+/* Fixed-ratio frame: a catalogue with mixed photo ratios still forms a tidy
+   grid, which is the single biggest reason the reference grid reads cleanly. */
+/* overflow stays VISIBLE so the button can hang 26px below the image, the way
+   the reference does. The zoom is clipped by the two inner layers instead,
+   each of which is already absolutely positioned to fill this box. */
+.nb-card__media {
+  position: relative;
+  display: block;
+  overflow: visible;
+  aspect-ratio: 2 / 3;
+  background: var(--nb-ivory);
+  /* No bottom margin: it inflates the card's first grid row past the image,
+     and the button is anchored to the end of that row. A 16px margin here put
+     the button 16px lower than the reference's 26px overhang. The gap under
+     the image is provided by the title's margin-top instead. */
+  margin-bottom: 0;
+}
+
+.nb-card__media .et_shop_image,
+.nb-card__media .nb-card__hover {
+  overflow: hidden;
+}
+
+/* Divi's shop module does not output a bare <img>: it wraps it in
+   span.et_shop_image, which computes to zero height and absolutely positions
+   the <img> inside itself. Left alone the wrapper collapses, the image escapes
+   the 2:3 frame, and the frame's background shows through as a blank block.
+   The wrapper has to be stretched to fill the frame before the image can. */
+.nb-card__media .et_shop_image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.nb-card__media img {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  transition: opacity 0.55s ease, transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* Divi paints its own hover overlay over the thumbnail, which competes with
+   the image swap and the slide-up button. */
+.nb-card__media .et_overlay { display: none !important; }
+
+/* Second image sits over the first at zero opacity and fades in. */
+.nb-card__hover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+li.product:hover .nb-card__hover { opacity: 1; }
+
+/* Slow zoom applies to whichever image is currently visible, so single-image
+   products still get a hover response. */
+li.product:hover .nb-card__media img { transform: scale(1.06); }
+
+/* Touch devices never hover: drop the swap rather than leave it stuck. */
+@media (hover: none) {
+  .nb-card__hover { display: none; }
+}
+
+/* Title sits on a single line, as the reference does. Clipping with an ellipsis
+   rather than wrapping is what keeps every card in the row exactly the same
+   height — a two-line title on one card otherwise shunts its neighbours' prices
+   out of alignment. */
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+ul.products li.product .woocommerce-loop-product__title {
+  font-family: var(--nb-font-head);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.54px;
+  line-height: 1.5;
+  text-transform: none;
+  color: var(--nb-espresso);
+  padding: 0 4px 6px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Currency mark is set smaller and lighter than the figure, so the number
+   carries the line — the treatment the reference uses. */
+.woocommerce ul.products li.product .woocommerce-Price-currencySymbol {
+  font-size: 0.72em;
+  opacity: 0.75;
+  margin-right: 2px;
+}
+
+.woocommerce ul.products li.product .price,
+ul.products li.product .price {
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--nb-espresso);
+}
+
+.woocommerce ul.products li.product .price del { opacity: 0.5; margin-right: 6px; }
+
+.woocommerce ul.products li.product .price ins {
+  text-decoration: none;
+  color: var(--nb-burgundy);
+}
+
+/* Sale badge — square, brand colour, top-left. Divi ships a circle. */
+.woocommerce ul.products li.product .onsale,
+.woocommerce span.onsale {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: auto;
+  min-height: 0;
+  min-width: 0;
+  padding: 5px 12px;
+  border-radius: 0;
+  background: var(--nb-burgundy);
+  color: var(--nb-white);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  line-height: 1.6;
+  margin: 0;
+  z-index: 2;
+}
+
+/* Add-to-cart / choose-options, matched to the reference's measured values:
+   430px wide in a 460px card (15px inset), 40px tall, sitting 26px below the
+   image, black, 12px/600/2.4px letter-spacing, 4px radius. Hidden state is
+   opacity 0 + translateY(40px), revealed on hover over 0.25s.
+
+   The button cannot be nested inside the image: Divi closes the product link
+   before any hook we can attach to, so the button is always a sibling of it.
+   Instead the card becomes a grid and the button is assigned to the SAME grid
+   cell as the link — which is exactly the image box — then aligned to its
+   bottom edge. That anchors it to the image regardless of how tall the title
+   and price render, which is what the reference's offsets are relative to. */
+.woocommerce ul.products li.product,
+ul.products li.product {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto;
+}
+
+li.product > a.woocommerce-LoopProduct-link { grid-area: 1 / 1; }
+li.product > h2.woocommerce-loop-product__title { grid-row: 2; }
+li.product > .price { grid-row: 3; }
+li.product > .screen-reader-text { display: none; }
+
+.woocommerce ul.products li.product > .button,
+ul.products li.product > .button {
+  grid-area: 1 / 1;
+  align-self: end;
+  margin: 0 15px -26px;
+  padding: 6px 20px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #000000;
+  color: var(--nb-white);
+  border: 0;
+  border-radius: 4px;
+
+  font-family: var(--nb-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.4px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+  z-index: 3;
+}
+
+/* The hover selector MUST carry at least the specificity of the base rule
+   above. Written as plain `li.product:hover > .button` it scores (0,3,1)
+   against the base rule's (0,4,2), so `opacity: 0` kept winning and the button
+   never appeared even though the hover was firing correctly. */
+.woocommerce ul.products li.product:hover > .button,
+ul.products li.product:hover > .button,
+.woocommerce ul.products li.product:focus-within > .button,
+ul.products li.product:focus-within > .button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.woocommerce ul.products li.product > .button:hover,
+ul.products li.product > .button:hover { background: var(--nb-burgundy); }
+
+/* Title clears the button's 26px overhang with a little breathing room, and
+   supplies the gap under the image that .nb-card__media no longer carries. */
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+ul.products li.product .woocommerce-loop-product__title {
+  margin-top: 34px;
+}
+
+/* Reference sets the minor units small and raised. */
+.nb-price-decimals {
+  font-size: 0.62em;
+  vertical-align: super;
+  letter-spacing: 0.4px;
+  margin-left: 1px;
+}
+
+/* Top-right control (quick view / wishlist), revealed with the rest of the
+   hover state. Kept visible on touch, where there is no hover to reveal it. */
+.nb-card__action {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 4;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nb-white);
+  border-radius: 50%;
+  box-shadow: 0 1px 6px rgba(36, 21, 18, 0.14);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
+
+.nb-card__action a,
+.nb-card__action button { color: var(--nb-espresso); line-height: 1; }
+
+@media (hover: none) {
+  .nb-card__action { opacity: 1; transform: none; }
+}
+
+/* =========================================================================
+   5b. FEATURED TRIO — full-bleed three-up under the hero
+   Measured on the reference at a 1536 viewport:
+     row  x=50  w=1421   -> full width minus a 50px gutter, no max-width cap
+     card 460 x 747, image 460 x 690 -> 2:3, object-fit cover
+     gaps 20px column / 55px row
+   The image height is NOT hardcoded: 2:3 at a wider container is what produces
+   the ~850px the reference shows on a large screen, and it keeps scaling.
+   ========================================================================= */
+
+/* Lift the site-wide 1600px cap for this row only. */
+.nb-featured .et_pb_row {
+  max-width: 100%;
+  width: 100%;
+}
+
+.nb-featured ul.products {
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 55px;
+}
+
+/* Slightly larger type than the standard grid, per the reference. */
+.nb-featured ul.products li.product .woocommerce-loop-product__title {
+  font-size: 17px;
+  padding-top: 4px;
+}
+
+.nb-featured ul.products li.product .price { font-size: 16px; }
+
+/* Featured cards use the same button geometry as the rest of the grid — the
+   reference measurement was taken from this very row, so no override needed. */
+
+@media (max-width: 980px) {
+  /* Two up on tablet, one up on phone: at three across the 2:3 images become
+     too small to read, which is the opposite of what this section is for. */
+  .nb-featured ul.products { grid-template-columns: repeat(2, 1fr); }
+
+  .nb-featured ul.products li.product .woocommerce-loop-product__title { font-size: 15px; }
+  .nb-featured ul.products li.product .price { font-size: 14px; }
+}
+
+@media (max-width: 600px) {
+  .nb-featured ul.products { grid-template-columns: 1fr; row-gap: 34px; }
+}
+
+/* =========================================================================
+   5c. CATEGORY TILES
+   Measured on the reference: tile 506 x 820, three across, edge to edge with
+   NO gaps, photo at object-fit cover with no tint or scrim, and the text block
+   pinned bottom-LEFT — 30px in, heading baseline 10px off the tile bottom.
+   Divi's column controls cannot pin content to the bottom, so the column is
+   made a flex container here.
+   ========================================================================= */
+
+.nb-cat-tile {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 820px;
+  padding: 0 30px 10px !important;
+  margin: 0 !important;
+  overflow: hidden;
+}
+
+.nb-cat-tile .et_pb_text { margin: 0; }
+
+.nb-cat-tile a {
+  color: var(--nb-white);
+  text-decoration: none;
+}
+
+/* The whole tile is the click target, not just the words. */
+.nb-cat-tile a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* 1.5px separator between tiles.
+   Done as a border rather than a gap or margin so the three tiles still add up
+   to the full viewport width — a real gap would either overflow the row or
+   shrink the photos. box-sizing keeps each tile at its measured width. */
+.nb-cat-tile + .nb-cat-tile {
+  border-left: 1.5px solid var(--nb-white);
+  box-sizing: border-box;
+}
+
+/* Hover: a plain translucent veil, nothing moves.
+   An earlier version animated background-size from `cover` to `106% auto`,
+   which on a 507x820 tile is far smaller than `cover` needs — so the photo
+   snapped down in size instead of pushing in. Fading a flat overlay cannot
+   shift the image at all, which is the point. */
+.nb-cat-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.16);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nb-cat-tile:hover::before,
+.nb-cat-tile:focus-within::before { opacity: 1; }
+
+/* Type sits above the veil; the full-tile click target sits between them. */
+.nb-cat-tile .et_pb_text {
+  position: relative;
+  z-index: 3;
+}
+
+@media (max-width: 980px) {
+  /* Three 820px tiles side by side become unreadable slivers on a tablet, so
+     they stack. Height drops with them — a full 820px per tile would make the
+     section three screens tall on a phone. */
+  .nb-cat-tile {
+    min-height: 460px;
+    padding: 0 24px 14px !important;
+  }
+
+  .nb-cat-tile .et_pb_text:last-child { font-size: 28px !important; }
+}
+
+@media (max-width: 600px) {
+  .nb-cat-tile {
+    min-height: 380px;
+    padding: 0 18px 14px !important;
+  }
+}
+
+/* =========================================================================
+   5e. EDITORIAL BANNER
+   The copy column is centred against the photo. Divi stacks column content
+   from the top, so a short block of copy beside a tall image left the lower
+   half of the column empty.
+   ========================================================================= */
+
+@media (min-width: 981px) {
+  .nb-editorial__copy {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Divi gives the last module in a column a bottom margin, which throws the
+     optical centring off by that amount. */
+  .nb-editorial__copy > .et_pb_module:last-child { margin-bottom: 0; }
+}
+
+/* =========================================================================
+   5d. TRUST BADGES
+   Reference: 32x32 line icon, heading 18px serif, subtext 16px at 75% opacity.
+   ========================================================================= */
+
+.nb-badge__icon { line-height: 0; }
+
+.nb-badge__icon svg {
+  width: 32px;
+  height: 32px;
+  color: var(--nb-espresso);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* =========================================================================
+   5g. FULL-WIDTH SHOP / CATEGORY ARCHIVES
+   The body class swap in functions.php does the real work; these rules are the
+   belt-and-braces for Divi builds that still print the sidebar markup.
+   ========================================================================= */
+
+.nb-full-width #sidebar { display: none !important; }
+
+.nb-full-width #left-area {
+  width: 100% !important;
+  padding-right: 0 !important;
+  float: none !important;
+}
+
+.nb-full-width #main-content .container::before { display: none; }
+
+/* =========================================================================
+   5f. COLLECTIONS PAGE
+   Measured on the reference's /collections/ listing:
+     H1 36px serif weight 400, centred
+     grid 3 cols at x = 50 / 530 / 1010, 20px gaps
+     card 460 x 460 SQUARE, overflow hidden, image fills it
+     title OVERLAID inside the card, bottom-left, 30px in, 21px up, 16px sans
+   Note the card is 1:1 here, NOT the 2:3 used for product cards, so the
+   shared card rules have to be overridden rather than inherited.
+   ========================================================================= */
+
+.nb-collections ul.products {
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.nb-collections ul.products li.product-category {
+  position: relative;
+  width: 100% !important;
+  margin: 0 !important;
+  text-align: left;
+}
+
+.nb-collections li.product-category > a {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;      /* square, unlike the 2:3 product card */
+  overflow: hidden;
+  background: var(--nb-ivory);
+}
+
+.nb-collections li.product-category img {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  margin: 0 !important;
+  transition: transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.nb-collections li.product-category:hover img { transform: scale(1.04); }
+
+/* Title sits over the photo at the bottom-left, not underneath it. */
+.nb-collections li.product-category .woocommerce-loop-category__title {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 21px;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  font-family: var(--nb-font-body);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+  line-height: 1.4;
+  text-align: left;
+  text-transform: none;
+  color: var(--nb-white);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+}
+
+/* WooCommerce appends a product count in a <mark>; the reference shows none. */
+.nb-collections li.product-category .woocommerce-loop-category__title .count {
+  display: none;
+}
+
+/* A soft bottom scrim. The reference relies on its own light promo artwork and
+   uses dark text, but our category thumbnails are real photography of every
+   possible tone — without this the title is unreadable on the darker ones. */
+.nb-collections li.product-category > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 980px) {
+  .nb-collections ul.products { grid-template-columns: repeat(2, 1fr); }
+  .nb-collections li.product-category .woocommerce-loop-category__title {
+    left: 20px;
+    right: 20px;
+    bottom: 16px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nb-collections ul.products { grid-template-columns: repeat(2, 1fr); column-gap: 12px; row-gap: 12px; }
+  .nb-collections li.product-category .woocommerce-loop-category__title { font-size: 13px; left: 14px; right: 14px; bottom: 12px; }
+}
+
+/* =========================================================================
+   6. BUTTONS
+   ========================================================================= */
+
+.et_pb_button,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button {
+  font-family: var(--nb-font-body);
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border-radius: 0;
+  background-color: var(--nb-burgundy);
+  border-color: var(--nb-burgundy);
+  color: var(--nb-white);
+}
+
+.et_pb_button:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover {
+  background-color: var(--nb-terracotta);
+  border-color: var(--nb-terracotta);
+  color: var(--nb-white);
+}
+
+/* =========================================================================
+   7. FOOTER
+   ========================================================================= */
+
+.nb-footer,
+.nb-footer .et_pb_text {
+  color: var(--nb-white);
+}
+
+.nb-footer a {
+  color: var(--nb-white);
+}
+
+.nb-footer a:hover {
+  color: var(--nb-gold);
+}
+
+/* =========================================================================
+   8. RESPONSIVE
+   ========================================================================= */
+
+/* Grid steps 4 -> 3 -> 2. It never drops to 1: single-column product grids on
+   phones make the page enormously long and read as a broken layout. */
+@media (max-width: 1280px) {
+  :root { --nb-gutter: 32px; }
+
+  .woocommerce ul.products,
+  ul.products { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 980px) {
+  :root {
+    --nb-gutter: 24px;
+    --nb-h2-size: 28px;
+  }
+
+  .woocommerce ul.products,
+  ul.products {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    row-gap: 38px;
+  }
+
+  /* No hover on touch, so the button must be permanently visible rather than
+     waiting for a hover that never comes. Pulled back inside the image, since
+     the 26px overhang only makes sense while it is a hover reveal. */
+  .woocommerce ul.products li.product > .button,
+  ul.products li.product > .button {
+    margin: 0 10px 10px;
+    opacity: 1;
+    transform: none;
+    letter-spacing: 1.6px;
+    min-height: 36px;
+  }
+
+  .woocommerce ul.products li.product .woocommerce-loop-product__title,
+  ul.products li.product .woocommerce-loop-product__title {
+    margin-top: 0;
+  }
+
+  /* Footer: stack the columns and centre them. */
+  .nb-footer .et_pb_column {
+    width: 100% !important;
+    margin-bottom: 30px !important;
+    text-align: center;
+  }
+
+  .nb-footer .et_pb_column:last-child { margin-bottom: 0 !important; }
+
+  .nb-footer .et_pb_social_media_follow { text-align: center; }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --nb-gutter: 18px;
+    --nb-h2-size: 24px;
+    --nb-grid-row-gap: 34px;
+  }
+
+  .nb-ticker .et_pb_text {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+
+  .woocommerce ul.products,
+  ul.products {
+    column-gap: 12px;
+    row-gap: 28px;
+  }
+
+  .woocommerce ul.products li.product .woocommerce-loop-product__title { font-size: 13px; }
+  .woocommerce ul.products li.product .price { font-size: 13px; }
+
+  .et_pb_button,
+  .woocommerce a.button { padding: 12px 24px; font-size: 12px; }
+}
