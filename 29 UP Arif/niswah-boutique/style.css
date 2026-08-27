@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.10.4
+ Version:        0.10.5
  Text Domain:    niswah-boutique
 */
 
@@ -1457,3 +1457,709 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   .et_pb_button,
   .woocommerce a.button { padding: 12px 24px; font-size: 12px; }
 }
+
+/* =========================================================================
+   8. CART
+   Measured on the reference's populated /cart (1521px viewport):
+     H1 "Cart" 36px serif, CENTRED
+     content full-bleed 1421 wide at x=50 â€” not the 1080 Divi container
+     column widths  media 70 | details 472 | price 236 | qty 406 | total 236
+     row height 170px, NO borders on thead or rows
+     thumb 70x105 (2:3), object-fit cover, square corners
+     title serif 16px weight 300; variation lines sans, muted
+     column headers 10px uppercase, letter-spacing 1.3px, weight 600, pb 16px
+     qty stepper 120x36
+     remove control 40x40 at the FAR RIGHT of the row, past the total
+     totals block right-aligned, 360 wide; button 360x50 uppercase ls 2.6px
+
+   The reference's black button is not carried over: every button on this site
+   is burgundy and the client has signed that off. The geometry is copied, the
+   colour stays ours.
+   ========================================================================= */
+
+.nb-cart #main-content h1.entry-title,
+.nb-cart .entry-title {
+  text-align: center;
+  font-size: var(--nb-h2-size);
+  font-weight: 400;
+  margin-bottom: 46px;
+}
+
+/* --- line-item table ---------------------------------------------------- */
+
+.nb-cart .woocommerce table.shop_table {
+  border: 0;
+  border-radius: 0;
+  margin: 0 0 40px;
+  width: 100%;
+}
+
+.nb-cart .woocommerce table.shop_table th,
+.nb-cart .woocommerce table.shop_table td {
+  border: 0;
+  background: none;
+}
+
+/* Turning the rows into grids is what lets the remove control sit at the far
+   right. It is the last column visually but the FIRST cell in WooCommerce's
+   markup, and table cells ignore `order` â€” grid items do not. Scoped to
+   thead tr and tr.cart_item so the trailing colspan="6" actions row, which is
+   a single full-width cell, keeps its normal table behaviour. */
+.nb-cart .woocommerce table.shop_table thead tr,
+.nb-cart .woocommerce table.shop_table tr.cart_item {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) 15% 24% 15% 40px;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.nb-cart .woocommerce table.shop_table .product-thumbnail { order: 1; }
+.nb-cart .woocommerce table.shop_table .product-name      { order: 2; }
+.nb-cart .woocommerce table.shop_table .product-price     { order: 3; }
+.nb-cart .woocommerce table.shop_table .product-quantity  { order: 4; }
+.nb-cart .woocommerce table.shop_table .product-subtotal  { order: 5; }
+.nb-cart .woocommerce table.shop_table .product-remove    { order: 6; }
+
+.nb-cart .woocommerce table.shop_table thead th {
+  font-family: var(--nb-font-head);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--nb-espresso);
+  text-align: left;
+  padding: 0 0 16px;
+}
+
+.nb-cart .woocommerce table.shop_table thead th.product-price,
+.nb-cart .woocommerce table.shop_table thead th.product-subtotal,
+.nb-cart .woocommerce table.shop_table td.product-price,
+.nb-cart .woocommerce table.shop_table td.product-subtotal {
+  text-align: right;
+}
+
+.nb-cart .woocommerce table.shop_table tr.cart_item {
+  min-height: 170px;
+  padding: 16px 0;
+}
+
+.nb-cart .woocommerce table.shop_table tr.cart_item td {
+  padding: 0;
+}
+
+/* --- thumbnail ---------------------------------------------------------- */
+
+.nb-cart .product-thumbnail img {
+  width: 70px;
+  height: 105px;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+  max-width: none;
+}
+
+/* --- product name + variation lines ------------------------------------- */
+
+.nb-cart .product-name a {
+  font-family: var(--nb-font-head);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--nb-espresso);
+  text-decoration: none;
+}
+
+.nb-cart .product-name a:hover {
+  color: var(--nb-burgundy);
+}
+
+.nb-cart .product-name .variation {
+  margin: 8px 0 0;
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--nb-espresso);
+  opacity: 0.75;
+}
+
+.nb-cart .product-name .variation dt,
+.nb-cart .product-name .variation dd {
+  display: inline;
+  margin: 0;
+  font-weight: inherit;
+}
+
+/* Each attribute on its own line, the way the reference lists them. */
+.nb-cart .product-name .variation dd::after {
+  content: "";
+  display: block;
+}
+
+.nb-cart .product-name .variation p { margin: 0; }
+
+/* --- price / subtotal --------------------------------------------------- */
+
+.nb-cart .product-price,
+.nb-cart .product-subtotal {
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  color: var(--nb-espresso);
+}
+
+.nb-cart .product-subtotal { font-weight: 400; }
+
+/* --- quantity stepper --------------------------------------------------- */
+
+.nb-cart .product-quantity .quantity {
+  display: inline-flex;
+  align-items: center;
+  width: 120px;
+  height: 36px;
+  border: 1px solid var(--nb-line);
+}
+
+.nb-cart .product-quantity .quantity input.qty {
+  width: 100%;
+  height: 34px;
+  border: 0;
+  background: none;
+  text-align: center;
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  color: var(--nb-espresso);
+  padding: 0;
+  box-shadow: none;
+}
+
+/* --- remove control ----------------------------------------------------- */
+
+.nb-cart .product-remove {
+  text-align: right;
+}
+
+.nb-cart .product-remove a.remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--nb-espresso);
+  background: none;
+  border-radius: 0;
+  text-decoration: none;
+}
+
+.nb-cart .product-remove a.remove:hover {
+  color: var(--nb-burgundy);
+  background: none;
+}
+
+/* --- coupon + update row ------------------------------------------------ */
+
+.nb-cart .woocommerce table.shop_table td.actions {
+  padding: 24px 0 0;
+  border-top: 1px solid var(--nb-line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nb-cart .woocommerce table.shop_table td.actions .coupon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  float: none;
+}
+
+.nb-cart .woocommerce table.shop_table td.actions .coupon label {
+  display: none;
+}
+
+.nb-cart .woocommerce table.shop_table td.actions .input-text {
+  width: 220px;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--nb-line);
+  border-radius: 0;
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+}
+
+.nb-cart .woocommerce table.shop_table td.actions .button {
+  height: 46px;
+  padding: 0 24px;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+}
+
+/* --- totals block ------------------------------------------------------- */
+
+.nb-cart .cart-collaterals {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.nb-cart .cart-collaterals .cart_totals {
+  width: 360px;
+  max-width: 100%;
+  float: none;
+}
+
+.nb-cart .cart_totals h2 {
+  font-family: var(--nb-font-head);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.54px;
+  text-transform: none;
+  margin: 0 0 12px;
+  padding: 0;
+  text-align: left;
+}
+
+.nb-cart .cart_totals table.shop_table {
+  margin: 0 0 4px;
+}
+
+.nb-cart .cart_totals table.shop_table th,
+.nb-cart .cart_totals table.shop_table td {
+  padding: 6px 0;
+  border: 0;
+  font-family: var(--nb-font-head);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--nb-espresso);
+}
+
+.nb-cart .cart_totals table.shop_table td { text-align: right; }
+
+/* The reference sets expectations before the customer commits: shipping and
+   tax are not final until the checkout address is known. */
+.nb-cart .cart_totals::after {
+  content: "Taxes and shipping calculated at checkout";
+  display: block;
+  margin: 2px 0 20px;
+  font-family: var(--nb-font-body);
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  color: var(--nb-espresso);
+  opacity: 0.65;
+}
+
+.nb-cart .wc-proceed-to-checkout {
+  padding: 0;
+}
+
+.nb-cart .wc-proceed-to-checkout a.checkout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 360px;
+  max-width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  font-family: var(--nb-font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  background-color: var(--nb-burgundy);
+  border: 0;
+  color: var(--nb-white);
+}
+
+.nb-cart .wc-proceed-to-checkout a.checkout-button:hover {
+  background-color: var(--nb-terracotta);
+  color: var(--nb-white);
+}
+
+/* Empty state â€” centred, matching the page heading. */
+.nb-cart .cart-empty {
+  text-align: center;
+  font-family: var(--nb-font-head);
+  font-size: 20px;
+  font-weight: 300;
+  margin: 40px 0 24px;
+}
+
+.nb-cart .return-to-shop {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* =========================================================================
+   9. CHECKOUT
+   No reference to copy: niswafashion.com is Shopify, so its checkout is
+   Shopify's own hosted page â€” a locked template that cannot be reproduced in
+   WooCommerce and is not the client's to edit either. Built instead in the
+   cart's visual language: same heading, same field treatment, same button.
+   ========================================================================= */
+
+.nb-checkout #main-content h1.entry-title,
+.nb-checkout .entry-title {
+  text-align: center;
+  font-size: var(--nb-h2-size);
+  font-weight: 400;
+  margin-bottom: 46px;
+}
+
+.nb-checkout .woocommerce-form-coupon-toggle,
+.nb-checkout .woocommerce-form-login-toggle {
+  max-width: 100%;
+  margin-bottom: 24px;
+}
+
+.nb-checkout .woocommerce-info,
+.nb-checkout .woocommerce-message {
+  border-top: 0;
+  border-left: 2px solid var(--nb-burgundy);
+  background: var(--nb-ivory);
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  padding: 14px 18px;
+  border-radius: 0;
+}
+
+.nb-checkout .woocommerce-info::before,
+.nb-checkout .woocommerce-message::before { display: none; }
+
+/* Two columns: details left, order review right. */
+.nb-checkout form.checkout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  column-gap: 60px;
+  align-items: start;
+}
+
+.nb-checkout form.checkout #customer_details {
+  grid-column: 1;
+  width: 100%;
+  float: none;
+}
+
+.nb-checkout form.checkout #customer_details .col-1,
+.nb-checkout form.checkout #customer_details .col-2 {
+  width: 100%;
+  float: none;
+  max-width: 100%;
+}
+
+.nb-checkout form.checkout h3,
+.nb-checkout form.checkout #order_review_heading {
+  font-family: var(--nb-font-head);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0 0 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--nb-line);
+}
+
+.nb-checkout form.checkout #order_review_heading,
+.nb-checkout form.checkout #order_review {
+  grid-column: 2;
+}
+
+.nb-checkout form.checkout #order_review {
+  background: var(--nb-ivory);
+  padding: 26px 28px;
+}
+
+/* --- form fields -------------------------------------------------------- */
+
+.nb-checkout .woocommerce form .form-row {
+  padding: 0;
+  margin: 0 0 18px;
+}
+
+.nb-checkout .woocommerce form .form-row label {
+  font-family: var(--nb-font-body);
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--nb-espresso);
+  margin-bottom: 7px;
+  display: block;
+}
+
+.nb-checkout .woocommerce form .form-row input.input-text,
+.nb-checkout .woocommerce form .form-row textarea {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--nb-line);
+  border-radius: 0;
+  background: var(--nb-white);
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  color: var(--nb-espresso);
+  box-shadow: none;
+}
+
+.nb-checkout .woocommerce form .form-row textarea {
+  height: 110px;
+  padding: 12px 14px;
+  line-height: 1.6;
+}
+
+.nb-checkout .woocommerce form .form-row input.input-text:focus,
+.nb-checkout .woocommerce form .form-row textarea:focus {
+  border-color: var(--nb-burgundy);
+  outline: none;
+}
+
+.nb-checkout .select2-container--default .select2-selection--single {
+  height: 48px;
+  border: 1px solid var(--nb-line);
+  border-radius: 0;
+}
+
+.nb-checkout .select2-container--default .select2-selection--single
+  .select2-selection__rendered {
+  line-height: 46px;
+  padding-left: 14px;
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  color: var(--nb-espresso);
+}
+
+.nb-checkout .select2-container--default .select2-selection--single
+  .select2-selection__arrow { height: 46px; }
+
+/* --- order review table ------------------------------------------------- */
+
+.nb-checkout #order_review table.shop_table {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+}
+
+.nb-checkout #order_review table.shop_table th,
+.nb-checkout #order_review table.shop_table td {
+  border: 0;
+  padding: 10px 0;
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  color: var(--nb-espresso);
+  background: none;
+}
+
+.nb-checkout #order_review table.shop_table thead th {
+  font-family: var(--nb-font-head);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--nb-line);
+}
+
+.nb-checkout #order_review table.shop_table td.product-total,
+.nb-checkout #order_review table.shop_table th.product-total,
+.nb-checkout #order_review table.shop_table tfoot td {
+  text-align: right;
+}
+
+.nb-checkout #order_review table.shop_table tfoot tr:first-child th,
+.nb-checkout #order_review table.shop_table tfoot tr:first-child td {
+  border-top: 1px solid var(--nb-line);
+  padding-top: 16px;
+}
+
+.nb-checkout #order_review table.shop_table tfoot .order-total th,
+.nb-checkout #order_review table.shop_table tfoot .order-total td {
+  font-family: var(--nb-font-head);
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.nb-checkout #order_review .product-name .variation {
+  margin: 5px 0 0;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.nb-checkout #order_review .product-name .variation dt,
+.nb-checkout #order_review .product-name .variation dd {
+  display: inline;
+  margin: 0;
+}
+
+/* --- payment box -------------------------------------------------------- */
+
+.nb-checkout #payment {
+  background: none;
+  border-radius: 0;
+  margin-top: 22px;
+}
+
+.nb-checkout #payment ul.payment_methods {
+  border-bottom: 1px solid var(--nb-line);
+  padding: 0 0 16px;
+  margin: 0 0 16px;
+}
+
+.nb-checkout #payment ul.payment_methods li {
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.nb-checkout #payment div.payment_box {
+  background: var(--nb-white);
+  font-size: 13px;
+  line-height: 1.7;
+  border-radius: 0;
+  color: var(--nb-espresso);
+}
+
+.nb-checkout #payment div.payment_box::before { display: none; }
+
+.nb-checkout #payment .woocommerce-terms-and-conditions-wrapper {
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.nb-checkout #payment #place_order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  float: none;
+  font-family: var(--nb-font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: 0;
+  background-color: var(--nb-burgundy);
+  color: var(--nb-white);
+}
+
+.nb-checkout #payment #place_order:hover {
+  background-color: var(--nb-terracotta);
+}
+
+/* =========================================================================
+   10. CART / CHECKOUT â€” RESPONSIVE
+   The cart's five-column row cannot survive a phone. Below 981px the row
+   becomes a two-column card: thumbnail left, everything else stacked right,
+   with the WooCommerce data-title labels doing the work the dropped table
+   header used to do.
+   ========================================================================= */
+
+@media (max-width: 1100px) {
+  .nb-cart .woocommerce table.shop_table thead tr,
+  .nb-cart .woocommerce table.shop_table tr.cart_item {
+    grid-template-columns: 70px minmax(0, 1fr) 14% 20% 14% 36px;
+    column-gap: 14px;
+  }
+
+  .nb-checkout form.checkout {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    column-gap: 36px;
+  }
+}
+
+@media (max-width: 980px) {
+  .nb-cart .woocommerce table.shop_table thead { display: none; }
+
+  .nb-cart .woocommerce table.shop_table tr.cart_item {
+    grid-template-columns: 84px minmax(0, 1fr);
+    grid-template-areas:
+      "thumb name"
+      "thumb price"
+      "thumb qty"
+      "thumb total";
+    column-gap: 16px;
+    row-gap: 6px;
+    align-items: start;
+    min-height: 0;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--nb-line);
+    position: relative;
+  }
+
+  .nb-cart .woocommerce table.shop_table .product-thumbnail {
+    grid-area: thumb;
+    align-self: start;
+  }
+
+  .nb-cart .product-thumbnail img { width: 84px; height: 126px; }
+
+  .nb-cart .woocommerce table.shop_table .product-name     { grid-area: name; padding-right: 34px; }
+  .nb-cart .woocommerce table.shop_table .product-price    { grid-area: price; text-align: left; }
+  .nb-cart .woocommerce table.shop_table .product-quantity { grid-area: qty; }
+  .nb-cart .woocommerce table.shop_table .product-subtotal { grid-area: total; text-align: left; }
+
+  /* Out of the flow entirely so it does not claim a grid row of its own. */
+  .nb-cart .woocommerce table.shop_table .product-remove {
+    position: absolute;
+    top: 14px;
+    right: 0;
+  }
+
+  /* Stacked, the price and the subtotal are two bare numbers with nothing to
+     tell them apart. WooCommerce already writes the label into data-title. */
+  .nb-cart .product-price::before,
+  .nb-cart .product-subtotal::before {
+    content: attr(data-title) ": ";
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    opacity: 0.65;
+  }
+
+  .nb-cart .woocommerce table.shop_table td.actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nb-cart .woocommerce table.shop_table td.actions .coupon { width: 100%; }
+  .nb-cart .woocommerce table.shop_table td.actions .input-text { flex: 1 1 auto; width: auto; }
+
+  .nb-cart .cart-collaterals,
+  .nb-cart .cart-collaterals .cart_totals { width: 100%; }
+  .nb-cart .wc-proceed-to-checkout a.checkout-button { width: 100%; }
+
+  .nb-checkout form.checkout {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 34px;
+  }
+
+  .nb-checkout form.checkout #customer_details,
+  .nb-checkout form.checkout #order_review_heading,
+  .nb-checkout form.checkout #order_review {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .nb-cart #main-content h1.entry-title,
+  .nb-checkout #main-content h1.entry-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .nb-cart .woocommerce table.shop_table tr.cart_item {
+    grid-template-columns: 68px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .nb-cart .product-thumbnail img { width: 68px; height: 102px; }
+  .nb-cart .product-name a { font-size: 15px; }
+  .nb-cart .product-quantity .quantity { width: 108px; }
+
+  .nb-checkout form.checkout #order_review { padding: 20px 18px; }
+}
+

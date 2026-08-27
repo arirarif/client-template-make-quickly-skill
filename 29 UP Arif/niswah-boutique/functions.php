@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.10.4' );
+define( 'NB_THEME_VERSION', '0.10.5' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -313,19 +313,28 @@ function nb_price_decimals_superscript( $formatted, $price, $decimals, $decimal_
 add_filter( 'formatted_woocommerce_price', 'nb_price_decimals_superscript', 20, 5 );
 
 /**
- * Shop and product archives run full width — no sidebar.
+ * Every WooCommerce page runs full width — no sidebar.
  *
  * Divi decides this from the body class: it ships et_right_sidebar by default,
  * which is what put a sidebar on the category archives. Swapping the class for
  * et_full_width_page is Divi's own mechanism, so the sidebar is not merely
  * hidden — the content area genuinely takes the full width.
+ *
+ * Cart and Checkout are included deliberately. A sidebar there squeezed the cart
+ * table to 795px, which cannot hold the reference's five-column line-item layout,
+ * and a sidebar next to a checkout form is a conversion problem regardless of
+ * width. is_cart()/is_checkout() are not covered by is_woocommerce(), which is
+ * why they need naming separately.
  */
 function nb_full_width_woo_archives( $classes ) {
 	if ( ! function_exists( 'is_woocommerce' ) ) {
 		return $classes;
 	}
 
-	if ( is_shop() || is_product_taxonomy() || is_product() ) {
+	$is_cart     = function_exists( 'is_cart' ) && is_cart();
+	$is_checkout = function_exists( 'is_checkout' ) && is_checkout();
+
+	if ( is_shop() || is_product_taxonomy() || is_product() || $is_cart || $is_checkout ) {
 		$classes   = array_diff( $classes, array( 'et_right_sidebar', 'et_left_sidebar' ) );
 		$classes[] = 'et_full_width_page';
 		$classes[] = 'nb-full-width';
@@ -335,9 +344,131 @@ function nb_full_width_woo_archives( $classes ) {
 		$classes[] = 'nb-single-product';
 	}
 
+	if ( $is_cart ) {
+		$classes[] = 'nb-cart';
+	}
+
+	if ( $is_checkout ) {
+		$classes[] = 'nb-checkout';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'nb_full_width_woo_archives', 20 );
+
+/**
+ * Put the Cart and Checkout pages back on the classic WooCommerce shortcodes.
+ *
+ * WooCommerce now creates both pages containing the block versions
+ * (wp:woocommerce/cart and wp:woocommerce/checkout), and that is what this site
+ * shipped with. Two reasons that had to change:
+ *
+ *  1. The block cart renders a fixed narrow-content + right-rail layout with its
+ *     own wc-block-* class names. The reference cart is a full-bleed five-column
+ *     table with the totals sitting below it on the right. The block markup
+ *     cannot be made into that shape; the classic .shop_table can, column for
+ *     column.
+ *  2. Every other WooCommerce customisation in this theme — the price
+ *     superscript, size ordering, the loop card, the single-product layout — is
+ *     written against classic template markup and hooks. The blocks bypass all
+ *     of it, so the cart and checkout were drifting away from the rest of the
+ *     site's styling with no way to pull them back.
+ *
+ * The swap runs once, guarded by an option, and stashes the previous content in
+ * post meta first so it is reversible — delete the option and restore the meta.
+ * It is not hooked to theme activation for the same reason the starter import
+ * is not: silently rewriting page content on a live site should happen exactly
+ * once, on purpose, not on every theme switch.
+ */
+function nb_classic_cart_checkout() {
+	if ( get_option( 'nb_classic_cart_checkout_done' ) ) {
+		return;
+	}
+
+	if ( ! function_exists( 'wc_get_page_id' ) ) {
+		return;
+	}
+
+	$targets = array(
+		'cart'     => '[woocommerce_cart]',
+		'checkout' => '[woocommerce_checkout]',
+	);
+
+	foreach ( $targets as $page => $shortcode ) {
+		$id = wc_get_page_id( $page );
+
+		if ( $id <= 0 || ! get_post( $id ) ) {
+			continue;
+		}
+
+		$current = (string) get_post_field( 'post_content', $id );
+
+		// Only touch a page that is actually still on the block. If the client
+		// has already customised it, leave their work alone.
+		if ( false === strpos( $current, 'wp:woocommerce/' . $page ) ) {
+			continue;
+		}
+
+		update_post_meta( $id, '_nb_content_before_classic', $current );
+
+		wp_update_post(
+			array(
+				'ID'           => $id,
+				'post_content' => $shortcode,
+			)
+		);
+	}
+
+	update_option( 'nb_classic_cart_checkout_done', NB_THEME_VERSION );
+}
+add_action( 'admin_init', 'nb_classic_cart_checkout' );
+
+/**
+ * Drop the cart cross-sells block.
+ *
+ * The reference cart ends at the totals and the checkout button. Cross-sells
+ * would add a product grid below that, pushing the checkout button up the page
+ * and away from the thing it is meant to be next to.
+ */
+function nb_remove_cart_cross_sells() {
+	remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+}
+add_action( 'woocommerce_before_cart', 'nb_remove_cart_cross_sells' );
+
+/**
+ * Reference wording on the cart page.
+ *
+ * WooCommerce says "Proceed to checkout"; the reference says "Check out now".
+ * Both strings live inside templates as plain esc_html__() calls with no filter
+ * of their own, so gettext is the hook that reaches them. Scoped to the cart
+ * page and to exact matches only, so it cannot bleed into wp-admin or into an
+ * unrelated string that happens to contain the same words.
+ */
+function nb_cart_strings( $translated, $original, $domain ) {
+	if ( 'woocommerce' !== $domain || is_admin() ) {
+		return $translated;
+	}
+
+	// gettext fires from the moment plugins start loading, long before the main
+	// query has run. Calling is_cart() that early makes WordPress emit its
+	// "conditional query tags do not work before the query is run" notice on
+	// every page load, so wait until template_redirect has fired.
+	if ( ! did_action( 'template_redirect' ) ) {
+		return $translated;
+	}
+
+	if ( ! function_exists( 'is_cart' ) || ! is_cart() ) {
+		return $translated;
+	}
+
+	$map = array(
+		'Proceed to checkout' => __( 'Check out now', 'niswah-boutique' ),
+		'Cart totals'         => __( 'Subtotal', 'niswah-boutique' ),
+	);
+
+	return isset( $map[ $original ] ) ? $map[ $original ] : $translated;
+}
+add_filter( 'gettext', 'nb_cart_strings', 20, 3 );
 
 /**
  * Order size options smallest to largest.
