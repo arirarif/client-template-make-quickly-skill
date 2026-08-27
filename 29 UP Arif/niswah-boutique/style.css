@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.10.2
+ Version:        0.10.3
  Text Domain:    niswah-boutique
 */
 
@@ -909,21 +909,12 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   padding-right: 50px;
 }
 
-.nb-single-product .woocommerce-product-gallery__wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 0;
-  transform: none !important;   /* flexslider leaves a translate behind */
-  width: 100% !important;
-}
-
+/* One slide visible at a time, 2:3, with the thumbnail rail beneath. */
 .nb-single-product .woocommerce-product-gallery__image {
-  width: 100% !important;
-  margin: 0;
   aspect-ratio: 2 / 3;
   overflow: hidden;
   background: var(--nb-ivory);
+  margin: 0;
 }
 
 .nb-single-product .woocommerce-product-gallery__image img {
@@ -933,8 +924,42 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   display: block;
 }
 
-/* Thumbnail rail is redundant once every image is already on the page. */
-.nb-single-product .flex-control-thumbs { display: none !important; }
+/* Thumbnail rail — reference measures 710x83 directly under the main image. */
+.nb-single-product .flex-control-thumbs {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+  margin: 12px 0 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+
+.nb-single-product .flex-control-thumbs li {
+  width: 84px !important;
+  height: 84px;
+  margin: 0 !important;
+  padding: 0;
+  list-style: none;
+  float: none !important;
+}
+
+.nb-single-product .flex-control-thumbs li img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  opacity: 0.55;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.nb-single-product .flex-control-thumbs li img:hover,
+.nb-single-product .flex-control-thumbs li img.flex-active {
+  opacity: 1;
+  border-color: var(--nb-espresso);
+}
 
 /* --- Info column --------------------------------------------------------- */
 .nb-single-product div.product.type-product > .clearfix > .summary,
@@ -997,15 +1022,29 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   border: 0;
 }
 
+/* Divi styles table cells with generous line-height and padding, which made a
+   one-word "LENGTH" label 88px tall and left a chasm between each label and its
+   options. Everything here is reset to a tight block rhythm. */
+.nb-single-product .variations tbody,
+.nb-single-product .variations tr {
+  display: block;
+  width: 100%;
+}
+
 .nb-single-product .variations th,
 .nb-single-product .variations td {
   display: block;
   width: 100%;
-  padding: 0;
-  border: 0;
+  padding: 0 !important;
+  border: 0 !important;
   text-align: left;
+  line-height: 1.4 !important;
+  background: none !important;
 }
 
+.nb-single-product .variations tr + tr { margin-top: 18px; }
+
+.nb-single-product .variations th.label,
 .nb-single-product .variations th.label label {
   font-family: var(--nb-font-body);
   font-size: 12px;
@@ -1013,11 +1052,32 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   letter-spacing: 1.6px;
   text-transform: uppercase;
   color: var(--nb-espresso);
-  margin: 0 0 8px;
+  margin: 0 0 8px !important;
   display: block;
+  line-height: 1.4 !important;
 }
 
-.nb-single-product .variations td.value { margin-bottom: 18px; }
+.nb-single-product .variations td.value { margin: 0 !important; }
+
+/* The swatch plugin adds its own 23px bottom pad and a 14px left indent, which
+   pushed the options away from their label and out of line with everything
+   else in the column. */
+.nb-single-product .variable-items-wrapper {
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nb-single-product .variable-items-wrapper .variable-item {
+  margin: 0 !important;
+}
+
+.nb-single-product .woocommerce-variation-add-to-cart,
+.nb-single-product .single_variation_wrap { margin-top: 4px; }
+
+/* Divi renders the "clear" link on its own line with heavy spacing. */
+.nb-single-product .reset_variations { display: inline-block; margin-top: 6px; }
 
 .nb-single-product .variations select {
   width: 100%;
@@ -1063,13 +1123,45 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   box-shadow: 0 0 0 2px var(--nb-espresso);
 }
 
-/* Square size buttons. */
+/* Square size buttons. They rendered at 33x30 with no visible border, which is
+   why the row read as faint floating text rather than as choices. */
 .nb-single-product .variable-item.button-variable-item {
+  min-width: 52px !important;
+  height: 44px !important;
+  padding: 0 12px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--nb-line) !important;
   border-radius: 4px !important;
-  min-width: 46px;
-  height: 40px;
-  font-size: 13px;
+  background: var(--nb-white) !important;
+  box-shadow: none !important;
+
+  font-family: var(--nb-font-body);
+  font-size: 14px !important;
+  font-weight: 400;
   letter-spacing: 0.8px;
+  color: var(--nb-espresso) !important;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.nb-single-product .variable-item.button-variable-item:hover {
+  border-color: var(--nb-espresso) !important;
+}
+
+.nb-single-product .variable-item.button-variable-item.selected {
+  background: var(--nb-espresso) !important;
+  border-color: var(--nb-espresso) !important;
+  color: var(--nb-white) !important;
+}
+
+/* An unavailable combination should read as unavailable, not just fail. */
+.nb-single-product .variable-item.disabled,
+.nb-single-product .variable-item[disabled] {
+  opacity: 0.35 !important;
+  cursor: not-allowed;
+  text-decoration: line-through;
 }
 
 /* --- Quantity + add to cart ---------------------------------------------- */

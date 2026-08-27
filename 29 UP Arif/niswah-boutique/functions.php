@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.10.2' );
+define( 'NB_THEME_VERSION', '0.10.3' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -133,11 +133,12 @@ function nb_declare_woo_support() {
 	add_theme_support( 'wc-product-gallery-zoom' );
 	add_theme_support( 'wc-product-gallery-lightbox' );
 
-	// Deliberately NOT wc-product-gallery-slider. The reference product page
-	// stacks every image vertically down the left column rather than showing one
-	// image with thumbnails beneath it. Dropping slider support is what makes
-	// WooCommerce render the gallery as a stack; lightbox stays, so clicking an
-	// image still opens it full size the way the reference does.
+	// Slider IS wanted. An earlier version dropped it, on a misreading of the
+	// reference: its media column contains six elements, which looked like a
+	// vertical stack until their coordinates were checked — the first two sit at
+	// the identical position (710x1064), i.e. one slide visible at a time, with
+	// a 710x83 thumbnail rail directly beneath. Main image plus thumbnails.
+	add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action( 'after_setup_theme', 'nb_declare_woo_support' );
 
@@ -337,6 +338,51 @@ function nb_full_width_woo_archives( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'nb_full_width_woo_archives', 20 );
+
+/**
+ * Order size options smallest to largest.
+ *
+ * WooCommerce lists attribute terms alphabetically, which puts clothing sizes in
+ * the nonsensical order L, M, S, XL, XS, XXL. This sorts them against a real
+ * size sequence instead. Anything not in the sequence — numeric lengths like
+ * 52 / 56, or a size we have not anticipated — falls through to a natural sort,
+ * so numbers still read 52, 56 rather than 52, 56 by string.
+ *
+ * Applied by filter rather than by hand-ordering terms in wp-admin, so it keeps
+ * working when the client adds a size later.
+ */
+function nb_sort_size_options( $args ) {
+	$attribute = isset( $args['attribute'] ) ? strtolower( (string) $args['attribute'] ) : '';
+
+	if ( false === strpos( $attribute, 'size' ) || empty( $args['options'] ) ) {
+		return $args;
+	}
+
+	$sequence = array( 'xxxs', 'xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl', '2xl', '3xl', '4xl', '5xl', '6xl' );
+
+	usort(
+		$args['options'],
+		static function ( $a, $b ) use ( $sequence ) {
+			$ia = array_search( strtolower( (string) $a ), $sequence, true );
+			$ib = array_search( strtolower( (string) $b ), $sequence, true );
+
+			if ( false === $ia && false === $ib ) {
+				return strnatcasecmp( (string) $a, (string) $b );
+			}
+			if ( false === $ia ) {
+				return 1;
+			}
+			if ( false === $ib ) {
+				return -1;
+			}
+
+			return $ia <=> $ib;
+		}
+	);
+
+	return $args;
+}
+add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'nb_sort_size_options', 20 );
 
 /**
  * Single product page: match the reference's information order.
