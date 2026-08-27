@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.10.11
+ Version:        0.10.13
  Text Domain:    niswah-boutique
 */
 
@@ -182,7 +182,31 @@ a:hover {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 2px;
+
+  /* Anchored to the CENTRE OF THE TEXT, not to the bottom of the link box.
+     -----------------------------------------------------------------------
+     Two separate things forced this, both measured on the live site:
+
+     1. A parent-theme rule sets top:50% + translateY(-50%) on this pseudo-
+        element, which centred the line on the label like a strikethrough.
+        When `top` and `bottom` are both set the box is over-constrained and
+        `top` wins, so a plain `bottom` never took effect. That rule also
+        outranks ours on `transform`, hence the !important on these two.
+
+     2. The link box is NOT the same height on every template — measured
+        40.8px on the home page (padding 4/8) but 94.4px on a category
+        archive (padding 31/31). Anything anchored to the box bottom
+        therefore sits at a different distance from the text per page.
+
+     The links are display:flex + align-items:center, so the text centre is
+     the box centre on every template. Offsetting from there is stable:
+     0.78em = 14px at the 18px nav size, which clears the descenders
+     (~9px below centre) by the 5px gap the design calls for. Being in `em`,
+     it stays proportional if the nav size ever changes. */
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(0.78em) !important;
+
   width: 0;
   height: 1px;
   background: var(--nb-burgundy);
@@ -907,6 +931,38 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   float: none !important;
   margin: 0 !important;
   padding-right: 50px;
+}
+
+/* Sticky media column, matching the reference.
+   -------------------------------------------------------------------------
+   niswafashion.com pins <media-gallery class="product__media-gallery"> with
+   position:sticky; top:0 at a measured 710px wide, so the summary scrolls
+   past a held image. Ours is worth pinning for the same reason: measured on
+   the live page the gallery is 1048px tall against a 2095px summary, so the
+   left column would otherwise leave half a screen of dead space.
+
+   Two things are load-bearing here:
+
+   1. Divi sets overflow-x:hidden on #page-container. Per spec a hidden value
+      on one axis forces the other to compute to `auto`, which makes the
+      element a scroll container and silently breaks every descendant sticky.
+      `clip` does the same horizontal clipping WITHOUT establishing one, so
+      the sticky resolves against the viewport again. Scoped to this template
+      so no other page's layout is touched.
+
+   2. `position` needs the full grid-child selector to outrank the
+      `position:relative` WooCommerce sets on the gallery. */
+.nb-single-product #page-container {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+@media (min-width: 981px) {
+  .nb-single-product div.product.type-product > .clearfix > .woocommerce-product-gallery {
+    position: sticky !important;
+    top: 24px;
+    align-self: start;
+  }
 }
 
 /* One slide visible at a time, 2:3, with the thumbnail rail beneath. */
@@ -2546,4 +2602,14 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
     height: 34px;
     font-size: 13px;
   }
+}
+
+/* =========================================================================
+   BREADCRUMBS — single product page only.
+   The action is removed in functions.php; this is the belt-and-braces half,
+   covering any breadcrumb Divi's Theme Builder emits outside the WooCommerce
+   hook, which PHP alone would not catch.
+   ========================================================================= */
+body:not(.single-product) .woocommerce-breadcrumb {
+  display: none !important;
 }

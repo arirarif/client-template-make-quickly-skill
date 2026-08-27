@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.10.11' );
+define( 'NB_THEME_VERSION', '0.10.13' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -141,6 +141,127 @@ function nb_declare_woo_support() {
 	add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action( 'after_setup_theme', 'nb_declare_woo_support' );
+
+/**
+ * Image sizes — the fix for soft product photography.
+ *
+ * Measured on the live site 2026-08-28, at devicePixelRatio 1.125:
+ *
+ *   single product gallery   file 600x900   into a 710px box (needs 799px)  -> 0.75x
+ *   collections tiles        file 300x450   into a 487px box (needs 547px)  -> 0.55x
+ *
+ * Both were being UPSCALED by the browser, which is the entire cause of the
+ * blur. The source uploads are fine (1707x2560 originals are present), so
+ * nothing needs re-uploading — WooCommerce was simply registering crops far
+ * smaller than the layout renders them at.
+ *
+ * These filters are the definitive ones: wc_get_image_size() applies them last,
+ * so they win over both the Customizer options and add_theme_support(). Sizes
+ * are 2:3 to match the card and gallery aspect ratio, and large enough to stay
+ * sharp on a 2x display:
+ *
+ *   thumbnail  800px  covers the 365px shop card and the 487px collections tile
+ *   single    1200px  covers the 710px gallery
+ *
+ * NOTE: registering a size does not create the files. Existing uploads keep
+ * only their old crops until the thumbnails are regenerated —
+ * WooCommerce -> Status -> Tools -> "Regenerate shop thumbnails".
+ */
+function nb_image_size_thumbnail( $size ) {
+	return array( 'width' => 800, 'height' => 1200, 'crop' => 1 );
+}
+add_filter( 'woocommerce_get_image_size_thumbnail', 'nb_image_size_thumbnail', 20 );
+
+function nb_image_size_single( $size ) {
+	return array( 'width' => 1200, 'height' => 1800, 'crop' => 1 );
+}
+add_filter( 'woocommerce_get_image_size_single', 'nb_image_size_single', 20 );
+
+/**
+ * Gallery rail thumbnails render at 84px; 200px keeps them sharp at 2x.
+ */
+function nb_image_size_gallery_thumbnail( $size ) {
+	return array( 'width' => 200, 'height' => 200, 'crop' => 1 );
+}
+add_filter( 'woocommerce_get_image_size_gallery_thumbnail', 'nb_image_size_gallery_thumbnail', 20 );
+
+/**
+ * WordPress re-encodes every resized JPEG at quality 82 by default. On flat
+ * fabric and skin tones that shows as blotching well before it shows as
+ * softness, so this raises it for both the legacy and the modern filter.
+ */
+function nb_jpeg_quality() {
+	return 90;
+}
+add_filter( 'jpeg_quality', 'nb_jpeg_quality', 20 );
+
+function nb_editor_quality( $quality, $mime = '' ) {
+	return ( 'image/jpeg' === $mime || '' === $mime ) ? 90 : $quality;
+}
+add_filter( 'wp_editor_set_quality', 'nb_editor_quality', 20, 2 );
+
+/**
+ * Related products: always four, always a full row.
+ *
+ * The grid is already four columns wide — measured 365px x 4 on the live page —
+ * so nothing is wrong with the CSS. WooCommerce was returning only three
+ * products because relatedness is limited to shared categories and tags, and
+ * this product's category simply does not hold four other visible items. A
+ * three-card row leaves a visible hole in a four-column grid.
+ *
+ * The top-up runs AFTER WooCommerce's own lookup, so genuine related products
+ * are always preferred and the filler only covers the shortfall.
+ */
+function nb_related_products_args( $args ) {
+	$args['posts_per_page'] = 4;
+	$args['columns']        = 4;
+
+	return $args;
+}
+add_filter( 'woocommerce_output_related_products_args', 'nb_related_products_args', 20 );
+
+function nb_fill_related_products( $related_ids, $product_id, $args ) {
+	$limit       = 4;
+	$related_ids = array_values( array_unique( array_filter( array_map( 'absint', (array) $related_ids ) ) ) );
+	$related_ids = array_slice( $related_ids, 0, $limit );
+
+	$shortfall = $limit - count( $related_ids );
+	if ( $shortfall < 1 || ! function_exists( 'wc_get_products' ) ) {
+		return $related_ids;
+	}
+
+	$filler = wc_get_products(
+		array(
+			'status'     => 'publish',
+			'visibility' => 'catalog',
+			'limit'      => $shortfall,
+			'exclude'    => array_merge( array( absint( $product_id ) ), $related_ids ),
+			'orderby'    => 'rand',
+			'return'     => 'ids',
+		)
+	);
+
+	if ( is_wp_error( $filler ) || ! is_array( $filler ) ) {
+		return $related_ids;
+	}
+
+	return array_slice( array_merge( $related_ids, array_map( 'absint', $filler ) ), 0, $limit );
+}
+add_filter( 'woocommerce_related_products', 'nb_fill_related_products', 20, 3 );
+
+/**
+ * Breadcrumbs belong on the single product page only.
+ *
+ * WooCommerce prints them from woocommerce_before_main_content at priority 20
+ * on every shop, category and product page. Dropping the action on everything
+ * that is not a product leaves the single product trail intact.
+ */
+function nb_breadcrumbs_on_product_only() {
+	if ( ! function_exists( 'is_product' ) || ! is_product() ) {
+		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+	}
+}
+add_action( 'template_redirect', 'nb_breadcrumbs_on_product_only' );
 
 /**
  * Output the product's second image inside the shop-loop thumbnail.
