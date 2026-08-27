@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.10.16' );
+define( 'NB_THEME_VERSION', '0.10.17' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -262,6 +262,41 @@ function nb_breadcrumbs_on_product_only() {
 	}
 }
 add_action( 'template_redirect', 'nb_breadcrumbs_on_product_only' );
+
+/**
+ * Make the header logo a link to the home page.
+ *
+ * Divi's Menu module only wraps the logo in an anchor when the module's
+ * `logo_url` prop is set — see Menu.php::render_logo():
+ *
+ *     if ( ! empty( $logo_url ) ) { $logo_html = sprintf( '<a href="%1$s" ...' ) }
+ *
+ * The generated Theme Builder header never set it, so the logo rendered as a
+ * bare <img> inside div.et_pb_menu__logo with no anchor anywhere in its
+ * ancestry, and clicking the brand did nothing.
+ *
+ * Setting the prop rather than wrapping the markup afterwards means Divi
+ * builds the anchor itself, server-side — so it is a real link for crawlers
+ * and middle-click, and it keeps working if the header template is re-imported
+ * or edited in the Theme Builder. An author who later sets a logo link in the
+ * builder UI wins, because this only fills an EMPTY value.
+ *
+ * The generator (build/theme-builder.build.mjs) sets logo_url too, so a fresh
+ * import carries the link on its own; this filter covers the header already
+ * live in the database, which an import would otherwise have to replace.
+ */
+function nb_menu_logo_links_home( $props, $attrs, $render_slug ) {
+	if ( ! in_array( $render_slug, array( 'et_pb_menu', 'et_pb_fullwidth_menu' ), true ) ) {
+		return $props;
+	}
+
+	if ( empty( $props['logo_url'] ) ) {
+		$props['logo_url'] = home_url( '/' );
+	}
+
+	return $props;
+}
+add_filter( 'et_pb_module_shortcode_attributes', 'nb_menu_logo_links_home', 20, 3 );
 
 /**
  * Output the product's second image inside the shop-loop thumbnail.
