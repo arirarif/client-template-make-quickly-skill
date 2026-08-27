@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.10.5' );
+define( 'NB_THEME_VERSION', '0.10.6' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -422,6 +422,59 @@ function nb_classic_cart_checkout() {
 	update_option( 'nb_classic_cart_checkout_done', NB_THEME_VERSION );
 }
 add_action( 'admin_init', 'nb_classic_cart_checkout' );
+
+/**
+ * Twelve products per archive page, not nine.
+ *
+ * The grid is four columns wide, so nine leaves a two-item orphan row at the
+ * bottom of every page. Twelve fills three complete rows. The reference loads
+ * 80 at a time behind a "show more" button; that needs AJAX paging, which is
+ * out of scope here — see the pagination note in the stylesheet.
+ */
+function nb_products_per_page() {
+	return 12;
+}
+add_filter( 'loop_shop_per_page', 'nb_products_per_page', 20 );
+
+/**
+ * Reference wording and order for the archive toolbar.
+ *
+ * WooCommerce renders the result count at priority 20 and the sort dropdown at
+ * 30, giving "Showing 1–9 of 44 results" first. The reference does the reverse:
+ * a sort bar, and beneath it a plain "448 products". So the stock count is
+ * unhooked and re-added after the dropdown, with the count reduced to the
+ * catalogue total.
+ *
+ * Re-registered rather than filtered because the string lives in
+ * loop/result-count.php with no filter of its own, and swapping it through
+ * gettext would mean matching four different plural forms.
+ */
+function nb_reorder_archive_toolbar() {
+	remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+	add_action( 'woocommerce_before_shop_loop', 'nb_result_count', 31 );
+}
+add_action( 'woocommerce_before_shop_loop', 'nb_reorder_archive_toolbar', 5 );
+
+function nb_result_count() {
+	global $wp_query;
+
+	$total = isset( $wp_query->found_posts ) ? (int) $wp_query->found_posts : 0;
+
+	if ( $total < 1 ) {
+		return;
+	}
+
+	printf(
+		'<p class="woocommerce-result-count nb-result-count">%s</p>',
+		esc_html(
+			sprintf(
+				/* translators: %d: number of products in this archive */
+				_n( '%d product', '%d products', $total, 'niswah-boutique' ),
+				$total
+			)
+		)
+	);
+}
 
 /**
  * Drop the cart cross-sells block.

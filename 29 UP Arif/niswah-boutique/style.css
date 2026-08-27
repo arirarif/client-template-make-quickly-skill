@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.10.5
+ Version:        0.10.6
  Text Domain:    niswah-boutique
 */
 
@@ -1459,10 +1459,10 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================================================================
-   8. CART
+   9. CART
    Measured on the reference's populated /cart (1521px viewport):
      H1 "Cart" 36px serif, CENTRED
-     content full-bleed 1421 wide at x=50 â€” not the 1080 Divi container
+     content full-bleed 1421 wide at x=50 — not the 1080 Divi container
      column widths  media 70 | details 472 | price 236 | qty 406 | total 236
      row height 170px, NO borders on thead or rows
      thumb 70x105 (2:3), object-fit cover, square corners
@@ -1502,7 +1502,7 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
 
 /* Turning the rows into grids is what lets the remove control sit at the far
    right. It is the last column visually but the FIRST cell in WooCommerce's
-   markup, and table cells ignore `order` â€” grid items do not. Scoped to
+   markup, and table cells ignore `order` — grid items do not. Scoped to
    thead tr and tr.cart_item so the trailing colspan="6" actions row, which is
    a single full-width cell, keeps its normal table behaviour. */
 .nb-cart .woocommerce table.shop_table thead tr,
@@ -1779,7 +1779,7 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   color: var(--nb-white);
 }
 
-/* Empty state â€” centred, matching the page heading. */
+/* Empty state — centred, matching the page heading. */
 .nb-cart .cart-empty {
   text-align: center;
   font-family: var(--nb-font-head);
@@ -1794,9 +1794,9 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================================================================
-   9. CHECKOUT
+   10. CHECKOUT
    No reference to copy: niswafashion.com is Shopify, so its checkout is
-   Shopify's own hosted page â€” a locked template that cannot be reproduced in
+   Shopify's own hosted page — a locked template that cannot be reproduced in
    WooCommerce and is not the client's to edit either. Built instead in the
    cart's visual language: same heading, same field treatment, same button.
    ========================================================================= */
@@ -2052,7 +2052,7 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================================================================
-   10. CART / CHECKOUT â€” RESPONSIVE
+   11. CART / CHECKOUT — RESPONSIVE
    The cart's five-column row cannot survive a phone. Below 981px the row
    becomes a two-column card: thumbnail left, everything else stacked right,
    with the WooCommerce data-title labels doing the work the dropped table
@@ -2163,3 +2163,210 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   .nb-checkout form.checkout #order_review { padding: 20px 18px; }
 }
 
+
+/* =========================================================================
+   12. PRODUCT ARCHIVES — SHOP (T2) AND CATEGORY (T4)
+   Measured on the reference's /collections/all at a 1521px viewport:
+     content full-bleed 1421 at x=50
+     h1 36px serif weight 400, CENTRED, at y=168
+     toolbar row y=230, 40px tall, full width
+     product count "448 products" 14px sans, rgba(33,35,38,.7), LEFT, y=285
+     grid y=340, FOUR columns, column-gap 20px, row-gap 55px
+     card 340 wide, image 340x509 (2:3), title centred 16px w300, price 14px
+
+   The grid itself already matched — four columns, 20/55 gaps and 2:3 cards
+   were built for the home page and the archives inherit them. What was
+   missing was the header block: the title rendered at Divi's default 30px
+   left-aligned, and WooCommerce's "Showing 1-9 of 44 results" sat on the same
+   line as the sort dropdown rather than on its own row beneath it.
+   ========================================================================= */
+
+.woocommerce-products-header {
+  margin: 0 0 30px;
+  padding: 0;
+  text-align: center;
+}
+
+.woocommerce-products-header__title.page-title,
+.nb-full-width .woocommerce-products-header__title {
+  font-family: var(--nb-font-head);
+  font-size: var(--nb-h2-size);
+  font-weight: 400;
+  line-height: var(--nb-h2-lh);
+  letter-spacing: var(--nb-h2-ls);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* A category's own description, when the client writes one. Centred under the
+   title and held to a readable measure rather than running the full 1421. */
+.woocommerce-products-header .term-description {
+  max-width: 680px;
+  margin: 14px auto 0;
+  font-family: var(--nb-font-body);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--nb-espresso);
+  opacity: 0.75;
+}
+
+.woocommerce-products-header .term-description p:last-child { margin-bottom: 0; }
+
+/* --- toolbar: sort row, then count row ---------------------------------- */
+
+/* Both are floated by WooCommerce, which is what put them side by side. Once
+   they are blocks in normal flow they stack, matching the reference. */
+.nb-full-width .woocommerce-ordering,
+.nb-full-width .woocommerce-result-count {
+  float: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.nb-full-width .woocommerce-ordering {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--nb-line);
+}
+
+/* WooCommerce ships the ordering form with only a screen-reader label, so the
+   visible "SORT BY" the reference shows has to be supplied here. */
+.nb-full-width .woocommerce-ordering::before {
+  content: "Sort by";
+  font-family: var(--nb-font-body);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--nb-espresso);
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.nb-full-width .woocommerce-ordering select.orderby {
+  height: 34px;
+  padding: 0 28px 0 8px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  color: var(--nb-espresso);
+  cursor: pointer;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  /* Native select arrows differ per platform and the border is gone, so the
+     control needs its own chevron to still read as a dropdown. */
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23241512' stroke-width='1.3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.nb-full-width .woocommerce-result-count,
+.nb-full-width p.nb-result-count {
+  margin: 14px 0 22px;
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: rgba(36, 21, 18, 0.7);
+  text-align: left;
+}
+
+/* --- pagination ---------------------------------------------------------
+   Deliberate departure. The reference paginates with a single full-width
+   "SHOW MORE" button that appends the next batch over AJAX. Reproducing that
+   means a custom endpoint and front-end script to own and debug; numbered
+   pages are WooCommerce's own mechanism, work without JavaScript, and are
+   what the client can reason about. Styled to sit quietly under the grid.
+   ------------------------------------------------------------------------ */
+
+.nb-full-width .woocommerce-pagination {
+  margin: 55px 0 0;
+  text-align: center;
+}
+
+.nb-full-width .woocommerce-pagination ul.page-numbers {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.nb-full-width .woocommerce-pagination ul.page-numbers li {
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.nb-full-width .woocommerce-pagination ul.page-numbers li .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: none;
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: var(--nb-espresso);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.nb-full-width .woocommerce-pagination ul.page-numbers li a.page-numbers:hover {
+  border-color: var(--nb-line);
+  color: var(--nb-burgundy);
+  background: none;
+}
+
+.nb-full-width .woocommerce-pagination ul.page-numbers li span.current {
+  border-color: var(--nb-burgundy);
+  color: var(--nb-burgundy);
+  background: none;
+}
+
+/* --- no-results state ---------------------------------------------------- */
+
+.nb-full-width .woocommerce-info.woocommerce-no-products-found,
+.nb-full-width .woocommerce-no-products-found .woocommerce-info {
+  border-top: 0;
+  border-left: 2px solid var(--nb-burgundy);
+  background: var(--nb-ivory);
+  border-radius: 0;
+  padding: 16px 20px;
+  font-family: var(--nb-font-body);
+  font-size: 15px;
+}
+
+.nb-full-width .woocommerce-no-products-found .woocommerce-info::before { display: none; }
+
+@media (max-width: 980px) {
+  .nb-full-width .woocommerce-ordering { min-height: 0; }
+  .nb-full-width .woocommerce-result-count { margin: 12px 0 18px; }
+}
+
+@media (max-width: 640px) {
+  .woocommerce-products-header { margin-bottom: 22px; }
+
+  .woocommerce-products-header__title.page-title,
+  .nb-full-width .woocommerce-products-header__title { font-size: 28px; }
+
+  .nb-full-width .woocommerce-pagination { margin-top: 34px; }
+
+  .nb-full-width .woocommerce-pagination ul.page-numbers li .page-numbers {
+    min-width: 34px;
+    height: 34px;
+    font-size: 13px;
+  }
+}
