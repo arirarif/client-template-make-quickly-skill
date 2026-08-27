@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.10.10
+ Version:        0.10.11
  Text Domain:    niswah-boutique
 */
 
@@ -1904,6 +1904,63 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
 .nb-checkout .woocommerce-info a:hover,
 .nb-checkout .woocommerce-message a:hover {
   color: var(--nb-terracotta) !important;
+}
+
+/* Validation errors. Left out of the block above on purpose the first time,
+   which was a mistake: Divi paints .woocommerce-error with the same
+   #2EA3F2 info-blue and white text as the other two, so "Billing First name
+   is a required field" arrived as a blue notice — legible, but reading as
+   information rather than as something the shopper must fix, and off-brand.
+   Measured by injecting a probe .woocommerce-error into the live checkout:
+   rgb(255,255,255) on rgb(46,163,242).
+
+   Given its own treatment here — same ivory panel as the other notices, but
+   a red rule and red heading so an error is recognisable as one. */
+.nb-cart .woocommerce-error,
+.nb-checkout .woocommerce-error {
+  border-top: 0;
+  border-left: 2px solid #B3261E;
+  background: #FCF2F1 !important;
+  color: var(--nb-espresso) !important;
+  font-family: var(--nb-font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 14px 18px 14px 20px;
+  margin: 0 0 22px;
+  border-radius: 0;
+  list-style: none;
+}
+
+.nb-cart .woocommerce-error::before,
+.nb-checkout .woocommerce-error::before { display: none; }
+
+.nb-cart .woocommerce-error li,
+.nb-checkout .woocommerce-error li {
+  color: var(--nb-espresso) !important;
+  margin: 0 0 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.nb-cart .woocommerce-error li:last-child,
+.nb-checkout .woocommerce-error li:last-child { margin-bottom: 0; }
+
+.nb-cart .woocommerce-error strong,
+.nb-checkout .woocommerce-error strong { color: #B3261E !important; }
+
+.nb-cart .woocommerce-error a,
+.nb-checkout .woocommerce-error a {
+  color: #B3261E !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* A required field that failed validation needs to be findable without
+   reading the notice — WooCommerce marks the row, nothing was styling it. */
+.nb-checkout .woocommerce-invalid input.input-text,
+.nb-checkout .woocommerce-invalid textarea,
+.nb-checkout .woocommerce-invalid .select2-selection--single {
+  border-color: #B3261E;
 }
 
 .nb-checkout .woocommerce-info::before,
