@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.10.0
+ Version:        0.10.2
  Text Domain:    niswah-boutique
 */
 
@@ -878,11 +878,26 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
    stock notice, description.
    ========================================================================= */
 
-.nb-single-product div.product {
+/* Divi caps #main-content .container at 1080px, which is narrower than the
+   1600px the rest of the site uses and squeezed the product page badly. */
+.nb-full-width #main-content .container {
+  width: 90%;
+  max-width: var(--nb-content-width);
+}
+
+/* IMPORTANT — which element to grid.
+   There are TWO elements matching `div.product` on this page. Divi puts its own
+   class on the builder wrapper (`et_builder_inner_content et_pb_gutters3
+   product`), whose children are et_pb_sections, not the gallery. Gridding that
+   one splits Divi's own layout in half and does nothing to the product.
+   The real one is `div.product.type-product`, and the gallery and summary sit
+   inside an unnamed `.clearfix` within it. That wrapper is the grid. */
+.nb-single-product div.product.type-product > .clearfix {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 0;
   align-items: start;
+  width: 100%;
 }
 
 /* --- Gallery: a plain vertical stack, no slider, no thumbnail strip ------- */
@@ -922,6 +937,7 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
 .nb-single-product .flex-control-thumbs { display: none !important; }
 
 /* --- Info column --------------------------------------------------------- */
+.nb-single-product div.product.type-product > .clearfix > .summary,
 .nb-single-product div.product .summary,
 .nb-single-product div.product .entry-summary {
   grid-column: 2;
@@ -942,17 +958,36 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   padding: 0;
 }
 
-.nb-single-product .summary .price {
+/* Divi paints WooCommerce prices in its accent blue (#2EA3F2) from CSS that
+   loads after this file, so the colour has to be forced. */
+.nb-single-product .summary .price,
+.nb-single-product .summary .price .amount,
+.nb-single-product .summary .price bdi {
   font-family: var(--nb-font-body);
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.8px;
-  color: var(--nb-espresso);
-  margin: 0 0 22px;
+  color: var(--nb-espresso) !important;
 }
 
-.nb-single-product .summary .price del { opacity: 0.5; margin-right: 8px; }
-.nb-single-product .summary .price ins { text-decoration: none; color: var(--nb-burgundy); }
+.nb-single-product .summary .price { margin: 0 0 22px; }
+
+.nb-single-product .summary .price del,
+.nb-single-product .summary .price del .amount,
+.nb-single-product .summary .price del bdi { opacity: 0.5; }
+
+.nb-single-product .summary .price del { margin-right: 8px; }
+
+.nb-single-product .summary .price ins,
+.nb-single-product .summary .price ins .amount,
+.nb-single-product .summary .price ins bdi {
+  text-decoration: none;
+  color: var(--nb-burgundy) !important;
+}
+
+/* WooCommerce appends a screen-reader "Price range:" label that Divi renders
+   visibly on the variable-product price. */
+.nb-single-product .summary .price .screen-reader-text { display: none; }
 
 .nb-single-product .woocommerce-product-rating { margin: 0 0 20px; }
 
@@ -1010,9 +1045,22 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   box-shadow: 0 0 0 1px rgba(36, 21, 18, 0.18);
 }
 
+/* The plugin puts the colour on an INNER span, not on the item itself — the
+   outer element stays white. Sizing only the outer therefore produced a row of
+   white circles with the real colour hidden underneath. */
+.nb-single-product .color-variable-item span,
+.nb-single-product .color-variable-item .variable-item-span,
+.nb-single-product .color-variable-item .variable-item-span-color {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  margin: 0 !important;
+}
+
 .nb-single-product .variable-item.color-variable-item.selected,
 .nb-single-product .variable-item.color-variable-item:hover {
-  box-shadow: 0 0 0 1px var(--nb-espresso), 0 0 0 4px var(--nb-white) inset;
+  box-shadow: 0 0 0 2px var(--nb-espresso);
 }
 
 /* Square size buttons. */
@@ -1061,9 +1109,12 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   border-radius: 4px !important;
 
   font-family: var(--nb-font-body);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2.6px;
+  /* Divi styles WooCommerce buttons at 20px/1.2px from its own generated CSS,
+     which loads after this stylesheet — these three cannot win on order. */
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 2.6px !important;
+  line-height: 1.2 !important;
   text-transform: uppercase;
   transition: background-color 0.25s ease;
 }
@@ -1156,7 +1207,7 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 980px) {
-  .nb-single-product div.product { grid-template-columns: 1fr; }
+  .nb-single-product div.product.type-product > .clearfix { grid-template-columns: 1fr; }
 
   .nb-single-product .woocommerce-product-gallery {
     grid-column: 1;
