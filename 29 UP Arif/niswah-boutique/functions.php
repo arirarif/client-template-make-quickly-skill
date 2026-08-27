@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.9.1' );
+define( 'NB_THEME_VERSION', '0.10.0' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -132,7 +132,12 @@ function nb_declare_woo_support() {
 	add_theme_support( 'woocommerce' );
 	add_theme_support( 'wc-product-gallery-zoom' );
 	add_theme_support( 'wc-product-gallery-lightbox' );
-	add_theme_support( 'wc-product-gallery-slider' );
+
+	// Deliberately NOT wc-product-gallery-slider. The reference product page
+	// stacks every image vertically down the left column rather than showing one
+	// image with thumbnails beneath it. Dropping slider support is what makes
+	// WooCommerce render the gallery as a stack; lightbox stays, so clicking an
+	// image still opens it full size the way the reference does.
 }
 add_action( 'after_setup_theme', 'nb_declare_woo_support' );
 
@@ -319,15 +324,97 @@ function nb_full_width_woo_archives( $classes ) {
 		return $classes;
 	}
 
-	if ( is_shop() || is_product_taxonomy() ) {
+	if ( is_shop() || is_product_taxonomy() || is_product() ) {
 		$classes   = array_diff( $classes, array( 'et_right_sidebar', 'et_left_sidebar' ) );
 		$classes[] = 'et_full_width_page';
 		$classes[] = 'nb-full-width';
 	}
 
+	if ( is_product() ) {
+		$classes[] = 'nb-single-product';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'nb_full_width_woo_archives', 20 );
+
+/**
+ * Single product page: match the reference's information order.
+ *
+ * Measured on the reference product page, the right-hand column runs:
+ *   title + price -> reviews -> variant pickers -> quantity + add to cart
+ *   -> stock notice -> size chart -> description
+ *
+ * WooCommerce's default order is close but puts the short description above the
+ * price and leaves the full description in a tab strip far below the fold. The
+ * reference keeps the description in the column with everything else, so it
+ * moves here; the remaining tabs (additional info, reviews) stay below as
+ * accordions, which is also what the reference does.
+ */
+function nb_single_product_layout() {
+	if ( ! function_exists( 'is_product' ) ) {
+		return;
+	}
+
+	// Short description sits above the price by default; the reference has no
+	// short description in that position at all.
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+
+	// Product meta (SKU / category list) is noise this high up the column.
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+
+	// Full description, in the column, under the buy button.
+	add_action( 'woocommerce_single_product_summary', 'nb_single_product_description', 45 );
+}
+add_action( 'wp', 'nb_single_product_layout' );
+
+/**
+ * Full product description rendered inside the summary column.
+ */
+function nb_single_product_description() {
+	global $post;
+
+	if ( ! $post || '' === trim( (string) $post->post_content ) ) {
+		return;
+	}
+
+	echo '<div class="nb-product__description">';
+	echo apply_filters( 'the_content', $post->post_content ); // phpcs:ignore WordPress.Security.EscapingOutput
+	echo '</div>';
+}
+
+/**
+ * Stock notice under the buy button, as the reference shows.
+ *
+ * Only speaks up when stock is genuinely low and actually being tracked —
+ * a permanent "in stock" badge on every product is noise, and inventing
+ * urgency on products with unmanaged stock would be a lie.
+ */
+function nb_single_product_stock_notice() {
+	global $product;
+
+	if ( ! $product instanceof WC_Product || ! $product->managing_stock() ) {
+		return;
+	}
+
+	$qty = $product->get_stock_quantity();
+
+	if ( null === $qty || $qty <= 0 || $qty > 5 ) {
+		return;
+	}
+
+	printf(
+		'<p class="nb-product__stock">%s</p>',
+		esc_html(
+			sprintf(
+				/* translators: %d: units remaining */
+				_n( 'Hurry — only %d item left in stock', 'Hurry — only %d items left in stock', $qty, 'niswah-boutique' ),
+				$qty
+			)
+		)
+	);
+}
+add_action( 'woocommerce_single_product_summary', 'nb_single_product_stock_notice', 31 );
 
 /**
  * Send the bare product-category base to the Collections page.
