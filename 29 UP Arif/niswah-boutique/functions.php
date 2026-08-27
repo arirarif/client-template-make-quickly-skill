@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.10.6' );
+define( 'NB_THEME_VERSION', '0.10.10' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -514,9 +514,12 @@ function nb_cart_strings( $translated, $original, $domain ) {
 		return $translated;
 	}
 
+	// "Cart totals" becomes "Order Summary", not "Subtotal": the table directly
+	// beneath the heading already has its own Subtotal row, so borrowing the
+	// reference's wording here printed "Subtotal" twice, one line apart.
 	$map = array(
 		'Proceed to checkout' => __( 'Check out now', 'niswah-boutique' ),
-		'Cart totals'         => __( 'Subtotal', 'niswah-boutique' ),
+		'Cart totals'         => __( 'Order Summary', 'niswah-boutique' ),
 	);
 
 	return isset( $map[ $original ] ) ? $map[ $original ] : $translated;

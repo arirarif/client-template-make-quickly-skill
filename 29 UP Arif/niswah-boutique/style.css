@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.10.6
+ Version:        0.10.10
  Text Domain:    niswah-boutique
 */
 
@@ -1505,11 +1505,15 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
    markup, and table cells ignore `order` — grid items do not. Scoped to
    thead tr and tr.cart_item so the trailing colspan="6" actions row, which is
    a single full-width cell, keeps its normal table behaviour. */
+/* Column widths are fixed px rather than the reference's percentages because
+   the table no longer owns the full page — it shares the row with the totals
+   panel, so percentages of a ~950px track left the name column too narrow for
+   a two-line product title. */
 .nb-cart .woocommerce table.shop_table thead tr,
 .nb-cart .woocommerce table.shop_table tr.cart_item {
   display: grid;
-  grid-template-columns: 70px minmax(0, 1fr) 15% 24% 15% 40px;
-  column-gap: 20px;
+  grid-template-columns: 70px minmax(0, 1fr) 92px 120px 100px 36px;
+  column-gap: 16px;
   align-items: center;
 }
 
@@ -1547,11 +1551,19 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   padding: 0;
 }
 
-/* --- thumbnail ---------------------------------------------------------- */
+/* --- thumbnail ----------------------------------------------------------
+   WooCommerce's own stylesheet carries `.woocommerce table.cart img {
+   width: 32px }`, which is (0,2,2). The obvious `.nb-cart .product-thumbnail
+   img` is only (0,2,1) and lost to it — measured 32x48 on the live page
+   instead of 70x105. Matching table.cart explicitly takes this to (0,4,2),
+   and the size is flagged because Divi emits per-module CSS after the child
+   stylesheet and cannot be beaten on cascade order alone.
+   ------------------------------------------------------------------------ */
 
-.nb-cart .product-thumbnail img {
-  width: 70px;
-  height: 105px;
+.nb-cart .woocommerce table.cart .product-thumbnail img,
+.nb-cart .woocommerce table.shop_table .product-thumbnail img {
+  width: 70px !important;
+  height: 105px !important;
   object-fit: cover;
   border-radius: 0;
   display: block;
@@ -1696,18 +1708,56 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   letter-spacing: 1.2px;
 }
 
+/* --- two-column shell: items left, totals right -------------------------
+   The reference stacks these — full-bleed table, totals beneath it on the
+   right — but the client asked for them side by side, the way a stock
+   WooCommerce cart reads. So the .woocommerce wrapper becomes the grid and
+   its two children take a column each.
+
+   Notices are children of the same wrapper, so they would otherwise be
+   placed into the item track and end up squeezed under the table. They are
+   spanned across both columns explicitly.
+   ------------------------------------------------------------------------ */
+
+.nb-cart .woocommerce {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  column-gap: 60px;
+  align-items: start;
+}
+
+.nb-cart .woocommerce > form.woocommerce-cart-form { grid-column: 1; }
+.nb-cart .woocommerce > .cart-collaterals { grid-column: 2; }
+
+.nb-cart .woocommerce > .woocommerce-notices-wrapper,
+.nb-cart .woocommerce > .woocommerce-message,
+.nb-cart .woocommerce > .woocommerce-error,
+.nb-cart .woocommerce > .woocommerce-info,
+.nb-cart .woocommerce > .cart-empty,
+.nb-cart .woocommerce > .return-to-shop {
+  grid-column: 1 / -1;
+}
+
 /* --- totals block ------------------------------------------------------- */
 
 .nb-cart .cart-collaterals {
-  display: flex;
-  justify-content: flex-end;
+  display: block;
   width: 100%;
 }
 
+/* Sitting beside the table rather than under it, the totals need an edge of
+   their own or they read as a stray column of text. Ivory matches the
+   checkout's order-review panel, so the two pages stay of a piece. */
 .nb-cart .cart-collaterals .cart_totals {
-  width: 360px;
+  width: 100%;
   max-width: 100%;
   float: none;
+  background: var(--nb-ivory);
+  padding: 26px 28px;
+}
+
+.nb-cart .woocommerce table.shop_table {
+  margin-bottom: 0;
 }
 
 .nb-cart .cart_totals h2 {
@@ -1815,30 +1865,73 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   margin-bottom: 24px;
 }
 
+/* These notices ship as white text on a dark bar. Repainting the background
+   ivory without also setting the colour left white-on-ivory — the "Have a
+   coupon?" toggle measured rgb(255,255,255) on rgb(250,243,234), i.e. fully
+   invisible.
+
+   The colour is flagged !important because Divi declares
+   `.woocommerce-message, .woocommerce-error, .woocommerce-info { color: #fff
+   !important }`. An !important declaration wins over a non-important one no
+   matter how specific the loser is, so the first attempt at this fix — a
+   plain `color` on a two-class selector — changed nothing. Confirmed by
+   enumerating the rules that actually matched the element. */
+.nb-cart .woocommerce-info,
+.nb-cart .woocommerce-message,
 .nb-checkout .woocommerce-info,
 .nb-checkout .woocommerce-message {
   border-top: 0;
   border-left: 2px solid var(--nb-burgundy);
   background: var(--nb-ivory);
+  color: var(--nb-espresso) !important;
   font-family: var(--nb-font-body);
   font-size: 14px;
   padding: 14px 18px;
   border-radius: 0;
 }
 
+.nb-cart .woocommerce-info a,
+.nb-cart .woocommerce-message a,
+.nb-checkout .woocommerce-info a,
+.nb-checkout .woocommerce-message a {
+  color: var(--nb-burgundy) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.nb-cart .woocommerce-info a:hover,
+.nb-cart .woocommerce-message a:hover,
+.nb-checkout .woocommerce-info a:hover,
+.nb-checkout .woocommerce-message a:hover {
+  color: var(--nb-terracotta) !important;
+}
+
 .nb-checkout .woocommerce-info::before,
 .nb-checkout .woocommerce-message::before { display: none; }
 
 /* Two columns: details left, order review right. */
+/* grid-template-rows is required, not cosmetic. #customer_details spans both
+   rows, and a spanning item's height is distributed across the tracks it
+   covers — so row 1 sized itself to 180px off the 1099px details block and
+   left a 148px hole between the "Your order" heading and its panel. Pinning
+   row 1 to min-content makes it exactly as tall as the heading. */
 .nb-checkout form.checkout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 400px;
+  grid-template-rows: min-content 1fr;
   column-gap: 60px;
   align-items: start;
 }
 
+/* The details block must SPAN BOTH ROWS. The form has three children —
+   details, the review heading, and the review table — so the heading takes
+   column 2 row 1 and the table column 2 row 2. Without the span, row 1 is as
+   tall as the details block (1099px measured), which pushed the review table
+   down to y=1534: beside the details in column terms, but a full screen below
+   it on the page. */
 .nb-checkout form.checkout #customer_details {
   grid-column: 1;
+  grid-row: 1 / span 2;
   width: 100%;
   float: none;
 }
@@ -1861,9 +1954,15 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   border-bottom: 1px solid var(--nb-line);
 }
 
-.nb-checkout form.checkout #order_review_heading,
+.nb-checkout form.checkout #order_review_heading {
+  grid-column: 2;
+  grid-row: 1;
+}
+
 .nb-checkout form.checkout #order_review {
   grid-column: 2;
+  grid-row: 2;
+  align-self: start;
 }
 
 .nb-checkout form.checkout #order_review {
@@ -2060,11 +2159,18 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
    ========================================================================= */
 
 @media (max-width: 1100px) {
+  .nb-cart .woocommerce {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    column-gap: 32px;
+  }
+
   .nb-cart .woocommerce table.shop_table thead tr,
   .nb-cart .woocommerce table.shop_table tr.cart_item {
-    grid-template-columns: 70px minmax(0, 1fr) 14% 20% 14% 36px;
-    column-gap: 14px;
+    grid-template-columns: 64px minmax(0, 1fr) 78px 100px 86px 32px;
+    column-gap: 12px;
   }
+
+  .nb-cart .cart-collaterals .cart_totals { padding: 20px 18px; }
 
   .nb-checkout form.checkout {
     grid-template-columns: minmax(0, 1fr) 340px;
@@ -2128,19 +2234,33 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   .nb-cart .woocommerce table.shop_table td.actions .coupon { width: 100%; }
   .nb-cart .woocommerce table.shop_table td.actions .input-text { flex: 1 1 auto; width: auto; }
 
+  /* Side by side stops working once the table has collapsed to cards — the
+     totals column would be squeezed against a stack. Back to one column. */
+  .nb-cart .woocommerce {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 34px;
+  }
+
+  .nb-cart .woocommerce > form.woocommerce-cart-form,
+  .nb-cart .woocommerce > .cart-collaterals { grid-column: 1; }
+
   .nb-cart .cart-collaterals,
   .nb-cart .cart-collaterals .cart_totals { width: 100%; }
   .nb-cart .wc-proceed-to-checkout a.checkout-button { width: 100%; }
 
   .nb-checkout form.checkout {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
     row-gap: 34px;
   }
 
+  /* grid-row must be released too, or the desktop row spans survive into the
+     single-column layout and reorder the blocks. */
   .nb-checkout form.checkout #customer_details,
   .nb-checkout form.checkout #order_review_heading,
   .nb-checkout form.checkout #order_review {
     grid-column: 1;
+    grid-row: auto;
   }
 }
 
