@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.10.3' );
+define( 'NB_THEME_VERSION', '0.10.4' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -383,6 +383,59 @@ function nb_sort_size_options( $args ) {
 	return $args;
 }
 add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'nb_sort_size_options', 20 );
+
+/**
+ * Same ordering, applied where the swatch plugin actually reads its terms.
+ *
+ * The dropdown filter above only covers WooCommerce's own <select>. Variation
+ * Swatches builds its own markup from wc_get_product_terms(), so without this
+ * the swatch row stayed alphabetical (L, M, S, XL, XS, XXL) even though the
+ * select was sorted correctly.
+ *
+ * @param WP_Term[]|string[] $terms    Terms or names, depending on the caller's args.
+ * @param int                $id       Product id.
+ * @param string             $taxonomy Attribute taxonomy.
+ * @return array
+ */
+function nb_sort_size_terms( $terms, $id, $taxonomy ) {
+	if ( false === strpos( strtolower( (string) $taxonomy ), 'size' ) || empty( $terms ) ) {
+		return $terms;
+	}
+
+	$sequence = array( 'xxxs', 'xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl', '2xl', '3xl', '4xl', '5xl', '6xl' );
+
+	// The array may hold WP_Term objects or plain strings depending on the
+	// caller's `fields` argument, so read whichever is present.
+	$key = static function ( $item ) {
+		if ( is_object( $item ) ) {
+			return strtolower( isset( $item->slug ) ? $item->slug : ( $item->name ?? '' ) );
+		}
+		return strtolower( (string) $item );
+	};
+
+	usort(
+		$terms,
+		static function ( $a, $b ) use ( $sequence, $key ) {
+			$ia = array_search( $key( $a ), $sequence, true );
+			$ib = array_search( $key( $b ), $sequence, true );
+
+			if ( false === $ia && false === $ib ) {
+				return strnatcasecmp( $key( $a ), $key( $b ) );
+			}
+			if ( false === $ia ) {
+				return 1;
+			}
+			if ( false === $ib ) {
+				return -1;
+			}
+
+			return $ia <=> $ib;
+		}
+	);
+
+	return $terms;
+}
+add_filter( 'woocommerce_get_product_terms', 'nb_sort_size_terms', 20, 3 );
 
 /**
  * Single product page: match the reference's information order.

@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.10.3
+ Version:        0.10.4
  Text Domain:    niswah-boutique
 */
 
@@ -1026,9 +1026,14 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
    one-word "LENGTH" label 88px tall and left a chasm between each label and its
    options. Everything here is reset to a tight block rhythm. */
 .nb-single-product .variations tbody,
-.nb-single-product .variations tr {
+.nb-single-product table.variations tr {
   display: block;
   width: 100%;
+  /* Divi pads table ROWS (12px 8px), not just cells — resetting th/td alone
+     left 24px of vertical air and an 8px left indent on every option row. */
+  padding: 0 !important;
+  margin: 0;
+  border: 0 !important;
 }
 
 .nb-single-product .variations th,
@@ -1057,7 +1062,20 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   line-height: 1.4 !important;
 }
 
-.nb-single-product .variations td.value { margin: 0 !important; }
+/* The swatch plugin keeps a 20px bottom pad on the value cell from CSS that
+   loads after ours, so this needs the extra table selector to outrank it. */
+.nb-single-product table.variations td.value,
+.nb-single-product .variations td.value {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+}
+
+.nb-single-product table.variations th.label,
+.nb-single-product .variations th.label {
+  height: auto !important;
+  padding: 0 !important;
+}
 
 /* The swatch plugin adds its own 23px bottom pad and a 14px left indent, which
    pushed the options away from their label and out of line with everything
