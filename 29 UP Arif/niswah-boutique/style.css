@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.10.13
+ Version:        0.10.16
  Text Domain:    niswah-boutique
 */
 
@@ -259,15 +259,32 @@ a:hover {
 
   /* The dropdown panel spans the header rather than the hamburger's own width,
      which is what made it a 129px-wide column of wrapped links. */
-  .nb-header .et_mobile_nav_menu .et_mobile_menu {
+  /* Both the extra class in this selector and the !important are required.
+     Divi's Theme Builder emits, in a stylesheet that loads AFTER this one:
+       .et_pb_menu_0_tb_header.et_pb_menu .et_mobile_menu
+       { background-color: rgba(255,255,255,0) !important }
+     That is (0,3,0) + !important. The obvious override here,
+     `.nb-header .et_mobile_nav_menu .et_mobile_menu`, is also (0,3,0), so it
+     lost on source order and the open panel rendered fully transparent with
+     the page text showing straight through it. Verified by placing the
+     3-class rule FIRST in the document and watching it still lose; adding
+     `.et_pb_menu` takes it to (0,4,1) and it wins on specificity alone,
+     independent of load order. Not keyed to `et_pb_menu_0_tb_header` on
+     purpose — that index changes if the header template is rebuilt. */
+  .nb-header .et_pb_menu .et_mobile_nav_menu ul.et_mobile_menu {
     position: absolute;
     left: 0;
     right: 0;
     width: 100%;
     z-index: 999;
-    background: var(--nb-white);
+    background-color: var(--nb-white) !important;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
     border-top: 1px solid var(--nb-line, #E8E2D9);
     padding: 6px 0;
+  }
+
+  .nb-header .et_pb_menu .et_mobile_nav_menu ul.et_mobile_menu li a {
+    background-color: transparent !important;
   }
 
   .nb-header .et_mobile_nav_menu .et_mobile_menu li a {
@@ -650,7 +667,12 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 600px) {
-  .nb-featured ul.products { grid-template-columns: 1fr; row-gap: 34px; }
+  /* `body` prefix is load-bearing. `.nb-featured ul.products` and the generic
+     `.woocommerce ul.products` are both (0,2,1), and the generic rule sits
+     LATER in this file, so at equal specificity it won and the featured row
+     stayed two-up. Raising this to (0,2,2) settles it by specificity instead
+     of by source order. */
+  body .nb-featured ul.products { grid-template-columns: minmax(0, 1fr); row-gap: 34px; }
 }
 
 /* =========================================================================
@@ -1372,22 +1394,58 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   margin-bottom: 34px;
 }
 
+/* Single product below 981px: one column, gallery above the summary.
+   -------------------------------------------------------------------------
+   This block existed but did not work, and the reason was specificity, not
+   the media query. The desktop rule that places the summary is
+
+     .nb-single-product div.product.type-product > .clearfix > .summary
+     { grid-column: 2 }                                        -- (0,5,2)
+
+   while the release below was written as `.nb-single-product div.product
+   .summary` -- only (0,3,1). So on a phone the column count dropped to one
+   but the summary kept `grid-column: 2`, which forced an IMPLICIT second
+   track sized to its max-content. Measured at a 400px viewport: the tracks
+   came out `84px 481px`, squashing the gallery to 84px and pushing the
+   summary past the viewport edge. The full-length selector is repeated here
+   so the release actually outranks the desktop placement.
+
+   minmax(0, 1fr) rather than 1fr for the same automatic-minimum reason as
+   the product grid: a bare 1fr cannot shrink below the item's min-content. */
 @media (max-width: 980px) {
-  .nb-single-product div.product.type-product > .clearfix { grid-template-columns: 1fr; }
+  .nb-single-product div.product.type-product > .clearfix {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+  }
 
   .nb-single-product .woocommerce-product-gallery {
     grid-column: 1;
     padding-right: 0;
     margin-bottom: 28px !important;
+    position: static !important;
   }
 
+  .nb-single-product div.product.type-product > .clearfix > .summary,
   .nb-single-product div.product .summary,
   .nb-single-product div.product .entry-summary {
     grid-column: 1;
-    padding-left: 0;
+    padding: 0 !important;
+  }
+
+  .nb-single-product .flex-control-thumbs li {
+    width: 64px !important;
+    height: 64px;
   }
 
   .nb-single-product .single_add_to_cart_button { flex: 1 1 100%; max-width: none; }
+
+  /* Size-guide tables ship from a plugin at a fixed width and overflowed the
+     viewport. Scroll them rather than let them widen the page. */
+  .esc-size-guide--table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* =========================================================================
@@ -1444,7 +1502,7 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   :root { --nb-gutter: 32px; }
 
   .woocommerce ul.products,
-  ul.products { grid-template-columns: repeat(3, 1fr); }
+  ul.products { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 980px) {
@@ -1453,11 +1511,34 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
     --nb-h2-size: 28px;
   }
 
+  /* minmax(0, 1fr), NOT 1fr. A bare `1fr` track carries an automatic minimum
+     of the item's min-content width, and the card's min-content measured
+     190px against a 364px container — so two tracks came to 380px and the
+     grid overflowed its own row. minmax(0, ...) lets the track shrink. */
   .woocommerce ul.products,
   ul.products {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 16px;
     row-gap: 38px;
+  }
+
+  /* Cards must fill their grid cell.
+     WooCommerce and Divi still ship the old float layout's percentage widths,
+     and Divi's dynamic CSS carries the most specific one:
+       @media (max-width: 980px) .et_pb_shop ul.products.columns-3 li.product
+       { width: 48% !important }   -- specificity (0,4,2), !important
+     Inside a grid cell that 48% is measured against the CELL, so every card
+     rendered at roughly half its column — 91px inside a 190px track. The
+     `body` prefix here outranks that rule; the attribute selector covers
+     every columns-N variant Woo emits. */
+  body .et_pb_shop ul.products[class*="columns-"] li.product,
+  body .woocommerce ul.products[class*="columns-"] li.product,
+  body .woocommerce ul.products li.product,
+  body ul.products li.product {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    float: none !important;
   }
 
   /* No hover on touch, so the button must be permanently visible rather than
@@ -2612,4 +2693,59 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
    ========================================================================= */
 body:not(.single-product) .woocommerce-breadcrumb {
   display: none !important;
+}
+
+/* =========================================================================
+   MOBILE CART — corrections against woocommerce-smallscreen.css
+   -------------------------------------------------------------------------
+   The card layout for cart rows is defined in the max-width:980px block
+   further up. Three of its declarations were being beaten by WooCommerce's
+   own small-screen stylesheet, which the theme never contested:
+
+     .woocommerce table.cart .product-thumbnail { display: none }
+       -- the theme assigns the thumbnail a grid-area but never a `display`,
+          so there was nothing to override this and the photo was absent.
+
+     .woocommerce table.shop_table_responsive tr td { text-align: right !important }
+       -- !important, so the theme's `text-align: left` lost and every value
+          sat hard against the right edge.
+
+     table.shop_table_responsive tr td::before { content: attr(data-title) ": " }
+       -- applied to EVERY cell, so the thumbnail cell rendered a bare ": "
+          and the name cell a redundant "Product: ".
+
+   The remove control is absolutely positioned top-right, so the name cell
+   needs real padding to keep the two apart — measured overlapping by 44px.
+   ========================================================================= */
+@media (max-width: 980px) {
+  .nb-cart table.cart .product-thumbnail,
+  .nb-cart table.shop_table_responsive .product-thumbnail {
+    display: block !important;
+  }
+
+  .nb-cart table.cart tr.cart_item td,
+  .nb-cart table.shop_table_responsive tr.cart_item td {
+    text-align: left !important;
+  }
+
+  .nb-cart table.shop_table_responsive tr td::before { float: none !important; }
+
+  .nb-cart table.shop_table_responsive tr td.product-thumbnail::before,
+  .nb-cart table.shop_table_responsive tr td.product-name::before,
+  .nb-cart table.shop_table_responsive tr td.product-quantity::before,
+  .nb-cart table.shop_table_responsive tr td.product-remove::before {
+    content: none !important;
+  }
+
+  .nb-cart table.shop_table_responsive tr td.product-price::before,
+  .nb-cart table.shop_table_responsive tr td.product-subtotal::before {
+    content: attr(data-title) ": " !important;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    opacity: 0.65;
+  }
+
+  .nb-cart table.shop_table_responsive tr td.product-name {
+    padding-right: 56px !important;
+  }
 }
