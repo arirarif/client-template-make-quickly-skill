@@ -1,7 +1,7 @@
 <!--
 ==========================================================================
   DVPFL HOME — BOTH VIDEOS: POSTER FIRST, AUTOPLAY AFTER LOAD
-  v1.1  |  2026-08-29
+  v1.2  |  2026-08-29
 
   DEPLOYED AT
     Elementor -> Custom Code -> "DVPFL — deferred video autoplay
@@ -15,7 +15,11 @@
       pm_image_slider   footer   offset 66405
     The hooks must be installed before player.js runs.
 
-  v1.1 FIXES TWO THINGS v1.0 GOT WRONG, both caught by testing live:
+  v1.2 ADDS: refuses the theme's unconditional YouTube iframe API load.
+    Zero YouTube videos exist on this site. See PART 1b - it declines the
+    script insertion rather than dequeuing, since there is no child theme.
+
+  v1.1 FIXED TWO THINGS v1.0 GOT WRONG, both caught by testing live:
     1. The gate never engaged. player.js does
            window.Vimeo = window.Vimeo || {};
            Vimeo.Player = Player;
@@ -271,6 +275,74 @@
     var P = window.Vimeo && window.Vimeo.Player;
     return P ? (P.__dvpRaw || P) : null;
   }
+
+  /* ---------------------------------------------------------------
+     PART 1b — refuse the theme's YouTube iframe API.
+
+     pm_image_slider.js ends with this, unconditionally, on every page
+     that loads it:
+
+         var tag = document.createElement('script');
+         tag.src = "https://www.youtube.com/iframe_api";
+         var firstScriptTag = document.getElementsByTagName('script')[0];
+         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+     There is not one YouTube video on this site - all nine slides are
+     data-type="vimeo". The request costs a fresh DNS + TLS handshake to
+     a brand new origin, then pulls www-widgetapi.js (8.8 KB) after it.
+     And iframe_api is served `Cache-Control: private, max-age=0`, so it
+     is refetched on EVERY page view, forever - it can never be cached.
+
+     With no child theme we cannot dequeue the script. We can decline to
+     insert its tag. This snippet lives in <head>, and the theme script
+     is a plain footer script with no async/defer, so our patch is in
+     place long before it runs.
+
+     THE GUARD MATTERS. If a slider on this page did have a YouTube
+     slide, killing the API would drop the theme's addYT() into this,
+     from pm_image_slider.js:
+
+         if (jQuery('body').find('.aurel_youtube_api').length) { ... }
+         else { setTimeout(function(){ addYT(-1); }, 300); }
+
+     - a 300ms retry loop that never terminates, because the flag it
+     waits on is only set by onYouTubeIframeAPIReady(). So we block only
+     when the document holds no YouTube slide. That test is reliable:
+     the slider markup is parsed well before the footer scripts run.
+     --------------------------------------------------------------- */
+
+  (function blockYouTubeApi() {
+    var proto = Node.prototype;
+    var original = proto.insertBefore;
+    var restored = false;
+
+    function restore() {
+      if (restored) return;
+      restored = true;
+      proto.insertBefore = original;
+    }
+
+    proto.insertBefore = function (node, ref) {
+      try {
+        if (node && node.tagName === 'SCRIPT' &&
+            typeof node.src === 'string' &&
+            node.src.indexOf('youtube.com/iframe_api') !== -1 &&
+            !document.querySelector('.aurel_slider_slide[data-type="youtube"]')) {
+          restore();
+          return node;   /* hand the node back unharmed, just never in the DOM */
+        }
+      } catch (e) {}
+      return original.apply(this, arguments);
+    };
+
+    /* Bound the patch to the parse phase. The theme inserts its tag while
+       the footer is parsing, so this always fires after that. */
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', restore);
+    } else {
+      restore();
+    }
+  })();
 
   /* ---------------------------------------------------------------
      PART 2 — the Elementor video widget.

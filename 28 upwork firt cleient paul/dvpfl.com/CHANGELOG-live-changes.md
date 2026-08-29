@@ -842,3 +842,81 @@ could not be measured here. Eyeball it on a normal foreground load.
    (`player.module.js`, `vendor.module.js`, `player.css`, `vuid.min.js`,
    `oembed.json`, `flarepoint`, `identity/settings`) — ~8 third-party
    requests and 628 KiB of JS. Not done.
+
+---
+
+## 2026-08-29 (later) — v1.2: YouTube iframe API refused, without a child theme
+
+Same snippet, **post 2596**, updated in place. Still `<head>`, front page only.
+
+### The problem
+
+`pm_image_slider.js` ends with this, unconditionally:
+
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+Measured cost:
+
+| | |
+|---|---|
+| `iframe_api` response body | 0 bytes — but `Cache-Control: private, max-age=0`, so **refetched on every page view, forever** |
+| then pulls `www-widgetapi.js` | 8,839 bytes transferred / 26,769 uncompressed |
+| Real cost | 2 requests + a fresh DNS + TLS handshake to a new origin |
+
+Scope check — `pm_image_slider.js` loads on the **home page only**
+(about-us, packages, contact-us, services, blog, awards, vendors: 0). So
+the existing front-page-scoped snippet is the right place; no second
+snippet needed. And `data-type="youtube"` appears **zero** times sitewide.
+
+### The fix, given no child theme
+
+We cannot dequeue the script without PHP. We can decline to insert its
+tag. The snippet is in `<head>`; `pm_image_slider.js` is a plain footer
+script with **no async/defer** (verified on the live tag), so it executes
+during parse — long after our patch is installed, and before
+`DOMContentLoaded`.
+
+So: patch `Node.prototype.insertBefore`, drop only a `<script>` whose src
+contains `youtube.com/iframe_api`, hand the node back so the caller sees
+nothing wrong, and **restore the native method on `DOMContentLoaded`** —
+the patch exists only for the parse phase and leaves no permanent
+monkey-patch behind.
+
+**The guard is not optional.** `addYT()` does:
+
+    if (jQuery('body').find('.aurel_youtube_api').length) { ... }
+    else { setTimeout(function(){ addYT(-1); }, 300); }
+
+The flag it waits on is only set by `onYouTubeIframeAPIReady()`. Kill the
+API on a page that *does* have a YouTube slide and that becomes a 300ms
+retry loop that never ends. So the block only fires when
+`.aurel_slider_slide[data-type="youtube"]` matches nothing — a test that
+is reliable, because the slider markup is parsed before the footer runs.
+
+### Verified live
+
+    ytNetworkRequests    = 0        no youtube / ytimg / googlevideo at all
+    ytTagInDOM           = false    tag never entered the DOM
+    YTglobal             = undefined
+    insertBeforeIsNative = true     patch cleanly restored
+    sliderWorks          = true     activeSlide 306247929
+    PlayerWrapped        = true     video gate still engaged
+    slideIframes         = 0        slider video still held
+
+Slider navigation regression-tested: clicking next moved slide 1 → 2
+(306247929 → 308323738), **0 JS errors**.
+
+### Still not verified — needs a human
+
+The automation tab keeps dropping to `visibilityState: hidden`. Chrome
+suspends the rendering steps that deliver IntersectionObserver callbacks
+in hidden tabs, so **the gate opening on scroll could not be observed
+here** — `heroGotSrc=true` proves `start()` ran and the slider was fully
+in view (`top 27`, viewport 864), but the IO callback never fired.
+
+On a real foreground visit this is ordinary IO-on-scroll behaviour and
+will fire. Worth one manual check: scroll to the slider and confirm the
+film starts. If it does not, the gate trigger needs revisiting.
