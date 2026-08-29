@@ -18,7 +18,7 @@ stale copy. Before every PSI run, confirm the live HTML is current:
 
 ## P0 — Fix the LCP element (regression I introduced)
 
-- [ ] **P0.1 Preload the hero poster**
+- [x] **P0.1 Preload the hero poster** — DONE, snippet 2596 v1.3
 
   **Why:** PSI names the LCP element as
   `div.elementor-custom-embed-image-overlay` with a CSS
@@ -37,7 +37,7 @@ stale copy. Before every PSI run, confirm the live HTML is current:
 
   **Rollback:** remove the one line from snippet 2596.
 
-- [ ] **P0.2 Shrink the slider posters I added**
+- [x] **P0.2 Shrink the slider posters I added** — DONE, snippet 2596 v1.3
 
   **Why:** the eight slide posters are hardcoded at `-d_1280`. Two of them
   actually download: 264.2 KiB + 256.1 KiB = **520 KiB**, and PSI's image
@@ -49,11 +49,54 @@ stale copy. Before every PSI run, confirm the live HTML is current:
 
   **Verify:** payload drops ~300 KiB; "Improve image delivery" savings fall.
 
-  **Rollback:** revert the URLs to `-d_1280`.
+  **Rollback:** revert the URLs to `-d_640` back to `-d_1280`.
+
+### What P0 actually shipped (v1.3, 2026-08-29)
+
+It turned out to be more than a preload. The hero poster was being served
+at **1920px wide to every device**, including a 412px-wide Moto G. The
+smaller crops already existed on the server, so this cost nothing to fix:
+
+| Viewport | Poster served | Bytes | vs. before |
+|---|---|---|---|
+| ≤ 767px | `-768x432.jpg` | 57,015 | **−150,066 (−72%)** |
+| 768–1365px | `-1024x576.jpg` | 88,094 | −118,987 (−57%) |
+| ≥ 1366px | `-1536x864.jpg` | 159,232 | −47,849 (−23%) |
+| *(was)* | `hero-poster-1920.jpg` | 207,081 | — |
+
+Slider posters, per slide: `-d_1280` 139,510 b → `-d_640` **45,210 b**
+(−68%). Two of them download in a PSI run, so roughly −190 KB there.
+
+Elementor hardcodes the 1920 into an inline `style` attribute, so the
+override needs `!important` — an author `!important` does outrank a normal
+inline style. Three `@media` blocks, each matching one preload link.
+
+**Verified in the browser, not assumed:**
+
+    overlayUsesImage = hero-poster-1920-1536x864.jpg   CSS override works
+    posterRequests   = 1                                no double download
+    initiatorType    = link                             the PRELOAD fetched it
+
+That `init=link` is the whole point: the fetch now starts at parse time
+instead of waiting for CSS parse + layout.
+
+Breakpoint coverage was checked across 13 widths (320 → 2560). Exactly one
+tier matches at every width — no gaps, no overlaps, so the browser never
+preloads a poster it will not paint, and never misses one.
 
 - [ ] **P0.3 Re-run PSI mobile + desktop, record here**
 
+  **Blocked on you** — the PSI API is out of daily quota without a key
+  (`HTTP 429`, "Queries per day"). Run it in the browser and paste the
+  result; I cannot self-measure this one.
+
+  Bare URL confirmed serving v1.3, so PSI will measure the right version.
+
   Result: `mobile ___ / desktop ___ · LCP ___ · TBT ___`
+
+  **Watch specifically:** "Resource load delay" on the LCP breakdown. It
+  was 3,800 ms. If it has not collapsed, the preload is not being honoured
+  and P0.1 needs rethinking rather than more of the same.
 
 ---
 

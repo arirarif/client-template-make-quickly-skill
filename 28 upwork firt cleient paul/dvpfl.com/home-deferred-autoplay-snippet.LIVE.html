@@ -1,4 +1,14 @@
-<!-- DVPFL deferred video autoplay v1.2 - 2026-08-29 - source: home-deferred-autoplay-snippet.html -->
+<!-- DVPFL deferred video autoplay v1.3 - 2026-08-29 - source: home-deferred-autoplay-snippet.html -->
+<link rel="preload" as="image" fetchpriority="high"
+      href="https://dvpfl.com/wp-content/uploads/2026/08/hero-poster-1920-768x432.jpg"
+      media="(max-width: 767px)">
+<link rel="preload" as="image" fetchpriority="high"
+      href="https://dvpfl.com/wp-content/uploads/2026/08/hero-poster-1920-1024x576.jpg"
+      media="(min-width: 768px) and (max-width: 1365px)">
+<link rel="preload" as="image" fetchpriority="high"
+      href="https://dvpfl.com/wp-content/uploads/2026/08/hero-poster-1920-1536x864.jpg"
+      media="(min-width: 1366px)">
+
 <style>
 
 .aurel_vimeo_slide{
@@ -7,14 +17,30 @@
   background-repeat: no-repeat;
   background-color: #0B0F11;
 }
-.aurel_vimeo_slide[data-src="306247929"]{background-image:url("https://i.vimeocdn.com/video/745948899-c03ba5a1ee2628981f707f3be3d749632455689bf794445950951167547c58ce-d_1280?region=us")}
-.aurel_vimeo_slide[data-src="308323738"]{background-image:url("https://i.vimeocdn.com/video/748461412-f215e990b11b3256962acb98d9991cee9598926522ffa86b5d8791b6cdfaf3ce-d_1280?region=us")}
-.aurel_vimeo_slide[data-src="307510391"]{background-image:url("https://i.vimeocdn.com/video/747480472-8d41142a834451c89a760de0b171c1e7fabfef9547709f151d9e368d110490bb-d_1280?region=us")}
-.aurel_vimeo_slide[data-src="303133717"]{background-image:url("https://i.vimeocdn.com/video/742076477-edc1086f2cabd912aaf4ae222408a573ebfe0dc4d0616c65d381dea06e457165-d_1280?region=us")}
-.aurel_vimeo_slide[data-src="302891930"]{background-image:url("https://i.vimeocdn.com/video/741780681-357cc8c5caa4eb39a931b8ed52dc7efdeffcc5681d84f39810d72d0aacf53cb5-d_1280?region=us")}
-.aurel_vimeo_slide[data-src="302345276"]{background-image:url("https://i.vimeocdn.com/video/741107452-e9de1fbc819cc8fa51c97c237dcc848d97849c2a7a633fc0c40553ec02d8d017-d_1280?region=us")}
-.aurel_vimeo_slide[data-src="301370889"]{background-image:url("https://i.vimeocdn.com/video/739911878-185c803b33eae2ad75fc37c409017bd6ab0ff5e9f4f3443e23cac396cb719c18-d_1280?region=us")}
-.aurel_vimeo_slide[data-src="299710428"]{background-image:url("https://i.vimeocdn.com/video/737889889-09f10bc13f55ab7d9ae1647d02565e398a5d5d9a8e89672942a26eda62cb48c3-d_1280?region=us")}
+.aurel_vimeo_slide[data-src="306247929"]{background-image:url("https://i.vimeocdn.com/video/745948899-c03ba5a1ee2628981f707f3be3d749632455689bf794445950951167547c58ce-d_640?region=us")}
+.aurel_vimeo_slide[data-src="308323738"]{background-image:url("https://i.vimeocdn.com/video/748461412-f215e990b11b3256962acb98d9991cee9598926522ffa86b5d8791b6cdfaf3ce-d_640?region=us")}
+.aurel_vimeo_slide[data-src="307510391"]{background-image:url("https://i.vimeocdn.com/video/747480472-8d41142a834451c89a760de0b171c1e7fabfef9547709f151d9e368d110490bb-d_640?region=us")}
+.aurel_vimeo_slide[data-src="303133717"]{background-image:url("https://i.vimeocdn.com/video/742076477-edc1086f2cabd912aaf4ae222408a573ebfe0dc4d0616c65d381dea06e457165-d_640?region=us")}
+.aurel_vimeo_slide[data-src="302891930"]{background-image:url("https://i.vimeocdn.com/video/741780681-357cc8c5caa4eb39a931b8ed52dc7efdeffcc5681d84f39810d72d0aacf53cb5-d_640?region=us")}
+.aurel_vimeo_slide[data-src="302345276"]{background-image:url("https://i.vimeocdn.com/video/741107452-e9de1fbc819cc8fa51c97c237dcc848d97849c2a7a633fc0c40553ec02d8d017-d_640?region=us")}
+.aurel_vimeo_slide[data-src="301370889"]{background-image:url("https://i.vimeocdn.com/video/739911878-185c803b33eae2ad75fc37c409017bd6ab0ff5e9f4f3443e23cac396cb719c18-d_640?region=us")}
+.aurel_vimeo_slide[data-src="299710428"]{background-image:url("https://i.vimeocdn.com/video/737889889-09f10bc13f55ab7d9ae1647d02565e398a5d5d9a8e89672942a26eda62cb48c3-d_640?region=us")}
+
+@media (max-width: 767px){
+  .elementor-widget-video .elementor-custom-embed-image-overlay{
+    background-image: url("https://dvpfl.com/wp-content/uploads/2026/08/hero-poster-1920-768x432.jpg") !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 1365px){
+  .elementor-widget-video .elementor-custom-embed-image-overlay{
+    background-image: url("https://dvpfl.com/wp-content/uploads/2026/08/hero-poster-1920-1024x576.jpg") !important;
+  }
+}
+@media (min-width: 1366px){
+  .elementor-widget-video .elementor-custom-embed-image-overlay{
+    background-image: url("https://dvpfl.com/wp-content/uploads/2026/08/hero-poster-1920-1536x864.jpg") !important;
+  }
+}
 
 .elementor-widget-video .elementor-custom-embed-image-overlay{
   transition: opacity .7s ease;
