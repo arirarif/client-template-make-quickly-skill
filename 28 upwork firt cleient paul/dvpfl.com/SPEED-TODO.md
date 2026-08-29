@@ -78,9 +78,19 @@ stale copy. Before every PSI run, confirm the live HTML is current:
      scoped to *everything except* `/contact-us/`. Same pattern as
      `blockYouTubeApi` in `home-deferred-autoplay-snippet.html`.
 
-  **Check first:** does the homepage have a real CF7 form at all?
+  **Already checked — the answer is no.** On the live homepage:
 
-      curl -sSL "https://dvpfl.com/?cb=1" | grep -c "wpcf7"
+      <form> tags in HTML        0
+      "recaptcha" in HTML        0
+      "wpcf7" in HTML            1   (a script/style handle, not a form)
+
+  So there is no form on this page, and reCAPTCHA appears nowhere in the
+  markup - CF7 enqueues Google's API script sitewide whenever a site key is
+  configured, and Google's script then pulls `recaptcha__en.js` itself.
+  That makes all 1,378.7 KiB pure waste here, not merely excessive.
+
+  This also means the fix does not risk breaking a form on this page,
+  because there is no form on this page.
 
   **Verify:** payload −1.3 MB; TBT should fall sharply.
 
