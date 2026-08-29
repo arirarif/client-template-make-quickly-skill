@@ -16,6 +16,65 @@ stale copy. Before every PSI run, confirm the live HTML is current:
 
 ---
 
+## ⛔ STOP — speed work is paused, and why
+
+**2026-08-29 18:45.** Two PSI runs, 33 minutes apart, on a byte-identical
+page (77,705 bytes both times, same plugin versions, same snippet v1.3):
+
+| | 18:04 | 18:37 |
+|---|---|---|
+| Score | 35 | 34 |
+| FCP | 4.7 s | **3.5 s** |
+| LCP | 6.8 s | **5.6 s** |
+| TBT | 1,200 ms | **3,460 ms** |
+| Payload | 6,372 KiB | 3,993 KiB |
+
+Nothing changed between them. That spread — TBT tripling, payload moving
+2.4 MB — is **run-to-run variance**, and it is that wide because the page
+sits on 26 JS files and 24 stylesheets with 9.6 s of main-thread work. The
+deferred hero video also lands inside the trace window on some runs and not
+others, which moves the payload figure on its own.
+
+**Consequence: single-run comparisons are not trustworthy on this site.**
+Any future measurement needs 3 runs and a median, or it should only quote
+FCP and LCP, which held steady across both.
+
+### Where the speed work actually got to
+
+| | Aug 24 | now |
+|---|---|---|
+| Score | 41 → 28 (regression) | **34–35** |
+| FCP | 3.9 s | **3.5 s** |
+| LCP | 9.0 s | **5.6 s** |
+| Payload | 21,352 KiB | ~4,000–6,400 KiB |
+
+LCP and FCP are genuinely better than the original baseline, and those are
+the two a visitor feels. The score does not reflect it because TBT now
+dominates, and part of the payload drop is the missing portfolio section
+rather than optimisation.
+
+### Why further speed work is paused
+
+1. **The portfolio slider is gone** (below). Optimising a homepage whose
+   main content section is broken is wasted effort, and whatever fixes it
+   will change every number again.
+2. **Elementor Pro licence reads `Status: Missing`.** Pro 4.2.2 is running
+   unlicensed. Custom Code is a Pro feature, and snippet 2596 — which holds
+   all the speed work — lives in it. It still outputs today; that is not a
+   guarantee.
+3. **The remaining levers need a child theme.** Render-blocking is 2,940 ms
+   across 24 stylesheets, and unused JS is 1,040 KiB. Fixing either means
+   dequeuing in PHP. There is no child theme.
+
+### Honest ceiling
+
+Even with P1–P4 all done, this stack — Aurel plus Elementor plus 14 plugins
+— realistically lands somewhere around **50–60 on mobile**, not 90. The
+theme and page builder set the floor. Anyone promising 90+ without
+replacing them is guessing.
+
+---
+
 ## 🔴 CRITICAL — the portfolio slider has disappeared from the live site
 
 **Found 2026-08-29 18:10, while verifying the P0 measurement.**
