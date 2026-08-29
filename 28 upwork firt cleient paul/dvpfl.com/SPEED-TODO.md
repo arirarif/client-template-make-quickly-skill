@@ -112,9 +112,26 @@ Videographers" banner → Paul's bio. The portfolio section is simply absent.
 media-slider widget, not every theme widget. Most likely the theme registers
 that widget against Elementor's pre-4.x widget API.
 
+**Scope — corrected 2026-08-29 19:00.** An earlier note here implied the
+portfolio was gone from the site. It is not. Scanning all 17 pages for real
+Vimeo embeds (the film IDs that appear on `/` are only my own snippet's CSS
+selectors, not content):
+
+    /highlight-recap/        7 films  (incl. 4 of the 9 homepage ones)
+    /commercial/             4
+    /memorial-video/         3
+    /photo-montage/          3
+    /music-video/            3
+    /engagement-video/       1
+    /cinematic-wedding-film/ 1
+    /ceremony-video/         1
+
+Roughly 23 films still live on the service pages. What is lost is the
+**homepage showcase**, not the portfolio.
+
 **Consequences:**
-1. A wedding videography site's homepage no longer shows any wedding films
-   below the hero. This is a business problem before it is a technical one.
+1. The homepage — where couples land — no longer shows any wedding films
+   below the hero. Still a business problem, but narrower than first stated.
 2. Roughly 4 MB of the 4,151 KiB payload drop is this section's absence,
    not optimisation. The 28 → 35 score is therefore partly hollow.
 3. My video gate is now moot on this page — `Vimeo.Player.__dvpWrapped` is
@@ -129,8 +146,21 @@ that widget against Elementor's pre-4.x widget API.
       accept the old versions plus their known vulnerabilities.
 - (b) Keep the update, and rebuild the portfolio section with a widget that
       still works — Elementor Pro 4.x has its own carousel/gallery widgets.
-- (c) Ask the Aurel theme author whether a 4.x-compatible version exists.
-      The theme showed no update channel in August, so this may be a dead end.
+- (c) ~~Ask the Aurel theme author for a 4.x-compatible version.~~
+      **Ruled out 2026-08-29:** Appearance → Themes shows Aurel with no
+      update available. Only Twenty Twenty-Four and Twenty Twenty-Five have
+      updates pending. No 4.x-compatible build is coming through the channel.
+
+**Recommended: (b), built as a self-contained HTML widget** rather than a
+Pro widget — no theme dependency, no Pro-licence dependency, immune to the
+next Elementor update, and it removes `pm_image_slider.js` and Vimeo's
+`player.js` from the page permanently. That slider was the origin of the
+15,704 KiB problem in the first place, so rebuilding it lean fixes the
+content loss and the speed problem in one move. All 8 film IDs and their
+poster URLs are already recorded in `home-deferred-autoplay-snippet.html`.
+
+**Also open: Elementor Pro licence reads `Status: Missing`.** Pro 4.2.2 is
+running unactivated — no updates, no support. Needs a key, or a decision.
 
 **Do not touch this without Paul.** Losing the portfolio is a visible,
 client-facing change.
