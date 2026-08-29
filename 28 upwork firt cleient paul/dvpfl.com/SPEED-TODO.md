@@ -16,6 +16,68 @@ stale copy. Before every PSI run, confirm the live HTML is current:
 
 ---
 
+## 🔴 CRITICAL — the portfolio slider has disappeared from the live site
+
+**Found 2026-08-29 18:10, while verifying the P0 measurement.**
+
+Between the 15:48 and 18:04 PSI runs, someone updated the plugins:
+
+| Plugin | Was | Now |
+|---|---|---|
+| Elementor core | 3.20.3 | **4.2.3** |
+| Elementor Pro | 3.7.2 | **4.2.2** |
+| Contact Form 7 | 5.7.7 | 6.1.7 |
+| Chaty | 3.1.1 | 3.6.0 |
+| Image Hover addon | 1.3.8 | 1.4.5 |
+
+This is the update the August audit flagged as Critical Issue #2 and warned
+against: *"Updating Elementor core on its own will very likely break the
+site."*
+
+**It did.** The `pm-media-slider` widget — the portfolio slider holding all
+nine wedding films — no longer renders. Measured on the live homepage with
+my own snippet's text excluded from the count:
+
+    pm-media-slider           0
+    aurel_front_end_display   0
+    aurel_slider_wrapper      0
+    aurel_slider_slide        0
+    pm_image_slider.js        not enqueued
+    player.vimeo.com/api/player.js   not enqueued
+    elementor-widget-video    1   (the hero, still fine)
+
+Visually confirmed: the homepage now runs hero → "Sarasota Wedding
+Videographers" banner → Paul's bio. The portfolio section is simply absent.
+
+`pm-instagram` still renders on every page, so this is specific to the
+media-slider widget, not every theme widget. Most likely the theme registers
+that widget against Elementor's pre-4.x widget API.
+
+**Consequences:**
+1. A wedding videography site's homepage no longer shows any wedding films
+   below the hero. This is a business problem before it is a technical one.
+2. Roughly 4 MB of the 4,151 KiB payload drop is this section's absence,
+   not optimisation. The 28 → 35 score is therefore partly hollow.
+3. My video gate is now moot on this page — `Vimeo.Player.__dvpWrapped` is
+   `false` because `player.js` is no longer loaded at all. The snippet is
+   harmless and still does its hero job, but the slider half has nothing
+   left to gate.
+4. The v1.2 YouTube-API block is also moot — that script was loaded *by*
+   `pm_image_slider.js`.
+
+**Not fixed. Needs a decision:**
+- (a) Roll the two Elementor plugins back (WP Rollback is installed) and
+      accept the old versions plus their known vulnerabilities.
+- (b) Keep the update, and rebuild the portfolio section with a widget that
+      still works — Elementor Pro 4.x has its own carousel/gallery widgets.
+- (c) Ask the Aurel theme author whether a 4.x-compatible version exists.
+      The theme showed no update channel in August, so this may be a dead end.
+
+**Do not touch this without Paul.** Losing the portfolio is a visible,
+client-facing change.
+
+---
+
 ## P0 — Fix the LCP element (regression I introduced)
 
 - [x] **P0.1 Preload the hero poster** — DONE, snippet 2596 v1.3
@@ -84,7 +146,7 @@ Breakpoint coverage was checked across 13 widths (320 → 2560). Exactly one
 tier matches at every width — no gaps, no overlaps, so the browser never
 preloads a poster it will not paint, and never misses one.
 
-- [ ] **P0.3 Re-run PSI mobile + desktop, record here**
+- [x] **P0.3 Re-run PSI — DONE 2026-08-29 18:04**
 
   **Blocked on you** — the PSI API is out of daily quota without a key
   (`HTTP 429`, "Queries per day"). Run it in the browser and paste the
@@ -92,11 +154,31 @@ preloads a poster it will not paint, and never misses one.
 
   Bare URL confirmed serving v1.3, so PSI will measure the right version.
 
-  Result: `mobile ___ / desktop ___ · LCP ___ · TBT ___`
+### P0 result — measured 2026-08-29 18:04
 
-  **Watch specifically:** "Resource load delay" on the LCP breakdown. It
-  was 3,800 ms. If it has not collapsed, the preload is not being honoured
-  and P0.1 needs rethinking rather than more of the same.
+| Mobile | 15:48 (before P0) | 18:04 (after P0) |
+|---|---|---|
+| **Score** | 28 | **35** |
+| FCP | 5.8 s | 4.7 s |
+| **LCP** | **28.2 s** | **6.8 s** |
+| TBT | 1,840 ms | 1,200 ms |
+| Speed Index | 15.9 s | 9.8 s |
+| Payload | 10,523 KiB | 6,372 KiB |
+
+**The LCP element changed, which is the proof P0.1 worked.** The poster is
+no longer the LCP candidate at all. The breakdown now reads:
+
+    Time to first byte     0 ms
+    Element render delay   3,070 ms
+    CALL US NOW!!!  <span class="on-hover-text">
+
+There is no "Resource load delay" row any more, because the LCP element is
+now *text* — Chaty's floating call widget — not an image. The 3,800 ms of
+load delay did not shrink, it ceased to exist.
+
+**Caveat, and it is a big one:** part of this gain is not optimisation.
+See the CRITICAL entry below — a whole content section vanished from the
+page between the two runs, taking its bytes with it.
 
 ---
 
