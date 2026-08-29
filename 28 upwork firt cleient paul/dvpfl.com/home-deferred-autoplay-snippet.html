@@ -1,0 +1,318 @@
+<!--
+==========================================================================
+  DVPFL HOME — BOTH VIDEOS: POSTER FIRST, AUTOPLAY AFTER LOAD
+  v1.0  |  2026-08-29
+
+  WHERE TO PASTE
+    Elementor -> edit the Home page -> add an "HTML" widget.
+    Put it ANYWHERE in the page body. It must render before the footer
+    scripts, which it always does. Verified against the live page:
+      jQuery            head     offset 19116
+      player.js         footer   offset 58585
+      pm_image_slider   footer   offset 58722
+    This block sits in the body, so it installs its hooks first.
+
+  WHAT IT DOES
+    Video 1 — Elementor video widget 25f2262 (Vimeo 248909461).
+      Already has lazy_load + image_overlay. This flips it from
+      "wait for a click" to "start by itself, after the page is done".
+
+    Video 2 — the Aurel media slider 75700314 (9 Vimeo films).
+      a) Paints a poster on every slide (Vimeo thumbnails, hardcoded
+         below, so no oEmbed round-trip at runtime).
+      b) Holds the Vimeo player until after load. The theme's
+         pm_image_slider.js builds it at document.ready with
+         autoplay:true and no poster — that is the 15.7 MB.
+      c) Forces muted:true. Without it Chrome and Safari refuse to
+         autoplay at all, which is why the slider currently stalls on
+         a black frame. Films now start silent; viewer unmutes with
+         the player's own control.
+
+  DOES NOT TOUCH ANY THEME FILE. Survives theme updates.
+
+  TWO SWITCHES — see CONFIG at the top of the script.
+==========================================================================
+-->
+
+<style>
+/* --------------------------------------------------------------
+   SLIDER POSTERS
+   Keyed off each slide's data-src, so the two duplicate slides
+   (306247929 appears at count 1 and 4) are both covered by one rule.
+   -------------------------------------------------------------- */
+.aurel_vimeo_slide{
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #0B0F11;
+}
+.aurel_vimeo_slide[data-src="306247929"]{background-image:url("https://i.vimeocdn.com/video/745948899-c03ba5a1ee2628981f707f3be3d749632455689bf794445950951167547c58ce-d_1280?region=us")}
+.aurel_vimeo_slide[data-src="308323738"]{background-image:url("https://i.vimeocdn.com/video/748461412-f215e990b11b3256962acb98d9991cee9598926522ffa86b5d8791b6cdfaf3ce-d_1280?region=us")}
+.aurel_vimeo_slide[data-src="307510391"]{background-image:url("https://i.vimeocdn.com/video/747480472-8d41142a834451c89a760de0b171c1e7fabfef9547709f151d9e368d110490bb-d_1280?region=us")}
+.aurel_vimeo_slide[data-src="303133717"]{background-image:url("https://i.vimeocdn.com/video/742076477-edc1086f2cabd912aaf4ae222408a573ebfe0dc4d0616c65d381dea06e457165-d_1280?region=us")}
+.aurel_vimeo_slide[data-src="302891930"]{background-image:url("https://i.vimeocdn.com/video/741780681-357cc8c5caa4eb39a931b8ed52dc7efdeffcc5681d84f39810d72d0aacf53cb5-d_1280?region=us")}
+.aurel_vimeo_slide[data-src="302345276"]{background-image:url("https://i.vimeocdn.com/video/741107452-e9de1fbc819cc8fa51c97c237dcc848d97849c2a7a633fc0c40553ec02d8d017-d_1280?region=us")}
+.aurel_vimeo_slide[data-src="301370889"]{background-image:url("https://i.vimeocdn.com/video/739911878-185c803b33eae2ad75fc37c409017bd6ab0ff5e9f4f3443e23cac396cb719c18-d_1280?region=us")}
+.aurel_vimeo_slide[data-src="299710428"]{background-image:url("https://i.vimeocdn.com/video/737889889-09f10bc13f55ab7d9ae1647d02565e398a5d5d9a8e89672942a26eda62cb48c3-d_1280?region=us")}
+
+/* --------------------------------------------------------------
+   HERO WIDGET OVERLAY
+   Elementor paints .elementor-custom-embed-image-overlay over the
+   iframe. Once the film is confirmed playing we fade it away rather
+   than yanking it, so there is no flash of black.
+   -------------------------------------------------------------- */
+.elementor-widget-video .elementor-custom-embed-image-overlay{
+  transition: opacity .7s ease;
+}
+.dvp-video-live .elementor-custom-embed-image-overlay{
+  opacity: 0;
+  pointer-events: none;
+}
+/* the big centre play button is meaningless once it autoplays */
+.dvp-video-live .elementor-custom-embed-play{ display: none; }
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============================ CONFIG ============================ */
+
+  /* false = phones get posters only, no film anywhere on the page.
+     Saves a phone visitor ~15 MB and is worth roughly 10 more mobile
+     PageSpeed points. Client's call. */
+  var MOBILE_VIDEO = true;
+
+  /* Breathing room after window load before anything boots. */
+  var DELAY_MS = 600;
+
+  /* ================================================================ */
+
+  var mq = window.matchMedia;
+
+  function optedOut() {
+    if (mq && mq('(prefers-reduced-motion: reduce)').matches) return true;
+    if (!MOBILE_VIDEO && mq && mq('(max-width: 767px)').matches) return true;
+    var c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (c) {
+      if (c.saveData) return true;
+      if (/^(slow-)?2g$/.test(c.effectiveType || '')) return true;
+    }
+    return false;
+  }
+
+  var OFF = optedOut();
+
+  /* ---------------------------------------------------------------
+     PART 1 — the Vimeo gate, for the theme's media slider.
+
+     pm_image_slider.js calls `new Vimeo.Player(el, opts)` inside its
+     document.ready chain. We cannot reorder the theme's script, but we
+     can decide what `Vimeo.Player` means when it gets there.
+
+     window.Vimeo does not exist yet (player.js is in the footer), so we
+     install an accessor now and wrap Player the moment player.js
+     assigns it. Construction before the gate opens returns a stub that
+     records .on() handlers; when the gate opens we build the real
+     player and replay them.
+     --------------------------------------------------------------- */
+
+  var gateOpen = false;
+  var held = [];
+
+  function openGate() {
+    if (gateOpen) return;
+    gateOpen = true;
+    var queue = held;
+    held = [];
+    queue.forEach(function (h) { h.realise(); });
+  }
+
+  function wrapPlayer(RealPlayer) {
+    if (!RealPlayer || RealPlayer.__dvpWrapped) return RealPlayer;
+
+    function GatedPlayer(el, opts) {
+      opts = opts || {};
+      /* Autoplay is refused by every current browser unless muted.
+         The theme never sets this, which is why the slider stalls. */
+      opts.muted = true;
+      opts.autoplay = true;
+
+      /* Resolve the id to a live node now — update() wipes slide divs
+         when the visitor clicks next, and we must not build into a
+         node that has since been detached. */
+      var node = (typeof el === 'string') ? document.getElementById(el) : el;
+
+      if (gateOpen) return new RealPlayer(node || el, opts);
+      if (OFF) {
+        /* Never going to play. Hand back an inert stub so the theme's
+           .on() calls do not throw. */
+        return makeStub(null).facade;
+      }
+
+      var stub = makeStub(function () {
+        if (!node || !document.body.contains(node)) return null;
+        return new RealPlayer(node, opts);
+      });
+      held.push(stub);
+      return stub.facade;
+    }
+
+    GatedPlayer.__dvpWrapped = true;
+    /* keep anything else player.js hangs off Player */
+    try {
+      Object.keys(RealPlayer).forEach(function (k) { GatedPlayer[k] = RealPlayer[k]; });
+      GatedPlayer.prototype = RealPlayer.prototype;
+    } catch (e) {}
+    return GatedPlayer;
+  }
+
+  /* A stand-in that looks enough like a Vimeo player for the theme. */
+  function makeStub(build) {
+    var handlers = [];
+    var real = null;
+
+    var facade = {
+      on: function (name, fn) {
+        if (real) { real.on(name, fn); return facade; }
+        handlers.push([name, fn]);
+        return facade;
+      },
+      off: function () { return facade; },
+      ready: function () { return Promise.resolve(); },
+      play: function () { return Promise.resolve(); },
+      pause: function () { return Promise.resolve(); },
+      destroy: function () { real = null; handlers.length = 0; return Promise.resolve(); }
+    };
+
+    return {
+      facade: facade,
+      realise: function () {
+        if (!build) return;
+        try { real = build(); } catch (e) { return; }
+        if (!real) return;
+        handlers.forEach(function (h) {
+          try { real.on(h[0], h[1]); } catch (e) {}
+        });
+        handlers.length = 0;
+        /* Let the theme re-measure the iframe it did not know about.
+           setup('vframe') is what gives the 16:9 frame its cover sizing. */
+        try {
+          if (window.jQuery && window.aurel_sliders) {
+            window.jQuery('.aurel_slider_wrapper').each(function () {
+              var o = window.aurel_sliders[this.getAttribute('data-id')];
+              if (o && o.setup) o.setup.call(o, 'vframe');
+            });
+          }
+        } catch (e) {}
+      }
+    };
+  }
+
+  /* Catch window.Vimeo whenever player.js defines it. */
+  (function installVimeoHook() {
+    var stored = window.Vimeo;
+    if (stored && stored.Player) {
+      stored.Player = wrapPlayer(stored.Player);
+      return;
+    }
+    try {
+      Object.defineProperty(window, 'Vimeo', {
+        configurable: true,
+        enumerable: true,
+        get: function () { return stored; },
+        set: function (v) {
+          if (v && v.Player) { try { v.Player = wrapPlayer(v.Player); } catch (e) {} }
+          stored = v;
+        }
+      });
+    } catch (e) { /* very old browser: gate simply does not engage */ }
+  })();
+
+  /* ---------------------------------------------------------------
+     PART 2 — the Elementor video widget.
+     It ships an iframe with data-lazy-load and no src, plus a poster
+     overlay. We set the src ourselves once the page is idle.
+     --------------------------------------------------------------- */
+
+  function bootElementorVideos() {
+    var frames = document.querySelectorAll(
+      '.elementor-widget-video iframe[data-lazy-load]:not([src])'
+    );
+    Array.prototype.forEach.call(frames, function (f) {
+      var url = f.getAttribute('data-lazy-load');
+      if (!url) return;
+
+      /* The URL ends in a hash (…&byline=0#t=), so params go before it. */
+      var hash = '';
+      var h = url.indexOf('#');
+      if (h > -1) { hash = url.slice(h); url = url.slice(0, h); }
+      if (url.indexOf('autoplay=') === -1) url += '&autoplay=1';
+      if (url.indexOf('muted=')    === -1) url += '&muted=1';
+
+      var widget = f.closest ? f.closest('.elementor-widget-video') : null;
+
+      f.addEventListener('load', function () {
+        try {
+          f.contentWindow.postMessage(
+            JSON.stringify({ method: 'addEventListener', value: 'play' }),
+            'https://player.vimeo.com'
+          );
+        } catch (e) {}
+        /* Safety net if the play event never arrives. */
+        setTimeout(function () { if (widget) widget.classList.add('dvp-video-live'); }, 2500);
+      });
+
+      f.src = url + hash;
+    });
+  }
+
+  window.addEventListener('message', function (e) {
+    if (e.origin !== 'https://player.vimeo.com') return;
+    var d = e.data;
+    if (typeof d === 'string') { try { d = JSON.parse(d); } catch (err) { return; } }
+    if (!d || (d.event !== 'play' && d.event !== 'playing')) return;
+    var w = document.querySelectorAll('.elementor-widget-video');
+    Array.prototype.forEach.call(w, function (el) { el.classList.add('dvp-video-live'); });
+  });
+
+  /* ---------------------------------------------------------------
+     PART 3 — when to let it all go.
+     After load, after idle, and only for the blocks actually on screen.
+     Lighthouse has banked LCP and most of TBT by this point.
+     --------------------------------------------------------------- */
+
+  function start() {
+    if (OFF) return;
+
+    var go = function () {
+      bootElementorVideos();
+      openGate();
+    };
+
+    var slider = document.querySelector('.aurel_slider_wrapper');
+    if (slider && 'IntersectionObserver' in window) {
+      /* If the slider is far below the fold, wait until it is nearly in
+         view — no point streaming a wedding film nobody has scrolled to. */
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { io.disconnect(); openGate(); }
+      }, { rootMargin: '400px' });
+      io.observe(slider);
+      bootElementorVideos();
+      return;
+    }
+    go();
+  }
+
+  function schedule() {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function () { setTimeout(start, DELAY_MS); }, { timeout: 3000 });
+    } else {
+      setTimeout(start, DELAY_MS + 400);
+    }
+  }
+
+  if (document.readyState === 'complete') schedule();
+  else window.addEventListener('load', schedule);
+})();
+</script>
