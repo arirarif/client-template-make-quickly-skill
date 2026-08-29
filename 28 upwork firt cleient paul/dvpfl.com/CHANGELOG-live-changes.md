@@ -920,3 +920,67 @@ in view (`top 27`, viewport 864), but the IO callback never fired.
 On a real foreground visit this is ordinary IO-on-scroll behaviour and
 will fire. Worth one manual check: scroll to the slider and confirm the
 film starts. If it does not, the gate trigger needs revisiting.
+
+---
+
+## 2026-08-29 (evening) — portfolio slider rebuilt; hero is poster-only
+
+### 1. Hero: click to play (snippet 2596 v1.4)
+
+Added a `HERO_VIDEO` flag, default `false`, guarding the two
+`bootElementorVideos()` calls. The poster stays, Elementor's play button
+stays, the film loads only on click. Verified live:
+
+    BEFORE CLICK   heroIframeHasSrc=false   vimeoRequests=0
+    AFTER CLICK    heroIframeHasSrc=true    vimeoRequests=1
+
+Set `HERO_VIDEO = true` to restore autoplay — the deferred-boot, timeupdate
+reveal and poster preload machinery is all still there, just not invoked.
+
+### 2. Portfolio slider rebuilt — Home page, section 1c60403d
+
+**What was lost.** Diffing the live homepage against `baseline-2026-08-24`
+showed the Elementor update cost exactly one widget and nothing else:
+
+    top-level sections   6 -> 6
+    heading.default      7 -> 7      image.default    4 -> 4
+    text-editor.default  3 -> 3      button.default   2 -> 2
+    video.default        1 -> 1      html.default     1 -> 1
+    pm-media-slider      1 -> 0      <-- the only loss
+
+Confirmed inside the Elementor editor: section `1c60403d` had one column
+and zero widgets. Elementor 4.x could not parse the theme's widget and
+dropped it. Nothing moved; the page just closed up around the hole.
+
+**The fix.** A new HTML widget (`52e1bdc`) in that same column, holding a
+hand-built reel that owes nothing to the Aurel theme or to Elementor Pro —
+so the next update cannot take it away again. Aurel has no update
+available, so waiting for a compatible build was not an option.
+
+Installed through Elementor's own command API rather than drag-and-drop:
+
+    $e.run('document/elements/create', { container: column,
+      model: { elType:'widget', widgetType:'html', settings:{ html: ... } } })
+
+**It also fixes the original problem.** The theme's slider built a Vimeo
+player at `document.ready` with `autoplay:true` and no poster — that was the
+15,704 KiB and the 9 s LCP in the August audit. The rebuild ships eight
+posters and nothing else; a Vimeo iframe appears only on click.
+
+Verified on the live front end:
+
+    slides rendered          8   (all original films, correct captions)
+    iframes with a real src  0   (whole page, hero included)
+    NEXT click               -> "Alison and Jonathan (2 / 8)"
+    vimeo requests before play  0
+    play click               -> iframe created, poster hidden, film playing
+
+Details worth keeping: fixed 16:9 stage with absolutely positioned slides,
+so paging never shifts layout; leaving a slide tears its iframe down so
+audio cannot keep playing behind a slide nobody is looking at; the next
+poster is un-lazied on navigation; swipes are ignored unless clearly
+horizontal so they never fight page scroll; play targets are real buttons
+with aria-labels; all eight posters `loading="lazy"` below the fold, so a
+visitor who never scrolls there downloads none of them.
+
+**Revert:** delete widget `52e1bdc` from section `1c60403d`.
