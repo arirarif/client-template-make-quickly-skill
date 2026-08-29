@@ -1,7 +1,7 @@
 <!--
 ==========================================================================
   DVPFL HOME — BOTH VIDEOS: POSTER FIRST, AUTOPLAY AFTER LOAD
-  v1.3  |  2026-08-29
+  v1.4  |  2026-08-29
 
   DEPLOYED AT
     Elementor -> Custom Code -> "DVPFL — deferred video autoplay
@@ -15,7 +15,12 @@
       pm_image_slider   footer   offset 66405
     The hooks must be installed before player.js runs.
 
-  v1.3 ADDS (P0 of SPEED-TODO.md): fixes the LCP regression v1.0-v1.2
+  v1.4: HERO_VIDEO = false. The hero no longer autoplays - the page ships
+    the poster only. Elementor's play button is left in place, so the film
+    is one click away and costs nothing until then. Flip HERO_VIDEO back to
+    true to restore autoplay.
+
+  v1.3 ADDED (P0 of SPEED-TODO.md): fixes the LCP regression v1.0-v1.2
     caused. The hero poster is the LCP element and was fetched as a CSS
     background on an inline style attribute - invisible to the preload
     scanner, 3,800 ms of resource load delay, and ineligible for
@@ -158,6 +163,11 @@
      Saves a phone visitor ~15 MB and is worth roughly 10 more mobile
      PageSpeed points. Client's call. */
   var MOBILE_VIDEO = true;
+
+  /* false = the hero never autoplays. The poster stays, Elementor's own
+     play button stays, so a visitor can still start the film by clicking -
+     it just costs nothing on load. Set true to bring autoplay back. */
+  var HERO_VIDEO = false;
 
   /* Breathing room after window load before anything boots. */
   var DELAY_MS = 600;
@@ -494,7 +504,7 @@
     if (OFF) return;
 
     var go = function () {
-      bootElementorVideos();
+      if (HERO_VIDEO) bootElementorVideos();
       openGate();
     };
 
@@ -506,7 +516,7 @@
         if (entries[0].isIntersecting) { io.disconnect(); openGate(); }
       }, { rootMargin: '400px' });
       io.observe(slider);
-      bootElementorVideos();
+      if (HERO_VIDEO) bootElementorVideos();
       return;
     }
     go();
