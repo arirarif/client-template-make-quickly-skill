@@ -1,0 +1,346 @@
+<!--
+==========================================================================
+  DVPFL — PORTFOLIO SLIDER, REBUILT
+  v1.0  |  2026-08-29
+
+  REPLACES the theme's pm-media-slider widget (75700314) in section
+  1c60403d, which stopped rendering when Elementor went 3.20.3 -> 4.2.3.
+  The Aurel theme registers that widget against Elementor's pre-4.x API,
+  and there is no theme update coming — Appearance -> Themes shows none.
+
+  This owes nothing to the theme or to Elementor Pro. Plain HTML, CSS and
+  vanilla JS in one block, so the next Elementor update cannot take it away
+  again.
+
+  WHAT IT FIXES BEYOND THE CONTENT
+  The old slider booted a Vimeo player at document.ready with autoplay and
+  no poster — that was the 15,704 KiB and the 9s LCP in the August audit.
+  This one ships eight posters and nothing else. A Vimeo iframe is created
+  only when a visitor clicks a film, which for a portfolio is the right
+  behaviour anyway: people pick what they want to watch.
+
+  Posters are Vimeo's own thumbnails at 640w. All eight together are 359 KB,
+  but every one is loading="lazy" and this reel sits well below the fold, so
+  a visitor who never scrolls this far downloads none of them, and one who
+  does pays for a single ~45 KB image.
+
+    306247929  45,210      303133717  44,331      301370889  69,688
+    308323738  65,869      302891930  34,116      299710428  35,981
+    307510391  32,152      302345276  40,130
+
+  WHERE TO PASTE
+  Elementor -> edit Home -> section 1c60403d -> HTML widget.
+==========================================================================
+-->
+
+<div class="dvp-reel" role="region" aria-roledescription="carousel" aria-label="Wedding film portfolio">
+
+  <div class="dvp-reel__stage">
+
+    <figure class="dvp-reel__slide is-active" data-vimeo="306247929">
+      <img src="https://i.vimeocdn.com/video/745948899-c03ba5a1ee2628981f707f3be3d749632455689bf794445950951167547c58ce-d_640?region=us"
+           alt="Tamaryn &amp; Martin Emmrich wedding film" width="640" height="360" loading="lazy" decoding="async">
+      <figcaption>Tamaryn &amp; Martin Emmrich</figcaption>
+      <button class="dvp-reel__play" type="button" aria-label="Play the Tamaryn and Martin Emmrich film"></button>
+    </figure>
+
+    <figure class="dvp-reel__slide" data-vimeo="308323738">
+      <img src="https://i.vimeocdn.com/video/748461412-f215e990b11b3256962acb98d9991cee9598926522ffa86b5d8791b6cdfaf3ce-d_640?region=us"
+           alt="Alison and Jonathan wedding film" width="640" height="360" loading="lazy" decoding="async">
+      <figcaption>Alison and Jonathan</figcaption>
+      <button class="dvp-reel__play" type="button" aria-label="Play the Alison and Jonathan film"></button>
+    </figure>
+
+    <figure class="dvp-reel__slide" data-vimeo="307510391">
+      <img src="https://i.vimeocdn.com/video/747480472-8d41142a834451c89a760de0b171c1e7fabfef9547709f151d9e368d110490bb-d_640?region=us"
+           alt="Harmonious Weddings film" width="640" height="360" loading="lazy" decoding="async">
+      <figcaption>Harmonious Weddings</figcaption>
+      <button class="dvp-reel__play" type="button" aria-label="Play the Harmonious Weddings film"></button>
+    </figure>
+
+    <figure class="dvp-reel__slide" data-vimeo="303133717">
+      <img src="https://i.vimeocdn.com/video/742076477-edc1086f2cabd912aaf4ae222408a573ebfe0dc4d0616c65d381dea06e457165-d_640?region=us"
+           alt="Kendall &amp; Frank wedding film" width="640" height="360" loading="lazy" decoding="async">
+      <figcaption>Kendall &amp; Frank</figcaption>
+      <button class="dvp-reel__play" type="button" aria-label="Play the Kendall and Frank film"></button>
+    </figure>
+
+    <figure class="dvp-reel__slide" data-vimeo="302891930">
+      <img src="https://i.vimeocdn.com/video/741780681-357cc8c5caa4eb39a931b8ed52dc7efdeffcc5681d84f39810d72d0aacf53cb5-d_640?region=us"
+           alt="Kyle &amp; Rebecca Petricka wedding film" width="640" height="360" loading="lazy" decoding="async">
+      <figcaption>Kyle &amp; Rebecca Petricka</figcaption>
+      <button class="dvp-reel__play" type="button" aria-label="Play the Kyle and Rebecca Petricka film"></button>
+    </figure>
+
+    <figure class="dvp-reel__slide" data-vimeo="302345276">
+      <img src="https://i.vimeocdn.com/video/741107452-e9de1fbc819cc8fa51c97c237dcc848d97849c2a7a633fc0c40553ec02d8d017-d_640?region=us"
+           alt="Doug &amp; Ashley wedding film" width="640" height="360" loading="lazy" decoding="async">
+      <figcaption>Doug &amp; Ashley</figcaption>
+      <button class="dvp-reel__play" type="button" aria-label="Play the Doug and Ashley film"></button>
+    </figure>
+
+    <figure class="dvp-reel__slide" data-vimeo="301370889">
+      <img src="https://i.vimeocdn.com/video/739911878-185c803b33eae2ad75fc37c409017bd6ab0ff5e9f4f3443e23cac396cb719c18-d_640?region=us"
+           alt="Jessica and Kenneth Adair wedding film" width="640" height="360" loading="lazy" decoding="async">
+      <figcaption>Jessica and Kenneth Adair</figcaption>
+      <button class="dvp-reel__play" type="button" aria-label="Play the Jessica and Kenneth Adair film"></button>
+    </figure>
+
+    <figure class="dvp-reel__slide" data-vimeo="299710428">
+      <img src="https://i.vimeocdn.com/video/737889889-09f10bc13f55ab7d9ae1647d02565e398a5d5d9a8e89672942a26eda62cb48c3-d_640?region=us"
+           alt="Hannah &amp; Jared wedding film" width="640" height="360" loading="lazy" decoding="async">
+      <figcaption>Hannah &amp; Jared</figcaption>
+      <button class="dvp-reel__play" type="button" aria-label="Play the Hannah and Jared film"></button>
+    </figure>
+
+  </div>
+
+  <button class="dvp-reel__nav dvp-reel__nav--prev" type="button" aria-label="Previous film"></button>
+  <button class="dvp-reel__nav dvp-reel__nav--next" type="button" aria-label="Next film"></button>
+  <p class="dvp-reel__count" aria-live="polite"><span class="dvp-reel__at">1</span> / 8</p>
+</div>
+
+<style>
+.dvp-reel{
+  --dvp-reel-bg:   #0B0F11;
+  --dvp-reel-ink:  #fff;
+  --dvp-reel-accent: rgba(255,255,255,.92);
+
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--dvp-reel-bg);
+  overflow: hidden;
+}
+
+/* A fixed 16:9 box. The slides are absolutely positioned inside it, so the
+   section never changes height as you page through - no layout shift. */
+.dvp-reel__stage{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+@supports not (aspect-ratio: 16 / 9){
+  .dvp-reel__stage{ padding-top: 56.25%; }
+}
+
+.dvp-reel__slide{
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .45s ease;
+}
+.dvp-reel__slide.is-active{ opacity: 1; visibility: visible; }
+
+.dvp-reel__slide img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dvp-reel__slide figcaption{
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 3.5rem 1.25rem 1.1rem;
+  color: var(--dvp-reel-ink);
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-align: center;
+  background: linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+/* The play target is the whole frame, with a visible circle in the middle.
+   A real <button> so it is keyboard reachable and announced properly. */
+.dvp-reel__play{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.dvp-reel__play::before{
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 4.5rem; height: 4.5rem;
+  margin: -2.25rem 0 0 -2.25rem;
+  border: 2px solid var(--dvp-reel-accent);
+  border-radius: 50%;
+  background: rgba(0,0,0,.28);
+  transition: transform .2s ease, background .2s ease;
+}
+.dvp-reel__play::after{
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  margin: -.7rem 0 0 -.35rem;
+  border-style: solid;
+  border-width: .7rem 0 .7rem 1.15rem;
+  border-color: transparent transparent transparent var(--dvp-reel-accent);
+}
+.dvp-reel__play:hover::before,
+.dvp-reel__play:focus-visible::before{
+  transform: scale(1.09);
+  background: rgba(0,0,0,.5);
+}
+
+.dvp-reel__nav{
+  position: absolute;
+  top: 50%;
+  width: 3rem; height: 3rem;
+  margin-top: -1.5rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0,0,0,.42);
+  cursor: pointer;
+  z-index: 3;
+  transition: background .2s ease;
+}
+.dvp-reel__nav:hover,
+.dvp-reel__nav:focus-visible{ background: rgba(0,0,0,.72); }
+.dvp-reel__nav::before{
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: .8rem; height: .8rem;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+.dvp-reel__nav--prev{ left: .85rem; }
+.dvp-reel__nav--next{ right: .85rem; }
+.dvp-reel__nav--prev::before{ transform: translate(-30%,-50%) rotate(-135deg); }
+.dvp-reel__nav--next::before{ transform: translate(-70%,-50%) rotate(45deg); }
+
+.dvp-reel__count{
+  position: absolute;
+  right: 1rem; bottom: .7rem;
+  margin: 0;
+  color: rgba(255,255,255,.85);
+  font-size: .85rem;
+  letter-spacing: .08em;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.dvp-reel__slide iframe{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 600px){
+  .dvp-reel__play::before{ width: 3.4rem; height: 3.4rem; margin: -1.7rem 0 0 -1.7rem; }
+  .dvp-reel__nav{ width: 2.4rem; height: 2.4rem; margin-top: -1.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .dvp-reel__slide{ transition: none; }
+  .dvp-reel__play::before{ transition: none; }
+}
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  var reel = document.currentScript
+    ? document.currentScript.parentElement.querySelector('.dvp-reel')
+    : null;
+  if (!reel) reel = document.querySelector('.dvp-reel');
+  if (!reel || reel.dataset.dvpReady) return;
+  reel.dataset.dvpReady = '1';
+
+  var slides = [].slice.call(reel.querySelectorAll('.dvp-reel__slide'));
+  var at = reel.querySelector('.dvp-reel__at');
+  var i = 0;
+
+  function show(next) {
+    if (next < 0) next = slides.length - 1;
+    if (next >= slides.length) next = 0;
+    if (next === i) return;
+
+    /* Leaving a slide tears its iframe down. Otherwise a film keeps playing,
+       and its audio keeps going, behind a slide nobody is looking at. */
+    var frame = slides[i].querySelector('iframe');
+    if (frame) {
+      frame.remove();
+      var img = slides[i].querySelector('img');
+      var btn = slides[i].querySelector('.dvp-reel__play');
+      if (img) img.hidden = false;
+      if (btn) btn.hidden = false;
+    }
+
+    slides[i].classList.remove('is-active');
+    i = next;
+    slides[i].classList.add('is-active');
+
+    /* The next poster is usually lazy; nudge it so it is ready on arrival. */
+    var nxt = slides[(i + 1) % slides.length].querySelector('img');
+    if (nxt && nxt.loading === 'lazy') nxt.loading = 'eager';
+
+    if (at) at.textContent = String(i + 1);
+  }
+
+  function play(slide) {
+    if (slide.querySelector('iframe')) return;
+    var id = slide.getAttribute('data-vimeo');
+    if (!id) return;
+
+    var f = document.createElement('iframe');
+    /* Sound on: the visitor asked for this one by clicking it. */
+    f.src = 'https://player.vimeo.com/video/' + id +
+            '?autoplay=1&playsinline=1&title=0&byline=0&portrait=0&dnt=1';
+    f.title = slide.querySelector('figcaption').textContent.trim() +
+              ' — Digital Video Productions';
+    f.allow = 'autoplay; fullscreen; picture-in-picture';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.setAttribute('allowfullscreen', '');
+
+    var img = slide.querySelector('img');
+    var btn = slide.querySelector('.dvp-reel__play');
+    if (img) img.hidden = true;
+    if (btn) btn.hidden = true;
+    slide.appendChild(f);
+  }
+
+  reel.addEventListener('click', function (e) {
+    var p = e.target.closest('.dvp-reel__play');
+    if (p) { play(p.closest('.dvp-reel__slide')); return; }
+    if (e.target.closest('.dvp-reel__nav--prev')) show(i - 1);
+    if (e.target.closest('.dvp-reel__nav--next')) show(i + 1);
+  });
+
+  reel.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft')  { show(i - 1); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { show(i + 1); e.preventDefault(); }
+  });
+
+  /* Touch swipe. Ignores mostly-vertical drags so it never fights the page
+     scroll, which is the usual way hand-rolled sliders annoy people. */
+  var x0 = null, y0 = null;
+  reel.addEventListener('touchstart', function (e) {
+    x0 = e.changedTouches[0].clientX;
+    y0 = e.changedTouches[0].clientY;
+  }, { passive: true });
+  reel.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    var dy = e.changedTouches[0].clientY - y0;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      show(dx < 0 ? i + 1 : i - 1);
+    }
+    x0 = y0 = null;
+  }, { passive: true });
+})();
+</script>
