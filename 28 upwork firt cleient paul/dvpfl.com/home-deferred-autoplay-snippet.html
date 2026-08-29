@@ -1,16 +1,29 @@
 <!--
 ==========================================================================
   DVPFL HOME — BOTH VIDEOS: POSTER FIRST, AUTOPLAY AFTER LOAD
-  v1.0  |  2026-08-29
+  v1.1  |  2026-08-29
 
-  WHERE TO PASTE
-    Elementor -> edit the Home page -> add an "HTML" widget.
-    Put it ANYWHERE in the page body. It must render before the footer
-    scripts, which it always does. Verified against the live page:
-      jQuery            head     offset 19116
-      player.js         footer   offset 58585
-      pm_image_slider   footer   offset 58722
-    This block sits in the body, so it installs its hooks first.
+  DEPLOYED AT
+    Elementor -> Custom Code -> "DVPFL — deferred video autoplay
+    (poster until load)", post id 2596.
+    Location <head>, priority 1, condition Include / Singular / Front Page.
+    To revert: trash that one snippet. No page or theme data is touched.
+
+    <head> matters. Verified against the live page:
+      snippet           head     offset 20395   (</head> at 29481)
+      player.js         footer   offset 66268
+      pm_image_slider   footer   offset 66405
+    The hooks must be installed before player.js runs.
+
+  v1.1 FIXES TWO THINGS v1.0 GOT WRONG, both caught by testing live:
+    1. The gate never engaged. player.js does
+           window.Vimeo = window.Vimeo || {};
+           Vimeo.Player = Player;
+       so a setter on window.Vimeo is handed an EMPTY object and finds no
+       .Player to wrap. Now we hook Player on the namespace object too.
+    2. The hero faded its poster on a blind 2.5 s timer and beat Vimeo to
+       first paint — poster, then black box. Now it waits for a real
+       `timeupdate`, with an 8 s backstop.
 
   WHAT IT DOES
     Video 1 — Elementor video widget 25f2262 (Vimeo 248909461).
@@ -159,6 +172,9 @@
     }
 
     GatedPlayer.__dvpWrapped = true;
+    /* the un-gated constructor, for callers that must not be held —
+       the hero widget attaches to its own iframe through this */
+    GatedPlayer.__dvpRaw = RealPlayer;
     /* keep anything else player.js hangs off Player */
     try {
       Object.keys(RealPlayer).forEach(function (k) { GatedPlayer[k] = RealPlayer[k]; });
@@ -209,25 +225,52 @@
     };
   }
 
-  /* Catch window.Vimeo whenever player.js defines it. */
+  /* Catch window.Vimeo whenever player.js defines it.
+
+     player.js does this, in two steps:
+         window.Vimeo = window.Vimeo || {};
+         Vimeo.Player = Player;
+     so a setter on window.Vimeo alone is handed an EMPTY object and sees
+     no .Player to wrap — v1.0's bug. We have to hook Player on the
+     namespace object too, and wait for it to be assigned there. */
+
+  function hookNamespace(ns) {
+    if (!ns || ns.__dvpNsHooked) return ns;
+    var current = ns.Player;
+
+    if (current) {                       /* already assigned — wrap now */
+      try { ns.Player = wrapPlayer(current); } catch (e) {}
+      return ns;
+    }
+    try {
+      Object.defineProperty(ns, 'Player', {
+        configurable: true,
+        enumerable: true,
+        get: function () { return current; },
+        set: function (p) { current = wrapPlayer(p); }
+      });
+      Object.defineProperty(ns, '__dvpNsHooked', { value: true, enumerable: false });
+    } catch (e) {}
+    return ns;
+  }
+
   (function installVimeoHook() {
     var stored = window.Vimeo;
-    if (stored && stored.Player) {
-      stored.Player = wrapPlayer(stored.Player);
-      return;
-    }
+    if (stored) { hookNamespace(stored); return; }
     try {
       Object.defineProperty(window, 'Vimeo', {
         configurable: true,
         enumerable: true,
         get: function () { return stored; },
-        set: function (v) {
-          if (v && v.Player) { try { v.Player = wrapPlayer(v.Player); } catch (e) {} }
-          stored = v;
-        }
+        set: function (v) { stored = hookNamespace(v); }
       });
     } catch (e) { /* very old browser: gate simply does not engage */ }
   })();
+
+  function rawPlayerCtor() {
+    var P = window.Vimeo && window.Vimeo.Player;
+    return P ? (P.__dvpRaw || P) : null;
+  }
 
   /* ---------------------------------------------------------------
      PART 2 — the Elementor video widget.
@@ -252,28 +295,62 @@
 
       var widget = f.closest ? f.closest('.elementor-widget-video') : null;
 
-      f.addEventListener('load', function () {
-        try {
-          f.contentWindow.postMessage(
-            JSON.stringify({ method: 'addEventListener', value: 'play' }),
-            'https://player.vimeo.com'
-          );
-        } catch (e) {}
-        /* Safety net if the play event never arrives. */
-        setTimeout(function () { if (widget) widget.classList.add('dvp-video-live'); }, 2500);
-      });
-
       f.src = url + hash;
+      watchHero(f, widget);
     });
+  }
+
+  /* Hold the poster until the film is genuinely rendering.
+
+     v1.0 faded it on a blind 2.5 s timer, which on a real connection beat
+     Vimeo to first paint and left a black rectangle where the poster had
+     been. `timeupdate` is the honest signal: it fires only once playback
+     has actually progressed. */
+  var heroReveals = [];
+
+  function watchHero(f, widget) {
+    var done = false;
+    var reveal = function () {
+      if (done) return;
+      done = true;
+      if (widget) widget.classList.add('dvp-video-live');
+    };
+    heroReveals.push(reveal);
+
+    /* player.js is already on the page for the slider, so the SDK path is
+       free. Use the RAW constructor - the hero must not sit behind the
+       slider's gate. */
+    var Raw = rawPlayerCtor();
+    if (Raw) {
+      try {
+        var p = new Raw(f);
+        p.on('timeupdate', reveal);
+        p.on('playing', reveal);
+      } catch (e) {}
+    }
+
+    /* Same thing over postMessage, for when the SDK is absent. */
+    f.addEventListener('load', function () {
+      try {
+        f.contentWindow.postMessage(
+          JSON.stringify({ method: 'addEventListener', value: 'timeupdate' }),
+          'https://player.vimeo.com'
+        );
+      } catch (e) {}
+    });
+
+    /* Last resort, deliberately generous: a poster that never lifts is a
+       far smaller problem than a black box. */
+    setTimeout(reveal, 8000);
   }
 
   window.addEventListener('message', function (e) {
     if (e.origin !== 'https://player.vimeo.com') return;
     var d = e.data;
     if (typeof d === 'string') { try { d = JSON.parse(d); } catch (err) { return; } }
-    if (!d || (d.event !== 'play' && d.event !== 'playing')) return;
-    var w = document.querySelectorAll('.elementor-widget-video');
-    Array.prototype.forEach.call(w, function (el) { el.classList.add('dvp-video-live'); });
+    if (!d) return;
+    if (d.event !== 'timeupdate' && d.event !== 'play' && d.event !== 'playing') return;
+    heroReveals.forEach(function (r) { r(); });
   });
 
   /* ---------------------------------------------------------------
