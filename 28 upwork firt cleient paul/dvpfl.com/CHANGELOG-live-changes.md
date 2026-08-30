@@ -1190,3 +1190,46 @@ Copy source of record: `thin-pages-copy.json` in this folder.
 
 **Audit issue #8 is now fully DONE** (H1s were finished yesterday).
 Remaining open from the Top 10: only #4, the dead blog — needs Paul.
+
+---
+
+## 2026-08-30 (night) — Accessibility 100, Agentic 3/3; Tave form made lazy
+
+### Scores from the client's 18:11 PSI run
+
+| Category | Was | Now |
+|---|---|---|
+| Accessibility | 84 | **100** |
+| Agentic Browsing | 1/3 | **3/3** |
+| SEO | 92 | 92 |
+| Best Practices | 73 | 73 |
+| Performance | — | run errored again (NO_LCP + five audits "Error!") |
+
+The a11y pass and llms.txt landed exactly as designed. The NO_LCP mobile
+runs remain a PSI-side trace failure pattern (five unrelated audits error
+alongside it); desktop runs at the same timestamps complete normally.
+
+### The report's real finding: the Tave contact iframe
+
+Third-party table showed, on the HOMEPAGE, for a footer form nobody has
+scrolled to: recaptcha__en.js 1,034 KiB + 973 ms main thread, plus 690 KiB
+of workspace.vsco.co chunks. ~1.7 MB and ~1.75 s of main thread inside the
+measurement window.
+
+**Fix:** rewrote HTML widget `17ccd96` on the home page (via `$e`) to a
+lazy loader: a placeholder div, and an IntersectionObserver (600px margin,
+plus a first-pointerdown fallback) that injects the identical iframe and
+the identical iframeResizer script (same version, same integrity hash) only
+when the visitor approaches the footer. Original widget content preserved
+verbatim in this entry's git commit for rollback.
+
+Verified live: before scroll — no iframe, no vsco/recaptcha requests;
+after scroll — iframe created at 913px height, resizer active, form works.
+The contact page's own eager embed is untouched — there the form IS the
+content.
+
+### RUCSS
+
+`/wp-content/cache/used-css/` now returns 200 — Remove Unused CSS finished
+generating (it needed the extra time). Cache cleared + preloaded so it
+bakes into served pages.
