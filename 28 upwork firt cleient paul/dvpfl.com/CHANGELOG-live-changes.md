@@ -1088,3 +1088,74 @@ site's location keywords. One click to change in Elementor.
 - **#4 blog dead since June 2022.** Ten posts, none newer. Needs writing.
 - **#8 thin pages.** 13 of 17 pages under 140 words; the service pages sit
   at 84-94 words each. Needs copy, not code.
+
+---
+
+## 2026-08-30 (later) — cache: permissions ruled out, WP Rocket installed
+
+### The permissions theory was WRONG
+
+I had logged "wp-content/cache permissions" as the blocker. Site Health says
+otherwise:
+
+    The main WordPress directory   Writable
+    The wp-content directory       Writable
+    The uploads directory          Writable
+    The plugins directory          Writable
+    The themes directory           Writable
+
+And WP Rocket has since created, on this same host:
+
+    /wp-content/cache/wp-rocket/      200
+    /wp-content/cache/min/            200
+    /wp-content/cache/busting/        200
+    /wp-content/cache/critical-css/   200
+    /wp-content/cache/background-css/ 200
+
+Filesystem writes work fine. The earlier diagnosis was wrong and is
+retracted.
+
+### What was actually wrong — and it was mine
+
+Deactivating WP Super Cache during the failed WP Fastest Cache swap dropped
+its `WP_CACHE` constant and `advanced-cache.php` drop-in. Reactivating the
+plugin did not restore them, and its Easy tab had silently reset to
+`wp_cache_easy_on = 0`. So from the swap attempt until now **the site had no
+page caching at all** — no WP Super Cache footer stamp on any request, and
+the `Link: rel=shortlink` header present, which only appears on a
+dynamically generated page.
+
+That also explains yesterday's "purge does nothing": the cache being purged
+was not the cache being served.
+
+### WP Rocket 3.23.2.2 — installed by the client, now live
+
+WP Super Cache and WP Fastest Cache both deactivated; only WP Rocket active.
+Licence reads Infinite, expiry 2076, so nothing is gated.
+
+Enabled: Minify CSS, Minify JS (both were already on), **Optimize CSS
+delivery**, **Load JavaScript deferred**. Cleared and preloaded.
+
+Measured after:
+
+| | before | after |
+|---|---|---|
+| TTFB | 1.55–2.49 s | **0.98–1.40 s** |
+| Minified CSS served | none | **15 files from /cache/min/** |
+| Rocket cache stamp | absent | present on every plain-URL fetch |
+
+Site integrity confirmed on the cached page: call button, portfolio reel
+(8 slides), hero snippet, viewport fix all present; **zero eager Vimeo
+iframes**.
+
+### Not finished
+
+- **Remove Unused CSS has not generated yet** — `/wp-content/cache/used-css/`
+  still 404s. It runs asynchronously and needs more time, or a manual
+  trigger from the WP Rocket dashboard.
+- **`defer` is not appearing** on any script tag despite the setting being
+  saved ON. Worth checking after the RUCSS pass completes.
+- Stylesheet count is still 19. WP Rocket 3.x dropped CSS *combining* in
+  favour of Remove Unused CSS, so the count will stay until RUCSS lands.
+
+Re-measure with 3 PSI runs and take the median once used-css exists.
