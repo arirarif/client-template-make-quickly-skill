@@ -1,0 +1,117 @@
+<!--
+==========================================================================
+  DVPFL — FLOATING CALL + EMAIL BUTTON
+  v1.0  |  2026-08-30
+
+  WHY THIS EXISTS
+  Chaty was deactivated on 2026-08-29 as part of the speed work. It was
+  carrying the site's only tap-to-call — measured on all 17 pages — so
+  deactivating it left every page except /contact-us/ with no way to phone
+  or email at all. On a wedding videography site, where couples ring you,
+  that is a lead hole, not a cosmetic issue.
+
+  It also happens to be Issue #7 from the August audit:
+  "No tel: link and no email link on the homepage. Wedding leads call/text.
+   The floating CALL US NOW!!! widget is the only tap-to-call."
+
+  This replaces the widget without the plugin. Chaty shipped a render-
+  blocking stylesheet plus a footer script; this is inline HTML, CSS and a
+  single anchor — no extra request at all, and a real <a href="tel:"> that
+  search engines and screen readers understand, which the old widget's
+  javascript:void(0) markup did not.
+
+  Numbers are the ones the old widget used and the contact page still
+  shows: tel:+19418940980 and paul@dvpfl.com.
+
+  DEPLOY
+  Elementor -> Custom Code -> location <body> - End, condition Entire Site.
+  Keep it separate from snippet 2596, which is front-page-only and holds
+  the homepage poster work.
+==========================================================================
+-->
+
+<div class="dvp-contact" role="complementary" aria-label="Contact Digital Video Productions">
+  <a class="dvp-contact__btn dvp-contact__btn--call"
+     href="tel:+19418940980"
+     aria-label="Call Digital Video Productions on 941 894 0980">
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/>
+    </svg>
+    <span class="dvp-contact__label">Call us</span>
+  </a>
+
+  <a class="dvp-contact__btn dvp-contact__btn--mail"
+     href="mailto:paul@dvpfl.com"
+     aria-label="Email Digital Video Productions at paul@dvpfl.com">
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.2-8 4.8-8-4.8V6l8 4.8L20 6v2.2z"/>
+    </svg>
+    <span class="dvp-contact__label">Email</span>
+  </a>
+</div>
+
+<style>
+.dvp-contact{
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.dvp-contact__btn{
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  height: 3.25rem;
+  padding: 0 1.1rem 0 .95rem;
+  border-radius: 2rem;
+  color: #fff;
+  text-decoration: none;
+  font: 600 .95rem/1 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  box-shadow: 0 3px 14px rgba(0,0,0,.28);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.dvp-contact__btn--call{ background: #25A55F; }
+.dvp-contact__btn--mail{ background: #2A2F36; }
+
+.dvp-contact__btn:hover,
+.dvp-contact__btn:focus-visible{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.36);
+  color: #fff;
+}
+.dvp-contact__btn:focus-visible{ outline: 3px solid #fff; outline-offset: 2px; }
+
+.dvp-contact__btn svg{ flex: none; }
+
+/* On phones the label is dropped and the buttons become circles - the
+   thumb target stays 3.25rem, comfortably above the 44px minimum. */
+@media (max-width: 600px){
+  .dvp-contact__btn{
+    width: 3.25rem;
+    padding: 0;
+    justify-content: center;
+  }
+  .dvp-contact__label{
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* Printing a fixed floating button wastes ink and covers content. */
+@media print{ .dvp-contact{ display: none; } }
+
+@media (prefers-reduced-motion: reduce){
+  .dvp-contact__btn{ transition: none; }
+}
+</style>
