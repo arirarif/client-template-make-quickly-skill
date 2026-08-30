@@ -1280,3 +1280,47 @@ Tave-lazy and reCAPTCHA work: the main thread is now essentially idle.
 
 The `?dvpdebug=off` kill-switches stay in both snippets — they cost nothing
 and make the next bisect a one-parameter job.
+
+---
+
+## 2026-08-31 (early) — Perfmatters live: bloat off, 9 unused assets off the homepage
+
+Client installed FlyingPress + Perfmatters. **FlyingPress left inactive** —
+it duplicates WP Rocket and two cache plugins can never run together.
+Perfmatters activated: it does not cache, so it pairs cleanly with Rocket.
+
+### General options enabled (each verified persisted after reload)
+
+Disable Emojis · Dashicons · Embeds · **XML-RPC** (security win — the
+pingback endpoint was exposed) · Remove RSD link · Hide WP version ·
+Remove shortlink · Disable self-pingbacks · Remove REST API links.
+Deliberately skipped: jQuery Migrate removal (old theme scripts), RSS
+(blog exists), and everything overlapping Rocket (lazy-load, fonts,
+preload, minify).
+
+### Script Manager — the child-theme-free dequeue we needed
+
+Enabled `perfmatters_tools[script_manager]`, then on the homepage
+(current-URL scope only, post 14) disabled nine assets the page never
+uses:
+
+    css owl-carousel        css photoswipe        css photoswipe-skin
+    js  owl-carousel        js  photoswipe        js  photoswipe-ui
+    js  slick-slider        js  jquery-event-swipe   js mousewheel_js
+
+Kept on purpose: fullscreen_js (header toggle uses it), parallax, kube /
+theme / responsive / custom / aurel-elements (core styling).
+
+Verified logged-out: all nine gone from the HTML, scripts 26 → 14,
+stylesheets → 17, zero JS errors, hero + reel + call button all intact,
+page visually identical.
+
+### Measured after (local lighthouse@12, cached URLs)
+
+    MOBILE  61 · FCP 4.2s · LCP 7.3s · TBT 0ms · SI 7.6s · CLS 0
+    DESKTOP 61 · FCP 2.6s · LCP 4.1s · TBT 0ms · SI 4.3s
+
+Both platforms now sit at ~60 with a flat-zero main thread. The remaining
+gap to 90 is not plugins: it is the host's 1.5-2.5s TTFB and the theme's
+own core CSS. Those are a hosting conversation and a theme conversation,
+for Paul.
