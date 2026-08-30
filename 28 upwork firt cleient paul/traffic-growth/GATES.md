@@ -45,3 +45,23 @@ the real domain before verification — the check below is what actually ran.)
 - research-channels.json — 6 channel-specialist reports + 5 critic gaps (353K tokens of agent research, web-verified 2026 platform facts)
 - research-site-crawls.json — page-by-page crawls of all 39 live pages across the 3 sites
 - Model: ../website-audits/Paul-Ayoub-Website-Audit-Report.html
+
+## 2026-08-30 restructure (user request mid-delivery)
+User: 6-month horizon only; individual plan per website; hub file = index.
+- Paul-Ayoub-Traffic-Growth-Plan.html rewritten as the index/overview (cards ->
+  three plans, honest timeline, buyers table, month-6 targets, cost). index.html
+  added as redirect to it.
+- New: Express-Growth-Plan.html (16 tasks), BNB-Growth-Plan.html (15),
+  DVPFL-Growth-Plan.html (16). Each: sticky nav, collapsible month phases,
+  checkbox checklist with localStorage progress (own key), per-phase progress
+  bars, "n / N done" pill.
+- VERIFIED: python tag-balance + unique data-id check all 4 files OK;
+  Playwright on localhost:8931 — Express: 16 boxes, pill 0->2->0 on tick/untick,
+  phase 2/7, bar 28.57%, done strikethrough class, localStorage
+  paul-growth-express-v1 persisted; DVPFL 16 boxes pill "0 / 16 done"; BNB 15;
+  hub a.doc links = the three plan files; no raw U+FFFD rendered.
+- Artifacts: hub republished SAME url 87a8eb16 (links now point at plan
+  artifacts, target=_blank); NEW express 8bcc6ba7-0ba6-4df2-8cd4-37a5aa810cfa,
+  bnb 625f434e-5e68-410f-a5ae-4a8579e32161, dvpfl 1e1f5b3b-754f-4395-b2ff-614089b5e53a.
+  Artifact JS confirmed running (pill computed "0 / 16 done" in viewer).
+- website-audits/index.html: growth card renamed overview + 3 per-site cards added.

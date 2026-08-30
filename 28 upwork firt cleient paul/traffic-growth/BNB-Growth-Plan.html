@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BNB Photos — 6-Month Growth Plan</title>
+<style>
+:root{
+  --bg:#f5f7fb; --card:#ffffff; --ink:#0f172a; --soft:#334155; --mut:#64748b;
+  --line:#e2e8f0; --blue:#1d4ed8; --blue-bg:#eef2f7;
+  --ok-bg:#dcfce7; --ok:#166534; --warn-bg:#fef3c7; --warn:#92400e;
+  --navbg:rgba(245,247,251,.92);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1420; --card:#161d2d; --ink:#e6eaf2; --soft:#b7c0cf; --mut:#8a94a6;
+    --line:#273349; --blue:#7aa2ff; --blue-bg:#1b2740;
+    --ok-bg:#143323; --ok:#7fd6a2; --warn-bg:#33290f; --warn:#e2b765;
+    --navbg:rgba(15,20,32,.92);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1420; --card:#161d2d; --ink:#e6eaf2; --soft:#b7c0cf; --mut:#8a94a6;
+  --line:#273349; --blue:#7aa2ff; --blue-bg:#1b2740;
+  --ok-bg:#143323; --ok:#7fd6a2; --warn-bg:#33290f; --warn:#e2b765;
+  --navbg:rgba(15,20,32,.92);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
+.wrap{max-width:920px;margin:0 auto;padding:1.6rem 1.3rem 4rem}
+
+/* ---------- sticky nav ---------- */
+nav.top{
+  position:sticky;top:0;z-index:50;background:var(--navbg);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);margin:0 -1.3rem;padding:.55rem 1.3rem;
+  display:flex;gap:.35rem;align-items:center;flex-wrap:wrap;
+}
+nav.top a{
+  color:var(--soft);text-decoration:none;font-size:.82rem;font-weight:600;
+  padding:.28rem .6rem;border-radius:99px;white-space:nowrap;
+}
+nav.top a:hover,nav.top a:focus-visible{background:var(--blue-bg);color:var(--blue);outline:none}
+#navprog{
+  margin-left:auto;font-size:.8rem;font-weight:700;color:var(--blue);
+  background:var(--blue-bg);padding:.28rem .7rem;border-radius:99px;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+
+section{scroll-margin-top:3.6rem}
+h1{font-size:clamp(1.7rem,4.5vw,2.4rem);line-height:1.15;margin:1.4rem 0 .5rem;text-wrap:balance}
+h2{font-size:1.35rem;margin:0;text-wrap:balance}
+.sitehead{margin:2.6rem 0 .3rem;padding-top:1.4rem;border-top:2px solid var(--line);display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.sitehead h2{font-size:1.5rem}
+.sitehead .dom{color:var(--mut);font-size:.92rem;font-weight:600}
+h3{font-size:1.05rem;margin:1.3rem 0 .4rem}
+p{max-width:72ch;margin:.5rem 0;color:var(--soft)}
+p b,li b,summary b{color:var(--ink)}
+.meta{color:var(--mut);font-size:.92rem;margin-bottom:.2rem}
+.lede{font-size:1.06rem;color:var(--soft);max-width:70ch}
+
+/* ---------- chips ---------- */
+.chip{display:inline-block;font-size:.7rem;font-weight:700;padding:.13rem .55rem;border-radius:99px;vertical-align:2px;white-space:nowrap;letter-spacing:.03em}
+.chip.hi{background:var(--ok-bg);color:var(--ok)}
+.chip.md{background:var(--blue-bg);color:var(--blue)}
+.chip.site{background:var(--blue-bg);color:var(--blue)}
+.chip.free{background:var(--ok-bg);color:var(--ok)}
+
+/* ---------- phase blocks (collapsible) ---------- */
+details.phase{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  margin:1.1rem 0;overflow:hidden;
+}
+details.phase>summary{
+  cursor:pointer;list-style:none;padding:1rem 1.2rem;display:flex;flex-wrap:wrap;
+  gap:.4rem 1rem;align-items:center;user-select:none;
+}
+details.phase>summary::-webkit-details-marker{display:none}
+details.phase>summary::after{
+  content:"▾";margin-left:auto;color:var(--mut);transition:transform .18s ease;
+}
+details.phase:not([open])>summary::after{transform:rotate(-90deg)}
+details.phase summary h2{font-size:1.12rem}
+details.phase .when{color:var(--mut);font-size:.88rem;font-weight:600}
+details.phase .inner{padding:0 1.2rem 1.1rem}
+.pbar{height:6px;background:var(--line);border-radius:99px;overflow:hidden;flex-basis:100%;margin-top:.5rem}
+.pbar i{display:block;height:100%;width:0%;background:var(--blue);border-radius:99px;transition:width .25s ease}
+.pcount{font-size:.8rem;color:var(--mut);font-variant-numeric:tabular-nums;font-weight:700}
+
+/* ---------- task checklist ---------- */
+ol.tasks{list-style:none;padding:0;margin:.6rem 0;max-width:78ch}
+ol.tasks>li{
+  margin:.65rem 0;padding:.7rem .9rem .7rem .8rem;background:var(--bg);
+  border:1px solid var(--line);border-radius:8px;display:grid;
+  grid-template-columns:auto 1fr;gap:.25rem .7rem;align-items:start;
+}
+ol.tasks .cb{
+  width:1.25rem;height:1.25rem;margin-top:.2rem;accent-color:var(--blue);cursor:pointer;grid-row:1/span 2;
+}
+ol.tasks .tt{color:var(--soft)}
+ol.tasks li.done .tt{opacity:.55;text-decoration:line-through}
+ol.tasks li.done .measured{opacity:.45}
+ol.tasks .measured{grid-column:2;display:block;font-size:.85rem;color:var(--mut)}
+ol.tasks .measured::before{content:"Measured: ";font-weight:700;color:var(--blue)}
+
+/* ---------- tables / callouts ---------- */
+.tblwrap{overflow-x:auto;margin:.8rem 0}
+table{border-collapse:collapse;width:100%;min-width:520px;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:.93rem}
+th{text-align:left;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);padding:.55rem .8rem;border-bottom:2px solid var(--line)}
+td{padding:.55rem .8rem;border-bottom:1px solid var(--line);vertical-align:top;color:var(--soft)}
+td:first-child{color:var(--ink)}
+tr:last-child td{border-bottom:0}
+ul{max-width:74ch;color:var(--soft)}
+li{margin:.3rem 0}
+.callout{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:8px;padding:1rem 1.2rem;margin:1.2rem 0;max-width:78ch}
+.callout.warn{border-left-color:var(--warn)}
+.kpi{font-variant-numeric:tabular-nums}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--mut);font-size:.87rem}
+a{color:var(--blue)}
+a:focus-visible,.cb:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.resetline{font-size:.82rem;color:var(--mut);margin-top:1.5rem}
+.resetline button{font:inherit;color:var(--blue);background:none;border:0;cursor:pointer;text-decoration:underline;padding:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="top" aria-label="Sections">
+  <a href="#top">Overview</a>
+  <a href="#m1">Month 1</a>
+  <a href="#m23">Months 2–3</a>
+  <a href="#m36">Months 3–6</a>
+  <a href="#kpi">Targets</a>
+  <span id="navprog">0 / 0 done</span>
+</nav>
+
+<section id="top">
+<p class="meta" style="margin-top:1.4rem">Prepared for Paul Ayoub · September 2026 · bnbphotos.com · part of the three-site growth roadmap</p>
+<h1>BNB Photos: the first 6 months</h1>
+<p class="lede">This plan covers <b>bnbphotos.com only</b> — its buyer is Airbnb hosts &amp; property managers, and they find
+services this way: <i>Host Facebook groups → Google → Airbnb's own Services marketplace → PM word-of-mouth</i>. Every task below comes from a page-by-page crawl of the live
+site plus channel research for this audience — nothing generic.
+<b>Tick the boxes as work completes — this page remembers your progress.</b></p>
+
+<div class="callout warn">
+<h3>The honest timeline — read this first</h3>
+<div class="tblwrap"><table>
+<tr><th>When</th><th>What you can expect</th></tr>
+<tr><td>Weeks 1–2</td><td>Setup visible: Google Business Profiles live, review links working, measurement in place.</td></tr>
+<tr><td>Weeks 4–8</td><td>First map-pack visibility and Google-Maps calls; first new reviews arriving.</td></tr>
+<tr><td><b>Months 3–6</b></td><td>Organic search lift from the new pages. This is the standard SEO window — anyone promising faster is guessing. By month 6 each site should have measurable calls, leads and rankings it did not have at month 0.</td></tr>
+</table></div>
+<p><b>The condition:</b> results only compound if the monthly rhythm inside each site's plan
+actually runs every month. One-time bursts fade. What compounds past month 6 is the same
+engine continuing — no new plan needed.</p>
+</div>
+</section>
+
+<section>
+<div class="sitehead"><span class="chip site">BNB</span><h2>BNB Photos</h2><span class="dom">bnbphotos.com · sells to Airbnb hosts &amp; property managers</span></div>
+<p><b>Strategy in one line:</b> hosts hang out in Facebook groups and on Airbnb itself — be
+present in both, win “airbnb photographer + [city]” with real city pages, and land one or two
+property-management contracts, each worth dozens of hosts. Snowbird prep season (Sep–Nov) is
+this site's big window — it starts immediately, so BNB's outreach comes first.</p>
+
+<details class="phase" open id="m1">
+<summary><h2>Month 1 — Foundation &amp; quick wins</h2> <span class="when">~6 hours</span> <span class="chip free">ALL FREE</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="bnb-1"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Replace the home-sale copy block on the homepage.</b></span>
+<span class="measured">the H2 “Top-Rated Real Estate Photography… attract more buyers and faster offers” is house-sale copy on a vacation-rental site — wrong audience, verbatim on the live page.</span></li>
+<li data-id="bnb-2"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Make the footer's “a division of Express Real Estate Photos” an actual link</b>, and get the link back from Express.</span></li>
+<li data-id="bnb-3"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Create the BNB Google Business Profile</b> — service-area business, hidden address, same five-city coverage. Category: <i>Photographer</i>. Link it from footer + contact page with a “Review us on Google” short-link.</span>
+<span class="measured">zero Google-profile links on any of the site's 13 pages.</span></li>
+<li data-id="bnb-4"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Start the host review engine:</b> ask when their listing goes live with the new photos — that is the moment hosts are happiest. Template it once.</span></li>
+<li data-id="bnb-5"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Tier-1 citations, one clean NAP:</b> Apple Business Connect, Bing Places, Yelp, Nextdoor, Foursquare.</span></li>
+<li data-id="bnb-6"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>List BNB on Airbnb's own Services marketplace</b> (Photography category — verified live in 2026, free to list, 15% per-booking fee). <span class="chip hi">HIGH</span></span>
+<span class="measured">a city-level photographer directory inside the platform every host already uses; BNB is absent from it.</span></li>
+</ol>
+</div>
+</details>
+
+<details class="phase" open id="m23">
+<summary><h2>Months 2–3 — Pages that catch host searches</h2> <span class="when">the main build</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="bnb-7"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Create 4 city landing pages</b> — Sarasota, North Port, Englewood, Nokomis/Siesta Key — mirroring the existing service-page template. <span class="chip hi">HIGH</span></span>
+<span class="measured">these cities are already declared in the site's schema on all 13 pages, but have zero actual pages — schema promises what the site doesn't deliver.</span></li>
+<li data-id="bnb-8"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Build a /portfolio/ page with before/after pairs</b> and, where a host shares it, the booking-lift story. <span class="chip hi">HIGH</span></span>
+<span class="measured">homepage says “View Our Work” — there is no portfolio URL in the entire sitemap.</span></li>
+<li data-id="bnb-9"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Create a /pricing/ page</b> and link the homepage package cards to it. <span class="chip md">MED</span></span>
+<span class="measured">the $199-base pricing lives only on the homepage; “airbnb photography cost” searches have no landing page.</span></li>
+<li data-id="bnb-10"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Turn the existing photo-prep checklist post into a gated PDF</b> — the lead magnet hosts actually want. <span class="chip hi">HIGH</span></span>
+<span class="measured">zero email-capture forms across all 13 pages; the checklist post already exists at 448 words.</span></li>
+<li data-id="bnb-11"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Add FAQPage schema to the FAQ blocks that already exist</b> on the homepage and aerial page. <span class="chip md">MED</span></span></li>
+<li data-id="bnb-12"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Once the GBP has 5+ reviews, embed a live Google-reviews widget</b> on the homepage.</span></li>
+</ol>
+</div>
+</details>
+
+<details class="phase" open id="m36">
+<summary><h2>Months 3–6 — PM contracts &amp; the monthly rhythm</h2> <span class="when">ongoing</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="bnb-13"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Pitch the six named Sarasota/Venice property managers</b> — Gulf Coast PM, iTrip Sarasota &amp; Venice, Stringer, Compass, Horse and Chaise, Global Vacation — flat per-property rate plus one free demo shoot. <b>One PM contract equals dozens of hosts.</b> <span class="chip hi">HIGH</span></span></li>
+<li data-id="bnb-14"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Work the host Facebook groups</b> (The STR Community, Hosts Helping Hosts, Florida/Suncoast groups): 30 min/week answering photo-critique threads, one before/after case study per month, no selling — the checklist PDF is the soft close. <span class="chip md">MED</span></span></li>
+<li data-id="bnb-15"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Ride snowbird season (Sep–Nov):</b> hosts refresh photos before winter bookings — heaviest outreach window of the year. GBP offer post + group case studies + PM pitches all timed here.</span></li>
+</ol>
+<div class="tblwrap"><table>
+<tr><th>Cadence</th><th>BNB monthly rhythm</th><th>Time</th></tr>
+<tr><td>Weekly</td><td>1 GBP post · 30 min in host Facebook groups</td><td>~50 min</td></tr>
+<tr><td>Per job</td><td>Review ask at listing-live + reply within 48 h</td><td>minutes</td></tr>
+<tr><td>Monthly</td><td>1 before/after case study (site + groups) · 1 host email once the list grows</td><td>~1 h approval</td></tr>
+<tr><td>Monthly</td><td>Report: GBP calls, Airbnb-marketplace leads, form leads, rankings</td><td>—</td></tr>
+</table></div>
+</div>
+</details>
+</section>
+
+<section id="kpi">
+<h2 style="margin-top:2.6rem;padding-top:1.4rem;border-top:2px solid var(--line)">What success looks like at month 6</h2>
+<div class="callout">
+<p class="kpi">GBP + Airbnb marketplace listing live · 10+ reviews · 4 city pages + portfolio + pricing indexed · checklist PDF capturing 20+/mo · at least 1 PM contract in negotiation</p>
+<p>Measured with: Google Business Profile calls/clicks, Search Console queries, GA4 form and
+booking conversions, review counts — baselined in Month 1, reported monthly.</p>
+</div>
+
+<h2 style="margin-top:2.2rem;padding-top:1.2rem;border-top:2px solid var(--line)">What this needs from you, Paul</h2>
+<ul>
+<li>Verify the Google Business Profile (postcard/phone verification only you can receive)</li>
+<li>Send the review ask at delivery — it's a template, two minutes per job</li>
+<li>Permission notes from clients whose work we feature</li>
+<li>10 minutes per month approving drafted pages/posts and the monthly report</li>
+<li>Nothing else — every other task above is done for you</li>
+</ul>
+
+<p class="resetline">Progress is saved in this browser only. <button type="button" id="resetprog">Reset all checkboxes</button></p>
+
+<footer>
+Part of the three-site growth roadmap for Paul Ayoub. Sources: page-by-page crawl of the live
+site (September 2026) · channel research verified against current 2026 platform rules · the
+August 2026 site audit. Every task traces to a measured finding.
+</footer>
+</section>
+</div>
+
+<script>
+(function () {
+  var KEY = 'paul-growth-bnb-v1';
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+  function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+
+  var state = load();
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('ol.tasks .cb'));
+
+  function idOf(cb) { return cb.closest('li').getAttribute('data-id'); }
+
+  function refresh() {
+    var total = boxes.length, done = 0;
+    boxes.forEach(function (cb) {
+      var on = !!state[idOf(cb)];
+      cb.checked = on;
+      cb.closest('li').classList.toggle('done', on);
+      if (on) done++;
+    });
+    var np = document.getElementById('navprog');
+    if (np) np.textContent = done + ' / ' + total + ' done';
+    document.querySelectorAll('details.phase').forEach(function (ph) {
+      var pbs = ph.querySelectorAll('ol.tasks .cb');
+      if (!pbs.length) return;
+      var d = 0; pbs.forEach(function (cb) { if (cb.checked) d++; });
+      var pc = ph.querySelector('.pcount'); if (pc) pc.textContent = d + '/' + pbs.length;
+      var bar = ph.querySelector('.pbar i'); if (bar) bar.style.width = (100 * d / pbs.length) + '%';
+    });
+  }
+
+  boxes.forEach(function (cb) {
+    cb.addEventListener('change', function () {
+      state[idOf(cb)] = cb.checked;
+      save(state);
+      refresh();
+    });
+  });
+
+  var rb = document.getElementById('resetprog');
+  if (rb) rb.addEventListener('click', function () {
+    state = {}; save(state); refresh();
+  });
+
+  refresh();
+})();
+</script>
+</body>
+</html>

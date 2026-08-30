@@ -9,6 +9,7 @@
   --bg:#f5f7fb; --card:#ffffff; --ink:#0f172a; --soft:#334155; --mut:#64748b;
   --line:#e2e8f0; --blue:#1d4ed8; --blue-bg:#eef2f7;
   --ok-bg:#dcfce7; --ok:#166534; --warn-bg:#fef3c7; --warn:#92400e;
+  --navbg:rgba(245,247,251,.92);
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){
@@ -16,48 +17,68 @@
     --bg:#0f1420; --card:#161d2d; --ink:#e6eaf2; --soft:#b7c0cf; --mut:#8a94a6;
     --line:#273349; --blue:#7aa2ff; --blue-bg:#1b2740;
     --ok-bg:#143323; --ok:#7fd6a2; --warn-bg:#33290f; --warn:#e2b765;
+    --navbg:rgba(15,20,32,.92);
   }
 }
 :root[data-theme="dark"]{
   --bg:#0f1420; --card:#161d2d; --ink:#e6eaf2; --soft:#b7c0cf; --mut:#8a94a6;
   --line:#273349; --blue:#7aa2ff; --blue-bg:#1b2740;
   --ok-bg:#143323; --ok:#7fd6a2; --warn-bg:#33290f; --warn:#e2b765;
+  --navbg:rgba(15,20,32,.92);
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
-.wrap{max-width:900px;margin:0 auto;padding:2.6rem 1.3rem 4rem}
-h1{font-size:clamp(1.7rem,4.5vw,2.4rem);line-height:1.15;margin:.2rem 0 .5rem;text-wrap:balance}
-h2{font-size:1.35rem;margin:2.6rem 0 .8rem;padding-top:1.2rem;border-top:2px solid var(--line);text-wrap:balance}
-h3{font-size:1.05rem;margin:1.4rem 0 .4rem}
+.wrap{max-width:920px;margin:0 auto;padding:1.6rem 1.3rem 4rem}
+
+nav.top{
+  position:sticky;top:0;z-index:50;background:var(--navbg);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);margin:0 -1.3rem;padding:.55rem 1.3rem;
+  display:flex;gap:.35rem;align-items:center;flex-wrap:wrap;
+}
+nav.top a{
+  color:var(--soft);text-decoration:none;font-size:.82rem;font-weight:600;
+  padding:.28rem .6rem;border-radius:99px;white-space:nowrap;
+}
+nav.top a:hover,nav.top a:focus-visible{background:var(--blue-bg);color:var(--blue);outline:none}
+
+section{scroll-margin-top:3.6rem}
+h1{font-size:clamp(1.7rem,4.5vw,2.4rem);line-height:1.15;margin:1.4rem 0 .5rem;text-wrap:balance}
+h2{font-size:1.35rem;margin:2.2rem 0 .5rem;padding-top:1.2rem;border-top:2px solid var(--line);text-wrap:balance}
+h3{font-size:1.05rem;margin:1.3rem 0 .4rem}
 p{max-width:72ch;margin:.5rem 0;color:var(--soft)}
 p b,li b{color:var(--ink)}
 .meta{color:var(--mut);font-size:.92rem;margin-bottom:.2rem}
 .lede{font-size:1.06rem;color:var(--soft);max-width:70ch}
-.chip{display:inline-block;font-size:.72rem;font-weight:700;padding:.13rem .55rem;border-radius:99px;vertical-align:1px;white-space:nowrap}
-.chip.h{background:var(--ok-bg);color:var(--ok)}
-.chip.m{background:var(--blue-bg);color:var(--blue)}
-.chip.l{background:var(--warn-bg);color:var(--warn)}
-.chip.site{background:var(--blue-bg);color:var(--blue);font-weight:700}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.25rem;margin:.9rem 0}
-.card h3{margin-top:.1rem}
-.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem;margin:1rem 0}
+
+.chip{display:inline-block;font-size:.7rem;font-weight:700;padding:.13rem .55rem;border-radius:99px;vertical-align:2px;white-space:nowrap;letter-spacing:.03em}
+.chip.site{background:var(--blue-bg);color:var(--blue)}
+.chip.free{background:var(--ok-bg);color:var(--ok)}
+
+/* plan cards */
+a.doc{
+  display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:1.1rem 1.3rem;margin:.8rem 0;text-decoration:none;color:var(--ink);
+  transition:border-color .15s ease;
+}
+a.doc:hover,a.doc:focus-visible{border-color:var(--blue);outline:none}
+a.doc h3{margin:.15rem 0 .25rem;font-size:1.15rem;color:var(--blue)}
+a.doc p{margin:0;color:var(--soft);font-size:.94rem;max-width:66ch}
+a.doc .tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+a.doc .open{display:inline-block;margin-top:.5rem;font-size:.85rem;font-weight:700;color:var(--blue)}
+
 .tblwrap{overflow-x:auto;margin:.8rem 0}
-table{border-collapse:collapse;width:100%;min-width:560px;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:.93rem}
+table{border-collapse:collapse;width:100%;min-width:520px;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:.93rem}
 th{text-align:left;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);padding:.55rem .8rem;border-bottom:2px solid var(--line)}
 td{padding:.55rem .8rem;border-bottom:1px solid var(--line);vertical-align:top;color:var(--soft)}
 td:first-child{color:var(--ink)}
 tr:last-child td{border-bottom:0}
-ol.tasks{counter-reset:t;list-style:none;padding-left:0;max-width:76ch}
-ol.tasks>li{counter-increment:t;margin:.85rem 0;padding:.75rem .9rem .75rem 2.9rem;background:var(--card);border:1px solid var(--line);border-radius:8px;position:relative}
-ol.tasks>li::before{content:counter(t);position:absolute;left:.85rem;top:.78rem;width:1.45rem;height:1.45rem;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
-ol.tasks .measured{display:block;font-size:.85rem;color:var(--mut);margin-top:.3rem}
-ol.tasks .measured::before{content:"Measured: ";font-weight:700;color:var(--blue)}
 ul{max-width:74ch;color:var(--soft)}
 li{margin:.3rem 0}
 .callout{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:8px;padding:1rem 1.2rem;margin:1.2rem 0;max-width:78ch}
 .callout.warn{border-left-color:var(--warn)}
-.phasehead{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:baseline}
-.phasehead .when{color:var(--mut);font-size:.9rem;font-weight:600}
+.callout h3{margin-top:.2rem}
 .kpi{font-variant-numeric:tabular-nums}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--mut);font-size:.87rem}
 a{color:var(--blue)}
@@ -67,180 +88,123 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 <body>
 <div class="wrap">
 
-<p class="meta">Prepared for Paul Ayoub · September 2026 · expressrealestatephotos.com · bnbphotos.com · dvpfl.com</p>
-<h1>Growth Roadmap: turning three healthy websites into three lead machines</h1>
-<p class="lede">The repair project is finished — all three sites are fast, secure and complete.
-This plan is the next stage: <b>getting found, getting chosen, and getting booked</b>.
-It was built from a fresh page-by-page crawl of all three live sites plus channel research
-specific to your three audiences (listing agents, Airbnb hosts, engaged couples).
-Every task below is tied to something we actually measured — nothing generic.</p>
+<nav class="top" aria-label="Sections">
+  <a href="#plans">The three plans</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#buyers">Buyers</a>
+  <a href="#kpi">Targets</a>
+  <a href="#you">Your part</a>
+</nav>
 
+<section id="overview">
+<p class="meta" style="margin-top:1.4rem">Prepared for Paul Ayoub · September 2026 · a 6-month plan, one roadmap per website</p>
+<h1>Growth Roadmap: the first 6 months, site by site</h1>
+<p class="lede">The repair project is finished — all three sites are fast, secure and complete.
+This is the next stage: <b>getting found, getting chosen, and getting booked</b>. Because the
+three sites sell to three completely different buyers, <b>each website has its own individual
+plan document</b> — open them below. Every task in them comes from a fresh page-by-page crawl
+of all 39 live pages plus channel research specific to each audience, and each plan is an
+interactive checklist that remembers its own progress.</p>
+</section>
+
+<section id="plans">
+<h2 style="border-top:0;padding-top:.4rem">The three plans — one per website</h2>
+
+<a class="doc" href="Express-Growth-Plan.html">
+  <span class="tag">Plan 1 · sells to listing agents</span>
+  <h3><span class="chip site">EXPRESS</span> Express Real Estate Photos — 6-Month Growth Plan</h3>
+  <p>Win the map pack for “real estate photographer + [town]”, prove it with agent reviews and
+  case studies, keep past agents warm so they rebook and refer. Big window: spring listing
+  season (Jan–Apr). 16 tasks across Month 1 / Months 2–3 / Months 3–6.</p>
+  <span class="open">Open the Express plan →</span>
+</a>
+
+<a class="doc" href="BNB-Growth-Plan.html">
+  <span class="tag">Plan 2 · sells to Airbnb hosts &amp; property managers</span>
+  <h3><span class="chip site">BNB</span> BNB Photos — 6-Month Growth Plan</h3>
+  <p>Be present where hosts already are — Airbnb's own Services marketplace and host Facebook
+  groups — win “airbnb photographer + [city]” with real city pages, and land property-manager
+  contracts worth dozens of hosts each. Big window: snowbird prep season (Sep–Nov), which starts
+  now. 15 tasks.</p>
+  <span class="open">Open the BNB plan →</span>
+</a>
+
+<a class="doc" href="DVPFL-Growth-Plan.html">
+  <span class="tag">Plan 3 · sells to engaged couples</span>
+  <h3><span class="chip site">DVPFL</span> Digital Video Production FL — 6-Month Growth Plan</h3>
+  <p>Put the 8 existing wedding films to work — venue-named real-wedding pages, reviews on the
+  site, Reels — and join the preferred-vendor lists of the venues already in the footage. Big
+  window: engagement season (Dec–Feb); everything live before December. 16 tasks.</p>
+  <span class="open">Open the DVPFL plan →</span>
+</a>
+</section>
+
+<section id="timeline">
+<h2>The honest timeline — read this first</h2>
 <div class="callout warn">
-<h3>The honest timeline — read this first</h3>
-<p>Traffic growth is not a switch, it is a flywheel. Realistic expectations:</p>
 <div class="tblwrap"><table>
 <tr><th>When</th><th>What you can expect</th></tr>
 <tr><td>Weeks 1–2</td><td>Setup visible: Google Business Profiles live, review links working, measurement in place.</td></tr>
 <tr><td>Weeks 4–8</td><td>First map-pack visibility and Google-Maps calls; first new reviews arriving.</td></tr>
-<tr><td><b>3–6 months</b></td><td>Organic search lift from new pages and content. This is the standard SEO window — anyone promising faster is guessing.</td></tr>
-<tr><td>6–12 months</td><td>Compounding: reviews + content + partner referrals reinforce each other. This is where the real growth lives.</td></tr>
+<tr><td><b>Months 3–6</b></td><td>Organic search lift from the new pages. This is the standard SEO window — anyone promising faster is guessing. By month 6 each site should have measurable calls, leads and rankings it did not have at month 0.</td></tr>
 </table></div>
-<p><b>The condition:</b> this only compounds if it runs every month. One-time bursts fade; the monthly engine in Phase 4 is the actual product.</p>
+<p><b>The condition:</b> results only compound if the monthly rhythm inside each site's plan
+actually runs every month. One-time bursts fade. What compounds past month 6 is the same
+engine continuing — no new plan needed.</p>
 </div>
+</section>
 
-<h2>How customers actually find businesses like yours</h2>
+<section id="buyers">
+<h2>Three sites, three different buyers</h2>
 <div class="tblwrap"><table>
 <tr><th>Site</th><th>Buyer</th><th>Where they look (in order)</th></tr>
-<tr><td><span class="chip site">EXPRESS</span></td><td>Listing agents (repeat buyers)</td><td>Referrals from other agents → Google Maps/search → brokerage vendor lists</td></tr>
-<tr><td><span class="chip site">BNB</span></td><td>Hosts &amp; property managers</td><td>Host Facebook groups → Google → Airbnb's own Services marketplace → PM word-of-mouth</td></tr>
-<tr><td><span class="chip site">DVPFL</span></td><td>Engaged couples (one-time, high value)</td><td>Instagram/Reels → Google Maps → venue &amp; photographer referrals → The Knot/WeddingWire</td></tr>
+<tr><td><a href="Express-Growth-Plan.html"><span class="chip site">EXPRESS</span></a></td><td>Listing agents (repeat buyers)</td><td>Referrals from other agents → Google Maps/search → brokerage vendor lists</td></tr>
+<tr><td><a href="BNB-Growth-Plan.html"><span class="chip site">BNB</span></a></td><td>Hosts &amp; property managers</td><td>Host Facebook groups → Google → Airbnb's own Services marketplace → PM word-of-mouth</td></tr>
+<tr><td><a href="DVPFL-Growth-Plan.html"><span class="chip site">DVPFL</span></a></td><td>Engaged couples (one-time, high value)</td><td>Instagram/Reels → Google Maps → venue &amp; photographer referrals → The Knot/WeddingWire</td></tr>
 </table></div>
 <p>One fact dominated the research: <b>all three brands have zero Google Business Profile presence
-— no profile linked anywhere on any of the 39 pages we crawled.</b> For local service businesses,
-that is the single biggest missed channel, and it is free. Phase 1 exists because of it.</p>
+— no profile linked anywhere on any of the 39 pages we crawled.</b> For local service businesses
+that is the single biggest missed channel, and it is free. That is why every plan's Month 1
+starts there.</p>
+</section>
 
-<h2 class="phasehead">Phase 0 — Quick wins <span class="when">this week · ~4 hours · all free</span></h2>
-<p>Small, measured defects worth fixing before anything else:</p>
-<ol class="tasks">
-<li><b>Fix the Express homepage title tag</b> — complete it to “Real Estate Photography Venice &amp; Sarasota FL | Express Real Estate Photos”.
-<span class="measured">the live title literally ends at “| Express” — the brand is truncated in every Google result.</span></li>
-<li><b>Put an inquiry form on the DVPFL contact page.</b>
-<span class="measured">/contact-us/ has no form at all — only a phone and email text link. The new meta descriptions promise “check your date”, and there is nothing to check it with.</span></li>
-<li><b>Fix the contradictory prices on DVPFL /packages/.</b>
-<span class="measured">“Extra camera for Ceremony” is listed at both $200 and $149 on the same page — next to copy promising no surprises.</span></li>
-<li><b>Link the sister sites both ways.</b>
-<span class="measured">BNB’s footer says “a division of Express Real Estate Photos” — with no actual link; Express links back nowhere. An aged domain’s link is free authority.</span></li>
-<li><b>Add Search Console to Express.</b>
-<span class="measured">GA4 exists but Search Console does not — the site is flying blind on which queries it already ranks for. 20 minutes.</span></li>
-<li><b>Fix the Express /book-now/ sitemap entry.</b>
-<span class="measured">that URL serves a 27-word “Vercel Security Checkpoint” challenge to Google while sitting in the sitemap — Google may index an error page as your booking page.</span></li>
-</ol>
-
-<h2 class="phasehead">Phase 1 — Get on the map <span class="when">weeks 1–2 · ~12 hours · all free</span></h2>
-<p>Google Maps is where “photographer near me” searches end. None of the three brands is there today.</p>
-<ol class="tasks">
-<li><b>Create three separate Google Business Profiles</b> (one per brand — they are distinct businesses) as service-area businesses with hidden address, covering Venice, Sarasota, North Port, Bradenton, Port Charlotte. Categories: <i>Real estate photographer</i> (Express), <i>Photographer</i> (BNB), <i>Wedding videography service</i> (DVPFL). Fill every field; use Express’s existing booking app as its GBP booking link.
-<span class="measured">zero google.com/maps, g.page or business.google links across all 39 crawled pages.</span></li>
-<li><b>Link each profile from its own website</b> — footer + contact page, plus a “Review us on Google” link using Google’s built-in review short-link.</li>
-<li><b>Start the review engine, matched to each buyer.</b> Agents: ask after the 2nd–3rd completed shoot. Hosts: ask when their listing goes live with new photos. Couples: ask at film delivery, the emotional peak, with one 7-day reminder. Never gate, never incentivize (2026 Google policy). Template the three emails once — then it is 2 minutes per job.
-<span class="measured">no review widget or review text on any site; DVPFL’s testimonial area is empty; Express/BNB show anonymous initials with broken characters (“Michael R. &#xFFFD;definitely…”).</span></li>
-<li><b>Tier-1 citations, one clean NAP per brand:</b> Apple Business Connect, Bing Places, Yelp, Nextdoor, Foursquare — about an hour per brand. Quality beats volume.</li>
-<li><b>Once a profile has 5+ reviews, embed a live Google-reviews widget</b> on that site’s homepage, replacing the anonymous quotes.</li>
-</ol>
-
-<h2 class="phasehead">Phase 2 — Pages that catch searches <span class="when">weeks 2–6 · the main build</span></h2>
-<p>Each site already ranks-ready for its two home cities. The gap is everywhere else — and the proof pages that convert.</p>
-
-<h3><span class="chip site">EXPRESS</span> expressrealestatephotos.com</h3>
-<ol class="tasks">
-<li><b>Clone the proven service-page template into 5–7 service-area pages:</b> Nokomis, North Port, Osprey, Englewood, Siesta Key, Lakewood Ranch, Port Charlotte.
-<span class="measured">those towns appear zero times across all 16 pages — “real estate photographer North Port” is currently uncontested by this site.</span></li>
-<li><b>Switch page schema from Article to LocalBusiness + Service</b> in the already-installed Rank Math, with areaServed, phone and the visible $149–$449 price range.
-<span class="measured">the site currently tells Google it publishes articles, not that it is a local photography business.</span></li>
-<li><b>Cross-link the 8 service pages to each other and to the blog.</b>
-<span class="measured">every service page links only to home/about/contact — the photography page never links floor plans, aerial, or the “sells homes faster” post.</span></li>
-<li><b>Build 2–3 case-study pages</b> from the existing #our-work galleries: property, package used, days on market, agent quote — linkable proof for the RE/MAX and KW logos already on the site.</li>
-<li><b>Gate the best blog post as an agent checklist PDF</b> (“prepare your listing for the photoshoot”) with an email form.
-<span class="measured">no email capture exists anywhere on the site; the 903-word prep post is already written.</span></li>
-</ol>
-
-<h3><span class="chip site">BNB</span> bnbphotos.com</h3>
-<ol class="tasks">
-<li><b>Create 4 city landing pages</b> — Sarasota, North Port, Englewood, Nokomis/Siesta Key — mirroring the existing service-page template.
-<span class="measured">these cities are already declared in the site’s schema on all 13 pages, but have zero actual pages — schema promises what the site doesn’t deliver.</span></li>
-<li><b>Build a /portfolio/ page with before/after pairs</b> and, where a host shares it, the booking-lift story.
-<span class="measured">homepage says “View Our Work” — there is no portfolio URL in the entire sitemap.</span></li>
-<li><b>Create a /pricing/ page</b> and link the homepage package cards to it.
-<span class="measured">the $199-base pricing lives only on the homepage; “airbnb photography cost” searches have no landing page.</span></li>
-<li><b>Replace the home-sale copy block on the homepage.</b>
-<span class="measured">the H2 “Top-Rated Real Estate Photography… attract more buyers and faster offers” is house-sale copy on a vacation-rental site — wrong audience, verbatim on the live page.</span></li>
-<li><b>Turn the existing photo-prep checklist post into a gated PDF</b> — the lead magnet hosts actually want, promoted in host groups (Phase 3).
-<span class="measured">zero email-capture forms across all 13 pages; the checklist post already exists at 448 words.</span></li>
-<li><b>Add FAQPage schema to the FAQ blocks that already exist</b> on the homepage and aerial page.</li>
-</ol>
-
-<h3><span class="chip site">DVPFL</span> dvpfl.com</h3>
-<ol class="tasks">
-<li><b>Turn the 8 portfolio couples into real-wedding pages</b> — title = couple + venue + city, the existing film embedded, 500–800 words, venue and planner named and linked.
-<span class="measured">Tamaryn &amp; Martin, Kendall &amp; Frank and six more sit in the home slider with no pages behind them; venue-name pages are the proven wedding-SEO play (“[venue] wedding video” searches).</span></li>
-<li><b>Build service-area pages for the cities the homepage already names</b> (start: Sarasota, Bradenton, St. Petersburg, Tampa).
-<span class="measured">10 cities are listed in the homepage text; the only geo URL on the whole site is one 2022 blog post.</span></li>
-<li><b>Embed 3–5 real WeddingWire/The Knot review quotes on the homepage and /packages/.</b>
-<span class="measured">a WeddingWire review page and The Knot listing (id 2034487) already exist and are linked from /awards/ — but not one review sentence appears on the site itself.</span></li>
-<li><b>Add geo + intent to the 9 service-page titles</b> (“Cinematic Wedding Films in Sarasota &amp; Venice FL”), and VideoObject schema on the 10+ Vimeo embeds.
-<span class="measured">current titles are bare “CINEMATIC WEDDING FILM – Digital Video Production FL”; the films — the site’s best asset — carry no video schema at all.</span></li>
-<li><b>Restart the blog with couple-intent posts:</b> venue roundups (“Best wedding venues in Sarasota”), planning guides, and one post per new real wedding.
-<span class="measured">last post June 2022, and 8 of the 10 old posts chase corporate “video production” buyers — not brides.</span></li>
-</ol>
-
-<h2 class="phasehead">Phase 3 — Partnerships &amp; platforms <span class="when">months 2–3 · warm leads, not cold traffic</span></h2>
-<ol class="tasks">
-<li><b>List BNB on Airbnb’s own Services marketplace</b> (Photography category — verified live in 2026, free to list, 15% per-booking fee).
-<span class="measured">a city-level photographer directory inside the platform every host already uses; BNB is absent from it.</span></li>
-<li><b>Pitch the six named Sarasota/Venice property managers</b> — Gulf Coast PM, iTrip Sarasota &amp; Venice, Stringer, Compass, Horse and Chaise, Global Vacation — with a flat per-property rate and one free demo shoot. <b>One PM contract equals dozens of hosts.</b></li>
-<li><b>Run the venue circuit for DVPFL:</b> cut a 45–60s venue-focused reel from existing footage for every venue already in the 8 films, gift it to the events manager, then ask what it takes to join their preferred-vendor list.</li>
-<li><b>Build the photographer/planner/DJ referral network.</b>
-<span class="measured">DVPFL’s /vendors/ page already links 6 partners outward with no evidence of links back — and wedding photographers who don’t offer video are the highest-volume referral source for videographers.</span></li>
-<li><b>Work the host Facebook groups</b> (The STR Community, Hosts Helping Hosts, Florida/Suncoast groups): 30 min/week answering photo-critique threads, one before/after case study per month, no selling.</li>
-<li><b>Free wedding-platform storefronts:</b> Zola (genuinely free, pay-per-connect), plus polishing the existing Knot/WeddingWire listings and porting Google reviews there. <b>Hold the paid Knot/WeddingWire tiers until the free listings prove lead flow</b> — 2026 research says they’re a hold-until-proven expense.</li>
-<li><b>Open one YouTube channel</b> — upload the 8 wedding films with venue-keyword titles, plus BNB property-video samples embedded back on /videography/.
-<span class="measured">YouTube is the second-largest search engine; a videography business with zero YouTube presence is leaving its own medium unused.</span></li>
-<li><b>Agent retention email for Express:</b> monthly one-email digest to past agents (new work, seasonal reminders, referral ask). Repeat agents are the whole business model.</li>
-</ol>
-
-<h2 class="phasehead">Phase 4 — The monthly engine <span class="when">ongoing · this is where growth compounds</span></h2>
+<section id="kpi">
+<h2>What success looks like at month 6 — per site</h2>
 <div class="tblwrap"><table>
-<tr><th>Cadence</th><th>Task</th><th>Time</th></tr>
-<tr><td>Weekly</td><td>1 Google Business Profile post per brand (batched monthly from recent shoots)</td><td>~1 h/wk</td></tr>
-<tr><td>Weekly</td><td>2–3 Instagram Reels from existing footage (DVPFL priority — CapCut, free)</td><td>~2 h/wk</td></tr>
-<tr><td>Weekly</td><td>30 min in host Facebook groups (BNB)</td><td>0.5 h/wk</td></tr>
-<tr><td>Per job</td><td>Review ask at the right moment + reply to every review within 48 h</td><td>minutes</td></tr>
-<tr><td>Monthly</td><td>2 blog posts per active site (drafted for you, you approve)</td><td>—</td></tr>
-<tr><td>Monthly</td><td>1 email digest per audience list</td><td>~1 h</td></tr>
-<tr><td>Monthly</td><td>Analytics report: GBP actions, calls, form leads, rankings, next actions</td><td>—</td></tr>
-<tr><td>Quarterly</td><td>Citation/NAP audit; refresh GBP photos; re-test site speed</td><td>~2 h</td></tr>
+<tr><th>Site</th><th>Month-6 targets we track</th></tr>
+<tr><td><span class="chip site">EXPRESS</span></td><td class="kpi">GBP live with 10+ reviews · 5–7 area pages indexed and ranking · Search Console clicks up vs. month-1 baseline · agent digest running · ready for spring listing season</td></tr>
+<tr><td><span class="chip site">BNB</span></td><td class="kpi">GBP + Airbnb marketplace listing live · 10+ reviews · 4 city pages + portfolio + pricing indexed · checklist PDF capturing 20+/mo · at least 1 PM contract in negotiation</td></tr>
+<tr><td><span class="chip site">DVPFL</span></td><td class="kpi">GBP live with 10+ reviews · 8 real-wedding pages + 4 city pages indexed · contact form producing inquiries · 2+ preferred-vendor lists joined · Reels running through engagement season</td></tr>
 </table></div>
+<p>All of it measured the same way: GBP calls/clicks, Search Console queries, GA4 form and
+booking conversions, review counts — baselined in Month 1, reported monthly.</p>
+</section>
 
-<h3>The Sarasota seasonal calendar</h3>
-<div class="tblwrap"><table>
-<tr><th>Season</th><th>Push</th></tr>
-<tr><td>Sep–Nov</td><td><b>BNB:</b> snowbird season prep — hosts refresh photos before winter bookings. Heaviest BNB outreach window.</td></tr>
-<tr><td>Dec–Feb</td><td><b>DVPFL:</b> engagement season — most couples get engaged now and book vendors for next year. Reels + venue posts peak here.</td></tr>
-<tr><td>Jan–Apr</td><td><b>Express:</b> spring listing season — agents list heaviest; retention emails and GBP offers timed here.</td></tr>
-</table></div>
-
-<h2>What success looks like — the numbers we track</h2>
-<ul>
-<li class="kpi"><b>Google Business Profile:</b> calls, direction requests, website clicks per brand per month</li>
-<li class="kpi"><b>Reviews:</b> new Google reviews per brand (target: 10+ per profile in 90 days)</li>
-<li class="kpi"><b>Search:</b> Search Console clicks &amp; queries per site (baseline set in Phase 0)</li>
-<li class="kpi"><b>Leads:</b> form submissions, calls, booking-app sessions — tracked as GA4 conversions</li>
-<li class="kpi"><b>List:</b> email subscribers per audience (target: 20+/brand/month once magnets are live)</li>
-<li class="kpi"><b>Partners:</b> PM contracts signed, preferred-vendor lists joined, referral bookings</li>
-</ul>
-
+<section id="you">
 <h2>What this needs from you, Paul</h2>
 <ul>
 <li>Verify the three Google Business Profiles (postcard/phone verification only you can receive)</li>
-<li>Send the review ask at delivery — it’s a template, two minutes per job</li>
+<li>Send the review ask at delivery — it's a template, two minutes per job</li>
 <li>Permission notes from couples/hosts whose work we feature</li>
-<li>10 minutes per month approving drafted blog posts and the monthly report</li>
-<li>Nothing else — every other task above is done for you</li>
+<li>10 minutes per month per site approving drafted pages/posts and the monthly report</li>
+<li>Nothing else — every other task in the three plans is done for you</li>
 </ul>
 
 <div class="callout">
 <h3>Cost summary</h3>
-<p>Almost everything in Phases 0–3 is <b>free</b> — the spend is labor, not media.
-Optional later: Chamber membership (~$300/yr), Google Local Services Ads test for Express (pay-per-lead, ~$25–$50/lead, only after reviews exist),
-and the paid Knot/WeddingWire tiers <b>only if</b> their free listings prove lead flow first.
-Meta ads at this budget: not recommended in 2026 (benchmarks: ~$45/lead and ~$50/day minimum for the algorithm) — the pixel gets installed now, ads wait.</p>
+<p>Almost everything in all three plans is <b>free</b> — the spend is labor, not media.
+Optional inside the 6 months: Google Local Services Ads test for Express (pay-per-lead,
+~$25–$50/lead, only after reviews exist) and the paid Knot/WeddingWire tiers <b>only if</b>
+their free listings prove lead flow first. Meta ads: not recommended at this budget in 2026
+(benchmarks: ~$45/lead and ~$50/day minimum for the algorithm) — the pixel gets installed now, ads wait.</p>
 </div>
 
 <footer>
 Sources: page-by-page crawl of all 39 live pages across the three sites (September 2026) ·
 six channel-specific research passes (local SEO, wedding, real-estate B2B, short-term-rental, content, capture/paid) verified against current 2026 platform rules ·
-the August 2026 site audit. Every task above traces to a measured finding.
+the August 2026 site audit. Every task in the three plans traces to a measured finding.
 </footer>
+</section>
 </div>
 </body>
 </html>
