@@ -1042,3 +1042,49 @@ back: 1.89–2.23 s. This host is slow either way.
 3. Elementor Pro licence still `Status: Missing`. The Custom Code conditions
    modal no longer opens, which is why snippet 2602 carries no condition
    (it renders sitewide regardless, which was the intent here).
+
+---
+
+## 2026-08-30 — audit issues 3/5/6/9/10 verified closed; #8 and #10b fixed
+
+### Re-verified before doing any work — four were already done
+
+The list handed to me was out of date. Measured live:
+
+| # | Issue | State |
+|---|---|---|
+| 3 | "© 2022 Photo Aurel" footer | **DONE** — now "© 2026 Digital Video Productions LLC" |
+| 4 | Blog dead since 2022 | open — newest post still 2022-06-02 |
+| 5 | Internal 404 | **DONE** — returns 200 via 1 redirect |
+| 6 | Dead vendor links / mixed content | **DONE** — 7 external links, all HTTP 200, zero `http://` |
+| 8 | Missing H1s / thin pages | H1s were 16/17; thin pages still 13 |
+| 9 | Shared meta description x18 | **DONE** — 17 unique across 17 pages, 0 duplicates |
+| 10 | Dead UA tag | **DONE** — `UA- ids: none`, `gtag loads: 0` |
+| 10 | Pinch-zoom disabled | open — fixed below |
+
+### Fixed today
+
+**#10b — pinch-zoom restored sitewide.** Snippet 2602 now rewrites the
+theme's viewport tag at runtime, stripping only `maximum-scale` and
+`user-scalable` and leaving width/initial-scale untouched. Verified on
+/packages/:
+
+    before  width=device-width, initial-scale=1, maximum-scale=1
+    after   width=device-width, initial-scale=1
+
+**#8 — /blog/ H1.** The blog is Elementor page 2197: one section, one
+`posts` widget, no heading of any kind — 0 H1, 0 H2, 10 H3. Added a heading
+widget (`2e6ac45`) as H1, and set the posts widget's title tag from h3 to
+h2, so the page reads h1 -> h2 rather than h1 -> h3. That clears both "no
+H1" and part of "Heading elements are not in a sequentially-descending
+order". Result: **17 of 17 pages now have exactly one H1.**
+
+H1 text is "Wedding Videography Tips from Sarasota & Venice, FL" — a
+placeholder chosen to match the page's existing meta description and the
+site's location keywords. One click to change in Elementor.
+
+### Still open, and both need Paul
+
+- **#4 blog dead since June 2022.** Ten posts, none newer. Needs writing.
+- **#8 thin pages.** 13 of 17 pages under 140 words; the service pages sit
+  at 84-94 words each. Needs copy, not code.
