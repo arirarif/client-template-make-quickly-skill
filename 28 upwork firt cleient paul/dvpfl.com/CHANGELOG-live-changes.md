@@ -1233,3 +1233,50 @@ content.
 `/wp-content/cache/used-css/` now returns 200 — Remove Unused CSS finished
 generating (it needed the extra time). Cache cleared + preloaded so it
 bakes into served pages.
+
+---
+
+## 2026-08-30 (late) — the NO_LCP mystery: solved, and it was ours after all
+
+Three mobile PSI runs in a row returned `Error! NO_LCP`. I had called it a
+PSI-side glitch. Reproduced it locally in clean headless Chrome
+(lighthouse@12), so that call was wrong — it was real and deterministic.
+
+### The bisect (kill-switch `?dvpdebug=off` added to snippets 2596 + 2602)
+
+| Local Lighthouse, mobile | Result |
+|---|---|
+| Everything on | NO_LCP |
+| All our custom JS off | NO_LCP — **our scripts exonerated** |
+| WP Rocket also bypassed | NO_LCP — **Rocket exonerated** |
+| Desktop | LCP 4.0s, element `<a href="/contact-us/">` — a small nav text link |
+
+Desktop's LCP being a tiny link was the tell: the hero poster (a CSS
+background on a near-full-viewport element) does not qualify as an LCP
+candidate, and nothing else above the fold does either. Desktop survives on
+nav text; on mobile the nav collapses to a hamburger and the call button
+label was clipped to icon-only under 600px — leaving **zero** candidates.
+
+**Root cause: deactivating Chaty.** Its "CALL US NOW!!!" text had been the
+mobile LCP element all along (visible in yesterday's PSI element detail).
+Removing it removed mobile's only qualifying paint. The audit's Top-10 list
+never revealed this dependency; only the element-level data did.
+
+### Fix
+
+One CSS deletion in snippet 2602: the mobile icon-only rule. The "Call us"
+label now stays visible on phones — a real text candidate, and a better tap
+target anyway.
+
+### Measured after (local lighthouse@12, plain cached URL)
+
+    MOBILE  score 64 · FCP 4.2s · LCP 6.0s · TBT 50ms · SI 6.7s · CLS 0
+            LCP element: span.dvp-contact__label
+    DESKTOP score 57 · FCP 3.3s · LCP 4.7s · TBT 0ms · SI 5.1s
+
+Mobile 64 is the best mobile number of the project (baseline 32-41, and
+un-scorable for most of today). TBT at 0-50 ms confirms the video-gate,
+Tave-lazy and reCAPTCHA work: the main thread is now essentially idle.
+
+The `?dvpdebug=off` kill-switches stay in both snippets — they cost nothing
+and make the next bisect a one-parameter job.

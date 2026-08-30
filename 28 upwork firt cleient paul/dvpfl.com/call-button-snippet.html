@@ -89,24 +89,8 @@
 
 .dvp-contact__btn svg{ flex: none; }
 
-/* On phones the label is dropped and the buttons become circles - the
-   thumb target stays 3.25rem, comfortably above the 44px minimum. */
-@media (max-width: 600px){
-  .dvp-contact__btn{
-    width: 3.25rem;
-    padding: 0;
-    justify-content: center;
-  }
-  .dvp-contact__label{
-    position: absolute;
-    width: 1px; height: 1px;
-    margin: -1px; padding: 0;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-    border: 0;
-  }
-}
+/* The text label stays visible on phones. It is the only above-fold
+   LCP candidate on mobile - see the 2026-08-30 NO_LCP investigation. */
 
 /* Printing a fixed floating button wastes ink and covers content. */
 @media print{ .dvp-contact{ display: none; } }
@@ -139,6 +123,7 @@
    unaffected.
    ------------------------------------------------------------------ */
 (function () {
+  if (location.search.indexOf('dvpdebug=off') > -1) return;  /* bisect kill-switch */
   var m = document.querySelector('meta[name="viewport"]');
   if (!m) return;
   var v = m.getAttribute('content') || '';
@@ -158,6 +143,7 @@
    Runs at </body>, so everything it touches already exists.
    ------------------------------------------------------------------ */
 (function () {
+  if (location.search.indexOf('dvpdebug=off') > -1) return;  /* bisect kill-switch */
 
   /* "frame or iframe elements do not have a title" - the Tave contact
      form iframe ships without one. Generic fallback for any other. */
@@ -218,3 +204,29 @@
   });
 })();
 </script>
+
+<style>
+/* ------------------------------------------------------------------
+   .dvp-copy - the service-page copy added 2026-08-30 (audit issue #8).
+   Those pages' title sections carry a background photo; without this
+   the text sits straight on the image and is barely readable.
+   ------------------------------------------------------------------ */
+.dvp-copy{
+  background: rgba(255,255,255,.94);
+  color: #2a2a2a;
+  max-width: 920px;
+  margin: 1.2em auto 0;
+  padding: 1.6em 2em;
+  border-radius: 6px;
+  box-shadow: 0 2px 14px rgba(0,0,0,.12);
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.dvp-copy p{ margin: 0 0 1em; }
+.dvp-copy p:last-child{ margin-bottom: 0; }
+.dvp-copy a{ color: #1B7A46; text-decoration: underline; }
+@media (max-width: 600px){
+  .dvp-copy{ padding: 1.2em 1.2em; margin-top: .8em; }
+}
+</style>

@@ -1,4 +1,4 @@
-<!-- DVPFL contact buttons + viewport + a11y v1.2 - source: call-button-snippet.html -->
+<!-- DVPFL contact buttons + viewport + a11y + copy css v1.3 - source: call-button-snippet.html -->
 <div class="dvp-contact" role="complementary" aria-label="Contact Digital Video Productions">
   <a class="dvp-contact__btn dvp-contact__btn--call"
      href="tel:+19418940980"
@@ -155,3 +155,25 @@
   });
 })();
 </script>
+
+<style>
+
+.dvp-copy{
+  background: rgba(255,255,255,.94);
+  color: #2a2a2a;
+  max-width: 920px;
+  margin: 1.2em auto 0;
+  padding: 1.6em 2em;
+  border-radius: 6px;
+  box-shadow: 0 2px 14px rgba(0,0,0,.12);
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.dvp-copy p{ margin: 0 0 1em; }
+.dvp-copy p:last-child{ margin-bottom: 0; }
+.dvp-copy a{ color: #1B7A46; text-decoration: underline; }
+@media (max-width: 600px){
+  .dvp-copy{ padding: 1.2em 1.2em; margin-top: .8em; }
+}
+</style>
