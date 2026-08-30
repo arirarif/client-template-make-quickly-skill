@@ -1159,3 +1159,34 @@ iframes**.
   favour of Remove Unused CSS, so the count will stay until RUCSS lands.
 
 Re-measure with 3 PSI runs and take the median once used-css exists.
+
+---
+
+## 2026-08-30 (evening) — audit issue #8: thin pages fixed, 11 pages of copy live
+
+Every draft grounded ONLY in facts already published on the site (packages
+prices, since-1995, team bios, service areas, the "all packages include"
+list). Nothing invented; anything Paul would phrase differently is one
+click to edit in Elementor.
+
+Deployed as an Elementor text-editor widget inserted directly after each
+page's H1 via the $e command API, tagged `dvp-copy`, styled by one CSS
+panel in snippet 2602 v1.3 (white readable card over the banner photos).
+
+Verified live, all 11 (words incl. existing content):
+
+    cinematic-wedding-film  282   highlight-recap   267
+    full-documentary        273   ceremony-video    254
+    engagement-video        248   memorial-video    258
+    photo-montage           256   music-video       236
+    commercial              228   awards            177
+    services                205
+
+Was: 13 pages under 140 words (service pages 84-94). Now: every service
+page 228-282 words with internal links to /packages/ and /contact-us/.
+WP Rocket cleared + preloaded after.
+
+Copy source of record: `thin-pages-copy.json` in this folder.
+
+**Audit issue #8 is now fully DONE** (H1s were finished yesterday).
+Remaining open from the Top 10: only #4, the dead blog — needs Paul.
