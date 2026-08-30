@@ -984,3 +984,61 @@ with aria-labels; all eight posters `loading="lazy"` below the fold, so a
 visitor who never scrolls there downloads none of them.
 
 **Revert:** delete widget `52e1bdc` from section `1c60403d`.
+
+---
+
+## 2026-08-30 — cache swap ATTEMPTED AND REVERTED; call button restored
+
+### Call + email buttons restored sitewide (snippet 2602)
+
+Chaty was deactivated during the plugin cleanup. It carried the site's only
+tap-to-call, so afterwards every page except /contact-us/ had none:
+
+    Chaty 0 | tel: 0 | mailto: 0 | "CALL US NOW" 0
+
+Snippet **2602**, `</body>` End, rendering sitewide. Verified on home,
+about-us and packages: one `tel:+19418940980` and one `mailto:paul@dvpfl.com`
+each. Inline HTML/CSS, no JavaScript, no extra request — lighter than the
+Chaty stylesheet + script it replaces, and it uses real anchors where Chaty
+emitted `javascript:void(0)`.
+
+This also closes audit Issue #7.
+
+### Cache swap — tried, failed, reverted
+
+Attempted WP Super Cache -> WP Fastest Cache to get Combine CSS (20
+stylesheets -> 1), Combine JS, minify, async Google Fonts and render-blocking
+JS deferral. All fifteen options are present and none are premium-gated.
+
+**WP Fastest Cache will not save its settings on this install.** Checkboxes
+set correctly in the DOM and survive a Submit click, but after a page reload
+every option reads `off` again. Tried: synthetic click on Submit, direct
+form submit, and a real mouse click on Submit. A real mouse click on the
+master checkbox did not even toggle it, so the controls are custom-styled
+and the visible hit area is not where the element reports itself.
+
+The 0x0 hidden `wpfc-dialog-buttons` elements were checked and ruled out —
+they are latent templates, not a blocking modal.
+
+**Likely root cause, and it matches an earlier symptom.** WP Super Cache's
+Delete Cache has also done nothing all along — page counts and byte sizes
+unchanged after purging from three different screens. Two independent cache
+plugins both failing at their filesystem work points at
+`wp-content/cache` permissions on this host, not at either plugin.
+
+**Reverted to the previous known-good state:** WP Fastest Cache deactivated,
+WP Super Cache reactivated. Verified afterwards — call button, portfolio
+reel (8 slides), hero snippet v1.4 all present, zero eager Vimeo iframes.
+
+TTFB measured with no cache plugin at all: 1.55–2.49 s. With WP Super Cache
+back: 1.89–2.23 s. This host is slow either way.
+
+### Still open
+
+1. **Ask the host about `wp-content/cache` permissions.** Until writes work,
+   no caching plugin will help and every measurement stays unreliable.
+2. WP Fastest Cache config is 30 seconds of clicking by hand — the settings
+   page works fine for a human, it is only automation it resists.
+3. Elementor Pro licence still `Status: Missing`. The Custom Code conditions
+   modal no longer opens, which is why snippet 2602 carries no condition
+   (it renders sitewide regardless, which was the intent here).
