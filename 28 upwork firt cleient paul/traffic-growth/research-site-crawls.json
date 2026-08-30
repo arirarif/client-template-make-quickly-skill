@@ -1,0 +1,292 @@
+{
+ "crawls": [
+  {
+   "site": "https://www.bnbphotos.com/",
+   "pages_crawled": 13,
+   "current_keywords": [
+    "airbnb photography sarasota",
+    "airbnb photography venice fl",
+    "vacation rental photography",
+    "aerial photography for vacation rentals florida",
+    "floor plans for vacation rentals",
+    "twilight photography vacation rentals",
+    "property videography for vacation rental listings",
+    "professional airbnb photos",
+    "airbnb photography tips",
+    "airbnb photo shoot checklist"
+   ],
+   "strengths": [
+    "Clean 5-service-page silo (photography, videography, aerial, floor plans, twilight), each with a keyword-targeted title and H1 and 700-850 words",
+    "Transparent pricing on the homepage: $199 base up to 1,500 sqft, +$50/500 sqft, +$100 add-on tiers (Essential/Professional/Premium/Ultimate)",
+    "Working Elementor booking form on /book-now capturing name, email, phone, property address, sqft, shoot date, and services needed",
+    "LocalBusiness + Service + areaServed City schema (Venice, Sarasota, North Port, Nokomis, Englewood) rendered on all 13 pages, plus Article schema on the 3 blog posts",
+    "3 blog posts whose bodies internally link to every service page plus book-now (verified in-content links)",
+    "Established parent brand credibility line in footer: 'a division of Express Real Estate Photos', with NAP (Venice FL 34293, (941) 894-0980, paul@bnbphotos.com) and Facebook + Instagram (@bnbphotos.swfl)"
+   ],
+   "growth_gaps": [
+    "Zero Google Business Profile / Google Maps links across all 13 crawled pages - no maps embed, no g.page review link, despite full NAP in footer",
+    "No review proof: testimonials are anonymous initials (Sarah M., James R., Emily T.) with no source or stars, no AggregateRating/Review schema anywhere, yet the homepage claims 'Top-Rated'",
+    "No city landing pages: Sarasota, North Port, Englewood, Nokomis, Siesta Key exist only inside schema JSON and passing homepage mentions - only Venice/Sarasota appear in any title tag",
+    "No portfolio or gallery page in the sitemap - homepage has 'View Our Work' copy but there is no dedicated /portfolio/ URL, and no case studies with booking/occupancy numbers",
+    "Zero email-capture: no newsletter, subscribe, or lead-magnet form on any page (grep across all 13 pages returned 0)",
+    "Blog is thin: only 3 posts at ~425-512 words each, two near-empty categories (airbnb-tips, photography-guides) in the sitemap",
+    "No FAQPage schema even though FAQ content exists on the homepage and aerial page (schema dump shows no FAQPage type)",
+    "Videography is a paid service but there is no YouTube channel link anywhere - only Facebook and Instagram"
+   ],
+   "site_actions": [
+    {
+     "action": "Create 4 city landing pages (Sarasota, North Port, Englewood, Nokomis/Siesta Key) mirroring the existing service-page template, each with local rental-market copy and shoot samples",
+     "why": "These cities are already declared in areaServed City schema on all 13 pages but have zero indexable pages - only 'Venice' and 'Sarasota' appear in the homepage title. This is the largest untapped search surface for STR hosts outside Venice.",
+     "impact": "high"
+    },
+    {
+     "action": "Add the Google Business Profile: link a 'Leave a review' g.page URL and embed the GBP map on /contact and the footer",
+     "why": "The crawl found full NAP and tel/mailto links but not a single google.com/maps or g.page link on any of the 13 pages - GBP is the #1 channel for 'airbnb photographer near me' searches and it is completely disconnected from the site.",
+     "impact": "high"
+    },
+    {
+     "action": "Replace the anonymous 'Sarah M. / James R. / Emily T.' testimonials with sourced Google/Airbnb-host reviews and add AggregateRating + Review schema",
+     "why": "The homepage H2 claims 'Top-Rated Real Estate Photography' but there is no AggregateRating anywhere (grep: 0) and no review source - star snippets in SERPs would lift CTR on the already-ranking service titles.",
+     "impact": "high"
+    },
+    {
+     "action": "Build a /portfolio/ (or per-property case-study) page with before/after listing photos and a booking-lift metric per property",
+     "why": "Homepage copy says 'View Our Work' but the page sitemap contains no portfolio/gallery URL at all - property managers evaluating a photographer have nothing to inspect, and case studies are the natural referral/share asset.",
+     "impact": "high"
+    },
+    {
+     "action": "Turn the existing 'Preparing Your Airbnb for a Photo Shoot: The Ultimate Checklist' post (448 words) into a downloadable PDF gated by an email form, and add that capture block to all 5 service pages",
+     "why": "The site currently has zero email-capture forms across all 13 pages, so every non-booking visitor is lost; the checklist post already exists and is the obvious lead magnet for hosts not ready to book.",
+     "impact": "high"
+    },
+    {
+     "action": "Rewrite the homepage 'Top-Rated Real Estate Photography... attract more buyers and faster offers' section for STR hosts (guests/bookings, not buyers/offers)",
+     "why": "That H2 block was crawled verbatim on the homepage - it is home-sale copy on a vacation-rental site and dilutes both the message to property managers and topical relevance for airbnb/STR keywords.",
+     "impact": "medium"
+    },
+    {
+     "action": "Add FAQPage schema to the homepage and /aerial-photography/ FAQ sections, and add an FAQ block to /services/ (currently 501 words, the thinnest service hub)",
+     "why": "FAQ content already exists on home and aerial pages but the schema dump shows no FAQPage type, so the site earns no FAQ rich results; /services/ has only one H2 and the least content of any money page.",
+     "impact": "medium"
+    },
+    {
+     "action": "Publish 2 posts/month targeting property-manager queries (e.g. 'vacation rental photography pricing Sarasota', 'how often to reshoot your Airbnb listing'), 1,200+ words, keeping the existing in-body links to service pages",
+     "why": "Only 3 posts exist at 425-512 words each and both blog categories are near-empty; the posts that do exist already interlink well, so the pattern works - there is just almost no content competing for host-intent queries.",
+     "impact": "medium"
+    },
+    {
+     "action": "Add a dedicated /pricing/ page and link the homepage package cards to it",
+     "why": "Crawl shows the $199/$50/$100 package pricing lives only on the homepage - 'airbnb photography cost/pricing' queries have no landing page, and service pages never state price, forcing an extra click before the book-now form.",
+     "impact": "medium"
+    },
+    {
+     "action": "Create a YouTube channel with property video samples, embed them on /videography/, and add the channel to the footer social row",
+     "why": "Videography is a sold service (own page, 789 words) yet the only social links found are Facebook and Instagram - video samples on YouTube rank for 'sarasota vacation rental tour' queries and double as portfolio proof.",
+     "impact": "medium"
+    },
+    {
+     "action": "Cross-link with the parent brand: add a referral block/link on Express Real Estate Photos pointing to bnbphotos.com and vice versa",
+     "why": "The footer states 'a division of Express Real Estate Photos' but the crawl found no outbound link to the sister site - an aged related-niche domain is the cheapest relevant backlink and referral source available to a solo owner.",
+     "impact": "low"
+    },
+    {
+     "action": "Fix the homepage title/H1 alignment by adding 'Venice & Sarasota' (already in the title tag) into the on-page hero H1 or subhead",
+     "why": "The homepage H1 'Photos That Help Vacation Rentals Earn More Bookings' contains no location term at all - the geo signal currently rides only on the title tag and footer, weakening the local relevance of the strongest page.",
+     "impact": "low"
+    }
+   ]
+  },
+  {
+   "site": "https://dvpfl.com/",
+   "pages_crawled": 20,
+   "current_keywords": [
+    "sarasota wedding videographers",
+    "wedding videography sarasota fl",
+    "cinematic wedding film",
+    "wedding highlight recap",
+    "full documentary wedding video",
+    "ceremony video",
+    "engagement video",
+    "sarasota video production company",
+    "florida video production services",
+    "wedding videography florida"
+   ],
+   "strengths": [
+    "Real Vimeo sample films embedded on every portfolio page (10+ player.vimeo.com embeds across cinematic/highlight/ceremony pages) - strong proof for couples",
+    "Transparent pricing from $499 on /packages/ with a full add-on menu (drone, extra camera, streaming) - rare among wedding videographers",
+    "TheKnot marketplace listing (id 2034487) and WeddingWire review-page badges linked on /awards/",
+    "Homepage names a 10-city service area (Venice, Sarasota, North Port, Bradenton, Port Charlotte, Fort Myers, Punta Gorda, Clearwater, St. Petersburg, Tampa) plus destination weddings",
+    "/vendors/ page with 6 outbound partner links (beach wedding planners, photographers, photo booth) - live referral network to activate",
+    "Freshly rewritten geo-targeted meta descriptions sitewide (page sitemap lastmod Aug 2026) and a credible 25-year owner bio with 8 named couples on the home slider"
+   ],
+   "growth_gaps": [
+    "Zero lead capture: /contact-us/ has NO form - only tel: and mailto:paul@dvpfl.com text links (99 words total); no email signup exists on any of the 20 pages",
+    "No Google Business Profile, g.page, or maps.google link anywhere on the site (grep across all 20 pages returned nothing)",
+    "Schema is Yoast defaults only (Organization/WebPage/Article) - no LocalBusiness with NAP, no VideoObject for the 10+ Vimeo embeds, no Review/AggregateRating, no FAQPage",
+    "No location or venue pages: 10 cities are named in homepage body text but the only geo-targeted URL is the 2022 blog post /sarasota-video-production/",
+    "No real-wedding or venue case-study pages - 8 couple names sit in a home slider with no linked pages behind them",
+    "No review text embedded on-site: WeddingWire/TheKnot are outbound links on /awards/ only; home, packages and service pages carry zero testimonials",
+    "Blog dead since 2022 (post-sitemap lastmod 2022-06-02) and 8 of 10 posts target corporate 'video production' buyers, not engaged couples",
+    "Internal linking is nav-only - every page carries the identical 20-link menu with no contextual body links; service pages are thin (205-282 words) and titled 'X SAMPLES' with no geo keyword"
+   ],
+   "site_actions": [
+    {
+     "action": "Add a 'Check Your Date' availability/inquiry form to /contact-us/ and as a footer CTA on every service page",
+     "why": "The new meta descriptions already promise 'Check your date' but the contact page contains no form at all - just tel: and mailto links - so every visitor must self-initiate an email or call; this is the single biggest leak between the strong Vimeo portfolio and an actual lead",
+     "impact": "high"
+    },
+    {
+     "action": "Build service-area pages for the cities the homepage already names (start: Sarasota, Venice, Bradenton, Tampa/St. Pete wedding videographer)",
+     "why": "Homepage body text lists 10 cities served, yet the only geo URL on the site is the stale 2022 blog post /sarasota-video-production/ - each city is currently unrankable because no page targets it",
+     "impact": "high"
+    },
+    {
+     "action": "Embed 3-5 real WeddingWire/TheKnot review quotes (with AggregateRating schema) on the homepage and /packages/",
+     "why": "A WeddingWire reviews page and TheKnot listing 2034487 exist and are linked from /awards/, but no review text appears anywhere on-site - couples comparing the $499+ packages see prices with zero social proof next to them",
+     "impact": "high"
+    },
+    {
+     "action": "Add a Google Business Profile link plus LocalBusiness schema with the Venice FL 34293 NAP and (941) 894-0980",
+     "why": "The address and phone render as plain text on /contact-us/ but no GBP/maps link exists on any of the 20 crawled pages and schema is Yoast's generic Organization - local-pack visibility for 'wedding videographer sarasota' depends on both",
+     "impact": "high"
+    },
+    {
+     "action": "Turn the 8 home-slider couples (Tamaryn & Martin, Kendall & Frank, Kyle & Rebecca, etc.) into real-wedding pages naming the venue and city, each embedding its existing Vimeo film",
+     "why": "The slider names and the Vimeo films already exist but have no pages behind them; venue-name pages ('X wedding video at [venue]') are the highest-converting referral asset for a solo videographer and are absent entirely",
+     "impact": "high"
+    },
+    {
+     "action": "Rewrite service-page titles/H1s with geo + intent keywords (e.g. 'Cinematic Wedding Films in Sarasota & Venice FL' instead of 'CINEMATIC WEDDING FILM SAMPLES') and expand each from ~250 words with venue mentions",
+     "why": "All 9 service pages crawled use bare 'X - Digital Video Production FL' titles and 'X SAMPLES' H1s with no location, and run 205-282 words - the meta descriptions were geo-optimized in Aug 2026 but the ranking elements (title/H1/body) were not",
+     "impact": "medium"
+    },
+    {
+     "action": "Add VideoObject schema to the 10+ Vimeo embeds on the portfolio pages",
+     "why": "The site's best assets are its sample films (player.vimeo.com embeds on cinematic/highlight/ceremony/documentary pages) but none carry VideoObject markup, forfeiting video rich results for wedding-film searches",
+     "impact": "medium"
+    },
+    {
+     "action": "Fix the conflicting duplicate pricing on /packages/ (Extra camera for Ceremony listed at both $200 and $149; Highlight Recap at $350 and $199; two 'Extra' add-on blocks render together)",
+     "why": "The crawl shows two overlapping add-on price lists on the live packages page - contradictory prices next to a 'no surprises' meta description undermines the site's main trust asset",
+     "impact": "medium"
+    },
+    {
+     "action": "Restart the blog with couple-intent posts (venue roundups: 'Best wedding venues in Sarasota', 'Venice FL beach wedding guide') and link them contextually into the matching service pages",
+     "why": "post-sitemap lastmod is 2022-06-02 and 8 of 10 posts chase corporate 'video production company' keywords, not brides; the two wedding posts (903 and 1,726 words) are the only long-form content and prove the format works",
+     "impact": "medium"
+    },
+    {
+     "action": "Add contextual internal links from blog posts and home body copy to /packages/ and service pages, and fix the 'AWards' H1 typo on /awards/",
+     "why": "Every page carries only the identical 20-link nav menu; even the 1,726-word Florida-wedding-videography post never links to /packages/ in body copy, so link equity and click paths to the money page depend on the header alone",
+     "impact": "low"
+    },
+    {
+     "action": "Ask the 6 /vendors/ partners (beachbreezeweddings.com, floridasunweddings.com, planmybeachwedding.com, venicephotobooth.com, etc.) for reciprocal listings and co-created venue content",
+     "why": "DVPFL already links out to these wedding planners and photographers with no evidence of links back - for a solo owner, planner referrals are the cheapest booked-wedding channel and the page shows the relationships already exist",
+     "impact": "low"
+    },
+    {
+     "action": "Expand /vendors/ and /awards/ (139 and 177 words) with descriptive text about each partner and award year/category",
+     "why": "Both pages are near-empty label grids in the crawl; award names with context ('Couples Choice 2022') are quotable trust content that currently renders as bare images",
+     "impact": "low"
+    }
+   ]
+  },
+  {
+   "site": "https://expressrealestatephotos.com/",
+   "pages_crawled": 16,
+   "current_keywords": [
+    "real estate photography venice fl",
+    "real estate photography sarasota fl",
+    "aerial photography venice sarasota",
+    "floor plans real estate",
+    "matterport 3d virtual tour",
+    "zillow 3d walkthrough / zillow boost",
+    "virtual staging",
+    "real estate videography",
+    "listing website / website marketing kit",
+    "real estate media services"
+   ],
+   "strengths": [
+    "Online booking app at homes.expressrealestatephotos.com/book linked as BOOK NOW from every service page, plus transparent packages on the homepage ($149/$249/$349/$449)",
+    "8 dedicated service pages with consistent geo-modified titles ('X - Venice & Sarasota FL') and solid 640-840 word copy each",
+    "Blog exists: 3 well-interlinked 790-900 word posts with correct BlogPosting schema (photoshoot prep, Matterport vs Zillow, why pro photography sells faster)",
+    "Per-service portfolio galleries (#our-work anchors) reachable from the homepage 'Our Recent Work' section",
+    "Brand-logo social proof strip (Zillow, RE/MAX, KW, Berkshire Hathaway, eXp, Airbnb, Booking.com) on every page",
+    "Clean Rank Math sitemap, good homepage meta description with USPs (next-day delivery, book online), visible phone (941) 894-0980 and Facebook/Instagram profiles"
+   ],
+   "growth_gaps": [
+    "No Google Business Profile / Google Maps link or embed anywhere on the site (checked every page) - the single biggest referral channel for local agents is invisible",
+    "No location/service-area pages: only Venice and Sarasota appear in titles; Nokomis, North Port, Osprey, Englewood, Port Charlotte, Siesta Key, Lakewood Ranch appear zero times in the crawl",
+    "Testimonials are static, unattributed first-name quotes ('Michael R.', 'Sarah L.') with broken encoding characters - no Google reviews widget, no aggregateRating schema",
+    "No LocalBusiness or Service schema: Rank Math outputs generic Article + Person on service pages; only /services/ has an Organization node",
+    "Weak internal linking: every service page links only to home, about-us, contact and itself - no cross-links to sibling services and no links to the blog posts (homepage is the only hub)",
+    "/book-now/ returns a 'Vercel Security Checkpoint' challenge page (27 words) to crawlers yet is listed in page-sitemap.xml; homepage also still links the old /virtual-tour/ URL which 301s to /matterport-3d-virtual-tour/",
+    "No email capture anywhere (only the contact form); blog is stale - all 3 posts published 2026-05-06, all in 'uncategorized', and /category/uncategorized/ is in the sitemap",
+    "Homepage title tag ends abruptly at '| Express' (brand truncated) and partner-logo alt texts are raw filenames like 'idJM8XKT4-_logos' and 'Booking-com_Logo_1'"
+   ],
+   "site_actions": [
+    {
+     "action": "Create/claim a Google Business Profile for Venice-Sarasota and add its map embed + 'Leave us a review' link to /contact/ and the footer",
+     "why": "Crawled all 16 pages: zero google.com/maps, g.page or business.google links exist, so the site captures no local-pack or GBP referral traffic despite ranking-ready geo titles",
+     "impact": "high"
+    },
+    {
+     "action": "Replace the static 'Trusted by Real Estate Professionals' quotes with an embedded live Google reviews widget and add aggregateRating markup",
+     "why": "Current homepage testimonials are unattributed first-name quotes containing broken encoding characters ('Michael R. \ufffddefinitely using them again') - unverifiable proof converts listing agents far worse than real starred Google reviews",
+     "impact": "high"
+    },
+    {
+     "action": "Clone the existing service-page template into 5-7 service-area pages (Nokomis, North Port, Osprey, Englewood, Siesta Key, Lakewood Ranch, Port Charlotte)",
+     "why": "Every title/H1 targets only 'Venice & Sarasota FL'; neighboring towns agents actually farm appear 0 times across the crawl, leaving those 'real estate photographer [town]' searches uncontested",
+     "impact": "high"
+    },
+    {
+     "action": "Switch service-page schema from Article+Person to LocalBusiness (ProfessionalService) + Service types in Rank Math, including areaServed, telephone (941) 894-0980, and priceRange from the visible $149-449 packages",
+     "why": "Crawl shows Rank Math already installed but emitting only WebSite/WebPage/Article/Person - the site tells Google it publishes articles, not that it is a local photography business",
+     "impact": "high"
+    },
+    {
+     "action": "Add a 'Related Services' cross-link block and blog-post links to all 8 service pages",
+     "why": "Crawled link graph shows service pages link only to /, /about-us/ and /contact/ - photography.html never links floor-plans, aerial, or the 'Why Professional Photography Sells Homes Faster' post, so link equity pools on the homepage only",
+     "impact": "high"
+    },
+    {
+     "action": "Fix /book-now/: either move booking behind a crawlable landing page or remove it from page-sitemap.xml; also update the homepage /virtual-tour/#our-work link to /matterport-3d-virtual-tour/#our-work",
+     "why": "curl of /book-now/ returns a 27-word 'Vercel Security Checkpoint' page - a sitemap URL Google may index as an error page; /virtual-tour/ 301s, wasting an internal link",
+     "impact": "medium"
+    },
+    {
+     "action": "Turn the existing 'How to Prepare Your Property for a Photoshoot' post (903 words, best page on the blog) into a downloadable agent checklist PDF gated by an email form on service pages and blog",
+     "why": "No newsletter/subscribe element exists anywhere in the crawl - the site has zero way to capture agents who aren't ready to book today",
+     "impact": "medium"
+    },
+    {
+     "action": "Restart the blog with local-intent posts (e.g. 'Real estate photography pricing in Sarasota', 'Best listing photo turnaround for Venice agents'), assign real categories, and drop /category/uncategorized/ from the sitemap",
+     "why": "post-sitemap lastmod is 2026-05-06 - all 3 posts shipped the same day and nothing since; the only category in category-sitemap.xml is 'uncategorized'",
+     "impact": "medium"
+    },
+    {
+     "action": "Build 2-3 case-study pages from the per-service #our-work galleries (property type, package used, days on market, agent quote)",
+     "why": "The homepage links 9 different #our-work portfolio anchors but no page tells the before/after story that converts referral traffic; case studies also become linkable assets for agent brokerages like the RE/MAX and KW logos already displayed",
+     "impact": "medium"
+    },
+    {
+     "action": "Complete the homepage title to 'Real Estate Photography Venice & Sarasota FL | Express Real Estate Photos'",
+     "why": "The live title tag literally ends at '| Express' - the brand is truncated in the SERP snippet, weakening branded-search recognition every other page ('- Express Real Estate Photos') builds",
+     "impact": "medium"
+    },
+    {
+     "action": "Expand /about-us/ (currently 324 words, thinnest page) with the solo owner's story, FAA Part 107 drone certification, gear, and headshot, and link it to the GBP",
+     "why": "For a solo operator, the about page is the trust page agents check before referring - it is currently under half the length of every service page and carries no credentials",
+     "impact": "low"
+    },
+    {
+     "action": "Rewrite partner-logo and gallery alt texts with descriptive keywords (e.g. 'RE/MAX listing photographed by Express Real Estate Photos, Sarasota FL')",
+     "why": "Crawled alts are raw filenames: 'idJM8XKT4-_logos', 'Booking-com_Logo_1', 'Berkshire Hathaway (2)' - free image-SEO and accessibility signal being wasted on every page",
+     "impact": "low"
+    }
+   ]
+  }
+ ]
+}

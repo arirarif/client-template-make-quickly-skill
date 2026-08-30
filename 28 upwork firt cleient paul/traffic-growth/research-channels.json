@@ -1,0 +1,811 @@
+{
+ "reports": [
+  {
+   "channel": "B2B agent-relationship marketing for expressrealestatephotos.com: local association presence + platform certification + retention email, aimed at Sarasota/Venice listing agents who book repeatedly",
+   "tactics": [
+    {
+     "name": "RASM Business Partner membership (REALTOR Association of Sarasota and Manatee)",
+     "why": "RASM puts vendors in front of ~9,000 local agents via its Business Partner directory, bi-monthly partner meetings, and the monthly ELEVATE magazine \u2014 exactly the repeat-booking listing agents this business sells to, at trivial cost for a solo owner.",
+     "steps": [
+      "Apply at myrasm.com/become-a-business-partner (auxiliary tier is ~$50/yr; primary tier slightly more)",
+      "Complete the Business Partner directory listing with booking-app link and Sarasota/Venice service area",
+      "Attend the every-other-month Business Partner meetings at RASM South (closest to Venice) with a one-page rate card",
+      "Sponsor or shoot one RASM event per quarter free in exchange for photo credit to all attendees",
+      "Collect agent emails at events into the nurture list (tactic below)"
+     ],
+     "effort_hours_month": 4,
+     "cost": "$50-$300/yr dues + occasional event sponsorship",
+     "impact": "high",
+     "time_to_results": "1-3 months",
+     "outcome": null
+    },
+    {
+     "name": "Zillow Showcase Select positioning (3D Home tours + interactive floor plans)",
+     "why": "Zillow's old approved-photographer program ended; in 2026 the path is Showcase Select via Aryeo Pro, which gives a badge and lets agents who buy Zillow Showcase book you directly. Showcase listings require Zillow 3D Home tours + interactive floor plans, so certifying creates a recurring, defensible booking pipeline.",
+     "steps": [
+      "Learn the Zillow 3D Home capture app and shoot 2-3 practice tours to Showcase resolution/framing standards",
+      "Subscribe to Aryeo Pro and designate Showcase-compliant media products and at least one Showcase Select order form",
+      "Complete the company profile so Sarasota agents see the Showcase Select badge",
+      "Add a 'Zillow Showcase media' package to the site's booking app",
+      "Email existing agent clients announcing Showcase capability"
+     ],
+     "effort_hours_month": 5,
+     "cost": "Aryeo Pro subscription (~$100/mo tier) + existing camera gear",
+     "impact": "high",
+     "time_to_results": "1-2 months",
+     "outcome": null
+    },
+    {
+     "name": "Google Business Profile + post-shoot review engine",
+     "why": "All three sites measured today have zero GBP links and zero review widgets. 2026 local ranking weighs review recency, response rate, and photo freshness heavily; 10+ reviews is the threshold that moves a new profile, and a photographer has an endless supply of fresh photos to post.",
+     "steps": [
+      "Create/claim the GBP for Express Real Estate Photos (service-area business, Venice/Sarasota), link it site-wide in the footer",
+      "Send every agent a review link automatically in the photo-delivery email (template once, reuse forever)",
+      "Upload 4-6 recent listing photos to GBP every month to keep the profile 'fresh' per 2026 ranking signals",
+      "Reply to every review within 48 hours",
+      "Embed a Google review widget on the homepage once 10+ reviews exist"
+     ],
+     "effort_hours_month": 2,
+     "cost": "free",
+     "impact": "high",
+     "time_to_results": "2-3 months",
+     "outcome": null
+    },
+    {
+     "name": "Agent email list + monthly rebooking nurture",
+     "why": "The booking app already captures agent contact info but nothing is done with it \u2014 no email capture or lead magnet exists on any site. Agents list year-round; a monthly touch keeps this photographer the default call at the next listing instead of whoever answered Instagram first.",
+     "steps": [
+      "Export past clients from the booking app into MailerLite (free to 1,000 subscribers)",
+      "Add a lead magnet to the site: 'Listing Prep Checklist for Sarasota Sellers' PDF agents can co-brand and forward to sellers",
+      "Send one monthly email: a recent shoot, one prep tip, and a prominent book-again link",
+      "Add an automated 45-day 'time for your next listing?' rebook nudge after each shoot",
+      "Track opens/bookings and prune what doesn't get clicked"
+     ],
+     "effort_hours_month": 3,
+     "cost": "free (MailerLite free tier)",
+     "impact": "high",
+     "time_to_results": "2-4 months",
+     "outcome": null
+    },
+    {
+     "name": "Brokerage preferred-vendor packages",
+     "why": "2026 brokerage partnership programs win on centralized scheduling and single monthly billing rather than 30 agents expensing separately; the existing online booking app is the differentiator most solo shooters lack. One office deal equals dozens of recurring agents.",
+     "steps": [
+      "List the 8-10 largest Sarasota/Venice offices (Michael Saunders, Coldwell Banker, KW, Premier Sotheby's, RE/MAX)",
+      "Build a one-page team offer: office-wide rate, 24-48h turnaround, one monthly invoice, priority slots via the booking app",
+      "Pitch office managers/brokers a free shoot for one of their listings as proof",
+      "Offer a 15-minute 'better listing photos' talk at office sales meetings (brokers constantly need meeting content)",
+      "Close one office per quarter; onboard agents through the booking app with a broker-specific code"
+     ],
+     "effort_hours_month": 4,
+     "cost": "free (one comp shoot per pitch)",
+     "impact": "high",
+     "time_to_results": "3-6 months",
+     "outcome": null
+    },
+    {
+     "name": "Agent referral + loyalty incentive",
+     "why": "Agents talk to agents daily in offices and on caravans; a stated incentive turns satisfied clients into a sales force. Loyalty credit also raises switching costs for the repeat bookers who are already the core revenue.",
+     "steps": [
+      "Offer $50 shoot credit to both referrer and referred agent on the referred agent's first booking",
+      "Offer every 10th shoot at 50% off (tracked in the booking app)",
+      "Announce both in the monthly email and on the booking confirmation page",
+      "Print the referral offer on the back of leave-behind cards for RASM events"
+     ],
+     "effort_hours_month": 1,
+     "cost": "$50-$100 credit per converted referral (self-funding)",
+     "impact": "medium",
+     "time_to_results": "2-3 months",
+     "outcome": null
+    },
+    {
+     "name": "LinkedIn presence targeting Sarasota agents",
+     "why": "Listing agents treat LinkedIn as their professional shopfront; congratulating new licensees and brokerage moves is a warm, non-spammy opening that suits a few-hours-a-week owner better than cold email volume.",
+     "steps": [
+      "Rebuild Paul's profile headline around 'Real estate photography for Sarasota listing agents' with booking link",
+      "Connect with 20 Sarasota-area agents/week with a no-pitch personalized note",
+      "Post weekly: one before/after or just-listed shoot tagging the agent (tagged agents reshare to their sphere)",
+      "Comment on new-agent announcements and brokerage-move posts; offer a discounted first shoot in DMs only after engagement"
+     ],
+     "effort_hours_month": 4,
+     "cost": "free",
+     "impact": "medium",
+     "time_to_results": "2-4 months",
+     "outcome": null
+    },
+    {
+     "name": "Matterport Service Partner directory listing (if Pro camera owned)",
+     "why": "The MSP program gives Pro-camera owners free referrals and a directory listing agents already search; it complements Zillow Showcase by covering agents/brokerages standardized on Matterport instead. Skip if no Matterport Pro camera \u2014 do not buy one just for this.",
+     "steps": [
+      "Confirm Matterport Pro camera ownership; if owned, enroll in the Matterport Service Partner program",
+      "Complete the Find-a-Partner directory profile for the Sarasota service area",
+      "Add Matterport tours as a bookable add-on in the booking app",
+      "Mention MSP status in the brokerage pitch one-pager"
+     ],
+     "effort_hours_month": 1,
+     "cost": "free with existing Pro camera (subscription already required to operate it)",
+     "impact": "low",
+     "time_to_results": "3-6 months",
+     "outcome": null
+    }
+   ],
+   "quick_wins": [
+    "Create the Google Business Profile and link it in the footer of expressrealestatephotos.com today (measured gap: zero GBP links) \u2014 free, ~1 hour",
+    "Register Search Console and submit the sitemap (site currently has GA4 but no GSC, so zero query visibility) \u2014 free, 30 minutes",
+    "Fix the 5.5s TTFB with server caching (WP Rocket already licensed on the dvpfl site; reuse) \u2014 slow first paint is bleeding the booking app's conversions",
+    "Add the review-request line + Google review link to the standard photo-delivery email template \u2014 30 minutes, compounds forever",
+    "Submit the RASM Business Partner application (~$50 auxiliary tier) before the next bi-monthly partner meeting"
+   ],
+   "metrics": [
+    "Repeat-booking rate: % of monthly shoots from agents with 2+ lifetime bookings (target 60%+)",
+    "Active recurring agents: unique agents booking in trailing 90 days",
+    "Google Business Profile: reviews count (first target: 10) and monthly calls + website clicks from GBP",
+    "Email: agent list size and bookings attributed to the monthly email / 45-day rebook nudge",
+    "Pipeline by source: bookings tagged RASM / brokerage deal / referral / Zillow Showcase Select per month"
+   ]
+  },
+  {
+   "channel": "Local SEO \u2014 Google Business Profile, reviews, and citations for three Venice/Sarasota FL service brands (expressrealestatephotos.com, bnbphotos.com, dvpfl.com)",
+   "tactics": [
+    {
+     "name": "Claim and fully build out 3 separate GBPs as service-area businesses",
+     "why": "Local pack ranking = relevance + distance + prominence, and none of the three brands even links a GBP today \u2014 this is the single biggest gap. Photographers/videographers are service-area businesses, so a correctly categorized, address-hidden profile covering Venice/Sarasota/North Port/Bradenton is the entry ticket to the map pack.",
+     "steps": [
+      "Create/claim one GBP per brand (they are distinct businesses with distinct sites \u2014 do not merge)",
+      "Set primary category precisely: 'Real estate photographer' (Express), 'Photographer' + vacation-rental services text (BNB), 'Wedding videography service' (DVPFL); hide the street address and define service areas (Venice, Sarasota, North Port, Bradenton, Port Charlotte)",
+      "Fill every field: services list with descriptions, hours, phone, booking link (Express's existing booking app as the GBP appointment link), 20+ geotagged portfolio photos per profile",
+      "Add the GBP/Maps link and a 'Review us on Google' link to every site footer and contact page (currently zero GBP links on any site)",
+      "Write the 750-char business description with city + niche keywords ('real estate photography for agents in Sarasota and Venice, FL')"
+     ],
+     "effort_hours_month": 6,
+     "cost": "free",
+     "impact": "high",
+     "time_to_results": "4-8 weeks"
+    },
+    {
+     "name": "Persona-matched Google review-ask workflow (agent / host / couple)",
+     "why": "Prominence is driven by reviews; profiles under ~3.9 stars lose pack visibility and 4.2+ is the sweet spot. Each customer type has a different 'moment of satisfaction', so one generic ask underperforms. Google now provides a built-in 'Ask for reviews' short link + QR code per profile \u2014 no paid tool needed.",
+     "steps": [
+      "Grab the native review link + QR from each GBP ('Ask for reviews' button); no gating (never pre-screen happy vs unhappy) and no incentives \u2014 both violate 2026 Google policy, and reviews from a shared office device get filtered",
+      "Agents (Express): append the review link to the gallery-delivery email, but ask after the 2nd or 3rd completed shoot when the relationship is proven; repeat agents = steady review stream",
+      "Hosts (BNB): ask when the host reports the listing is live with new photos ('your Airbnb looks great \u2014 would you share that in a Google review?'); include the direct link in the delivery email",
+      "Couples (DVPFL): ask at film delivery (emotional peak) with a personal note naming their wedding; send one polite reminder 7 days later; also invite the same review on The Knot/WeddingWire",
+      "Template all three emails once, then it's a 2-minute send per job; owner replies to every review within 48h with a keyworded but natural response"
+     ],
+     "effort_hours_month": 3,
+     "cost": "free",
+     "impact": "high",
+     "time_to_results": "6-12 weeks to 10+ reviews per profile"
+    },
+    {
+     "name": "Weekly GBP posts recycled from shoot work (batched monthly)",
+     "why": "Weekly is the verified 2026 sweet-spot cadence for service businesses \u2014 enough to look alive to Google and to the ~40% of local searches now showing AI Overviews that pull from active profiles. The owner already produces photos/video daily, so content cost is near zero.",
+     "steps": [
+      "Batch one session per month: pick 4-5 recent deliverables per brand (with client permission), write 2-3 sentence posts naming the neighborhood/city ('Twilight shoot for a listing on Siesta Key')",
+      "Schedule 1 post/week/profile; add a CTA button (Book \u2014 Express's booking app URL; Learn more for BNB/DVPFL) with UTM parameters so GA4 shows GBP traffic",
+      "Use Offer posts (highest CTR post type) for any promo, e.g. DVPFL's $499 package or a spring listing-season special",
+      "Refresh 3-5 profile photos per month from the same batch"
+     ],
+     "effort_hours_month": 3,
+     "cost": "free (or $20/mo for a scheduler if batching in GBP UI annoys)",
+     "impact": "medium",
+     "time_to_results": "2-3 months (compounds with profile activity signals)"
+    },
+    {
+     "name": "Tier-1 citations + niche directories, consistent NAP",
+     "why": "Citations remain a top-5 local factor in 2026, but quality beats quantity: ~30-50 accurate listings on high-DA sites outperform hundreds of junk ones, and consistent NAP correlates with 3x better odds of appearing in AI-generated local recommendations. Each brand needs its own NAP set.",
+     "steps": [
+      "Lock the canonical NAP per brand (exact name, one tracking-free phone, service-area city) in a shared doc first",
+      "Tier 1 for all three: Apple Business Connect, Bing Places, Yelp, Nextdoor, BBB, Foursquare \u2014 done manually, free, ~1h per brand",
+      "Niche: DVPFL \u2192 The Knot + WeddingWire (start with free listing; reviews there rank on their own SERPs), Zola; Express \u2192 local Realtor association affiliate/vendor lists, agent-facing directories; BNB \u2192 short-term-rental host communities/vendor lists",
+      "Local: Venice Area and Sarasota Chambers of Commerce, local business associations",
+      "Quarterly 30-min audit: search each phone number and old addresses, fix mismatches"
+     ],
+     "effort_hours_month": 4,
+     "cost": "free (Chamber optional ~$300/yr; skip paid Knot tier until free listing proves lead flow)",
+     "impact": "high",
+     "time_to_results": "8 weeks (documented avg ~1.4 map-pack positions from fixing top-10 citation NAP)"
+    },
+    {
+     "name": "Search Console + geo landing pages as the local relevance backbone",
+     "why": "The local site does heavy lifting for pack relevance, but Express has no Search Console at all and two sites have 5.5-7.7s TTFB \u2014 Google can't be fed keyword data and slow pages depress the behavioral signals that break pack ties. This makes every other tactic measurable.",
+     "steps": [
+      "Add Search Console (domain property) to all three sites \u2014 20 minutes total; submit sitemaps",
+      "Create/optimize one city-service page per brand: 'Real Estate Photography Sarasota & Venice FL', 'Airbnb Photography Sarasota', 'Sarasota Wedding Videographer' \u2014 each with embedded Google map, service list, 3 reviews, LocalBusiness schema with areaServed",
+      "Link each page as the GBP website URL so pack relevance matches the landing page",
+      "Fix TTFB on Express (5.5s) and BNB (7.7s): server-level page cache (WP Rocket already proven on dvpfl) or host cache; target <1.5s",
+      "Revive one blog post/month per active brand with local proof ('Recent listing shoot in Nokomis'), reusing GBP post content"
+     ],
+     "effort_hours_month": 5,
+     "cost": "free-$59/yr (WP Rocket license if reused)",
+     "impact": "medium",
+     "time_to_results": "2-4 months"
+    },
+    {
+     "name": "On-site review widgets + email capture per persona",
+     "why": "Sites currently show zero social proof and capture zero emails, so citation/GBP traffic leaks. Displayed Google reviews lift conversion, and a small list lets the owner re-ask repeat agents/hosts for referrals and reviews without ad spend.",
+     "steps": [
+      "Embed a Google-reviews widget on each homepage (free tier of Elfsight/Trustindex or a lightweight plugin) once each profile has 5+ reviews; skip review schema markup \u2014 Google ignores self-serving review rich results",
+      "Add one lead magnet per persona: Express \u2192 '10-point listing prep checklist for agents' PDF; BNB \u2192 'Airbnb photo prep checklist for hosts'; DVPFL \u2192 'Wedding video planning timeline'",
+      "Wire a simple form (WPForms/Fluent Forms free) to a free-tier email tool (MailerLite); tag by persona",
+      "Send a monthly one-email digest reusing GBP post content; include the review link footer"
+     ],
+     "effort_hours_month": 4,
+     "cost": "free to $10/mo",
+     "impact": "medium",
+     "time_to_results": "1-3 months for conversion lift; list value compounds"
+    },
+    {
+     "name": "DVPFL wedding-platform review mirroring",
+     "why": "Couples search The Knot/WeddingWire before Google; a 30-year-old studio with $499 entry pricing and 8 films but no marketplace reviews is invisible where couples actually shortlist. Free listings + review parity give a second lead channel and citation authority in one move.",
+     "steps": [
+      "Set up free storefronts on The Knot and WeddingWire (same parent company \u2014 one review sync between them) with the 8 portfolio films and package pricing",
+      "Ask each new couple for the Google review first, then a copy-paste to The Knot in the same thank-you email",
+      "Reply to marketplace inquiries within the hour \u2014 response speed measurably drives booking rate on these platforms",
+      "Reassess paid tiers only after 6 months of free-listing lead data"
+     ],
+     "effort_hours_month": 2,
+     "cost": "free (paid tiers deferred)",
+     "impact": "medium",
+     "time_to_results": "3-6 months (wedding booking cycles are long)"
+    }
+   ],
+   "quick_wins": [
+    "Create/claim all 3 Google Business Profiles and add the GBP + review links to every site footer today (currently zero GBP links site-wide)",
+    "Pull the native 'Ask for reviews' short link + QR from each GBP and email it to the last 15-20 happy clients of each business (personalized, no incentive, no gating)",
+    "Add Google Search Console to all three sites and submit sitemaps (~20 min; Express has none at all)",
+    "Set correct primary GBP categories, hide addresses, and define Venice/Sarasota/North Port service areas",
+    "Publish DVPFL's free The Knot + WeddingWire storefronts with the existing 8 films and $499+ packages"
+   ],
+   "metrics": [
+    "Map-pack position for one money keyword per brand (e.g. 'real estate photographer Sarasota', 'airbnb photographer Sarasota', 'wedding videographer Venice FL') checked biweekly via incognito/grid tool",
+    "Google review count and average rating per profile (targets: 10+ reviews in 90 days, hold 4.5+; 4.2+ is the visibility threshold)",
+    "GBP interactions per month (calls, website clicks, booking clicks, direction requests) from the GBP performance report",
+    "GBP-sourced site sessions and bookings via UTM-tagged post/profile links in GA4",
+    "Citation accuracy: quarterly count of tier-1 listings live and NAP-exact per brand (target 30+ each)"
+   ]
+  },
+  {
+   "channel": "STR host community + B2B property-manager marketing for bnbphotos.com (Airbnb Services marketplace, host groups, local PM partnerships)",
+   "tactics": [
+    {
+     "name": "List bnbphotos on the Airbnb Services marketplace (Photography category)",
+     "why": "Verified live in 2026: Airbnb's Services marketplace has a Photography category with city-level photographer directory pages, free to list (15% fee per booking). It puts Paul directly in front of Sarasota/Venice hosts inside the app they already use, with zero ad spend \u2014 individual STR photographers are already listed and bookable.",
+     "steps": [
+      "In the Airbnb host account, click + Add listing, choose Service, then Photography, and enter Sarasota/Venice as the city",
+      "Build the listing with 10-15 best before/after vacation-rental shots from bnbphotos.com portfolio and clear per-property pricing",
+      "Submit for review; supply any requested license/insurance proof and publish once approved",
+      "Also apply to the legacy Airbnb Pro Photo freelancer program (requires an online interior/architecture portfolio) as a second pipeline",
+      "Mention the Airbnb Services listing on bnbphotos.com and in every host-group interaction as social proof"
+     ],
+     "effort_hours_month": 3,
+     "cost": "free to list; 15% Airbnb fee per booked job",
+     "impact": "high",
+     "time_to_results": "2-6 weeks (after listing approval)"
+    },
+    {
+     "name": "B2B outreach to the six Sarasota/Venice vacation-rental property managers",
+     "why": "One PM contract equals dozens of hosts: Gulf Coast PM, iTrip Sarasota & Venice, Stringer Management, Compass PM, Horse and Chaise, and Global Vacation Rentals all manage STR portfolios in Paul's service area and need consistent listing photos every time they onboard a property.",
+     "steps": [
+      "Build a one-page PM offer: flat per-property volume rate, 48-hour turnaround, photos formatted for Airbnb/VRBO/their website",
+      "Offer each PM one free demo shoot of a newly onboarded unit in exchange for a meeting",
+      "Email + call the six identified companies; ask specifically who handles new-property onboarding",
+      "Propose a standing arrangement: bnbphotos shoots every new listing they sign, invoiced monthly",
+      "Ask each signed PM for a testimonial and a logo swap ('preferred photographer' on their vendor page)"
+     ],
+     "effort_hours_month": 4,
+     "cost": "free (1-2 comped demo shoots, ~$300 opportunity cost)",
+     "impact": "high",
+     "time_to_results": "1-3 months"
+    },
+    {
+     "name": "Become the known photo expert in STR host Facebook groups",
+     "why": "Photographer-recommendation posts appear weekly in the big host groups (Professional Hosts, The STR Community, Hosts Helping Hosts, listing-optimization groups with 100k-360k members), and hosts explicitly ask for local referrals; a helpful local expert wins those threads without paying for ads.",
+     "steps": [
+      "Join 4-5 groups: 2 national (The STR Community, Hosts Helping Hosts) and any Florida/Gulf Coast/Suncoast host groups",
+      "Spend 30 min/week answering photo-critique and 'why isn't my listing booking' threads with genuinely useful advice",
+      "Post one before/after case study per month with the revenue/CTR story (no hard sell; groups ban spam)",
+      "Watch for 'photographer near Sarasota/Venice/Siesta Key' requests and respond same-day",
+      "Funnel interested hosts to the lead magnet on bnbphotos.com, not just DMs"
+     ],
+     "effort_hours_month": 4,
+     "cost": "free",
+     "impact": "high",
+     "time_to_results": "1-2 months to first leads; compounds over 6 months"
+    },
+    {
+     "name": "Google Business Profile + review flywheel across all three businesses",
+     "why": "Measured today: zero GBP links and zero review widgets on any of the three sites, so Paul is invisible in the local pack for 'Airbnb photographer Sarasota' \u2014 searches with near-zero competition where a handful of reviews wins the map.",
+     "steps": [
+      "Create/claim separate GBPs for bnbphotos (Sarasota-Venice service area) and expressrealestatephotos; verify dvpfl's",
+      "Link each GBP from its site footer and add the review widget/badge",
+      "Send a review request (GBP short link) within 24h of every delivered shoot \u2014 make it a fixed step in the delivery email",
+      "Post before/after photo sets to the GBP monthly as Updates",
+      "Target 10 reviews on the bnbphotos profile in the first 90 days"
+     ],
+     "effort_hours_month": 2,
+     "cost": "free",
+     "impact": "high",
+     "time_to_results": "6-10 weeks for local-pack visibility"
+    },
+    {
+     "name": "Co-marketing with STR service providers and the Venice co-host network",
+     "why": "Cleaners, co-hosts, interior stagers, and STR-friendly realtors touch every new listing before photos are needed; Airbnb even runs a formal Co-Host Network for Venice FL, giving a ready-made list of local super-hosts who manage other people's properties and buy photography on their behalf.",
+     "steps": [
+      "List the Venice FL co-hosts from Airbnb's Co-Host Network page and message each offering a co-host referral rate",
+      "Identify 5 local STR cleaners/turnover companies and 3 STR-friendly realtors; propose mutual referrals (10% or $50/job)",
+      "Swap website links: 'trusted partners' block on bnbphotos.com in exchange for a listing on theirs",
+      "Give each partner 5 physical referral cards with a QR code to the booking page",
+      "Do one joint blog/social post per quarter (e.g. 'Turnover-day photo prep' with a cleaning partner)"
+     ],
+     "effort_hours_month": 3,
+     "cost": "free + referral fees only on closed jobs",
+     "impact": "medium",
+     "time_to_results": "2-4 months"
+    },
+    {
+     "name": "Lead magnet + email capture on bnbphotos.com",
+     "why": "The blog is fresh (Aug 2026) and attracting host traffic, but the site captures zero emails today; a photo-prep checklist converts researching hosts who aren't ready to book into a nurturable list, and hosts rebook per new property.",
+     "steps": [
+      "Create a 2-page PDF: 'Airbnb Photo-Prep Checklist: 27 things to fix before your shoot' (Paul already knows the content)",
+      "Add a lightweight WP form (e.g. free MailPoet/FluentCRM tier) on the homepage, every blog post, and a /checklist landing page",
+      "Set up a 4-email automatic sequence: checklist delivery, before/after case study, pricing/what-to-expect, booking ask",
+      "Promote the checklist as the link shared in Facebook host groups and at meetups",
+      "Send one short email/month afterward (seasonal: 'refresh photos before snowbird season')"
+     ],
+     "effort_hours_month": 3,
+     "cost": "free (free-tier email plugin)",
+     "impact": "medium",
+     "time_to_results": "1-2 months; list compounds",
+     "steps_note": ""
+    },
+    {
+     "name": "Show up at the Short Term Rental Superhosts Hub meetup circuit with a 'listing photo audit' talk",
+     "why": "The STR Superhosts Hub on Meetup runs monthly topic meetups with expert speakers and explicitly welcomes service providers; a 15-minute 'why your listing isn't booking \u2014 a photo audit of real local listings' talk positions Paul as the area expert in one evening.",
+     "steps": [
+      "Join the Short Term Rental Superhosts Hub and any Suncoast/SWFL REIA or host meetup within driving distance",
+      "Pitch organizers a free 'live photo audit' segment: attendees volunteer their listing, Paul critiques on screen",
+      "Bring the checklist QR code and offer an event-only discount for booked shoots",
+      "Attend quarterly even when not speaking; hosts buy from familiar faces",
+      "Collect emails at the event into the same nurture sequence"
+     ],
+     "effort_hours_month": 3,
+     "cost": "free-$30 (meetup dues/drinks)",
+     "impact": "medium",
+     "time_to_results": "first bookings within 1-2 events; 3-6 months to compound"
+    },
+    {
+     "name": "Instagram before/after presence feeding all channels",
+     "why": "Zero Instagram is a measured gap, and STR hosts vet photographers visually; a simple before/after reel format is low-effort, reuses every shoot's assets, and gives Facebook-group and meetup contacts somewhere credible to land.",
+     "steps": [
+      "Create @bnbphotos IG; bio links to the checklist landing page",
+      "Post 2 before/after carousels or reels per month from delivered shoots (get host permission in the contract)",
+      "Geotag Sarasota/Venice/Siesta Key and tag the property's own account so hosts reshare",
+      "Link the IG from bnbphotos.com header/footer",
+      "Cross-post the same asset to the GBP and Facebook groups \u2014 one asset, three channels"
+     ],
+     "effort_hours_month": 2,
+     "cost": "free",
+     "impact": "low",
+     "time_to_results": "3-6 months (credibility asset, not a direct lead source)"
+    }
+   ],
+   "quick_wins": [
+    "Submit the free Airbnb Services 'Photography' listing for Sarasota/Venice this week \u2014 verified open in 2026, no upfront cost, warm in-app buyers",
+    "Create the bnbphotos Google Business Profile and link it from the site footer today; ask the last 10 past clients for a review",
+    "Email the six named local PM companies (Gulf Coast, iTrip Sarasota & Venice, Stringer, Compass, Horse and Chaise, Global) with a one-free-demo-shoot offer",
+    "Join The STR Community and Hosts Helping Hosts Facebook groups and answer this week's 'photographer recommendation' threads",
+    "Publish the photo-prep checklist PDF behind a simple email form on the already-fresh bnbphotos.com blog"
+   ],
+   "metrics": [
+    "Booked shoots per month by source (Airbnb Services / GBP / FB groups / PM referral / email)",
+    "PM accounts signed and properties-per-account (target: 2 PMs in 90 days)",
+    "GBP actions per month: calls, direction requests, website clicks (needs the missing Search Console/GA4 wiring on bnbphotos too)",
+    "Google reviews on the bnbphotos profile (target: 10 in 90 days)",
+    "Email list size and checklist-to-booking conversion rate"
+   ]
+  },
+  {
+   "channel": "Local SEO (Google Business Profile + real-wedding venue-name blog posts) backed by venue partnerships \u2014 for dvpfl.com the highest-ROI path is owning \"wedding videographer Venice/Sarasota FL\" searches and venue referrals, not paid directories. 31 years in business and $499 entry pricing are ranking and referral assets that cost nothing to leverage; The Knot/WeddingWire paid tiers are a hold-until-proven expense in 2026.",
+   "tactics": [
+    {
+     "name": "Google Business Profile: create, verify, and run a review engine",
+     "why": "dvpfl.com currently has ZERO GBP presence, yet the Maps 3-pack is the first thing couples see for 'wedding videographer Sarasota'. 2026 BrightLocal data puts review signals at ~20% of local-pack ranking (top performers average ~47 reviews) \u2014 a 31-year-old business has a deep back-catalog of happy couples to mine that no new competitor can match.",
+     "steps": [
+      "Create/claim the GBP as 'DV Productions' (exact legal name, no keyword stuffing) with category Wedding Videographer, service area Venice/Sarasota/Bradenton/Port Charlotte",
+      "Write a 750-char description naturally including 'wedding videography in Venice and Sarasota FL since 1995', add the $499-and-up price range, link dvpfl.com, upload stills from the 8 portfolio films",
+      "Email/text the last 3 years of couples (10-15 at a time) with the direct review link; goal 25+ reviews in 90 days; reply to every review",
+      "Add the GBP link and a Google-reviews widget (free tier of a plugin like Widgets for Google Reviews) to the dvpfl.com footer and contact page",
+      "Post to GBP twice a month by recycling each new Reel/blog post (5 min each)",
+      "Ensure NAP is identical on the site footer, GBP, and every directory listing"
+     ],
+     "effort_hours_month": 4,
+     "cost": "free",
+     "impact": "high",
+     "time_to_results": "4-8 weeks to appear in the local pack; reviews compound over 3-6 months",
+     "cost_note": "free"
+    },
+    {
+     "name": "Free directory tier: Zola listing + free Knot/WeddingWire storefronts (skip paid for now)",
+     "why": "Zola is genuinely free to list in 2026 (pay-per-connect only when you choose to engage a lead) and gives a dofollow-adjacent SEO citation. The Knot/WeddingWire free storefronts add citations and Best of Weddings review eligibility. Honest ROI: paid tiers run ~$200-450/mo in a market like Sarasota and vendors widely report 2-5 bookings/yr declining returns \u2014 at a $499 entry price point the math rarely clears; only buy in after 6 months if free-listing inquiry volume proves the platforms send local leads.",
+     "steps": [
+      "Create the free Zola vendor storefront: 8 film embeds, FAQ answers, $499+ starting price, Venice/Sarasota service area",
+      "Claim free storefronts on The Knot and WeddingWire (same photos, films, identical NAP)",
+      "Port 10+ Google reviews by asking 5 past couples to also review on The Knot (feeds Best of Weddings eligibility)",
+      "Answer every inquiry within 1 hour during business hours \u2014 response speed is the single biggest conversion lever the platforms reward",
+      "On Zola, pay to connect only with leads whose date/venue fit; track cost per booked wedding",
+      "Re-evaluate paid tiers at month 6 using the inquiry-source data \u2014 commit only if free listings produced 2+ bookings"
+     ],
+     "effort_hours_month": 3,
+     "cost": "free (Zola pay-per-connect only on chosen leads, typically a few dollars each)",
+     "impact": "medium",
+     "time_to_results": "2-4 weeks for first inquiries; 6 months to judge paid-tier decision",
+     "cost_note": "free / usage-based"
+    },
+    {
+     "name": "Venue partnership circuit: highlight reels as the door-opener",
+     "why": "Preferred-vendor lists drive the warmest wedding leads, and lists are built on relationships and merit (sometimes pay-to-play \u2014 ask, don't assume). A videographer has a unique bribe no photographer matches: free 45-60s venue highlight reels cut from footage already shot at that venue \u2014 venues desperately need video for their own Instagram.",
+     "steps": [
+      "List every venue appearing in the 8 portfolio films plus the top 15 Venice/Sarasota venues (Sharky's on the Pier, Marie Selby Gardens, Powel Crosley Estate, The Ringling, Bay Preserve, etc.)",
+      "For venues already filmed: cut a 45-60s venue-focused reel from existing footage and email the events manager offering it free for their marketing, with credit",
+      "Ask each responsive venue: 'What does it take to be on your preferred vendor list?' and deliver whatever proof they ask for (insurance COI, references)",
+      "For new venues: offer to film one wedding's venue B-roll free next time booked there, in exchange for a list spot conversation",
+      "Follow up quarterly with the newest reel; tag venues in every Instagram post",
+      "Track which venues send inquiries via the intake form's 'venue' field"
+     ],
+     "effort_hours_month": 6,
+     "cost": "free (existing footage; ~$0-300/yr only if a venue requires a paid list fee worth taking)",
+     "impact": "high",
+     "time_to_results": "3-6 months to first list placements; strongest channel by month 12",
+     "cost_note": "free"
+    },
+    {
+     "name": "Revive the blog with real-wedding posts named for venues",
+     "why": "The blog has been dead since 2022, forfeiting the proven hyperlocal play: 'Sarah & Mike's Wedding Film at Powel Crosley Estate' ranks for '[venue name] wedding videographer' and '[venue] wedding video' \u2014 queries aggregators can't answer with depth. The 8 existing films are 8 ready-made posts; each also arms the venue-partnership outreach.",
+     "steps": [
+      "First, add the missing Google Search Console property for dvpfl.com so results are measurable (15 min)",
+      "Write one post per existing portfolio film: title = couple + venue + city, 500-800 words, embedded film, 6-10 stills, venue/planner/photographer named and linked",
+      "Add FAQ-style sections ('How much does a wedding video at [venue] cost?' \u2014 answer with the $499+ packages) to capture AI-overview and long-tail queries",
+      "Email each named vendor the post link and ask them to share it (free backlinks)",
+      "After the backlog, publish one post per new wedding filmed, within 30 days of delivery",
+      "Interlink every post to the packages page with 'check availability' CTA"
+     ],
+     "effort_hours_month": 5,
+     "cost": "free",
+     "impact": "high",
+     "time_to_results": "3-6 months for rankings; posts are owned assets that compound for years",
+     "cost_note": "free"
+    },
+    {
+     "name": "Instagram Reels from existing films (discovery) + carousel proof posts (conversion)",
+     "why": "Couples in 2026 discover videographers on Reels/TikTok more than search, and dvpfl has zero Instagram presence despite owning hours of cinematic footage \u2014 the raw material is already shot and edited. 2026 data: Reels are the discovery engine while carousels earn ~3x the save rate, so both formats get distinct jobs.",
+     "steps": [
+      "Create @dvpfl (or dvproductionsfl) profile; bio states Venice/Sarasota, 'since 1995', link to contact page; link the profile from the site header/footer",
+      "Cut three 20-45s vertical Reels from each of the 8 films (first frame = the emotional peak, on-screen venue name, trending-audio optional) \u2014 a 24-Reel launch backlog",
+      "Post 2 Reels + 1 carousel per week; carousels = behind-the-scenes, package explainers, '5 questions to ask your videographer'",
+      "Geotag the venue and tag venue/planner/photographer accounts on every post so their followers (engaged local couples) see it",
+      "Cross-post each Reel to TikTok and YouTube Shorts unchanged (5 extra min); reply to every comment/DM within a day",
+      "Once at 20+ posts, DM the reel to the featured venue for resharing \u2014 feeds the partnership tactic"
+     ],
+     "effort_hours_month": 8,
+     "cost": "free (CapCut free tier covers vertical crops)",
+     "impact": "medium",
+     "time_to_results": "2-3 months for reach; inquiries typically follow the 30-50 post mark",
+     "cost_note": "free"
+    },
+    {
+     "name": "Email capture + 'Wedding Video Planning Guide' lead magnet",
+     "why": "Couples research videographers 8-14 months out; with no email capture, every non-ready visitor to dvpfl.com is lost forever. A simple PDF guide captures them early, and the $499 entry price makes dvpfl the natural 'first quote' \u2014 nurture keeps it the last one too.",
+     "steps": [
+      "Write a 6-8 page PDF: 'The Sarasota Couple's Guide to Wedding Video \u2014 timeline, questions to ask, and real pricing' (Claude/Canva, one afternoon)",
+      "Install a free form plugin (WPForms Lite or the existing form stack) with a footer + blog-post opt-in; deliver via free MailerLite tier (up to 1,000 subscribers)",
+      "Add a 'How did you hear about us?' and 'Venue' field to the contact form \u2014 this powers all channel measurement",
+      "Set a 4-email automated sequence: guide delivery, best film + reviews, packages/$499 explainer, 'dates fill 12 months out' availability nudge",
+      "Send one monthly email: newest wedding film blog post + a review",
+      "Review signup source monthly; put the opt-in on the highest-traffic pages"
+     ],
+     "effort_hours_month": 3,
+     "cost": "free (MailerLite free tier)",
+     "impact": "medium",
+     "time_to_results": "captures start week 1; bookings from nurture show in 3-9 months given long planning cycles",
+     "cost_note": "free"
+    }
+   ],
+   "quick_wins": [
+    "Create and verify the Google Business Profile today and link it plus a new Instagram account from the dvpfl.com footer (2 hrs, fixes two measured zero-presence gaps)",
+    "Email the 15 most recent couples a direct Google review link \u2014 10+ reviews inside two weeks transforms the local-pack position from nonexistent to competitive",
+    "Claim the free Zola storefront and free Knot/WeddingWire listings with the 8 films and identical NAP (3 hrs total, zero dollars)",
+    "Add Google Search Console to dvpfl.com and 'How did you hear about us?' + 'Venue' fields to the contact form so every later tactic is measurable (1 hr)",
+    "Publish the first real-wedding blog post from an existing film with the venue name in the title, then email that venue the link with a free 45s highlight reel attached"
+   ],
+   "metrics": [
+    "Inquiries per month by source (from the new 'How did you hear about us?' contact-form field) \u2014 the master metric",
+    "Google Business Profile actions: calls, website clicks, direction requests, and local-pack impressions (GBP performance dashboard, monthly)",
+    "Google review count and average rating (target: 25 reviews in 90 days, ~47 within a year)",
+    "Organic entrances to venue-named blog posts and rankings for '[venue] wedding videographer' (Search Console, monthly once installed)",
+    "Booked weddings per quarter and cost per booking per channel (Zola connect fees vs. free channels) \u2014 decides the month-6 paid-directory question"
+   ]
+  },
+  {
+   "channel": "Email marketing and lead capture (list building, lifecycle automation, reviews/referrals) with a narrow paid-ads test via Google Local Services Ads",
+   "tactics": [
+    {
+     "name": "One Brevo account as the shared email platform for all three brands",
+     "why": "As of June 2026 MailerLite's free plan collapsed to 250 subscribers / 2,500 emails per month, while Brevo's free plan allows unlimited contacts (automation on up to 2,000), 300 emails/day, and prices by email volume, not list size \u2014 ideal for one solo owner running three small local lists that will sit in the hundreds of contacts each. One account with three lists and three sender identities keeps cost near zero and management in one login.",
+     "steps": [
+      "Create one Brevo free account; verify all three sending domains (expressrealestatephotos.com, bnbphotos.com, dvpfl.com) with SPF/DKIM/DMARC",
+      "Create three lists (Agents / Hosts / Couples) and three sender profiles, one per brand",
+      "Build one embedded signup form + one popup per site with the Brevo WordPress plugin",
+      "Import any existing client emails from the booking app and past invoices (with permission)",
+      "Upgrade to Starter (~$9/mo) only when sends exceed 300/day or to remove Brevo branding"
+     ],
+     "effort_hours_month": 3,
+     "cost": "free ($9/mo Starter later to remove branding)",
+     "impact": "high",
+     "time_to_results": "1-2 weeks",
+     "name_note": ""
+    },
+    {
+     "name": "Agent lead magnet for Express Real Estate Photos: co-brandable Seller Photo-Prep Checklist",
+     "why": "The buyer is the agent, not the homeowner, so the magnet must make the AGENT look good: a polished 'Get Your Listing Photo-Ready' PDF they can put their own name on and hand to sellers. Agents trade an email for a tool they reuse on every listing, which also keeps the brand in front of them at exactly the moment they book a photographer.",
+     "steps": [
+      "Draft a 1-2 page checklist (declutter, lighting, staging, exterior) in Canva with a blank 'Presented by [Agent]' block",
+      "Gate it behind a Brevo form on a dedicated /photo-prep-checklist landing page",
+      "Add the offer to the site header, blog posts, and the booking-app confirmation email",
+      "Email every past agent client the co-brandable version as the list-seeding send",
+      "Follow up in the welcome sequence with a 'book your next shoot' CTA into the existing online booking app"
+     ],
+     "effort_hours_month": 4,
+     "cost": "free (Canva free tier)",
+     "impact": "high",
+     "time_to_results": "2-4 weeks"
+    },
+    {
+     "name": "Host lead magnet for BNB Photos: Airbnb Listing Photo Audit / 30-Shot List",
+     "why": "Hosts obsess over occupancy and ranking; a '30 shots every top-earning Airbnb listing has' PDF or a free 5-point photo audit of their live listing converts because it is diagnostic and specific to their property. It also feeds the fresh (Aug 2026) blog, which is already this site's strongest asset.",
+     "steps": [
+      "Create the 30-shot-list PDF plus an optional 'reply with your Airbnb link for a free 5-point photo audit' offer",
+      "Gate behind a Brevo form; add inline CTAs to every existing and future blog post",
+      "Since bnbphotos.com has no online booking, make the welcome email's CTA 'reply to book' or a Calendly free link",
+      "Track signups via the existing GTM container (form-submit event to GA4)",
+      "Repurpose each audit finding as a blog/Instagram post to keep the flywheel going"
+     ],
+     "effort_hours_month": 4,
+     "cost": "free (Calendly free plan optional)",
+     "impact": "high",
+     "time_to_results": "3-6 weeks"
+    },
+    {
+     "name": "Couples lead magnet for DVPFL: Wedding Video Planning Guide + full sample film by email",
+     "why": "Couples research for months before buying; 'Watch a full wedding film + get our Wedding Videography Timeline & Budget Guide' captures them early in that window, and a 30-year track record plus $499 entry pricing is exactly what a nurture sequence can sell. The 8-film portfolio already exists \u2014 gating one FULL film costs nothing to produce.",
+     "steps": [
+      "Pick the best full-length film; keep trailers public, gate the full film + PDF guide behind a Brevo form",
+      "PDF covers: questions to ask any videographer, day-of timeline for great footage, package comparison worksheet",
+      "Welcome sequence (4 emails over 3 weeks): full film, 'since 1995' story, package breakdown from $499, limited-date urgency CTA",
+      "Add the form to the homepage, portfolio page, and one revived blog post targeting 'Sarasota wedding videographer cost'",
+      "Tag signups by wedding date field so follow-ups stop after the date passes"
+     ],
+     "effort_hours_month": 4,
+     "cost": "free",
+     "impact": "high",
+     "time_to_results": "1-3 months (matches wedding booking cycle)"
+    },
+    {
+     "name": "Google Business Profile + automated review-request engine (all three brands)",
+     "why": "Zero GBP links and zero review widgets is the single biggest measured gap: local service buyers check Google reviews before anything else, GBP is free, and it is a hard prerequisite for Local Services Ads later. A post-delivery review-request email with the direct review short-link is the highest-ROI automation a service business can run.",
+     "steps": [
+      "Claim/verify a GBP for each business (Venice/Sarasota service area); add the profile link and a reviews section to each site footer",
+      "Generate each profile's direct review link (g.page/r/... short URL)",
+      "In Brevo, build a 'delivery + 3 days' automation: thank-you email with the one-click review link; one polite reminder a week later",
+      "Trigger it manually per completed job (solo volume makes manual triggering fine: add contact to 'Delivered' list)",
+      "Embed recent reviews on each homepage with a free plugin (e.g., Widgets for Google Reviews) and mark the widget no-cache in WP Rocket where present"
+     ],
+     "effort_hours_month": 2,
+     "cost": "free",
+     "impact": "high",
+     "time_to_results": "2-6 weeks to first review lift"
+    },
+    {
+     "name": "Simple referral program for agents and hosts (B2B repeat buyers)",
+     "why": "Agents and hosts know other agents and hosts, and both sites serve repeat buyers \u2014 a plain '$50 off your next shoot for every referral that books' needs no software at this scale and compounds with the review automation. Couples referrals work vendor-to-vendor instead (planners, venues, photographers).",
+     "steps": [
+      "Define the offer: $50 credit (or one free twilight shot) per referred booking for agents/hosts",
+      "Add a referral paragraph to the final welcome-sequence email and the post-delivery thank-you email",
+      "Track referrals in a spreadsheet keyed by 'who sent you' asked at booking",
+      "For DVPFL, email 5 local planners/venues offering a reciprocal referral listing instead of paying couples",
+      "Quarterly 'thanks + reminder' email to the whole agent/host list"
+     ],
+     "effort_hours_month": 1,
+     "cost": "free ($50 credit per converted referral)",
+     "impact": "medium",
+     "time_to_results": "1-3 months"
+    },
+    {
+     "name": "Test Google Local Services Ads for DVPFL (and later BNB) \u2014 pay per lead, no monthly minimum",
+     "why": "Photographer and Videographer are eligible LSA categories in the US in 2026, LSA charges per lead (not per click) with budget pausable anytime, which fits a solo budget far better than Meta. 'Wedding videographer near me' is consumer search intent that matches DVPFL exactly; note screening/verification (background check, business verification, minimum reviews) requires the GBP + review tactic to land first.",
+     "steps": [
+      "After GBP has ~5+ reviews, apply at ads.google.com/local-services-ads under Videographer for the Sarasota/Venice service area",
+      "Complete Google's screening (business verification, background check) for the Google Verified/Screened badge",
+      "Set a conservative budget (~$100-200/mo, roughly 3-8 leads at typical service CPLs); answer every lead within minutes \u2014 responsiveness drives LSA ranking",
+      "Dispute invalid leads in the LSA dashboard to get credits",
+      "Judge after 60 days on booked-job cost, not cost per lead; replicate for BNB Photos (Photographer category) only if positive"
+     ],
+     "effort_hours_month": 2,
+     "cost": "$100-200/mo ad spend, pay-per-lead only",
+     "impact": "medium",
+     "time_to_results": "2-3 months (screening takes weeks)"
+    },
+    {
+     "name": "Skip Meta lead ads for now; revisit only as a seasonal DVPFL retargeting test",
+     "why": "2026 benchmarks put service-business cost per lead around $45 and practitioners advise ~$50/day minimum for Meta's algorithm to optimize \u2014 $1,500/mo is the wrong spend for this owner versus free GBP/email work, and instant-form leads are notoriously low-intent for high-ticket local services. The exception worth a later test: cheap Advantage+ retargeting of site visitors during engagement season (Nov-Feb) once the pixel and email capture are in place.",
+     "steps": [
+      "Install the Meta pixel now via the existing GTM containers (free, enables future retargeting audiences)",
+      "Do NOT run cold instant-form lead ads at this budget",
+      "If testing later: $10-15/day, retargeting + lookalike of the couples email list, drive to the gated-film landing page (not an instant form), cap at a $300 one-month test",
+      "Kill the test unless cost per booked consultation beats the LSA number"
+     ],
+     "effort_hours_month": 1,
+     "cost": "$0 now; optional $300 one-off test later",
+     "impact": "low",
+     "time_to_results": "n/a until Nov 2026 season"
+    }
+   ],
+   "quick_wins": [
+    "Claim all three Google Business Profiles and add the GBP link + a review widget to every site footer (biggest measured gap, all free)",
+    "Install the Brevo WP plugin and put a basic newsletter/lead form on all three sites this week \u2014 email capture goes from zero to live in an afternoon",
+    "Add Search Console to expressrealestatephotos.com (GA4 exists but no GSC) and submit sitemaps for all three sites",
+    "Create each GBP's direct review short-link and start texting/emailing it manually to every completed job immediately, before any automation exists",
+    "Create/link Instagram profiles on all three sites and cross-link them from GBP (social proof signal, zero cost)"
+   ],
+   "metrics": [
+    "Email subscribers per brand per month (target: 20-30/mo per site once magnets are live)",
+    "Lead-magnet landing page conversion rate (target 20%+ of page visitors)",
+    "New Google reviews per brand per month and total review count (prerequisite for LSA)",
+    "Welcome-sequence reply/booking rate \u2014 bookings or consult requests attributable to email",
+    "LSA cost per BOOKED job (not per lead) once the DVPFL test runs; kill threshold vs. average job value"
+   ]
+  },
+  {
+   "channel": "Local SEO + owned content (Google organic, Google Business Profile, and email capture) for the three sister sites",
+   "tactics": [
+    {
+     "name": "Google Business Profile engine: 3 profiles, weekly posts, geotagged photos, review flow",
+     "why": "All three sites currently link to ZERO GBP profiles, yet GBP is the highest-leverage local channel in 2026: profiles inactive 30+ days lose impressions, weekly photo/post activity is now a ranking input, and Gemini-powered Ask Maps answers from profile data. Paul already produces photos/films daily, so the content cost is near zero.",
+     "steps": [
+      "Claim/complete one GBP per business (Express RE Photos, BNB Photos, DVPFL) as service-area businesses covering Venice, Sarasota, North Port, Bradenton; fill every field and list granular services (drone, twilight, Matterport, vacation-rental shoots, wedding films)",
+      "Upload 5 geotagged job photos per profile per week from real shoots (owner forwards, freelancer uploads and schedules 1 GBP post/profile/week using the built-in post scheduler)",
+      "Add each GBP review link to a one-tap review-request SMS/email template Paul sends after every delivered gallery/film",
+      "Respond to every review within 48h; seed each profile's services and description with 'Sarasota', 'Venice FL', and the core service terms",
+      "Link each site's footer and contact page to its GBP and embed the map"
+     ],
+     "effort_hours_month": 4,
+     "impact": "high",
+     "cost": "free",
+     "time_to_results": "2-6 weeks (map-pack visibility moves fastest of anything here)"
+    },
+    {
+     "name": "expressrealestatephotos.com: city x service page grid for agent searches",
+     "why": "Agents search '[service] + [city]' ('real estate photographer Sarasota', 'drone photography Venice FL', 'Matterport tour Lakewood Ranch'); location pages remain the core of local-service SEO in 2026 and Express already has the online booking app as a strong conversion endpoint every page can funnel to.",
+     "steps": [
+      "Build 6 city pages: Sarasota, Venice, North Port, Bradenton, Lakewood Ranch, Port Charlotte \u2014 each with unique copy, local listing photos actually shot there, MLS/turnaround details, agent testimonials, and the booking-app CTA",
+      "Build 4 service pages: drone/aerial, twilight photography, 3D/Matterport tours, floor plans \u2014 each internally linked to and from every city page",
+      "Add LocalBusiness + Service schema and 'starting at' pricing to each page (pricing transparency wins agent queries)",
+      "Retitle/refresh the stalled blog (last post May 2026) to support pages, e.g. 'How Sarasota agents get listings under contract faster with twilight photos'",
+      "Publish 2 pages/month until the grid is done (~5 months), then 1 supporting post/month"
+     ],
+     "effort_hours_month": 5,
+     "impact": "high",
+     "cost": "free (freelancer time only)",
+     "time_to_results": "3-6 months to page-1 for city+service terms"
+    },
+    {
+     "name": "bnbphotos.com: vacation-rental market pages + host-question blog",
+     "why": "The searcher is an STR host, not an agent, and Sarasota County's rental demand clusters in named beach markets \u2014 'Airbnb photographer Siesta Key / Anna Maria Island' has almost no dedicated competition, while host questions ('how many photos does an Airbnb listing need') feed top-of-funnel. The blog is already fresh (Aug 2026), so this is momentum, not a restart.",
+     "steps": [
+      "Build 5 market pages: Siesta Key, Anna Maria Island, Venice, Englewood/Manasota Key, downtown Sarasota \u2014 each with real listing before/afters from that market and booking-rate stats (pro photos lift bookings up to 40%)",
+      "Keep the existing blog cadence at 1 post/month answering host queries: shot lists, photo order on Airbnb, twilight vs day, when to reshoot after a refresh",
+      "Add a simple inquiry-to-quote form on every market page (site has no online booking; the form is the conversion event)",
+      "Fire a GA4 config through the existing GTM container plus a form-submit event so results are measurable",
+      "Cross-link each market page to the matching host blog posts and to the BNB Photos GBP"
+     ],
+     "effort_hours_month": 5,
+     "impact": "high",
+     "cost": "free",
+     "time_to_results": "2-4 months (low-competition niche terms)"
+    },
+    {
+     "name": "dvpfl.com: venue-name hub pages built from the 8-film portfolio",
+     "why": "Couples search '[venue name] wedding videographer' with buying intent and thin competition; 2026 guidance is one hub page per venue (venue name in title, meta, opening copy) with blog films linked beneath it to avoid keyword cannibalization. 30 years of footage since 1995 plus $499-entry pricing is an unbeatable trust+price angle for these pages.",
+     "steps": [
+      "Map the 8 portfolio films to their venues and build one hub page per venue shot at (likely candidates in-market: Powel Crosley Estate, Marie Selby Gardens, The Ringling, Historic Spanish Point/Bay Preserve, Sharky's/Venice beach venues) \u2014 venue name in title tag, embedded film, what-we-know-about-filming-here copy, package pricing from $499",
+      "Add VideoObject schema to every embedded film and keep venue names OUT of individual blog-post titles per the cannibalization rule",
+      "Revive the dead-since-2022 blog at 1 'real wedding at [venue]' post/month, each linking up to its venue hub",
+      "Target 'Sarasota wedding videographer' and 'Venice FL wedding videographer' with two flagship service pages linking to all venue hubs",
+      "WP Rocket is already installed \u2014 verify the new pages are cached and preloaded"
+     ],
+     "effort_hours_month": 5,
+     "impact": "high",
+     "cost": "free",
+     "time_to_results": "3-6 months; venue-name terms can rank in weeks due to low competition"
+    },
+    {
+     "name": "Quarterly case-study pages (one per site per quarter)",
+     "why": "Case studies convert the mid-funnel visitor these service pages attract, generate the unique first-party data ('listing sold in 6 days after twilight reshoot', 'host's bookings up 32%') that AI-driven search surfaces in 2026, and Paul already has the client results \u2014 only the write-up is missing.",
+     "steps": [
+      "Owner picks one recent win per business per quarter and answers 5 emailed questions (before-state, numbers, outcome)",
+      "Freelancer writes an 800-word case study with before/after media, a pull-quote testimonial, and the site's booking/inquiry CTA",
+      "Link every case study from the homepage, the relevant city/market/venue page, and a GBP post",
+      "Ask the featured client to also leave a GBP review in the same email"
+     ],
+     "effort_hours_month": 2,
+     "impact": "medium",
+     "cost": "free",
+     "time_to_results": "immediate for conversion lift; 3+ months for rankings support"
+    },
+    {
+     "name": "One lead magnet + email capture per site",
+     "why": "All three sites currently have zero email capture and zero lead magnets, so every non-ready visitor is lost; agents, hosts, and engaged couples all have long consideration windows where a simple checklist earns the address that a package price alone will not.",
+     "steps": [
+      "Express: 'Listing Photo-Prep Checklist for Sellers' PDF agents can co-brand and forward \u2014 the viral loop reaches new agents",
+      "BNB: 'The 25-Shot Airbnb Photo Checklist' for hosts; DVPFL: '15 Questions to Ask Any Wedding Videographer' for couples",
+      "Add a free-tier form plugin (e.g. MailPoet/Fluent Forms free) with one exit/inline form per site delivering the PDF",
+      "Send one plain-text email/month per list: newest blog post or case study plus a booking CTA"
+     ],
+     "effort_hours_month": 2,
+     "impact": "medium",
+     "cost": "free (free-tier plugins); ~$10-20/mo only if a list passes free limits",
+     "time_to_results": "list builds from week 1; revenue effect 2-6 months"
+    },
+    {
+     "name": "Safe cross-site internal linking between the three sister brands",
+     "why": "Three same-owner, same-region, adjacent-niche sites can legitimately pass relevance to each other, but sitewide footer links with keyword anchors across commonly-owned sites is the classic link-network footprint \u2014 the safe pattern is few, contextual, editorially justified links with branded anchors and open disclosure of shared ownership.",
+     "steps": [
+      "Add an identical 'About Paul Ayoub' bio block on each site's About page naming all three businesses with branded-anchor links \u2014 transparent ownership is the safety mechanism",
+      "Add contextual links only where the reader genuinely benefits: BNB host posts link to Express for agents' MLS work; Express links to BNB when an investor-agent audience fits; DVPFL links out only from its About page (weakest topical overlap)",
+      "Never use keyword-rich anchors ('Sarasota real estate photographer') between the sites \u2014 brand names only; never add sitewide footer/sidebar cross-links",
+      "Cap it at 3-5 total cross-site links per site and keep them all followed and disclosed"
+     ],
+     "effort_hours_month": 1,
+     "impact": "low",
+     "cost": "free",
+     "time_to_results": "1-3 months (supporting signal, not a primary driver)"
+    },
+    {
+     "name": "The one-freelancer monthly rotation (editorial calendar)",
+     "why": "The engine only works if it survives busy season; a fixed weekly rotation caps combined effort at roughly 5-6 hours/week between freelancer and owner, matches the stated budget, and guarantees every site moves every month instead of one site absorbing all attention (the pattern behind DVPFL's blog dying in 2022).",
+     "steps": [
+      "Week 1: Express city/service page or post. Week 2: BNB market page or host post. Week 3: DVPFL venue hub or real-wedding post. Week 4: case study OR lead-magnet email + monthly reporting",
+      "Continuous background task (30 min/week): GBP posts and photo uploads for all three profiles, scheduled in one sitting",
+      "Owner's only recurring jobs: forward shoot photos weekly, send the review-request template after each job, answer quarterly case-study questions",
+      "Monthly 30-minute review of Search Console + GA4 to decide next month's targets; drop or merge any tactic that shows nothing after 2 quarters"
+     ],
+     "effort_hours_month": 20,
+     "impact": "high",
+     "cost": "freelancer retainer only (the ~20 combined hrs/mo above); $0 in tools",
+     "time_to_results": "compounds from month 3; full engine visible by month 6"
+    }
+   ],
+   "quick_wins": [
+    "Verify Google Search Console on all three sites this week (Express has NONE today) and submit XML sitemaps \u2014 free, ~45 minutes, and every other metric depends on it",
+    "Create/claim the three Google Business Profiles and link each from its site footer and contact page (all sites currently have zero GBP links)",
+    "Attack TTFB before publishing new content: Express 5.5s and BNB 7.7s will suppress crawling and rankings \u2014 enable server/page caching on both (DVPFL already has WP Rocket) and note bnbphotos.com's known 128M PHP memory limit needs a host-side bump",
+    "Write one reusable review-request SMS/email template per business with the direct GBP review link; Paul starts sending it after every delivered job immediately",
+    "Fire GA4 through the existing GTM containers on bnbphotos.com and dvpfl.com plus form-submit/booking events, so results are attributable from day one"
+   ],
+   "metrics": [
+    "GBP actions per profile per month (calls + website clicks + direction requests) \u2014 target visible month-over-month growth from a zero baseline within 60 days",
+    "Search Console clicks and top-10 rankings for '[service] + Sarasota/Venice' and '[venue name] wedding videographer' queries \u2014 target 10+ page-1 terms per site by month 6",
+    "Attributed conversions: Express booking-app completions, BNB quote-form submits, DVPFL inquiry submits from organic (GA4 events)",
+    "Google reviews per profile \u2014 target +3-5 new reviews/month/business from the post-job template",
+    "Email subscribers captured per site per month from the lead magnets (baseline is zero)"
+   ]
+  }
+ ],
+ "gaps": [
+  "YouTube as a search channel for DVPFL: none of the reports mention uploading the 8 existing wedding films (venue-named, keyword-titled) to a YouTube channel, even though YouTube is where couples actually search for 'wedding video [venue name]' and the films already exist \u2014 near-zero cost, compounds with the venue blog posts.",
+  "Wedding vendor referral network beyond venues: planners, DJs, and especially wedding photographers who don't offer video are the highest-volume referral source for videographers, yet only venue partnerships are covered \u2014 a photographer cross-referral arrangement (they hand off video, DVPFL hands off photo leads) is a standing pipeline.",
+  "Cross-brand client cross-selling: the reports cover cross-site linking but not actively working the shared customer bases \u2014 e.g., Express's listing agents who sell vacation homes to investors are warm BNB Photos referrers, and a bundled 'MLS photos + Airbnb listing shoot' offer for investor purchases monetizes the sister-brand synergy directly.",
+  "Proactive prospecting of poorly photographed local Airbnb/VRBO listings: the audit lead magnet is passive; scanning Venice/Sarasota listings with weak photos and sending hosts a short personalized before/after audit is a direct-outreach engine no report includes.",
+  "A coordinated seasonal calendar: Sarasota's snowbird/STR booking ramp (Sept-Nov photo refreshes), spring listing season for agents, and Dec-Feb engagement season for couples should time the email pushes, GBP posts, and LSA budget across all three brands \u2014 no report sequences tactics against these known demand windows."
+ ]
+}
