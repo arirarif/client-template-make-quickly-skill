@@ -76,7 +76,7 @@
   box-shadow: 0 3px 14px rgba(0,0,0,.28);
   transition: transform .18s ease, box-shadow .18s ease;
 }
-.dvp-contact__btn--call{ background: #25A55F; }
+.dvp-contact__btn--call{ background: #1B7A46;  /* was #25A55F - failed 4.5:1 contrast with white text */ }
 .dvp-contact__btn--mail{ background: #2A2F36; }
 
 .dvp-contact__btn:hover,
@@ -148,5 +148,73 @@
        .replace(/^\s*,\s*/, '')
        .trim();
   m.setAttribute('content', v);
+})();
+</script>
+
+<script>
+/* ------------------------------------------------------------------
+   Accessibility fixes for things the theme hard-codes.
+   Each one maps to a failing Lighthouse audit measured on this site.
+   Runs at </body>, so everything it touches already exists.
+   ------------------------------------------------------------------ */
+(function () {
+
+  /* "frame or iframe elements do not have a title" - the Tave contact
+     form iframe ships without one. Generic fallback for any other. */
+  document.querySelectorAll('iframe:not([title])').forEach(function (f) {
+    var src = f.src || f.getAttribute('data-lazy-load') || '';
+    f.title = /vsco\.page|tave/i.test(src)
+      ? 'Contact form - check your wedding date'
+      : 'Embedded content';
+  });
+
+  /* "Links do not have a discernible name" - the theme's logo link,
+     Facebook icon and the two icon-only toggles are empty <a> tags. */
+  var labels = [
+    ['a.aurel_image_logo',               'Digital Video Productions - home'],
+    ['a[class*="aurel_facebook"]',       'Digital Video Productions on Facebook'],
+    ['a.aurel_toogle_fullview',          'Toggle fullscreen view'],
+    ['a.aurel_header_mobile_menu_toggler','Open menu']
+  ];
+  labels.forEach(function (pair) {
+    document.querySelectorAll(pair[0]).forEach(function (a) {
+      if (!a.getAttribute('aria-label') && !(a.innerText || '').trim()) {
+        a.setAttribute('aria-label', pair[1]);
+      }
+    });
+  });
+
+  /* "Document does not have a main landmark" - mark the Elementor page
+     content, which every page on this site has exactly one of. */
+  if (!document.querySelector('main, [role="main"]')) {
+    var el = document.querySelector('.elementor[data-elementor-type="wp-page"], .elementor[data-elementor-type="wp-post"]');
+    if (el) el.setAttribute('role', 'main');
+  }
+
+  /* "Heading elements are not in a sequentially-descending order".
+     The theme skips levels (home runs H5 H5 H5 H1 H3 H3 H5). Walk the
+     headings in DOM order; wherever one jumps more than a level DOWN,
+     retag it to the deepest allowed level. Computed typography is
+     copied onto the new element first, so nothing changes visually. */
+  var prev = 0;
+  [].slice.call(document.querySelectorAll('h1,h2,h3,h4,h5,h6')).forEach(function (h) {
+    var lvl = +h.tagName[1];
+    if (prev && lvl > prev + 1) {
+      var want = prev + 1;
+      var cs = getComputedStyle(h);
+      var n = document.createElement('h' + want);
+      for (var i = 0; i < h.attributes.length; i++) {
+        n.setAttribute(h.attributes[i].name, h.attributes[i].value);
+      }
+      ['fontSize','fontWeight','fontFamily','lineHeight','letterSpacing',
+       'textTransform','margin','color','textAlign'].forEach(function (k) {
+        n.style[k] = cs[k];
+      });
+      while (h.firstChild) n.appendChild(h.firstChild);
+      h.parentNode.replaceChild(n, h);
+      lvl = want;
+    }
+    prev = lvl;
+  });
 })();
 </script>

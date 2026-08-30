@@ -1,4 +1,4 @@
-<!-- DVPFL contact buttons + viewport fix v1.1 - source: call-button-snippet.html -->
+<!-- DVPFL contact buttons + viewport + a11y v1.2 - source: call-button-snippet.html -->
 <div class="dvp-contact" role="complementary" aria-label="Contact Digital Video Productions">
   <a class="dvp-contact__btn dvp-contact__btn--call"
      href="tel:+19418940980"
@@ -45,7 +45,7 @@
   box-shadow: 0 3px 14px rgba(0,0,0,.28);
   transition: transform .18s ease, box-shadow .18s ease;
 }
-.dvp-contact__btn--call{ background: #25A55F; }
+.dvp-contact__btn--call{ background: #1B7A46;   }
 .dvp-contact__btn--mail{ background: #2A2F36; }
 
 .dvp-contact__btn:hover,
@@ -96,5 +96,62 @@
        .replace(/^\s*,\s*/, '')
        .trim();
   m.setAttribute('content', v);
+})();
+</script>
+
+<script>
+
+(function () {
+
+  
+  document.querySelectorAll('iframe:not([title])').forEach(function (f) {
+    var src = f.src || f.getAttribute('data-lazy-load') || '';
+    f.title = /vsco\.page|tave/i.test(src)
+      ? 'Contact form - check your wedding date'
+      : 'Embedded content';
+  });
+
+  
+  var labels = [
+    ['a.aurel_image_logo',               'Digital Video Productions - home'],
+    ['a[class*="aurel_facebook"]',       'Digital Video Productions on Facebook'],
+    ['a.aurel_toogle_fullview',          'Toggle fullscreen view'],
+    ['a.aurel_header_mobile_menu_toggler','Open menu']
+  ];
+  labels.forEach(function (pair) {
+    document.querySelectorAll(pair[0]).forEach(function (a) {
+      if (!a.getAttribute('aria-label') && !(a.innerText || '').trim()) {
+        a.setAttribute('aria-label', pair[1]);
+      }
+    });
+  });
+
+  
+  if (!document.querySelector('main, [role="main"]')) {
+    var el = document.querySelector('.elementor[data-elementor-type="wp-page"], .elementor[data-elementor-type="wp-post"]');
+    if (el) el.setAttribute('role', 'main');
+  }
+
+  
+  var prev = 0;
+  [].slice.call(document.querySelectorAll('h1,h2,h3,h4,h5,h6')).forEach(function (h) {
+    var lvl = +h.tagName[1];
+    if (prev && lvl > prev + 1) {
+      var want = prev + 1;
+      var cs = getComputedStyle(h);
+      var n = document.createElement('h' + want);
+      for (var i = 0; i < h.attributes.length; i++) {
+        n.setAttribute(h.attributes[i].name, h.attributes[i].value);
+      }
+      ['fontSize','fontWeight','fontFamily','lineHeight','letterSpacing',
+       'textTransform','margin','color','textAlign'].forEach(function (k) {
+        n.style[k] = cs[k];
+      });
+      while (h.firstChild) n.appendChild(h.firstChild);
+      h.parentNode.replaceChild(n, h);
+      lvl = want;
+    }
+    prev = lvl;
+  });
 })();
 </script>
