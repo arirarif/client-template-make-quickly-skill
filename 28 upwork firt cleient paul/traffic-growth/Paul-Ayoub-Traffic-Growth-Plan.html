@@ -84,6 +84,19 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:v
 a{color:var(--blue)}
 a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
+/* masthead */
+header.hero{
+  background:linear-gradient(135deg,#1d4ed8 0%,#1e3a8a 70%,#172554 100%);
+  margin:-1.6rem -1.3rem 0;padding:2.6rem 1.3rem 2.2rem;
+}
+header.hero .inner{max-width:920px;margin:0 auto}
+header.hero h1{
+  color:#fff;font-size:clamp(2rem,5.5vw,3rem);line-height:1.12;
+  margin:.3rem 0 .6rem;text-wrap:balance;letter-spacing:-.01em;
+}
+header.hero .meta{color:rgba(255,255,255,.78);font-size:.95rem;margin:0}
+header.hero .domains{color:rgba(255,255,255,.9);font-size:.95rem;font-weight:600;margin:.2rem 0 0}
+
 .panel{display:none}
 .panel.active{display:block;animation:fadein .18s ease}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
@@ -96,6 +109,14 @@ nav.top a.active{background:var(--blue);color:#fff}
 <body>
 <div class="wrap">
 
+<header class="hero">
+<div class="inner">
+<p class="meta">Prepared for Paul Ayoub · September 2026 · a 6-month plan, one roadmap per website</p>
+<h1>Growth Roadmap: the first 6 months, site by site</h1>
+<p class="domains">expressrealestatephotos.com · bnbphotos.com · dvpfl.com</p>
+</div>
+</header>
+
 <nav class="top" aria-label="Plans">
   <a href="#overview" data-tab="overview">Overview</a>
   <a href="#express" data-tab="express">Express</a>
@@ -106,9 +127,7 @@ nav.top a.active{background:var(--blue);color:#fff}
 
 <div class="panel" id="panel-overview">
 <section id="ov-top">
-<p class="meta" style="margin-top:1.4rem">Prepared for Paul Ayoub · September 2026 · a 6-month plan, one roadmap per website</p>
-<h1>Growth Roadmap: the first 6 months, site by site</h1>
-<p class="lede">The repair project is finished — all three sites are fast, secure and complete.
+<p class="lede" style="margin-top:1.6rem">The repair project is finished — all three sites are fast, secure and complete.
 This is the next stage: <b>getting found, getting chosen, and getting booked</b>. Because the
 three sites sell to three completely different buyers, <b>each website has its own individual
 plan document</b> — open them from the tabs above or the cards below — everything is on this one page. Every task in them comes from a fresh page-by-page crawl
