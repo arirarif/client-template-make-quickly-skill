@@ -1,4 +1,4 @@
-<!-- DVPFL contact buttons v1.0 - replaces Chaty - source: call-button-snippet.html -->
+<!-- DVPFL contact buttons + viewport fix v1.1 - source: call-button-snippet.html -->
 <div class="dvp-contact" role="complementary" aria-label="Contact Digital Video Productions">
   <a class="dvp-contact__btn dvp-contact__btn--call"
      href="tel:+19418940980"
@@ -58,8 +58,7 @@
 
 .dvp-contact__btn svg{ flex: none; }
 
-/* On phones the label is dropped and the buttons become circles - the
-   thumb target stays 3.25rem, comfortably above the 44px minimum. */
+
 @media (max-width: 600px){
   .dvp-contact__btn{
     width: 3.25rem;
@@ -77,10 +76,25 @@
   }
 }
 
-/* Printing a fixed floating button wastes ink and covers content. */
+
 @media print{ .dvp-contact{ display: none; } }
 
 @media (prefers-reduced-motion: reduce){
   .dvp-contact__btn{ transition: none; }
 }
 </style>
+
+<script>
+
+(function () {
+  var m = document.querySelector('meta[name="viewport"]');
+  if (!m) return;
+  var v = m.getAttribute('content') || '';
+  if (!/maximum-scale|user-scalable/i.test(v)) return;   
+  v = v.replace(/\s*,?\s*maximum-scale\s*=\s*[\d.]+/ig, '')
+       .replace(/\s*,?\s*user-scalable\s*=\s*(no|0)/ig, '')
+       .replace(/^\s*,\s*/, '')
+       .trim();
+  m.setAttribute('content', v);
+})();
+</script>

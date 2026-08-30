@@ -115,3 +115,38 @@
   .dvp-contact__btn{ transition: none; }
 }
 </style>
+
+<script>
+/* ------------------------------------------------------------------
+   Audit issue #10, second half: pinch-zoom is disabled sitewide.
+
+   The Aurel theme prints, at offset ~125 of every page:
+       <meta name="viewport"
+             content="width=device-width, initial-scale=1, maximum-scale=1">
+
+   `maximum-scale=1` stops a visitor pinching to zoom. That fails WCAG
+   1.4.4 (Resize Text) and Lighthouse flags it under Accessibility as
+   [user-scalable="no"] ... or [maximum-scale] is less than 5. On a site
+   whose buyers are often the couple's parents, being unable to zoom is a
+   real problem, not a checkbox.
+
+   The theme gives no setting for it and there is no child theme, so we
+   rewrite the tag. Browsers re-evaluate the viewport when this attribute
+   changes, so doing it here still restores zoom.
+
+   Only `maximum-scale` and `user-scalable` are touched; width and
+   initial-scale are left exactly as the theme set them, so layout is
+   unaffected.
+   ------------------------------------------------------------------ */
+(function () {
+  var m = document.querySelector('meta[name="viewport"]');
+  if (!m) return;
+  var v = m.getAttribute('content') || '';
+  if (!/maximum-scale|user-scalable/i.test(v)) return;   /* already fine */
+  v = v.replace(/\s*,?\s*maximum-scale\s*=\s*[\d.]+/ig, '')
+       .replace(/\s*,?\s*user-scalable\s*=\s*(no|0)/ig, '')
+       .replace(/^\s*,\s*/, '')
+       .trim();
+  m.setAttribute('content', v);
+})();
+</script>
