@@ -65,3 +65,17 @@ User: 6-month horizon only; individual plan per website; hub file = index.
   bnb 625f434e-5e68-410f-a5ae-4a8579e32161, dvpfl 1e1f5b3b-754f-4395-b2ff-614089b5e53a.
   Artifact JS confirmed running (pill computed "0 / 16 done" in viewer).
 - website-audits/index.html: growth card renamed overview + 3 per-site cards added.
+
+## 2026-08-30 single-page tabs (user request)
+User: "put everything in same place don't redirect other file... tab and click and open in same here".
+- Paul-Ayoub-Traffic-Growth-Plan.html rebuilt as ONE page with 4 tabs
+  (Overview / Express / BNB / DVPFL). Cards + nav switch panels via hash;
+  zero links to other .html files (verified a[href$=".html"] count = 0).
+- One shared checklist store (key paul-growth-plan-v3), pill counts all 47.
+- VERIFIED (Playwright, localhost:8932): default tab overview, card click ->
+  express panel block/overview none, nav active state, tick 3 -> pill 3/47 +
+  phase 3/7, nav click -> bnb (15 boxes), hash -> dvpfl, back link #overview,
+  localStorage persisted, untick clean. Console: only favicon 404 from dev server.
+- Artifact republished SAME url 87a8eb16 (fully self-contained now).
+- Individual plan files kept on disk (extraction source + optional per-site
+  delivery) but nothing links Paul away from the single page.

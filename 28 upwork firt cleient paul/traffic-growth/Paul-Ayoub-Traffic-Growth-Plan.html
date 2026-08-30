@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Growth Roadmap — Express, BNB Photos &amp; DVPFL</title>
+<title>Growth Roadmap &#8212; Express, BNB Photos &amp; DVPFL</title>
 <style>
 :root{
   --bg:#f5f7fb; --card:#ffffff; --ink:#0f172a; --soft:#334155; --mut:#64748b;
@@ -83,26 +83,35 @@ li{margin:.3rem 0}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--mut);font-size:.87rem}
 a{color:var(--blue)}
 a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+.panel{display:none}
+.panel.active{display:block;animation:fadein .18s ease}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){.panel.active{animation:none}}
+nav.top a.active{background:var(--blue);color:#fff}
+:root[data-theme="dark"] nav.top a.active{color:#0f1420}
+.backline{margin-top:2rem;font-size:.9rem}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<nav class="top" aria-label="Sections">
-  <a href="#plans">The three plans</a>
-  <a href="#timeline">Timeline</a>
-  <a href="#buyers">Buyers</a>
-  <a href="#kpi">Targets</a>
-  <a href="#you">Your part</a>
+<nav class="top" aria-label="Plans">
+  <a href="#overview" data-tab="overview">Overview</a>
+  <a href="#express" data-tab="express">Express</a>
+  <a href="#bnb" data-tab="bnb">BNB Photos</a>
+  <a href="#dvpfl" data-tab="dvpfl">DVPFL</a>
+  <span id="navprog">0 / 0 done</span>
 </nav>
 
-<section id="overview">
+<div class="panel" id="panel-overview">
+<section id="ov-top">
 <p class="meta" style="margin-top:1.4rem">Prepared for Paul Ayoub · September 2026 · a 6-month plan, one roadmap per website</p>
 <h1>Growth Roadmap: the first 6 months, site by site</h1>
 <p class="lede">The repair project is finished — all three sites are fast, secure and complete.
 This is the next stage: <b>getting found, getting chosen, and getting booked</b>. Because the
 three sites sell to three completely different buyers, <b>each website has its own individual
-plan document</b> — open them below. Every task in them comes from a fresh page-by-page crawl
+plan document</b> — open them from the tabs above or the cards below — everything is on this one page. Every task in them comes from a fresh page-by-page crawl
 of all 39 live pages plus channel research specific to each audience, and each plan is an
 interactive checklist that remembers its own progress.</p>
 </section>
@@ -110,7 +119,7 @@ interactive checklist that remembers its own progress.</p>
 <section id="plans">
 <h2 style="border-top:0;padding-top:.4rem">The three plans — one per website</h2>
 
-<a class="doc" href="Express-Growth-Plan.html">
+<a class="doc" href="#express">
   <span class="tag">Plan 1 · sells to listing agents</span>
   <h3><span class="chip site">EXPRESS</span> Express Real Estate Photos — 6-Month Growth Plan</h3>
   <p>Win the map pack for “real estate photographer + [town]”, prove it with agent reviews and
@@ -119,7 +128,7 @@ interactive checklist that remembers its own progress.</p>
   <span class="open">Open the Express plan →</span>
 </a>
 
-<a class="doc" href="BNB-Growth-Plan.html">
+<a class="doc" href="#bnb">
   <span class="tag">Plan 2 · sells to Airbnb hosts &amp; property managers</span>
   <h3><span class="chip site">BNB</span> BNB Photos — 6-Month Growth Plan</h3>
   <p>Be present where hosts already are — Airbnb's own Services marketplace and host Facebook
@@ -129,7 +138,7 @@ interactive checklist that remembers its own progress.</p>
   <span class="open">Open the BNB plan →</span>
 </a>
 
-<a class="doc" href="DVPFL-Growth-Plan.html">
+<a class="doc" href="#dvpfl">
   <span class="tag">Plan 3 · sells to engaged couples</span>
   <h3><span class="chip site">DVPFL</span> Digital Video Production FL — 6-Month Growth Plan</h3>
   <p>Put the 8 existing wedding films to work — venue-named real-wedding pages, reviews on the
@@ -158,9 +167,9 @@ engine continuing — no new plan needed.</p>
 <h2>Three sites, three different buyers</h2>
 <div class="tblwrap"><table>
 <tr><th>Site</th><th>Buyer</th><th>Where they look (in order)</th></tr>
-<tr><td><a href="Express-Growth-Plan.html"><span class="chip site">EXPRESS</span></a></td><td>Listing agents (repeat buyers)</td><td>Referrals from other agents → Google Maps/search → brokerage vendor lists</td></tr>
-<tr><td><a href="BNB-Growth-Plan.html"><span class="chip site">BNB</span></a></td><td>Hosts &amp; property managers</td><td>Host Facebook groups → Google → Airbnb's own Services marketplace → PM word-of-mouth</td></tr>
-<tr><td><a href="DVPFL-Growth-Plan.html"><span class="chip site">DVPFL</span></a></td><td>Engaged couples (one-time, high value)</td><td>Instagram/Reels → Google Maps → venue &amp; photographer referrals → The Knot/WeddingWire</td></tr>
+<tr><td><a href="#express"><span class="chip site">EXPRESS</span></a></td><td>Listing agents (repeat buyers)</td><td>Referrals from other agents → Google Maps/search → brokerage vendor lists</td></tr>
+<tr><td><a href="#bnb"><span class="chip site">BNB</span></a></td><td>Hosts &amp; property managers</td><td>Host Facebook groups → Google → Airbnb's own Services marketplace → PM word-of-mouth</td></tr>
+<tr><td><a href="#dvpfl"><span class="chip site">DVPFL</span></a></td><td>Engaged couples (one-time, high value)</td><td>Instagram/Reels → Google Maps → venue &amp; photographer referrals → The Knot/WeddingWire</td></tr>
 </table></div>
 <p>One fact dominated the research: <b>all three brands have zero Google Business Profile presence
 — no profile linked anywhere on any of the 39 pages we crawled.</b> For local service businesses
@@ -199,12 +208,292 @@ their free listings prove lead flow first. Meta ads: not recommended at this bud
 (benchmarks: ~$45/lead and ~$50/day minimum for the algorithm) — the pixel gets installed now, ads wait.</p>
 </div>
 
+<p class="resetline">Progress is saved in this browser only. <button type="button" id="resetprog">Reset all checkboxes</button></p>
+
 <footer>
 Sources: page-by-page crawl of all 39 live pages across the three sites (September 2026) ·
 six channel-specific research passes (local SEO, wedding, real-estate B2B, short-term-rental, content, capture/paid) verified against current 2026 platform rules ·
 the August 2026 site audit. Every task in the three plans traces to a measured finding.
 </footer>
 </section>
+
 </div>
+
+<div class="panel" id="panel-express">
+
+<div class="sitehead"><span class="chip site">EXPRESS</span><h2>Express Real Estate Photos</h2><span class="dom">expressrealestatephotos.com · sells to listing agents</span></div>
+<p><b>Strategy in one line:</b> agents are repeat buyers — win the map pack for “real estate
+photographer + [town]”, prove it with reviews and case studies, then keep past agents warm
+so they rebook and refer. Spring listing season (Jan–Apr) is this site's big window — the
+6-month plan lands everything before it.</p>
+
+<details class="phase" open>
+<summary><h2>Month 1 — Foundation &amp; quick wins</h2> <span class="when">~6 hours</span> <span class="chip free">ALL FREE</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="ex-1"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Fix the homepage title tag</b> — complete it to “Real Estate Photography Venice &amp; Sarasota FL | Express Real Estate Photos”.</span>
+<span class="measured">the live title literally ends at “| Express” — the brand is truncated in every Google result.</span></li>
+<li data-id="ex-2"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Add Search Console.</b> GA4 exists; queries and rankings are invisible without it. 20 minutes, and it sets the baseline every later number is judged against.</span></li>
+<li data-id="ex-3"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Fix the /book-now/ sitemap entry.</b></span>
+<span class="measured">that URL serves a 27-word “Vercel Security Checkpoint” challenge to Google while sitting in the sitemap — Google may index an error page as your booking page.</span></li>
+<li data-id="ex-4"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Link BNB Photos properly from the footer</b> (and get the link back — BNB's footer names Express with no link today). An aged domain's link is free authority, both ways.</span></li>
+<li data-id="ex-5"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Create the Express Google Business Profile</b> — service-area business, hidden address, covering Venice, Sarasota, North Port, Bradenton, Port Charlotte. Category: <i>Real estate photographer</i>. Fill every field; use the existing booking app as the GBP booking link. Link it from footer + contact page.</span>
+<span class="measured">zero google.com/maps, g.page or business.google links on any of the site's 16 pages.</span></li>
+<li data-id="ex-6"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Start the agent review engine:</b> ask after the 2nd–3rd completed shoot (agents review once they trust you), via Google's review short-link. Template the email once — 2 minutes per job after that. Never gate, never incentivize (2026 Google policy).</span>
+<span class="measured">homepage testimonials are anonymous initials with broken characters (“Michael R. &#xFFFD;definitely…”) — real Google reviews replace them.</span></li>
+<li data-id="ex-7"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Tier-1 citations, one clean NAP:</b> Apple Business Connect, Bing Places, Yelp, Nextdoor, Foursquare — about an hour total.</span></li>
+</ol>
+</div>
+</details>
+
+<details class="phase" open>
+<summary><h2>Months 2–3 — Pages that catch agent searches</h2> <span class="when">the main build</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="ex-8"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Clone the proven service-page template into 5–7 service-area pages:</b> Nokomis, North Port, Osprey, Englewood, Siesta Key, Lakewood Ranch, Port Charlotte. <span class="chip hi">HIGH</span></span>
+<span class="measured">those towns appear zero times across all 16 pages — “real estate photographer North Port” is currently uncontested by this site.</span></li>
+<li data-id="ex-9"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Switch page schema from Article to LocalBusiness + Service</b> in the already-installed Rank Math, with areaServed, phone and the visible $149–$449 price range. <span class="chip hi">HIGH</span></span>
+<span class="measured">the site currently tells Google it publishes articles, not that it is a local photography business.</span></li>
+<li data-id="ex-10"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Cross-link the 8 service pages to each other and to the blog.</b> <span class="chip hi">HIGH</span></span>
+<span class="measured">every service page links only to home/about/contact — the photography page never links floor plans, aerial, or the “sells homes faster” post.</span></li>
+<li data-id="ex-11"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Build 2–3 case-study pages</b> from the existing #our-work galleries: property, package used, days on market, agent quote — linkable proof for the RE/MAX and KW logos already on the site. <span class="chip md">MED</span></span></li>
+<li data-id="ex-12"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Gate the best blog post as an agent checklist PDF</b> (“prepare your listing for the photoshoot”) with an email form. <span class="chip md">MED</span></span>
+<span class="measured">no email capture exists anywhere on the site; the 903-word prep post is already written.</span></li>
+<li data-id="ex-13"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Once the GBP has 5+ reviews, embed a live Google-reviews widget</b> on the homepage, replacing the anonymous quotes.</span></li>
+</ol>
+</div>
+</details>
+
+<details class="phase" open>
+<summary><h2>Months 3–6 — Repeat business &amp; the monthly rhythm</h2> <span class="when">ongoing</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="ex-14"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Agent retention email:</b> monthly one-email digest to past agents (new work, seasonal reminders, referral ask). Repeat agents are the whole business model. <span class="chip hi">HIGH</span></span></li>
+<li data-id="ex-15"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Pitch brokerage vendor lists:</b> the RE/MAX and KW offices already represented in the portfolio — ask the office admin what it takes to be on the recommended-vendor sheet, case-study pages in hand. <span class="chip hi">HIGH</span></span></li>
+<li data-id="ex-16"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Time the spring push:</b> January–April is Sarasota listing season. Have all area pages indexed, reviews visible and the digest running before January. Optional in this window: a Google Local Services Ads test (pay-per-lead, ~$25–$50/lead) — only after reviews exist.</span></li>
+</ol>
+<div class="tblwrap"><table>
+<tr><th>Cadence</th><th>Express monthly rhythm</th><th>Time</th></tr>
+<tr><td>Weekly</td><td>1 Google Business Profile post (batched monthly from recent shoots)</td><td>~20 min</td></tr>
+<tr><td>Per job</td><td>Review ask after 2nd–3rd shoot + reply to every review within 48 h</td><td>minutes</td></tr>
+<tr><td>Monthly</td><td>1 agent digest email · 1–2 blog posts (drafted for you, you approve)</td><td>~1 h approval</td></tr>
+<tr><td>Monthly</td><td>Report: GBP calls, Search Console clicks, form/booking leads</td><td>—</td></tr>
+</table></div>
+</div>
+</details>
+
+<div class="callout"><h3>Month-6 targets for this site</h3><p class="kpi">GBP live with 10+ reviews · 5–7 area pages indexed and ranking · Search Console clicks up vs. month-1 baseline · agent digest running · ready for spring listing season</p></div>
+<p class="backline"><a href="#overview">&larr; Back to overview</a></p>
+</div>
+
+<div class="panel" id="panel-bnb">
+
+<div class="sitehead"><span class="chip site">BNB</span><h2>BNB Photos</h2><span class="dom">bnbphotos.com · sells to Airbnb hosts &amp; property managers</span></div>
+<p><b>Strategy in one line:</b> hosts hang out in Facebook groups and on Airbnb itself — be
+present in both, win “airbnb photographer + [city]” with real city pages, and land one or two
+property-management contracts, each worth dozens of hosts. Snowbird prep season (Sep–Nov) is
+this site's big window — it starts immediately, so BNB's outreach comes first.</p>
+
+<details class="phase" open>
+<summary><h2>Month 1 — Foundation &amp; quick wins</h2> <span class="when">~6 hours</span> <span class="chip free">ALL FREE</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="bnb-1"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Replace the home-sale copy block on the homepage.</b></span>
+<span class="measured">the H2 “Top-Rated Real Estate Photography… attract more buyers and faster offers” is house-sale copy on a vacation-rental site — wrong audience, verbatim on the live page.</span></li>
+<li data-id="bnb-2"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Make the footer's “a division of Express Real Estate Photos” an actual link</b>, and get the link back from Express.</span></li>
+<li data-id="bnb-3"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Create the BNB Google Business Profile</b> — service-area business, hidden address, same five-city coverage. Category: <i>Photographer</i>. Link it from footer + contact page with a “Review us on Google” short-link.</span>
+<span class="measured">zero Google-profile links on any of the site's 13 pages.</span></li>
+<li data-id="bnb-4"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Start the host review engine:</b> ask when their listing goes live with the new photos — that is the moment hosts are happiest. Template it once.</span></li>
+<li data-id="bnb-5"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Tier-1 citations, one clean NAP:</b> Apple Business Connect, Bing Places, Yelp, Nextdoor, Foursquare.</span></li>
+<li data-id="bnb-6"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>List BNB on Airbnb's own Services marketplace</b> (Photography category — verified live in 2026, free to list, 15% per-booking fee). <span class="chip hi">HIGH</span></span>
+<span class="measured">a city-level photographer directory inside the platform every host already uses; BNB is absent from it.</span></li>
+</ol>
+</div>
+</details>
+
+<details class="phase" open>
+<summary><h2>Months 2–3 — Pages that catch host searches</h2> <span class="when">the main build</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="bnb-7"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Create 4 city landing pages</b> — Sarasota, North Port, Englewood, Nokomis/Siesta Key — mirroring the existing service-page template. <span class="chip hi">HIGH</span></span>
+<span class="measured">these cities are already declared in the site's schema on all 13 pages, but have zero actual pages — schema promises what the site doesn't deliver.</span></li>
+<li data-id="bnb-8"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Build a /portfolio/ page with before/after pairs</b> and, where a host shares it, the booking-lift story. <span class="chip hi">HIGH</span></span>
+<span class="measured">homepage says “View Our Work” — there is no portfolio URL in the entire sitemap.</span></li>
+<li data-id="bnb-9"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Create a /pricing/ page</b> and link the homepage package cards to it. <span class="chip md">MED</span></span>
+<span class="measured">the $199-base pricing lives only on the homepage; “airbnb photography cost” searches have no landing page.</span></li>
+<li data-id="bnb-10"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Turn the existing photo-prep checklist post into a gated PDF</b> — the lead magnet hosts actually want. <span class="chip hi">HIGH</span></span>
+<span class="measured">zero email-capture forms across all 13 pages; the checklist post already exists at 448 words.</span></li>
+<li data-id="bnb-11"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Add FAQPage schema to the FAQ blocks that already exist</b> on the homepage and aerial page. <span class="chip md">MED</span></span></li>
+<li data-id="bnb-12"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Once the GBP has 5+ reviews, embed a live Google-reviews widget</b> on the homepage.</span></li>
+</ol>
+</div>
+</details>
+
+<details class="phase" open>
+<summary><h2>Months 3–6 — PM contracts &amp; the monthly rhythm</h2> <span class="when">ongoing</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="bnb-13"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Pitch the six named Sarasota/Venice property managers</b> — Gulf Coast PM, iTrip Sarasota &amp; Venice, Stringer, Compass, Horse and Chaise, Global Vacation — flat per-property rate plus one free demo shoot. <b>One PM contract equals dozens of hosts.</b> <span class="chip hi">HIGH</span></span></li>
+<li data-id="bnb-14"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Work the host Facebook groups</b> (The STR Community, Hosts Helping Hosts, Florida/Suncoast groups): 30 min/week answering photo-critique threads, one before/after case study per month, no selling — the checklist PDF is the soft close. <span class="chip md">MED</span></span></li>
+<li data-id="bnb-15"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Ride snowbird season (Sep–Nov):</b> hosts refresh photos before winter bookings — heaviest outreach window of the year. GBP offer post + group case studies + PM pitches all timed here.</span></li>
+</ol>
+<div class="tblwrap"><table>
+<tr><th>Cadence</th><th>BNB monthly rhythm</th><th>Time</th></tr>
+<tr><td>Weekly</td><td>1 GBP post · 30 min in host Facebook groups</td><td>~50 min</td></tr>
+<tr><td>Per job</td><td>Review ask at listing-live + reply within 48 h</td><td>minutes</td></tr>
+<tr><td>Monthly</td><td>1 before/after case study (site + groups) · 1 host email once the list grows</td><td>~1 h approval</td></tr>
+<tr><td>Monthly</td><td>Report: GBP calls, Airbnb-marketplace leads, form leads, rankings</td><td>—</td></tr>
+</table></div>
+</div>
+</details>
+
+<div class="callout"><h3>Month-6 targets for this site</h3><p class="kpi">GBP + Airbnb marketplace listing live · 10+ reviews · 4 city pages + portfolio + pricing indexed · checklist PDF capturing 20+/mo · at least 1 PM contract in negotiation</p></div>
+<p class="backline"><a href="#overview">&larr; Back to overview</a></p>
+</div>
+
+<div class="panel" id="panel-dvpfl">
+
+<div class="sitehead"><span class="chip site">DVPFL</span><h2>Digital Video Production FL</h2><span class="dom">dvpfl.com · sells to engaged couples</span></div>
+<p><b>Strategy in one line:</b> couples buy on emotion and proof — put the 8 existing wedding
+films to work as venue-named pages, reviews and Reels, and get on the preferred-vendor lists of
+the venues already in the footage. Engagement season (Dec–Feb) is this site's big window —
+everything must be live before December.</p>
+
+<details class="phase" open>
+<summary><h2>Month 1 — Foundation &amp; quick wins</h2> <span class="when">~6 hours</span> <span class="chip free">ALL FREE</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="dv-1"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Put an inquiry form on the contact page.</b></span>
+<span class="measured">/contact-us/ has no form at all — only a phone and email text link. The new meta descriptions promise “check your date”, and there is nothing to check it with.</span></li>
+<li data-id="dv-2"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Fix the contradictory prices on /packages/.</b></span>
+<span class="measured">“Extra camera for Ceremony” is listed at both $200 and $149 on the same page — next to copy promising no surprises.</span></li>
+<li data-id="dv-3"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Create the DVPFL Google Business Profile</b> — service-area business, category <i>Wedding videography service</i>, covering Sarasota–Tampa. Link it from footer + contact page with a review short-link.</span>
+<span class="measured">zero Google-profile links on any of the site's 20 pages.</span></li>
+<li data-id="dv-4"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Start the couple review engine:</b> ask at film delivery — the emotional peak — with one 7-day reminder. Template it once.</span>
+<span class="measured">the site's testimonial area is empty today.</span></li>
+<li data-id="dv-5"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Embed 3–5 real WeddingWire/The Knot review quotes on the homepage and /packages/.</b> <span class="chip hi">HIGH</span></span>
+<span class="measured">a WeddingWire reviews page and The Knot listing (id 2034487) already exist and are linked from /awards/ — but not one review sentence appears on the site itself.</span></li>
+<li data-id="dv-6"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Tier-1 citations, one clean NAP:</b> Apple Business Connect, Bing Places, Yelp, Nextdoor, Foursquare.</span></li>
+</ol>
+</div>
+</details>
+
+<details class="phase" open>
+<summary><h2>Months 2–3 — Pages that catch couple searches</h2> <span class="when">the main build</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="dv-7"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Turn the 8 portfolio couples into real-wedding pages</b> — title = couple + venue + city, the existing film embedded, 500–800 words, venue and planner named and linked. <span class="chip hi">HIGH</span></span>
+<span class="measured">Tamaryn &amp; Martin, Kendall &amp; Frank and six more sit in the home slider with no pages behind them; venue-name pages are the proven wedding-SEO play (“[venue] wedding video” searches).</span></li>
+<li data-id="dv-8"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Build service-area pages for the cities the homepage already names</b> (start: Sarasota, Bradenton, St. Petersburg, Tampa). <span class="chip hi">HIGH</span></span>
+<span class="measured">10 cities are listed in the homepage text; the only geo URL on the whole site is one 2022 blog post.</span></li>
+<li data-id="dv-9"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Add geo + intent to the 9 service-page titles</b> (“Cinematic Wedding Films in Sarasota &amp; Venice FL”), and VideoObject schema on the 10+ Vimeo embeds. <span class="chip md">MED</span></span>
+<span class="measured">current titles are bare “CINEMATIC WEDDING FILM – Digital Video Production FL”; the films — the site's best asset — carry no video schema at all.</span></li>
+<li data-id="dv-10"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Restart the blog with couple-intent posts:</b> venue roundups (“Best wedding venues in Sarasota”), planning guides, one post per new real wedding. <span class="chip md">MED</span></span>
+<span class="measured">last post June 2022, and 8 of the 10 old posts chase corporate “video production” buyers — not brides.</span></li>
+<li data-id="dv-11"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Open the YouTube channel</b> — upload the 8 films with venue-keyword titles. <span class="chip md">MED</span></span>
+<span class="measured">YouTube is the second-largest search engine; a videography business with zero YouTube presence is leaving its own medium unused.</span></li>
+<li data-id="dv-12"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Once the GBP has 5+ reviews, embed a live Google-reviews widget</b> alongside the WeddingWire quotes.</span></li>
+</ol>
+</div>
+</details>
+
+<details class="phase" open>
+<summary><h2>Months 3–6 — Venues, referrals &amp; the monthly rhythm</h2> <span class="when">ongoing</span>
+<span class="pcount"></span><span class="pbar"><i></i></span></summary>
+<div class="inner">
+<ol class="tasks">
+<li data-id="dv-13"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Run the venue circuit:</b> cut a 45–60s venue-focused reel from existing footage for every venue already in the 8 films, gift it to the events manager, then ask what it takes to join their preferred-vendor list. <span class="chip hi">HIGH</span></span></li>
+<li data-id="dv-14"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Build the photographer/planner/DJ referral network.</b> <span class="chip hi">HIGH</span></span>
+<span class="measured">the /vendors/ page already links 6 partners outward with no evidence of links back — and wedding photographers who don't offer video are the highest-volume referral source for videographers.</span></li>
+<li data-id="dv-15"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Free wedding-platform storefronts:</b> Zola (genuinely free, pay-per-connect), plus polishing the existing Knot/WeddingWire listings and porting Google reviews there. <b>Hold the paid Knot/WeddingWire tiers until the free listings prove lead flow</b> — 2026 research says they're a hold-until-proven expense. <span class="chip md">MED</span></span></li>
+<li data-id="dv-16"><input class="cb" type="checkbox" aria-label="done"><span class="tt"><b>Ride engagement season (Dec–Feb):</b> most couples get engaged now and book vendors for next year. Reels cadence doubles, venue posts peak, real-wedding pages and reviews must already be live — that is why Months 1–3 are front-loaded.</span></li>
+</ol>
+<div class="tblwrap"><table>
+<tr><th>Cadence</th><th>DVPFL monthly rhythm</th><th>Time</th></tr>
+<tr><td>Weekly</td><td>2–3 Instagram Reels from existing footage (CapCut, free) · 1 GBP post</td><td>~2 h</td></tr>
+<tr><td>Per job</td><td>Review ask at film delivery + 7-day reminder + reply within 48 h</td><td>minutes</td></tr>
+<tr><td>Monthly</td><td>1 real-wedding page or venue post · 1 venue-reel gift</td><td>~1 h approval</td></tr>
+<tr><td>Monthly</td><td>Report: GBP actions, form leads, Knot/WW leads, rankings</td><td>—</td></tr>
+</table></div>
+</div>
+</details>
+
+<div class="callout"><h3>Month-6 targets for this site</h3><p class="kpi">GBP live with 10+ reviews · 8 real-wedding pages + 4 city pages indexed · contact form producing inquiries · 2+ preferred-vendor lists joined · Reels running through engagement season</p></div>
+<p class="backline"><a href="#overview">&larr; Back to overview</a></p>
+</div>
+
+</div>
+
+<script>
+(function () {
+  /* ---- tabs ---- */
+  var tabs = ['overview', 'express', 'bnb', 'dvpfl'];
+  function show(t) {
+    if (tabs.indexOf(t) < 0) t = 'overview';
+    tabs.forEach(function (x) {
+      var p = document.getElementById('panel-' + x);
+      if (p) p.classList.toggle('active', x === t);
+    });
+    var links = document.querySelectorAll('nav.top a[data-tab]');
+    Array.prototype.forEach.call(links, function (a) {
+      a.classList.toggle('active', a.getAttribute('data-tab') === t);
+    });
+    window.scrollTo(0, 0);
+  }
+  function fromHash() { show((location.hash || '#overview').slice(1)); }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+
+  /* ---- checklist ---- */
+  var KEY = 'paul-growth-plan-v3';
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+  function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+
+  var state = load();
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('ol.tasks .cb'));
+  function idOf(cb) { return cb.closest('li').getAttribute('data-id'); }
+
+  function refresh() {
+    var total = boxes.length, done = 0;
+    boxes.forEach(function (cb) {
+      var on = !!state[idOf(cb)];
+      cb.checked = on;
+      cb.closest('li').classList.toggle('done', on);
+      if (on) done++;
+    });
+    var np = document.getElementById('navprog');
+    if (np) np.textContent = done + ' / ' + total + ' done';
+    Array.prototype.forEach.call(document.querySelectorAll('details.phase'), function (ph) {
+      var pbs = ph.querySelectorAll('ol.tasks .cb');
+      if (!pbs.length) return;
+      var d = 0;
+      Array.prototype.forEach.call(pbs, function (cb) { if (cb.checked) d++; });
+      var pc = ph.querySelector('.pcount'); if (pc) pc.textContent = d + '/' + pbs.length;
+      var bar = ph.querySelector('.pbar i'); if (bar) bar.style.width = (100 * d / pbs.length) + '%';
+    });
+  }
+
+  boxes.forEach(function (cb) {
+    cb.addEventListener('change', function () {
+      state[idOf(cb)] = cb.checked;
+      save(state);
+      refresh();
+    });
+  });
+
+  var rb = document.getElementById('resetprog');
+  if (rb) rb.addEventListener('click', function () { state = {}; save(state); refresh(); });
+
+  refresh();
+})();
+</script>
 </body>
 </html>
