@@ -12,32 +12,31 @@ at most three asks, each under 5 minutes; the mailing list is "set up now, use l
 
 Hi Paul,
 
-Makes complete sense — and you're already there.
+Makes sense. You're already there.
 
-All three sites are now fast, updated, secured, with tap-to-call, working contact
-forms and analytics. Nothing needs your attention. Ignore the roadmap I sent —
-it's a menu for later, not homework.
+All 3 sites: fast, updated, secured, tap-to-call, forms work, analytics on.
+Nothing needs you. Ignore the roadmap — menu for later, not homework.
 
-Three free things would bring clients. I do the work; you give 5 minutes each:
+3 free things bring clients. I do the work. You: 5 min each.
 
 1. **Google Business Profile** — none of your 3 businesses has one.
-   When an agent searches "real estate photographer Sarasota" or a host searches
-   "Airbnb photographer Venice FL", Google shows 3 businesses on a map above every
-   website. You're not there today. With a profile, you are — and they call from the map.
-   *You: enter the verification code Google sends you.*
+   Agent types "real estate photographer Sarasota". Host types "Airbnb photographer
+   Venice FL". Google shows 3 businesses on a map above every website. You're not
+   there. With a profile, you are — they call from the map.
+   *You: enter the code Google sends.*
 
-2. **Reviews** — the ranking fuel for that map. 10 real reviews beats a competitor
-   with 2. Couples searching "wedding videographer Venice FL" read them before clicking.
-   *You: forward me 3–5 emails from happy clients.*
+2. **Reviews** — fuel for that map. 10 real reviews beats a competitor with 2.
+   Couples searching "wedding videographer Venice FL" read them before clicking.
+   *You: forward 3–5 emails from happy clients.*
 
-3. **Mailing list** — today, a visitor who doesn't book is gone forever.
-   I add a sign-up to each site and a free email tool; the list builds itself.
-   You send nothing now. When a slow season comes, one email to past agents,
-   hosts or couples fills it — no ads, no chasing.
-   *You: just say yes.*
+3. **Mailing list** — today a visitor who doesn't book is gone forever.
+   I add sign-up to each site + free email tool. List builds itself. You send
+   nothing now. Slow season → one email to past agents / hosts / couples fills it.
+   No ads. No chasing.
+   *You: say yes.*
 
-Then a light monthly check — updates, backup, form test, two-line report with
-calls and inquiries by source — so you never have to look at the sites again.
+Then light monthly check — updates, backup, form test, 2-line report: calls +
+inquiries by source. You never look at the sites again.
 Fixed [$XX]/month. Optional.
 
 Thanks,
