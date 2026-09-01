@@ -42,6 +42,23 @@ are free. I'll do all the work; each needs about five minutes from you at most:
    want a slow season filled, we send one email to people who already know you
    instead of chasing strangers. Nothing from you here except a yes.
 
+How these three actually bring you clients (the short version):
+
+- When an agent in Sarasota types "real estate photographer near me" or a host searches
+  "Airbnb photographer Venice FL", Google shows a map with three businesses at the top
+  (the "map pack") before any website. You are not in it today because there is no
+  profile. With a profile plus reviews, you are — and those people call straight from
+  the map. This is the cheapest traffic there is, and it's the kind that's ready to book.
+- Reviews are the ranking fuel for that map. Ten real reviews usually beats a
+  competitor with two, regardless of website. Couples searching "wedding videographer
+  Venice FL" read them before they ever click through.
+- The mailing list turns one-time visitors into repeat work: the agent who used you in
+  March gets one email before spring listing season, the host gets one before
+  snowbird season, and they rebook without you chasing anyone.
+
+None of it needs ads. Everything is measurable — I'll show you calls and inquiries by
+source in a two-line monthly note, so you can see it working (or tell me to stop).
+
 After that, my suggestion is a light monthly check — updates, backup, a test that
 the contact forms still deliver, and a two-line note to you — so the sites stay
 working without you ever having to look at them. Fixed, small, no surprises.
