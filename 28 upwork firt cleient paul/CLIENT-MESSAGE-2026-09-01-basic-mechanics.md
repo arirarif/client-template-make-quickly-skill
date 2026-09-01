@@ -12,62 +12,36 @@ at most three asks, each under 5 minutes; the mailing list is "set up now, use l
 
 Hi Paul,
 
-That makes complete sense — and honestly, you're already there.
+Makes complete sense — and you're already there.
 
-Since August all three sites have been brought up to the "basic mechanics" level:
-fast (Express 93 and BNB Photos 94 on Google's mobile score, up from 48 and 59;
-DVPFL 32 → 61 and now limited only by the hosting), up to date, cached, secured,
-with tap-to-call, working contact points and analytics in place. Nothing is broken
-and nothing needs your attention day to day.
+All three sites are now fast, updated, secured, with tap-to-call, working contact
+forms and analytics. Nothing needs your attention. Ignore the roadmap I sent —
+it's a menu for later, not homework.
 
-Please ignore the growth roadmap I sent — treat it as a menu for whenever you ever
-want more bookings, not homework. Nothing in it is required.
+Three free things would bring clients. I do the work; you give 5 minutes each:
 
-Only three small things would make a real difference for attracting clients, and all
-are free. I'll do all the work; each needs about five minutes from you at most:
+1. **Google Business Profile** — none of your 3 businesses has one.
+   When an agent searches "real estate photographer Sarasota" or a host searches
+   "Airbnb photographer Venice FL", Google shows 3 businesses on a map above every
+   website. You're not there today. With a profile, you are — and they call from the map.
+   *You: enter the verification code Google sends you.*
 
-1. Google Business Profile — none of the three businesses has one, and it is where
-   people searching "real estate photographer Venice FL" actually find you. I'll set
-   them up and fill everything in; you'll just need to enter a verification code
-   Google sends by postcard or phone (only the owner can receive it).
+2. **Reviews** — the ranking fuel for that map. 10 real reviews beats a competitor
+   with 2. Couples searching "wedding videographer Venice FL" read them before clicking.
+   *You: forward me 3–5 emails from happy clients.*
 
-2. Reviews — forward me 3–5 emails or messages from past clients who were happy.
-   I'll turn them into proper review sections on the sites (and ask for your OK
-   before anything goes live).
+3. **Mailing list** — today, a visitor who doesn't book is gone forever.
+   I add a sign-up to each site and a free email tool; the list builds itself.
+   You send nothing now. When a slow season comes, one email to past agents,
+   hosts or couples fills it — no ads, no chasing.
+   *You: just say yes.*
 
-3. Mailing list — right now every visitor who doesn't book today is gone for good.
-   I'll add a simple sign-up to each site (agents, hosts and couples are all
-   repeat-and-referral audiences) and connect it to a free email tool, so the list
-   quietly builds on its own. You don't have to send anything now — but when you
-   want a slow season filled, we send one email to people who already know you
-   instead of chasing strangers. Nothing from you here except a yes.
-
-How these three actually bring you clients (the short version):
-
-- When an agent in Sarasota types "real estate photographer near me" or a host searches
-  "Airbnb photographer Venice FL", Google shows a map with three businesses at the top
-  (the "map pack") before any website. You are not in it today because there is no
-  profile. With a profile plus reviews, you are — and those people call straight from
-  the map. This is the cheapest traffic there is, and it's the kind that's ready to book.
-- Reviews are the ranking fuel for that map. Ten real reviews usually beats a
-  competitor with two, regardless of website. Couples searching "wedding videographer
-  Venice FL" read them before they ever click through.
-- The mailing list turns one-time visitors into repeat work: the agent who used you in
-  March gets one email before spring listing season, the host gets one before
-  snowbird season, and they rebook without you chasing anyone.
-
-None of it needs ads. Everything is measurable — I'll show you calls and inquiries by
-source in a two-line monthly note, so you can see it working (or tell me to stop).
-
-After that, my suggestion is a light monthly check — updates, backup, a test that
-the contact forms still deliver, and a two-line note to you — so the sites stay
-working without you ever having to look at them. Fixed, small, no surprises.
-If you'd rather not, that's fine too; the sites are in a good state as they are.
+Then a light monthly check — updates, backup, form test, two-line report with
+calls and inquiries by source — so you never have to look at the sites again.
+Fixed [$XX]/month. Optional.
 
 Thanks,
 Arif
-
----
 
 ## Still to do on my side (no Paul time needed) — fold into the first maintenance month
 - Search Console on all three sites (Express: verify via the GA4 tag already installed)
