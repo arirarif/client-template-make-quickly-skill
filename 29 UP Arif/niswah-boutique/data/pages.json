@@ -10,5 +10,5 @@
     { "slug": "faq",                      "title": "FAQs",                      "file": "faq.html" },
     { "slug": "size-chart",               "title": "Size Chart",                "file": "size-chart.html" }
   ],
-  "trash_slugs": [ "sample-page" ]
+  "trash_slugs": [ "sample-page", "refund_returns" ]
 }
