@@ -1,0 +1,14 @@
+{
+  "_comment": "Static pages created by Appearance -> Niswah Starter -> Import Everything. Matched by slug: an existing page with the slug (any status) is updated and published, never duplicated. 'setting' wires the page into WordPress/WooCommerce options. Client feedback 2026-09-04.",
+  "pages": [
+    { "slug": "about-us",                 "title": "About Niswah Boutique",      "file": "about-us.html",   "menu": true },
+    { "slug": "contact",                  "title": "Contact Us",                "file": "contact.html" },
+    { "slug": "shipping-delivery",        "title": "Shipping & Delivery",       "file": "shipping-delivery.html" },
+    { "slug": "refund-and-returns-policy","title": "Returns & Exchanges Policy","file": "returns-refunds.html" },
+    { "slug": "terms-conditions",         "title": "Terms & Conditions",        "file": "terms-conditions.html", "setting": "woocommerce_terms_page_id" },
+    { "slug": "privacy-policy",           "title": "Privacy Policy",            "file": "privacy-policy.html",   "setting": "wp_page_for_privacy_policy" },
+    { "slug": "faq",                      "title": "FAQs",                      "file": "faq.html" },
+    { "slug": "size-chart",               "title": "Size Chart",                "file": "size-chart.html" }
+  ],
+  "trash_slugs": [ "sample-page" ]
+}

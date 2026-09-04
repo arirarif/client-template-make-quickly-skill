@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.11.1' );
+define( 'NB_THEME_VERSION', '0.12.0' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -905,5 +905,19 @@ if ( is_admin() ) {
 	$nb_importer = NB_THEME_DIR . '/includes/class-nb-starter-import.php';
 	if ( file_exists( $nb_importer ) ) {
 		require_once $nb_importer;
+	}
+}
+
+/**
+ * Round 2 (client feedback 2026-09-04).
+ *
+ * Bundled static pages (About, Contact, policies) and the "We accept"
+ * payment badges. Pages are imported by Niswah Starter; badges render on the
+ * front end, so both load everywhere.
+ */
+foreach ( array( 'class-nb-pages.php', 'class-nb-payment-methods.php' ) as $nb_inc ) {
+	$nb_inc = NB_THEME_DIR . '/includes/' . $nb_inc;
+	if ( file_exists( $nb_inc ) ) {
+		require_once $nb_inc;
 	}
 }

@@ -1,0 +1,116 @@
+const footerMain = row(
+  {
+    ...rowPadding('0px', '0px'),
+    global_colors_info: '{}',
+  },
+  // Client feedback 2026-09-04: footer must carry About Us, Contact, Shipping &
+  // Delivery, Returns & Refunds, Privacy Policy, Terms & Conditions, social and
+  // payment options. Every href is a real page created by Niswah Starter
+  // (data/pages.json) — no '#' placeholders.
+  footerCol('About', [
+    ['About Us', '/about-us/'],
+    ['Contact Us', '/contact/'],
+    ['Size Chart', '/size-chart/'],
+    ['Collections', '/collections/'],
+  ]) +
+    footerCol('Support', [
+      ['Shipping &amp; Delivery', '/shipping-delivery/'],
+      ['Returns &amp; Refunds', '/refund-and-returns-policy/'],
+      ['FAQs', '/faq/'],
+      ['Privacy Policy', '/privacy-policy/'],
+      ['Terms &amp; Conditions', '/terms-conditions/'],
+    ]) +
+    col(
+      '1_4',
+      text(footHeading, 'CONTACT US') +
+        text(
+          footBody,
+          'Need help? Email us at<br /><a href="mailto:info@niswahboutique.com">info@niswahboutique.com</a><br />or call <a href="tel:+97433882265">+974 33882265</a><br /><a href="https://wa.me/97433882265" target="_blank" rel="noopener">WhatsApp us</a>'
+        ),
+      { global_colors_info: '{}' }
+    ) +
+    col(
+      '1_4',
+      text(footHeading, 'FOLLOW US') +
+        text(
+          footBody,
+          '<a href="https://www.instagram.com/boutiqueniswah" target="_blank" rel="noopener">@boutiqueniswah</a><br />New arrivals, offers and styling ideas.'
+        ) +
+        social(
+          [
+            { net: 'facebook', url: 'https://www.facebook.com/boutiqueniswah', bg: 'RGBA(255,255,255,0)' },
+            { net: 'instagram', url: 'https://www.instagram.com/boutiqueniswah', bg: 'RGBA(255,255,255,0)' },
+            { net: 'youtube', url: 'https://youtube.com/@niswahboutique', bg: 'RGBA(255,255,255,0)' },
+          ],
+          {
+            icon_color: C.white,
+            custom_margin: '10px||0px||false|false',
+            global_colors_info: '{}',
+          }
+        ),
+      { global_colors_info: '{}' }
+    )
+);
+
+// Divi Code module. Its content is run through do_shortcode at render, so the
+// theme's [nb_payment_methods] shortcode (includes/class-nb-payment-methods.php)
+// expands to the "We accept" badges built from the gateways actually enabled.
+const code = (a, body) =>
+  `[et_pb_code _builder_version="${DIVI}" _module_preset="default" ${attrs(a)}]${body}[/et_pb_code]`;
+
+const footerBottom = row(
+  {
+    ...rowPadding('28px', '0px'),
+    global_colors_info: '{}',
+  },
+  col(
+    '4_4',
+    divider({
+      color: 'RGBA(250,242,230,0.22)',
+      divider_weight: '1px',
+      height: '1px',
+      custom_margin: '0px||22px||true|false',
+      global_colors_info: '{}',
+    }) +
+      code(
+        {
+          module_class: 'nb-footer__payment',
+          custom_margin: '0px||14px||true|false',
+          custom_padding: '0px||0px||true|false',
+          global_colors_info: '{}',
+        },
+        '[nb_payment_methods context="footer"]'
+      ) +
+      text(
+        {
+          text_font: BODY_300,
+          text_text_color: 'RGBA(250,242,230,0.75)',
+          text_font_size: '13px',
+          text_letter_spacing: '0.6px',
+          text_orientation: 'center',
+          background_layout: 'dark',
+          custom_margin: '0px||0px||true|false',
+          custom_padding: '0px||0px||true|false',
+          global_colors_info: '{}',
+        },
+        // "Prices in QAR, inclusive of applicable taxes": Qatar has no VAT in
+        // force (2026-09); the client asked for a tax disclosure where applicable.
+        '© 2026 Niswah Boutique. All rights reserved. &nbsp;·&nbsp; Prices in QAR, inclusive of applicable taxes.'
+      ),
+    { global_colors_info: '{}' }
+  )
+);
+
+const FOOTER_SC = section(
+  {
+    // Client 2026-09-04: footer is brand red (#891109).
+    background_color: C.brand,
+    custom_padding: '64px||44px||false|false',
+    // style.css §7 targets .nb-footer; the class was never set before, so
+    // those rules had been dead code.
+    module_class: 'nb-footer',
+    global_colors_info: '{}',
+  },
+  footerMain + footerBottom
+);
+

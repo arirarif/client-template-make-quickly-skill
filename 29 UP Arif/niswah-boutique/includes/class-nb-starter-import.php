@@ -371,12 +371,17 @@ class NB_Starter_Import {
 		}
 		check_admin_referer( self::NONCE_ALL );
 
+		// Pages first: the nav menu built inside run_import() links to About Us.
+		$pages       = class_exists( 'NB_Pages' ) ? NB_Pages::import() : array( 'type' => 'error', 'message' => 'NB_Pages missing.' );
 		$templates   = $this->run_import();
 		$home        = $this->run_import_home();
 		$collections = $this->run_import_collections();
 		$cats        = $this->backfill_category_images();
 
 		$failed = array();
+		if ( 'success' !== $pages['type'] ) {
+			$failed[] = $pages['message'];
+		}
 		if ( 'success' !== $templates['type'] ) {
 			$failed[] = $templates['message'];
 		}
@@ -390,7 +395,7 @@ class NB_Starter_Import {
 		if ( empty( $failed ) ) {
 			$result = array(
 				'type'    => 'success',
-				'message' => $templates['message'] . ' — ' . $home['message'] . ' ' . $collections['message'] . ' ' . sprintf(
+				'message' => $pages['message'] . ' ' . $templates['message'] . ' — ' . $home['message'] . ' ' . $collections['message'] . ' ' . sprintf(
 					/* translators: 1: thumbnails set, 2: already had one, 3: no product image available */
 					__( 'Category images: %1$d set, %2$d already had one, %3$d had no product image yet.', 'niswah-boutique' ),
 					$cats['set'],
@@ -592,6 +597,19 @@ class NB_Starter_Import {
 					'menu-item-title'     => __( 'Collections', 'niswah-boutique' ),
 					'menu-item-object'    => 'page',
 					'menu-item-object-id' => $collections_id,
+					'menu-item-type'      => 'post_type',
+				)
+			);
+		}
+
+		// About Us (client feedback 2026-09-04) — right after Collections.
+		$about_id = class_exists( 'NB_Pages' ) ? NB_Pages::id( 'about-us' ) : 0;
+		if ( $about_id && get_post( $about_id ) ) {
+			$add_item(
+				array(
+					'menu-item-title'     => __( 'About Us', 'niswah-boutique' ),
+					'menu-item-object'    => 'page',
+					'menu-item-object-id' => $about_id,
 					'menu-item-type'      => 'post_type',
 				)
 			);
