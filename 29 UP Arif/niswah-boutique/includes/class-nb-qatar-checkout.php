@@ -63,26 +63,46 @@ class NB_Qatar_Checkout {
 	 * @return array
 	 */
 	public static function locale( $locale ) {
+		// These labels reach the browser as JSON (wc-address-i18n) and are applied
+		// by WooCommerce's script after a country change, so TranslatePress never
+		// sees them in the DOM. Pick the Arabic set here when the page is Arabic.
+		$ar = class_exists( 'NB_Language' ) && 0 === strpos( (string) NB_Language::current(), 'ar' );
+		$t  = $ar ? array(
+			'zone'       => 'المنطقة',
+			'zone_ph'    => 'مثال: 25',
+			'street'     => 'رقم / اسم الشارع',
+			'street_ph'  => 'مثال: 850 أو شارع الوعب',
+			'city'       => 'المنطقة / المدينة',
+			'city_ph'    => 'مثال: الدوحة، الوكرة، الريان',
+		) : array(
+			'zone'       => __( 'Zone', 'niswah-boutique' ),
+			'zone_ph'    => __( 'e.g. 25', 'niswah-boutique' ),
+			'street'     => __( 'Street No. / Name', 'niswah-boutique' ),
+			'street_ph'  => __( 'e.g. 850 or Al Waab Street', 'niswah-boutique' ),
+			'city'       => __( 'Area / City', 'niswah-boutique' ),
+			'city_ph'    => __( 'e.g. Doha, Al Wakrah, Al Rayyan', 'niswah-boutique' ),
+		);
+
 		$locale['QA'] = array(
 			'address_1' => array(
-				'label'       => __( 'Zone', 'niswah-boutique' ),
-				'placeholder' => __( 'e.g. 25', 'niswah-boutique' ),
+				'label'       => $t['zone'],
+				'placeholder' => $t['zone_ph'],
 				'required'    => true,
 				'priority'    => 50,
 			),
 			'address_2' => array(
-				'label'       => __( 'Street No. / Name', 'niswah-boutique' ),
+				'label'       => $t['street'],
 				// WooCommerce ships address_2 with label_class screen-reader-text;
 				// without clearing it the "Street" label would be invisible.
 				'label_class' => array(),
-				'placeholder' => __( 'e.g. 850 or Al Waab Street', 'niswah-boutique' ),
+				'placeholder' => $t['street_ph'],
 				'required'    => true,
 				'hidden'      => false,
 				'priority'    => 55,
 			),
 			'city'      => array(
-				'label'       => __( 'Area / City', 'niswah-boutique' ),
-				'placeholder' => __( 'e.g. Doha, Al Wakrah, Al Rayyan', 'niswah-boutique' ),
+				'label'       => $t['city'],
+				'placeholder' => $t['city_ph'],
 				'required'    => true,
 				'priority'    => 70,
 			),
