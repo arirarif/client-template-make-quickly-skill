@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.13.1' );
+define( 'NB_THEME_VERSION', '0.14.0' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -167,13 +167,20 @@ add_action( 'after_setup_theme', 'nb_declare_woo_support' );
  * only their old crops until the thumbnails are regenerated —
  * WooCommerce -> Status -> Tools -> "Regenerate shop thumbnails".
  */
+/*
+ * Round 2 (2026-09-04): cards are no longer one ratio — hijabs/accessories
+ * are 1:1, garments 1:2 (includes/class-nb-image-ratios.php). A hard 2:3
+ * crop would lose content in both frames, so thumbnails are now generated
+ * UNcropped inside an 800x1600 box and object-fit: cover does the framing.
+ * Regenerate: WooCommerce -> Status -> Tools -> Regenerate shop thumbnails.
+ */
 function nb_image_size_thumbnail( $size ) {
-	return array( 'width' => 800, 'height' => 1200, 'crop' => 1 );
+	return array( 'width' => 800, 'height' => 1600, 'crop' => 0 );
 }
 add_filter( 'woocommerce_get_image_size_thumbnail', 'nb_image_size_thumbnail', 20 );
 
 function nb_image_size_single( $size ) {
-	return array( 'width' => 1200, 'height' => 1800, 'crop' => 1 );
+	return array( 'width' => 1200, 'height' => 2400, 'crop' => 0 );
 }
 add_filter( 'woocommerce_get_image_size_single', 'nb_image_size_single', 20 );
 
@@ -915,7 +922,7 @@ if ( is_admin() ) {
  * payment badges. Pages are imported by Niswah Starter; badges render on the
  * front end, so both load everywhere.
  */
-foreach ( array( 'class-nb-pages.php', 'class-nb-payment-methods.php', 'class-nb-qatar-checkout.php' ) as $nb_inc ) {
+foreach ( array( 'class-nb-pages.php', 'class-nb-payment-methods.php', 'class-nb-qatar-checkout.php', 'class-nb-image-ratios.php' ) as $nb_inc ) {
 	$nb_inc = NB_THEME_DIR . '/includes/' . $nb_inc;
 	if ( file_exists( $nb_inc ) ) {
 		require_once $nb_inc;

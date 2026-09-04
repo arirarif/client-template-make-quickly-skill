@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.13.1
+ Version:        0.14.0
  Text Domain:    niswah-boutique
 */
 
@@ -2899,3 +2899,25 @@ body:not(.single-product) .woocommerce-breadcrumb {
   .nb-checkout .woocommerce form .form-row.nb-field-building,
   .nb-checkout .woocommerce form .form-row.nb-field-unit { width: 100%; float: none; }
 }
+
+
+/* =========================================================================
+   16. IMAGE RATIO BY CATEGORY (round 2, 2026-09-04)
+   Hijabs & Accessories 1:1 · garments 1:2. Classes come from
+   includes/class-nb-image-ratios.php. The default 2:3 frame stays for any
+   product the classes do not reach.
+   ========================================================================= */
+
+ul.products li.product.nb-ratio-square .nb-card__media { aspect-ratio: 1 / 1; }
+ul.products li.product.nb-ratio-tall   .nb-card__media { aspect-ratio: 1 / 2; }
+
+/* Mixed grids (home, shop): a square hijab next to a 1:2 dress leaves uneven
+   card bottoms. Pin every card to the top of its row so the titles at least
+   start from a straight line under their own image. */
+ul.products { align-items: start; }
+
+/* Single product gallery: square products get a square frame. Garments keep
+   2:3 here on purpose — a 1:2 frame at the gallery's 710px width would be
+   1420px tall, taller than most screens, and the gallery is sticky. */
+body.nb-ratio-square .nb-single-product .woocommerce-product-gallery__image,
+body.nb-single-product.nb-ratio-square .woocommerce-product-gallery__image { aspect-ratio: 1 / 1; }
