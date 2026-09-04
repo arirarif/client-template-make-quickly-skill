@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.15.1' );
+define( 'NB_THEME_VERSION', '0.15.2' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 

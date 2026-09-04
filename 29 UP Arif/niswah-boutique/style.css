@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.15.1
+ Version:        0.15.2
  Text Domain:    niswah-boutique
 */
 
@@ -3008,7 +3008,15 @@ html[dir="rtl"] .nb-table th, html[dir="rtl"] .nb-table td { text-align: right; 
 }
 
 /* Product card: sale badge and the top-right control swap corners. */
-html[dir="rtl"] .woocommerce span.onsale { left: auto; right: 12px; }
+/* Divi's RTL rules keep a left offset on the single-product badge; with our
+   right offset added the badge stretched across the page. Force both. */
+html[dir="rtl"] .woocommerce span.onsale,
+html[dir="rtl"] .nb-single-product span.onsale {
+  left: auto !important;
+  right: 12px !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
 html[dir="rtl"] .nb-card__action { right: auto; left: 14px; }
 
 /* Prices: keep the digits LTR inside the Arabic sentence, riyal sign after. */
