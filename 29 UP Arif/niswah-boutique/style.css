@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.14.0
+ Version:        0.14.1
  Text Domain:    niswah-boutique
 */
 
@@ -2867,12 +2867,31 @@ body:not(.single-product) .woocommerce-breadcrumb {
 
 /* 14 nav items (About Us added) wrap to two lines under ~1500px at 18px.
    Step the type down before it wraps; the reference nav is 16px anyway. */
-@media (min-width: 981px) and (max-width: 1560px) {
+/* Divi's per-module CSS for et_pb_menu_0_tb_header loads after this sheet
+   and re-applies 31px top/bottom padding on the links, which doubled the nav
+   row height on archive pages after the round-2 import. Same cascade dead-end
+   as the logo height: !important is the only way to win here. */
+@media (min-width: 981px) {
+  .nb-header .et_pb_menu__menu > nav > ul > li > a {
+    padding-top: 4px !important;
+    padding-bottom: 8px !important;
+    line-height: 1.6em !important;
+  }
+  .nb-header .et_pb_menu__menu > nav > ul > li { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+}
+@media (min-width: 1301px) and (max-width: 1560px) {
   .nb-header .et_pb_menu__menu > nav > ul > li > a {
     font-size: 16px !important;
     letter-spacing: 0.4px !important;
   }
   .nb-header .et_pb_menu__menu > nav > ul > li { padding-right: 18px !important; }
+}
+@media (min-width: 981px) and (max-width: 1300px) {
+  .nb-header .et_pb_menu__menu > nav > ul > li > a {
+    font-size: 14px !important;
+    letter-spacing: 0.3px !important;
+  }
+  .nb-header .et_pb_menu__menu > nav > ul > li { padding-right: 12px !important; }
 }
 
 /* Tax disclosure line (Qatar: no VAT in force; client asked for it). */
