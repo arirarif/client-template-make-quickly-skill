@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'NB_THEME_VERSION', '0.14.1' );
+define( 'NB_THEME_VERSION', '0.15.0' );
 define( 'NB_THEME_DIR', get_stylesheet_directory() );
 define( 'NB_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -922,7 +922,7 @@ if ( is_admin() ) {
  * payment badges. Pages are imported by Niswah Starter; badges render on the
  * front end, so both load everywhere.
  */
-foreach ( array( 'class-nb-pages.php', 'class-nb-payment-methods.php', 'class-nb-qatar-checkout.php', 'class-nb-image-ratios.php' ) as $nb_inc ) {
+foreach ( array( 'class-nb-pages.php', 'class-nb-payment-methods.php', 'class-nb-qatar-checkout.php', 'class-nb-image-ratios.php', 'class-nb-language.php' ) as $nb_inc ) {
 	$nb_inc = NB_THEME_DIR . '/includes/' . $nb_inc;
 	if ( file_exists( $nb_inc ) ) {
 		require_once $nb_inc;

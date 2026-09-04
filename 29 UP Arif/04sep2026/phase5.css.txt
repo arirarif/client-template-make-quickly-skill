@@ -1,0 +1,108 @@
+
+
+/* =========================================================================
+   17. LANGUAGE SWITCHER + RTL (round 2, 2026-09-04)
+   [nb_lang] lives in the ticker text. TranslatePress sets html[dir="rtl"]
+   and lang="ar" for Arabic; Divi flips most of its own layout for dir=rtl,
+   so the rules below cover only the pieces this theme positions itself.
+   ========================================================================= */
+
+.nb-ticker .et_pb_text_inner { position: relative; }
+
+.nb-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.nb-lang__item { color: var(--nb-cream); opacity: 0.7; text-decoration: none; }
+.nb-lang__item:hover { opacity: 1; color: var(--nb-cream); }
+.nb-lang__item.is-current { opacity: 1; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; }
+.nb-lang__sep { opacity: 0.4; }
+
+@media (min-width: 981px) {
+  .nb-ticker .nb-lang {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  html[dir="rtl"] .nb-ticker .nb-lang { right: auto; left: 0; }
+}
+@media (max-width: 980px) {
+  .nb-ticker .nb-lang { margin-left: 12px; vertical-align: middle; }
+  html[dir="rtl"] .nb-ticker .nb-lang { margin-left: 0; margin-right: 12px; }
+}
+
+/* ---- Arabic type --------------------------------------------------------
+   Marcellus has no Arabic glyphs; the theme already enqueues an Arabic face
+   in nb_arabic_font_css(). Fall back through the system Arabic fonts. */
+html[lang="ar"] body,
+html[lang="ar"] .et_pb_module,
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4,
+html[lang="ar"] .et_pb_button,
+html[lang="ar"] .woocommerce a.button, html[lang="ar"] .woocommerce button.button,
+html[lang="ar"] input, html[lang="ar"] select, html[lang="ar"] textarea {
+  font-family: var(--nb-font-arabic, "Noto Kufi Arabic", "Noto Naskh Arabic", "Segoe UI", Tahoma, Arial, sans-serif);
+  letter-spacing: 0 !important;
+}
+html[lang="ar"] .nb-header .et_pb_menu__menu > nav > ul > li > a { letter-spacing: 0 !important; }
+
+/* ---- Mirroring ------------------------------------------------------- */
+html[dir="rtl"] body { direction: rtl; }
+html[dir="rtl"] .nb-page,
+html[dir="rtl"] .nb-page ul { text-align: right; }
+html[dir="rtl"] .nb-page ul { margin: 0 20px 18px 0; }
+html[dir="rtl"] .nb-table th, html[dir="rtl"] .nb-table td { text-align: right; }
+
+/* Header icons: cart hard right becomes hard left; search beside it. */
+@media (min-width: 981px) {
+  html[dir="rtl"] .nb-header .et_pb_menu__wrap > .et_pb_menu__cart-button { right: auto; left: 0; }
+  html[dir="rtl"] .nb-header .et_pb_menu__wrap > .et_pb_menu__search-button { right: auto; left: 92px; }
+}
+
+/* Product card: sale badge and the top-right control swap corners. */
+html[dir="rtl"] .woocommerce span.onsale { left: auto; right: 12px; }
+html[dir="rtl"] .nb-card__action { right: auto; left: 14px; }
+
+/* Prices: keep the digits LTR inside the Arabic sentence, riyal sign after. */
+html[dir="rtl"] .price, html[dir="rtl"] .woocommerce-Price-amount { unicode-bidi: isolate; direction: ltr; display: inline-block; }
+html[dir="rtl"] .nb-price-decimals { margin-left: 0; margin-right: 1px; }
+
+/* Single product: gallery on the right, summary on the left. */
+@media (min-width: 981px) {
+  html[dir="rtl"] .nb-single-product div.product.type-product > .clearfix { flex-direction: row-reverse; }
+  html[dir="rtl"] .nb-single-product .woocommerce-product-gallery { float: right; }
+  html[dir="rtl"] .nb-single-product .summary { float: left; text-align: right; }
+}
+html[dir="rtl"] .nb-single-product .summary,
+html[dir="rtl"] .nb-single-product .variations,
+html[dir="rtl"] .nb-single-product .woocommerce-tabs { text-align: right; }
+
+/* Cart / checkout two-column layouts. */
+@media (min-width: 981px) {
+  html[dir="rtl"] .nb-cart .woocommerce { flex-direction: row-reverse; }
+  html[dir="rtl"] .nb-checkout .col2-set .col-1 { float: right; }
+  html[dir="rtl"] .nb-checkout .col2-set .col-2 { float: left; }
+  html[dir="rtl"] .nb-checkout .woocommerce form .form-row-first { float: right; }
+  html[dir="rtl"] .nb-checkout .woocommerce form .form-row-last { float: left; }
+  html[dir="rtl"] .nb-checkout .woocommerce form .form-row.nb-field-building { float: right; }
+  html[dir="rtl"] .nb-checkout .woocommerce form .form-row.nb-field-unit { float: left; }
+}
+html[dir="rtl"] .nb-cart table.shop_table th, html[dir="rtl"] .nb-cart table.shop_table td,
+html[dir="rtl"] .nb-checkout table.shop_table th, html[dir="rtl"] .nb-checkout table.shop_table td { text-align: right; }
+html[dir="rtl"] .nb-cart .nb-tax-note-row td, html[dir="rtl"] .nb-checkout .nb-tax-note-row td { text-align: left; }
+html[dir="rtl"] .nb-checkout .woocommerce form .form-row label { text-align: right; }
+
+/* Footer columns read right-to-left; badges and copyright stay centred. */
+html[dir="rtl"] .nb-footer .et_pb_text { text-align: right; }
+html[dir="rtl"] .nb-footer .et_pb_row { flex-direction: row-reverse; }
+html[dir="rtl"] .nb-payment--product, html[dir="rtl"] .nb-payment--checkout { justify-content: flex-end; }
+html[dir="rtl"] .nb-payment__label { margin-right: 0; margin-left: 4px; }
+
+/* Archive toolbar (sort / count) mirrors. */
+html[dir="rtl"] .woocommerce-ordering { float: left; }
+html[dir="rtl"] .woocommerce-result-count { float: right; text-align: right; }
