@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.10.17
+ Version:        0.11.1
  Text Domain:    niswah-boutique
 */
 
@@ -19,7 +19,10 @@
   --nb-burgundy:   #6E1423;  /* primary — logo wordmark */
   --nb-gold:       #C6A15B;  /* accent — logo gradient */
   --nb-terracotta: #B24D2E;  /* secondary accent / hover */
-  --nb-ivory:      #FAF3EA;  /* editorial background */
+  --nb-ivory:      #FAF2E6;  /* editorial background — client 2026-09-04: #FAF2E6 */
+  --nb-brand:      #891109;  /* client 2026-09-04: ticker, footer, buttons, newsletter */
+  --nb-brand-dark: #6E0D07;  /* brand hover (~10% darker) */
+  --nb-cream:      #FAF2E6;  /* client 2026-09-04: page background + button text */
   --nb-espresso:   #241512;  /* text / dark surfaces */
   --nb-white:      #FFFFFF;
   --nb-line:       #E8E2D9;  /* hairline rules, input borders */
@@ -69,6 +72,15 @@ body {
   font-weight: var(--nb-body-weight);
   line-height: var(--nb-body-lh);
   color: var(--nb-espresso);
+  /* Client 2026-09-04: page background is cream, site-wide. Divi paints
+     #page-container and #main-content white on their own, so all three. */
+  background-color: var(--nb-cream);
+}
+
+#page-container,
+#main-content,
+#et-main-area {
+  background-color: var(--nb-cream);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +136,9 @@ a:hover {
    88px honestly: their logo is a flat text wordmark at roughly 8.2:1, ours is a
    stacked lockup (Arabic over Latin, plus the emblem) at 1161x516 = 2.25:1.
    Constraining ours to the reference's ~44px logo height forces it to 99px
-   wide, at which point the wordmark is unreadable. So the logo is held at 56px
-   and the band lands near 150px. Matching 128px exactly needs a horizontal
+   wide, at which point the wordmark is unreadable. So the logo was held at 56px
+   (band ~150px). Client 2026-09-04 asked for a bigger, more prominent logo:
+   now 84px, band ~180px. Matching 128px exactly needs a horizontal
    logo variant (emblem left, wordmark right) — a design asset, not a CSS fix.
 
    !important is required on the logo height: Divi emits per-module CSS for
@@ -134,7 +147,7 @@ a:hover {
    ------------------------------------------------------------------------- */
 
 .nb-header .et_pb_menu__logo img {
-  max-height: 56px !important;
+  max-height: 84px !important;
   width: auto !important;
 }
 
@@ -154,10 +167,10 @@ a:hover {
   /* Offsets resolve against .et_pb_menu_inner_container (the nearest positioned
      ancestor), whose top edge is the top of the logo band — not against
      .et_pb_menu__wrap. A negative offset therefore pushed the icons up into the
-     ticker. Centring them on the 56px logo band means (56 - 25) / 2 ~= 15px. */
+     ticker. Centring them on the 84px logo band means (84 - 25) / 2 ~= 29px. */
   .nb-header .et_pb_menu__wrap > .et_pb_menu__icon {
     position: absolute;
-    top: 15px;
+    top: 29px;
     height: auto;
     margin: 0;
   }
@@ -227,7 +240,7 @@ a:hover {
    result was a 655px header showing the whole nav twice as a plain bulleted
    list. So the mobile state is enforced here rather than inherited. */
 @media (max-width: 980px) {
-  .nb-header .et_pb_menu__logo img { max-height: 38px !important; }
+  .nb-header .et_pb_menu__logo img { max-height: 52px !important; }
 
   .nb-header .et_pb_menu_inner_container {
     display: flex;
@@ -546,8 +559,8 @@ ul.products li.product > .button {
   align-items: center;
   justify-content: center;
 
-  background: #000000;
-  color: var(--nb-white);
+  background: var(--nb-brand);
+  color: var(--nb-cream);
   border: 0;
   border-radius: 4px;
 
@@ -578,7 +591,7 @@ ul.products li.product:focus-within > .button {
 }
 
 .woocommerce ul.products li.product > .button:hover,
-ul.products li.product > .button:hover { background: var(--nb-burgundy); }
+ul.products li.product > .button:hover { background: var(--nb-brand-dark); }
 
 /* Title clears the button's 26px overhang with a little breathing room, and
    supplies the gap under the image that .nb-card__media no longer carries. */
@@ -1291,8 +1304,8 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   align-items: center;
   justify-content: center;
 
-  background: #000000 !important;
-  color: var(--nb-white) !important;
+  background: var(--nb-brand) !important;
+  color: var(--nb-cream) !important;
   border: 0 !important;
   border-radius: 4px !important;
 
@@ -1308,7 +1321,7 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
 }
 
 .nb-single-product .single_add_to_cart_button:hover {
-  background: var(--nb-burgundy) !important;
+  background: var(--nb-brand-dark) !important;
 }
 
 /* Divi appends an arrow glyph to buttons on hover; the reference has none. */
@@ -1461,18 +1474,19 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   letter-spacing: 1.2px;
   text-transform: uppercase;
   border-radius: 0;
-  background-color: var(--nb-burgundy);
-  border-color: var(--nb-burgundy);
-  color: var(--nb-white);
+  /* Client 2026-09-04: buttons are brand red with cream text. */
+  background-color: var(--nb-brand);
+  border-color: var(--nb-brand);
+  color: var(--nb-cream);
 }
 
 .et_pb_button:hover,
 .woocommerce a.button:hover,
 .woocommerce button.button:hover,
 .woocommerce input.button:hover {
-  background-color: var(--nb-terracotta);
-  border-color: var(--nb-terracotta);
-  color: var(--nb-white);
+  background-color: var(--nb-brand-dark);
+  border-color: var(--nb-brand-dark);
+  color: var(--nb-cream);
 }
 
 /* =========================================================================
@@ -1956,14 +1970,14 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   letter-spacing: 2.6px;
   text-transform: uppercase;
   border-radius: 4px;
-  background-color: var(--nb-burgundy);
+  background-color: var(--nb-brand);
   border: 0;
-  color: var(--nb-white);
+  color: var(--nb-cream);
 }
 
 .nb-cart .wc-proceed-to-checkout a.checkout-button:hover {
-  background-color: var(--nb-terracotta);
-  color: var(--nb-white);
+  background-color: var(--nb-brand-dark);
+  color: var(--nb-cream);
 }
 
 /* Empty state — centred, matching the page heading. */
@@ -2336,12 +2350,12 @@ li.product:hover .nb-card__action { opacity: 1; transform: translateY(0); }
   text-transform: uppercase;
   border-radius: 4px;
   border: 0;
-  background-color: var(--nb-burgundy);
-  color: var(--nb-white);
+  background-color: var(--nb-brand);
+  color: var(--nb-cream);
 }
 
 .nb-checkout #payment #place_order:hover {
-  background-color: var(--nb-terracotta);
+  background-color: var(--nb-brand-dark);
 }
 
 /* =========================================================================
