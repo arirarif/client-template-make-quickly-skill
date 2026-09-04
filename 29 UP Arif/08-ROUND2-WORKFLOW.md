@@ -582,8 +582,8 @@ that need them**:
 | 2026-09-04 | 3 | v0.13.1 live: Qatar Zone/Street/Building/Unit checkout, state+postcode gone, phone required, tax line | test COD order #892 placed, address printed correctly, order trashed; admin profile restored afterwards |
 | 2026-09-04 | 4 | v0.14.1 live: 1:1 hijabs/accessories, 1:2 garments, uncropped thumbnails, Regenerate triggered | nav font now steps 14/16/18px by width so 14 items fit |
 | 2026-09-04 | 5 | v0.15.0 live: TranslatePress free (en_US + ar), EN/AR in ticker, RTL CSS, floater off, ~50 chrome strings + badges translated via the editor AJAX | product descriptions stay English (no API key); Hero heading still English (split across a <br>) |
-| | 6 | | waits on client CSV + images |
-| | 7 | | delivery note + client message still to write |
+| | 6 | | waits on client CSV + images (Drive link above) |
+| 2026-09-04 | 7 | v0.15.1 live (Qatar labels Arabic in AR). `04sep2026/DELIVERY-NOTE-ROUND2.md` + `CLIENT-MESSAGE-2026-09-04.md` written | not yet sent; server cleanup and sample-product removal await a go |
 
 ## Live-site facts learned today (keep)
 
