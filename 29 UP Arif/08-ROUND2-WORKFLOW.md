@@ -576,11 +576,19 @@ that need them**:
 | Date | Phase | Done | Notes |
 |------|-------|------|-------|
 | 2026-09-04 | — | Read chat note + Comments.docx, extracted 12 screenshots, wrote this file | commit 8c19b98 |
-| | 0 | | needs logged-in browser on niswahboutique.com |
-| | 1 | | |
-| | 2 | | |
-| | 3 | | |
-| | 4 | | |
-| | 5 | | |
+| 2026-09-04 | 0 | Audit done (`04sep2026/AUDIT.md`). Bank transfer + COD enabled at the user's request. | No translation plugin, no gateway, 2 policy drafts, rest missing. Disk quota not visible. Cleanup (unused themes, WP Reset, inactive plugins) NOT done — needs an explicit go. |
+| 2026-09-04 | 1 | v0.11.1 live: #891109 ticker/footer/buttons, #FAF2E6 background, logo 84px | pack.ps1 needed directory entries or WP said "missing style.css" — fixed in the script |
+| 2026-09-04 | 2 | v0.12.0 live: 8 pages (Returns verbatim), footer rebuilt with real links, payment badges, About Us in nav | all 9 footer links 200 |
+| 2026-09-04 | 3 | v0.13.1 live: Qatar Zone/Street/Building/Unit checkout, state+postcode gone, phone required, tax line | test COD order #892 placed, address printed correctly, order trashed; admin profile restored afterwards |
+| 2026-09-04 | 4 | v0.14.1 live: 1:1 hijabs/accessories, 1:2 garments, uncropped thumbnails, Regenerate triggered | nav font now steps 14/16/18px by width so 14 items fit |
+| 2026-09-04 | 5 | v0.15.0 live: TranslatePress free (en_US + ar), EN/AR in ticker, RTL CSS, floater off, ~50 chrome strings + badges translated via the editor AJAX | product descriptions stay English (no API key); Hero heading still English (split across a <br>) |
 | | 6 | | waits on client CSV + images |
-| | 7 | | |
+| | 7 | | delivery note + client message still to write |
+
+## Live-site facts learned today (keep)
+
+- WordPress rejects a theme zip without explicit directory entries: "The theme is missing the style.css stylesheet". `pack.ps1` now writes them.
+- Uploading through the browser: set the file on `#themezip`, then submit the form via JS; the page reports "Add Themes" for a while before the confirm screen appears — wait and look for the "Replace installed with uploaded" link.
+- TranslatePress 3.3: settings and Language Switcher pages are React apps; the editor's AJAX actions are `trp_get_translations_regular` / `trp_save_translations_regular` (by `string_ids`, harvested from `data-trp-translate-id` on `?trp-edit-translation=preview` pages) and `trp_save_translations_gettext` (ids from `data-trpgettextoriginal`). Nonces live in `window.trp_editor_data.editor_nonces` on the editor page.
+- A test checkout while logged in as admin overwrites the admin user's name and billing profile. Restore it afterwards (done today).
+- Divi's per-module CSS re-applies 31px nav link padding after every Theme Builder import; the child theme wins only with `!important`.
