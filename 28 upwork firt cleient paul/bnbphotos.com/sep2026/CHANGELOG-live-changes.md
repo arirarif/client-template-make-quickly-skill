@@ -60,6 +60,56 @@ an individual plugin from its own zip.
 plugins but the list header still reads "Auto-updates Disabled (19)". Not changed by me; worth
 a second look, because silent auto-updates on a client site are how a working page quietly breaks.
 
+### Rectifi — recommended for removal, then NOT removed. Recommendation withdrawn.
+
+Owner confirmed the plugin is his and approved deactivating it. I opened its dashboard first
+and the module list contradicts the assumption my advice rested on, so it stays.
+
+Rectifi is not a redundant second scanner sitting idle. It is **actively supplying hardening
+that nothing else on this site replaces**, including:
+
+- `xmlrpc.php` blocked · REST/`?author=` user-enumeration blocked
+- HTTP security headers (X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
+- **PHP execution blocked inside `wp-content/uploads/`** — the single most valuable item here;
+  it is how an uploaded backdoor gets run
+- PHP execution blocked under `wp-includes/`; dangerous upload types (.exe/.sh/.bat) blocked
+- Direct web access to `wp-config.php` and to `.env`/`.git`/`.sql`/logs blocked
+- Directory listing off · WordPress version fingerprint stripped
+- Brute-force login lockout, math CAPTCHA on the login form, per-IP rate limiting, and a WAF
+
+Verified live from outside the site, 2026-09-07:
+
+```
+xmlrpc.php               -> 404
+/wp-json/wp/v2/users     -> 404
+x-frame-options          -> SAMEORIGIN
+x-content-type-options   -> nosniff
+referrer-policy          -> strict-origin-when-cross-origin
+strict-transport-security-> (absent)
+```
+
+**This matters for the record:** the August audit notes list "xmlrpc returns 404", "REST users
+404" and "has X-Frame-Options / X-Content-Type-Options / Referrer-Policy" as *already resolved*,
+with no cause recorded. Rectifi is the most likely source. Deactivating it would therefore have
+silently reopened several findings we have been treating as closed — including the uploads-folder
+PHP block, which Wordfence free does not provide.
+
+**Decision: keep it active.** Wordfence overlaps on WAF and login lockout only; it does not
+replace the filesystem and attack-surface rules. If it is ever removed, those rules must be
+re-implemented in `.htaccess` first, not after.
+
+**Its own three open items (all "manual step required", all genuine):**
+
+1. **Theme/Plugin File Editor is enabled** — any admin-level compromise can write a backdoor
+   straight into a theme file. Fix: `define('DISALLOW_FILE_EDIT', true);` in `wp-config.php`.
+2. **Login page is at the default `/wp-login.php`** — matches the 25 blind `admin` brute-force
+   attempts Wordfence logged this week.
+3. **`wp-cron.php` is publicly reachable** — a cheap DoS vector, and it also fires on every real
+   page view. Fix: disable WP-Cron over HTTP and run it from a real server cron.
+
+Not applied yet: items 1 and 3 need `wp-config.php` edits, which is a different risk class from a
+plugin update and should be done deliberately, with the backup already in place.
+
 ---
 
 ## Still to do on this site
@@ -67,7 +117,10 @@ a second look, because silent auto-updates on a client site are how a working pa
 - [ ] Set a backup schedule + remote storage (local-only backups die with the server)
 - [x] ~~Run the plugin updates~~ — 5 applied, Yoast + AIO Migration held (see above)
 - [ ] Yoast: activate the Premium subscription, then update free + Premium together
-- [ ] Wordfence: rate-limit `wp-login.php`
+- [ ] Login hardening — note Rectifi already runs lockout + CAPTCHA; the remaining gap is the default `/wp-login.php` URL
+- [ ] `DISALLOW_FILE_EDIT` in wp-config.php (Rectifi at-risk item 1)
+- [ ] Disable public wp-cron, move to a real cron (Rectifi at-risk item 3)
+- [ ] Add HSTS — the one security header still absent
 - [ ] Diagnose the 10 failed emails — switching the mailer to Brevo gives free delivery logs
 - [ ] `/thank-you/` page (noindex)
 - [ ] Footer signup form (`../../300usd-build/02-signup-form-bnb.html`) via WPCode
