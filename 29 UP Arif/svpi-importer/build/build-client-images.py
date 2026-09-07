@@ -31,7 +31,7 @@ CONFIG = {
     'QUALITY': 85,
     'CROP_WATERMARK': '--no-crop' not in sys.argv,
     'CROP_FRACTION': 0.04,           # right + bottom edge
-    'ROTATE': {'NB0028': 90},        # degrees, PIL rotate() is counter-clockwise; applied AFTER exif_transpose
+    'ROTATE': {},                    # NB0028's sideways rack photos are fixed by exif_transpose alone (checked 2026-09-07)
     'SKIP_EXT': {'.heic', '.mp4', '.docx', '.xlsx'},
     # Files whose variant digits are really "variant + shot" (NB0024.11 = variant 1 shot 1)
     'SPLIT_DIGITS': {'NB0024'},
