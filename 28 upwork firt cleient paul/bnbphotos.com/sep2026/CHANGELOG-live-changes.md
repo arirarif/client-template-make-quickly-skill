@@ -110,6 +110,57 @@ re-implemented in `.htaccess` first, not after.
 Not applied yet: items 1 and 3 need `wp-config.php` edits, which is a different risk class from a
 plugin update and should be done deliberately, with the backup already in place.
 
+### OPEN ISSUE — the homepage URL is serving a stale, heavy cached copy
+
+**Found while verifying the plugin updates. Not resolved. Needs host-level access.**
+
+The homepage renders fine. What is cached against the bare `/` URL does not.
+
+| Request | Bytes | Stylesheet links |
+|---|---|---|
+| `https://www.bnbphotos.com/` | **874,254** | **165** |
+| `https://www.bnbphotos.com/?cachebust=<random>` | **259,079** | **35** |
+| `/services/` | 131,253 | 23 |
+| `/contact/` | 390,039 | 116 |
+
+A cache-busted request proves WordPress is generating a **healthy 259 KB / 35-stylesheet page
+right now**. Real visitors landing on `/` get a stale 874 KB / 165-stylesheet copy instead —
+byte-identical on every request, unchanged over ~20 minutes of testing.
+
+**When it changed:** `/` returned 285,860 bytes consistently earlier the same day, including
+immediately after the Elementor, Elementor Pro, Fluent Forms and Seraphinite updates. It jumped
+to 874,254 after the WPCode PHP snippet was activated — most likely that activation invalidated
+Seraphinite's optimisation objects (Cache statistics showed `Objects: 0 (0.0 B)`) and the stale
+copy at `/` was never replaced.
+
+**What was tried, in order, and did not fix it:**
+1. Seraphinite → Manager → **Revalidate cache** (All) — ran, no change
+2. `wp-cron.php` pinged three times to drain the optimisation queue — HTTP 200 each, no change
+   (Manager also reported `Pending: 0, processing: 0`)
+3. Settings → Scripts and styles — optimisation toggles confirmed still **ON**; the update did
+   not reset them
+4. Seraphinite → **Delete cache** (All), then warmed `/`, `/services/`, `/contact/` — no change
+5. Seraphinite → **Delete server's cache (if available)** — no change
+
+**Ruled out:** the free-tier quota. Manager reports **1,184 of 5,000** page visits used until
+18 Sep 2026, so optimisation is not throttled.
+
+**Diagnosis:** a cache layer above the plugin — host-level (LiteSpeed/Varnish/NGINX FastCGI or
+similar) — is holding the old homepage response for the canonical URL. Seraphinite's own purge
+buttons do not reach it. This is the same class of trap already recorded for dvpfl.com, where
+the cache purge silently did nothing and only a `?cachebust` request revealed the truth.
+
+**Next step (needs hosting panel access, which I do not have):** purge the host cache for
+`https://www.bnbphotos.com/`. A forced re-save of the Home page would also invalidate that one
+URL — but **do not open the BNB homepage in Elementor to do it**; use Quick Edit → Update from
+Pages, or the host's purge control.
+
+**Rollback available if it turns out to be Seraphinite 2.29.23:** UpdraftPlus → Existing backups
+→ Sep 07 18:34 → Restore (Plugins) returns Seraphinite to 2.29.20.
+
+**Impact if left:** PageSpeed fetches `/`, so the mobile 94 baseline is at risk until this is
+purged. Gate G5 in `../../GATES-300usd.md` stays unmet, deliberately.
+
 ---
 
 ## Still to do on this site
@@ -124,8 +175,9 @@ plugin update and should be done deliberately, with the backup already in place.
 - [ ] Diagnose the 10 failed emails — switching the mailer to Brevo gives free delivery logs
 - [ ] `/thank-you/` page (noindex)
 - [ ] Footer signup form (`../../300usd-build/02-signup-form-bnb.html`) via WPCode
+- [ ] **FIRST:** purge the host cache for `/` — see the open issue above; PSI is meaningless until then
 - [ ] Re-run PSI mobile — baseline 94, must not drop
-- [ ] Check the Seraphinite optimised-visit counter (free tier caps at 5,000)
+- [x] ~~Check the Seraphinite optimised-visit counter~~ — **1,184 / 5,000** until 18 Sep 2026, not throttled
 
 ## Rules for this site
 
