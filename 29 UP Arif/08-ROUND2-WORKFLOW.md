@@ -587,10 +587,11 @@ that need them**:
 | 2026-09-04 | fix | RTL sale badge stretched on single product: hotfix via Divi Custom CSS, theme v0.15.2 carries it | theme upload failed that day ("missing style.css") |
 | 2026-09-07 | 0 | Server cleanup DONE: Molti + Divi Ecommerce Pro themes deleted, WP Reset + 15 inactive plugins deleted (8 active remain). v0.15.2 installed. | Cause of the failed uploads was the PowerShell zip, not disk: `build/pack.py` now packs. A 1x1 `disk-test.png` remains in the Media Library. |
 | 2026-09-07 | 6 | Client's Drive folder analysed → `09-PRODUCTS-IMPORT-PLAN.md`, 12 decisions in `04sep2026/CLIENT-MESSAGE-2026-09-07-products.md` | build starts after the client answers ratio, prices, categories |
+| 2026-09-07 | 6 | IMPORTED: 391 photos to the Media Library (REST, 5 parallel jobs, 0 failures), 44 sample products trashed, 10 reference categories deleted, SVPI 1.1.0 (reuses same-site images), 27 products / 241 variations imported with 0 errors, parent images set by REST, theme v0.16.1 (client tiles, 1:1 cards, dropdown nav in client order) | 6 products pending client answers (NB0006, 0010, 0012, 0023 salwar + co-ord, 0027). Theme uploads fail intermittently with "missing style.css" — same zip succeeds on retry; the host also drops connections after bursts of POSTs. |
 
 ## Live-site facts learned today (keep)
 
-- WordPress rejects a theme zip without explicit directory entries: "The theme is missing the style.css stylesheet". `pack.ps1` now writes them.
+- "The theme is missing the style.css stylesheet" on upload is INTERMITTENT on this host (seen with three different zips, 2026-09-04/07); the same file installs on the next try. `build/pack.py` packs with directory entries anyway. Retry before debugging the zip.
 - Uploading through the browser: set the file on `#themezip`, then submit the form via JS; the page reports "Add Themes" for a while before the confirm screen appears — wait and look for the "Replace installed with uploaded" link.
 - TranslatePress 3.3: settings and Language Switcher pages are React apps; the editor's AJAX actions are `trp_get_translations_regular` / `trp_save_translations_regular` (by `string_ids`, harvested from `data-trp-translate-id` on `?trp-edit-translation=preview` pages) and `trp_save_translations_gettext` (ids from `data-trpgettextoriginal`). Nonces live in `window.trp_editor_data.editor_nonces` on the editor page.
 - A test checkout while logged in as admin overwrites the admin user's name and billing profile. Restore it afterwards (done today).
