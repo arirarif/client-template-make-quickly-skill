@@ -26,3 +26,4 @@ molti-ecommerce/
 # WordPress media export used to recover the library (1.5 MB)
 niswahboutique.WordPress.*.xml
 Products/
+client-products/
