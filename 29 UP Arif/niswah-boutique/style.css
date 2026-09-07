@@ -4,7 +4,7 @@
  Description:    Custom Divi child theme for Niswah Boutique — modest fashion & hijab store, Qatar. Brand tokens, global typography and the Theme Builder starter templates ship with this theme.
  Author:         Built for Niswah Boutique
  Template:       Divi
- Version:        0.16.1
+ Version:        0.16.2
  Text Domain:    niswah-boutique
 */
 
@@ -2920,6 +2920,12 @@ body:not(.single-product) .woocommerce-breadcrumb {
   .nb-checkout .woocommerce form .form-row.nb-field-unit { width: 100%; float: none; }
 }
 
+
+/* Divi appends a chevron pseudo-element to parent menu items; with the
+   tightened nav row it renders as a loose arrow 20px under the label. The
+   reference nav shows none, and the dropdown still opens on hover. */
+.nb-header .et_pb_menu__menu .menu-item-has-children > a::after { display: none !important; }
+.nb-header .et_pb_menu__menu .menu-item-has-children > a { padding-right: 0 !important; }
 
 /* =========================================================================
    16. IMAGE RATIO (round 2, 2026-09-04; revised 2026-09-07)
