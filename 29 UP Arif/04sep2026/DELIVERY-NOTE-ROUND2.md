@@ -1,6 +1,6 @@
 # Round 2 delivery — Niswah Boutique
 
-**Site:** niswahboutique.com · **Theme:** Niswah Boutique (Divi child) **v0.15.1** · **Delivered:** 2026-09-04
+**Site:** niswahboutique.com · **Theme:** Niswah Boutique (Divi child) **v0.16.1** · **Delivered:** 2026-09-04, catalogue 2026-09-07
 Responds to your feedback document and chat of 2026-09-04.
 
 ---
@@ -14,7 +14,7 @@ Responds to your feedback document and chat of 2026-09-04.
 | 3 | Background #FAF2E6 | Page background and all home sections are #FAF2E6; the trust-badge band is white for contrast. |
 | 4 | Buttons #891109 / #FAF2E6 | Every button: home CTAs, product cards, Add to cart, cart Check out now, Place order. |
 | 5 | Fonts unchanged | Marcellus + Jost kept. Cairo is used when the site is in Arabic. |
-| 6 | Image ratio | Hijabs, Hijab Caps, Jewellery, Accessories show 1:1; all other categories 1:2, exactly as asked. See note A. |
+| 6 | Image ratio | All cards are 1:1 since 2026-09-07: every photo you supplied is square, and a 1:2 frame would crop half of each garment. See note A. |
 | 7 | EN / AR switcher | "EN \| AR" in the top ribbon on every page and device. Arabic pages are right-to-left with mirrored layout, Arabic fonts and Arabic prices. Menus, header, footer, buttons, checkout and policy page titles are translated. See note B. |
 | 8 | About Us | /about-us/ page (draft copy for you to edit), linked in the main menu and footer. |
 | 9 | Payment methods shown | "We accept" badges in the footer, under Add to cart and above the payment options at checkout. They list whatever is enabled in WooCommerce, so they update themselves when you add a card gateway. |
@@ -27,7 +27,7 @@ Responds to your feedback document and chat of 2026-09-04.
 
 ## Notes
 
-**A. Image ratio.** 1:2 is a very tall frame (a 460px card is 920px high). It is live as you asked; if you would prefer the reference site's 2:3, it is a one-line change. On the product page itself, garments keep 2:3 so the sticky gallery fits on screen; hijabs and accessories are square there too.
+**A. Image ratio.** Your photos are square, so cards and the product gallery are square. If you later shoot portrait photos, switching garments to 2:3 or 1:2 is a one-line change.
 
 **B. Arabic.** The site chrome is translated by hand. Product names and descriptions are still English because automatic translation needs a Google Translate or DeepL API key on your account (TranslatePress → Automatic Translation). Send the key and they translate themselves; or you can translate any string by hand from the "Translate Site" button in the admin bar.
 
@@ -41,11 +41,11 @@ Six products wait for your answers (see the questions I sent): Cotton Crinkle Hi
 
 ## Still needs you
 
-1. **Products.** Send the CSV and images (the Drive folder) and I will import them. The 44 sample products will be removed at that point.
+1. **Products.** Answers to the six open product questions (prices, colour names, bookmark designs, prayer-dress photos).
 2. **Card payment provider** (QPay, Sadad, Skipcash, Dibsy, Tap, MyFatoorah…) and its merchant account, when you are ready.
 3. **Google / DeepL key** if you want product text in Arabic automatically.
 4. **FAQ text** whenever it is ready.
-5. **Server cleanup.** The unused Molti and Divi Ecommerce Pro themes, WP Reset and 19 inactive plugins are still installed. Say the word and I remove them; it protects the site and frees disk.
+5. **Server cleanup** is done: unused themes, WP Reset and 16 inactive plugins removed.
 
 ## How to update the site
 
