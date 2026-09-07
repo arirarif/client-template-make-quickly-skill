@@ -110,7 +110,7 @@ re-implemented in `.htaccess` first, not after.
 Not applied yet: items 1 and 3 need `wp-config.php` edits, which is a different risk class from a
 plugin update and should be done deliberately, with the backup already in place.
 
-### OPEN ISSUE — the homepage URL is serving a stale, heavy cached copy
+### OPEN ISSUE — pages regenerating much heavier after the Seraphinite update (diagnosis corrected below)
 
 **Found while verifying the plugin updates. Not resolved. Needs host-level access.**
 
@@ -158,8 +158,51 @@ Pages, or the host's purge control.
 **Rollback available if it turns out to be Seraphinite 2.29.23:** UpdraftPlus → Existing backups
 → Sep 07 18:34 → Restore (Plugins) returns Seraphinite to 2.29.20.
 
-**Impact if left:** PageSpeed fetches `/`, so the mobile 94 baseline is at risk until this is
-purged. Gate G5 in `../../GATES-300usd.md` stays unmet, deliberately.
+#### CORRECTION — the "stale cache / needs a host purge" diagnosis above was WRONG
+
+Response headers settle it. Recorded here rather than quietly edited out, because the wrong
+diagnosis would have sent the next person to the hosting panel for nothing.
+
+```
+/            874,254 b  165 css  x-seraph-accel-cache: state=cache; date="2026-09-07 19:14:38"
+/services/   453,571 b  111 css  x-seraph-accel-cache: state=cache; date="2026-09-07 19:06:17"
+/contact/    390,039 b  116 css  x-seraph-accel-cache: state=cache; date="2026-09-07 19:06:06"
+/?cb=<rand>  259,079 b   35 css  x-seraph-accel-cache: state=skipped; reason="exclArgsAll"
+```
+
+Two things I had backwards:
+
+1. **The cache is not stale.** Every page carries `state=cache` with a timestamp from *minutes
+   ago*. Seraphinite regenerated them and the fresh output is simply heavier. No host-level
+   cache is involved, and no host purge is needed.
+2. **The 259 KB `?cachebust` response was never "the healthy render".** Query-string requests are
+   **excluded from Seraphinite entirely** (`state=skipped; reason="exclArgsAll"`). That number is
+   the page *without* the optimizer, so it was never the target to get back to.
+
+**What actually happened.** Seraphinite's self-learned optimisation data was lost — the Manager
+showed `Objects: 0 (0.0 B)` — and regeneration without that learning produces a much less
+optimised page. The homepage went first, when the WPCode snippet activation invalidated it.
+**Deleting the cache (step 4 above) then spread it to every page:** `/services/` measured a lean
+131,253 bytes / 23 stylesheets *before* that click and 453,571 / 111 after. That one is on me.
+
+**Why warming did not fix it.** Two full passes over all 10 sitemap URLs changed nothing: the
+homepage entry is pinned at `date="2026-09-07 19:14:38"` under `cache-control: max-age=3600`.
+Nothing regenerates until that hour is up, so any self-learning gain can only appear on the
+*next* generation.
+
+**Correct next step — re-measure, do not click anything else.** After the TTL expires, re-check:
+
+```
+node scripts/check-300usd.mjs pages     # regression guard, still passing
+node -e "fetch('https://www.bnbphotos.com/').then(r=>r.text()).then(t=>console.log(t.length))"
+```
+
+If it is still ~874 KB once entries regenerate, the update itself is the cause and the fix is to
+roll Seraphinite back: **UpdraftPlus → Existing backups → Sep 07 18:34 → Restore (Plugins)**
+returns 2.29.20. That backup predates every change made today.
+
+**Impact:** the site is fully functional — all 16 URLs return 200 throughout — but the mobile 94
+baseline is at risk until page weight comes back down. Gate G5 stays unmet, deliberately.
 
 ---
 
@@ -175,7 +218,7 @@ purged. Gate G5 in `../../GATES-300usd.md` stays unmet, deliberately.
 - [ ] Diagnose the 10 failed emails — switching the mailer to Brevo gives free delivery logs
 - [ ] `/thank-you/` page (noindex)
 - [ ] Footer signup form (`../../300usd-build/02-signup-form-bnb.html`) via WPCode
-- [ ] **FIRST:** purge the host cache for `/` — see the open issue above; PSI is meaningless until then
+- [ ] **FIRST:** after the 1-hour cache TTL, re-measure page weight — see the corrected diagnosis above. If still ~874 KB, roll Seraphinite back to 2.29.20 from the Sep 07 18:34 backup. No host purge needed.
 - [ ] Re-run PSI mobile — baseline 94, must not drop
 - [x] ~~Check the Seraphinite optimised-visit counter~~ — **1,184 / 5,000** until 18 Sep 2026, not throttled
 
