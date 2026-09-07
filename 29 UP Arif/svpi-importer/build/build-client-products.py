@@ -308,6 +308,13 @@ def main():
             sizes.sort(key=lambda s: order.index(s) if s in order else 99)
             attrs_out.append({'name': 'Size', 'slug': 'size', 'type': 'button', 'options': [{'value': s} for s in sizes]})
         prod['attributes'] = attrs_out
+        # The importer uses the first gallery image as the parent's featured
+        # image; without one the shop card is blank (seen 2026-09-07, fixed by
+        # REST afterwards). Fall back to the first variation photo.
+        if not gallery:
+            first = next((v['image_url'] for v in variations if v.get('image_url')), '')
+            if first:
+                gallery = [first]
         prod['gallery_images'] = gallery
         prod['variations'] = variations
         products.append(prod)
