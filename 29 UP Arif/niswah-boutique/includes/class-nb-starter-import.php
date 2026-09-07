@@ -615,30 +615,83 @@ class NB_Starter_Import {
 			);
 		}
 
-		// Every product category that actually has stock in it. Uncategorized is
-		// WooCommerce's default bucket and never belongs in a customer-facing nav.
+		// Product categories: top-level ones in the client's own order (Sheet2 of
+		// their spreadsheet, 2026-09-07), each with its sub-categories as a
+		// dropdown. A flat list of every category produced a 35-item nav.
 		if ( taxonomy_exists( 'product_cat' ) ) {
+			$order = array( 'Premium', 'Hijab', 'Instant Hijab', 'Turbans', 'Essential', 'Prayer Essential', 'Kids',
+				'Jewelry & Accessories', 'Sports Wear', 'Modest Wear', 'Gift Sets', 'Sale' );
 			$terms = get_terms(
 				array(
 					'taxonomy'   => 'product_cat',
 					'hide_empty' => true,
+					'parent'     => 0,
 					'orderby'    => 'name',
 				)
 			);
 
 			if ( ! is_wp_error( $terms ) ) {
+				usort(
+					$terms,
+					function ( $a, $b ) use ( $order ) {
+						$ia = array_search( html_entity_decode( $a->name ), $order, true );
+						$ib = array_search( html_entity_decode( $b->name ), $order, true );
+						$ia = false === $ia ? 99 : $ia;
+						$ib = false === $ib ? 99 : $ib;
+						return $ia === $ib ? strcmp( $a->name, $b->name ) : $ia - $ib;
+					}
+				);
 				foreach ( $terms as $term ) {
 					if ( 'uncategorized' === $term->slug ) {
 						continue;
 					}
-					$add_item(
+					$position++;
+					$parent_item = wp_update_nav_menu_item(
+						$menu_id,
+						0,
 						array(
-							'menu-item-title'     => $term->name,
+							'menu-item-position'  => $position,
+							'menu-item-status'    => 'publish',
+							'menu-item-title'     => html_entity_decode( $term->name ),
 							'menu-item-object'    => 'product_cat',
 							'menu-item-object-id' => (int) $term->term_id,
 							'menu-item-type'      => 'taxonomy',
 						)
 					);
+					if ( is_wp_error( $parent_item ) ) {
+						continue;
+					}
+					$added++;
+					$children = get_terms(
+						array(
+							'taxonomy'   => 'product_cat',
+							'hide_empty' => true,
+							'parent'     => (int) $term->term_id,
+							'orderby'    => 'name',
+						)
+					);
+					if ( is_wp_error( $children ) ) {
+						continue;
+					}
+					foreach ( $children as $child ) {
+						$position++;
+						$r = wp_update_nav_menu_item(
+							$menu_id,
+							0,
+							array(
+								'menu-item-position'  => $position,
+								'menu-item-status'    => 'publish',
+								'menu-item-parent-id' => (int) $parent_item,
+								'menu-item-title'     => html_entity_decode( $child->name ),
+								'menu-item-object'    => 'product_cat',
+								'menu-item-object-id' => (int) $child->term_id,
+								'menu-item-type'      => 'taxonomy',
+							)
+						);
+						if ( ! is_wp_error( $r ) ) {
+							$added++;
+						}
+					}
 				}
 			}
 		}
