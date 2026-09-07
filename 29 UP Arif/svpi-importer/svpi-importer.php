@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Simple Variable Product Importer (SVPI)
  * Description: Import variable products with color swatches from JSON into WooCommerce. WoodMart-compatible.
- * Version:     1.0.0
+ * Version:     1.1.0
  * Requires at least: 6.0
  * Requires PHP: 8.0
  * Author:      hub-tex
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'SVPI_DIR',     plugin_dir_path( __FILE__ ) );
 define( 'SVPI_URL',     plugin_dir_url( __FILE__ ) );
-define( 'SVPI_VERSION', '1.0.0' );
+define( 'SVPI_VERSION', '1.1.0' );
 
 // ─── Autoload includes ────────────────────────────────────────────────────────
 require_once SVPI_DIR . 'includes/class-json-parser.php';

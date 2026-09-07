@@ -49,6 +49,21 @@ class SVPI_Image_Handler {
 			return $existing_id;
 		}
 
+		// ── Already in this site's Media Library? ─────────────────────────
+		// The client catalogue (2026-09-07) is uploaded to the Media Library
+		// first and products.json points at those URLs. Re-downloading them
+		// would double every file; reuse the attachment instead.
+		$site_host = wp_parse_url( home_url(), PHP_URL_HOST );
+		$url_host  = wp_parse_url( $url, PHP_URL_HOST );
+		if ( $site_host && $url_host === $site_host ) {
+			$local_id = (int) attachment_url_to_postid( $url );
+			if ( $local_id ) {
+				update_post_meta( $local_id, '_svpi_source_url', $url );
+				$this->cache[ $url ] = $local_id;
+				return $local_id;
+			}
+		}
+
 		// ── Download to temp file ─────────────────────────────────────────
 		require_once ABSPATH . 'wp-admin/includes/media.php';
 		require_once ABSPATH . 'wp-admin/includes/file.php';
