@@ -584,6 +584,9 @@ that need them**:
 | 2026-09-04 | 5 | v0.15.0 live: TranslatePress free (en_US + ar), EN/AR in ticker, RTL CSS, floater off, ~50 chrome strings + badges translated via the editor AJAX | product descriptions stay English (no API key); Hero heading still English (split across a <br>) |
 | | 6 | | waits on client CSV + images (Drive link above) |
 | 2026-09-04 | 7 | v0.15.1 live (Qatar labels Arabic in AR). `04sep2026/DELIVERY-NOTE-ROUND2.md` + `CLIENT-MESSAGE-2026-09-04.md` written | not yet sent; server cleanup and sample-product removal await a go |
+| 2026-09-04 | fix | RTL sale badge stretched on single product: hotfix via Divi Custom CSS, theme v0.15.2 carries it | theme upload failed that day ("missing style.css") |
+| 2026-09-07 | 0 | Server cleanup DONE: Molti + Divi Ecommerce Pro themes deleted, WP Reset + 15 inactive plugins deleted (8 active remain). v0.15.2 installed. | Cause of the failed uploads was the PowerShell zip, not disk: `build/pack.py` now packs. A 1x1 `disk-test.png` remains in the Media Library. |
+| 2026-09-07 | 6 | Client's Drive folder analysed → `09-PRODUCTS-IMPORT-PLAN.md`, 12 decisions in `04sep2026/CLIENT-MESSAGE-2026-09-07-products.md` | build starts after the client answers ratio, prices, categories |
 
 ## Live-site facts learned today (keep)
 
