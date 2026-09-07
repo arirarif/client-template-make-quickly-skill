@@ -33,6 +33,12 @@ Responds to your feedback document and chat of 2026-09-04.
 
 **C. Drafts to review.** Shipping times and fees, size-chart measurements, About Us story, Terms and Privacy wording are placeholders written to be plausible for Qatar. Please read them once with your adviser and edit in Pages → Edit.
 
+## Catalogue — added 2026-09-07
+
+Your products are live: **27 products, 241 colour/size options**, with your own photos (391, watermark trimmed), colour swatches, and your category structure (Premium, Hijab, Instant Hijab, Essential, Prayer Essential, Jewelry & Accessories, Sports Wear, Modest Wear) as a dropdown menu. The sample catalogue is gone. All product cards are square because every photo you supplied is square.
+
+Six products wait for your answers (see the questions I sent): Cotton Crinkle Hijab, Kids Hijab, Prayer Dress, the Salwar Suit Set rows, the Co-ord Set, and the Quran Bookmarks. They are prepared and go live the day you reply.
+
 ## Still needs you
 
 1. **Products.** Send the CSV and images (the Drive folder) and I will import them. The 44 sample products will be removed at that point.
