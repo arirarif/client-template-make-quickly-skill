@@ -115,6 +115,37 @@ here are already warm.
 *Same caveat as BNB:* the page is not `noindex` — Yoast's dropdown would not persist through
 automation. Worth setting by hand, but harmless as is.
 
+### 7. Virtual-staging before/after images given alt text
+
+A full crawl of all 18 indexed pages found **163 images, 13 without alt text** — a good ratio, and
+six of the thirteen were the **virtual-staging before/after pairs**, which are the most
+commercially important images on the site. Virtual staging is the service that most needs the
+proof shown side by side, and a screen reader or Google Images had nothing to go on.
+
+Written as matched pairs so the transformation is legible on its own:
+
+```
+Before3.jpg    -> "Empty living space before virtual staging"
+after3.jpg     -> "The same living space after virtual staging, furnished digitally"
+before2-1.jpg  -> "Empty room before virtual staging"
+after2-1.jpg   -> "The same room after virtual staging, furnished digitally"
+before-1.jpg   -> "Vacant room before virtual staging"
+after-1.jpg    -> "The same vacant room after virtual staging, furnished digitally"
+```
+
+**Worth knowing:** each of those six filenames exists **twice** in the media library — the same
+images uploaded on two occasions (IDs 434–439 and 699–704). Alt text was written to **both
+copies**, twelve writes in total, so whichever attachment the page actually renders is covered.
+Left unnoticed, fixing only one would have looked done and changed nothing.
+
+*Verified on the plain URL after clearing Elementor and WP Super Cache:*
+`/virtual-staging/` — **18 images, 0 missing alt**, and the rendered markup carries the new text.
+
+**Seven images still without alt**, none of them commercially important: four screenshots of an
+old `express.hd.pics` page from 2022, and three photographs with camera-roll filenames
+(`Image-29`, `DSC05838`, `DSC05903`) that I could not identify confidently enough to describe.
+Not guessed at — wrong alt text is worse for a screen-reader user than none.
+
 ---
 
 ## Still to do on this site
