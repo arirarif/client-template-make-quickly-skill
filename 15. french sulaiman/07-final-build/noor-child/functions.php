@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 /* ==========================================================================
  * SETTINGS — edit these, nothing else, for day-to-day config
  * ========================================================================== */
-define( 'NOOR_VERSION',              '3.21.0' ); // Bump on ANY file change (cache-busting).
+define( 'NOOR_VERSION',              '3.22.1' ); // Bump on ANY file change (cache-busting).
 
 // WhatsApp float
 define( 'NOOR_WHATSAPP_NUMBER',      '262692000000' );                          // TODO real number (no +, country code first)
@@ -120,10 +120,10 @@ add_action( 'wp_enqueue_scripts', function () {
 	// uses the [products] shortcode, which needs the same product-card styles.
 	wp_enqueue_style( 'noor-woocommerce', $uri . '/assets/css/woocommerce.css', array( 'noor-child' ), NOOR_VERSION );
 
-	// Light skin (client POINT 0). Must load LAST — it overrides tokens and
-	// surfaces from all three sheets above. Scoped to html.noor-light, so
+	// Warm skin (client POINT 0). Must load LAST — it overrides tokens and
+	// surfaces from all three sheets above. Scoped to html.noor-warm, so
 	// shipping it to everyone costs nothing until the class is present.
-	wp_enqueue_style( 'noor-light', $uri . '/assets/css/noor-light.css', array( 'noor-woocommerce' ), NOOR_VERSION );
+	wp_enqueue_style( 'noor-warm', $uri . '/assets/css/noor-warm.css', array( 'noor-woocommerce' ), NOOR_VERSION );
 
 	wp_enqueue_script( 'noor-js', $uri . '/assets/noor.js', array(), NOOR_VERSION, true );
 	wp_localize_script( 'noor-js', 'NOOR_CFG', array(
@@ -134,9 +134,16 @@ add_action( 'wp_enqueue_scripts', function () {
 }, 20 );
 
 /* ==========================================================================
- * LIGHT SKIN  (client POINT 0, 03/09/2026)
+ * WARM SKIN  (client POINT 0, round 3)
  *
- * Adds html.noor-light, which is what assets/css/noor-light.css hangs off.
+ * Adds html.noor-warm, which is what assets/css/noor-warm.css hangs off.
+ *
+ * This replaces the white "light skin". The client rejected the dark build
+ * ("beaucoup trop sombre") AND the white one that followed it. The palette in
+ * the stylesheet is not a third guess: it is sampled from the pixels of the
+ * brand package his own designer delivered — warm ivory ground #EAE6DE,
+ * cocoa type #7A4231, sienna actions #842906, terracotta accents #BE6D4A,
+ * and no near-black anywhere, because she never uses one.
  *
  * WHY THE TOGGLE IS ADMIN-ONLY, and must stay that way:
  * this site is behind LiteSpeed full-page cache. In early August we hid the
@@ -147,32 +154,38 @@ add_action( 'wp_enqueue_scripts', function () {
  *
  * So the response varies only for logged-in administrators, who bypass the
  * page cache anyway. Anonymous traffic always receives exactly one variant,
- * chosen by NOOR_LIGHT_DEFAULT. When the client approves the light skin,
- * flip that constant to true and the whole site moves together — still one
- * variant, still cache-safe. The query parameter stays as the preview and
- * revert switch.
+ * chosen by NOOR_WARM_DEFAULT. Flipping that constant moves the whole site
+ * together — still one variant, still cache-safe. The query parameter stays
+ * as the preview and revert switch (?noor_theme=warm | dark).
  * ========================================================================== */
-define( 'NOOR_LIGHT_DEFAULT', true ); // client POINT 0 — light is now the site
+define( 'NOOR_WARM_DEFAULT', true ); // client POINT 0 — warm is now the site
 
-function noor_light_skin_active() {
-	$active = NOOR_LIGHT_DEFAULT;
+function noor_warm_skin_active() {
+	$active = NOOR_WARM_DEFAULT;
 
-	// Administrators only — see the cache note above.
+	// Administrators only — see the cache note above. 'light' is kept as an
+	// alias so preview links sent before the rename still resolve.
 	if ( current_user_can( 'manage_options' ) && isset( $_GET['noor_theme'] ) ) {
-		$active = ( 'light' === sanitize_key( wp_unslash( $_GET['noor_theme'] ) ) );
+		$choice = sanitize_key( wp_unslash( $_GET['noor_theme'] ) );
+		$active = in_array( $choice, array( 'warm', 'light' ), true );
 	}
 
 	return (bool) $active;
 }
 
+/** Back-compat: inc/customizer.php called this before the rename. */
+function noor_light_skin_active() {
+	return noor_warm_skin_active();
+}
+
 add_filter( 'language_attributes', function ( $output ) {
-	if ( ! noor_light_skin_active() ) {
+	if ( ! noor_warm_skin_active() ) {
 		return $output;
 	}
 
 	// language_attributes() emits attributes only, no class= of its own,
 	// so appending one is safe here.
-	return $output . ' class="noor-light"';
+	return $output . ' class="noor-warm"';
 } );
 
 /* ==========================================================================
