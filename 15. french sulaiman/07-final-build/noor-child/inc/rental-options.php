@@ -112,6 +112,90 @@ function noor_option_total( $option_id, $units ) {
 }
 
 /* ==========================================================================
+ * COMBO PRICING  (client's own accessory sheet, 08/09/2026)
+ *
+ * ACCESSOIRES pour Arches_.docx prices every arch the same way:
+ *
+ *     2 Drapés de 6m = 20 €
+ *     Lot de 4 fleurs = 15 €
+ *     si c'est les 2 = 25 €
+ *
+ * So taking BOTH costs 25 €, not 35 €. Without this, the module would charge
+ * 20 + 15 and overcharge every customer who takes exactly the combination he
+ * is actively promoting — the single most expensive bug in this feature.
+ *
+ * Stored on the PARENT rental, because the pair and the price are a property
+ * of that arch's offer, not of either accessory on its own. Format:
+ *
+ *     _noor_option_combo = "SKU-A|SKU-B|25.00"
+ *
+ * Applied in the same absolute-price pass as everything else, so it stays
+ * idempotent and needs no did_action() guard.
+ * ========================================================================== */
+
+/**
+ * The combo rule for a rental, or false.
+ *
+ * @return array{a:string,b:string,price:float}|false
+ */
+function noor_option_combo( $parent_id ) {
+	$raw = trim( (string) get_post_meta( (int) $parent_id, '_noor_option_combo', true ) );
+	if ( '' === $raw ) {
+		return false;
+	}
+	$parts = array_map( 'trim', explode( '|', $raw ) );
+	if ( count( $parts ) < 3 || '' === $parts[0] || '' === $parts[1] || ! is_numeric( $parts[2] ) ) {
+		return false;
+	}
+	return array(
+		'a'     => $parts[0],
+		'b'     => $parts[1],
+		'price' => (float) $parts[2],
+	);
+}
+
+/**
+ * Cart keys of the two combo lines under one parent booking, when BOTH are present.
+ *
+ * Matching is by parent cart-item key, not by product, so two separate bookings
+ * of the same arch each get their own combo — and a customer who ticked only
+ * one accessory is never given the pair price.
+ *
+ * @return array<string> exactly two keys, or empty.
+ */
+function noor_option_combo_lines( $cart, $parent_key ) {
+	$parent = $cart->get_cart_item( $parent_key );
+	if ( ! $parent ) {
+		return array();
+	}
+	$combo = noor_option_combo( $parent['product_id'] );
+	if ( ! $combo ) {
+		return array();
+	}
+
+	$found = array();
+	foreach ( $cart->get_cart() as $key => $item ) {
+		if ( empty( $item['noor_option_parent'] ) || $item['noor_option_parent'] !== $parent_key ) {
+			continue;
+		}
+		$product = wc_get_product( $item['product_id'] );
+		if ( ! $product ) {
+			continue;
+		}
+		$sku = $product->get_sku();
+		if ( $sku === $combo['a'] || $sku === $combo['b'] ) {
+			$found[ $sku ] = $key;
+		}
+	}
+
+	// Both halves, or nothing. A single accessory keeps its own price.
+	if ( isset( $found[ $combo['a'] ], $found[ $combo['b'] ] ) ) {
+		return array( $found[ $combo['a'] ], $found[ $combo['b'] ] );
+	}
+	return array();
+}
+
+/* ==========================================================================
  * ADMIN — the per-option setting
  * ========================================================================== */
 add_action( 'woocommerce_product_options_general_product_data', function () {
@@ -127,9 +211,23 @@ add_action( 'woocommerce_product_options_general_product_data', function () {
 	) );
 } );
 
+/* Combo rule — on the rental itself, since the pair price belongs to its offer. */
+add_action( 'woocommerce_product_options_general_product_data', function () {
+	woocommerce_wp_text_input( array(
+		'id'          => '_noor_option_combo',
+		'label'       => 'Offre « les 2 options »',
+		'placeholder' => 'SKU-DRAPES|SKU-FLEURS|25',
+		'description' => 'Prix forfaitaire quand le client coche LES DEUX options indiquées. Format : SKU de la première | SKU de la seconde | prix. Exemple : 2 drapés 20 € + 4 fleurs 15 € mais 25 € les deux. Laisser vide pour facturer chaque option séparément.',
+		'desc_tip'    => true,
+	) );
+} );
+
 add_action( 'woocommerce_process_product_meta', function ( $post_id ) {
 	$value = isset( $_POST['_noor_option_pricing'] ) ? sanitize_key( wp_unslash( $_POST['_noor_option_pricing'] ) ) : 'flat';
 	update_post_meta( $post_id, '_noor_option_pricing', ( 'per_day' === $value ) ? 'per_day' : 'flat' );
+
+	$combo = isset( $_POST['_noor_option_combo'] ) ? wc_clean( wp_unslash( $_POST['_noor_option_combo'] ) ) : '';
+	update_post_meta( $post_id, '_noor_option_combo', $combo );
 } );
 
 /* ==========================================================================
@@ -270,12 +368,47 @@ add_action( 'woocommerce_before_calculate_totals', function ( $cart ) {
 	 * an absolute amount recomputed from meta, so running on every calculation
 	 * is idempotent — and skipping later calculations, as that guard does, is
 	 * what actually leaves stale prices in the cart. */
+	// 1. every option at its own price
 	foreach ( $cart->get_cart() as $item ) {
 		if ( empty( $item['noor_option_parent'] ) || empty( $item['data'] ) ) {
 			continue;
 		}
 		$units = isset( $item['noor_option_units'] ) ? (int) $item['noor_option_units'] : 1;
 		$item['data']->set_price( noor_option_total( $item['product_id'], $units ) );
+	}
+
+	// 2. then re-price the pairs. The combo total is put entirely on the first
+	//    line and the second is zeroed, so the cart sums to exactly the price
+	//    he advertises. Both lines are flagged so the display can explain it —
+	//    a silent 0,00 € line looks like a bug to a customer.
+	$parents = array();
+	foreach ( $cart->get_cart() as $item ) {
+		if ( ! empty( $item['noor_option_parent'] ) ) {
+			$parents[ $item['noor_option_parent'] ] = true;
+		}
+	}
+	foreach ( array_keys( $parents ) as $parent_key ) {
+		$pair = noor_option_combo_lines( $cart, $parent_key );
+		if ( ! $pair ) {
+			continue;
+		}
+		$parent = $cart->get_cart_item( $parent_key );
+		$combo  = noor_option_combo( $parent['product_id'] );
+
+		$first  = $cart->get_cart_item( $pair[0] );
+		$second = $cart->get_cart_item( $pair[1] );
+		if ( ! $first || ! $second ) {
+			continue;
+		}
+		$full = (float) $first['data']->get_price() + (float) $second['data']->get_price();
+
+		$first['data']->set_price( $combo['price'] );
+		$second['data']->set_price( 0 );
+
+		$cart->cart_contents[ $pair[0] ]['noor_combo_role']  = 'lead';
+		$cart->cart_contents[ $pair[0] ]['noor_combo_full']  = $full;
+		$cart->cart_contents[ $pair[0] ]['noor_combo_price'] = $combo['price'];
+		$cart->cart_contents[ $pair[1] ]['noor_combo_role']  = 'included';
 	}
 }, 20 );
 
@@ -300,6 +433,27 @@ add_filter( 'woocommerce_get_item_data', function ( $item_data, $cart_item ) {
 			'key'   => 'Période de location',
 			'value' => sprintf( 'du %s au %s', $from, $to ),
 		);
+	}
+
+	// The combo, said out loud. A customer who sees 0,00 € with no explanation
+	// assumes the site is broken, not that they saved 10 €.
+	if ( ! empty( $cart_item['noor_combo_role'] ) ) {
+		if ( 'lead' === $cart_item['noor_combo_role'] ) {
+			$item_data[] = array(
+				'key'   => 'Offre 2 options',
+				'value' => sprintf(
+					'%s au lieu de %s — vous économisez %s',
+					wp_strip_all_tags( wc_price( (float) $cart_item['noor_combo_price'] ) ),
+					wp_strip_all_tags( wc_price( (float) $cart_item['noor_combo_full'] ) ),
+					wp_strip_all_tags( wc_price( max( 0, (float) $cart_item['noor_combo_full'] - (float) $cart_item['noor_combo_price'] ) ) )
+				),
+			);
+		} else {
+			$item_data[] = array(
+				'key'   => 'Offre 2 options',
+				'value' => 'Compris dans le forfait 2 options ci-dessus',
+			);
+		}
 	}
 
 	if ( 'per_day' === noor_option_pricing_mode( $cart_item['product_id'] ) ) {

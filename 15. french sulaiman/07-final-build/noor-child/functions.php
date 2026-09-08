@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 /* ==========================================================================
  * SETTINGS — edit these, nothing else, for day-to-day config
  * ========================================================================== */
-define( 'NOOR_VERSION',              '3.22.1' ); // Bump on ANY file change (cache-busting).
+define( 'NOOR_VERSION',              '3.23.0' ); // Bump on ANY file change (cache-busting).
 
 // WhatsApp float
 define( 'NOOR_WHATSAPP_NUMBER',      '262692000000' );                          // TODO real number (no +, country code first)
