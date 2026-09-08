@@ -86,9 +86,45 @@ one, so the flow differed from the other two — worth knowing next time.
 *Verified:* returns **200**.
 *Same caveat:* not `noindex`; Yoast's dropdown would not persist through automation.
 
+### 5. Full on-page audit (read-only) — the August content work has held
+
+Crawled all **28 indexed pages** (post + page sitemaps). The result is a good report card:
+
+- **Exactly one H1 on every page** — the audit's issue #8 stays closed
+- **No duplicate titles and no duplicate meta descriptions.** This is the one worth noting: the
+  August audit found *18 pages sharing a single description*. All 28 are now unique, so that fix
+  did not regress through two rounds of plugin updates.
+- Title lengths 34–112 characters, descriptions 128–284 — service pages sit in a healthy band
+
+**The one real gap: 38 images have no alt text.** Concentrated rather than scattered:
+
+| Page | Missing / total |
+|---|---|
+| `/awards/` | **18 of 19** |
+| `/blog/` | 5 of 10 |
+| `/` | 4 of 12 |
+| `/about-us/` | 3 of 3 |
+| `/thank-you/` | 3 of 3 (template images on the new page) |
+| 6 blog posts | 1 each |
+
+`/awards/` is the page that matters most here — those are award badges, which are trust signals for
+couples comparing videographers, and they are currently invisible to screen readers and to Google
+Images. Fixing them is Media Library alt text, the same route used on BNB and Express, but it is
+roughly 20 separate attachment edits rather than the single shared logo those sites needed.
+
+**Not started.** It is a discrete chunk of work, and mid-audit the local DNS began failing
+intermittently (`EAI_AGAIN` on repeated lookups, while other hosts resolved fine), so I stopped
+rather than push edits through a flaky connection. Queued below.
+
+**Also noted:** the new `/thank-you/` page has no meta description. Harmless while it is a
+conversion target rather than a landing page, and it should be `noindex` anyway.
+
 ---
 
 ## Still to do on this site
+
+- [ ] **Alt text for 38 images**, starting with the 18 award badges on `/awards/` — accessibility and image search
+- [ ] Set `/thank-you/` to noindex by hand (Yoast dropdown will not take a programmatic change)
 
 - [ ] **Elementor Pro licence** — blocks Pro updates and is widening a core/Pro version gap. Paul's call.
 - [ ] All-in-One WP Migration major update, once someone wants to babysit it
