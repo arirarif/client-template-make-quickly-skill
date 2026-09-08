@@ -1,0 +1,439 @@
+
+/* ==========================================================================
+   NOOR DESIGN TOKENS — OFFICIAL brand palette (client package 16/09/2023)
+   Warm Mocha #96421A · Spiced Coral #C68053 · Creamy Beige #EED2AE ·
+   Ivory White #EDE5DE — see BRANDING.md / DESIGN-TOKENS.md
+   ========================================================================== */
+:root {
+	--noor-bg:         #EDE5DE; /* page background (Ivory White)     */
+	--noor-card:       #FAF6F1; /* cards / surfaces (derived)        */
+	--noor-band:       #EED2AE; /* section bands (Creamy Beige)      */
+	--noor-border:     #DCC7AC; /* borders / dividers (derived)      */
+	--noor-mocha:      #96421A; /* PRIMARY brand (Warm Mocha)        */
+	--noor-mocha-dark: #7A3512; /* mocha hover / gradients           */
+	--noor-coral:      #C68053; /* secondary accent (Spiced Coral)   */
+	--noor-text:       #2E1A0D; /* body text (espresso)              */
+	--noor-muted:      #7C6350; /* secondary text                    */
+	--noor-success:    #1E7A3C; /* in-stock / success (functional)   */
+	--noor-error:      #B3261E; /* errors / out-of-stock (functional)*/
+	--noor-dark:       #2E1A0D; /* espresso footer / dark sections   */
+	/* legacy aliases (pre-rebrand names still referenced in modules) */
+	--noor-gold:       var(--noor-mocha);
+	--noor-gold-dark:  var(--noor-mocha-dark);
+	--noor-fuchsia:    var(--noor-coral);
+	--noor-teal:       var(--noor-mocha-dark);
+}
+
+/* ==========================================================================
+   GLOBAL BRAND BASE
+   (Hello Elementor ships no design system — the child theme owns colors and
+   typography; Elementor Global Colors/Fonts mirror these tokens.)
+   ========================================================================== */
+body {
+	background-color: var(--noor-bg);
+	color: var(--noor-text);
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--noor-bg); }
+::-webkit-scrollbar-thumb { background: var(--noor-border); border-radius: 3px; }
+
+/* Buttons — mocha primary, brand radius */
+.btn, button.button, .woocommerce .button, .add_to_cart_button {
+	border-radius: 6px;
+}
+.btn-color-primary, .woocommerce .button.alt, .single_add_to_cart_button {
+	background-color: var(--noor-mocha) !important;
+	color: #fff !important;
+}
+.btn-color-primary:hover, .woocommerce .button.alt:hover, .single_add_to_cart_button:hover {
+	background-color: var(--noor-mocha-dark) !important;
+}
+
+/* Badges — brand chips: coral + espresso text, or mocha + ivory text */
+.onsale, .product-label.onsale { background: var(--noor-coral) !important; color: var(--noor-text) !important; }
+.product-label.new           { background: var(--noor-band) !important; color: var(--noor-text) !important; }
+
+/* Price — Open Sans bold (brand body font; no mono in the brand) */
+.price, .woocommerce-Price-amount {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+}
+
+/* ==========================================================================
+   REGION SWITCHER (header element — [noor_region_switcher])
+   ========================================================================== */
+.noor-region-switcher { position: relative; display: inline-flex; align-items: center; }
+.noor-region-switcher > button {
+	background: transparent; border: 1px solid var(--noor-border);
+	color: inherit; border-radius: 6px; padding: 5px 10px; cursor: pointer;
+	font-size: 13px; display: inline-flex; gap: 6px; align-items: center;
+}
+.noor-region-switcher .noor-region-menu {
+	display: none; position: absolute; top: calc(100% + 6px); right: 0; z-index: 999;
+	background: var(--noor-card); border: 1px solid var(--noor-border);
+	border-radius: 10px; min-width: 210px; box-shadow: 0 8px 24px rgba(28,18,8,.18); overflow: hidden;
+}
+.noor-region-switcher.open .noor-region-menu { display: block; }
+.noor-region-menu a {
+	display: flex; gap: 10px; align-items: center; padding: 10px 14px;
+	color: var(--noor-text); text-decoration: none; font-size: 13px;
+}
+.noor-region-menu a:hover { background: var(--noor-bg); }
+.noor-region-menu a.active { background: var(--noor-gold); color: #fff; }
+.noor-region-menu small { display: block; color: var(--noor-muted); font-size: 11px; }
+.noor-region-menu a.active small { color: rgba(255,255,255,.85); }
+
+/* ==========================================================================
+   FREE-SHIPPING PROGRESS BAR
+   ========================================================================== */
+.noor-freeship { background: var(--noor-card); border: 1px solid var(--noor-border); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.noor-freeship .noor-freeship-msg { font-size: 13px; margin-bottom: 8px; }
+.noor-freeship .noor-freeship-msg b { color: var(--noor-gold); }
+.noor-freeship .noor-freeship-track { background: var(--noor-bg); border: 1px solid var(--noor-border); border-radius: 999px; height: 10px; overflow: hidden; }
+.noor-freeship .noor-freeship-fill {
+	height: 100%; border-radius: 999px; transition: width .5s ease;
+	background: linear-gradient(90deg, var(--noor-gold-dark), var(--noor-gold));
+}
+.noor-freeship.unlocked .noor-freeship-fill { background: var(--noor-success); }
+
+/* ==========================================================================
+   CASH-DEPOSIT NOTICE (rental checkout)
+   ========================================================================== */
+.noor-deposit-notice {
+	background: #F8EEDF; border: 1px dashed var(--noor-mocha);
+	border-radius: 10px; padding: 14px 16px; margin: 14px 0; font-size: 13.5px;
+}
+.noor-deposit-notice label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.noor-deposit-notice input { width: 18px; height: 18px; accent-color: var(--noor-gold); margin-top: 2px; }
+
+/* ==========================================================================
+   CHARITY WIDGET (checkout)
+   ========================================================================== */
+.noor-charity {
+	background: var(--noor-card); border: 1px solid var(--noor-border);
+	border-radius: 10px; padding: 14px 16px; margin: 14px 0; font-size: 13.5px;
+}
+.noor-charity h4 { color: var(--noor-mocha-dark); font-size: 14px; margin: 0 0 6px; }
+.noor-charity a.noor-charity-btn {
+	display: inline-block; margin-top: 8px; background: var(--noor-mocha); color: #fff;
+	padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px;
+}
+
+/* ==========================================================================
+   WHATSAPP FLOAT
+   ========================================================================== */
+.noor-whatsapp {
+	position: fixed; bottom: 22px; right: 22px; z-index: 9999;
+	width: 54px; height: 54px; border-radius: 50%;
+	background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center;
+	box-shadow: 0 6px 18px rgba(0,0,0,.25); text-decoration: none;
+}
+.noor-whatsapp svg { width: 28px; height: 28px; fill: #fff; }
+.noor-whatsapp:hover { transform: scale(1.06); }
+
+/* ==========================================================================
+   LEAD POPUP
+   ========================================================================== */
+.noor-popup-overlay {
+	position: fixed; inset: 0; background: rgba(28,18,8,.55); z-index: 99998;
+	display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.noor-popup-overlay.show { display: flex; }
+.noor-popup {
+	background: var(--noor-card); border: 1px solid var(--noor-border); border-radius: 16px;
+	max-width: 420px; width: 100%; padding: 28px; position: relative; text-align: center;
+}
+.noor-popup h3 { font-family: Ragara, 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+.noor-popup p { color: var(--noor-muted); font-size: 13.5px; margin: 0 0 16px; }
+.noor-popup input[type=text], .noor-popup input[type=email] {
+	width: 100%; border: 1px solid var(--noor-border); border-radius: 8px;
+	padding: 10px 14px; margin-bottom: 10px; background: #fff; font-size: 14px;
+}
+.noor-popup button[type=submit] {
+	width: 100%; background: var(--noor-gold); color: #fff; border: 0;
+	border-radius: 8px; padding: 12px; font-weight: 600; cursor: pointer;
+}
+.noor-popup .noor-popup-close {
+	position: absolute; top: 10px; right: 14px; background: none; border: 0;
+	font-size: 22px; color: var(--noor-muted); cursor: pointer;
+}
+
+/* ==========================================================================
+   SHARE BUTTONS (product page)
+   ========================================================================== */
+.noor-share { display: flex; gap: 8px; margin: 14px 0; flex-wrap: wrap; }
+.noor-share a, .noor-share button {
+	display: inline-flex; align-items: center; gap: 6px;
+	border: 1px solid var(--noor-border); background: var(--noor-card);
+	border-radius: 999px; padding: 6px 13px; font-size: 12.5px;
+	color: var(--noor-text); text-decoration: none; cursor: pointer;
+}
+.noor-share a:hover, .noor-share button:hover { border-color: var(--noor-gold); color: var(--noor-gold); }
+
+/* ==========================================================================
+   /fr/ COMING-SOON PLACEHOLDER
+   ========================================================================== */
+.noor-comingsoon {
+	text-align: center; padding: 60px 24px; background: var(--noor-card);
+	border: 1px dashed var(--noor-border); border-radius: 16px; margin: 30px 0;
+}
+.noor-comingsoon h2 { font-family: Ragara, 'Playfair Display', serif; color: var(--noor-mocha-dark); }
+.noor-comingsoon p { color: var(--noor-muted); }
+
+/* ==========================================================================
+   BASE (Hello Elementor is bare — child theme owns typography + layout)
+   ========================================================================== */
+body {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 1.55;
+}
+h1, h2, h3 { font-family: Ragara, 'Playfair Display', serif; }
+img { max-width: 100%; height: auto; }
+.noor-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.screen-reader-text {
+	position: absolute; width: 1px; height: 1px; overflow: hidden;
+	clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+.skip-link:focus {
+	position: fixed; top: 8px; left: 8px; z-index: 100000;
+	width: auto; height: auto; clip: auto; clip-path: none;
+	background: var(--noor-mocha); color: #fff; padding: 10px 16px; border-radius: 8px;
+}
+
+/* ==========================================================================
+   ANNOUNCE BAR (espresso, per mockup)
+   ========================================================================== */
+.noor-announce {
+	background: var(--noor-dark); color: var(--noor-border);
+	text-align: center; font-size: 12.5px; padding: 8px 16px;
+}
+.noor-announce b { color: var(--noor-band); }
+
+/* ==========================================================================
+   HEADER (ivory, sticky, per mockup)
+   ========================================================================== */
+.noor-header {
+	background: var(--noor-card); border-bottom: 1px solid var(--noor-border);
+	position: sticky; top: 0; z-index: 900;
+}
+.noor-header-in { height: 104px; display: flex; align-items: center; gap: 26px; }
+.noor-logo { display: flex; align-items: center; text-decoration: none; }
+.noor-logo img { height: 92px; width: auto; }
+.noor-nav { flex: 1; }
+.noor-menu { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.noor-menu a {
+	text-decoration: none; font-size: 13.5px; font-weight: 500;
+	padding: 8px 12px; border-radius: 8px; color: var(--noor-text); display: block;
+}
+.noor-menu a:hover,
+.noor-menu .current-menu-item > a { background: var(--noor-bg); color: var(--noor-mocha); }
+.noor-menu .sub-menu {
+	display: none; position: absolute; background: var(--noor-card);
+	border: 1px solid var(--noor-border); border-radius: 12px; padding: 6px;
+	min-width: 200px; box-shadow: 0 10px 30px rgba(46,26,13,.2); list-style: none; z-index: 950;
+}
+.noor-menu li { position: relative; }
+.noor-menu li:hover > .sub-menu { display: block; }
+.noor-actions { display: flex; align-items: center; gap: 10px; }
+.noor-hicon {
+	position: relative; padding: 6px; border-radius: 8px; color: var(--noor-text);
+	display: inline-flex; align-items: center; justify-content: center;
+}
+.noor-hicon svg { width: 20px; height: 20px; }
+.noor-hicon:hover { background: var(--noor-bg); color: var(--noor-mocha); }
+.noor-count {
+	position: absolute; top: -2px; right: -4px; background: var(--noor-mocha);
+	color: #fff; font-size: 10px; font-weight: 700; border-radius: 999px; padding: 1px 5px;
+}
+
+/* Burger — hidden desktop */
+.noor-burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+.noor-burger span { display: block; width: 22px; height: 2px; background: var(--noor-text); margin: 5px 0; border-radius: 2px; }
+
+/* Drawer (mobile) */
+.noor-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--noor-border); }
+.noor-drawer-logo { height: 44px; width: auto; }
+.noor-drawer-close { background: none; border: 0; font-size: 20px; cursor: pointer; color: var(--noor-muted); }
+.noor-drawer-menu { list-style: none; margin: 0; padding: 10px 8px; }
+.noor-drawer-menu a { display: block; padding: 12px 14px; text-decoration: none; color: var(--noor-text); font-size: 15px; border-radius: 8px; }
+.noor-drawer-menu a:hover { background: var(--noor-bg); color: var(--noor-mocha); }
+.noor-drawer-menu .sub-menu { list-style: none; padding-left: 16px; }
+.noor-drawer-foot { margin-top: auto; padding: 18px; border-top: 1px solid var(--noor-border); }
+.noor-btn-drawer {
+	display: block; text-align: center; background: var(--noor-mocha); color: #fff;
+	border-radius: 8px; padding: 13px; text-decoration: none; font-weight: 600;
+}
+
+@media (max-width: 960px) {
+	.noor-nav { display: none; }
+	.noor-burger { display: block; }
+	.noor-header-in { gap: 12px; height: 76px; }
+	.noor-logo img { height: 64px; }
+}
+
+/* ==========================================================================
+   FOOTER (espresso, per mockup)
+   ========================================================================== */
+.noor-footer { background: var(--noor-dark); color: #DCC7AC; margin-top: 70px; }
+.noor-footer-in {
+	padding-top: 52px; padding-bottom: 26px;
+	display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 34px;
+}
+@media (max-width: 860px) { .noor-footer-in { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .noor-footer-in { grid-template-columns: 1fr; } }
+.noor-foot-brand img { height: 90px; width: auto; }
+.noor-foot-brand p { font-size: 13px; line-height: 2; margin-top: 10px; }
+.noor-footer h4 { color: #EDE5DE; font-size: 14px; margin: 0 0 14px; font-family: 'Open Sans', sans-serif; }
+.noor-foot-col ul { list-style: none; margin: 0; padding: 0; }
+.noor-footer a { font-size: 13px; color: #DCC7AC; text-decoration: none; line-height: 2; }
+.noor-footer a:hover { color: var(--noor-coral); }
+.noor-foot-form input {
+	width: 100%; border: 1px solid #4A3223; background: #201209; color: #EDE5DE;
+	border-radius: 8px; padding: 11px 14px; font-size: 13px; margin-bottom: 8px; font-family: inherit;
+}
+.noor-foot-submit {
+	background: var(--noor-mocha); color: #fff; border: 0; border-radius: 8px;
+	padding: 10px 18px; font-size: 13px; font-weight: 600; cursor: pointer;
+}
+.noor-foot-submit:hover { background: var(--noor-mocha-dark); }
+.noor-foot-bottom {
+	border-top: 1px solid #4A3223; text-align: center; padding: 18px;
+	font-size: 12px; color: #A98F7B;
+}
+
+/* ==========================================================================
+   HELPERS USED ON ELEMENTOR PAGES (chips, kicker, gradient band, dark blocks)
+   ========================================================================== */
+/* Section kicker helper (use on an Elementor heading above titles) */
+.noor-kicker {
+	color: var(--noor-mocha); font-size: 12px; font-weight: 700;
+	letter-spacing: .18em; text-transform: uppercase;
+	font-family: 'Open Sans', sans-serif;
+}
+
+/* ---------- Category chips (shop top bar / product categories) ---------- */
+.noor-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 18px; }
+.noor-chips a {
+	background: var(--noor-card); border: 1px solid var(--noor-border);
+	border-radius: 999px; padding: 6px 14px; font-size: 12.5px;
+	color: var(--noor-text); text-decoration: none;
+}
+.noor-chips a:hover, .noor-chips a.active {
+	background: var(--noor-mocha); color: #fff; border-color: var(--noor-mocha);
+}
+
+
+/* ---------- Dark sections / footer helpers ----------
+   Footer is header.php/footer.php in this child theme — these helpers style
+   dark HTML blocks placed in Elementor pages. */
+.noor-dark-section { background: var(--noor-dark); color: #DCC7AC; }
+.noor-dark-section h4, .noor-dark-section .widget-title { color: #EDE5DE; }
+.noor-dark-section a { color: #DCC7AC; text-decoration: none; }
+.noor-dark-section a:hover { color: var(--noor-coral); }
+.noor-dark-section input[type="email"], .noor-dark-section input[type="text"] {
+	border: 1px solid #4A3223; background: #201209; color: #EDE5DE;
+	border-radius: 8px; padding: 11px 14px;
+}
+
+/* Mocha gradient band (newsletter / CTA rows in Elementor) */
+.noor-band-gradient {
+	background: linear-gradient(100deg, var(--noor-mocha-dark), var(--noor-mocha));
+	border-radius: 18px; color: #fff;
+}
+.noor-band-gradient h2, .noor-band-gradient h3 { color: #fff; }
+
+/* ============================================================
+   SINGLE PRODUCT PAGE — ported from 06-mockups/product.html
+   (NexDisc pattern: product page fully styled in child theme)
+   ============================================================ */
+
+/* Gallery */
+.woocommerce-product-gallery__wrapper,
+.woocommerce-product-gallery .wp-post-image {
+	border-radius: 16px; overflow: hidden;
+	border: 1px solid var(--noor-border);
+	background: var(--noor-band);
+}
+.woocommerce-product-gallery .flex-control-thumbs { display: flex; gap: 10px; margin-top: 12px; }
+.woocommerce-product-gallery .flex-control-thumbs li img {
+	width: 74px; height: 74px; object-fit: cover; border-radius: 10px;
+	border: 2px solid transparent; cursor: pointer;
+}
+.woocommerce-product-gallery .flex-control-thumbs li img.flex-active { border-color: var(--noor-mocha); }
+
+/* Title + rating */
+.product_title {
+	font-family: Ragara, 'Playfair Display', serif;
+	font-size: 32px; font-weight: 800; margin: 6px 0;
+}
+.summary .star-rating { color: var(--noor-mocha); }
+.woocommerce-review-link { color: var(--noor-muted); font-size: 13px; }
+
+/* Big price + promo chip */
+.summary .price {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 30px; font-weight: 700; color: var(--noor-text); margin: 14px 0;
+}
+.summary .price del { color: var(--noor-muted); font-size: 19px; font-weight: 400; margin-right: 10px; }
+.summary .price ins { text-decoration: none; }
+.noor-save-chip {
+	font-size: 12px; background: var(--noor-coral); color: var(--noor-text);
+	border-radius: 999px; padding: 3px 10px; vertical-align: middle; margin-left: 8px;
+	font-family: 'Open Sans', sans-serif; font-weight: 700;
+}
+
+/* Short description + stock */
+.woocommerce-product-details__short-description { color: #4A362A; font-size: 14px; margin: 12px 0 4px; }
+.summary .stock.in-stock { color: var(--noor-success); font-weight: 600; font-size: 13px; }
+.summary .stock.out-of-stock { color: var(--noor-error); font-weight: 600; font-size: 13px; }
+
+/* Bundle / frequently-bought-together box
+   (generic .noor-bundle box for HTML blocks / hooks) */
+.noor-bundle {
+	background: var(--noor-card); border: 2px solid var(--noor-mocha);
+	border-radius: 14px; padding: 18px; margin: 20px 0;
+	box-shadow: 0 0 0 4px rgba(150, 66, 26, .08);
+}
+.noor-bundle h3 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px; color: var(--noor-mocha-dark); margin-bottom: 12px;
+}
+.noor-bundle .bitem { display: flex; gap: 12px; align-items: center; padding: 9px 0; border-top: 1px dashed var(--noor-border); }
+.noor-bundle .bitem:first-of-type { border-top: 0; }
+.noor-bundle .bitem img { width: 52px; height: 52px; border-radius: 8px; object-fit: cover; }
+.noor-bundle .btotal {
+	display: flex; justify-content: space-between; align-items: center;
+	border-top: 1px solid var(--noor-border); padding-top: 12px; margin-top: 6px; font-weight: 700;
+}
+.noor-bundle .btotal .val { font-size: 19px; color: var(--noor-mocha); }
+
+/* Trust row under add-to-cart (HTML block, class noor-trust) */
+.noor-trust { display: flex; gap: 16px; font-size: 12px; color: var(--noor-muted); margin-top: 16px; flex-wrap: wrap; }
+
+/* Tabs */
+.woocommerce-tabs ul.tabs { border-bottom: 1px solid var(--noor-border); padding: 0; margin: 0; }
+.woocommerce-tabs ul.tabs li {
+	background: none; border: 0; border-radius: 0; margin: 0;
+}
+.woocommerce-tabs ul.tabs li a {
+	padding: 12px 18px; font-size: 14px; font-weight: 600; color: var(--noor-muted);
+	border-bottom: 2px solid transparent;
+}
+.woocommerce-tabs ul.tabs li.active a {
+	color: var(--noor-mocha); border-bottom-color: var(--noor-mocha);
+}
+.woocommerce-tabs .panel { padding: 22px 4px; font-size: 14px; color: #4A362A; }
+
+/* Related products heading */
+.related.products > h2, .upsells.products > h2 {
+	font-family: Ragara, 'Playfair Display', serif; text-align: center;
+}
+
+
+/* Elementor core heading widget: inherit brand espresso instead of the
+   default kit blue (until Global Colors are configured in Site Settings). */
+.elementor-widget-heading .elementor-heading-title { color: inherit; }
+
+/* Links — brand mocha instead of the Hello Elementor default pink. */
+a { color: var(--noor-mocha); }
+a:hover { color: var(--noor-mocha-dark); }

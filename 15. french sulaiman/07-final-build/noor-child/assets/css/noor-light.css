@@ -1,0 +1,318 @@
+/* ==========================================================================
+   Noor Festivities — LIGHT SKIN  (client POINT 0, 03/09/2026)
+   "Le site est beaucoup trop sombre comparé à mon site actuel.
+    Je veux pas le marron. Uniquement les couleurs de mon branding."
+
+   Measured 2026-09-08, homepage, 1536x722, full-page grid sampling:
+
+                        his site (noorfestivities.com)   staging v3.19.0
+     pure #FFFFFF                 56.2 %                     0.0 %
+     warm off-whites               0.0 %                    58.9 %
+     Creamy Beige #EED2AE          9.4 %                    12.2 %
+     brown fill                    6.8 % (#A05530)          0.5 % (#96421A)
+     espresso slabs                0.0 %                     4.3 %
+     mocha gradient band           0.0 %                     8.8 %
+     photography                  27.2 %                    12.0 %
+
+   READ THE BROWN ROW AGAIN: he uses MORE brown than we do (6.8 % vs 0.5 %).
+   So "je veux pas le marron" cannot mean "remove the colour" — it means
+   "stop painting surfaces with it". What his site has and ours had none of
+   is PURE WHITE, and his colour comes from product photography, not fills.
+
+   This file therefore does three things and nothing else:
+     1. every large surface -> #FFFFFF
+     2. every espresso / gradient slab -> white or Creamy Beige
+     3. mocha kept, demoted to type, buttons, borders and icons
+
+   No colour here is outside his 2023 charter (or white / a tint of one).
+   Scoped to html.noor-light so it is switchable; loaded after every other
+   theme sheet. Toggle: ?noor_theme=light | ?noor_theme=dark (admins only —
+   see noor_light_skin_class() in functions.php for why it must not vary
+   for anonymous traffic).
+   ========================================================================== */
+
+/* ==========================================================================
+   1. TOKENS
+   ========================================================================== */
+html.noor-light {
+	/* -- surfaces ------------------------------------------------------- */
+	--noor-bg:         #FFFFFF; /* page — was #EDE5DE (30.7 % of the page)  */
+	--noor-card:       #FFFFFF; /* cards — was #FAF6F1 (28.1 % of the page) */
+	--noor-band:       #EED2AE; /* Creamy Beige — kept, used far less       */
+	--noor-border:     #EADFD2; /* lighter: borders now do the separating   */
+	--noor-dark:       #EED2AE; /* every "dark slab" becomes Creamy Beige   */
+
+	/* -- brand, unchanged ------------------------------------------------ */
+	--noor-mocha:      #96421A;
+	--noor-mocha-dark: #7A3512;
+	--noor-coral:      #C68053;
+	--noor-text:       #2E1A0D;
+	--noor-muted:      #7C6350;
+
+	/* -- NEW: the tint that used to be --noor-bg -------------------------
+	   --noor-bg was doing double duty as the page background AND as the
+	   hover / inset fill on menu items, header icons and the free-shipping
+	   track. Turning it white alone would have made all three invisible
+	   (white on white), so those rules are re-pointed at this tint below. */
+	--noor-tint:       #F7F1EA;
+
+	/* -- Elementor widget tokens (noor-widgets.css :root) ---------------- */
+	--nfw-bg:          #FFFFFF;
+	--nfw-card:        #FFFFFF;
+	--nfw-border:      #EADFD2;
+	--nfw-band:        #EED2AE;
+}
+
+html.noor-light body { background-color: #FFFFFF; }
+
+/* ==========================================================================
+   2. ANNOUNCE BAR  — was espresso, full width, first thing on the page
+   ========================================================================== */
+html.noor-light .noor-announce {
+	background: var(--noor-band);
+	color: var(--noor-text);
+	border-bottom: 1px solid var(--noor-border);
+}
+html.noor-light .noor-announce b { color: var(--noor-mocha-dark); }
+
+/* ==========================================================================
+   3. HEADER — white, separated by a rule instead of a fill
+   ========================================================================== */
+html.noor-light .noor-header { background: #FFFFFF; }
+
+/* the three rules that relied on --noor-bg being darker than --noor-card */
+html.noor-light .noor-menu a:hover,
+html.noor-light .noor-menu .current-menu-item > a,
+html.noor-light .noor-hicon:hover,
+html.noor-light .noor-drawer-menu a:hover { background: var(--noor-tint); }
+html.noor-light .noor-region-menu a:hover { background: var(--noor-tint); }
+html.noor-light .noor-freeship .noor-freeship-track { background: var(--noor-tint); }
+html.noor-light .noor-menu .sub-menu { box-shadow: 0 10px 30px rgba(46,26,13,.10); }
+
+/* ==========================================================================
+   4. MARQUEE — was a full-width #7A3512 band directly under the header
+   ========================================================================== */
+html.noor-light .nfw-marquee {
+	background: #FFFFFF;
+	border-top: 1px solid var(--noor-border);
+	border-bottom: 1px solid var(--noor-border);
+}
+html.noor-light .nfw-marquee__item { color: var(--noor-mocha-dark); }
+
+/* ==========================================================================
+   5. HERO — the single biggest cause of "trop sombre"
+   88vh of espresso + a 55 % dark overlay, above the fold, on every visit.
+
+   His own hero is a split: heading and buttons on white at the left, one
+   large product photo at the right. Same markup, rebuilt as a two-column
+   grid — .nfw-hero__img stops being an absolute full-bleed layer and
+   becomes the right column, and the dark overlay is removed outright.
+   Contrast is then guaranteed (espresso on white) instead of depending on
+   how light the photograph happens to be.
+   ========================================================================== */
+html.noor-light .nfw-hero {
+	background: #FFFFFF;
+	min-height: 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	gap: 0;
+	padding: 0;
+	text-align: left;
+	overflow: hidden;
+}
+html.noor-light .nfw-hero__overlay { display: none; }
+html.noor-light .nfw-hero__img {
+	position: relative;
+	inset: auto;
+	order: 2;
+	width: 100%;
+	height: 100%;
+	min-height: 560px;
+	object-fit: cover;
+}
+html.noor-light .nfw-hero__inner {
+	order: 1;
+	max-width: none;
+	padding: 72px 64px;
+	text-align: left;
+}
+html.noor-light .nfw-hero__badge {
+	background: var(--noor-band);
+	color: var(--noor-mocha-dark);
+	border: 1px solid var(--noor-border);
+}
+html.noor-light .nfw-hero__title {
+	color: var(--noor-text);
+	text-shadow: none;
+	font-size: clamp(32px, 4.4vw, 62px);
+}
+html.noor-light .nfw-hero__title em { color: var(--noor-mocha); }
+html.noor-light .nfw-hero__subtitle { color: var(--noor-muted); margin-left: 0; }
+html.noor-light .nfw-hero__ctas { justify-content: flex-start; }
+html.noor-light .nfw-hero__stats { justify-content: flex-start; }
+html.noor-light .nfw-hero__stat b { color: var(--noor-mocha); }
+html.noor-light .nfw-hero__stat span { color: var(--noor-muted); }
+
+/* the ghost CTA was a translucent white pill on a dark photo */
+html.noor-light .nfw-btn--ghost {
+	background: #FFFFFF;
+	color: var(--noor-mocha-dark);
+	border: 1px solid var(--noor-border);
+}
+html.noor-light .nfw-btn--ghost:hover {
+	background: var(--noor-tint);
+	color: var(--noor-mocha-dark);
+}
+html.noor-light .nfw-btn--primary { box-shadow: none; }
+
+@media (max-width: 900px) {
+	html.noor-light .nfw-hero { grid-template-columns: 1fr; }
+	html.noor-light .nfw-hero__img { order: 1; min-height: 320px; }
+	html.noor-light .nfw-hero__inner { order: 2; padding: 44px 24px; }
+}
+
+/* ==========================================================================
+   6. CATEGORY TILES — overlay ran to 80 % espresso at the bottom
+   ========================================================================== */
+html.noor-light .nfw-cat {
+	background: #FFFFFF;
+	box-shadow: 0 1px 3px rgba(46,26,13,.05);
+}
+html.noor-light .nfw-cat__overlay {
+	background: linear-gradient(180deg, rgba(46,26,13,0) 40%, rgba(46,26,13,.55) 100%);
+}
+html.noor-light .nfw-cat:hover { box-shadow: 0 10px 28px rgba(150,66,26,.14); }
+
+/* ==========================================================================
+   7. RENTAL BANNER — near-opaque coral wash over a 300px block
+   ========================================================================== */
+html.noor-light .nfw-rental {
+	box-shadow: 0 8px 30px rgba(46,26,13,.08);
+	border: 1px solid var(--noor-border);
+}
+html.noor-light .nfw-rental__overlay {
+	background: linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.88) 46%, rgba(255,255,255,.35) 100%);
+}
+html.noor-light .nfw-rental__title { color: var(--noor-text); }
+html.noor-light .nfw-rental__title em { color: var(--noor-mocha); }
+
+/* ==========================================================================
+   8. CTA GRADIENT BAND — 8.8 % of the page, a full-bleed mocha row
+   ========================================================================== */
+html.noor-light .noor-band-gradient {
+	background: #FFFFFF;
+	border: 1px solid var(--noor-border);
+	color: var(--noor-text);
+}
+html.noor-light .noor-band-gradient h2,
+html.noor-light .noor-band-gradient h3 { color: var(--noor-text); }
+
+/* ==========================================================================
+   9. FOOTER — was a full-width espresso slab closing every page
+   ========================================================================== */
+html.noor-light .noor-footer {
+	background: var(--noor-band);
+	color: var(--noor-text);
+	border-top: 1px solid var(--noor-border);
+}
+html.noor-light .noor-footer h4 { color: var(--noor-mocha-dark); }
+html.noor-light .noor-footer a { color: var(--noor-text); }
+html.noor-light .noor-footer a:hover { color: var(--noor-mocha); }
+html.noor-light .noor-foot-form input {
+	background: #FFFFFF;
+	border: 1px solid var(--noor-border);
+	color: var(--noor-text);
+}
+html.noor-light .noor-foot-bottom {
+	border-top: 1px solid rgba(46,26,13,.14);
+	color: var(--noor-muted);
+}
+
+/* dark Elementor blocks reusing the footer treatment */
+html.noor-light .noor-dark-section {
+	background: var(--noor-band);
+	color: var(--noor-text);
+}
+html.noor-light .noor-dark-section h4,
+html.noor-light .noor-dark-section .widget-title { color: var(--noor-mocha-dark); }
+html.noor-light .noor-dark-section a { color: var(--noor-text); }
+html.noor-light .noor-dark-section a:hover { color: var(--noor-mocha); }
+html.noor-light .noor-dark-section input[type="email"],
+html.noor-light .noor-dark-section input[type="text"] {
+	background: #FFFFFF;
+	border: 1px solid var(--noor-border);
+	color: var(--noor-text);
+}
+
+/* ==========================================================================
+   10. LAST DARK CHIP — "POPULAIRE" label on every popular product
+   ========================================================================== */
+html.noor-light .product-label.label-pop {
+	background: var(--noor-mocha) !important;
+	color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   11. WOOCOMMERCE — surfaces that were beige fills become white + border
+       (the gallery frame, tables and summary boxes read as tinted blocks
+        once the page behind them is pure white)
+   ========================================================================== */
+html.noor-light .woocommerce-product-gallery__wrapper,
+html.noor-light .woocommerce-product-gallery .wp-post-image {
+	background: #FFFFFF;
+	border: 1px solid var(--noor-border);
+}
+
+/* ==========================================================================
+   12. ELEMENTOR-BAKED OVERRIDES  — the cascade trap on this site
+
+   Four of the homepage colours were not set here at all: they were typed
+   into the Elementor editor, so Elementor writes them into its own
+   per-page sheet as
+
+       .elementor-16 .elementor-element.elementor-element-<id> .nfw-marquee
+
+   That is specificity (0,3,1) and post-16.css loads AFTER the theme, so
+   html.noor-light (0,2,1) loses twice over. Raising the selector cannot
+   win reliably — the widget ids change whenever the page is rebuilt — so
+   these four use !important, which is the correct tool for a skin that has
+   to override editor-authored values it does not control.
+
+   Found by enumerating post-*.css for rules touching .nfw-/.noor- classes;
+   re-run that scan after any Elementor page edit.
+   ========================================================================== */
+html.noor-light .nfw-marquee {
+	background: #FFFFFF !important;
+	background-image: none !important;
+}
+html.noor-light .nfw-marquee__item { color: var(--noor-mocha-dark) !important; }
+
+/* Creamy Beige on white is 1.4:1 — the emphasised word in the hero heading
+   was effectively invisible once the hero went light. Mocha is 6.8:1. */
+html.noor-light .nfw-hero__title em { color: var(--noor-mocha) !important; }
+
+html.noor-light .nfw-rental__overlay {
+	background: linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.88) 46%, rgba(255,255,255,.35) 100%) !important;
+}
+
+/* mobile drawer — the last warm off-white surface */
+html.noor-light .noor-drawer-panel { background: #FFFFFF; }
+
+/* Whole Elementor SECTIONS also carry editor-set fills — one homepage
+   section was #FAF6F1 across 14 % of the page. Section fills are cleared
+   wholesale here because "no tinted surfaces" is the entire point of this
+   skin; background-COLOR only, so any section using a background image
+   keeps it. Verified by injecting this rule first in <head>: !important
+   wins on merit, not on load order. */
+html.noor-light .elementor-section,
+html.noor-light .elementor-top-section,
+html.noor-light .e-con { background-color: transparent !important; }
+
+/* ==========================================================================
+   13. CONTRAST GUARD
+   Spiced Coral #C68053 on white is 3.0:1 — it FAILS WCAG AA for normal
+   text. It is fine as a fill, a border or large display type, never as
+   body copy. Small coral text is nudged to mocha (6.8:1) instead.
+   ========================================================================== */
+html.noor-light .noor-save-chip { color: #FFFFFF; background: var(--noor-mocha); }

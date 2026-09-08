@@ -1,0 +1,14 @@
+/*
+Theme Name:   Noor Festivities Child
+Theme URI:    https://noorfestivities.com
+Description:  Hello Elementor child theme for noorfestivities.com — official brand design system (Warm Mocha palette, Ragara/Playfair + Open Sans), custom header/footer, multi-region system (/re/ /yt/ /fr/), Réunion rental, CRO modules, and custom Elementor widgets for the homepage. Design source: 06-mockups.
+Author:       stackcraft_arif
+Template:     hello-elementor
+Version: 3.20.2
+Text Domain:  noor
+*/
+
+/* All styling lives in assets/css/ (enqueued in functions.php):
+   noor.css         — tokens, base, header, footer, modules
+   noor-widgets.css — Elementor widgets (homepage sections)
+   woocommerce.css  — shop / single product / cart / checkout / account */

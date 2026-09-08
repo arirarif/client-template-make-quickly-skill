@@ -1,0 +1,1140 @@
+/* ============================================================
+   Noor Festivities — WooCommerce skin (Hello Elementor child). v3.0.0
+   Ports the approved 06-mockups look onto WooCommerce markup.
+   Tokens come from style.css (:root --noor-*).
+   ============================================================ */
+
+/* ---------- Headings use the brand serif ---------- */
+h1, h2, h3, .woocommerce-loop-product__title {
+	font-family: Ragara, 'Playfair Display', serif;
+}
+
+
+/* ---------- Product cards (shop grid) ---------- */
+ul.products li.product {
+	background: var(--noor-card);
+	border: 1px solid var(--noor-border);
+	border-radius: 14px;
+	overflow: hidden;
+	transition: box-shadow .18s ease, transform .18s ease;
+}
+ul.products li.product:hover {
+	box-shadow: 0 10px 28px rgba(46, 26, 13, .14);
+	transform: translateY(-3px);
+}
+ul.products li.product a img {
+	background: var(--noor-band);
+}
+.woocommerce-loop-product__title {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14.5px; font-weight: 600;
+}
+ul.products li.product .posted_in a {
+	font-size: 11px; color: var(--noor-muted);
+	letter-spacing: .06em; text-transform: uppercase;
+}
+.star-rating {
+	color: var(--noor-mocha);
+}
+.price del { color: var(--noor-muted); font-weight: 400; }
+.price ins { text-decoration: none; }
+
+/* ---------- Product labels / badges — brand chips ---------- */
+.product-label {
+	border-radius: 999px !important;
+	font-size: 10.5px !important; font-weight: 700 !important;
+	letter-spacing: .05em; padding: 3px 9px !important;
+	font-family: 'Open Sans', sans-serif;
+}
+/* SALE — coral chip, espresso text (set in style.css, repeated for specificity) */
+.product-label.onsale { background: var(--noor-coral) !important; color: var(--noor-text) !important; }
+/* NOUVEAU — beige chip, espresso text */
+.product-label.new { background: var(--noor-band) !important; color: var(--noor-text) !important; }
+/* Custom labels (add class via product HTML or badge plugin): */
+.product-label.label-re { background: var(--noor-mocha) !important; color: #EDE5DE !important; }      /* RE ONLY */
+.product-label.label-pop { background: var(--noor-dark) !important; color: #EDE5DE !important; }      /* POPULAIRE */
+
+/* ---------- Breadcrumb ---------- */
+.woocommerce-breadcrumb {
+	font-size: 12.5px; color: var(--noor-muted);
+}
+.woocommerce-breadcrumb a { color: var(--noor-muted); }
+.woocommerce-breadcrumb a:hover { color: var(--noor-mocha); }
+
+/* ---------- Forms ---------- */
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row select,
+.woocommerce form .form-row textarea,
+.widget_product_search input[type="search"] {
+	border: 1px solid var(--noor-border); border-radius: 8px;
+	padding: 11px 14px; background: #fff; color: var(--noor-text);
+}
+.woocommerce form .form-row input.input-text:focus,
+.woocommerce form .form-row select:focus,
+.woocommerce form .form-row textarea:focus {
+	outline: 2px solid var(--noor-mocha); border-color: var(--noor-mocha);
+}
+input[type="checkbox"], input[type="radio"] { accent-color: var(--noor-mocha); }
+
+/* ---------- Notices ---------- */
+.woocommerce-info, .woocommerce-message {
+	background: #F8EEDF; border-top-color: var(--noor-mocha); color: var(--noor-text);
+	border-radius: 0 0 12px 12px;
+}
+.woocommerce-info::before, .woocommerce-message::before { color: var(--noor-mocha); }
+.woocommerce-error { border-top-color: var(--noor-error); }
+
+/* ---------- Cart ---------- */
+.woocommerce-cart table.cart th {
+	background: var(--noor-bg); font-size: 11.5px; letter-spacing: .06em;
+	text-transform: uppercase; color: var(--noor-muted);
+}
+.woocommerce-cart table.cart td { border-top: 1px solid var(--noor-border); }
+.cart_totals, .woocommerce-checkout-review-order {
+	background: var(--noor-card); border: 1px solid var(--noor-border);
+	border-radius: 14px; padding: 22px;
+}
+.woocommerce .cart .button, .woocommerce .cart input.button { border-radius: 8px; }
+
+/* ---------- Checkout ---------- */
+.woocommerce-checkout .woocommerce-billing-fields,
+.woocommerce-checkout .woocommerce-shipping-fields {
+	background: var(--noor-card); border: 1px solid var(--noor-border);
+	border-radius: 14px; padding: 22px;
+}
+.woocommerce-checkout #payment {
+	background: var(--noor-card); border: 1px solid var(--noor-border); border-radius: 14px;
+}
+.woocommerce-checkout #payment div.payment_box {
+	background: var(--noor-bg); color: var(--noor-text);
+}
+.woocommerce-checkout #payment div.payment_box::before { border-bottom-color: var(--noor-bg); }
+#place_order {
+	background: var(--noor-mocha) !important; color: #fff !important;
+	border-radius: 8px !important; font-weight: 600;
+}
+#place_order:hover { background: var(--noor-mocha-dark) !important; }
+
+/* ---------- My Account ---------- */
+.woocommerce-MyAccount-navigation ul { border: 0; }
+.woocommerce-MyAccount-navigation li {
+	border-left: 3px solid transparent; list-style: none;
+}
+.woocommerce-MyAccount-navigation li.is-active {
+	border-left-color: var(--noor-mocha); background: var(--noor-bg);
+}
+.woocommerce-MyAccount-navigation li.is-active a { color: var(--noor-mocha); font-weight: 600; }
+.woocommerce-MyAccount-content .woocommerce-table,
+table.woocommerce-orders-table {
+	border: 1px solid var(--noor-border); border-radius: 12px; overflow: hidden;
+}
+.woocommerce-orders-table th {
+	background: var(--noor-bg); font-size: 11.5px; letter-spacing: .06em;
+	text-transform: uppercase; color: var(--noor-muted);
+}
+
+/* Order status chips */
+.woocommerce-orders-table .order-status, mark.order-status {
+	display: inline-block; border-radius: 999px; padding: 3px 10px;
+	font-size: 10.5px; font-weight: 700; letter-spacing: .05em;
+	background: var(--noor-band); color: var(--noor-text);
+}
+
+/* ---------- Pagination ---------- */
+.woocommerce nav.woocommerce-pagination ul { border: 0; }
+.woocommerce nav.woocommerce-pagination ul li {
+	border: 0; margin: 0 3px;
+}
+.woocommerce nav.woocommerce-pagination ul li a,
+.woocommerce nav.woocommerce-pagination ul li span {
+	border: 1px solid var(--noor-border); background: var(--noor-card);
+	border-radius: 8px; padding: 8px 14px; color: var(--noor-text);
+}
+.woocommerce nav.woocommerce-pagination ul li span.current,
+.woocommerce nav.woocommerce-pagination ul li a:hover {
+	background: var(--noor-mocha); color: #fff; border-color: var(--noor-mocha);
+}
+
+/* ---------- Quantity input ---------- */
+.quantity .qty {
+	border: 1px solid var(--noor-border); border-radius: 8px;
+	font-family: 'Open Sans', sans-serif; font-weight: 700;
+}
+
+
+/* ============================================================
+   PRODUCT LOOP CARDS — exact match of the 06-mockups .pcard
+   (shop grid, related products, homepage [products] shortcode)
+   ============================================================ */
+ul.products {
+	display: grid !important;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	margin: 0 0 30px !important;
+	padding: 0 !important;
+	list-style: none;
+}
+.woocommerce ul.products li.product,
+ul.products li.product {
+	width: auto !important;
+	float: none !important;
+	margin: 0 !important;
+	padding: 0 0 16px !important;
+	background: var(--noor-card);
+	border: 1px solid var(--noor-border);
+	border-radius: 14px;
+	overflow: hidden;
+	position: relative;
+	text-align: left;
+	transition: box-shadow .18s ease, transform .18s ease;
+}
+.woocommerce ul.products li.product:hover,
+ul.products li.product:hover {
+	box-shadow: 0 10px 28px rgba(46, 26, 13, .14);
+	transform: translateY(-3px);
+}
+@media (max-width: 960px) { ul.products { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { ul.products { grid-template-columns: 1fr; } }
+
+/* Image — square, beige backdrop, flush with card top */
+ul.products li.product img {
+	width: 100% !important;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	background: var(--noor-band);
+	margin: 0 0 12px !important;
+	border-radius: 0 !important;
+	display: block;
+}
+
+/* Title */
+ul.products li.product .woocommerce-loop-product__title,
+ul.products li.product h2 {
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 14.5px !important;
+	font-weight: 600 !important;
+	color: var(--noor-text) !important;
+	padding: 0 16px !important;
+	margin: 0 0 6px !important;
+	line-height: 1.4;
+}
+ul.products li.product a { color: var(--noor-text); text-decoration: none; }
+ul.products li.product a:hover .woocommerce-loop-product__title { color: var(--noor-mocha) !important; }
+
+/* Rating stars */
+ul.products li.product .star-rating { margin: 0 16px 6px; color: var(--noor-mocha); }
+
+/* Price — espresso bold like the mockup */
+ul.products li.product .price {
+	display: block;
+	padding: 0 16px !important;
+	margin: 0 0 10px !important;
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 15.5px !important;
+	font-weight: 700 !important;
+	color: var(--noor-text) !important;
+}
+ul.products li.product .price del { color: var(--noor-muted); font-weight: 400; font-size: 12.5px; opacity: 1; }
+ul.products li.product .price ins { text-decoration: none; font-weight: 700; }
+ul.products li.product .price .woocommerce-Price-amount { color: inherit; }
+
+/* Button — mockup .addbtn: quiet chip, fills mocha on hover */
+ul.products li.product .button,
+ul.products li.product .add_to_cart_button,
+ul.products li.product a.button {
+	display: inline-block;
+	margin: 0 16px !important;
+	padding: 8px 14px !important;
+	background: var(--noor-bg) !important;
+	border: 1px solid var(--noor-border) !important;
+	border-radius: 8px !important;
+	color: var(--noor-text) !important;
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 12.5px !important;
+	font-weight: 600 !important;
+	line-height: 1.4 !important;
+	text-transform: none;
+	box-shadow: none;
+}
+ul.products li.product .button:hover {
+	background: var(--noor-mocha) !important;
+	border-color: var(--noor-mocha) !important;
+	color: #fff !important;
+}
+
+/* Sale badge — coral chip top-left (kills the default round blob) */
+.woocommerce span.onsale,
+ul.products li.product .onsale, .single-product span.onsale {
+	position: absolute;
+	top: 10px; left: 10px; right: auto;
+	z-index: 5;
+	min-width: 0 !important;
+	min-height: 0 !important;
+	width: auto; height: auto;
+	line-height: 1.4 !important;
+	padding: 3px 10px !important;
+	border-radius: 999px !important;
+	background: var(--noor-coral) !important;
+	color: var(--noor-text) !important;
+	font-size: 10.5px !important;
+	font-weight: 700 !important;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+	margin: 0 !important;
+}
+
+/* Result count + ordering select on brand */
+.woocommerce-result-count { color: var(--noor-muted); font-size: 13px; }
+.woocommerce-ordering select {
+	border: 1px solid var(--noor-border); border-radius: 8px;
+	padding: 8px 12px; font-size: 13px; background: var(--noor-card);
+	color: var(--noor-text); font-family: 'Open Sans', sans-serif;
+}
+
+/* Woo's clearfix pseudo-elements become grid items and eat the first cell. */
+ul.products::before, ul.products::after { display: none !important; content: none !important; }
+
+/* ============================================================
+   RENTAL BOOKING (WPS Bookings + flatpickr) — matches
+   06-mockups/rental.html: date fields, price box, calendar
+   ============================================================ */
+
+/* Date field row */
+.mbfw-date-picker-section__wrapper {
+	display: flex; gap: 12px; flex-wrap: wrap;
+	background: var(--noor-card);
+	border: 2px solid var(--noor-mocha);
+	border-radius: 14px;
+	padding: 18px;
+	margin: 18px 0;
+	box-shadow: 0 0 0 4px rgba(150, 66, 26, .08);
+}
+.mbfw-date-picker-section { flex: 1; min-width: 150px; }
+.mbfw-date-picker-section label {
+	display: block;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12.5px; font-weight: 600;
+	color: var(--noor-mocha-dark);
+	margin-bottom: 5px;
+}
+.mbfw-date-picker-section input.flatpickr-input {
+	width: 100%;
+	border: 1px solid var(--noor-border);
+	border-radius: 8px;
+	padding: 11px 14px;
+	font-size: 14px;
+	background: #fff;
+	color: var(--noor-text);
+	font-family: 'Open Sans', sans-serif;
+	cursor: pointer;
+}
+.mbfw-date-picker-section input.flatpickr-input:focus {
+	outline: 2px solid var(--noor-mocha);
+	border-color: var(--noor-mocha);
+}
+
+/* Live total — mockup .pricebox */
+.mwb-mbfw-total-area {
+	background: var(--noor-card);
+	border: 1px solid var(--noor-border);
+	border-radius: 12px;
+	padding: 14px 16px;
+	margin: 0 0 16px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	color: var(--noor-text);
+}
+.mwb-mbfw-total-area:empty {
+	/* Reserve the exact filled height before any date is chosen, so picking
+	   a date does not shove the page down. Placeholder fills the space. */
+	display: flex; align-items: center; justify-content: center;
+	background: var(--noor-bg); border: 1px dashed var(--noor-border);
+	color: var(--noor-muted); font-size: 13px; font-style: italic;
+	text-align: center; padding: 14px 16px;
+}
+.mwb-mbfw-total-area:empty::before {
+	content: 'Sélectionnez vos dates pour afficher le prix total.';
+}
+.mwb-mbfw-total-area .woocommerce-Price-amount,
+.mwb-mbfw-total-area strong, .mwb-mbfw-total-area b {
+	color: var(--noor-mocha);
+	font-weight: 700;
+	font-size: 19px;
+}
+
+/* ---------- flatpickr calendar — brand palette ---------- */
+.flatpickr-calendar {
+	background: #fff !important;
+	border: 1px solid var(--noor-border) !important;
+	border-radius: 12px !important;
+	box-shadow: 0 10px 30px rgba(46, 26, 13, .18) !important;
+	font-family: 'Open Sans', sans-serif !important;
+	padding: 6px;
+}
+.flatpickr-calendar.arrowTop::before, .flatpickr-calendar.arrowTop::after { border-bottom-color: var(--noor-border) !important; }
+.flatpickr-months { padding-top: 4px; }
+.flatpickr-months .flatpickr-month,
+.flatpickr-current-month input.cur-year,
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+	color: var(--noor-text) !important;
+	fill: var(--noor-text) !important;
+	font-weight: 700;
+}
+.flatpickr-months .flatpickr-prev-month svg,
+.flatpickr-months .flatpickr-next-month svg { fill: var(--noor-mocha) !important; }
+.flatpickr-months .flatpickr-prev-month:hover svg,
+.flatpickr-months .flatpickr-next-month:hover svg { fill: var(--noor-mocha-dark) !important; }
+span.flatpickr-weekday {
+	color: var(--noor-muted) !important;
+	font-size: 10.5px !important;
+	font-weight: 700 !important;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+}
+
+/* Days */
+.flatpickr-day {
+	border-radius: 8px !important;
+	color: var(--noor-text);
+	font-size: 12.5px;
+	border-color: transparent !important;
+}
+.flatpickr-day:hover { background: var(--noor-bg) !important; border-color: var(--noor-mocha) !important; }
+.flatpickr-day.today { border-color: var(--noor-coral) !important; font-weight: 700; }
+.flatpickr-day.selected,
+.flatpickr-day.startRange, .flatpickr-day.endRange,
+.flatpickr-day.selected:hover {
+	background: var(--noor-mocha) !important;
+	border-color: var(--noor-mocha) !important;
+	color: #fff !important;
+	font-weight: 700;
+}
+.flatpickr-day.inRange {
+	background: var(--noor-band) !important;
+	border-color: var(--noor-band) !important;
+	box-shadow: -5px 0 0 var(--noor-band), 5px 0 0 var(--noor-band) !important;
+	color: var(--noor-text) !important;
+}
+/* Booked / unavailable — mockup .day.full */
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover,
+.flatpickr-day.notAllowed {
+	color: #D9CBBE !important;
+	background: #F3EBE3 !important;
+	text-decoration: line-through;
+	cursor: not-allowed !important;
+}
+.flatpickr-day.prevMonthDay, .flatpickr-day.nextMonthDay { color: #D9CBBE !important; }
+
+/* Book Now button = brand primary */
+.single_add_to_cart_button.button.alt {
+	background: var(--noor-mocha) !important;
+	color: #fff !important;
+	border-radius: 8px !important;
+	font-weight: 600;
+	padding: 13px 26px !important;
+}
+.single_add_to_cart_button.button.alt:hover { background: var(--noor-mocha-dark) !important; }
+
+/* Totals box — stop the layout shifting while dates are picked.
+   (The always-0 € "base cost" row is switched off per product with the
+   plugin's own "Hide Base Cost" option, not with CSS.) */
+.mwb-mbfw-total-area { min-height: 134px; }   /* = filled height: zero layout shift */
+.mbfw-total-listing-single-page__wrapper {
+	display: flex; justify-content: space-between; align-items: baseline;
+	gap: 12px; padding: 6px 0;
+}
+.mbfw-total-listing-single-page__wrapper:last-child {
+	border-top: 1px solid var(--noor-border);
+	margin-top: 6px; padding-top: 12px;
+	font-weight: 700;
+}
+
+/* Deposit acknowledgement on the rental product page (A2) */
+.noor-deposit-notice--product {
+	margin: 16px 0;
+}
+.noor-deposit-notice--product label {
+	display: flex; gap: 10px; align-items: flex-start; cursor: pointer;
+	font-size: 13.5px; line-height: 1.55;
+}
+.noor-deposit-notice--product input[type="checkbox"] {
+	width: 20px; height: 20px; margin-top: 1px; flex: 0 0 auto;
+	accent-color: var(--noor-mocha);
+}
+.noor-deposit-notice--error {
+	border-color: var(--noor-error) !important;
+	background: #FDF1F0;
+	animation: noor-shake .3s;
+}
+@keyframes noor-shake {
+	0%, 100% { transform: translateX(0); }
+	25% { transform: translateX(-4px); }
+	75% { transform: translateX(4px); }
+}
+/* Booking button looks unavailable until the box is ticked */
+.single_add_to_cart_button.noor-btn-locked {
+	opacity: .45;
+	cursor: not-allowed;
+}
+/* "Choose your dates" — hidden until someone tries to reserve without them. */
+.noor-date-required {
+	margin: 10px 0 0;
+	padding: 9px 12px;
+	border: 1px solid var(--noor-error);
+	border-radius: 8px;
+	background: #FDF1F0;
+	color: var(--noor-error);
+	font-size: 13.5px;
+	font-weight: 600;
+	animation: noor-shake .3s;
+}
+.noor-date-required[hidden] { display: none; }
+/* Checkout reminder — informational, no checkbox */
+.noor-deposit-notice--recap {
+	font-size: 13.5px; line-height: 1.6;
+}
+
+/* The booking plugin title-cases its date inputs ("Choisir Une Dat"); keep the
+   placeholder as typed and let it use the full field width. */
+.mbfw-date-picker-section input.flatpickr-input {
+	text-transform: none !important;
+	text-overflow: ellipsis;
+}
+
+/* Block pricing (A3) — forfait notice + price suffix */
+.noor-block-notice {
+	margin: 14px 0 0;
+	padding: 12px 14px;
+	border: 1px solid var(--noor-border);
+	border-left: 3px solid var(--noor-mocha);
+	border-radius: 10px;
+	background: #F8EEDF;
+	font-size: 13.5px;
+	line-height: 1.55;
+	color: var(--noor-text);
+}
+.noor-block-notice strong { color: var(--noor-mocha-dark); }
+.noor-price-unit {
+	font-size: .72em;
+	font-weight: 600;
+	color: var(--noor-muted);
+	letter-spacing: .02em;
+}
+
+/* Calendar availability (A4) — booked days + legend */
+.flatpickr-day.noor-day-booked,
+.flatpickr-day.noor-day-booked:hover {
+	background: #F6E3E0 !important;
+	border-color: #EBC9C4 !important;
+	color: #B4453A !important;
+	text-decoration: line-through;
+	opacity: 1;
+	cursor: not-allowed;
+}
+.noor-cal-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 18px;
+	margin: 12px 0 0;
+	font-size: 12.5px;
+	color: var(--noor-muted);
+}
+.noor-cal-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.noor-swatch {
+	width: 13px;
+	height: 13px;
+	border-radius: 4px;
+	border: 1px solid var(--noor-border);
+	display: inline-block;
+}
+.noor-swatch--free { background: #FFFFFF; }
+.noor-swatch--busy { background: #F6E3E0; border-color: #EBC9C4; }
+.noor-swatch--pick { background: var(--noor-mocha); border-color: var(--noor-mocha); }
+
+/* ==========================================================================
+   Shop archive: category sidebar + filters (B1)
+   ========================================================================== */
+.noor-chip-row {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	margin: 0 0 20px;
+}
+.noor-chip {
+	background: var(--noor-card);
+	border: 1px solid var(--noor-border);
+	border-radius: 999px;
+	padding: 6px 15px;
+	font-size: 12.5px;
+	text-decoration: none;
+	color: var(--noor-text);
+	transition: background .15s, color .15s, border-color .15s;
+}
+.noor-chip:hover,
+.noor-chip.is-active {
+	background: var(--noor-mocha);
+	border-color: var(--noor-mocha);
+	color: #fff;
+}
+
+.noor-shop-layout {
+	display: grid;
+	grid-template-columns: 250px minmax(0, 1fr);
+	gap: 30px;
+	align-items: start;
+}
+.noor-shop-main { min-width: 0; }
+
+.noor-filters {
+	background: var(--noor-card);
+	border: 1px solid var(--noor-border);
+	border-radius: 14px;
+	padding: 20px;
+	position: sticky;
+	top: 24px;
+}
+.noor-filters h4 {
+	font-size: 12px;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--noor-mocha-dark);
+	margin: 18px 0 9px;
+	font-weight: 700;
+}
+.noor-filters h4:first-child { margin-top: 0; }
+.noor-filters label {
+	display: flex;
+	gap: 9px;
+	align-items: center;
+	font-size: 13.5px;
+	padding: 4px 0;
+	cursor: pointer;
+	margin: 0;
+}
+.noor-filters input[type="checkbox"] {
+	accent-color: var(--noor-mocha);
+	width: 16px;
+	height: 16px;
+	flex: 0 0 auto;
+	margin: 0;
+}
+.noor-filters .noor-facet-count {
+	color: var(--noor-muted);
+	font-size: 11.5px;
+	margin-left: auto;
+}
+.noor-filters-link {
+	display: flex;
+	gap: 9px;
+	align-items: center;
+	font-size: 13.5px;
+	padding: 5px 0;
+	text-decoration: none;
+	color: var(--noor-text);
+}
+.noor-filters-link:hover,
+.noor-filters-link.is-active { color: var(--noor-mocha); font-weight: 600; }
+
+.noor-pricerange {
+	display: flex;
+	gap: 7px;
+	align-items: center;
+	font-size: 12.5px;
+}
+.noor-pricerange input {
+	width: 100%;
+	min-width: 0;
+	border: 1px solid var(--noor-border);
+	border-radius: 7px;
+	padding: 7px 8px;
+	font-size: 13px;
+	font-family: inherit;
+	background: #fff;
+}
+
+.noor-filters-apply {
+	display: block;
+	width: 100%;
+	margin-top: 18px;
+	padding: 10px 14px;
+	border: 0;
+	border-radius: 999px;
+	background: var(--noor-mocha);
+	color: #fff;
+	font-family: inherit;
+	font-size: 13.5px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.noor-filters-apply:hover { background: var(--noor-mocha-dark); }
+.noor-filters-clear {
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+	font-size: 12.5px;
+	color: var(--noor-muted);
+}
+
+/* Toolbar: result count on the left, sorting on the right */
+.noor-shop-main .woocommerce-result-count,
+.noor-shop-main .woocommerce-ordering {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 0 18px;
+}
+.noor-shop-main .woocommerce-result-count {
+	font-size: 13px;
+	color: var(--noor-muted);
+}
+.noor-shop-main .woocommerce-ordering { float: right; }
+.noor-shop-main .woocommerce-ordering select {
+	border: 1px solid var(--noor-border);
+	border-radius: 8px;
+	padding: 8px 12px;
+	font-size: 13px;
+	background: var(--noor-card);
+	font-family: inherit;
+}
+.noor-shop-main ul.products { clear: both; }
+.noor-shop-layout ul.products.columns-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* The panel folds away on small screens behind a button */
+.noor-filter-toggle {
+	display: none;
+	width: 100%;
+	margin-bottom: 14px;
+	padding: 11px 16px;
+	border: 1px solid var(--noor-border);
+	border-radius: 10px;
+	background: var(--noor-card);
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--noor-mocha-dark);
+	cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+	.noor-shop-layout { grid-template-columns: 210px minmax(0, 1fr); gap: 22px; }
+	.noor-shop-layout ul.products.columns-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+	.noor-shop-layout { grid-template-columns: 1fr; gap: 0; }
+	.noor-filter-toggle { display: block; }
+	.noor-filters { position: static; display: none; margin-bottom: 20px; }
+	.noor-filters.is-open { display: block; }
+	.noor-shop-main .woocommerce-ordering { float: none; display: block; }
+}
+
+/* Region explanation on the rental category outside Reunion (B2) */
+.noor-region-notice {
+	background: #F8EEDF;
+	border: 1px solid var(--noor-border);
+	border-left: 3px solid var(--noor-mocha);
+	border-radius: 10px;
+	padding: 14px 18px;
+	margin: 0 0 20px;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--noor-text);
+}
+.noor-region-notice strong { color: var(--noor-mocha-dark); }
+.noor-region-notice a { color: var(--noor-mocha); font-weight: 600; }
+
+/* Card image swap on hover (B3) */
+.noor-card-media {
+	display: block;
+	position: relative;
+	margin: 0 0 12px;
+	overflow: hidden;
+	background: var(--noor-band);
+}
+.noor-card-media img {
+	margin: 0 !important;
+	display: block;
+}
+.noor-card-media__alt {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	transition: opacity .35s ease;
+	pointer-events: none;
+}
+ul.products li.product:hover .noor-card-media__alt { opacity: 1; }
+/* A slow zoom on the pair reads as one movement rather than two images */
+.noor-card-media.has-alt img { transition: transform .5s ease, opacity .35s ease; }
+ul.products li.product:hover .noor-card-media.has-alt img { transform: scale(1.03); }
+
+@media (hover: none) {
+	.noor-card-media__alt { display: none; }
+}
+
+/* Low stock notice (B4) */
+.noor-stock-low {
+	color: #B4453A;
+	font-weight: 600;
+	letter-spacing: .01em;
+}
+.noor-stock-low--loop {
+	display: block;
+	margin: 0 16px 4px;
+	font-size: 12px;
+}
+.noor-stock-low--single {
+	display: inline-block;
+	margin: 0 0 14px;
+	padding: 7px 13px;
+	border: 1px solid #EBC9C4;
+	background: #F6E3E0;
+	border-radius: 999px;
+	font-size: 13.5px;
+}
+
+/* ==========================================================================
+   Wishlist (YITH) — restyled to the brand
+   Selectors follow the current plugin markup: a <button class="yith-wcwl-add-to-wishlist-button">
+   that the plugin places over the card image, plus a block wrapper on the
+   product page. The legacy .yith-wcwl-add-to-wishlist classes are NOT used.
+   ========================================================================== */
+
+/* --- Heart over the card image --- */
+ul.products li.product .yith-wcwl-add-to-wishlist-button-over-image {
+	top: 10px !important;
+	left: 10px !important;
+	right: auto !important;
+	width: 38px !important;
+	height: 38px !important;
+	padding: 0 !important;
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	border-radius: 999px !important;
+	/* Most product photos are dark, so the heart is white on a soft espresso
+	   scrim: it stays readable on a dark image and on a pale one alike. */
+	background: rgba(46, 26, 13, .42) !important;
+	border: 1px solid rgba(255, 255, 255, .55) !important;
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .28);
+	color: #fff !important;
+	transition: background .15s ease, color .15s ease, transform .15s ease, border-color .15s ease;
+	z-index: 4;
+}
+ul.products li.product .yith-wcwl-add-to-wishlist-button-over-image:hover {
+	background: var(--noor-mocha) !important;
+	border-color: var(--noor-mocha) !important;
+	color: #fff !important;
+	transform: scale(1.07);
+}
+ul.products li.product .yith-wcwl-add-to-wishlist-button-over-image svg {
+	width: 18px;
+	height: 18px;
+	stroke: #fff;
+	fill: none;
+	filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .45));
+}
+
+/* Already saved: filled heart in brand colour */
+ul.products li.product .yith-wcwl-add-to-wishlist-button.exists,
+ul.products li.product .yith-wcwl-add-to-wishlist-button[class*="added"] {
+	background: var(--noor-mocha) !important;
+	border-color: #fff !important;
+	color: #fff !important;
+}
+ul.products li.product .yith-wcwl-add-to-wishlist-button.exists svg,
+ul.products li.product .yith-wcwl-add-to-wishlist-button[class*="added"] svg {
+	fill: #fff;
+	stroke: #fff;
+}
+
+/* --- Button on the product page --- */
+.single-product .yith-add-to-wishlist-button-block--single { margin: 14px 0 0; }
+.single-product .yith-wcwl-add-to-wishlist-button {
+	display: inline-flex !important;
+	align-items: center;
+	gap: 8px;
+	padding: 9px 18px !important;
+	border: 1px solid var(--noor-border) !important;
+	border-radius: 999px !important;
+	background: var(--noor-card) !important;
+	color: var(--noor-mocha-dark) !important;
+	font-size: 13.5px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background .15s ease, color .15s ease;
+}
+.single-product .yith-wcwl-add-to-wishlist-button:hover {
+	background: var(--noor-mocha) !important;
+	border-color: var(--noor-mocha) !important;
+	color: #fff !important;
+}
+.single-product .yith-wcwl-add-to-wishlist-button svg { width: 17px; height: 17px; }
+
+/* --- The favourites page --- */
+.wishlist-title h2 {
+	font-family: 'Playfair Display', Georgia, serif;
+	color: var(--noor-text);
+}
+.wishlist_table,
+table.wishlist_table {
+	border: 1px solid var(--noor-border);
+	border-radius: 14px;
+	overflow: hidden;
+	background: var(--noor-card);
+	border-collapse: collapse;
+	width: 100%;
+}
+.wishlist_table th {
+	background: var(--noor-band);
+	font-size: 12px;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: var(--noor-mocha-dark);
+	padding: 12px 14px;
+	text-align: left;
+}
+.wishlist_table td {
+	border-top: 1px solid var(--noor-border);
+	padding: 14px;
+	vertical-align: middle;
+}
+.wishlist_table td.product-thumbnail img {
+	width: 78px;
+	height: 78px;
+	object-fit: cover;
+	border-radius: 10px;
+	background: var(--noor-band);
+}
+.wishlist_table .product-name a {
+	color: var(--noor-text);
+	font-weight: 600;
+	text-decoration: none;
+}
+.wishlist_table .product-name a:hover { color: var(--noor-mocha); }
+.wishlist_table .product-add-to-cart a.button,
+.wishlist_items .button {
+	background: var(--noor-mocha) !important;
+	color: #fff !important;
+	border-radius: 999px !important;
+	padding: 9px 18px !important;
+	font-weight: 600;
+}
+.wishlist_table .product-add-to-cart a.button:hover { background: var(--noor-mocha-dark) !important; }
+.wishlist_table .product-remove a.remove,
+.wishlist_table a.remove_from_wishlist {
+	color: var(--noor-muted) !important;
+	background: transparent !important;
+}
+.wishlist-empty,
+.yith-wcwl-wishlist-empty,
+.wishlist_table tfoot { color: var(--noor-muted); }
+
+@media (max-width: 600px) {
+	.wishlist_table th { display: none; }
+	.wishlist_table td { display: block; border-top: 0; padding: 6px 14px; }
+	.wishlist_table tr { display: block; border-top: 1px solid var(--noor-border); padding: 10px 0; }
+}
+
+/* Favourites page: heading + share row */
+.wishlist-title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-family: 'Playfair Display', Georgia, serif;
+	font-size: 30px;
+	font-weight: 700;
+	color: var(--noor-text);
+	margin: 0 0 20px;
+}
+/* Renaming the list is a plugin feature this shop does not need */
+.wishlist-title .show-title-form,
+.wishlist-title-with-form .hidden-title-form { display: none !important; }
+
+.yith-wcwl-share > h4,
+.yith-wcwl-share > h3,
+.yith-wcwl-share > .yith-wcwl-share-title {
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 13.5px;
+	font-weight: 600;
+	color: var(--noor-muted);
+	margin: 26px 0 10px;
+}
+.yith-wcwl-share ul { margin: 0; padding: 0; display: flex; gap: 8px; list-style: none; }
+
+/* Reassurance row on the product page (C1) */
+.noor-benefits {
+	list-style: none;
+	margin: 20px 0 0;
+	padding: 16px 18px;
+	border: 1px solid var(--noor-border);
+	border-radius: 12px;
+	background: var(--noor-card);
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px 18px;
+}
+.noor-benefits li {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.4;
+	color: var(--noor-text);
+}
+.noor-benefits svg {
+	width: 20px;
+	height: 20px;
+	flex: 0 0 auto;
+	color: var(--noor-mocha);
+}
+@media (max-width: 520px) {
+	.noor-benefits { grid-template-columns: 1fr; gap: 10px; }
+}
+
+/* Related + complementary product blocks (C2) */
+.related.products,
+.upsells.products {
+	margin-top: 54px;
+	clear: both;
+}
+.related.products > h2,
+.upsells.products > h2 {
+	font-family: 'Playfair Display', Georgia, serif;
+	font-size: 26px;
+	font-weight: 700;
+	color: var(--noor-text);
+	margin: 0 0 6px;
+	/* WooCommerce centres these headings; the rest of the site is left aligned */
+	text-align: left;
+}
+/* A short rule under the heading, same as the rest of the site sections */
+.related.products > h2::after,
+.upsells.products > h2::after {
+	content: '';
+	display: block;
+	width: 54px;
+	height: 2px;
+	background: var(--noor-coral);
+	margin: 10px 0 22px;
+}
+.upsells.products > h2 { color: var(--noor-mocha-dark); }
+
+.related.products ul.products,
+.upsells.products ul.products {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1024px) {
+	.related.products ul.products,
+	.upsells.products ul.products { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.related.products > h2,
+	.upsells.products > h2 { font-size: 23px; }
+}
+@media (max-width: 767px) {
+	.related.products ul.products,
+	.upsells.products ul.products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.related.products,
+	.upsells.products { margin-top: 38px; }
+}
+
+/* "Souvent acheté ensemble" pack (C3) */
+.noor-bundle {
+	background: var(--noor-card);
+	border: 2px solid var(--noor-mocha);
+	border-radius: 14px;
+	padding: 16px 18px;
+	margin: 20px 0;
+	box-shadow: 0 0 0 4px rgba(150, 66, 26, .08);
+}
+.noor-bundle h3 {
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+	color: var(--noor-mocha-dark);
+	margin: 0 0 10px;
+}
+.noor-bundle-item {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	padding: 9px 0;
+	border-top: 1px dashed var(--noor-border);
+	margin: 0;
+	cursor: pointer;
+}
+.noor-bundle-item:first-of-type { border-top: 0; }
+.noor-bundle-item--self { cursor: default; }
+.noor-bundle-item img {
+	width: 52px !important;
+	height: 52px !important;
+	border-radius: 8px;
+	object-fit: cover;
+	margin: 0 !important;
+	background: var(--noor-band);
+	flex: 0 0 auto;
+}
+.noor-bundle-item input[type="checkbox"] {
+	width: 17px;
+	height: 17px;
+	accent-color: var(--noor-mocha);
+	flex: 0 0 auto;
+	margin: 0;
+}
+.noor-bundle-info { flex: 1; font-size: 13px; line-height: 1.35; min-width: 0; }
+.noor-bundle-info small {
+	display: block;
+	color: var(--noor-muted);
+	font-size: 11.5px;
+	margin-top: 2px;
+}
+.noor-bundle-info small b { color: var(--noor-mocha); }
+.noor-bundle-price {
+	font-size: 13.5px;
+	font-weight: 700;
+	white-space: nowrap;
+	text-align: right;
+}
+.noor-bundle-price s {
+	color: var(--noor-muted);
+	font-weight: 400;
+	font-size: 11.5px;
+	margin-right: 5px;
+}
+.noor-bundle-total {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid var(--noor-border);
+	margin-top: 10px;
+	padding-top: 12px;
+	font-size: 14px;
+	font-weight: 600;
+}
+.noor-bundle-total-value {
+	font-size: 19px;
+	font-weight: 700;
+	color: var(--noor-mocha);
+}
+@media (max-width: 420px) {
+	.noor-bundle-item img { width: 44px !important; height: 44px !important; }
+	.noor-bundle-info { font-size: 12.5px; }
+}
+
+/* Add-on-only products (D1) */
+.noor-addon-only {
+	border: 1px solid var(--noor-border);
+	border-left: 3px solid var(--noor-mocha);
+	background: #F8EEDF;
+	border-radius: 12px;
+	padding: 16px 18px;
+	margin: 18px 0;
+	font-size: 14px;
+	line-height: 1.6;
+}
+.noor-addon-only strong { color: var(--noor-mocha-dark); display: block; margin-bottom: 4px; }
+.noor-addon-only p { margin: 0 0 8px; }
+.noor-addon-only ul { margin: 0 0 0 18px; }
+.noor-addon-only a { color: var(--noor-mocha); font-weight: 600; }

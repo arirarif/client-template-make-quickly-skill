@@ -1,0 +1,127 @@
+/* Noor Festivities — Elementor widgets (inside noor-child, Hello Elementor). v3.0.0
+   Brand tokens per BRANDING.md (official client palette).
+   Header/footer are NOT widgets — header.php / footer.php own those. */
+:root {
+  --nfw-bg: #EDE5DE;        /* Ivory White */
+  --nfw-card: #FAF6F1;      /* surface */
+  --nfw-band: #EED2AE;      /* Creamy Beige */
+  --nfw-border: #DCC7AC;
+  --nfw-mocha: #96421A;     /* Warm Mocha — primary */
+  --nfw-mocha-dark: #7A3512;
+  --nfw-coral: #C68053;     /* Spiced Coral */
+  --nfw-text: #2E1A0D;      /* espresso */
+  --nfw-muted: #7C6350;
+  --nfw-success: #1E7A3C;
+  --nfw-serif: Ragara, 'Playfair Display', Georgia, serif; /* Ragara (Playfair stand-in until license OK) */
+  --nfw-sans: 'Open Sans', Arial, sans-serif;
+}
+
+/* ===== Marquee ===== */
+.nfw-marquee { background: var(--nfw-mocha-dark); padding: 10px 0; overflow: hidden; }
+.nfw-marquee__track { display: flex; gap: 60px; white-space: nowrap; animation: nfw-marquee 32s linear infinite; }
+.nfw-marquee__group { display: inline-flex; gap: 60px; align-items: center; flex-shrink: 0; }
+.nfw-marquee__item { font-family: var(--nfw-sans); font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--nfw-bg); display: inline-flex; align-items: center; gap: 8px; }
+.nfw-marquee__item .nfw-ico { font-size: 13px; line-height: 1; }
+@keyframes nfw-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
+
+/* ===== Hero ===== */
+.nfw-hero { position: relative; min-height: 88vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 80px 24px; overflow: hidden; background: var(--nfw-text); }
+.nfw-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.nfw-hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(46,26,13,0.55) 0%, rgba(46,26,13,0.45) 50%, rgba(237,229,222,0.92) 100%); }
+.nfw-hero__inner { position: relative; z-index: 3; max-width: 780px; }
+.nfw-hero__badge { display: inline-flex; align-items: center; gap: 10px; font-family: var(--nfw-sans); font-size: 12px; color: #FAF6F1; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 28px; padding: 8px 18px; background: rgba(150,66,26,0.35); border-radius: 999px; border: 1px solid rgba(237,229,222,0.3); }
+.nfw-hero__title { font-family: var(--nfw-serif); font-size: clamp(34px, 8vw, 88px); font-weight: 800; color: #FAF6F1; line-height: 1.05; margin: 0 0 24px; text-shadow: 0 4px 32px rgba(0,0,0,0.5); }
+.nfw-hero__title em { color: #EED2AE; font-style: italic; }
+.nfw-hero__subtitle { font-family: var(--nfw-sans); font-size: 18px; color: rgba(250,246,241,0.92); line-height: 1.7; max-width: 560px; margin: 0 auto 38px; }
+.nfw-hero__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.nfw-btn { display: inline-flex; align-items: center; gap: 10px; border-radius: 10px; padding: 16px 34px; font-family: var(--nfw-sans); font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none; transition: all 0.25s; border: none; }
+.nfw-btn--primary { background: var(--nfw-mocha); color: #FAF6F1; box-shadow: 0 8px 32px rgba(150,66,26,0.4); }
+.nfw-btn--primary:hover { background: var(--nfw-mocha-dark); color: #FAF6F1; }
+.nfw-btn--ghost { background: rgba(237,229,222,0.15); color: #FAF6F1; border: 1px solid rgba(237,229,222,0.5); }
+.nfw-btn--ghost:hover { background: rgba(237,229,222,0.28); color: #FAF6F1; }
+.nfw-hero__stats { display: flex; gap: 34px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+.nfw-hero__stat b { display: block; font-family: var(--nfw-sans); font-weight: 700; font-size: 22px; color: #EED2AE; }
+.nfw-hero__stat span { font-family: var(--nfw-sans); font-size: 12px; color: #DCC7AC; }
+
+/* ===== Section heading (shared) ===== */
+.nfw-sechead { text-align: center; margin-bottom: 44px; }
+.nfw-sechead__kicker { font-family: var(--nfw-sans); font-size: 11px; font-weight: 600; color: var(--nfw-mocha); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 12px; }
+.nfw-sechead__title { font-family: var(--nfw-serif); font-size: 38px; font-weight: 700; color: var(--nfw-text); margin: 0; }
+.nfw-sechead__sub { font-family: var(--nfw-sans); font-size: 16px; color: var(--nfw-muted); margin: 14px auto 0; max-width: 540px; }
+
+/* ===== Categories grid ===== */
+.nfw-cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+.nfw-cat { position: relative; border-radius: 16px; overflow: hidden; height: 220px; background: var(--nfw-band); border: 1px solid var(--nfw-border); box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.3s; display: block; text-decoration: none; }
+.nfw-cat:hover { border-color: var(--nfw-mocha); box-shadow: 0 12px 36px rgba(150,66,26,0.2); }
+.nfw-cat__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.nfw-cat:hover .nfw-cat__img { transform: scale(1.08); }
+.nfw-cat__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(46,26,13,0.25) 0%, rgba(46,26,13,0.8) 100%); }
+.nfw-cat__body { position: absolute; inset: 0; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; }
+.nfw-cat__label { font-family: var(--nfw-serif); font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.nfw-cat__desc { font-family: var(--nfw-sans); font-size: 12px; color: rgba(250,246,241,0.8); }
+
+/* ===== Rental banner ===== */
+.nfw-rental { position: relative; border-radius: 24px; overflow: hidden; min-height: 300px; display: flex; align-items: center; box-shadow: 0 20px 60px rgba(46,26,13,0.18); }
+.nfw-rental__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.nfw-rental__overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(198,128,83,0.94) 0%, rgba(198,128,83,0.62) 60%, rgba(198,128,83,0.4) 100%); }
+.nfw-rental__inner { position: relative; padding: 48px 56px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 32px; width: 100%; }
+.nfw-rental__chip { display: inline-flex; align-items: center; gap: 6px; background: var(--nfw-mocha); color: #fff; font-family: var(--nfw-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; }
+.nfw-rental__title { font-family: var(--nfw-serif); font-size: 38px; font-weight: 700; color: #FAF6F1; margin: 16px 0 12px; line-height: 1.2; }
+.nfw-rental__title em { font-style: italic; color: #FFE9D6; }
+.nfw-rental__text { font-family: var(--nfw-sans); font-size: 15px; color: rgba(250,246,241,0.92); max-width: 440px; line-height: 1.7; margin: 0; }
+.nfw-rental__btn { background: #FAF6F1; color: var(--nfw-mocha); border: none; border-radius: 10px; padding: 14px 28px; font-family: var(--nfw-sans); font-size: 14px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; transition: all 0.25s; }
+.nfw-rental__btn:hover { background: #fff; color: var(--nfw-mocha-dark); }
+
+/* ===== Testimonials ===== */
+.nfw-tests { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+.nfw-test { background: var(--nfw-card); border: 1px solid var(--nfw-border); border-radius: 16px; padding: 28px; }
+.nfw-test__stars { color: var(--nfw-mocha); font-size: 14px; letter-spacing: 2px; }
+.nfw-test__text { font-family: var(--nfw-serif); font-size: 16px; color: var(--nfw-text); line-height: 1.6; margin: 14px 0 22px; font-style: italic; }
+.nfw-test__who { display: flex; align-items: center; gap: 12px; }
+.nfw-test__avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(150,66,26,0.25); }
+.nfw-test__name { font-family: var(--nfw-sans); font-size: 14px; font-weight: 600; color: var(--nfw-text); }
+.nfw-test__loc { font-family: var(--nfw-sans); font-size: 11px; color: var(--nfw-muted); }
+
+/* ===== Newsletter ===== */
+.nfw-news { max-width: 600px; margin: 0 auto; text-align: center; }
+.nfw-news__icon { font-size: 40px; color: var(--nfw-mocha); margin-bottom: 18px; }
+.nfw-news__title { font-family: var(--nfw-serif); font-size: 34px; font-weight: 700; color: var(--nfw-text); margin: 0 0 12px; }
+.nfw-news__sub { font-family: var(--nfw-sans); font-size: 15px; color: var(--nfw-muted); margin-bottom: 28px; }
+.nfw-news__form { display: flex; flex-wrap: wrap; gap: 12px; max-width: 440px; margin: 0 auto; }
+.nfw-news__input { flex: 1; min-width: 220px; background: var(--nfw-card); border: 1px solid var(--nfw-border); border-radius: 10px; padding: 14px 18px; color: var(--nfw-text); font-family: var(--nfw-sans); font-size: 14px; outline: none; }
+.nfw-news__input:focus { border-color: var(--nfw-mocha); }
+.nfw-news__btn { background: var(--nfw-mocha); color: #FAF6F1; border: none; border-radius: 10px; padding: 14px 22px; font-family: var(--nfw-sans); font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; transition: background 0.25s; }
+.nfw-news__btn:hover { background: var(--nfw-mocha-dark); }
+.nfw-news__note { font-family: var(--nfw-sans); font-size: 11px; color: var(--nfw-muted); margin-top: 12px; }
+
+/* ===== Video section ===== */
+.nfw-video { background: var(--nfw-text); padding: 56px 24px; }
+.nfw-sechead--dark .nfw-sechead__kicker { color: #EED2AE; }
+.nfw-sechead--dark .nfw-sechead__title { color: #fff; }
+.nfw-sechead--dark .nfw-sechead__sub { color: #DCC7AC; }
+.nfw-video__frame { position: relative; max-width: 840px; margin: 0 auto; aspect-ratio: 16/9; background: #201209; border: 1px solid #4A3223; border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.nfw-video__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.nfw-video__play { position: relative; z-index: 2; width: 78px; height: 78px; border-radius: 50%; border: 0; background: var(--nfw-mocha); color: #fff; font-size: 26px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 12px rgba(150,66,26,0.28); transition: transform 0.2s; }
+.nfw-video__frame:hover .nfw-video__play { transform: scale(1.07); }
+.nfw-video__iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .nfw-hero { min-height: 70vh; padding: 56px 16px; }
+  .nfw-hero__subtitle { font-size: 15px; }
+  .nfw-btn { padding: 14px 24px; font-size: 14px; }
+  .nfw-sechead__title { font-size: 28px; }
+  .nfw-cats { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .nfw-cat { height: 170px; }
+  .nfw-rental__inner { padding: 28px 20px; }
+  .nfw-rental__title { font-size: 27px; }
+  .nfw-news__title { font-size: 26px; }
+}
+@media (max-width: 480px) {
+  .nfw-cats { grid-template-columns: 1fr; }
+}
+
+/* Client asked to remove the customer photos from the reviews section.
+   Hidden rather than deleted from each item, so they can be switched back
+   on by removing this rule. */
+.nfw-test__avatar { display: none !important; }
