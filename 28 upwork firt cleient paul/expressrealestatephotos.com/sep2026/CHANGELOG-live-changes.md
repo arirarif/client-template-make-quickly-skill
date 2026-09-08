@@ -242,9 +242,38 @@ the owner to authorise an account. Local backups die with the server they sit on
 better than nothing and not yet good enough. **Connecting remote storage is a five-minute job for
 whoever holds the Google Drive or Dropbox login.**
 
+### 11. Express reaches zero images without alt text
+
+The last three — `DSC05838`, `DSC05903`, `Image-29` — were the ones I had refused to guess at,
+because the browser extension would not open image URLs on this domain. On a later attempt the
+permission allowed it, so I opened all three and described what they show:
+
+```
+DSC05838  -> "Living area of a listed home with a lanai view, opening through to a bedroom"
+DSC05903  -> "Guest bedroom with twin beds and an en-suite bathroom"
+Image-29  -> "Open-plan living room with a vaulted beamed ceiling and wet bar"
+```
+
+Twelve writes across every size and format variant in the library (`.webp`, `.jpg`,
+`-768x512-1`, `-768x512-2`, `-scaled-1`), so whichever variant a page renders is covered.
+
+*Verified sitewide on plain URLs after clearing Elementor and WP Super Cache:*
+
+```
+EXPRESS   18 pages   163 images   0 missing alt
+```
+
+**Worth noting where they were:** all three appeared only on `/category/uncategorized/`. Three
+real blog posts are filed under **Uncategorized** — "Matterport vs Zillow 3D Tours", "How to
+Prepare Your Property for a Real Estate Photoshoot" and "Why Professional Real Estate Photography
+Sells Homes Faster". Giving them a proper category would be a small content-hygiene win; BNB had
+the same problem and it was cleaned up in August.
+
 ---
 
 ## Still to do on this site
+
+- [ ] Three blog posts sit in **Uncategorized** — give them a real category
 
 - [x] ~~Decide between UpdraftPlus and WPvivid~~ — WPvivid is inactive; UpdraftPlus scheduled
 - [ ] Connect remote backup storage (needs the owner's Drive/Dropbox login)
