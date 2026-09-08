@@ -352,6 +352,20 @@ added later, rather than editing terms one by one.
 ```
 *Undo:* clear the field.
 
+**8. `/thank-you/` page created** (page 3337, "You're on the list").
+The redirect target for the newsletter signup, and what makes a subscription measurable in GA4
+rather than invisible. Written now so the Brevo setup has nothing left to wait on.
+
+*Verified:* returns **200**. Gate G4 passes across all three sites.
+
+**Not achieved — noindex.** The page should be `noindex` (a thank-you page in search results is
+noise, and it can leak as a landing page). Yoast's "Allow search engines to show this content"
+dropdown **would not persist** through two attempts — it reverted to "Yes" on reload, and the page
+is still in `page-sitemap.xml`. This is the same class of failure as the WPCode saves: a
+React-controlled input that does not accept a programmatic change. **Someone should set it by hand:
+Pages → You're on the list → Yoast → Advanced → "Allow search engines…" → No.** Consequence of
+leaving it: cosmetic, not harmful.
+
 **Checked and already fine — no action needed:**
 - Date archive `/2026/05/` is already `noindex, follow`
 - All 15 indexed pages: exactly one H1 each, titles 41–56 characters, meta descriptions 123–140

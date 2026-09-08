@@ -29,10 +29,10 @@ account, Paul's Brevo account, or Paul's inbox, and no public HTTP request can o
   EXPECT: NOJSEMBED VERIFICATION PASSED
   EVIDENCE: exit=0; shell=C:\WINDOWS\system32\cmd.exe; cwd=C:\Users\arira\Desktop\All-Fiverr-project-code\00001. client-template-make-quickly-skill-main\28 upwork firt cleient paul; path=d19c2f893715/38 entries; output=dvpfl: no third-party newsletter JS | NOJSEMBED VERIFICATION PASSED
 
-- [ ] G4: each site has a /thank-you/ page returning 200 as the signup conversion target
+- [x] G4: each site has a /thank-you/ page returning 200 as the signup conversion target
   CHECK: node scripts/check-300usd.mjs thankyou
   EXPECT: THANKYOU VERIFICATION PASSED
-  EVIDENCE: pending
+  EVIDENCE: exit=0; shell=C:\WINDOWS\system32\cmd.exe; cwd=C:\Users\arira\Desktop\All-Fiverr-project-code\00001. client-template-make-quickly-skill-main\28 upwork firt cleient paul; path=d19c2f893715/38 entries; output=dvpfl: /thank-you/ returns 200 | THANKYOU VERIFICATION PASSED
 
 - [ ] G5: PSI mobile after the signup deploy is not below the August baseline (Express 93, BNB 94)
   EVIDENCE: pending

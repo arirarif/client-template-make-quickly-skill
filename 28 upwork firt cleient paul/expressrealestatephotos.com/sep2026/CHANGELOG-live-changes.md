@@ -105,6 +105,16 @@ The WPvivid one was the reason not to wait: its changelog names two fixed vulner
 **express 16/16, bnb 15/15, dvpfl 27/27** URLs returning 200.
 *Undo:* UpdraftPlus → Existing backups → the Sep 08 18:34 set → Restore (Plugins).
 
+### 6. `/thank-you/` page created (page 2671)
+
+The newsletter signup's redirect target, so a subscription registers as a conversion in GA4
+instead of vanishing. Copy points at the booking app and the phone number, since agents arriving
+here are already warm.
+
+*Verified:* returns **200**.
+*Same caveat as BNB:* the page is not `noindex` — Yoast's dropdown would not persist through
+automation. Worth setting by hand, but harmless as is.
+
 ---
 
 ## Still to do on this site

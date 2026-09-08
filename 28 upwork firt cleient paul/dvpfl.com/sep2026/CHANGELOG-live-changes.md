@@ -78,6 +78,14 @@ lazy-load attributes, not the old LOADING screen), exactly one H1, footer reads
 **"© 2026 Digital Video Productions LLC"**, the floating call button is intact, and the rebuilt
 portfolio slider still renders. Page-regression gate: **27/27 URLs returning 200**.
 
+### 4. `/thank-you/` page created (page 2681)
+
+The newsletter signup's redirect target. This site uses the block editor rather than the classic
+one, so the flow differed from the other two — worth knowing next time.
+
+*Verified:* returns **200**.
+*Same caveat:* not `noindex`; Yoast's dropdown would not persist through automation.
+
 ---
 
 ## Still to do on this site
