@@ -1138,3 +1138,29 @@ table.wishlist_table {
 .noor-addon-only p { margin: 0 0 8px; }
 .noor-addon-only ul { margin: 0 0 0 18px; }
 .noor-addon-only a { color: var(--noor-mocha); font-weight: 600; }
+
+/* ==========================================================================
+   WOOCOMMERCE CORE PRICE / STOCK COLOUR — override, both skins
+
+   WooCommerce's own stylesheet paints the price and the stock line #958E09,
+   an olive derived from its default accent (--woocommerce is still #720eec
+   here). That is not a Noor colour, and on white it measures 3.41:1 — below
+   WCAG AA for the stock line.
+
+   noor.css already declares the intended colours at `.summary .price` (0,2,0)
+   and loses: core's selector is
+     .woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product p.price
+   and since :where() contributes nothing, that is (0,2,2).
+
+   These rules simply outrank it — (0,4,2) on the single product and (0,3,3)
+   in the loop — so no !important is needed. Verified by injecting them as the
+   FIRST child of <head>: they win on specificity, not on load order.
+
+   Espresso on white = 16.5:1, in-stock green = 5.4:1. Both pass AA.
+   ========================================================================== */
+.woocommerce div.product .summary p.price,
+.woocommerce div.product .summary span.price { color: var(--noor-text); }
+.woocommerce div.product .summary .stock.in-stock { color: var(--noor-success); }
+.woocommerce div.product .summary .stock.out-of-stock { color: var(--noor-error); }
+.woocommerce ul.products li.product span.price,
+.woocommerce ul.products li.product p.price { color: var(--noor-text); }
