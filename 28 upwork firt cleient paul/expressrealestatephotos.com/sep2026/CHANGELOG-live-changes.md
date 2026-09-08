@@ -61,12 +61,65 @@ footer) with no alt text. Set to "Express Real Estate Photos logo".
 *Gotcha, same as BNB:* saving the attachment was not enough — **Elementor → Tools → Clear Files
 & Data** was required before the new alt appeared in the markup.
 
+### 4. UpdraftPlus installed and a full backup taken
+
+Same reasoning as BNB: eleven plugin updates were pending and nothing was backing the site up.
+Installed from the **official WordPress.org directory**, took a full database + files backup and
+flagged it **"only allow this backup to be deleted manually"** so retention cannot purge the
+pre-update copy.
+
+*Verified:* "The backup succeeded and is now complete (Sep 08 18:35:21)", **693.2 MB**.
+
+**Caveat worth recording:** this site already had **WPvivid Backup Plugin** installed, which I did
+not know before installing UpdraftPlus. Two backup plugins is redundancy the site does not need.
+No UpdraftPlus backups existed and nothing was scheduled, so the safety copy was still necessary —
+but somebody should decide which of the two stays, and the other should go. I did not remove
+either.
+
+### 5. Nine plugin updates applied, two held
+
+| Plugin | Before | After |
+|---|---|---|
+| **WPvivid Backup** | 0.9.132 | **0.9.134** — *"Fixed two vulnerabilities in the plugin code"* |
+| Rank Math SEO | 1.0.276 | 1.0.278 |
+| Elementor | 4.2.3 | 4.2.4 |
+| Fluent Forms | 6.2.12 | 6.2.13 |
+| WP Super Cache | 3.1.1 | 3.1.3 |
+| WPForms Lite | 2.0.0.5 | 2.0.1.1 |
+| Click to Chat | 4.43 | 4.44 |
+| Tidio Chat | 8.0.0 | 8.0.1 |
+| WordPress Importer | 0.9.5 | 0.9.6 |
+
+The WPvivid one was the reason not to wait: its changelog names two fixed vulnerabilities.
+
+**Held deliberately:**
+- **All-in-One WP Migration 6.77 → 7.110** — a 30+ release jump, same call as BNB.
+- **LiteSpeed Cache 7.8.1 → 7.9.1** — **this plugin should be removed, not updated.** The August
+  audit established that Express is not on a LiteSpeed server, so it does nothing, and running it
+  alongside WP Super Cache is exactly the two-cache-plugin conflict that breaks sites. Updating it
+  would entrench something that should leave. Flagged for removal rather than acted on, because
+  deactivating a cache plugin on a live site deserves its own moment.
+
+*Verified after:* the site went into maintenance mode for roughly a minute, then returned **HTTP
+200**, no PHP fatals, new homepage title intact. Regression gate across all three sites passed:
+**express 16/16, bnb 15/15, dvpfl 27/27** URLs returning 200.
+*Undo:* UpdraftPlus → Existing backups → the Sep 08 18:34 set → Restore (Plugins).
+
+---
+
+## Still to do on this site
+
+- [ ] **Decide between UpdraftPlus and WPvivid** — remove one, schedule the other with off-server storage
+- [ ] **Remove LiteSpeed Cache** — dead weight on a non-LiteSpeed server, and a conflict risk beside WP Super Cache
+- [ ] Remove WPForms Lite once confirmed no form uses it (Fluent Forms is the real one)
+- [ ] Two chat plugins are installed (Click to Chat + Tidio) — confirm both are wanted
+- [ ] Signup form + `/thank-you/` page, once the Brevo account exists
+- [ ] Google Business Profile link + `sameAs` in schema, once the profile exists
+
 ---
 
 ## Noted, not actioned
 
-- **12 plugin updates pending.** Not touched: there is no backup on this site yet. Install
-  UpdraftPlus and take one before updating, exactly as was done on BNB.
 - **WP Super Cache warning in the dashboard:** "Your server is configured to show files and
   directories, which may expose sensitive data such as login cookies to attackers in the cache
   directories." The notice says it has been mitigated with index.html files. Worth confirming.
