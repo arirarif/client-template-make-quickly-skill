@@ -3,16 +3,28 @@
 > Réponse à ses messages du 03/09 et 05/09.
 > **C'est vous qui envoyez ce message, pas Claude.**
 >
-> ✅ Prêt à envoyer — le site clair est en ligne pour tout le monde (v3.21.0)
-> et le panier de test est vidé. Le lien ci-dessous montre bien la version claire.
+> ✅ Prêt à envoyer — le site clair est en ligne pour tout le monde (v3.21.0),
+> les options de location sont en place, et le panier de test est vidé.
+>
+> ⚠️ **À vérifier avant d'envoyer :** l'ouverture répond à ses douas
+> (شفاها الله / حفظكم الله) envoyées après l'annonce de l'hospitalisation.
+> **Cela suppose que c'est NOUS qui avons annoncé cette nouvelle, pas lui**
+> — voir `CLIENT-MESSAGES-2026-09.md` §4. Si c'était sa mère à lui, il faut
+> réécrire complètement les deux premiers paragraphes.
+>
+> Il a dit « no problem take your time » : aucune urgence, ne pas se précipiter.
 >
 > Rappel de ton : salutation islamique, français, numéroté, réponses en un mot.
 
 ---
 
-Assalamu alaykum Sulayman,
+Assalamu alaykum wa rahmatullah Sulayman,
 
-Baraka Allahu fik pour vos retours, tout est clair.
+Barak Allahu fik pour vos douas et pour votre patience — ça m'a vraiment touché.
+Amine à votre invocation, et qu'Allah vous préserve vous et les vôtres.
+
+Al hamdulillah, j'ai pu reprendre le travail, et j'ai de bonnes nouvelles pour
+vous.
 
 ## Point 0 — le site est maintenant clair
 
