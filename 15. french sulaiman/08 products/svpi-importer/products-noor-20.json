@@ -1,0 +1,921 @@
+{
+  "source": "Noor Festivities — catalogue démo : 20 produits FR (7 catégories, variables + simples + 2 locations). Images = photos libres (Unsplash/Pexels) embarquées dans le plugin (demo-images/). À remplacer par les photos client avant mise en ligne.",
+  "generated": "2026-08-02",
+  "products": [
+    {
+      "name": "Kit Déco Eid Prestige",
+      "sku": "NOOR-EID-KIT",
+      "type": "variable",
+      "short_description": "Kit complet de décoration Eid premium : lanterne croissant dorée, guirlande lumineuse, bannière « Eid Mubarak » calligraphiée, ballons nacrés et set de table assorti. Trois tailles selon votre intérieur.",
+      "description_html": "<p>Transformez votre maison pour l'Eid avec notre kit signature. Chaque élément est coordonné dans les tons chauds de notre palette — mocha, corail épicé et beige crème — pour une décoration élégante et chaleureuse, prête en moins d'une heure.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Kit complet coordonné — aucun achat supplémentaire nécessaire<br />✅ Lanterne croissant premium à LED incluse<br />✅ Bannière calligraphiée à la main par une artiste<br />✅ Ballons nacrés réutilisables<br />✅ Livraison rapide à La Réunion, Mayotte et en métropole</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Occasion</th><td>Eid al-Fitr / Eid al-Adha</td></tr><tr><th>Contenu</th><td>Lanterne, guirlande 5 m, bannière, 12 ballons, set de table</td></tr><tr><th>Tailles</th><td>Standard / Familial / XL</td></tr><tr><th>Matériaux</th><td>Métal, papier premium, LED basse consommation</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Salon et salle à manger</li><li>Fête familiale de l'Eid</li><li>Décor photo pour les souvenirs</li><li>Cadeau de dernière minute</li></ul><h3>Bon à savoir</h3><p>Le kit Standard convient à une pièce, le Familial à un séjour complet, le XL aux grandes réceptions.</p>",
+      "categories": [
+        {
+          "name": "Eid Décor"
+        }
+      ],
+      "tags": [
+        "eid",
+        "décoration",
+        "kit",
+        "ramadan"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-eid-kit-a.jpg",
+        "demo-images/noor-eid-kit-b.jpg",
+        "demo-images/noor-lantern-a.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Taille",
+          "slug": "taille",
+          "type": "text",
+          "options": [
+            {
+              "value": "Standard"
+            },
+            {
+              "value": "Familial"
+            },
+            {
+              "value": "XL"
+            }
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NOOR-EID-KIT-S",
+          "regular_price": "119.00",
+          "attributes": {
+            "Taille": "Standard"
+          },
+          "image_url": "demo-images/noor-eid-kit-a.jpg",
+          "stock_quantity": 32,
+          "virtual": false,
+          "downloadable": false,
+          "sale_price": "89.00"
+        },
+        {
+          "sku": "NOOR-EID-KIT-F",
+          "regular_price": "129.00",
+          "attributes": {
+            "Taille": "Familial"
+          },
+          "image_url": "demo-images/noor-eid-kit-b.jpg",
+          "stock_quantity": 18,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-EID-KIT-XL",
+          "regular_price": "159.00",
+          "attributes": {
+            "Taille": "XL"
+          },
+          "image_url": "demo-images/noor-lantern-a.jpg",
+          "stock_quantity": 9,
+          "virtual": false,
+          "downloadable": false
+        }
+      ]
+    },
+    {
+      "name": "Lanterne Croissant XL",
+      "sku": "NOOR-EID-LANT",
+      "type": "variable",
+      "short_description": "Grande lanterne croissant de lune en métal ajouré, éclairage LED chaud. La pièce maîtresse de votre décoration d'Eid, disponible en finition dorée ou argentée.",
+      "description_html": "<p>Notre lanterne croissant XL diffuse une lumière ambrée à travers son motif ajouré inspiré des moucharabiehs. Posée sur une console ou suspendue, elle illumine instantanément votre intérieur.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Hauteur 45 cm — véritable pièce maîtresse<br />✅ LED blanc chaud incluse (piles fournies)<br />✅ Métal ajouré, finition artisanale<br />✅ Utilisation intérieure et extérieure abritée</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Hauteur</th><td>45 cm</td></tr><tr><th>Finitions</th><td>Dorée / Argentée</td></tr><tr><th>Éclairage</th><td>LED blanc chaud</td></tr><tr><th>Alimentation</th><td>3 piles AA incluses</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Entrée et salon</li><li>Table de fête</li><li>Coin photo Eid</li><li>Cadeau déco</li></ul>",
+      "categories": [
+        {
+          "name": "Eid Décor"
+        }
+      ],
+      "tags": [
+        "eid",
+        "lanterne",
+        "croissant",
+        "lumière"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-lantern-a.jpg",
+        "demo-images/noor-lantern-b.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Couleur",
+          "slug": "couleur",
+          "type": "text",
+          "options": [
+            {
+              "value": "Dorée"
+            },
+            {
+              "value": "Argentée"
+            }
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NOOR-EID-LANT-OR",
+          "regular_price": "45.00",
+          "attributes": {
+            "Couleur": "Dorée"
+          },
+          "image_url": "demo-images/noor-lantern-a.jpg",
+          "stock_quantity": 41,
+          "virtual": false,
+          "downloadable": false,
+          "sale_price": "32.00"
+        },
+        {
+          "sku": "NOOR-EID-LANT-AR",
+          "regular_price": "45.00",
+          "attributes": {
+            "Couleur": "Argentée"
+          },
+          "image_url": "demo-images/noor-lantern-b.jpg",
+          "stock_quantity": 27,
+          "virtual": false,
+          "downloadable": false,
+          "sale_price": "32.00"
+        }
+      ]
+    },
+    {
+      "name": "Bannière « Eid Mubarak » Calligraphiée",
+      "sku": "NOOR-EID-BAN",
+      "type": "simple",
+      "regular_price": "19.90",
+      "stock_quantity": 64,
+      "short_description": "Bannière en papier premium avec calligraphie « Eid Mubarak » dorée sur fond ivoire. 2 mètres, prête à suspendre.",
+      "description_html": "<p>Une calligraphie élégante réalisée par une artiste, imprimée sur papier épais avec dorure à chaud. Le détail qui signe une décoration d'Eid réussie.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Calligraphie originale, dorure à chaud<br />✅ Papier 250 g/m² — réutilisable chaque année<br />✅ Cordon doré de 2 m inclus<br />✅ Se suspend en 2 minutes</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Longueur</th><td>2 m</td></tr><tr><th>Papier</th><td>250 g/m²</td></tr><tr><th>Finition</th><td>Dorure à chaud</td></tr><tr><th>Réutilisable</th><td>Oui</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Salon, cheminée, buffet</li><li>Fond de photo</li><li>Fête à la mosquée ou à l'école</li></ul>",
+      "categories": [
+        {
+          "name": "Eid Décor"
+        }
+      ],
+      "tags": [
+        "eid",
+        "bannière",
+        "calligraphie"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-eid-kit-b.jpg",
+        "demo-images/noor-garland-b.jpg"
+      ]
+    },
+    {
+      "name": "Set de 12 Ballons Nacrés Eid",
+      "sku": "NOOR-EID-BAL",
+      "type": "simple",
+      "regular_price": "14.90",
+      "stock_quantity": 120,
+      "short_description": "12 ballons nacrés dans notre palette signature — mocha, corail, beige et ivoire — avec ruban doré et pastilles de fixation.",
+      "description_html": "<p>Des ballons haut de gamme au fini nacré, assortis à toute notre collection Eid. Le complément parfait d'une arche ou d'un coin photo.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Fini nacré premium<br />✅ Palette coordonnée à la collection<br />✅ Ruban doré 10 m inclus<br />✅ Latex biodégradable</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Quantité</th><td>12 ballons</td></tr><tr><th>Diamètre</th><td>30 cm</td></tr><tr><th>Couleurs</th><td>Mocha, corail, beige, ivoire</td></tr><tr><th>Matériau</th><td>Latex biodégradable</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Arches et colonnes</li><li>Coin photo</li><li>Table d'anniversaire ou d'Eid</li></ul>",
+      "categories": [
+        {
+          "name": "Eid Décor"
+        }
+      ],
+      "tags": [
+        "eid",
+        "ballons",
+        "fête"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-balloon-b.jpg",
+        "demo-images/noor-balloon-a.jpg"
+      ]
+    },
+    {
+      "name": "Guirlande Étoiles Ramadan",
+      "sku": "NOOR-LUM-GUIR",
+      "type": "variable",
+      "short_description": "Guirlande lumineuse à étoiles et croissants dorés, lumière blanc chaud. Trois longueurs pour habiller fenêtres, murs et balcons.",
+      "description_html": "<p>Notre best-seller absolu : une guirlande LED aux étoiles et croissants finement découpés, qui projette des motifs lumineux chaleureux dans toute la pièce.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Étoiles et croissants métal doré<br />✅ LED blanc chaud basse consommation<br />✅ Minuterie 6 h intégrée<br />✅ Intérieur et extérieur abrité</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Longueurs</th><td>3 m / 5 m / 10 m</td></tr><tr><th>Éclairage</th><td>LED blanc chaud</td></tr><tr><th>Alimentation</th><td>USB + adaptateur secteur</td></tr><tr><th>Minuterie</th><td>6 h ON / 18 h OFF</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Fenêtres et miroirs</li><li>Tête de lit</li><li>Balcon et terrasse</li><li>Chambre des enfants pour le Ramadan</li></ul>",
+      "categories": [
+        {
+          "name": "Luminaires"
+        }
+      ],
+      "tags": [
+        "ramadan",
+        "guirlande",
+        "lumière",
+        "étoiles"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-garland-a.jpg",
+        "demo-images/noor-garland-b.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Longueur",
+          "slug": "longueur",
+          "type": "text",
+          "options": [
+            {
+              "value": "3 m"
+            },
+            {
+              "value": "5 m"
+            },
+            {
+              "value": "10 m"
+            }
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NOOR-LUM-GUIR-3",
+          "regular_price": "24.00",
+          "attributes": {
+            "Longueur": "3 m"
+          },
+          "image_url": "demo-images/noor-garland-a.jpg",
+          "stock_quantity": 55,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-LUM-GUIR-5",
+          "regular_price": "39.00",
+          "attributes": {
+            "Longueur": "5 m"
+          },
+          "image_url": "demo-images/noor-garland-b.jpg",
+          "stock_quantity": 38,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-LUM-GUIR-10",
+          "regular_price": "59.00",
+          "attributes": {
+            "Longueur": "10 m"
+          },
+          "image_url": "demo-images/noor-garland-a.jpg",
+          "stock_quantity": 14,
+          "virtual": false,
+          "downloadable": false
+        }
+      ]
+    },
+    {
+      "name": "Lanterne Marocaine en Métal",
+      "sku": "NOOR-LUM-LANT",
+      "type": "variable",
+      "short_description": "Lanterne artisanale en métal ajouré, verre teinté ambré. Trois tailles à combiner pour un coin lumière digne des riads.",
+      "description_html": "<p>Fabriquée à la main, cette lanterne au motif géométrique traditionnel accueille une bougie ou une LED. En trio, elle compose un coin lumière spectaculaire.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Fabrication artisanale<br />✅ Verre ambré, métal noir mat<br />✅ Pour bougie ou LED<br />✅ Se combine en trio décoratif</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Tailles</th><td>S 20 cm / M 32 cm / L 48 cm</td></tr><tr><th>Matériaux</th><td>Métal, verre teinté</td></tr><tr><th>Usage</th><td>Bougie chauffe-plat ou LED</td></tr><tr><th>Style</th><td>Marocain traditionnel</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Salon oriental</li><li>Entrée et couloir</li><li>Terrasse d'été</li><li>Décor de mariage</li></ul>",
+      "categories": [
+        {
+          "name": "Luminaires"
+        }
+      ],
+      "tags": [
+        "lanterne",
+        "marocain",
+        "artisanat"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-lantern-b.jpg",
+        "demo-images/noor-lantern-a.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Taille",
+          "slug": "taille",
+          "type": "text",
+          "options": [
+            {
+              "value": "S"
+            },
+            {
+              "value": "M"
+            },
+            {
+              "value": "L"
+            }
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NOOR-LUM-LANT-S",
+          "regular_price": "29.00",
+          "attributes": {
+            "Taille": "S"
+          },
+          "image_url": "demo-images/noor-lantern-b.jpg",
+          "stock_quantity": 30,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-LUM-LANT-M",
+          "regular_price": "45.00",
+          "attributes": {
+            "Taille": "M"
+          },
+          "image_url": "demo-images/noor-lantern-b.jpg",
+          "stock_quantity": 22,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-LUM-LANT-L",
+          "regular_price": "69.00",
+          "attributes": {
+            "Taille": "L"
+          },
+          "image_url": "demo-images/noor-lantern-a.jpg",
+          "stock_quantity": 11,
+          "virtual": false,
+          "downloadable": false
+        }
+      ]
+    },
+    {
+      "name": "Bougies LED Ambrées — Lot de 6",
+      "sku": "NOOR-LUM-BOUG",
+      "type": "simple",
+      "regular_price": "21.90",
+      "stock_quantity": 75,
+      "short_description": "6 bougies LED à flamme vacillante ultra réaliste, lumière ambrée. Sans risque pour les enfants, télécommande incluse.",
+      "description_html": "<p>L'ambiance des bougies sans la flamme : nos LED ambrées imitent le vacillement naturel et se pilotent à la télécommande. Parfaites au centre de table comme au sol le long d'une allée de cérémonie.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Flamme vacillante ultra réaliste<br />✅ Télécommande + minuterie<br />✅ Cire véritable ivoire<br />✅ Zéro risque — enfants et textiles</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Quantité</th><td>6 bougies (3 tailles)</td></tr><tr><th>Matériau</th><td>Cire véritable</td></tr><tr><th>Alimentation</th><td>Piles AAA</td></tr><tr><th>Télécommande</th><td>Incluse — 10 m de portée</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Centres de table</li><li>Allées de cérémonie</li><li>Chambres d'enfants</li><li>Décor du Ramadan</li></ul>",
+      "categories": [
+        {
+          "name": "Luminaires"
+        }
+      ],
+      "tags": [
+        "bougies",
+        "led",
+        "ambiance"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-candle-b.jpg",
+        "demo-images/noor-candle-a.jpg"
+      ]
+    },
+    {
+      "name": "Coffret Nikkah Premium",
+      "sku": "NOOR-NIK-COF",
+      "type": "variable",
+      "short_description": "Le coffret cérémonie complet : coussin d'alliances brodé, plateau doré, voile de table, bougies et calligraphie personnalisée. Édition Classique ou Deluxe.",
+      "description_html": "<p>Conçu avec des mariées de La Réunion, ce coffret réunit tout le nécessaire pour une table de Nikkah raffinée. L'édition Deluxe ajoute l'arche de table florale et la calligraphie des prénoms.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Coussin d'alliances brodé main<br />✅ Plateau et porte-bougies dorés<br />✅ Édition Deluxe : arche florale + calligraphie personnalisée<br />✅ Présenté en coffret cadeau</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Éditions</th><td>Classique / Deluxe</td></tr><tr><th>Contenu Classique</th><td>Coussin, plateau, voile, 2 bougies</td></tr><tr><th>Contenu Deluxe</th><td>+ arche de table, calligraphie prénoms</td></tr><tr><th>Délai personnalisation</th><td>5 jours ouvrés</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Cérémonie de Nikkah</li><li>Fiançailles</li><li>Cadeau aux mariés</li><li>Séance photo de couple</li></ul>",
+      "categories": [
+        {
+          "name": "Nikkah"
+        }
+      ],
+      "tags": [
+        "nikkah",
+        "mariage",
+        "coffret",
+        "cérémonie"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-nikkah-a.jpg",
+        "demo-images/noor-nikkah-b.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Édition",
+          "slug": "edition",
+          "type": "text",
+          "options": [
+            {
+              "value": "Classique"
+            },
+            {
+              "value": "Deluxe"
+            }
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NOOR-NIK-COF-CL",
+          "regular_price": "149.00",
+          "attributes": {
+            "Édition": "Classique"
+          },
+          "image_url": "demo-images/noor-nikkah-a.jpg",
+          "stock_quantity": 15,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-NIK-COF-DX",
+          "regular_price": "219.00",
+          "attributes": {
+            "Édition": "Deluxe"
+          },
+          "image_url": "demo-images/noor-nikkah-b.jpg",
+          "stock_quantity": 8,
+          "virtual": false,
+          "downloadable": false
+        }
+      ]
+    },
+    {
+      "name": "Décor de Table Nikkah — Ensemble Complet",
+      "sku": "NOOR-NIK-TAB",
+      "type": "simple",
+      "regular_price": "89.00",
+      "stock_quantity": 12,
+      "short_description": "Ensemble coordonné pour la table d'honneur : chemin de table en gaze ivoire, bougeoirs dorés, vases à fleurs séchées et marque-places calligraphiés.",
+      "description_html": "<p>Une table d'honneur prête à photographier : notre ensemble coordonne textiles, dorures et fleurs séchées dans la palette Noor. Installation en 20 minutes.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Style coordonné signature Noor<br />✅ Gaze de coton ivoire 3 m<br />✅ 10 marque-places calligraphiés inclus<br />✅ Fleurs séchées naturelles</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Pour</th><td>Table d'honneur 8–10 personnes</td></tr><tr><th>Contenu</th><td>Chemin de table, 4 bougeoirs, 3 vases, fleurs, marque-places</td></tr><tr><th>Style</th><td>Bohème élégant</td></tr><tr><th>Réutilisable</th><td>Oui</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Nikkah à domicile</li><li>Réception en salle</li><li>Fiançailles</li><li>Anniversaire de mariage</li></ul>",
+      "categories": [
+        {
+          "name": "Nikkah"
+        }
+      ],
+      "tags": [
+        "nikkah",
+        "table",
+        "décor"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-nikkah-b.jpg",
+        "demo-images/noor-nikkah-c.jpg"
+      ]
+    },
+    {
+      "name": "Livre d'Or Nikkah Personnalisé",
+      "sku": "NOOR-NIK-LIV",
+      "type": "simple",
+      "regular_price": "39.90",
+      "stock_quantity": 26,
+      "short_description": "Livre d'or relié en lin ivoire, prénoms et date embossés à l'or. 120 pages en papier crème épais.",
+      "description_html": "<p>Un écrin pour les mots de vos proches : couverture en lin, embossage doré personnalisé et papier crème sans acide qui traverse les décennies.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Personnalisation prénoms + date incluse<br />✅ Couverture lin, embossage or<br />✅ 120 pages papier crème 140 g<br />✅ Fabriqué à la commande</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Format</th><td>21 × 21 cm</td></tr><tr><th>Pages</th><td>120 — papier sans acide</td></tr><tr><th>Personnalisation</th><td>Prénoms + date, embossage or</td></tr><tr><th>Délai</th><td>7 jours ouvrés</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Cérémonie de Nikkah</li><li>Réception de mariage</li><li>Souvenir de famille</li></ul>",
+      "categories": [
+        {
+          "name": "Nikkah"
+        }
+      ],
+      "tags": [
+        "nikkah",
+        "livre d'or",
+        "personnalisé"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-nikkah-c.jpg",
+        "demo-images/noor-nikkah-a.jpg"
+      ]
+    },
+    {
+      "name": "Kit Célébration Aqiqah",
+      "sku": "NOOR-AQI-KIT",
+      "type": "variable",
+      "short_description": "Kit complet pour célébrer la naissance : ballons, guirlande prénom, bannière « Bienvenue », cake toppers et décor de table. Trois thèmes de couleurs.",
+      "description_html": "<p>Célébrez l'Aqiqah de votre enfant avec un décor doux et raffiné. Chaque thème coordonne ballons, papeterie et textiles — il ne vous reste qu'à ajouter le gâteau.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Décor complet pour 20 invités<br />✅ Guirlande prénom personnalisable incluse<br />✅ 3 thèmes : Rose poudré, Bleu ciel, Ivoire doré<br />✅ Matériaux réutilisables</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Thèmes</th><td>Rose poudré / Bleu ciel / Ivoire doré</td></tr><tr><th>Contenu</th><td>24 ballons, guirlande prénom, bannière, 10 toppers, nappe</td></tr><tr><th>Pour</th><td>20 invités</td></tr><tr><th>Personnalisation</th><td>Prénom jusqu'à 12 lettres</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Aqiqah</li><li>Baby shower</li><li>Premier anniversaire</li><li>Annonce de naissance</li></ul>",
+      "categories": [
+        {
+          "name": "Aqiqah"
+        }
+      ],
+      "tags": [
+        "aqiqah",
+        "naissance",
+        "kit",
+        "bébé"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-aqiqah-a.jpg",
+        "demo-images/noor-aqiqah-c.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Thème",
+          "slug": "theme",
+          "type": "text",
+          "options": [
+            {
+              "value": "Rose poudré"
+            },
+            {
+              "value": "Bleu ciel"
+            },
+            {
+              "value": "Ivoire doré"
+            }
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NOOR-AQI-KIT-RO",
+          "regular_price": "69.00",
+          "attributes": {
+            "Thème": "Rose poudré"
+          },
+          "image_url": "demo-images/noor-aqiqah-a.jpg",
+          "stock_quantity": 17,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-AQI-KIT-BL",
+          "regular_price": "69.00",
+          "attributes": {
+            "Thème": "Bleu ciel"
+          },
+          "image_url": "demo-images/noor-aqiqah-c.jpg",
+          "stock_quantity": 19,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-AQI-KIT-IV",
+          "regular_price": "69.00",
+          "attributes": {
+            "Thème": "Ivoire doré"
+          },
+          "image_url": "demo-images/noor-aqiqah-a.jpg",
+          "stock_quantity": 13,
+          "virtual": false,
+          "downloadable": false
+        }
+      ]
+    },
+    {
+      "name": "Guirlande Prénom Personnalisée",
+      "sku": "NOOR-AQI-GUI",
+      "type": "simple",
+      "regular_price": "34.90",
+      "stock_quantity": 40,
+      "short_description": "Le prénom de votre enfant en lettres de bois peintes à la main, monté sur cordon de coton. Jusqu'à 12 lettres.",
+      "description_html": "<p>Chaque lettre est découpée dans du bois de hêtre puis peinte à la main dans la teinte de votre choix. Une pièce unique qui décorera la chambre bien après la fête.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Bois de hêtre certifié<br />✅ Peinture à la main, non toxique<br />✅ Jusqu'à 12 lettres<br />✅ 10 coloris disponibles</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Matériau</th><td>Hêtre massif</td></tr><tr><th>Hauteur lettres</th><td>8 cm</td></tr><tr><th>Longueur max</th><td>1,5 m</td></tr><tr><th>Délai</th><td>10 jours ouvrés</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Aqiqah et baby shower</li><li>Décoration de chambre</li><li>Cadeau de naissance</li></ul>",
+      "categories": [
+        {
+          "name": "Aqiqah"
+        }
+      ],
+      "tags": [
+        "aqiqah",
+        "prénom",
+        "personnalisé",
+        "bois"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-aqiqah-c.jpg",
+        "demo-images/noor-garland-b.jpg"
+      ]
+    },
+    {
+      "name": "Coffret Souvenirs de Naissance",
+      "sku": "NOOR-AQI-COF",
+      "type": "simple",
+      "regular_price": "49.90",
+      "stock_quantity": 21,
+      "short_description": "Coffret en bois gravé pour conserver les trésors de bébé : empreintes, bracelet de naissance, première mèche. Kit d'empreintes inclus.",
+      "description_html": "<p>Un coffret précieux gravé au prénom de l'enfant, pensé pour conserver les souvenirs des premiers jours — avec kit d'empreintes à l'encre sans contact.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Gravure du prénom incluse<br />✅ Kit empreintes encre sans contact<br />✅ 6 compartiments doublés de lin<br />✅ Bois de pin certifié FSC</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Dimensions</th><td>25 × 18 × 8 cm</td></tr><tr><th>Matériau</th><td>Pin FSC, intérieur lin</td></tr><tr><th>Gravure</th><td>Prénom + date</td></tr><tr><th>Kit inclus</th><td>Encre sans contact 2 cartes</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Cadeau d'Aqiqah</li><li>Baby shower</li><li>Souvenir de famille</li></ul>",
+      "categories": [
+        {
+          "name": "Aqiqah"
+        }
+      ],
+      "tags": [
+        "aqiqah",
+        "souvenirs",
+        "coffret",
+        "gravé"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-gift-b.jpg",
+        "demo-images/noor-aqiqah-a.jpg"
+      ]
+    },
+    {
+      "name": "Coffret Cadeau Umrah",
+      "sku": "NOOR-HAJ-COF",
+      "type": "variable",
+      "short_description": "Le cadeau idéal pour un départ en Umrah : tapis de voyage, chapelet, brumisateur d'eau de rose, carnet de duas et sac assorti. Deux formules.",
+      "description_html": "<p>Accompagnez un proche dans son voyage spirituel : notre coffret réunit les essentiels du pèlerin dans un sac élégant. La formule Complète ajoute le tapis premium et le carnet de duas relié.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Composé avec des pèlerins expérimentés<br />✅ Sac de voyage assorti inclus<br />✅ Formule Complète : tapis premium + carnet duas<br />✅ Emballage cadeau offert</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Formules</th><td>Essentiel / Complet</td></tr><tr><th>Contenu Essentiel</th><td>Chapelet, brumisateur, guide de poche, sac</td></tr><tr><th>Contenu Complet</th><td>+ tapis premium, carnet duas relié</td></tr><tr><th>Emballage cadeau</th><td>Offert</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Départ en Umrah ou Hajj</li><li>Cadeau de retraite spirituelle</li><li>Ramadan</li></ul>",
+      "categories": [
+        {
+          "name": "Hajj & Umrah"
+        }
+      ],
+      "tags": [
+        "umrah",
+        "hajj",
+        "coffret",
+        "cadeau"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-gift-b.jpg",
+        "demo-images/noor-hajj-a.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Formule",
+          "slug": "formule",
+          "type": "text",
+          "options": [
+            {
+              "value": "Essentiel"
+            },
+            {
+              "value": "Complet"
+            }
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NOOR-HAJ-COF-ES",
+          "regular_price": "54.00",
+          "attributes": {
+            "Formule": "Essentiel"
+          },
+          "image_url": "demo-images/noor-gift-b.jpg",
+          "stock_quantity": 24,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-HAJ-COF-CO",
+          "regular_price": "89.00",
+          "attributes": {
+            "Formule": "Complet"
+          },
+          "image_url": "demo-images/noor-hajj-a.jpg",
+          "stock_quantity": 12,
+          "virtual": false,
+          "downloadable": false
+        }
+      ]
+    },
+    {
+      "name": "Bougie Dorée du Hajj",
+      "sku": "NOOR-HAJ-BOU",
+      "type": "simple",
+      "regular_price": "24.00",
+      "stock_quantity": 58,
+      "short_description": "Bougie parfumée oud et ambre dans un verre doré gravé de la Kaaba. 45 heures de combustion.",
+      "description_html": "<p>Un parfum d'oud et d'ambre qui évoque les terres saintes, dans un contenant doré gravé — réutilisable en photophore une fois la bougie terminée.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Parfum oud & ambre naturel<br />✅ Verre doré gravé réutilisable<br />✅ 45 h de combustion<br />✅ Cire végétale, mèche coton</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Parfum</th><td>Oud & ambre</td></tr><tr><th>Combustion</th><td>45 heures</td></tr><tr><th>Cire</th><td>Végétale (soja)</td></tr><tr><th>Contenant</th><td>Verre doré gravé</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Cadeau de retour de Hajj</li><li>Ambiance du Ramadan</li><li>Décoration spirituelle</li></ul>",
+      "categories": [
+        {
+          "name": "Hajj & Umrah"
+        }
+      ],
+      "tags": [
+        "hajj",
+        "bougie",
+        "oud",
+        "cadeau"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-candle-a.jpg",
+        "demo-images/noor-candle-b.jpg"
+      ]
+    },
+    {
+      "name": "Tapis de Prière Premium Brodé",
+      "sku": "NOOR-HAJ-TAP",
+      "type": "variable",
+      "short_description": "Tapis de prière épais en velours brodé, mousse mémoire de forme 15 mm. Trois coloris élégants, housse de transport incluse.",
+      "description_html": "<p>Le confort d'une mousse à mémoire de forme sous un velours brodé de motifs géométriques. Un tapis pensé pour la prière quotidienne comme pour offrir.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Mousse mémoire de forme 15 mm<br />✅ Velours brodé haute densité<br />✅ Housse de transport assortie incluse<br />✅ Antidérapant</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Dimensions</th><td>110 × 70 cm</td></tr><tr><th>Épaisseur</th><td>15 mm mémoire de forme</td></tr><tr><th>Coloris</th><td>Warm Mocha / Vert émeraude / Bleu nuit</td></tr><tr><th>Entretien</th><td>Nettoyage à sec ou main</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Prière quotidienne</li><li>Cadeau de Ramadan</li><li>Personnes âgées / genoux sensibles</li></ul>",
+      "categories": [
+        {
+          "name": "Hajj & Umrah"
+        }
+      ],
+      "tags": [
+        "tapis",
+        "prière",
+        "brodé",
+        "confort"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-prayer-a.jpg",
+        "demo-images/noor-hajj-a.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Couleur",
+          "slug": "couleur",
+          "type": "text",
+          "options": [
+            {
+              "value": "Warm Mocha"
+            },
+            {
+              "value": "Vert émeraude"
+            },
+            {
+              "value": "Bleu nuit"
+            }
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NOOR-HAJ-TAP-MO",
+          "regular_price": "44.90",
+          "attributes": {
+            "Couleur": "Warm Mocha"
+          },
+          "image_url": "demo-images/noor-prayer-a.jpg",
+          "stock_quantity": 20,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-HAJ-TAP-VE",
+          "regular_price": "44.90",
+          "attributes": {
+            "Couleur": "Vert émeraude"
+          },
+          "image_url": "demo-images/noor-prayer-a.jpg",
+          "stock_quantity": 16,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-HAJ-TAP-BN",
+          "regular_price": "44.90",
+          "attributes": {
+            "Couleur": "Bleu nuit"
+          },
+          "image_url": "demo-images/noor-prayer-a.jpg",
+          "stock_quantity": 18,
+          "virtual": false,
+          "downloadable": false
+        }
+      ]
+    },
+    {
+      "name": "Kit Arche de Ballons DIY",
+      "sku": "NOOR-ARC-KIT",
+      "type": "variable",
+      "short_description": "Montez vous-même une arche professionnelle : 100 ballons calibrés, ruban de montage, pompe et tutoriel vidéo. Trois palettes signature.",
+      "description_html": "<p>Notre kit DIY contient exactement ce qu'utilisent nos décorateurs : ballons calibrés en 3 tailles, ruban de montage professionnel et pompe double action, plus un tutoriel vidéo pas à pas.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ 100 ballons calibrés (3 tailles)<br />✅ Ruban de montage pro + pompe incluse<br />✅ Tutoriel vidéo pas à pas<br />✅ Palette coordonnée à nos kits déco</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Contenu</th><td>100 ballons, ruban 5 m, pompe, colle points</td></tr><tr><th>Palettes</th><td>Terracotta / Pastel / Or & Ivoire</td></tr><tr><th>Longueur d'arche</th><td>Jusqu'à 3 m</td></tr><tr><th>Temps de montage</th><td>60–90 min</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Eid et anniversaires</li><li>Baby shower et Aqiqah</li><li>Fiançailles</li><li>Vitrine de boutique</li></ul>",
+      "categories": [
+        {
+          "name": "Arches de Ballons"
+        }
+      ],
+      "tags": [
+        "arche",
+        "ballons",
+        "diy",
+        "fête"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-balloon-a.jpg",
+        "demo-images/noor-balloon-b.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Palette",
+          "slug": "palette",
+          "type": "text",
+          "options": [
+            {
+              "value": "Terracotta"
+            },
+            {
+              "value": "Pastel"
+            },
+            {
+              "value": "Or & Ivoire"
+            }
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NOOR-ARC-KIT-TE",
+          "regular_price": "49.90",
+          "attributes": {
+            "Palette": "Terracotta"
+          },
+          "image_url": "demo-images/noor-balloon-a.jpg",
+          "stock_quantity": 25,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-ARC-KIT-PA",
+          "regular_price": "49.90",
+          "attributes": {
+            "Palette": "Pastel"
+          },
+          "image_url": "demo-images/noor-balloon-b.jpg",
+          "stock_quantity": 28,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NOOR-ARC-KIT-OR",
+          "regular_price": "54.90",
+          "attributes": {
+            "Palette": "Or & Ivoire"
+          },
+          "image_url": "demo-images/noor-balloon-a.jpg",
+          "stock_quantity": 15,
+          "virtual": false,
+          "downloadable": false
+        }
+      ]
+    },
+    {
+      "name": "Pompons & Rosaces en Papier — Set de 15",
+      "sku": "NOOR-ARC-POM",
+      "type": "simple",
+      "regular_price": "27.90",
+      "stock_quantity": 33,
+      "short_description": "15 pompons et rosaces en papier de soie, 3 tailles, palette ivoire-corail-mocha. L'accompagnement parfait d'une arche de ballons.",
+      "description_html": "<p>Suspendus au plafond ou en fond de scène, ces pompons en papier de soie ajoutent du volume et de la douceur à votre décor. Livrés à plat avec fil nylon invisible.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Papier de soie premium<br />✅ 3 tailles pour un rendu en volume<br />✅ Fil nylon invisible inclus<br />✅ Montage en 5 min par pièce</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Quantité</th><td>15 pièces (5 par taille)</td></tr><tr><th>Diamètres</th><td>20 / 30 / 40 cm</td></tr><tr><th>Couleurs</th><td>Ivoire, corail, mocha</td></tr><tr><th>Fixation</th><td>Fil nylon inclus</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Fond de scène photo</li><li>Plafond de salle</li><li>Complément d'arche</li><li>Chambre d'enfant</li></ul>",
+      "categories": [
+        {
+          "name": "Arches de Ballons"
+        }
+      ],
+      "tags": [
+        "pompons",
+        "papier",
+        "décor"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-pompom-a.jpg",
+        "demo-images/noor-balloon-b.jpg"
+      ]
+    },
+    {
+      "name": "Location — Arche de Ballons Sur Mesure",
+      "sku": "NOOR-LOC-ARC",
+      "type": "simple",
+      "regular_price": "35.00",
+      "stock_quantity": 3,
+      "short_description": "Arche de ballons professionnelle montée par notre équipe, couleurs personnalisées. 35 € / jour — exclusivité La Réunion, caution en espèces à la remise.",
+      "description_html": "<p>Notre décoratrice conçoit et installe une arche à vos couleurs, puis notre équipe la démonte après l'événement. Tarif à la journée, réservation en ligne, caution en espèces restituée au retour du matériel en bon état.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ Montage et démontage par notre équipe<br />✅ Couleurs 100 % personnalisées<br />✅ Structure jusqu'à 4 m<br />✅ Exclusivité La Réunion — livraison Saint-Denis et environs</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Tarif</th><td>35 € / jour</td></tr><tr><th>Durée</th><td>1 à 14 jours</td></tr><tr><th>Caution</th><td>150 € en espèces à la remise</td></tr><tr><th>Zone</th><td>La Réunion (Saint-Denis + 30 km)</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Mariages et Nikkah</li><li>Eid et anniversaires</li><li>Baby shower</li><li>Événements d'entreprise</li></ul><h3>Bon à savoir</h3><p>Produit de location : sélectionnez vos dates au moment de la réservation. La caution est demandée en espèces à la remise du matériel et restituée intégralement au retour.</p>",
+      "categories": [
+        {
+          "name": "Location"
+        }
+      ],
+      "tags": [
+        "location",
+        "arche",
+        "réunion",
+        "événement"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-balloon-a.jpg",
+        "demo-images/noor-pompom-a.jpg"
+      ]
+    },
+    {
+      "name": "Location — Sono Événement Compact",
+      "sku": "NOOR-LOC-SON",
+      "type": "simple",
+      "regular_price": "45.00",
+      "stock_quantity": 2,
+      "short_description": "Système son complet : 2 enceintes 400 W, console 4 pistes, 2 micros sans fil. 45 € / jour — exclusivité La Réunion, caution en espèces.",
+      "description_html": "<p>Un son clair pour vos discours, anasheed et playlists : système compact monté en 15 minutes, avec micros sans fil et Bluetooth. Notice simple incluse — aucun technicien nécessaire.</p><h3>Vos avantages en un coup d'œil</h3><p>✅ 2 × 400 W — jusqu'à 150 invités<br />✅ 2 micros sans fil inclus<br />✅ Bluetooth + entrée USB<br />✅ Installation en 15 min, notice incluse</p><h3>Détails du produit</h3><table class=\"svpi-specs\"><tbody><tr><th>Tarif</th><td>45 € / jour</td></tr><tr><th>Puissance</th><td>2 × 400 W</td></tr><tr><th>Micros</th><td>2 sans fil</td></tr><tr><th>Caution</th><td>200 € en espèces à la remise</td></tr></tbody></table><h3>Idéal pour</h3><ul><li>Mariages et réceptions</li><li>Conférences et écoles</li><li>Fêtes de quartier</li></ul><h3>Bon à savoir</h3><p>Produit de location : sélectionnez vos dates au moment de la réservation. Caution en espèces restituée au retour du matériel en bon état.</p>",
+      "categories": [
+        {
+          "name": "Location"
+        }
+      ],
+      "tags": [
+        "location",
+        "sono",
+        "réunion",
+        "matériel"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "demo-images/noor-sono-a.jpg",
+        "demo-images/noor-garland-a.jpg"
+      ]
+    }
+  ],
+  "demo_notes": "Les 2 produits « Location » sont importés en produits simples (catégorie Location, slug location → règles inc/rental.php du thème). Pour activer le calendrier de réservation, convertir leur type en 'MWB Booking' après import (Produits → Modifier → Données produit)."
+}

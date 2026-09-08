@@ -1,0 +1,1925 @@
+{
+  "source": "NexDisc24 Demo-Katalog — 17 variable Produkte x Medium-Variationen (DVD / USB-Stick / Download). Artwork = Demo-Platzhalter (placehold.co) in den Markenfarben; Download-Dateien verweisen auf die offiziellen Projekt-Downloads. Beides vor Go-Live durch eigene Assets bzw. selbst gehostete Dateien ersetzen.",
+  "generated": "2026-07-29",
+  "products": [
+    {
+      "name": "Windows 11",
+      "sku": "NXD-WIN11",
+      "type": "variable",
+      "short_description": "Windows 11 Installationsmedium auf DVD, USB-Stick oder als Sofort-Download. Ideal für Neuinstallationen, Systemreparaturen und Upgrades. Modernes Betriebssystem mit verbesserter Sicherheit, hoher Leistung und intuitiver Bedienung.",
+      "description_html": "<h2>Windows 11 &ndash; Installation auf DVD, USB-Stick oder als Download</h2><p>Erhalte die neueste Generation des beliebten Betriebssystems von Microsoft bequem auf DVD, bootfähigem USB-Stick oder als sofortigen Download. Mit Windows 11 profitierst Du von einem modernen Design, verbesserter Leistung und zahlreichen neuen Funktionen für Arbeit, Gaming und Alltag.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Einfache Installation auf kompatiblen PCs und Notebooks<br />&#9989; Modernes und übersichtliches Benutzerinterface<br />&#9989; Verbesserte Sicherheit und Datenschutzfunktionen<br />&#9989; Optimierte Leistung für aktuelle Hardware<br />&#9989; Unterstützung für aktuelle Anwendungen und Spiele<br />&#9989; Wahlweise auf DVD, USB-Stick oder als Download erhältlich</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Windows 11</td></tr><tr><th>Sprache</th><td>Deutsch</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Medium</th><td>DVD / USB-Stick / Download</td></tr><tr><th>Bootfähig</th><td>Ja</td></tr><tr><th>Geeignet für</th><td>PC und Notebook</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Neuinstallation von Windows 11</li><li>Systemwiederherstellung</li><li>PC-Aufrüstung</li><li>Austausch defekter Installationsmedien</li><li>IT-Techniker und Computer-Enthusiasten</li></ul><h3>Lieferumfang</h3><ul><li>Windows 11 Installationsmedium (DVD oder USB-Stick)</li><li>Installationsdateien für Neuinstallation oder Systemreparatur</li><li>Kurzanleitung zur Installation</li></ul><h3>Hinweis</h3><p>Es handelt sich um ein Installationsmedium zur Einrichtung von Windows 11. Für die Nutzung kann je nach Version und Installationsart ein gültiger Windows-Produktschlüssel erforderlich sein. Bitte prüfe vor dem Kauf die Systemanforderungen sowie die Kompatibilität Deines Geräts.</p>",
+      "categories": [
+        {
+          "name": "Windows Systeme"
+        }
+      ],
+      "tags": [
+        "win",
+        "win11",
+        "Windows",
+        "Windows 11",
+        "Installationsmedium"
+      ],
+      "brand": "Microsoft",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Windows 11"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-WIN11-DVD",
+          "regular_price": "17.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11-dvd.jpg",
+          "stock_quantity": 48,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-WIN11-USB",
+          "regular_price": "22.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11-usb.jpg",
+          "stock_quantity": 32,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-WIN11-DL",
+          "regular_price": "9.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Windows 11 — ISO-Download (64-Bit)",
+              "file": "https://www.microsoft.com/de-de/software-download/windows11"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Windows 10 Pro",
+      "sku": "NXD-WIN10",
+      "type": "variable",
+      "short_description": "Windows 10 Pro Installationsmedium | Deutsch | 64 Bit. Ideal für Neuinstallationen, Systemreparaturen und Upgrades. Schnelle Einrichtung, hohe Stabilität und bewährte Leistung für PCs und Notebooks.",
+      "description_html": "<h2>Windows 10 Pro &ndash; Installationsmedium</h2><p>Mit Windows 10 Pro erhältst Du ein bewährtes und leistungsstarkes Betriebssystem für Deinen PC oder Laptop. Das Installationsmedium ermöglicht eine einfache Neuinstallation, Reparatur oder Aktualisierung kompatibler Systeme.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Schnelle und unkomplizierte Installation<br />&#9989; Hohe Stabilität und bewährte Leistung<br />&#9989; Erweiterte Sicherheitsfunktionen für professionelle Anwender<br />&#9989; Unterstützung für moderne Hardware und Software<br />&#9989; Ideal für Neuinstallationen, Upgrades und Systemreparaturen<br />&#9989; Deutsche 64-Bit-Version</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Windows 10 Pro</td></tr><tr><th>Sprache</th><td>Deutsch</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Medium</th><td>DVD / USB-Stick / Download</td></tr><tr><th>Bootfähig</th><td>Ja</td></tr><tr><th>Geeignet für</th><td>PC und Notebook</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Neuinstallation von Windows</li><li>Wiederherstellung beschädigter Systeme</li><li>Austausch verlorener oder defekter Installationsmedien</li><li>Aufrüstung bestehender Computer</li><li>Professionelle und private Nutzung</li></ul><h3>Lieferumfang</h3><ul><li>Windows 10 Pro Installationsmedium</li><li>Sichere Verpackung</li><li>Installationsanleitung auf Anfrage</li></ul><h3>Hinweis</h3><p>Für die Aktivierung von Windows kann ein gültiger Produktschlüssel erforderlich sein. Bitte stelle vor dem Kauf sicher, dass Dein Gerät die Systemanforderungen für Windows 10 erfüllt.</p>",
+      "categories": [
+        {
+          "name": "Windows Systeme"
+        }
+      ],
+      "tags": [
+        "win",
+        "win10",
+        "Windows",
+        "Windows 10",
+        "Pro"
+      ],
+      "brand": "Microsoft",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win10-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win10-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win10-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Windows 10"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-WIN10-DVD",
+          "regular_price": "16.90",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win10-dvd.jpg",
+          "sale_price": "14.90",
+          "stock_quantity": 60,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-WIN10-USB",
+          "regular_price": "21.90",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win10-usb.jpg",
+          "sale_price": "19.90",
+          "stock_quantity": 25,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-WIN10-DL",
+          "regular_price": "9.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win10-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Windows 10 Pro — ISO-Download (64-Bit)",
+              "file": "https://www.microsoft.com/de-de/software-download/windows10"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Windows 11 Pro Installations-USB",
+      "sku": "NXD-WIN11PRO",
+      "type": "variable",
+      "short_description": "Windows 11 Pro als bootfähiges Installationsmedium. Mit BitLocker, Remotedesktop und Gruppenrichtlinien — die Profi-Ausgabe für Business, Homeoffice und anspruchsvolle Anwender.",
+      "description_html": "<h2>Windows 11 Pro &ndash; Bootf&auml;higes Installationsmedium</h2><p>Die Profi-Ausgabe von Windows 11 mit allen Funktionen für Business und anspruchsvolle Anwender. Bootfähig vorbereitet und sofort einsatzbereit — einfach anstecken, vom Boot-Menü starten und installieren.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; BitLocker Laufwerkverschlüsselung<br />&#9989; Remotedesktop-Host für Fernzugriff<br />&#9989; Gruppenrichtlinien und Domänenbeitritt<br />&#9989; Hyper-V Virtualisierung integriert<br />&#9989; Windows Sandbox für sicheres Testen<br />&#9989; USB 3.0 — deutlich schneller als DVD</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Windows 11 Pro</td></tr><tr><th>Sprache</th><td>Deutsch</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Medium</th><td>DVD / USB-Stick / Download</td></tr><tr><th>USB-Standard</th><td>USB 3.0, 32 GB</td></tr><tr><th>Bootfähig</th><td>Ja, UEFI + Secure Boot</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Geschäftliche Neuinstallation</li><li>Homeoffice-Arbeitsplatz einrichten</li><li>Virtualisierung mit Hyper-V</li><li>IT-Support und Systemhäuser</li><li>Verschlüsselte Notebooks aufsetzen</li></ul><h3>Lieferumfang</h3><ul><li>Windows 11 Pro Installationsmedium</li><li>Bootfähiger USB 3.0 Stick (bei USB-Variante)</li><li>Installationsanleitung</li></ul><h3>Hinweis</h3><p>Ein gültiger Windows 11 Pro Produktschlüssel ist für die Aktivierung erforderlich. Windows 11 setzt TPM 2.0 und Secure Boot voraus — bitte prüfe die Kompatibilität Deines Geräts.</p>",
+      "categories": [
+        {
+          "name": "Windows Systeme"
+        }
+      ],
+      "tags": [
+        "win",
+        "win11",
+        "Windows 11 Pro",
+        "USB",
+        "bootfähig"
+      ],
+      "brand": "Microsoft",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11pro-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11pro-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11pro-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Windows 11 Pro"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-WIN11PRO-DVD",
+          "regular_price": "24.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11pro-dvd.jpg",
+          "stock_quantity": 18,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-WIN11PRO-USB",
+          "regular_price": "29.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11pro-usb.jpg",
+          "sale_price": "26.99",
+          "stock_quantity": 40,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-WIN11PRO-DL",
+          "regular_price": "14.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-win11pro-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Windows 11 Pro — ISO-Download (64-Bit)",
+              "file": "https://www.microsoft.com/de-de/software-download/windows11"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Ubuntu 24.04 LTS",
+      "sku": "NXD-U2404",
+      "type": "variable",
+      "short_description": "Ubuntu 24.04 LTS „Noble Numbat“ — die aktuelle Langzeit-Support-Version. Bis 2029 mit Updates versorgt. Ideal für Einsteiger, Entwickler und alle, die eine kostenlose Alternative zu Windows suchen.",
+      "description_html": "<h2>Ubuntu 24.04 LTS &bdquo;Noble Numbat&ldquo;</h2><p>Ubuntu 24.04 LTS ist die aktuelle Langzeit-Support-Version der weltweit beliebtesten Linux-Distribution. Mit GNOME 46, Linux-Kernel 6.8 und Sicherheitsupdates bis 2029 erhältst Du ein modernes, sicheres und langfristig gepflegtes Betriebssystem.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Kostenfreies und leistungsstarkes Betriebssystem<br />&#9989; Langzeitunterstützung bis April 2029 (5 Jahre)<br />&#9989; Einfache Installation und intuitive Bedienung<br />&#9989; Hohe Sicherheit ohne zusätzliche Kosten<br />&#9989; Tausende kostenlose Programme im Software-Center<br />&#9989; Läuft auch auf älterer Hardware flüssig</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Ubuntu 24.04 LTS</td></tr><tr><th>Codename</th><td>Noble Numbat</td></tr><tr><th>Desktop</th><td>GNOME 46</td></tr><tr><th>Kernel</th><td>Linux 6.8</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Support bis</th><td>April 2029</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Surfen im Internet und Office-Arbeiten</li><li>Homeoffice und Videokonferenzen</li><li>Programmierung und Entwicklung</li><li>Multimedia und Streaming</li><li>Wiederbelebung älterer Computer</li></ul><h3>Lieferumfang</h3><ul><li>Ubuntu 24.04 LTS Installationsmedium</li><li>Sichere Verpackung</li><li>Installationshilfe auf Anfrage</li></ul><h3>Hinweis</h3><p>Ubuntu ist freie Software. Du bezahlst hier den Datenträger, das Brennen bzw. Bespielen, die Verpackung und den Versand — nicht die Lizenz.</p>",
+      "categories": [
+        {
+          "name": "Linux Distributionen"
+        },
+        {
+          "name": "Ubuntu",
+          "parent": "Linux Distributionen"
+        }
+      ],
+      "tags": [
+        "ubuntu",
+        "Ubuntu 24.04",
+        "LTS",
+        "Linux",
+        "GNOME"
+      ],
+      "brand": "Ubuntu",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2404-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2404-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2404-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Ubuntu 24.04 LTS"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch",
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Desktop-Umgebung",
+          "values": [
+            "GNOME"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-U2404-DVD",
+          "regular_price": "14.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2404-dvd.jpg",
+          "stock_quantity": 75,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-U2404-USB",
+          "regular_price": "19.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2404-usb.jpg",
+          "stock_quantity": 50,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-U2404-DL",
+          "regular_price": "7.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2404-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Ubuntu 24.04 LTS — ISO-Download (64-Bit)",
+              "file": "https://releases.ubuntu.com/24.04/"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Ubuntu 22.04 LTS",
+      "sku": "NXD-U2204",
+      "type": "variable",
+      "short_description": "Ubuntu 22.04 LTS „Jammy Jellyfish“ — die bewährte Vorgänger-LTS mit Support bis 2027. Maximal stabil, breit getestet und ideal für Server und Produktivsysteme.",
+      "description_html": "<h2>Ubuntu 22.04 LTS &bdquo;Jammy Jellyfish&ldquo;</h2><p>Ubuntu 22.04 LTS ist die bewährte Langzeit-Support-Version und wird bis April 2027 mit Sicherheitsupdates versorgt. Wer maximale Stabilität und geprüfte Kompatibilität braucht, ist mit dieser Version bestens bedient.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Bewährte und extrem stabile LTS-Version<br />&#9989; Sicherheitsupdates bis April 2027<br />&#9989; Breiteste Hard- und Softwareunterstützung<br />&#9989; Ideal für Server und Produktivsysteme<br />&#9989; Riesige Community und Dokumentation<br />&#9989; Schnelles System auch auf älterer Hardware</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Ubuntu 22.04 LTS</td></tr><tr><th>Codename</th><td>Jammy Jellyfish</td></tr><tr><th>Desktop</th><td>GNOME 42</td></tr><tr><th>Kernel</th><td>Linux 5.15</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Support bis</th><td>April 2027</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Server und NAS-Systeme</li><li>Office-Arbeiten und Homeoffice</li><li>Programmierung und Entwicklung</li><li>Multimedia und Streaming</li><li>Wiederbelebung älterer Computer</li></ul><h3>Lieferumfang</h3><ul><li>Ubuntu 22.04 LTS Installationsmedium</li><li>Sichere Verpackung</li><li>Installationshilfe auf Anfrage</li></ul><h3>Hinweis</h3><p>Ubuntu ist freie Software. Du bezahlst hier den Datenträger, das Brennen bzw. Bespielen, die Verpackung und den Versand — nicht die Lizenz.</p>",
+      "categories": [
+        {
+          "name": "Linux Distributionen"
+        },
+        {
+          "name": "Ubuntu",
+          "parent": "Linux Distributionen"
+        }
+      ],
+      "tags": [
+        "ubuntu",
+        "Ubuntu 22.04",
+        "LTS",
+        "Linux"
+      ],
+      "brand": "Ubuntu",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2204-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2204-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2204-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Ubuntu 22.04 LTS"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch",
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Desktop-Umgebung",
+          "values": [
+            "GNOME"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-U2204-DVD",
+          "regular_price": "19.90",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2204-dvd.jpg",
+          "stock_quantity": 30,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-U2204-USB",
+          "regular_price": "24.90",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2204-usb.jpg",
+          "stock_quantity": 22,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-U2204-DL",
+          "regular_price": "9.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-u2204-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Ubuntu 22.04 LTS — ISO-Download (64-Bit)",
+              "file": "https://releases.ubuntu.com/22.04/"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Linux Mint 21.3 Cinnamon",
+      "sku": "NXD-MINT213",
+      "type": "variable",
+      "short_description": "Linux Mint 21.3 „Virginia“ mit Cinnamon-Desktop — die freundlichste Linux-Distribution für Windows-Umsteiger. Vertrautes Startmenü, alles vorinstalliert, sofort produktiv.",
+      "description_html": "<h2>Linux Mint 21.3 &bdquo;Virginia&ldquo; &ndash; Cinnamon Edition</h2><p>Linux Mint gilt als die einsteigerfreundlichste Linux-Distribution überhaupt. Der Cinnamon-Desktop bietet ein vertrautes Startmenü und eine Taskleiste — Windows-Umsteiger fühlen sich sofort zuhause. Multimedia-Codecs, LibreOffice und alle wichtigen Programme sind bereits vorinstalliert.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Perfekt für Umsteiger von Windows<br />&#9989; Cinnamon-Desktop mit klassischem Startmenü<br />&#9989; Multimedia-Codecs bereits vorinstalliert<br />&#9989; LibreOffice, Firefox und Thunderbird an Bord<br />&#9989; Basiert auf Ubuntu 22.04 LTS — Support bis 2027<br />&#9989; Sehr genügsame Ressourcennutzung</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Linux Mint 21.3</td></tr><tr><th>Codename</th><td>Virginia</td></tr><tr><th>Desktop</th><td>Cinnamon 6.0</td></tr><tr><th>Basis</th><td>Ubuntu 22.04 LTS</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Support bis</th><td>April 2027</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Umstieg von Windows 7, 10 oder 11</li><li>Familien-PC und Schulrechner</li><li>Office und Internet</li><li>Ältere Notebooks weiternutzen</li><li>Erste Schritte mit Linux</li></ul><h3>Lieferumfang</h3><ul><li>Linux Mint 21.3 Cinnamon Installationsmedium</li><li>Sichere Verpackung</li><li>Installationshilfe auf Anfrage</li></ul><h3>Hinweis</h3><p>Linux Mint ist freie Software. Der Preis deckt Datenträger, Bespielung, Verpackung und Versand ab.</p>",
+      "categories": [
+        {
+          "name": "Linux Distributionen"
+        },
+        {
+          "name": "Linux Mint",
+          "parent": "Linux Distributionen"
+        }
+      ],
+      "tags": [
+        "mint",
+        "Linux Mint",
+        "Cinnamon",
+        "Einsteiger",
+        "Linux"
+      ],
+      "brand": "Linux Mint",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-mint213-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-mint213-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-mint213-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Linux Mint 21.3"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch",
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Desktop-Umgebung",
+          "values": [
+            "Cinnamon"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-MINT213-DVD",
+          "regular_price": "14.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-mint213-dvd.jpg",
+          "sale_price": "12.99",
+          "stock_quantity": 64,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-MINT213-USB",
+          "regular_price": "19.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-mint213-usb.jpg",
+          "sale_price": "17.99",
+          "stock_quantity": 41,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-MINT213-DL",
+          "regular_price": "7.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-mint213-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Linux Mint 21.3 Cinnamon — ISO-Download (64-Bit)",
+              "file": "https://linuxmint.com/download.php"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Debian 12 Bookworm",
+      "sku": "NXD-DEB12",
+      "type": "variable",
+      "short_description": "Debian 12 „Bookworm“ — der Fels in der Brandung. Das stabilste Linux überhaupt, Basis unzähliger Server weltweit. Kompromisslos frei, kompromisslos zuverlässig.",
+      "description_html": "<h2>Debian 12 &bdquo;Bookworm&ldquo; &ndash; Stable</h2><p>Debian ist die Mutter unzähliger Linux-Distributionen und steht seit über 30 Jahren für kompromisslose Stabilität. Version 12 „Bookworm“ bringt aktuelle Software bei gewohnt hoher Zuverlässigkeit — die erste Wahl für Server und Systeme, die einfach laufen müssen.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Legendäre Stabilität — der Server-Standard<br />&#9989; Sicherheitsupdates bis Juni 2028<br />&#9989; Vollständig freie Software, keine Telemetrie<br />&#9989; Über 59.000 Pakete im Repository<br />&#9989; Unterstützt sehr viele Architekturen<br />&#9989; Ideal als Basis für eigene Systeme</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Debian 12</td></tr><tr><th>Codename</th><td>Bookworm</td></tr><tr><th>Desktop</th><td>GNOME 43 / Auswahl bei Installation</td></tr><tr><th>Kernel</th><td>Linux 6.1 LTS</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Support bis</th><td>Juni 2028</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Webserver und Mailserver</li><li>NAS und Heimserver</li><li>Entwicklungs- und Testsysteme</li><li>Langzeitstabile Arbeitsplatzrechner</li><li>Router und Embedded-Systeme</li></ul><h3>Lieferumfang</h3><ul><li>Debian 12 Installationsmedium</li><li>Sichere Verpackung</li><li>Installationshilfe auf Anfrage</li></ul><h3>Hinweis</h3><p>Debian ist freie Software. Der Preis deckt Datenträger, Bespielung, Verpackung und Versand ab.</p>",
+      "categories": [
+        {
+          "name": "Linux Distributionen"
+        },
+        {
+          "name": "Debian",
+          "parent": "Linux Distributionen"
+        }
+      ],
+      "tags": [
+        "debian",
+        "Debian 12",
+        "Bookworm",
+        "Server",
+        "Linux"
+      ],
+      "brand": "Debian",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-deb12-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-deb12-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-deb12-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Debian 12"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch",
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Desktop-Umgebung",
+          "values": [
+            "GNOME"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-DEB12-DVD",
+          "regular_price": "11.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-deb12-dvd.jpg",
+          "stock_quantity": 52,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-DEB12-USB",
+          "regular_price": "16.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-deb12-usb.jpg",
+          "stock_quantity": 38,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-DEB12-DL",
+          "regular_price": "6.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-deb12-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Debian 12 Bookworm — ISO-Download (64-Bit)",
+              "file": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Kali Linux 2024.1",
+      "sku": "NXD-KALI2024",
+      "type": "variable",
+      "short_description": "Kali Linux 2024.1 — die führende Distribution für Penetration Testing und IT-Sicherheit. Über 600 vorinstallierte Security-Tools, sofort einsatzbereit.",
+      "description_html": "<h2>Kali Linux 2024.1 &ndash; Penetration Testing &amp; Security</h2><p>Kali Linux ist der Industriestandard für Penetration Testing, Forensik und Reverse Engineering. Über 600 Sicherheitswerkzeuge sind vorinstalliert und konfiguriert — von Nmap über Metasploit bis Wireshark und Burp Suite.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Über 600 vorinstallierte Security-Tools<br />&#9989; Metasploit, Nmap, Wireshark, Burp Suite und mehr<br />&#9989; Live-Betrieb ohne Installation möglich<br />&#9989; Forensik-Modus ohne Schreibzugriff auf Datenträger<br />&#9989; Basiert auf Debian Testing<br />&#9989; Ideal für Schulungen und Zertifizierungen</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Kali Linux 2024.1</td></tr><tr><th>Basis</th><td>Debian Testing</td></tr><tr><th>Desktop</th><td>Xfce 4.18</td></tr><tr><th>Kernel</th><td>Linux 6.6</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Modus</th><td>Live &amp; Installation</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Penetration Testing und Red Teaming</li><li>IT-Forensik und Incident Response</li><li>Sicherheitsaudits im eigenen Netzwerk</li><li>OSCP- und CEH-Vorbereitung</li><li>Schulungen und Ausbildung</li></ul><h3>Lieferumfang</h3><ul><li>Kali Linux 2024.1 Installationsmedium</li><li>Sichere Verpackung</li><li>Installationshilfe auf Anfrage</li></ul><h3>Hinweis</h3><p>Kali Linux ist ausschließlich für autorisierte Sicherheitstests bestimmt. Der Einsatz gegen fremde Systeme ohne ausdrückliche Genehmigung ist strafbar. Kali ist freie Software — der Preis deckt Datenträger und Versand ab.</p>",
+      "categories": [
+        {
+          "name": "Linux Distributionen"
+        },
+        {
+          "name": "Kali Linux",
+          "parent": "Linux Distributionen"
+        }
+      ],
+      "tags": [
+        "kali",
+        "Kali Linux",
+        "Security",
+        "Pentest",
+        "Linux"
+      ],
+      "brand": "Kali Linux",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-kali2024-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-kali2024-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-kali2024-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Kali Linux 2024.1"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Desktop-Umgebung",
+          "values": [
+            "Xfce"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-KALI2024-DVD",
+          "regular_price": "14.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-kali2024-dvd.jpg",
+          "stock_quantity": 27,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-KALI2024-USB",
+          "regular_price": "19.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-kali2024-usb.jpg",
+          "stock_quantity": 19,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-KALI2024-DL",
+          "regular_price": "7.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-kali2024-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Kali Linux — ISO-Download (64-Bit)",
+              "file": "https://cdimage.kali.org/current/"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Fedora 40 Workstation",
+      "sku": "NXD-FED40",
+      "type": "variable",
+      "short_description": "Fedora 40 Workstation — immer die neueste Technik zuerst. GNOME 46, Wayland und aktuellste Entwicklerwerkzeuge. Die Distribution, aus der Red Hat Enterprise Linux entsteht.",
+      "description_html": "<h2>Fedora 40 Workstation</h2><p>Fedora bringt neue Technologien als Erstes in die Linux-Welt — und ist zugleich die Grundlage für Red Hat Enterprise Linux. Version 40 liefert GNOME 46, einen aktuellen Kernel und die neuesten Entwicklerwerkzeuge in einem sauberen, unveränderten Upstream-Zustand.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Immer die aktuellste freie Software<br />&#9989; GNOME 46 mit vollem Wayland-Support<br />&#9989; Erstklassige Container- und Toolbox-Integration<br />&#9989; Upstream-nah — ideal für Entwickler<br />&#9989; Basis von Red Hat Enterprise Linux<br />&#9989; SELinux standardmäßig aktiv</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Fedora 40 Workstation</td></tr><tr><th>Desktop</th><td>GNOME 46</td></tr><tr><th>Kernel</th><td>Linux 6.8</td></tr><tr><th>Display-Server</th><td>Wayland</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Support</th><td>ca. 13 Monate</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Softwareentwicklung und DevOps</li><li>Container- und Kubernetes-Arbeit</li><li>Vorbereitung auf RHEL-Umgebungen</li><li>Moderne Workstation</li><li>Testen neuester Linux-Technologien</li></ul><h3>Lieferumfang</h3><ul><li>Fedora 40 Workstation Installationsmedium</li><li>Sichere Verpackung</li><li>Installationshilfe auf Anfrage</li></ul><h3>Hinweis</h3><p>Fedora ist freie Software. Der Preis deckt Datenträger, Bespielung, Verpackung und Versand ab.</p>",
+      "categories": [
+        {
+          "name": "Linux Distributionen"
+        },
+        {
+          "name": "Fedora",
+          "parent": "Linux Distributionen"
+        }
+      ],
+      "tags": [
+        "fedora",
+        "Fedora 40",
+        "Workstation",
+        "GNOME",
+        "Linux"
+      ],
+      "brand": "Fedora",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-fed40-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-fed40-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-fed40-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Fedora 40"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch",
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Desktop-Umgebung",
+          "values": [
+            "GNOME"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-FED40-DVD",
+          "regular_price": "14.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-fed40-dvd.jpg",
+          "stock_quantity": 33,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-FED40-USB",
+          "regular_price": "19.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-fed40-usb.jpg",
+          "stock_quantity": 21,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-FED40-DL",
+          "regular_price": "7.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-fed40-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Fedora 40 Workstation — ISO-Download (64-Bit)",
+              "file": "https://fedoraproject.org/workstation/download"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "openSUSE Leap 15.6",
+      "sku": "NXD-SUSE156",
+      "type": "variable",
+      "short_description": "openSUSE Leap 15.6 — die europäische Enterprise-Distribution. Mit YaST-Konfigurationszentrale und Btrfs-Snapshots: jedes Update ist per Klick zurückrollbar.",
+      "description_html": "<h2>openSUSE Leap 15.6</h2><p>openSUSE Leap teilt sich die Codebasis mit SUSE Linux Enterprise und bietet damit Enterprise-Stabilität zum Nulltarif. Das Alleinstellungsmerkmal ist YaST — eine grafische Konfigurationszentrale für das gesamte System — kombiniert mit Btrfs-Snapshots, die jedes Update rückgängig machen können.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; YaST — alles grafisch konfigurierbar<br />&#9989; Btrfs-Snapshots: Updates per Klick zurückrollen<br />&#9989; Gleiche Basis wie SUSE Linux Enterprise<br />&#9989; Europäische Entwicklung, starker Datenschutz<br />&#9989; Sehr gut dokumentiert<br />&#9989; Ideal für Server und Workstations</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>openSUSE Leap 15.6</td></tr><tr><th>Desktop</th><td>KDE Plasma / GNOME</td></tr><tr><th>Dateisystem</th><td>Btrfs mit Snapper</td></tr><tr><th>Basis</th><td>SUSE Linux Enterprise 15</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Support bis</th><td>Ende 2025</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Server und Virtualisierungshosts</li><li>Enterprise-nahe Arbeitsplätze</li><li>Systeme, die nie kaputtgehen dürfen</li><li>Administratoren-Workstations</li><li>SUSE-Zertifizierungsvorbereitung</li></ul><h3>Lieferumfang</h3><ul><li>openSUSE Leap 15.6 Installationsmedium</li><li>Sichere Verpackung</li><li>Installationshilfe auf Anfrage</li></ul><h3>Hinweis</h3><p>openSUSE ist freie Software. Der Preis deckt Datenträger, Bespielung, Verpackung und Versand ab.</p>",
+      "categories": [
+        {
+          "name": "Linux Distributionen"
+        },
+        {
+          "name": "openSUSE",
+          "parent": "Linux Distributionen"
+        }
+      ],
+      "tags": [
+        "opensuse",
+        "openSUSE Leap",
+        "YaST",
+        "KDE",
+        "Linux"
+      ],
+      "brand": "openSUSE",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-suse156-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-suse156-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-suse156-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "openSUSE Leap 15.6"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch",
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Desktop-Umgebung",
+          "values": [
+            "KDE Plasma"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-SUSE156-DVD",
+          "regular_price": "14.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-suse156-dvd.jpg",
+          "stock_quantity": 16,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-SUSE156-USB",
+          "regular_price": "19.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-suse156-usb.jpg",
+          "in_stock": false,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-SUSE156-DL",
+          "regular_price": "7.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-suse156-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "openSUSE Leap 15.6 — ISO-Download (64-Bit)",
+              "file": "https://get.opensuse.org/leap/15.6/"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Arch Linux (aktuelle Version)",
+      "sku": "NXD-ARCH",
+      "type": "variable",
+      "short_description": "Arch Linux — Rolling Release, immer aktuell, kompromisslos schlank. Du baust Dir Dein System genau so, wie Du es willst. Für erfahrene Anwender.",
+      "description_html": "<h2>Arch Linux &ndash; Rolling Release</h2><p>Arch Linux folgt dem KISS-Prinzip: Du beginnst mit einem minimalen Grundsystem und installierst ausschließlich, was Du wirklich brauchst. Als Rolling Release ist Arch immer topaktuell — einmal installiert, nie wieder ein Versionssprung. Das Arch Wiki gilt als beste Linux-Dokumentation weltweit.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Rolling Release — immer die neueste Software<br />&#9989; Minimales Grundsystem, volle Kontrolle<br />&#9989; AUR: praktisch jedes Paket verfügbar<br />&#9989; Pacman — extrem schneller Paketmanager<br />&#9989; Das legendäre Arch Wiki als Nachschlagewerk<br />&#9989; Keine Bloatware, kein Ballast</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Arch Linux</td></tr><tr><th>Modell</th><td>Rolling Release</td></tr><tr><th>Desktop</th><td>Frei wählbar — nicht vorinstalliert</td></tr><tr><th>Paketmanager</th><td>pacman + AUR</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Medium-Stand</th><td>Aktuelles Monats-ISO</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Maßgeschneiderte Systeme</li><li>Erfahrene Linux-Anwender</li><li>Entwickler mit speziellen Anforderungen</li><li>Gaming-Systeme mit neuesten Treibern</li><li>Lernen, wie Linux wirklich funktioniert</li></ul><h3>Lieferumfang</h3><ul><li>Arch Linux Installationsmedium (aktuelles ISO)</li><li>Sichere Verpackung</li><li>Hinweis: Installation erfolgt über die Kommandozeile</li></ul><h3>Hinweis</h3><p>Arch Linux richtet sich an erfahrene Anwender. Die Installation erfolgt manuell über die Kommandozeile und setzt Linux-Grundkenntnisse voraus. Arch ist freie Software — der Preis deckt Datenträger und Versand ab.</p>",
+      "categories": [
+        {
+          "name": "Linux Distributionen"
+        },
+        {
+          "name": "Arch Linux",
+          "parent": "Linux Distributionen"
+        }
+      ],
+      "tags": [
+        "arch",
+        "Arch Linux",
+        "Rolling Release",
+        "Fortgeschritten",
+        "Linux"
+      ],
+      "brand": "Arch Linux",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-arch-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-arch-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-arch-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Arch Linux"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Englisch"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-ARCH-DVD",
+          "regular_price": "14.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-arch-dvd.jpg",
+          "stock_quantity": 12,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-ARCH-USB",
+          "regular_price": "19.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-arch-usb.jpg",
+          "stock_quantity": 9,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-ARCH-DL",
+          "regular_price": "7.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-arch-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Arch Linux — ISO-Download (64-Bit)",
+              "file": "https://geo.mirror.pkgbuild.com/iso/latest/archlinux-x86_64.iso"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Manjaro 23.1 KDE Plasma",
+      "sku": "NXD-MANJ231",
+      "type": "variable",
+      "short_description": "Manjaro 23.1 „Vulcan“ mit KDE Plasma — die Kraft von Arch Linux, aber sofort einsatzbereit. Grafischer Installer, alle Treiber automatisch, kein Kommandozeilen-Setup nötig.",
+      "description_html": "<h2>Manjaro 23.1 &bdquo;Vulcan&ldquo; &ndash; KDE Plasma Edition</h2><p>Manjaro nimmt die Stärken von Arch Linux — aktuellste Software und das riesige AUR — und macht sie zugänglich. Der grafische Calamares-Installer, automatische Treibererkennung und ein sorgfältig getestetes Rolling Release machen den Einstieg mühelos.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Arch-Power ohne Kommandozeilen-Installation<br />&#9989; KDE Plasma 5.27 — elegant und anpassbar<br />&#9989; Automatische Hardware- und Treibererkennung<br />&#9989; Getestetes Rolling Release — stabiler als Arch<br />&#9989; Zugriff auf das komplette AUR<br />&#9989; Einfacher Kernel-Wechsel per Klick</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Betriebssystem</th><td>Manjaro 23.1</td></tr><tr><th>Codename</th><td>Vulcan</td></tr><tr><th>Desktop</th><td>KDE Plasma 5.27</td></tr><tr><th>Basis</th><td>Arch Linux</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Modell</th><td>Getestetes Rolling Release</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Moderne Desktop-Systeme</li><li>Gaming mit aktuellsten Treibern</li><li>Umstieg von Windows auf Linux</li><li>Entwickler-Workstations</li><li>Anwender, die immer aktuelle Software wollen</li></ul><h3>Lieferumfang</h3><ul><li>Manjaro 23.1 KDE Installationsmedium</li><li>Sichere Verpackung</li><li>Installationshilfe auf Anfrage</li></ul><h3>Hinweis</h3><p>Manjaro ist freie Software. Der Preis deckt Datenträger, Bespielung, Verpackung und Versand ab.</p>",
+      "categories": [
+        {
+          "name": "Linux Distributionen"
+        },
+        {
+          "name": "Manjaro",
+          "parent": "Linux Distributionen"
+        }
+      ],
+      "tags": [
+        "manjaro",
+        "Manjaro 23.1",
+        "KDE",
+        "Arch",
+        "Linux"
+      ],
+      "brand": "Manjaro",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-manj231-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-manj231-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-manj231-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Manjaro 23.1"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch",
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Desktop-Umgebung",
+          "values": [
+            "KDE Plasma"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-MANJ231-DVD",
+          "regular_price": "14.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-manj231-dvd.jpg",
+          "sale_price": "11.99",
+          "stock_quantity": 44,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-MANJ231-USB",
+          "regular_price": "19.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-manj231-usb.jpg",
+          "stock_quantity": 28,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-MANJ231-DL",
+          "regular_price": "7.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-manj231-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Manjaro 23.1 KDE Plasma — ISO-Download (64-Bit)",
+              "file": "https://download.manjaro.org/kde/23.1.4/manjaro-kde-23.1.4-240406-linux66.iso"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Clonezilla Live",
+      "sku": "NXD-CLONEZILLA",
+      "type": "variable",
+      "short_description": "Clonezilla Live — das professionelle Werkzeug zum Klonen und Sichern kompletter Festplatten. Ganze Systeme in Minuten auf eine neue SSD umziehen, ohne Neuinstallation.",
+      "description_html": "<h2>Clonezilla Live &ndash; Festplatten klonen &amp; sichern</h2><p>Clonezilla ist das freie Gegenstück zu Norton Ghost und Acronis True Image. Es klont und sichert komplette Festplatten oder einzelne Partitionen — Bit für Bit oder platzsparend übersprungene Leerbereiche. Perfekt für den Umzug auf eine neue SSD, ohne alles neu installieren zu müssen.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Komplette Festplatten 1:1 klonen<br />&#9989; Systemabbilder erstellen und wiederherstellen<br />&#9989; Unterstützt NTFS, ext4, XFS, Btrfs, FAT32, HFS+<br />&#9989; Multicast-Klonen auf viele PCs gleichzeitig<br />&#9989; Läuft direkt vom Medium — keine Installation nötig<br />&#9989; Deutlich schneller als dateiweises Kopieren</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Software</th><td>Clonezilla Live</td></tr><tr><th>Typ</th><td>Live-System</td></tr><tr><th>Basis</th><td>Debian</td></tr><tr><th>Dateisysteme</th><td>NTFS, ext4, XFS, Btrfs, FAT32, HFS+</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Installation</th><td>Nicht erforderlich</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Umzug von HDD auf SSD</li><li>Vollsicherung vor einem Windows-Update</li><li>Ausrollen identischer PCs in Firmen und Schulen</li><li>Systemwiederherstellung nach einem Crash</li><li>Festplattentausch im Notebook</li></ul><h3>Lieferumfang</h3><ul><li>Clonezilla Live Bootmedium</li><li>Sichere Verpackung</li><li>Kurzanleitung für den ersten Klon-Vorgang</li></ul><h3>Hinweis</h3><p>Clonezilla arbeitet direkt auf Datenträgerebene. Ein falsch gewähltes Ziellaufwerk wird überschrieben — bitte prüfe die Laufwerksauswahl sorgfältig. Clonezilla ist freie Software.</p>",
+      "categories": [
+        {
+          "name": "Recovery & Rettung"
+        }
+      ],
+      "tags": [
+        "clonezilla",
+        "Backup",
+        "Klonen",
+        "Recovery",
+        "Live-System"
+      ],
+      "brand": "Clonezilla",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-clonezilla-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-clonezilla-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-clonezilla-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Clonezilla Live"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch",
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Einsatzzweck",
+          "values": [
+            "Backup & Klonen"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-CLONEZILLA-DVD",
+          "regular_price": "14.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-clonezilla-dvd.jpg",
+          "stock_quantity": 58,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-CLONEZILLA-USB",
+          "regular_price": "19.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-clonezilla-usb.jpg",
+          "stock_quantity": 47,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-CLONEZILLA-DL",
+          "regular_price": "7.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-clonezilla-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Clonezilla Live — ISO-Download (64-Bit)",
+              "file": "https://clonezilla.org/downloads.php"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Rescuezilla Recovery System",
+      "sku": "NXD-RESCUEZILLA",
+      "type": "variable",
+      "short_description": "Rescuezilla — Clonezilla mit grafischer Oberfläche. Backups, Klonen und Datenrettung per Mausklick, ganz ohne Kommandozeile. Der „Notfall-Airbag“ für Deinen PC.",
+      "description_html": "<h2>Rescuezilla &ndash; Datenrettung mit grafischer Oberfl&auml;che</h2><p>Rescuezilla ist der „Notfall-Airbag“ für Deinen Computer: dieselbe bewährte Technik wie Clonezilla, aber mit einer freundlichen grafischen Oberfläche. Startet der PC nicht mehr, bootest Du einfach von diesem Medium, rettest Deine Daten und stellst das System wieder her — alles per Mausklick.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Grafische Oberfläche — keine Kommandozeile nötig<br />&#9989; Vollständig kompatibel mit Clonezilla-Images<br />&#9989; Dateien von einem nicht startenden PC retten<br />&#9989; Integrierter Dateimanager und Webbrowser<br />&#9989; Partitionen bearbeiten mit GParted<br />&#9989; Windows-, Mac- und Linux-Datenträger lesbar</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Software</th><td>Rescuezilla</td></tr><tr><th>Typ</th><td>Live-Rettungssystem</td></tr><tr><th>Basis</th><td>Ubuntu</td></tr><tr><th>Oberfläche</th><td>Grafisch (GTK)</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Installation</th><td>Nicht erforderlich</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Daten von einem defekten Windows retten</li><li>Backup vor einer Neuinstallation</li><li>Vergessene Dateien vom alten Notebook holen</li><li>Partitionen reparieren und vergrößern</li><li>Erste Hilfe, wenn der PC nicht mehr startet</li></ul><h3>Lieferumfang</h3><ul><li>Rescuezilla Bootmedium</li><li>Sichere Verpackung</li><li>Notfall-Kurzanleitung</li></ul><h3>Hinweis</h3><p>Rescuezilla kann Daten von beschädigten Systemen retten, ersetzt aber keine regelmäßige Datensicherung. Bei physisch defekten Festplatten wende Dich an einen Datenrettungsdienst. Rescuezilla ist freie Software.</p>",
+      "categories": [
+        {
+          "name": "Recovery & Rettung"
+        }
+      ],
+      "tags": [
+        "rescuezilla",
+        "Datenrettung",
+        "Recovery",
+        "Notfall",
+        "Backup"
+      ],
+      "brand": "Rescuezilla",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-rescuezilla-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-rescuezilla-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-rescuezilla-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Rescuezilla"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch",
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Einsatzzweck",
+          "values": [
+            "Datenrettung"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-RESCUEZILLA-DVD",
+          "regular_price": "16.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-rescuezilla-dvd.jpg",
+          "stock_quantity": 36,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-RESCUEZILLA-USB",
+          "regular_price": "21.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-rescuezilla-usb.jpg",
+          "stock_quantity": 29,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-RESCUEZILLA-DL",
+          "regular_price": "9.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-rescuezilla-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Rescuezilla — ISO-Download (64-Bit)",
+              "file": "https://github.com/rescuezilla/rescuezilla/releases/latest"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "SystemRescue 11",
+      "sku": "NXD-SYSRESCUE11",
+      "type": "variable",
+      "short_description": "SystemRescue 11 — die Werkzeugkiste für Administratoren. Partitionierung, Dateisystemreparatur, Passwort-Reset und Netzwerkdiagnose auf einem bootfähigen Medium.",
+      "description_html": "<h2>SystemRescue 11 &ndash; Die Admin-Werkzeugkiste</h2><p>SystemRescue vereint alles, was ein Administrator im Notfall braucht, auf einem einzigen bootfähigen Medium: Partitionierungswerkzeuge, Dateisystem-Reparatur für nahezu jedes Format, Werkzeuge zum Zurücksetzen von Windows-Passwörtern, Netzwerkdiagnose und einen vollwertigen Editor.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; GParted, TestDisk und PhotoRec an Bord<br />&#9989; Dateisystemreparatur für ext4, XFS, NTFS, Btrfs<br />&#9989; Windows-Passwort zurücksetzen mit chntpw<br />&#9989; Netzwerkwerkzeuge und SSH-Server integriert<br />&#9989; Speichertest mit Memtest86+<br />&#9989; Läuft komplett aus dem Arbeitsspeicher</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Software</th><td>SystemRescue 11</td></tr><tr><th>Typ</th><td>Live-Rettungssystem</td></tr><tr><th>Basis</th><td>Arch Linux</td></tr><tr><th>Desktop</th><td>Xfce (optional)</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Installation</th><td>Nicht erforderlich</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Partitionen anlegen, verschieben, vergrößern</li><li>Beschädigte Dateisysteme reparieren</li><li>Gelöschte Dateien wiederherstellen</li><li>Vergessenes Windows-Passwort zurücksetzen</li><li>Hardware- und Speicherfehler diagnostizieren</li></ul><h3>Lieferumfang</h3><ul><li>SystemRescue 11 Bootmedium</li><li>Sichere Verpackung</li><li>Übersicht der enthaltenen Werkzeuge</li></ul><h3>Hinweis</h3><p>SystemRescue richtet sich an Anwender mit technischen Vorkenntnissen. Die enthaltenen Werkzeuge greifen tief ins System ein — lege vor jedem Eingriff eine Sicherung an. SystemRescue ist freie Software.</p>",
+      "categories": [
+        {
+          "name": "Recovery & Rettung"
+        }
+      ],
+      "tags": [
+        "systemrescue",
+        "Admin",
+        "Reparatur",
+        "Recovery",
+        "Tools"
+      ],
+      "brand": "SystemRescue",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-sysrescue11-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-sysrescue11-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-sysrescue11-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "SystemRescue 11"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Einsatzzweck",
+          "values": [
+            "Systemreparatur"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-SYSRESCUE11-DVD",
+          "regular_price": "14.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-sysrescue11-dvd.jpg",
+          "stock_quantity": 21,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-SYSRESCUE11-USB",
+          "regular_price": "19.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-sysrescue11-usb.jpg",
+          "stock_quantity": 17,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-SYSRESCUE11-DL",
+          "regular_price": "7.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-sysrescue11-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "SystemRescue 11 — ISO-Download (64-Bit)",
+              "file": "https://www.system-rescue.org/Download/"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "Hiren's BootCD PE",
+      "sku": "NXD-HIRENS",
+      "type": "variable",
+      "short_description": "Hiren's BootCD PE — die Windows-Notfall-Umgebung. Basiert auf Windows 11 PE und bringt über 100 Reparatur-, Diagnose- und Datenrettungswerkzeuge mit.",
+      "description_html": "<h2>Hiren&rsquo;s BootCD PE &ndash; Windows-Notfallsystem</h2><p>Hiren’s BootCD PE ist die bekannteste Notfall-Umgebung für Windows-Systeme. Sie startet eine vollwertige Windows-PE-Oberfläche direkt vom Medium und bringt über 100 sorgfältig ausgewählte Werkzeuge mit — von der Datenrettung über Virenentfernung bis zur Festplattendiagnose.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; Vertraute Windows-Oberfläche im Notfall<br />&#9989; Über 100 Reparatur- und Diagnosewerkzeuge<br />&#9989; Datenrettung mit Recuva und PhotoRec<br />&#9989; Festplattendiagnose mit CrystalDiskInfo und HDDScan<br />&#9989; Partitionierung mit AOMEI und MiniTool<br />&#9989; Netzwerk- und Treiberunterstützung integriert</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Software</th><td>Hiren’s BootCD PE</td></tr><tr><th>Basis</th><td>Windows 11 PE</td></tr><tr><th>Werkzeuge</th><td>über 100</td></tr><tr><th>Oberfläche</th><td>Windows Desktop</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Installation</th><td>Nicht erforderlich</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>Windows-PC startet nicht mehr</li><li>Daten vor einer Neuinstallation sichern</li><li>Viren offline entfernen</li><li>Festplattengesundheit prüfen</li><li>Windows-Passwort zurücksetzen</li></ul><h3>Lieferumfang</h3><ul><li>Hiren’s BootCD PE Bootmedium</li><li>Sichere Verpackung</li><li>Übersicht der enthaltenen Werkzeuge</li></ul><h3>Hinweis</h3><p>Hiren’s BootCD PE enthält Windows-PE-Komponenten von Microsoft. Der Einsatz setzt eine gültige Windows-Lizenz auf dem zu reparierenden Gerät voraus. Verwende die Werkzeuge nur auf Systemen, für die Du berechtigt bist.</p>",
+      "categories": [
+        {
+          "name": "Tools & Utilities"
+        }
+      ],
+      "tags": [
+        "hirens",
+        "BootCD",
+        "Windows PE",
+        "Reparatur",
+        "Notfall"
+      ],
+      "brand": "Hiren's BootCD",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-hirens-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-hirens-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-hirens-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            },
+            {
+              "value": "Download"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Windows 11 PE"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Einsatzzweck",
+          "values": [
+            "Systemreparatur"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-HIRENS-DVD",
+          "regular_price": "17.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-hirens-dvd.jpg",
+          "stock_quantity": 42,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-HIRENS-USB",
+          "regular_price": "22.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-hirens-usb.jpg",
+          "stock_quantity": 35,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-HIRENS-DL",
+          "regular_price": "9.99",
+          "attributes": {
+            "Medium": "Download"
+          },
+          "in_stock": true,
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-hirens-download.jpg",
+          "virtual": true,
+          "downloadable": true,
+          "downloads": [
+            {
+              "name": "Hiren's BootCD PE — ISO-Download (64-Bit)",
+              "file": "https://www.hirensbootcd.org/download/"
+            }
+          ],
+          "download_limit": -1,
+          "download_expiry": -1
+        }
+      ]
+    },
+    {
+      "name": "NexDisc Multiboot USB — 10 Systeme",
+      "sku": "NXD-MULTIBOOT",
+      "type": "variable",
+      "short_description": "Ein Stick, zehn Systeme. Windows 11, Windows 10, Ubuntu, Mint, Debian, Kali, Clonezilla, Rescuezilla, SystemRescue und Hiren's BootCD — alle über ein Bootmenü wählbar.",
+      "description_html": "<h2>NexDisc Multiboot &ndash; 10 Systeme auf einem Medium</h2><p>Schluss mit der Sammlung loser Sticks und DVDs. Unser Multiboot-Medium vereint zehn der meistgenutzten Installations- und Rettungssysteme hinter einem übersichtlichen Bootmenü. Gerät auswählen, starten, loslegen — ideal für IT-Techniker und alle, die mehrere Rechner betreuen.</p><h3>Deine Vorteile auf einen Blick</h3><p>&#9989; 10 Systeme auf einem einzigen Medium<br />&#9989; Übersichtliches grafisches Bootmenü<br />&#9989; UEFI und Legacy BIOS unterstützt<br />&#9989; Secure Boot kompatibel<br />&#9989; Restlicher Speicher als normaler USB-Datenträger nutzbar<br />&#9989; Spart Zeit, Platz und Kosten</p><h3>Produktdetails</h3><table class=\"svpi-specs\"><tbody><tr><th>Produkt</th><td>NexDisc Multiboot</td></tr><tr><th>Enthaltene Systeme</th><td>10</td></tr><tr><th>USB-Standard</th><td>USB 3.0, 64 GB</td></tr><tr><th>Bootmodi</th><td>UEFI + Legacy BIOS</td></tr><tr><th>Architektur</th><td>64 Bit</td></tr><tr><th>Secure Boot</th><td>Kompatibel</td></tr></tbody></table><h3>Einsatzm&ouml;glichkeiten</h3><ul><li>IT-Techniker und Systemhäuser</li><li>PC-Werkstatt und Reparaturservice</li><li>Schulen und Ausbildungsbetriebe</li><li>Ambitionierte Heimanwender</li><li>Wer mehrere Rechner betreut</li></ul><h3>Lieferumfang</h3><ul><li>NexDisc Multiboot Medium</li><li>Gedruckte Übersicht aller enthaltenen Systeme</li><li>Sichere Verpackung</li><li>Kurzanleitung zum Bootmenü</li></ul><h3>Hinweis</h3><p>Alle enthaltenen Linux-Systeme sind freie Software. Für die Windows-Installationen ist ein gültiger Microsoft-Produktschlüssel erforderlich. Die DVD-Variante enthält aus Platzgründen nur die Rettungssysteme.</p>",
+      "categories": [
+        {
+          "name": "Tools & Utilities"
+        }
+      ],
+      "tags": [
+        "multiboot",
+        "USB",
+        "Techniker",
+        "Bundle",
+        "Bestseller"
+      ],
+      "brand": "NexDisc24",
+      "gallery_images": [
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-multiboot-box.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-multiboot-dvd.jpg",
+        "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-multiboot-usb.jpg"
+      ],
+      "attributes": [
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "type": "text",
+          "options": [
+            {
+              "value": "DVD"
+            },
+            {
+              "value": "USB-Stick"
+            }
+          ]
+        }
+      ],
+      "filter_attributes": [
+        {
+          "name": "Betriebssystem",
+          "values": [
+            "Multiboot"
+          ]
+        },
+        {
+          "name": "Bit-Version",
+          "values": [
+            "64-Bit"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "values": [
+            "Deutsch",
+            "Englisch"
+          ]
+        },
+        {
+          "name": "Einsatzzweck",
+          "values": [
+            "Multiboot"
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "NXD-MULTIBOOT-DVD",
+          "regular_price": "34.99",
+          "attributes": {
+            "Medium": "DVD"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-multiboot-dvd.jpg",
+          "stock_quantity": 8,
+          "virtual": false,
+          "downloadable": false
+        },
+        {
+          "sku": "NXD-MULTIBOOT-USB",
+          "regular_price": "44.99",
+          "attributes": {
+            "Medium": "USB-Stick"
+          },
+          "image_url": "https://new.nextdisc.de/wp-content/uploads/2026/07/nxd-multiboot-usb.jpg",
+          "sale_price": "39.99",
+          "stock_quantity": 26,
+          "virtual": false,
+          "downloadable": false
+        }
+      ]
+    }
+  ],
+  "demo_notes": {
+    "images": "Packshots liegen bereits in der Mediathek von new.nextdisc.de (2026/07). Die URLs verweisen direkt darauf — der Importer erkennt vorhandene Dateien am Dateinamen und legt keine Duplikate an. Beim Umzug auf eine andere Domain diese Basis-URL anpassen.",
+    "downloads": "Download-Variationen sind virtual + downloadable. Die Datei-URLs sind Demo-Links auf die offiziellen Projektseiten.",
+    "replace_before_launch": [
+      "gallery_images",
+      "variations[].image_url",
+      "variations[].downloads[].file"
+    ]
+  }
+}

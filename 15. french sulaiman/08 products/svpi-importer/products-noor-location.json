@@ -1,0 +1,286 @@
+{
+  "source": "Noor Festivities — catalogue de location, monté à partir du dossier client « 08 sep 2026 » (photos + descriptions .docx rédigées par le client). Textes repris mot pour mot.",
+  "generated": "2026-09-08",
+  "products": [
+    {
+      "name": "Arche carrée – 2 m",
+      "sku": "NOOR-LOC-CARREE",
+      "type": "simple",
+      "regular_price": "25",
+      "short_description": "Vous recherchez une décoration élégante et structurée, notamment pour un mariage, des fiançailles, une cérémonie ou une réception.",
+      "description_html": "<p><strong>Pourquoi la choisir ?</strong></p><ul><li>Donne immédiatement un rendu élégant et structuré.</li><li>Idéale pour créer un cadre autour d’un espace photo, d’une table ou d’un panneau.</li><li>Sa forme droite apporte un côté moderne et sophistiqué.</li><li>Elle permet de jouer facilement avec des ballons, des rideaux, des fleurs ou des drapés.</li></ul><h3>Parfaite si</h3><p>Vous recherchez une décoration élégante et structurée, notamment pour un mariage, des fiançailles, une cérémonie ou une réception.</p><p><em>À privilégier si :</em> vous souhaitez une décoration qui structure visuellement un espace ou créer un véritable décor derrière les invités.</p><p><strong>À associer avec :</strong> composition de ballons • fleurs • drapés • rideaux</p>",
+      "categories": [
+        {
+          "name": "Location"
+        }
+      ],
+      "tags": [
+        "location",
+        "arche",
+        "réunion"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "client-images/arche-carree-1.webp"
+      ],
+      "stock_quantity": 1,
+      "meta": {
+        "_noor_block_price": "25",
+        "_noor_block_days": "4",
+        "_noor_deposit_amount": "50",
+        "_noor_option_combo": "NOOR-ACC-RIDEAUX|NOOR-ACC-FLEURS|25"
+      },
+      "upsell_skus": [
+        "NOOR-ACC-RIDEAUX",
+        "NOOR-ACC-FLEURS"
+      ]
+    },
+    {
+      "name": "Arche demi-lune dorée – 2 m",
+      "sku": "NOOR-LOC-DEMILUNE",
+      "type": "simple",
+      "regular_price": "25",
+      "short_description": "Vous souhaitez créer une entrée décorée et accueillante, par laquelle vos invités pourront passer pour entrer dans votre espace de réception.",
+      "description_html": "<p><strong>Pourquoi la choisir ?</strong></p><ul><li>Sa grande ouverture crée naturellement un espace de passage, comme une véritable porte d’entrée.</li><li>Elle permet de marquer l’entrée de votre événement et de créer un accueil qui attire immédiatement le regard.</li><li>Sa forme arrondie apporte un rendu élégant, majestueux et aérien.</li><li>Elle offre une belle hauteur pour réaliser une décoration avec des ballons ou des fleurs, tout en conservant suffisamment d’espace pour que les invités puissent passer dessous.</li><li>Sa finition dorée apporte une touche chic et raffinée à l’entrée.</li></ul><h3>Parfaite si</h3><p>Vous souhaitez créer une entrée décorée et accueillante, par laquelle vos invités pourront passer pour entrer dans votre espace de réception.</p><p><em>À privilégier si :</em> vous avez un passage, une entrée ou un accès à mettre en valeur et que vous souhaitez que la décoration fasse partie intégrante de l’accueil de vos invités.</p><p><strong>À associer avec :</strong> composition de ballons • fleurs • feuillage • drapés</p>",
+      "categories": [
+        {
+          "name": "Location"
+        }
+      ],
+      "tags": [
+        "location",
+        "arche",
+        "réunion"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "client-images/arche-demi-lune-1.webp"
+      ],
+      "stock_quantity": 1,
+      "meta": {
+        "_noor_block_price": "25",
+        "_noor_block_days": "4",
+        "_noor_deposit_amount": "50"
+      }
+    },
+    {
+      "name": "Arches en U inversé – lot de 3",
+      "sku": "NOOR-LOC-U3",
+      "type": "simple",
+      "regular_price": "50",
+      "short_description": "Vous souhaitez créer un véritable décor, notamment pour un mariage, des fiançailles, une cérémonie ou une grande réception.",
+      "description_html": "<p><strong>Pourquoi les choisir ?</strong></p><ul><li>Les 3 structures permettent de créer un décor plus travaillé et plus original.</li><li>Idéales pour donner du volume et de la profondeur à une décoration.</li><li>Elles permettent de créer différentes compositions plutôt qu’un seul point de décoration.</li><li>Très intéressantes pour les grands espaces.</li></ul><h3>Parfaite si</h3><p>Vous souhaitez créer un véritable décor, notamment pour un mariage, des fiançailles, une cérémonie ou une grande réception.</p><p><em>À privilégier si :</em> vous recherchez une décoration plus imposante et travaillée, avec plusieurs niveaux et différents éléments décoratifs.</p><p><strong>À associer avec :</strong> compositions de ballons • drapés • fleurs</p>",
+      "categories": [
+        {
+          "name": "Location"
+        }
+      ],
+      "tags": [
+        "location",
+        "arche",
+        "réunion"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "client-images/arche-u-lot3-1.webp",
+        "client-images/arche-u-lot3-2.webp",
+        "client-images/arche-u-lot3-3.webp"
+      ],
+      "stock_quantity": 1,
+      "meta": {
+        "_noor_block_price": "50",
+        "_noor_block_days": "4",
+        "_noor_deposit_amount": "50",
+        "_noor_option_combo": "NOOR-ACC-DRAPES|NOOR-ACC-FLEURS|25"
+      },
+      "upsell_skus": [
+        "NOOR-ACC-DRAPES",
+        "NOOR-ACC-FLEURS"
+      ]
+    },
+    {
+      "name": "Arche ronde blanche – 1,80 m",
+      "sku": "NOOR-LOC-RONDE-BLANCHE",
+      "type": "simple",
+      "regular_price": "25",
+      "short_description": "Vous recherchez une structure discrète et élégante qui laisse votre décoration et ses couleurs prendre toute leur place.",
+      "description_html": "<p><strong>Pourquoi la choisir ?</strong></p><ul><li>Sa couleur blanche permet de l’intégrer facilement à différents thèmes et palettes de couleurs.</li><li>Plus discrète et légère visuellement.</li><li>Elle met particulièrement bien en valeur les ballons colorés, les fleurs et les décors à thème.</li><li>Une excellente option pour une décoration simple, fraîche et harmonieuse.</li></ul><h3>Parfaite si</h3><p>Vous recherchez une structure discrète et élégante qui laisse votre décoration et ses couleurs prendre toute leur place.</p><p><em>À privilégier si :</em> vous avez déjà une décoration travaillée et souhaitez un support qui s’intègre naturellement sans alourdir l’ensemble.</p><p><strong>À associer avec :</strong> composition de ballons • fleurs • drapés</p>",
+      "categories": [
+        {
+          "name": "Location"
+        }
+      ],
+      "tags": [
+        "location",
+        "arche",
+        "réunion"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "client-images/arche-ronde-blanche-1.webp",
+        "client-images/arche-ronde-blanche-2.webp"
+      ],
+      "stock_quantity": 1,
+      "meta": {
+        "_noor_block_price": "25",
+        "_noor_block_days": "4",
+        "_noor_deposit_amount": "50",
+        "_noor_option_combo": "NOOR-ACC-DRAPES|NOOR-ACC-FLEURS|25"
+      },
+      "upsell_skus": [
+        "NOOR-ACC-DRAPES",
+        "NOOR-ACC-FLEURS"
+      ]
+    },
+    {
+      "name": "Arche ronde dorée – 2 m",
+      "sku": "NOOR-LOC-RONDE-DOREE",
+      "type": "simple",
+      "regular_price": "25",
+      "short_description": "Vous souhaitez une décoration élégante et polyvalente, pour un mariage, des fiançailles, une cérémonie ou une réception.",
+      "description_html": "<p><strong>Pourquoi la choisir ?</strong></p><ul><li>Sa forme arrondie apporte un rendu doux, harmonieux et élégant.</li><li>Très jolie seule, mais également facile à personnaliser.</li><li>Elle s’intègre facilement dans différents styles de décoration.</li><li>Parfaite lorsque vous recherchez une arche jolie sans donner un effet trop imposant.</li></ul><h3>Parfaite si</h3><p>Vous souhaitez une décoration élégante et polyvalente, pour un mariage, des fiançailles, une cérémonie ou une réception.</p><p><em>À privilégier si :</em> vous voulez une arche qui s’adapte facilement à votre décoration et à l’espace disponible.</p><p><strong>À associer avec :</strong> composition de ballons • fleurs • drapés</p>",
+      "categories": [
+        {
+          "name": "Location"
+        }
+      ],
+      "tags": [
+        "location",
+        "arche",
+        "réunion"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "client-images/arche-ronde-doree-1.webp",
+        "client-images/arche-ronde-doree-2.webp",
+        "client-images/arche-ronde-doree-3.webp",
+        "client-images/arche-ronde-doree-4.webp",
+        "client-images/arche-ronde-doree-5.webp",
+        "client-images/arche-ronde-doree-6.webp",
+        "client-images/arche-ronde-doree-7.webp",
+        "client-images/arche-ronde-doree-8.webp",
+        "client-images/arche-ronde-doree-9.webp",
+        "client-images/arche-ronde-doree-10.webp"
+      ],
+      "stock_quantity": 1,
+      "meta": {
+        "_noor_block_price": "25",
+        "_noor_block_days": "4",
+        "_noor_deposit_amount": "50",
+        "_noor_option_combo": "NOOR-ACC-DRAPES|NOOR-ACC-FLEURS|25"
+      },
+      "upsell_skus": [
+        "NOOR-ACC-DRAPES",
+        "NOOR-ACC-FLEURS"
+      ]
+    },
+    {
+      "name": "Support panneau de bienvenue – doré",
+      "sku": "NOOR-LOC-PANNEAU",
+      "type": "simple",
+      "regular_price": "25",
+      "short_description": "Vous souhaitez marquer l’entrée de votre événement et accueillir vos invités avec une décoration soignée.",
+      "description_html": "<p><strong>Pourquoi le choisir ?</strong></p><ul><li>Permet de créer une entrée élégante et personnalisée.</li><li>Idéal pour mettre en valeur votre panneau de bienvenue.</li><li>Son format vertical prend peu de place au sol.</li><li>Peut facilement être décoré avec des fleurs ou une petite composition de ballons.</li></ul><h3>Parfaite si</h3><p>Vous souhaitez marquer l’entrée de votre événement et accueillir vos invités avec une décoration soignée.</p><p>Hauteur : environ 1,70 m, avec possibilité d’adaptation selon le besoin.</p><p><em>À privilégier si :</em> vous souhaitez décorer votre entrée sans installer une grande structure.</p><p><strong>À associer avec :</strong> fleurs • petite composition de ballons</p>",
+      "categories": [
+        {
+          "name": "Location"
+        }
+      ],
+      "tags": [
+        "location",
+        "arche",
+        "réunion"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "client-images/support-panneau-1.webp",
+        "client-images/support-panneau-2.webp"
+      ],
+      "stock_quantity": 1,
+      "meta": {
+        "_noor_block_price": "25",
+        "_noor_block_days": "4",
+        "_noor_deposit_amount": "50"
+      },
+      "upsell_skus": [
+        "NOOR-ACC-FLEURS"
+      ]
+    },
+    {
+      "name": "2 Rideaux blancs pour arche",
+      "sku": "NOOR-ACC-RIDEAUX",
+      "type": "simple",
+      "regular_price": "20",
+      "short_description": "Deux rideaux blancs à draper sur votre arche carrée. Loués pour toute la durée de votre location, aux mêmes dates que l’arche.",
+      "description_html": "<p>Deux rideaux blancs à draper sur votre arche carrée. Loués pour toute la durée de votre location, aux mêmes dates que l’arche.</p>",
+      "categories": [
+        {
+          "name": "Accessoires location"
+        }
+      ],
+      "tags": [
+        "accessoire",
+        "location"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "client-images/acc-rideaux.webp"
+      ],
+      "stock_quantity": 1,
+      "meta": {
+        "_noor_option_pricing": "flat"
+      }
+    },
+    {
+      "name": "2 Drapés de 6 m",
+      "sku": "NOOR-ACC-DRAPES",
+      "type": "simple",
+      "regular_price": "20",
+      "short_description": "Deux drapés de 6 mètres pour habiller votre arche. Loués pour toute la durée de votre location, aux mêmes dates que l’arche.",
+      "description_html": "<p>Deux drapés de 6 mètres pour habiller votre arche. Loués pour toute la durée de votre location, aux mêmes dates que l’arche.</p>",
+      "categories": [
+        {
+          "name": "Accessoires location"
+        }
+      ],
+      "tags": [
+        "accessoire",
+        "location"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "client-images/acc-drapes.webp"
+      ],
+      "stock_quantity": 1,
+      "meta": {
+        "_noor_option_pricing": "flat"
+      }
+    },
+    {
+      "name": "Lot de 4 fleurs",
+      "sku": "NOOR-ACC-FLEURS",
+      "type": "simple",
+      "regular_price": "15",
+      "short_description": "Un lot de 4 compositions florales pour décorer votre arche ou votre support. Loué pour toute la durée de votre location.",
+      "description_html": "<p>Un lot de 4 compositions florales pour décorer votre arche ou votre support. Loué pour toute la durée de votre location.</p>",
+      "categories": [
+        {
+          "name": "Accessoires location"
+        }
+      ],
+      "tags": [
+        "accessoire",
+        "location"
+      ],
+      "brand": "Noor Festivities",
+      "gallery_images": [
+        "client-images/acc-fleurs.webp"
+      ],
+      "stock_quantity": 1,
+      "meta": {
+        "_noor_option_pricing": "flat"
+      }
+    }
+  ],
+  "demo_notes": "6 locations + 3 accessoires, montés à partir du dossier client. Les locations portent _noor_block_price / _noor_block_days (forfait 25 EUR les 4 jours, 50 EUR pour le lot de 3) et _noor_deposit_amount (caution 50 EUR). _noor_option_combo porte l'offre « les 2 = 25 EUR » de sa fiche accessoires. upsell_skus relie chaque arche à SES accessoires : rideaux pour la carrée, drapés pour les rondes et le lot de 3, fleurs seules pour le support. IMPORTANT : les accessoires sont en catégorie « Accessoires location » et NON « Location » — un produit de la catégorie Location est traité comme une location par le thème et serait alors refusé comme option. Ne pas cocher « Vendu uniquement en complément » non plus : cela bloquerait l'ajout via les options. Stock = 1 partout : le client n'a jamais donné le nombre d'exemplaires, et 1 empêche la double réservation. L'arche demi-lune n'apparaît pas dans sa fiche accessoires, elle n'a donc aucune option — à confirmer avec lui. Après import, convertir le type des 6 locations en « MWB Booking » pour activer le calendrier."
+}

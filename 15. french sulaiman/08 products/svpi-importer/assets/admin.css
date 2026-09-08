@@ -1,0 +1,285 @@
+/* ── SVPI Admin Page Styles ─────────────────────────────────────────────── */
+
+.svpi-wrap {
+    max-width: 900px;
+}
+
+.svpi-wrap h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.svpi-subtitle {
+    color: #646970;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+/* ── Card ──────────────────────────────────────────────────────────────── */
+
+.svpi-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+/* ── Form fields ────────────────────────────────────────────────────────── */
+
+.svpi-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.svpi-field label strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.svpi-field input[type="file"] {
+    font-size: 13px;
+}
+
+.svpi-hint {
+    font-size: 12px;
+    color: #646970;
+}
+
+.svpi-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.svpi-btn {
+    margin-top: 4px;
+    padding: 6px 20px !important;
+    font-size: 14px !important;
+    height: auto !important;
+}
+
+/* ── Notices ────────────────────────────────────────────────────────────── */
+
+.svpi-notice {
+    padding: 10px 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    border-left: 4px solid;
+}
+
+.svpi-notice--error {
+    background: #fef0f0;
+    border-color: #d63638;
+    color: #d63638;
+}
+
+.svpi-notice--info {
+    background: #f0f6fc;
+    border-color: #2271b1;
+    color: #1d2327;
+}
+
+/* ── Results: stats row ─────────────────────────────────────────────────── */
+
+.svpi-results h2 {
+    margin-top: 0;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.svpi-stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.svpi-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f6f7f7;
+    border-radius: 6px;
+    padding: 16px 24px;
+    min-width: 100px;
+}
+
+.svpi-stat__num {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.svpi-stat__label {
+    font-size: 11px;
+    color: #646970;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-top: 6px;
+}
+
+.svpi-stat--created   .svpi-stat__num { color: #00a32a; }
+.svpi-stat--variations .svpi-stat__num { color: #2271b1; }
+.svpi-stat--images    .svpi-stat__num { color: #996800; }
+.svpi-stat--skipped   .svpi-stat__num { color: #646970; }
+.svpi-stat--errors    .svpi-stat__num { color: #d63638; }
+
+/* ── Import log ─────────────────────────────────────────────────────────── */
+
+.svpi-log summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 6px 0;
+    user-select: none;
+}
+
+.svpi-log__body {
+    max-height: 420px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 12px;
+    background: #fafafa;
+    font-family: monospace;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.svpi-log__line {
+    padding: 2px 0;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.svpi-log__line--error   { color: #d63638; }
+.svpi-log__line--skip    { color: #646970; }
+.svpi-log__line--product { color: #00a32a; font-weight: 600; }
+.svpi-log__line--attr    { color: #2271b1; }
+.svpi-log__line--image   { color: #996800; }
+
+/* ── Success notice ────────────────────────────────────────────────────────── */
+
+.svpi-notice--success {
+    background: #f0fdf4;
+    border-color: #00a32a;
+    color: #1d2327;
+}
+
+/* ── Progress bar ───────────────────────────────────────────────────────────── */
+
+.svpi-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+#svpi-progress-pct {
+    font-variant-numeric: tabular-nums;
+    color: #646970;
+    min-width: 36px;
+    text-align: right;
+}
+
+.svpi-progress-track {
+    height: 14px;
+    background: #f0f0f1;
+    border-radius: 7px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid #dcdcde;
+}
+
+#svpi-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #2271b1;
+    border-radius: 7px;
+    transition: width 200ms ease, background 300ms ease;
+}
+
+#svpi-progress-bar.svpi-progress-bar--done {
+    background: #00a32a;
+}
+
+#svpi-progress-bar.svpi-progress-bar--warn {
+    background: #996800;
+}
+
+#svpi-progress-bar.svpi-progress-bar--error {
+    background: #d63638;
+    width: 100% !important;
+    transition: none;
+}
+
+#svpi-progress-wrap .svpi-log__body {
+    max-height: 280px;
+}
+
+/* ── Tools card ─────────────────────────────────────────────────────────────── */
+
+.svpi-tools h2 {
+    margin-top: 0;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.svpi-tools-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.svpi-tool-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.svpi-btn-danger {
+    background: #d63638 !important;
+    border-color: #b22021 !important;
+    color: #fff !important;
+    padding: 6px 18px !important;
+    font-size: 13px !important;
+    height: auto !important;
+    cursor: pointer;
+    transition: background 150ms ease;
+}
+
+.svpi-btn-danger:hover {
+    background: #b22021 !important;
+    border-color: #8a1819 !important;
+    color: #fff !important;
+}
+
+.svpi-btn-secondary {
+    background: #f6f7f7 !important;
+    border-color: #c3c4c7 !important;
+    color: #1d2327 !important;
+    padding: 6px 18px !important;
+    font-size: 13px !important;
+    height: auto !important;
+    cursor: pointer;
+    transition: background 150ms ease;
+}
+
+.svpi-btn-secondary:hover {
+    background: #e8e9ea !important;
+    border-color: #a7aaad !important;
+}
