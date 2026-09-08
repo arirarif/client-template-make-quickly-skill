@@ -17,7 +17,8 @@ Files are numbered in the order they get used. BNB first, per the owner's instru
 | 07 | `07-campaign-drafts.md` | Three seasonal campaigns, saved as drafts | — |
 | 08 | `08-gbp-content-pack.md` | Paste-ready profile content, all three businesses | GBP access + 5 facts |
 | 09 | `09-review-kit.md` | Ask templates, on-site review markup, automation | Paul's 3–5 emails |
-| 10 | `10-message-to-paul-access-request.md` | **SEND THIS ONE.** Replaces 01 — a 15-minute call that unblocks everything at once | you, now |
+| 10 | `10-message-to-paul-access-request.md` | ~~Send this~~ — superseded by 11 once Paul gave the go-ahead | — |
+| 11 | `11-reply-to-paul-go-ahead.md` | **SEND THIS ONE.** Takes his yes, explains the one step only he can do, and tells him about the 350 reviews he isn't using | you, now |
 
 ## Status
 
@@ -37,7 +38,7 @@ the changelog above.
 |---|---|
 | Email address to own the Brevo account | 02, 03, 04, 05, 06, 07 — the whole mailing list |
 | GBP access + the verification code Google sends him | 08 |
-| 3–5 happy-client emails | 09, part B |
+| ~~3–5 happy-client emails~~ | **No longer needed** — 350 public reviews found on The Knot / WeddingWire / Thumbtack (see file 11) |
 | Opening hours ×3, Express turnaround, Matterport still offered?, opening years | 06, 08 |
 
 | Needed from the owner | Blocks |
