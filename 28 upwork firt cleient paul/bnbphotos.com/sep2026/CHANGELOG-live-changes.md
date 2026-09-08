@@ -380,6 +380,46 @@ featured images). The missing meta descriptions are now fixed — see item 7.
 unchanged. That isolates the weight problem further: it is not Elementor's cache, and it survives
 a genuine regeneration. The wizard-or-rollback decision still stands.
 
+### 2026-09-09 — a correction, and fixes that were not actually reaching visitors
+
+**I reported a duplicate-meta-description problem on BNB. That was wrong.** A crawl of all 16
+sitemap URLs shows **14 distinct descriptions across 13 real pages — every one unique.** What I
+saw in Google's results was Google writing its own snippets, not the site repeating one
+description. Recorded rather than quietly dropped.
+
+**What the crawl did find is worse, and it is systemic.** Three pages returned an *empty*
+description. They are not empty: **Seraphinite was still serving copies cached on 2026-09-07,
+from before the fixes.**
+
+```
+/category/airbnb-tips/          plain URL  desc=0     state=cache; date="2026-09-07"
+/category/airbnb-tips/          ?v=...     desc=116   state=skipped (bypasses Seraphinite)
+/author/paul/                   plain URL  200        (the redirect was not being served)
+/author/paul/                   ?v=...     301 -> homepage
+```
+
+**So two of the fixes logged above were never reaching real visitors or Google.** They were
+verified with `?v=` cache-busted requests — which, on this site, *bypass Seraphinite entirely* and
+therefore prove only that WordPress renders correctly, not that anyone receives it. The logo alt
+text was live on both, because the homepage had regenerated after the Elementor cache clear.
+
+**This is the trap on this site, stated plainly:** a cache-busted request answers "did the change
+save?" It does **not** answer "is the change live?" Both questions need asking, and the second one
+needs the plain URL.
+
+**Fixed:** Seraphinite → Manager → Delete cache. Verified afterwards on **plain URLs**:
+
+```
+/author/paul/                  -> 301 https://www.bnbphotos.com
+/category/airbnb-tips/         -> desc 116 chars
+/category/photography-guides/  -> desc 105 chars
+```
+
+**The connection to the open page-weight decision.** This is the same root cause: Seraphinite's
+cached entries do not expire, so a change stays invisible until something forces regeneration —
+and when it does regenerate, it currently comes back heavy. That is two symptoms of one problem,
+and it is why the wizard-or-rollback decision is worth making rather than deferring.
+
 ---
 
 ## Still to do on this site

@@ -112,3 +112,9 @@ account, Paul's Brevo account, or Paul's inbox, and no public HTTP request can o
 
 - [ ] G25: Paul received the three promised updates (first deploy, halfway, handover)
   EVIDENCE: pending
+
+---
+
+ABANDON: G16 Reviews dropped from scope by the site owner on 2026-09-09 ("no review no client mail"). No on-site review section will be built, so no Review schema will exist. Note for anyone reopening this: dvpfl.com already holds ~350 public five-star reviews (The Knot 181, WeddingWire 110, Thumbtack 43) that are currently used nowhere - the raw material is there whenever the decision changes.
+ABANDON: G17 Same decision - no quotes will be published, so there is nothing to trace to a source.
+ABANDON: G18 Same decision - no review-ask templates or review links will be delivered. The GBP work (G7-G15) still proceeds, so a review link could be handed over later at near-zero cost if wanted.
