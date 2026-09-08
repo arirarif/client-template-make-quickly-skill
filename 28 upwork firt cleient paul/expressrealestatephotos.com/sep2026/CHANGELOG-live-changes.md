@@ -146,6 +146,53 @@ old `express.hd.pics` page from 2022, and three photographs with camera-roll fil
 (`Image-29`, `DSC05838`, `DSC05903`) that I could not identify confidently enough to describe.
 Not guessed at — wrong alt text is worse for a screen-reader user than none.
 
+### 8. Listing-website screenshots given alt text — Express now sits at 3 of 163
+
+The four `screenshot-express.hd_.pics-*` images live on `/website-marketing-kit/`, whose H1 reads
+"Listing Websites That Showcase Your Property Professionally". Filename and page agree, so the
+class of image is certain even though the extension refused a screenshot of the file itself:
+these are screenshots of single-property listing websites Express builds for clients.
+
+Described as exactly that, at the level that could be verified — **"Screenshot of a single-property
+listing website built for a client"** — rather than inventing detail about what each one shows.
+Nine writes again, because the same four files exist twice over in the library plus one extra
+from 2022.
+
+**Sitewide re-audit after clearing Elementor and WP Super Cache:**
+
+```
+18 pages · 163 images · 3 missing alt   (was 13)
+```
+
+**The three left are the same three photographs** — `Image-29-768x512-1.jpg`,
+`DSC05838-1024x682.webp`, `DSC05903-1024x683.webp` — that appear in a shared block across the
+homepage, three blog posts and the Uncategorized archive. Camera-roll filenames, no describing
+text near them, and the browser extension is not permitted to open image URLs on this domain, so
+I could not look at them. Anything I wrote would be a guess dressed as a description, repeated
+three times. Left deliberately.
+
+**To finish them:** open the three in the Media Library, look, and write one line each. Two
+minutes for someone who can see them.
+
+### 9. Verified: the August `-v1` cleanup is still intact
+
+The Google research turned up `/contact-v1/` still listed in search results, which raised the
+question of whether the August redirects had lapsed. They have not — **all 12 redirect correctly**
+and no `-v1` URL appears in the sitemap:
+
+```
+home-v1 -> /            about-us-v1 -> /about-us/        aerial-photography-v1 -> /aerial-photography/
+book-now-v1 -> /book-now/    contact-v1 -> /contact/      floor-plans-v1 -> /floor-plans/
+photography-v1 -> /photography/   videography-v1 -> /videography/
+virtual-staging-v1 -> /virtual-staging/    virtual-tour-v1 -> /matterport-3d-virtual-tour/
+website-marketing-kit-v1 -> /website-marketing-kit/    virtual-tour -> /matterport-3d-virtual-tour/
+
+not redirecting: 0        v1 URLs in page sitemap: 0
+```
+
+So the search result is Google's index lagging behind a correct 301, not a live problem. No action
+needed — recorded so the next person does not re-investigate it.
+
 ---
 
 ## Still to do on this site
