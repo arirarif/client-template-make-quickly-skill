@@ -479,6 +479,15 @@ mattered. Each edit screen was checked against the exact rendered filename befor
 **BNB is now effectively complete on alt text** — the only remaining hits are the three inline-SVG
 false positives in the checker, which are not images at all.
 
+### Dormant plugins deleted — all 4
+
+Every inactive plugin on this site was a dead Slider Revolution component: the main plugin plus
+the Mousetrap, Transitionpack and Typewriter add-ons. All four were deactivated in August when the
+hero was rebuilt, and none has been used since. Deactivated code is still code on disk that a
+scanner can fingerprint, so they are now gone.
+
+*Result:* **All (15), Active (15), zero inactive.** Nothing dormant left on this site.
+
 ---
 
 ## Still to do on this site

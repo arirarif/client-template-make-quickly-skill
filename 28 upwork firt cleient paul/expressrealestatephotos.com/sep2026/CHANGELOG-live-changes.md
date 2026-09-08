@@ -269,6 +269,23 @@ Prepare Your Property for a Real Estate Photoshoot" and "Why Professional Real E
 Sells Homes Faster". Giving them a proper category would be a small content-hygiene win; BNB had
 the same problem and it was cleaned up in August.
 
+### 12. Dormant plugins deleted — 6 of 12
+
+Inactive plugins are not inert. Their code still sits on disk, still gets fingerprinted by
+vulnerability scanners, and is still exploitable if a flaw is found — deactivation is not removal.
+Express carried twelve.
+
+**Deleted (6):** Slider Revolution + its Mousetrap, Transitionpack and Typewriter add-ons —
+replaced by the custom hero slider in August and dead since · LiteSpeed Cache — wrong server type,
+never did anything · WP Fastest Cache — a third cache engine sitting behind WP Super Cache.
+
+**Kept deliberately (6):** Elementor Pro (a paid licence, not mine to throw away), WPvivid (may
+hold backups), Click to Chat and Tidio (Paul may want a chat widget back), the Reviews widget
+(reviews are dropped, not forbidden), and the upload-size utility. Anything ambiguous stayed.
+
+*Verified:* homepage, virtual staging and contact all 200 with no PHP fatals; the page gate passes
+17/17.
+
 ---
 
 ## Still to do on this site

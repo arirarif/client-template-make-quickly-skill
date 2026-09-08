@@ -194,6 +194,22 @@ and WP Super Cache all **inactive**, exactly as the August notes require.
 
 **Also noted:** Contact Form 7 is inactive, so the contact route here is the Tave iframe alone.
 
+### 8. Three dormant cache plugins deleted
+
+This site carried **four** cache engines: WP Rocket running, and FlyingPress, WP Fastest Cache and
+WP Super Cache sitting inactive. The August notes are explicit that FlyingPress must stay off and
+that two cache plugins running together break each other — so three dormant ones are a standing
+trap. One accidental activation is all it takes.
+
+**Deleted:** FlyingPress, WP Fastest Cache, WP Super Cache.
+
+**Kept:** Chaty (deactivating it in August removed the mobile LCP element, so it is off on purpose
+and may be wanted back), Contact Form 7, the Elementor image-hover addon, One Click Demo Import
+and Pixel-Mafia Instagram (both theme-bundled), and the Schema plugin (Yoast handles schema now,
+but the choice was deliberate).
+
+*Verified:* "successfully deleted", inactive count 9 to 6, and the page gate passes 28/28.
+
 ---
 
 ## Still to do on this site
