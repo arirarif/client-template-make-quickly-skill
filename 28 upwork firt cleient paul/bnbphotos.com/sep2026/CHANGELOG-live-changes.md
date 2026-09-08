@@ -242,9 +242,79 @@ So gate G5 stays **unmet and unmeasured** — not assumed either way. What is kn
 **Not doing either unprompted.** Both are live changes to a working site whose availability is
 currently fine, and choosing wrong costs more than waiting for a decision.
 
+### ROOT CAUSE FOUND for Paul's Google emails — fix blocked by Wordfence
+
+Paul forwarded two Search Console warnings (6 Sep 2026), both:
+**"Duplicate, Google chose different canonical than user"**, one for sitemap pages and one general.
+
+**Diagnosis — it is not the canonicals.** A full crawl found all 16 sitemap URLs carrying correct
+self-referencing canonicals, no duplicate titles, no trailing-slash duplicates, and only one host
+variant serving 200 (`http`, non-www and `/index.php` all 301 correctly).
+
+**The actual cause is conflicting structured data.** Every page emits **three** JSON-LD blocks:
+
+| Block | Source | Content |
+|---|---|---|
+| 0 | Yoast — correct | `WebPage` for the real URL, BreadcrumbList, WebSite, Organization |
+| 1 | **WPCode → Header & Footer → Header** | `WebPage` + `Service` + `BreadcrumbList` for **`https://www.bnbphotos.com/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/`** |
+| 2 | WPCode snippet 3207 | LocalBusiness + a BreadcrumbList whose `@id` collides with Yoast's |
+
+Block 1 is hardcoded, **not conditional**, and identical on every page — homepage, service pages,
+contact, archives. So every page tells Google "the WebPage entity here is a URL that does not
+exist". `/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/` and `/REPLACE-WITH-EXACT-SERVICES-PAGE-URL/` both
+return **404**. Ten occurrences per page. That is a direct contradiction of each page's own
+canonical tag, and it is a textbook trigger for exactly the warning Google sent.
+
+Someone pasted a schema template into the global header and never replaced the placeholders.
+The blog posts themselves are clean — the placeholders exist only in this header block.
+
+**Exact location:** WordPress → Code Snippets → **Header & Footer** → *Header* box, **lines 10–91**
+(`<script type="application/ld+json">` through its closing `</script>`). Lines 1–8 are the Google
+site-verification meta and the GTM container and must stay.
+
+**The removed block is saved** at `REMOVED-header-jsonld-2026-09-08.json` (3,068 bytes) so nothing
+is lost.
+
+**Why it is not fixed yet — Wordfence blocks the save.** Two attempts, both refused:
+
+```
+403 Forbidden — "A potentially unsafe operation has been detected in your request to this site"
+Block Reason: A potentially unsafe operation has been detected in your request to this site
+Time: Tue, 8 Sep 2026 13:56:43 GMT
+```
+
+Wordfence's firewall rejects any POST to that field because the content contains `<script>` tags —
+the standard stored-XSS rule. It will refuse the save even after the JSON-LD is deleted, because
+the GTM container that must stay is also a `<script>`. The same rule is the likely reason an
+earlier snippet Update silently failed.
+
+**This needs a decision, because every route is a security-setting change:**
+
+1. **Allowlist that one action in Wordfence.** The 403 page offers "I am certain this is a false
+   positive" → *Allowlist This Action*. Narrow, and it is the intended mechanism — but it is a
+   change to the site's firewall, so it is the owner's call, not mine.
+2. **Briefly disable the Wordfence firewall**, save, re-enable. Wider exposure, even if short.
+3. **Edit `wp_options` directly** (the field is stored there). Avoids the WAF, but a database edit
+   is a heavier instrument than the problem deserves.
+
+**Not attempted without approval.** Nothing about this is urgent to the minute — the site works,
+all URLs return 200 — but it is the direct cause of the indexing warnings Paul is receiving, so it
+should be the next thing done.
+
+**Also verified while investigating** (all fine, no action needed): 16/16 sitemap URLs have
+self-canonicals · one 200-serving host variant · no duplicate titles · no trailing-slash twins ·
+`/blog/`, `/?p=1`, `/tag/*` all 404 · date archive `/2026/05/` and `/author/paul/` are indexable
+and thin, which is worth a `noindex` later but is not what Google is complaining about.
+
+**Snippet 3207 was toggled off briefly during the hunt and put back.** It was ruled out as the
+source of block 1, and its LocalBusiness schema is worth keeping until the GBP work replaces it
+with a correct one carrying `sameAs`.
+
 ---
 
 ## Still to do on this site
+
+- [ ] **NEXT / needs a decision:** remove the placeholder JSON-LD from Header & Footer (lines 10-91) — blocked by a Wordfence 403, see the root-cause section above
 
 - [ ] Set a backup schedule + remote storage (local-only backups die with the server)
 - [x] ~~Run the plugin updates~~ — 5 applied, Yoast + AIO Migration held (see above)

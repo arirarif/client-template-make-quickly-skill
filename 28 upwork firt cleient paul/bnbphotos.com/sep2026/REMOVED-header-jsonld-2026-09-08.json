@@ -1,0 +1,80 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.bnbphotos.com/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/#webpage",
+      "url": "https://www.bnbphotos.com/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/",
+      "name": "Professional Airbnb Photography That Helps You Get More Bookings",
+      "description": "Showcase your Airbnb with bright, high-quality photography that captures every room, highlights your property's unique features, and encourages more guests to book with confidence.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.bnbphotos.com/#website",
+        "url": "https://www.bnbphotos.com/",
+        "name": "BNB Photos"
+      },
+      "mainEntity": {
+        "@id": "https://www.bnbphotos.com/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/#service"
+      },
+      "breadcrumb": {
+        "@id": "https://www.bnbphotos.com/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/#breadcrumb"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.bnbphotos.com/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/#service",
+      "url": "https://www.bnbphotos.com/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/",
+      "name": "Airbnb Photography",
+      "serviceType": "Airbnb and vacation rental photography",
+      "description": "Professional interior and exterior property photography with image editing, high-resolution files, detail photography, and platform-ready delivery for Airbnb, VRBO, Booking.com, and other booking platforms.",
+      "mainEntityOfPage": {
+        "@id": "https://www.bnbphotos.com/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/#webpage"
+      },
+      "provider": {
+        "@type": "LocalBusiness",
+        "@id": "https://www.bnbphotos.com/#business",
+        "name": "BNB Photos",
+        "url": "https://www.bnbphotos.com/",
+        "telephone": "+1-941-894-0980",
+        "email": "paul@bnbphotos.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Venice",
+          "addressRegion": "FL",
+          "postalCode": "34293",
+          "addressCountry": "US"
+        }
+      },
+      "areaServed": {
+        "@type": "Place",
+        "@id": "https://www.bnbphotos.com/#service-area",
+        "name": "Southwest Florida"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.bnbphotos.com/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.bnbphotos.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://www.bnbphotos.com/REPLACE-WITH-EXACT-SERVICES-PAGE-URL/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Airbnb Photography",
+          "item": "https://www.bnbphotos.com/REPLACE-WITH-EXACT-PHOTOGRAPHY-URL/"
+        }
+      ]
+    }
+  ]
+}
