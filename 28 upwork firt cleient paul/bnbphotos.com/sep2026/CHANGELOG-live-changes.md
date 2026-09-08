@@ -310,6 +310,44 @@ and thin, which is worth a `noindex` later but is not what Google is complaining
 source of block 1, and its LocalBusiness schema is worth keeping until the GBP work replaces it
 with a correct one carrying `sameAs`.
 
+### 2026-09-08 — traffic fixes that did not need the firewall
+
+With the schema fix parked behind the Wordfence decision, these were done instead.
+
+**4. Author archive disabled (Yoast → Author archives → "Enable author archives" off).**
+Yoast's own warning applies exactly here: on a one-author blog the author archive is a duplicate
+of the homepage. `/author/paul/` listed the same three posts as every other archive.
+*Verified:* `/author/paul/` now returns **301 → homepage**, `author-sitemap.xml` returns 404, and
+the sitemap index is down to post / page / category. One duplicate-content source removed, and it
+is one of the signals behind the warning Google sent.
+*Undo:* same toggle back on.
+*Note:* the first check showed 200 because Seraphinite was serving a cached copy — a cache-busted
+request showed the 301. Worth remembering on this site: **verify with `?v=` or the answer lies.**
+
+**5. Florida Rentals badge alt text (Media → logo_floridarentals.svg → Alternative Text).**
+Set to "FloridaRentals.com member badge". The badge sits in Header #1, so it was the one missing
+alt on **every page of the site**.
+*Verified:* homepage now reports **0 of 7 images missing alt**.
+*Gotcha worth keeping:* saving the attachment alt was not enough — the page still rendered
+`alt=""` because Elementor had the old markup cached. **Elementor → Tools → Clear Files & Data**
+was required before it appeared. The REST endpoint (`/wp-json/wp/v2/media/2963`) was the thing
+that proved the save had worked while the page still showed the old value.
+
+**Checked and already fine — no action needed:**
+- Date archive `/2026/05/` is already `noindex, follow`
+- All 15 indexed pages: exactly one H1 each, titles 41–56 characters, meta descriptions 123–140
+- One host variant serves 200; http, non-www and `/index.php` all 301 correctly
+- `/blog/`, `/?p=1`, `/tag/*` all 404 — no stray archive types
+
+**Still open, small:** the two category archives (`/category/airbnb-tips/`,
+`/category/photography-guides/`) have **no meta description at all**, and each carries 2–3 post
+images with no alt text.
+
+**Page weight, incidentally:** the Elementor regeneration forced the homepage cache to rebuild
+(timestamp now 13:50:18) and it came back at **873,115 bytes / 165 stylesheets** — essentially
+unchanged. That isolates the weight problem further: it is not Elementor's cache, and it survives
+a genuine regeneration. The wizard-or-rollback decision still stands.
+
 ---
 
 ## Still to do on this site
