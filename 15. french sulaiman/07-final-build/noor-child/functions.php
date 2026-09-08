@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 /* ==========================================================================
  * SETTINGS — edit these, nothing else, for day-to-day config
  * ========================================================================== */
-define( 'NOOR_VERSION',              '3.20.3' ); // Bump on ANY file change (cache-busting).
+define( 'NOOR_VERSION',              '3.21.0' ); // Bump on ANY file change (cache-busting).
 
 // WhatsApp float
 define( 'NOOR_WHATSAPP_NUMBER',      '262692000000' );                          // TODO real number (no +, country code first)
@@ -152,7 +152,7 @@ add_action( 'wp_enqueue_scripts', function () {
  * variant, still cache-safe. The query parameter stays as the preview and
  * revert switch.
  * ========================================================================== */
-define( 'NOOR_LIGHT_DEFAULT', false ); // flip to true once the client says yes
+define( 'NOOR_LIGHT_DEFAULT', true ); // client POINT 0 — light is now the site
 
 function noor_light_skin_active() {
 	$active = NOOR_LIGHT_DEFAULT;
@@ -178,7 +178,7 @@ add_filter( 'language_attributes', function ( $output ) {
 /* ==========================================================================
  * MODULES
  * ========================================================================== */
-foreach ( array( 'customizer', 'region', 'shop', 'wishlist', 'bundle', 'addons', 'rental', 'upsells', 'charity', 'account', 'marketing' ) as $noor_module ) {
+foreach ( array( 'customizer', 'region', 'shop', 'wishlist', 'bundle', 'addons', 'rental', 'rental-options', 'upsells', 'charity', 'account', 'marketing' ) as $noor_module ) {
 	$noor_file = get_stylesheet_directory() . '/inc/' . $noor_module . '.php';
 	if ( file_exists( $noor_file ) ) {
 		require_once $noor_file;

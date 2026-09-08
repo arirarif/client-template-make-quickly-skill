@@ -3,10 +3,8 @@
 > Réponse à ses messages du 03/09 et 05/09.
 > **C'est vous qui envoyez ce message, pas Claude.**
 >
-> Avant d'envoyer :
-> 1. vider le panier de test sur le staging (une réservation d'août y traîne),
-> 2. basculer `NOOR_LIGHT_DEFAULT` à `true` **ou** lui donner le lien avec
->    `?noor_theme=light` — sinon il verra l'ancienne version foncée.
+> ✅ Prêt à envoyer — le site clair est en ligne pour tout le monde (v3.21.0)
+> et le panier de test est vidé. Le lien ci-dessous montre bien la version claire.
 >
 > Rappel de ton : salutation islamique, français, numéroté, réponses en un mot.
 
@@ -63,9 +61,14 @@ Dans le dossier Drive que vous préparez, ajoutez si possible :
 
 - **Points 1, 2, 3, 4, 5** — c'est noté, merci. Rien à refaire de ce côté.
 - **Les autres modèles d'arches** — parfait, on verra plus tard comme vous dites.
-- **Les accessoires** (drapés, fleurs…) — ne bloquez pas sur les photos.
-  Envoyez-moi d'abord les **noms et les prix**, je prépare tout, et on ajoutera
-  les photos quand vous les aurez.
+- **Les accessoires** (drapés, fleurs…) — **c'est déjà construit et en ligne.**
+  Sur la fiche d'une arche, un encadré « Complétez votre location » propose les
+  options avec une case à cocher, et **les dates sont reprises automatiquement** :
+  le client ne les ressaisit jamais. Le total s'additionne comme dans votre
+  exemple (arche + drapés + fleurs).
+
+  Il ne me manque que vos **noms et vos prix** pour remplacer les exemples
+  actuels. Ne bloquez pas sur les photos, on les ajoutera après.
 
 ## Pour l'export de vos produits
 

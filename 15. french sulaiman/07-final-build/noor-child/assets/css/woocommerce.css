@@ -1164,3 +1164,36 @@ table.wishlist_table {
 .woocommerce div.product .summary .stock.out-of-stock { color: var(--noor-error); }
 .woocommerce ul.products li.product span.price,
 .woocommerce ul.products li.product p.price { color: var(--noor-text); }
+
+/* ==========================================================================
+   OPTIONS DE LOCATION (client POINT 3) — inc/rental-options.php
+   Sits between the date pickers and the deposit notice on a rental.
+   Tokenised, so it follows whichever skin is active.
+   ========================================================================== */
+.noor-options {
+	background: var(--noor-card);
+	border: 1px solid var(--noor-border);
+	border-radius: 14px;
+	padding: 16px 18px;
+	margin: 18px 0;
+}
+.noor-options__title {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px; font-weight: 700;
+	color: var(--noor-mocha-dark);
+	margin: 0 0 4px;
+}
+.noor-options__hint { font-size: 12.5px; color: var(--noor-muted); margin: 0 0 12px; }
+.noor-options__list { list-style: none; margin: 0; padding: 0; }
+.noor-options__item + .noor-options__item { margin-top: 8px; }
+.noor-options__item label {
+	display: flex; align-items: center; gap: 10px;
+	border: 1px solid var(--noor-border); border-radius: 10px;
+	padding: 9px 12px; cursor: pointer; font-size: 13.5px;
+}
+.noor-options__item label:hover { border-color: var(--noor-mocha); }
+.noor-options__item input { width: 17px; height: 17px; accent-color: var(--noor-mocha); flex: none; }
+.noor-options__item img { width: 38px; height: 38px; object-fit: cover; border-radius: 7px; flex: none; }
+.noor-options__name { flex: 1; color: var(--noor-text); }
+.noor-options__price { font-weight: 700; color: var(--noor-mocha); white-space: nowrap; }
+.noor-options__price em { font-style: normal; font-weight: 400; font-size: 11.5px; color: var(--noor-muted); }
