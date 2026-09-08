@@ -81,10 +81,10 @@ async function getOnce(url) {
 
 // ---------- detectors (pure, so they can be run against control fixtures) ----
 
-const BREVO_ACTION = /<form[^>]+action\s*=\s*["'][^"']*(sendinblue|brevo)[^"']*["']/i;
+const BREVO_ACTION = /<form[^>]+action\s*=\s*["'][^"']*(sendinblue|brevo|sibforms)[^"']*["']/i;
 const BREVO_SCRIPT = /<script[^>]+src\s*=\s*["'][^"']*(sibforms|sendinblue|brevo|mailerlite|mailchimp|list-manage)[^"']*["']/i;
 const GBP_LINK = /https?:\/\/(?:www\.)?(?:google\.[a-z.]+\/maps\/[^"'\s]+|g\.page\/[^"'\s]+|business\.google\.com\/[^"'\s]+|maps\.app\.goo\.gl\/[^"'\s]+)/i;
-const HONEYPOT = /<input[^>]+(type\s*=\s*["']hidden["'][^>]*name\s*=\s*["'][^"']*(hp|honey|website_url)[^"']*["']|name\s*=\s*["'][^"']*(hp|honey|website_url)[^"']*["'][^>]*type\s*=\s*["']hidden["'])/i;
+const HONEYPOT = /<input[^>]+name\s*=\s*["'](email_address_check|website_url|honeypot|hp)["']/i;  // Brevo's own server-validated trap field, or an equivalent
 const CONSENT = /unsubscribe/i;
 
 function jsonLdBlocks(html) {

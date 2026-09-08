@@ -1,0 +1,86 @@
+<!--
+  Express Real Estate Photos — footer newsletter signup  ·  list: express-agents
+  Deploy: Elementor FOOTER template → HTML widget. This route is proven on this site —
+  the GA4 tag shipped the same way.
+
+  Replace before it works:
+    1. FORM_ACTION_URL  → the Brevo form action, e.g. https://sibforms.com/serve/MUIF...
+       (only the one inside the <form> tag; the mention in this comment is documentation)
+    2. Confirm /thank-you/ exists — see 03-brevo-setup-runbook.md
+
+  After deploying: purge WP Super Cache, then re-run PSI. Express baseline is mobile 93 —
+  gate G3 in ../GATES-300usd.md fails if any newsletter JavaScript appears on the page,
+  which is why this is plain HTML with no script tag.
+
+  Audience note: agents are repeat buyers. The promise is scheduling and turnaround, not tips.
+-->
+
+<style>
+  .nl-signup {
+    /* Swap to the site accent if a stronger match is wanted. */
+    --nl-accent: #0f172a;
+    --nl-ink: #0f172a;
+    --nl-muted: #5b6472;
+    --nl-line: #d9dee6;
+
+    font: inherit;
+    color: var(--nl-ink);
+    max-width: 30rem;
+    margin: 0;
+  }
+  .nl-signup__title { font-size: 1.0625rem; font-weight: 700; margin: 0 0 .35rem; line-height: 1.3; }
+  .nl-signup__blurb { font-size: .875rem; color: var(--nl-muted); margin: 0 0 .75rem; line-height: 1.5; }
+  .nl-signup__row { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .nl-signup__input {
+    flex: 1 1 12rem; min-width: 0; padding: .7rem .8rem;
+    font: inherit; font-size: .9375rem; color: var(--nl-ink);
+    background: #fff; border: 1px solid var(--nl-line); border-radius: .375rem;
+  }
+  .nl-signup__input:focus-visible { outline: 2px solid var(--nl-accent); outline-offset: 1px; }
+  .nl-signup__btn {
+    flex: 0 0 auto; padding: .7rem 1.15rem;
+    font: inherit; font-size: .9375rem; font-weight: 600;
+    color: #fff; background: var(--nl-accent);
+    border: 1px solid var(--nl-accent); border-radius: .375rem; cursor: pointer;
+  }
+  .nl-signup__btn:hover { opacity: .9; }
+  .nl-signup__note { font-size: .75rem; color: var(--nl-muted); margin: .55rem 0 0; line-height: 1.5; }
+  /* Honeypot: off-screen, still filled by bots. Brevo validates it server-side. */
+  .nl-signup__trap { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+</style>
+
+<div class="nl-signup">
+  <p class="nl-signup__title">Booking listings this season?</p>
+  <p class="nl-signup__blurb">
+    Occasional notes for agents on the Suncoast — availability before the spring rush,
+    turnaround times, and what to have ready so a shoot takes half as long.
+  </p>
+
+  <form action="FORM_ACTION_URL" method="POST" novalidate>
+    <div class="nl-signup__row">
+      <label class="nl-signup__trap" aria-hidden="true">
+        Leave this field empty
+        <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off">
+      </label>
+
+      <label class="nl-signup__trap" for="nl-email-express">Email address</label>
+      <input
+        class="nl-signup__input"
+        id="nl-email-express"
+        type="email"
+        name="EMAIL"
+        required
+        autocomplete="email"
+        placeholder="Your email address">
+
+      <input type="hidden" name="locale" value="en">
+      <input type="hidden" name="html_type" value="simple">
+
+      <button class="nl-signup__btn" type="submit">Keep me posted</button>
+    </div>
+
+    <p class="nl-signup__note">
+      A few emails a year, never more. Unsubscribe any time in one click.
+    </p>
+  </form>
+</div>
