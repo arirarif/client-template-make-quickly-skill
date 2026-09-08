@@ -204,6 +204,44 @@ returns 2.29.20. That backup predates every change made today.
 **Impact:** the site is fully functional — all 16 URLs return 200 throughout — but the mobile 94
 baseline is at risk until page weight comes back down. Gate G5 stays unmet, deliberately.
 
+#### Follow-up 2026-09-08 — it does not self-heal, and PSI could not be measured
+
+Re-measured ~10 hours later (05:07 UTC 8 Sep vs cache written 19:14 on 7 Sep):
+
+```
+/            874,254b css=165  state=cache; date="2026-09-07 19:14:38"
+/services/   453,571b css=111  state=cache; date="2026-09-07 19:06:17"
+/contact/    390,039b css=116  state=cache; date="2026-09-07 19:06:06"
+```
+
+**Identical bytes, identical timestamps.** The `max-age=3600` header governs downstream caches;
+Seraphinite's own stored entries do not expire and regenerate on their own. So waiting does not
+fix this, and the earlier "re-measure after the TTL" plan was wrong — there is no TTL to wait out.
+This is the steady state until something invalidates the cache, and the only invalidation so far
+regenerated it *heavier*, because the self-learning data is gone.
+
+**PSI could not be run, by either route:**
+- API: `HTTP 429, Quota exceeded ... queries per day` — the same limitation already recorded in
+  the August Express gates.
+- Web UI (pagespeed.web.dev): the report was generated (11:08:58, 8 Sep) but the page never
+  finished rendering the score across five waits totalling ~50s.
+
+So gate G5 stays **unmet and unmeasured** — not assumed either way. What is known is structural:
+165 stylesheet links on a homepage that previously scored mobile 94.
+
+**Two candidate fixes, neither applied — the owner should pick:**
+
+1. **Seraphinite setup wizard** (Settings → Basic → "Begin setup wizard"). Rebuilds its
+   optimisation configuration and learning. Cheap, reversible, but it can change settings that
+   were tuned in August — worth an export first (Settings → Export).
+2. **Roll the plugin back to 2.29.20.** The pre-update backup (Sep 07 18:34) predates everything.
+   Caveat worth knowing before choosing: UpdraftPlus restores the whole plugins directory, so it
+   would also revert the Elementor, Elementor Pro, Fluent Forms and WPCode updates. Installing
+   2.29.20 on its own from the WordPress.org version archive is the narrower move.
+
+**Not doing either unprompted.** Both are live changes to a working site whose availability is
+currently fine, and choosing wrong costs more than waiting for a decision.
+
 ---
 
 ## Still to do on this site
@@ -218,7 +256,7 @@ baseline is at risk until page weight comes back down. Gate G5 stays unmet, deli
 - [ ] Diagnose the 10 failed emails — switching the mailer to Brevo gives free delivery logs
 - [ ] `/thank-you/` page (noindex)
 - [ ] Footer signup form (`../../300usd-build/02-signup-form-bnb.html`) via WPCode
-- [ ] **FIRST:** after the 1-hour cache TTL, re-measure page weight — see the corrected diagnosis above. If still ~874 KB, roll Seraphinite back to 2.29.20 from the Sep 07 18:34 backup. No host purge needed.
+- [ ] **DECISION NEEDED:** Seraphinite setup wizard, or roll back to 2.29.20? See the 2026-09-08 follow-up. Waiting does nothing — the cache does not self-regenerate.
 - [ ] Re-run PSI mobile — baseline 94, must not drop
 - [x] ~~Check the Seraphinite optimised-visit counter~~ — **1,184 / 5,000** until 18 Sep 2026, not throttled
 
