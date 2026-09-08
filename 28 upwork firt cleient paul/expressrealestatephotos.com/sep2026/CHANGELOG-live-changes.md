@@ -193,12 +193,62 @@ not redirecting: 0        v1 URLs in page sitemap: 0
 So the search result is Google's index lagging behind a correct 301, not a live problem. No action
 needed — recorded so the next person does not re-investigate it.
 
+### 10. Two earlier flags were wrong — corrected
+
+Reading the actual plugin list rather than the update screen:
+
+- **"Two backup plugins running."** Not true. **WPvivid is inactive.** UpdraftPlus is the only
+  active backup plugin. Nothing to choose between.
+- **"LiteSpeed Cache is a conflict risk beside WP Super Cache."** Not true either. **LiteSpeed is
+  inactive**, as are WP Fastest Cache and Slider Revolution. Only WP Super Cache is running.
+  Nothing to remove; the update was still correctly skipped, since updating a dormant plugin is
+  pointless.
+
+Also worth recording: **Elementor Pro is inactive here** and **PRO Elements** is active in its
+place, so this site does not depend on an Elementor Pro licence at all — unlike dvpfl.com, where
+the missing licence is a live problem.
+
+Genuine gap that remained, now closed:
+
+**Login protection installed** — Limit Login Attempts Reloaded (official WordPress.org directory),
+installed and activated. This site had **no security plugin at all**: no firewall, no login
+lockout, nothing between a brute-force script and the login form. BNB logged 25 blind attempts
+against a non-existent `admin` user in a single week, so the threat is not theoretical.
+
+Chose a focused login limiter rather than a full suite like Wordfence deliberately — it does the
+one thing that matters against the observed attack, and adds a fraction of the page weight.
+*Undo:* deactivate the plugin.
+
+*Verified after:* site returns 200, no PHP fatals, and the page gate passes across all three sites
+(express 17/17, bnb 16/16, dvpfl 28/28).
+
+### 2026-09-09 — safe-position pass
+
+**Scheduled backups turned on.** Both backups taken earlier were **one-off and manual** —
+UpdraftPlus reported "Nothing currently scheduled", which means a single snapshot and then
+nothing. Now:
+
+```
+Files backup:     Weekly,  retain 2
+Database backup:  Daily,   retain 7
+Next run:         Wed 9 Sep 2026, 08:5x   (confirmed on both sites)
+```
+
+Database daily is where the value is — content and settings change far more often than files, and
+a database backup is small. Files weekly at retain 2 keeps disk use sane on shared hosting.
+
+**Still local-only.** UpdraftPlus offers Google Drive, Dropbox, S3 and others, but every one needs
+the owner to authorise an account. Local backups die with the server they sit on, so this is
+better than nothing and not yet good enough. **Connecting remote storage is a five-minute job for
+whoever holds the Google Drive or Dropbox login.**
+
 ---
 
 ## Still to do on this site
 
-- [ ] **Decide between UpdraftPlus and WPvivid** — remove one, schedule the other with off-server storage
-- [ ] **Remove LiteSpeed Cache** — dead weight on a non-LiteSpeed server, and a conflict risk beside WP Super Cache
+- [x] ~~Decide between UpdraftPlus and WPvivid~~ — WPvivid is inactive; UpdraftPlus scheduled
+- [ ] Connect remote backup storage (needs the owner's Drive/Dropbox login)
+- [x] ~~Remove LiteSpeed Cache~~ — already inactive, no conflict exists
 - [ ] Remove WPForms Lite once confirmed no form uses it (Fluent Forms is the real one)
 - [ ] Two chat plugins are installed (Click to Chat + Tidio) — confirm both are wanted
 - [ ] Signup form + `/thank-you/` page, once the Brevo account exists

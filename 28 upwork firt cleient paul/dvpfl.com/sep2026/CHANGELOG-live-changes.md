@@ -171,6 +171,29 @@ and running WP Rocket's clear-and-preload:
 None of the nine is fixable by the route used here; they need either the widget settings or a
 local copy of the image. Worth an hour some day, not worth blocking on.
 
+### 7. Safe-position pass
+
+**Login protection installed** — Limit Login Attempts Reloaded (official WordPress.org directory),
+installed and activated. This site had **no security plugin at all**: no firewall, no login
+lockout, nothing between a brute-force script and the login form. BNB logged 25 blind attempts
+against a non-existent `admin` user in a single week, so the threat is not theoretical.
+
+Chose a focused login limiter rather than a full suite like Wordfence deliberately — it does the
+one thing that matters against the observed attack, and adds a fraction of the page weight.
+*Undo:* deactivate the plugin.
+
+*Verified after:* site returns 200, no PHP fatals, and the page gate passes across all three sites
+(express 17/17, bnb 16/16, dvpfl 28/28).
+
+**No backup plugin installed here**, at the owner's word that he holds his own backups of all
+three sites. Nothing was installed. Worth confirming those backups are recent and restorable —
+an untested backup is a hope, not a plan.
+
+**Cache plugins confirmed correct:** WP Rocket + Perfmatters active; FlyingPress, WP Fastest Cache
+and WP Super Cache all **inactive**, exactly as the August notes require.
+
+**Also noted:** Contact Form 7 is inactive, so the contact route here is the Tave iframe alone.
+
 ---
 
 ## Still to do on this site

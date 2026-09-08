@@ -420,13 +420,40 @@ cached entries do not expire, so a change stays invisible until something forces
 and when it does regenerate, it currently comes back heavy. That is two symptoms of one problem,
 and it is why the wizard-or-rollback decision is worth making rather than deferring.
 
+### 2026-09-09 — safe-position pass
+
+### 2026-09-09 — safe-position pass
+
+**Scheduled backups turned on.** Both backups taken earlier were **one-off and manual** —
+UpdraftPlus reported "Nothing currently scheduled", which means a single snapshot and then
+nothing. Now:
+
+```
+Files backup:     Weekly,  retain 2
+Database backup:  Daily,   retain 7
+Next run:         Wed 9 Sep 2026, 08:5x   (confirmed on both sites)
+```
+
+Database daily is where the value is — content and settings change far more often than files, and
+a database backup is small. Files weekly at retain 2 keeps disk use sane on shared hosting.
+
+**Still local-only.** UpdraftPlus offers Google Drive, Dropbox, S3 and others, but every one needs
+the owner to authorise an account. Local backups die with the server they sit on, so this is
+better than nothing and not yet good enough. **Connecting remote storage is a five-minute job for
+whoever holds the Google Drive or Dropbox login.**
+
+**Security already covered here**, unlike the other two: Wordfence 9.0.0 plus Rectifi are both
+active, and between them they provide the firewall, login lockout and CAPTCHA that Express and
+DVPFL were missing entirely. No security plugin added.
+
 ---
 
 ## Still to do on this site
 
 - [ ] **NEXT / needs a decision:** remove the placeholder JSON-LD from Header & Footer (lines 10-91) — blocked by a Wordfence 403, see the root-cause section above
 
-- [ ] Set a backup schedule + remote storage (local-only backups die with the server)
+- [x] ~~Set a backup schedule~~ — files weekly / database daily, first run 9 Sep
+- [ ] Connect remote backup storage (needs the owner's Drive/Dropbox login)
 - [x] ~~Run the plugin updates~~ — 5 applied, Yoast + AIO Migration held (see above)
 - [ ] Yoast: activate the Premium subscription, then update free + Premium together
 - [ ] Login hardening — note Rectifi already runs lockout + CAPTCHA; the remaining gap is the default `/wp-login.php` URL
