@@ -8,7 +8,7 @@ Files are numbered in the order they get used. BNB first, per the owner's instru
 
 | # | File | What it is | Blocked on |
 |---|---|---|---|
-| 01 | `01-message-to-paul-3-asks.md` | The one message, three asks. **Send this first.** | — |
+| 01 | `01-message-to-paul-3-asks.md` | ~~Send this first~~ — superseded by file 10 | — |
 | 02 | `02-signup-form-bnb.html` | Footer signup form, BNB | Brevo form URL |
 | 03 | `03-brevo-setup-runbook.md` | Account, 3 lists, endpoints, capture, thank-you pages | Paul's email |
 | 04 | `04-signup-form-express.html` | Footer signup form, Express | Brevo form URL |
@@ -17,6 +17,7 @@ Files are numbered in the order they get used. BNB first, per the owner's instru
 | 07 | `07-campaign-drafts.md` | Three seasonal campaigns, saved as drafts | — |
 | 08 | `08-gbp-content-pack.md` | Paste-ready profile content, all three businesses | GBP access + 5 facts |
 | 09 | `09-review-kit.md` | Ask templates, on-site review markup, automation | Paul's 3–5 emails |
+| 10 | `10-message-to-paul-access-request.md` | **SEND THIS ONE.** Replaces 01 — a 15-minute call that unblocks everything at once | you, now |
 
 ## Status
 
