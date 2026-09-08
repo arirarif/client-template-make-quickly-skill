@@ -119,11 +119,64 @@ rather than push edits through a flaky connection. Queued below.
 **Also noted:** the new `/thank-you/` page has no meta description. Harmless while it is a
 conversion target rather than a landing page, and it should be `noindex` anyway.
 
+### 6. Alt text added to 23 images — the awards page is now the trust asset it should be
+
+**Why this page mattered more than the count suggests.** With reviews dropped from scope, `/awards/`
+is the site's strongest remaining credibility signal — and it turned out to hold **a decade of
+awards**: The Knot Best of Weddings **2007 and 2012–2020**, plus WeddingWire Couples' Choice
+**2016–2020**. Every one of those badges was invisible to screen readers and to Google Images.
+
+| Set | Alt text written |
+|---|---|
+| 10 × The Knot badges | "The Knot Best of Weddings \<year\> award badge" |
+| 5 × WeddingWire badges | "WeddingWire Couples Choice Award \<year\> badge" |
+| Team headshots ×3 | owner/lead videographer, plus two named team members |
+| Stock imagery ×4 | bride, couple, video camera, camera lens |
+| Page furniture ×1 | "Read our reviews" button |
+
+**Method, and why not by hand.** Twenty-plus separate Media Library edits through the browser is
+slow and error-prone. Instead: matched each filename to its attachment through the WordPress REST
+API from inside the logged-in admin session, **ran it read-only first** to confirm every filename
+matched exactly one attachment with no ambiguity and no existing alt, then wrote the values. 17
+in the first pass, 6 in the second, zero failures.
+
+**Two images I refused to guess at.** `brennan.png` and `haines.png` had filenames but no
+descriptive context anywhere in the markup. Rather than invent something plausible — wrong alt
+text actively misleads a screen-reader user, which is worse than none — I opened both images and
+looked. Both are team headshots, so they were described as such.
+
+**Verified on plain URLs** (not cache-busted — the BNB lesson), after clearing Elementor's cache
+and running WP Rocket's clear-and-preload:
+
+```
+/awards/      19 images   1 missing
+/about-us/     3 images   0 missing
+/              12 images  3 missing
+/blog/         10 images  2 missing
+/thank-you/     3 images  3 missing
+```
+
+**9 of 47 remain, and each has a reason:**
+
+- `gen_logoHeader.svg` (awards) — **hotlinked from WeddingWire's own servers**, not in this
+  media library, so there is no attachment to attach alt text to. Would need the widget or a
+  local copy.
+- `1644015305588/09283/11766.jpeg` ×3 (homepage) — timestamp filenames, no context in the markup,
+  and I could not identify them confidently. Left rather than guessed.
+- `748461412-…-d.jpg` ×2 (blog) — a Vimeo-generated thumbnail, served from the embed rather than
+  the media library.
+- 3 on `/thank-you/` — sidebar widget thumbnails that do not draw alt from attachment meta.
+  `couple-443600` already has alt on the attachment, which proves the widget is the cause.
+
+None of the nine is fixable by the route used here; they need either the widget settings or a
+local copy of the image. Worth an hour some day, not worth blocking on.
+
 ---
 
 ## Still to do on this site
 
-- [ ] **Alt text for 38 images**, starting with the 18 award badges on `/awards/` — accessibility and image search
+- [x] ~~Alt text for the award badges and team photos~~ — 23 done, see item 6
+- [ ] The 9 remaining images need widget-level or hotlink fixes, not attachment alt (item 6 lists each)
 - [ ] Set `/thank-you/` to noindex by hand (Yoast dropdown will not take a programmatic change)
 
 - [ ] **Elementor Pro licence** — blocks Pro updates and is widening a core/Pro version gap. Paul's call.
