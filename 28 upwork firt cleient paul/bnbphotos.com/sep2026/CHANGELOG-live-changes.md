@@ -446,6 +446,39 @@ whoever holds the Google Drive or Dropbox login.**
 active, and between them they provide the firewall, login lockout and CAPTCHA that Express and
 DVPFL were missing entirely. No security plugin added.
 
+### Alt-text audit and fix — BNB was already the strongest of the three
+
+The audit that had been blocked for two days by local DNS finally ran. BNB turned out to be in
+better shape than expected: **229 images across 16 pages, 6 without alt text**, and three of those
+six were parsing artefacts in my own checker (inline SVG matched as `<img … svg>`), not real
+images.
+
+So three genuine gaps, all blog featured images with camera-roll filenames:
+
+| File | What it actually is | Alt written |
+|---|---|---|
+| `Image-16-768x512-2.jpg` | bedroom, king bed, coffered ceiling | "Vacation rental bedroom with a king bed and coffered ceiling" |
+| `DSC02342-768x512-2.jpg` | kitchen, blue island, pendant lights | "Vacation rental kitchen with a blue island, pendant lights and bar seating" |
+| `Image-11-768x512-2.jpg` | open-plan living room, coastal palette | "Open-plan vacation rental living room with coastal furnishings" |
+
+**Each one was opened and looked at before being described.** The filenames say nothing, and the
+surrounding markup said nothing either — the only honest way to write these was to view them.
+Same standard applied on DVPFL.
+
+**A trap on this site specifically:** the media library holds **six** attachments matching
+`DSC02342` — `-768x512-1`, `-768x512-2`, `-Copy-…`, `-scaled-…` — so picking the right one
+mattered. Each edit screen was checked against the exact rendered filename before writing.
+
+*Verified on plain URLs* after clearing Elementor and Seraphinite:
+
+```
+/category/airbnb-tips/           18 images   0 missing
+/category/photography-guides/    16 images   0 missing
+```
+
+**BNB is now effectively complete on alt text** — the only remaining hits are the three inline-SVG
+false positives in the checker, which are not images at all.
+
 ---
 
 ## Still to do on this site
