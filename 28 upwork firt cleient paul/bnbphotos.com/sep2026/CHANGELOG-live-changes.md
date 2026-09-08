@@ -333,15 +333,33 @@ alt on **every page of the site**.
 was required before it appeared. The REST endpoint (`/wp-json/wp/v2/media/2963`) was the thing
 that proved the save had worked while the page still showed the old value.
 
+**6. `llms.txt` published** (Yoast → Site features → llms.txt, was off).
+*Verified:* `https://www.bnbphotos.com/llms.txt` returns **200**, 1,152 bytes, correctly naming
+the business and listing the real pages. This is how ChatGPT, Claude and similar assistants
+describe the business when someone asks them for a vacation-rental photographer. DVPFL already
+had one; BNB's was a 404. Free, one toggle.
+
+**7. Category meta descriptions fixed at the template level**
+(Yoast → Categories → Meta description → `%%term_description%%`).
+Both category archives were emitting **no meta description at all**, so Google was inventing the
+snippet. The descriptions already existed as WordPress term descriptions — Yoast simply had no
+template telling it to use them. Setting the variable fixes every category at once, including any
+added later, rather than editing terms one by one.
+*Verified:*
+```
+/category/airbnb-tips/          desc 116 chars  "Practical tips for Airbnb and vacation rental hosts..."
+/category/photography-guides/   desc 105 chars  "How professional property photography works..."
+```
+*Undo:* clear the field.
+
 **Checked and already fine — no action needed:**
 - Date archive `/2026/05/` is already `noindex, follow`
 - All 15 indexed pages: exactly one H1 each, titles 41–56 characters, meta descriptions 123–140
 - One host variant serves 200; http, non-www and `/index.php` all 301 correctly
 - `/blog/`, `/?p=1`, `/tag/*` all 404 — no stray archive types
 
-**Still open, small:** the two category archives (`/category/airbnb-tips/`,
-`/category/photography-guides/`) have **no meta description at all**, and each carries 2–3 post
-images with no alt text.
+**Still open, small:** each category archive carries 2–3 post images with no alt text (the post
+featured images). The missing meta descriptions are now fixed — see item 7.
 
 **Page weight, incidentally:** the Elementor regeneration forced the homepage cache to rebuild
 (timestamp now 13:50:18) and it came back at **873,115 bytes / 165 stylesheets** — essentially
