@@ -286,11 +286,40 @@ hold backups), Click to Chat and Tidio (Paul may want a chat widget back), the R
 *Verified:* homepage, virtual staging and contact all 200 with no PHP fatals; the page gate passes
 17/17.
 
+### 13. The blog now has a home — and the posts have real categories
+
+**The problem, measured.** Express's three blog posts were receiving **four internal links each**,
+all from a single block on the homepage. There was **no blog index page and no Blog navigation
+item** — `page_for_posts` was set to 0. Category archives received **zero** internal links. Three
+genuinely useful articles (793–903 words) were doing almost no work, because almost nothing
+pointed at them and there was nowhere for a reader to go looking.
+
+**Fixed:**
+
+1. **Created `/blog/`** and set it as the site's posts page. It lists all three articles.
+2. **Added "Blog" to the main navigation** — now 14 items, Blog last.
+3. **Gave the posts real categories.** All three sat in **Uncategorized**. Created two categories
+   with proper descriptions and reassigned:
+   - **Agent Tips** — "How to Prepare Your Property for a Real Estate Photoshoot"
+   - **Photography Guides** — "Why Professional Real Estate Photography Sells Homes Faster",
+     "Matterport vs Zillow 3D Tours"
+
+*Verified live:* `/blog/` returns 200 listing all three posts · "Blog" renders in the homepage
+navigation · `/category/agent-tips/` and `/category/photography-guides/` both return 200.
+
+**Worth flagging, not touched:** this site has **two menus**. "Main Menu" (id 6) is the live one
+used by the Elementor header. **"Header Nav Menu" (id 3) is still assigned to the theme's
+`menu-1` location and still contains links to the old `-v1` pages** — Home V1, Photography V1,
+and so on. Nothing appears to render it today, but it is a loaded gun: any theme or template
+change that falls back to the theme location would put draft-page links back in the navigation.
+Worth deleting once someone confirms nothing uses it.
+
 ---
 
 ## Still to do on this site
 
-- [ ] Three blog posts sit in **Uncategorized** — give them a real category
+- [x] ~~Three blog posts sit in Uncategorized~~ — now in Agent Tips and Photography Guides
+- [ ] Delete the stale "Header Nav Menu" (id 3) once confirmed unused — it still points at -v1 pages
 
 - [x] ~~Decide between UpdraftPlus and WPvivid~~ — WPvivid is inactive; UpdraftPlus scheduled
 - [ ] Connect remote backup storage (needs the owner's Drive/Dropbox login)

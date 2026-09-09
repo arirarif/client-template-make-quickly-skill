@@ -488,6 +488,27 @@ scanner can fingerprint, so they are now gone.
 
 *Result:* **All (15), Active (15), zero inactive.** Nothing dormant left on this site.
 
+### The blog now has a home
+
+Same problem as Express, same measurement: three posts, **four internal links each** from one
+homepage block, **no blog index page** (`page_for_posts` was unset) and **no Blog navigation
+item**. Category archives had zero inbound links. DVPFL already had this right — it has BLOG in
+its navigation — so the two photography sites were the odd ones out.
+
+**Fixed:** created `/blog/`, set it as the posts page, and added **Blog** to the main navigation
+(now 11 items).
+
+*Verified live:* `/blog/` returns 200 and lists the posts; the homepage navigation renders
+Home | Services | Portfolio | Photography | Videography | Aerial Photography | Floor Plans |
+Twilight Photography | About Us | Contact | **Blog**.
+
+*Note on verification:* my first check reported "Blog in nav: false" and that was **my regex being
+too strict**, not a failure — the rendered markup nests the label inside extra elements. Confirmed
+properly by listing every menu label. Worth remembering before chasing a phantom bug.
+
+Categories on this site were already sensible (Airbnb Tips, Photography Guides) from the August
+work, so only the hub was missing.
+
 ---
 
 ## Still to do on this site
