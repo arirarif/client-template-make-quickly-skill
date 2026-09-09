@@ -509,6 +509,22 @@ properly by listing every menu label. Worth remembering before chasing a phantom
 Categories on this site were already sensible (Airbnb Tips, Photography Guides) from the August
 work, so only the hub was missing.
 
+### Cross-linked with Express Real Estate Photos
+
+BNB's footer already said "a division of Express Real Estate Photos" — **as plain text, with no
+link.** Two aged domains in the same market, owned by the same person, passing no authority to
+each other and giving a visitor no way to reach the other service.
+
+Made the brand name a link, in the Elementor footer template (Footer #1, applied site-wide):
+
+```
+Copyright © 2026 BNB Photos, a division of
+<a href="https://expressrealestatephotos.com/">Express Real Estate Photos</a>. All Rights Reserved.
+```
+
+*Verified live on the homepage.* The reciprocal link from Express was added at the same time, so
+the two now point at each other.
+
 ---
 
 ## Still to do on this site

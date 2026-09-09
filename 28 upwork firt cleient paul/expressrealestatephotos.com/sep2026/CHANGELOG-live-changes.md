@@ -314,6 +314,27 @@ and so on. Nothing appears to render it today, but it is a loaded gun: any theme
 change that falls back to the theme location would put draft-page links back in the navigation.
 Worth deleting once someone confirms nothing uses it.
 
+### 14. Cross-linked with BNB Photos
+
+Express linked to **neither** sibling site — no link to bnbphotos.com, none to dvpfl.com — while
+BNB's footer named Express in plain text. Two aged domains in the same market passing nothing to
+each other.
+
+Added a reciprocal line to the Elementor footer template (Footer #1, site-wide), phrased so it
+serves a visitor rather than just a crawler:
+
+```
+© 2026 Express Real Estate Photos. All rights reserved. Vacation rental owners: see our sister
+service, <a href="https://www.bnbphotos.com/">BNB Photos</a>.
+```
+
+An agent reading it is unlikely to need it; a vacation-rental owner who landed on the wrong site
+now has somewhere to go. *Verified live on the homepage.*
+
+**Note:** dvpfl.com is deliberately not linked from here. Weddings and real-estate marketing share
+no audience, and a link that no visitor would ever follow is worth little. Worth revisiting only if
+the three brands are ever presented as one company.
+
 ---
 
 ## Still to do on this site
