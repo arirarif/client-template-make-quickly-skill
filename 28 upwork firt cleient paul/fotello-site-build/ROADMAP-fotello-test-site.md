@@ -92,7 +92,7 @@ Work top to bottom. The builder saves as you go; use **Preview**, never Publish.
 - [ ] **B5. Why Us.** Paul's bio is fine; tighten it and add the service area. Replace the stock porch photo.
 - [ ] **B6. Products.** Fix the duplicate Basic/Classic descriptions. List what each package includes (from `content/home.md`: Classic = virtual twilight + property website + sizzle reel; Deluxe = + floor plan, aerial, Zillow 3D; Premier = + walkthrough video). Check the prices match Fotello's product settings and the current site.
 - [ ] **B7. Stats.** Only numbers Paul confirmed. If none, hide the section.
-- [ ] **B8. Reviews.** **Hide** (eye icon) until real reviews arrive. Then enter them with first name + last initial and no stock headshots. If the section can later pull Google reviews automatically, use that once the Google listing has reviews.
+- [ ] **B8. Reviews.** ✅ Hidden 2026-09-21 and saved (confirmed after reload; the "Testimonials" menu link went with it). Keep hidden until real reviews arrive. Then enter them with first name + last initial and no stock headshots. If the section can later pull Google reviews automatically, use that once the Google listing has reviews.
 - [ ] **B9. FAQ.** Enter from the content sheet.
 - [ ] **B10. Portfolio.** Replace every stock image.
 - [ ] **B11. Hidden sections — decide each one:**
