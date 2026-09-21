@@ -4,6 +4,19 @@ Built from (1) the whole Upwork thread, (2) a **read-only audit of the live Word
 Chrome on 2026-09-22 (nothing was changed), and (3) the real CSS of the two reference sites.
 Files `02`, `03` and `04` are history. **This file is the plan.**
 
+> **Live status, 2026-09-22 late evening (Milestone 1 work).** Done on emmadigitalagency.com, logged in as the client's
+> admin account: "Discourage search engines" ON (`noindex, nofollow` confirmed for visitors) · Elementor 4.2.4 (free)
+> installed and active · Hello Elementor installed · **Emma child theme 0.1.2 active** · **Emma Core 0.1.0 active** ·
+> **Tools → Emma setup run: 38 steps, no failures** · permalinks saved. Public checks: Home, About, Services, Portfolio,
+> Contact, the 3 sample projects and `/service/seo-sem/` all return 200; a wrong address returns 404; no PHP errors;
+> no Google Fonts requests; phone width has no sideways scroll.
+> **Still open for Milestone 1:** Ariful installs and activates Elementor Pro, then opens Tools → Emma setup and clicks
+> "Run setup" once more (without "Replace") so the header, footer and template conditions switch on. Until then the
+> site shows Hello's plain fallback header and footer, and the "Selected work" area on Home is empty.
+> **Noticed:** right after Elementor was activated, the 4 Hostinger plugins and LiteSpeed Cache showed as inactive.
+> Nobody deactivated them by hand; most likely the object cache served a stale plugin list during activation. Left as
+> they are (the 4 are planned for removal; cache off suits the build). **Re-activate LiteSpeed Cache at launch.**
+
 > **Update 2026-09-22 (evening): the build method changed.** Ariful chose **Hello Elementor + the Emma child theme +
 > Elementor Pro**, with normal Elementor widgets, so every part of the site can be edited visually. The client never
 > asked for "no page builder": that wording was only in our own milestone message, and the proposal and shortlist
