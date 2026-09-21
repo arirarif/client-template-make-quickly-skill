@@ -139,7 +139,7 @@
         "elType": "widget",
         "widgetType": "text-editor",
         "settings": {
-         "editor": "<ul><li><a href=\"mailto:{{email}}\">{{email}}</a></li><li><a href=\"/contact/\">Send an enquiry</a></li></ul>"
+         "editor": "<ul><li><a href=\"mailto:hello@emmadigitalagency.com\">hello@emmadigitalagency.com</a></li><li><a href=\"/contact/\">Send an enquiry</a></li></ul>"
         },
         "elements": []
        }

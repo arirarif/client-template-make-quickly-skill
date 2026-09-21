@@ -98,6 +98,7 @@ a { color: var(--emma-ink); }
 /* fallback: Hello's own header and footer, shown only while Elementor Pro is not active */
 .site-header { padding: 16px var(--emma-gutter); }
 .site-header .site-logo img, .site-header .custom-logo { height: 60px; width: auto; }
+.site-header .site-description { display: none; }
 .site-header .site-navigation a { color: var(--emma-ink); font-size: .95rem; }
 .site-footer { padding: 32px var(--emma-gutter); }
 .site-footer .site-logo img, .site-footer .custom-logo { height: 48px; width: auto; }

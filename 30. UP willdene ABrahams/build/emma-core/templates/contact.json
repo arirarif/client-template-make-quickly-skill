@@ -84,7 +84,7 @@
         "elType": "widget",
         "widgetType": "text-editor",
         "settings": {
-         "editor": "<p><a href=\"mailto:{{email}}\">{{email}}</a></p>"
+         "editor": "<p><a href=\"mailto:hello@emmadigitalagency.com\">hello@emmadigitalagency.com</a></p>"
         },
         "elements": []
        },

@@ -131,6 +131,9 @@ def loop_grid(cls, per_page, columns, extra=None):
 
 MANIFEST = []
 
+# Shown on the site. The form still delivers to the admin address ({{email}}), which is never printed.
+PUBLIC_EMAIL = 'hello@emmadigitalagency.com'
+
 
 def save(key, title, kind, elements, **meta):
     with open(os.path.join(OUT, key + '.json'), 'w', encoding='utf8', newline='\n') as f:
@@ -194,7 +197,7 @@ save('footer', 'Footer', 'footer', [section([
              text('Make your ideas bloom. Websites, search, social, AI, email and analytics.', 'emma-footer-note')], 'emma-footer-col'),
         foot_col('Pages', [('Services', '/services/'), ('Work', '/portfolio/'), ('About', '/about/'), ('Contact', '/contact/')]),
         foot_col('Services', [(s[1], '/services/#' + s[0]) for s in SERVICES[:4]]),
-        foot_col('Contact', [('{{email}}', 'mailto:{{email}}'), ('Send an enquiry', '/contact/')]),
+        foot_col('Contact', [(PUBLIC_EMAIL, 'mailto:' + PUBLIC_EMAIL), ('Send an enquiry', '/contact/')]),
     ], 'emma-footer-grid'),
     con([text('© 2026 Emma Digital Agency'), text('<p><a href="/privacy-policy/">Privacy policy</a></p>')], 'emma-legal'),
 ], 'emma-footer', tag='footer')], conditions=['include/general'])
@@ -401,7 +404,7 @@ save('contact', 'Contact', 'page', [
     page_hero('Contact', 'Tell us what you are working on.',
               'Fill in the form and we will reply within one working day. No sales pressure, just a clear next step.'),
     section([con([
-        con([label('Email'), text('<p><a href="mailto:{{email}}">{{email}}</a></p>'),
+        con([label('Email'), text('<p><a href="mailto:%s">%s</a></p>' % (PUBLIC_EMAIL, PUBLIC_EMAIL)),
              label('Working hours'), text('Monday to Friday, 9:00 to 17:00'),
              label('Where we work'), text('Remotely, with clients in every time zone.')], 'emma-contact-details'),
         FORM,
