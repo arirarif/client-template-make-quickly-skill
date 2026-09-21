@@ -185,6 +185,13 @@ Suggested fixed price for Paul: quote it once, in the step-2 message, as a fixed
 
 ---
 
+## 10b. Decisions locked 2026-09-21
+
+- **One page, not dedicated pages.** The builder has sections only, no page list. Service detail (drone, 3D, floor plans, staging) goes into Products/Add-ons cards and FAQ. Extra pages would only be possible through a Requests-tab ask to Fotello, so don't promise them.
+- **Booking = Fotello's own flow** (address → sq-ft tier → package → add-ons → calendar). Paul already books through Fotello, so keep it; don't embed the old homes.expressrealestatephotos.com booking app.
+- **Contact form = the built-in one.** Test delivery only.
+- **Photos = Paul's own Fotello listings.** The image picker has Listings / Gallery / Stock tabs, and Listings holds his real shoots (4140 Woodmere Park Blvd Venice, 1016 Rhodes Ave Sarasota, 180 E Horton Ave Englewood, 5950 Midnight Pass Rd Siesta Key, …; 26 photos in the first). **Never use the Stock tab** — stock houses on a photographer's portfolio misrepresent his work. No photo folder needed from Paul; `assets/` is only a backup.
+
 ## 11. Where to start (in order)
 
 1. Send the step-2 message to Paul (price + reviews + numbers + photos + logo).
