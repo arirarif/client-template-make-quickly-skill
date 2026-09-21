@@ -127,18 +127,33 @@ plugin, and the rest of this workflow stays the same.
 dark text · one quiet accent colour · very large empty spaces · text links rather than loud buttons ·
 large, calm photos.
 
-### emma design tokens
+### Emma design tokens (final — from the client's `Colors*.png`, received 2026-09-22)
 
-| Token | Value |
+| Token | Client's name | Hex | Use |
+|---|---|---|---|
+| Page background | Cream Linen | `#FAF7F2` | Main background |
+| Highlight block | Sunbeam Cream | `#FDF5E6` | "Selected work" section, highlight areas |
+| Lines | Warm Stone | `#E8E3DA` | Borders, dividers |
+| Headings | Ink Black | `#12100E` | Headlines, logo, dark footer |
+| Body text | Charcoal Slate | `#5A544C` | Paragraphs, captions |
+| Accent | Sunflower Gold | `#F2B02F` (also `#F5B02A`) | Main button, underlines. **Fill only** |
+| Hover | Warm Amber | `#D9822B` | Button hover |
+| Second accent | Botanical Olive | `#54654A` | Tags, small labels |
+
+| Item | Choice |
 |---|---|
-| Headline font | **Fraunces** (free, closest to Magnat/Freight). Backup: Instrument Serif |
-| Text font | **Figtree** (free, closest to TT Commons/Gotham). Backup: DM Sans |
+| Name + tagline | **Emma** (capital E, script logo with a sunflower). Tagline in the logo: **"Make your ideas bloom"**, used as the homepage headline |
+| Headline font | **Gloock** (free, high-contrast display serif, closest to Magnat Head) |
+| Text font | **Hanken Grotesk** (free, soft geometric sans, closest to TT Commons / Gotham) |
 | Font loading | Self-hosted `.woff2` in the theme. No Google Fonts calls (speed + EU privacy) |
-| Background | Warm off-white around `#fbf9f6` |
-| Text | ~`#1a1918` headlines, ~`#4e4746` body |
-| Accent | **Sunflower yellow taken from `Colors.png` / the logo** (read the exact hex from the client files) |
-| Labels | 12–13 px uppercase, letter-spacing 2 px |
-| Section spacing | ~120–160 px desktop, ~64–80 px mobile |
+| Labels | 12 px uppercase, letter-spacing 0.18em |
+| Section spacing | `clamp(88px, 12vw, 168px)` |
+| Photo corners | 14 px radius |
+| Signature | A **real sunflower photo** rising in the hero and setting above the footer (user's idea, 2026-09-22) |
+
+Brand files are in `emma_logo_bw_transparent/`. Web copies are in `design/assets/`.
+**The homepage design is `design/homepage.html`**, with exports `homepage-desktop.png` and
+`homepage-mobile.png` and photo sources in `design/CREDITS.md`.
 
 **Yellow rule:** yellow is only ever a **fill** (button, highlight band, sun shape) with **dark text on
 it**. Never yellow text on a light page and never white text on yellow: both fail contrast.
@@ -214,11 +229,11 @@ Final count: **5 plugins + 1 custom plugin.**
 
 ### Phase 0 — Before the build (Day 2, today, 09-22)
 
-- [ ] Save the 9 brand files from the Upwork chat into `assets/brand/` in this folder. **Never** save the
+- [x] Brand files saved in `emma_logo_bw_transparent/` (done 2026-09-22). **Never** save the
       login screenshot `IMG_9625.png` or any password in this folder (it's a shared git repo)
-- [ ] Read the exact hex codes from `Colors.png`, `Colors 2.png`, `Colors 3.png` → put them in the tokens (section 4)
+- [x] Exact hex codes read from `Colors*.png` → section 4 (done 2026-09-22)
 - [ ] Send the reply to Willdene (section 12, option 1)
-- [ ] **Homepage design**: a static HTML page, desktop + mobile, using the exact section 4 tokens (so the
+- [x] **Homepage design** built: `design/homepage.html` (done 2026-09-22; still to send). A static HTML page, desktop + mobile, using the exact section 4 tokens (so the
       build later is a copy, not a redo). Publish it as a link + 2 screenshots → Willdene. **Today.**
 
 Homepage sections:

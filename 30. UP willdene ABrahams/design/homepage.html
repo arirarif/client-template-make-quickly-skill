@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emma Digital Agency — Homepage design draft</title>
+<meta name="description" content="Homepage design draft for Emma Digital Agency.">
+<link rel="icon" href="assets/sunflower.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Draft only. The WordPress theme will self-host these fonts. -->
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Photos: Unsplash licence (free for commercial use). Credits in design/CREDITS.md. Placeholders until the client's own photos arrive. -->
+<style>
+/* ---------------------------------------------------------------
+   Emma design tokens: the client's brand palette (Colors*.png).
+   The same values go into theme.json.
+---------------------------------------------------------------- */
+:root{
+  --daylight:#FAF7F2;   /* Cream Linen: page background */
+  --linen:#FDF5E6;      /* Sunbeam Cream: highlight blocks */
+  --dusk:#FBE7BE;       /* Sunbeam Cream deepened toward the gold, behind the setting flower */
+  --line:#E8E3DA;       /* Warm Stone: borders, dividers */
+  --ink:#12100E;        /* Ink Black: headings, logo, fine lines */
+  --stone:#5A544C;      /* Charcoal Slate: body copy, captions */
+  --sun:#F2B02F;        /* Sunflower Gold: fill only, never text */
+  --amber:#D9822B;      /* Warm Amber: button hover */
+  --olive:#54654A;      /* Botanical Olive: tags, secondary links */
+
+  --display:"Gloock", Georgia, serif;
+  --text:"Hanken Grotesk", system-ui, sans-serif;
+
+  --wrap:1240px;
+  --gutter:clamp(20px, 5vw, 56px);
+  --section:clamp(88px, 12vw, 168px);
+  --radius:14px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--daylight);color:var(--stone);font:400 1.0625rem/1.65 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;color:var(--ink);margin:0;letter-spacing:-.01em}
+p{margin:0}
+figure{margin:0}
+:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:2px}
+
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.label{font:600 .75rem/1 var(--text);letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
+
+/* buttons: one filled, the rest are text links */
+.btn{display:inline-flex;align-items:center;gap:.6em;background:var(--ink);color:var(--daylight);text-decoration:none;font:500 .95rem/1 var(--text);padding:1.05em 1.6em;border-radius:999px;transition:background .25s}
+.btn:hover{background:#2e2a25}
+.btn--sun{background:var(--sun);color:var(--ink)}
+.btn--sun:hover{background:var(--amber)}
+.link{font:500 .95rem/1 var(--text);color:var(--ink);text-decoration:none;background:linear-gradient(var(--sun),var(--sun)) 0 100%/100% 2px no-repeat;padding-bottom:.35em;transition:background-size .3s}
+.link:hover{background-size:100% 100%}
+.arrow{transition:transform .25s}
+a:hover .arrow{transform:translateX(3px)}
+
+/* photos */
+.photo{border-radius:var(--radius);overflow:hidden;background:var(--line)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.caption{margin-top:.9rem;font:500 .85rem/1.4 var(--text);color:var(--stone)}
+
+/* ---------- header ---------- */
+.site-header{position:relative;z-index:5}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:92px}
+.logo{display:block;line-height:0}
+.logo img{height:60px;width:auto}
+.site-footer .logo img{height:64px}
+.nav{display:flex;align-items:center;gap:2.2rem}
+.nav a:not(.btn){text-decoration:none;font-size:.95rem;color:var(--ink)}
+.nav a:not(.btn):hover{text-decoration:underline;text-decoration-color:var(--sun);text-decoration-thickness:2px;text-underline-offset:6px}
+.nav .btn{padding:.85em 1.3em}
+.menu-btn{display:none;background:none;border:0;font:500 .95rem var(--text);color:var(--ink);cursor:pointer;padding:.5rem 0}
+
+/* ---------- hero: the sunflower rises ---------- */
+.hero{position:relative;overflow:hidden;padding:clamp(40px,5vw,72px) 0 clamp(96px,12vw,170px)}
+.hero .wrap{position:relative;z-index:2}
+.hero .label{margin-bottom:2rem}
+.hero h1{font-size:clamp(3rem,7.4vw,6.6rem);line-height:.98;max-width:9ch}
+.hero-foot{display:flex;flex-direction:column;align-items:flex-start;gap:2.2rem;margin-top:clamp(36px,5vw,60px)}
+.hero-foot p{max-width:34ch;font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.55}
+.actions{display:flex;align-items:center;gap:1.8rem;flex-wrap:wrap}
+
+.bloom{position:absolute;z-index:1;pointer-events:none}
+.bloom::before{content:"";position:absolute;inset:-18% -18% 20%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(242,176,47,.34),rgba(242,176,47,.12) 55%,rgba(242,176,47,0))}
+.bloom img{position:relative;width:100%;height:auto}
+.hero .bloom{width:clamp(320px,42vw,600px);right:max(2vw,calc((100vw - var(--wrap)) / 2));bottom:-14%;
+  animation:rise 2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{transform:translateY(18%) rotate(-7deg);opacity:0}to{transform:none;opacity:1}}
+
+/* ---------- intro statement + photos ---------- */
+.intro{padding:var(--section) 0;border-top:1px solid var(--line)}
+.intro-head{display:grid;grid-template-columns:1fr 3fr;gap:3rem;align-items:baseline}
+.intro-head p:not(.label){font:400 clamp(1.7rem,3.3vw,2.9rem)/1.22 var(--display);color:var(--ink);max-width:24ch}
+.intro-head p span{color:var(--olive)}
+.intro-photos{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(56px,7vw,96px);align-items:end}
+.intro-photos figure:first-child{grid-column:1 / span 8}
+.intro-photos figure:first-child .photo{aspect-ratio:16/10}
+.intro-photos figure:last-child{grid-column:9 / span 4}
+.intro-photos figure:last-child .photo{aspect-ratio:4/5}
+
+/* ---------- services index ---------- */
+.services{padding:0 0 var(--section)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:clamp(40px,5vw,64px)}
+.section-head h2{font-size:clamp(2.2rem,4.6vw,3.8rem);line-height:1.02}
+.service-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.service{border-bottom:1px solid var(--line)}
+.service a{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr) auto;gap:2rem;align-items:center;padding:clamp(22px,2.6vw,34px) 0;text-decoration:none;position:relative}
+.service a::before{content:"";position:absolute;left:0;top:50%;width:14px;height:14px;border-radius:50%;background:var(--sun);transform:translate(-8px,-50%) scale(0);transition:transform .3s}
+.service h3{font-size:clamp(1.6rem,2.8vw,2.4rem);line-height:1.1;transition:transform .3s}
+.service p{font-size:1rem;max-width:44ch}
+.service .tags{display:block;margin-top:.55rem;font:600 .7rem/1.4 var(--text);letter-spacing:.16em;text-transform:uppercase;color:var(--olive)}
+.service .go{font-size:1.3rem;color:var(--ink);transition:transform .3s}
+.service a:hover::before{transform:translate(0,-50%) scale(1)}
+.service a:hover h3{transform:translateX(30px)}
+.service a:hover .go{transform:translateX(4px)}
+
+/* ---------- full-width photo band ---------- */
+.band{position:relative;height:clamp(300px,40vw,580px);overflow:hidden}
+.band img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.band::after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(to top,rgba(18,16,14,.45),rgba(18,16,14,0))}
+.band p{position:absolute;z-index:1;left:0;right:0;bottom:clamp(24px,4vw,48px);color:#FAF7F2}
+.band .label{color:#FAF7F2}
+
+/* ---------- selected work ---------- */
+.work{padding:var(--section) 0;background:var(--linen)}
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(20px,3vw,40px)}
+.case{text-decoration:none;display:block}
+.case:nth-child(1){grid-column:1 / span 7;grid-row:1 / span 2}
+.case:nth-child(2){grid-column:8 / span 5;grid-row:1}
+.case:nth-child(3){grid-column:8 / span 5;grid-row:2}
+.case .photo{position:relative;aspect-ratio:4/3}
+.case:nth-child(1){display:flex;flex-direction:column}
+.case:nth-child(1) .photo{aspect-ratio:auto;flex:1;min-height:0}
+.case:nth-child(1) .photo img{position:absolute;inset:0}
+.case .photo img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.case:hover .photo img{transform:scale(1.035)}
+.sample{position:absolute;z-index:1;top:14px;left:14px;background:rgba(250,247,242,.92);font:600 .66rem/1 var(--text);letter-spacing:.16em;text-transform:uppercase;padding:.6em .8em;border-radius:99px;color:var(--ink)}
+.case-meta{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:1.2rem}
+.case h3{font-size:clamp(1.4rem,2.2vw,1.85rem)}
+.case .label{font-size:.68rem;color:var(--olive);white-space:nowrap}
+.case p{margin-top:.4rem;font-size:.98rem;max-width:46ch}
+.work-foot{margin-top:clamp(48px,6vw,80px);text-align:center}
+
+/* ---------- process (a real sequence, so numbered) ---------- */
+.process{padding:var(--section) 0}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,48px);counter-reset:step}
+.step{counter-increment:step;border-top:1px solid var(--ink);padding-top:1.4rem}
+.step::before{content:counter(step);font:400 2.6rem/1 var(--display);color:var(--ink);display:block;margin-bottom:1.6rem}
+.step h3{font:600 1.05rem/1.3 var(--text);margin-bottom:.6rem}
+.step p{font-size:.98rem}
+
+/* ---------- CTA: the sunflower sets ---------- */
+.cta{position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--daylight) 0%,var(--dusk) 100%);padding:var(--section) 0 clamp(200px,26vw,340px);text-align:center}
+.cta .bloom{width:clamp(260px,32vw,440px);left:50%;bottom:calc(clamp(260px,32vw,440px) * -.62);transform:translateX(-50%)}
+.cta .wrap{position:relative;z-index:2}
+.cta h2{font-size:clamp(2.6rem,6.4vw,5.6rem);line-height:1;max-width:14ch;margin:1.6rem auto 1.8rem}
+.cta p{max-width:40ch;margin:0 auto 2.4rem;font-size:1.12rem}
+
+/* ---------- footer ---------- */
+.site-footer{position:relative;z-index:3;background:var(--ink);color:#cfc6b8;padding:clamp(56px,7vw,88px) 0 32px;font-size:.95rem}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}
+.site-footer h4{font:600 .72rem/1 var(--text);letter-spacing:.18em;text-transform:uppercase;color:#8f877b;margin:0 0 1.1rem}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.site-footer a{text-decoration:none}
+.site-footer a:hover{color:var(--sun)}
+.foot-note{max-width:30ch;margin-top:1.2rem}
+.legal{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:clamp(48px,6vw,72px);padding-top:24px;border-top:1px solid #3a352f;font-size:.82rem;color:#8f877b}
+
+/* draft badge (removed in the build) */
+.draft{position:fixed;right:14px;bottom:14px;z-index:50;background:var(--ink);color:var(--daylight);font:500 .72rem/1.3 var(--text);padding:.7em 1em;border-radius:10px;max-width:260px;opacity:.92}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .nav a:not(.btn){display:none}
+  .intro-head{grid-template-columns:1fr;gap:1.5rem}
+  .service a{grid-template-columns:1fr auto;gap:.6rem 1.5rem}
+  .service a p{grid-column:1;grid-row:2}
+  .service .go{grid-row:1 / span 2;grid-column:2}
+  .steps{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid > :first-child{grid-column:1 / -1}
+  .hero .bloom{width:46vw;right:-4vw;bottom:-10%}
+}
+@media (max-width:680px){
+  .site-header .wrap{height:76px}
+  .logo img{height:50px}
+  .nav .btn{display:none}
+  .menu-btn{display:block}
+  .hero{padding-bottom:300px}
+  .hero .bloom{width:72vw;right:-6vw;bottom:-60px}
+  .hero h1{max-width:none}
+  .section-head{flex-direction:column;align-items:flex-start}
+  .intro-photos{grid-template-columns:1fr}
+  .intro-photos figure:nth-child(n){grid-column:1}
+  .intro-photos figure:last-child .photo{aspect-ratio:4/3}
+  .work-grid{grid-template-columns:1fr}
+  .case:nth-child(n){grid-column:1;grid-row:auto}
+  .case:nth-child(1) .photo{aspect-ratio:4/3;flex:none}
+  .steps{grid-template-columns:1fr}
+  .service a:hover h3{transform:none}
+  .draft{left:14px;right:14px;max-width:none;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="assets/logo-color.png" width="720" height="253" alt="Emma Digital Agency, home"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#">Services</a>
+      <a href="#">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a class="btn" href="#">Start a project</a>
+      <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="bloom" aria-hidden="true"><img src="assets/sunflower-real.png" width="900" height="983" alt=""></div>
+    <div class="wrap">
+      <p class="label">Emma Digital Agency</p>
+      <h1 id="hero-title">Make your ideas bloom.</h1>
+      <div class="hero-foot">
+        <p>Websites, search, social and automation for growing businesses. Clear plans, honest reporting and results you can see.</p>
+        <div class="actions">
+          <a class="btn btn--sun" href="#">Start a project <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="link" href="#">See our work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro" aria-label="About Emma">
+    <div class="wrap">
+      <div class="intro-head">
+        <p class="label">Who we are</p>
+        <p>Emma looks after the digital side of your business, <span>from the website to the numbers behind it,</span> and explains every step in plain words.</p>
+      </div>
+      <div class="intro-photos">
+        <figure>
+          <div class="photo"><img src="assets/hero-team.jpg" width="2400" height="1250" alt="The team working together around a laptop" loading="lazy"></div>
+          <figcaption class="caption">One team for your website, search, social and data.</figcaption>
+        </figure>
+        <figure>
+          <div class="photo"><img src="assets/intro-sketch.jpg" width="1000" height="1200" alt="Sketching website layouts on paper" loading="lazy"></div>
+          <figcaption class="caption">Every project starts on paper.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="services-title">What we do</h2>
+        <a class="link" href="#">All services</a>
+      </div>
+      <ul class="service-list">
+        <li class="service"><a href="#">
+          <h3>Web Development</h3>
+          <p>Fast, well-built websites that you can update yourself.<span class="tags">Design · Build · Care plans</span></p>
+          <span class="go" aria-hidden="true">→</span></a></li>
+        <li class="service"><a href="#">
+          <h3>SEO &amp; SEM</h3>
+          <p>Get found on Google, in the search results and through paid ads.<span class="tags">Technical SEO · Content · Google Ads</span></p>
+          <span class="go" aria-hidden="true">→</span></a></li>
+        <li class="service"><a href="#">
+          <h3>Social Media Marketing</h3>
+          <p>A steady, on-brand presence where your customers already spend their time.<span class="tags">Planning · Content · Paid social</span></p>
+          <span class="go" aria-hidden="true">→</span></a></li>
+        <li class="service"><a href="#">
+          <h3>AI Solutions</h3>
+          <p>Practical AI tools that take repetitive work off your team.<span class="tags">Assistants · Workflows · Training</span></p>
+          <span class="go" aria-hidden="true">→</span></a></li>
+        <li class="service"><a href="#">
+          <h3>Email Automation</h3>
+          <p>The right email at the right moment, sent without manual work.<span class="tags">Welcome flows · Newsletters · Segments</span></p>
+          <span class="go" aria-hidden="true">→</span></a></li>
+        <li class="service"><a href="#">
+          <h3>Analytics</h3>
+          <p>Clear numbers on what works, in reports that are easy to read.<span class="tags">Tracking setup · Dashboards · Monthly reports</span></p>
+          <span class="go" aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="band" role="img" aria-label="A sunflower field at sunset">
+    <img src="assets/band-sunflowers.jpg" width="2400" height="1000" alt="" loading="lazy">
+    <p class="wrap label">Make your ideas bloom</p>
+  </div>
+
+  <section class="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="work-title">Selected work</h2>
+        <a class="link" href="#">All projects</a>
+      </div>
+      <div class="work-grid">
+        <a class="case" href="#">
+          <div class="photo"><span class="sample">Sample project</span><img src="assets/work-cafe.jpg" width="1600" height="1100" alt="Two café owners in their café" loading="lazy"></div>
+          <div class="case-meta"><h3>Neighbourhood café</h3><span class="label">Web Development</span></div>
+          <p>A new website with the menu, opening hours and online orders in one place. Real projects and results go here.</p>
+        </a>
+        <a class="case" href="#">
+          <div class="photo"><span class="sample">Sample project</span><img src="assets/work-yoga.jpg" width="1100" height="825" alt="A sunlit yoga class" loading="lazy"></div>
+          <div class="case-meta"><h3>Yoga studio</h3><span class="label">SEO &amp; SEM</span></div>
+          <p>Local search and ads to fill the morning classes.</p>
+        </a>
+        <a class="case" href="#">
+          <div class="photo"><span class="sample">Sample project</span><img src="assets/work-florist.jpg" width="1100" height="825" alt="Buckets of fresh flowers outside a florist" loading="lazy"></div>
+          <div class="case-meta"><h3>Florist</h3><span class="label">Email Automation</span></div>
+          <p>Seasonal emails and reminders that bring customers back.</p>
+        </a>
+      </div>
+      <div class="work-foot"><a class="link" href="#">See all projects</a></div>
+    </div>
+  </section>
+
+  <section class="process" aria-labelledby="process-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="process-title">How we work</h2>
+      </div>
+      <ol class="steps">
+        <li class="step"><h3>Talk</h3><p>A short call about your business, your goals and what is not working today.</p></li>
+        <li class="step"><h3>Plan</h3><p>A written plan with the scope, the timeline and a fixed price. No surprises later.</p></li>
+        <li class="step"><h3>Build</h3><p>We do the work and keep you updated at every step, then launch it together.</p></li>
+        <li class="step"><h3>Measure</h3><p>A clear report on the results, and ideas for what to improve next.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="bloom" aria-hidden="true"><img src="assets/sunflower-real.png" width="900" height="983" alt="" loading="lazy"></div>
+    <div class="wrap">
+      <p class="label">Start a project</p>
+      <h2 id="cta-title">Tell us what you are working on.</h2>
+      <p>A few lines about your business are enough. We will come back to you with ideas and a clear next step.</p>
+      <a class="btn" href="#">Get in touch <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#"><img src="assets/logo-yellow.png" width="720" height="253" alt="Emma Digital Agency" loading="lazy"></a>
+        <p class="foot-note">Make your ideas bloom. Websites, search, social, AI, email and analytics.</p>
+      </div>
+      <div><h4>Pages</h4><ul><li><a href="#">Services</a></li><li><a href="#">Work</a></li><li><a href="#">About</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="#">Web Development</a></li><li><a href="#">SEO &amp; SEM</a></li><li><a href="#">Social Media</a></li><li><a href="#">Analytics</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="#">hello@emmadigitalagency.com</a></li><li>Contact details to confirm</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Emma Digital Agency</span><a href="#">Privacy policy</a></div>
+  </div>
+</footer>
+
+<p class="draft" role="note">Design draft. Logo and colours are final; photos and text are placeholders to replace.</p>
+<script>if(/export/.test(location.search))document.querySelector('.draft').remove()</script>
+</body>
+</html>
