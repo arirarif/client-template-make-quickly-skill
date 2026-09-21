@@ -669,19 +669,10 @@
    {
     "id": "cc84982",
     "elType": "widget",
-    "widgetType": "loop-grid",
+    "widgetType": "shortcode",
     "settings": {
-     "template_id": "{{tpl:loop-case}}",
-     "post_query_post_type": "case_study",
-     "posts_per_page": 3,
-     "columns": 2,
-     "columns_tablet": 2,
-     "columns_mobile": 1,
-     "post_query_orderby": "post_date",
-     "post_query_order": "desc",
-     "nothing_found_message_text": "No projects here yet. Please check back soon.",
-     "enable_nothing_found_message": "yes",
-     "_css_classes": "emma-cases emma-cases-featured"
+     "shortcode": "[emma_projects count=\"3\" layout=\"featured\"]",
+     "_css_classes": "emma-projects-widget"
     },
     "elements": []
    },

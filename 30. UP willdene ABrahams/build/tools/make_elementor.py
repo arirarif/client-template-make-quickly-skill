@@ -241,7 +241,7 @@ save('home', 'Home', 'page', [
     con([image('band-sunflowers.jpg', 'A sunflower field at sunset', 'emma-band-photo'), label('Make your ideas bloom')], 'emma-band'),
     section([
         section_head('Selected work', 'All projects', '/portfolio/'),
-        loop_grid('emma-cases-featured', 3, 2),
+        widget('shortcode', {'shortcode': '[emma_projects count="3" layout="featured"]'}, 'emma-projects-widget'),
         con([button('See all projects', '/portfolio/', 'emma-textlink')], 'emma-work-foot'),
     ], 'emma-work'),
     section([
