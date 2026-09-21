@@ -128,3 +128,8 @@ Picker path: section → image → **Change** → **Listings** tab → choose th
 | 2026-09-21 | Audit | Editor audited; placeholders found (reviews, 4.9, 5,000+, stock photos, Larchmont example) |
 | 2026-09-21 | T3.8 | Reviews section hidden + saved, confirmed after reload |
 | 2026-09-21 | T2 | Found Paul's real photos in picker → Listings tab |
+| 2026-09-21 | T1 | CONTENT-SHEET.md written from the live Express site |
+| 2026-09-21 | T3.3 | Hero text done (no rating/count claims). Slides → Paul's photos: 4427 Deer Ridge Pl twilight pool · 1016 Rhodes Ave twilight garden · 426 Pineview Dr Venice twilight front. Saved |
+| 2026-09-21 | T3.5/6/9/10/11/12 | Why Us text, Products subtext, all 8 FAQs, Portfolio subtext, Contact text + success msg, Footer blurb. Saved, verified after reload |
+| 2026-09-21 | T3.7 | Stats hidden (5,000+ / 1 in 4 / 4.9 were invented) |
+| 2026-09-21 | notes | Contact "Larchmont" placeholder is not an editable field — ask Fotello via Requests. Footer socials verified real. Package cards live in /dashboard/products (Paul's booking) — not touched |
