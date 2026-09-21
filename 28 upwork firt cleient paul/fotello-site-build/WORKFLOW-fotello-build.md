@@ -132,4 +132,11 @@ Picker path: section → image → **Change** → **Listings** tab → choose th
 | 2026-09-21 | T3.3 | Hero text done (no rating/count claims). Slides → Paul's photos: 4427 Deer Ridge Pl twilight pool · 1016 Rhodes Ave twilight garden · 426 Pineview Dr Venice twilight front. Saved |
 | 2026-09-21 | T3.5/6/9/10/11/12 | Why Us text, Products subtext, all 8 FAQs, Portfolio subtext, Contact text + success msg, Footer blurb. Saved, verified after reload |
 | 2026-09-21 | T3.7 | Stats hidden (5,000+ / 1 in 4 / 4.9 were invented) |
-| 2026-09-21 | notes | Contact "Larchmont" placeholder is not an editable field — ask Fotello via Requests. Footer socials verified real. Package cards live in /dashboard/products (Paul's booking) — not touched |
+| 2026-09-21 | T3.5 | Why Us image → 4427 Deer Ridge twilight front (replaced Fotello graphic with a "Sold 11% higher" badge). Saved |
+| 2026-09-21 | T3.10 | All 12 portfolio images → Paul's listings (Rhodes, Deer Ridge, Doubloon ×3, Pineview, Peppertree, Horton, Midnight Pass, 51st St W, Freeport). Saved |
+| 2026-09-21 | T5.1 | Logo: uploaded logo-5.png (same file the live site uses) to Header brand image via Gallery → Upload. Saved |
+| 2026-09-21 | T3.13 | Add-ons ON (Paul's real Fotello add-ons: marketing designs, STR close-ups, amenity, property website, same-day $50, virtual staging). Virtual Tour Portfolio ON with 4 real tours from the live site (2 Matterport, 2 Zillow 3D) + listing-photo covers. Both auto-added to the menu. Saved |
+| 2026-09-21 | T3.13 | Video Portfolio stays hidden: it only takes listing videos or uploaded files, and none of Paul's Fotello listings has a video. Live site has 4 Vimeo videos (583609210, 646709340, 563764246, 651706746) — need the files from Paul |
+| 2026-09-21 | T4 | Booking already live on Fotello: homes.expressrealestatephotos.com/book/default (same link the WordPress site uses). Flow: address → sq ft → packages priced by size (1,800 sq ft = $199/$299/$399/$499) → add-ons → schedule → contact → confirm. Walked to products step only, nothing submitted. Booking email is orders@ → keep orders@ in footer |
+| 2026-09-21 | Q | Client Login = Paul's Fotello portal (main site links homes.expressrealestatephotos.com/login) → keep |
+| 2026-09-21 | notes | Header "Add link" accepts any https:// URL (external links possible). Contact "Larchmont" placeholder is not an editable field — ask Fotello via Requests. Footer socials verified real. Package cards live in /dashboard/products (Paul's booking) — not touched |
