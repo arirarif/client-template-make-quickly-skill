@@ -1,0 +1,227 @@
+[
+ {
+  "id": "f15d104",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-page-hero",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "4f1954f",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Contact</p>",
+     "_css_classes": "emma-label"
+    },
+    "elements": []
+   },
+   {
+    "id": "5ff5097",
+    "elType": "widget",
+    "widgetType": "heading",
+    "settings": {
+     "title": "Tell us what you are working on.",
+     "header_size": "h1"
+    },
+    "elements": []
+   },
+   {
+    "id": "11357cd",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Fill in the form and we will reply within one working day. No sales pressure, just a clear next step.</p>",
+     "_css_classes": "emma-lead"
+    },
+    "elements": []
+   }
+  ]
+ },
+ {
+  "id": "98732a2",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-contact",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "160eb0c",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-split emma-split-form"
+    },
+    "elements": [
+     {
+      "id": "39479b5",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-contact-details"
+      },
+      "elements": [
+       {
+        "id": "8f73fc4",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Email</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "c4a1f71",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p><a href=\"mailto:{{email}}\">{{email}}</a></p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "7cf0825",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Working hours</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "12378ab",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Monday to Friday, 9:00 to 17:00</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "b24a7b2",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Where we work</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "947aa44",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Remotely, with clients in every time zone.</p>"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "5382839",
+      "elType": "widget",
+      "widgetType": "form",
+      "settings": {
+       "form_name": "Enquiry",
+       "form_fields": [
+        {
+         "_id": "67eb7a2",
+         "custom_id": "name",
+         "field_type": "text",
+         "field_label": "Your name",
+         "placeholder": "",
+         "width": "50",
+         "required": "true"
+        },
+        {
+         "_id": "2947055",
+         "custom_id": "email",
+         "field_type": "email",
+         "field_label": "Email",
+         "placeholder": "",
+         "width": "50",
+         "required": "true"
+        },
+        {
+         "_id": "f89c312",
+         "custom_id": "company",
+         "field_type": "text",
+         "field_label": "Company",
+         "placeholder": "",
+         "width": "50",
+         "required": ""
+        },
+        {
+         "_id": "838906c",
+         "custom_id": "service",
+         "field_type": "select",
+         "field_label": "What can we help with?",
+         "placeholder": "",
+         "width": "50",
+         "required": "",
+         "field_options": "Not sure yet\nWeb Development\nSEO & SEM\nSocial Media Marketing\nAI Solutions\nEmail Automation\nAnalytics"
+        },
+        {
+         "_id": "9ace873",
+         "custom_id": "message",
+         "field_type": "textarea",
+         "field_label": "Tell us about your project",
+         "placeholder": "",
+         "width": "100",
+         "required": "true",
+         "rows": 6
+        },
+        {
+         "_id": "92bf362",
+         "custom_id": "website_url",
+         "field_type": "honeypot",
+         "field_label": "",
+         "placeholder": "",
+         "width": "100",
+         "required": ""
+        }
+       ],
+       "show_labels": "true",
+       "mark_required": "",
+       "button_text": "Send enquiry",
+       "button_width": "100",
+       "submit_actions": [
+        "save-to-database",
+        "email"
+       ],
+       "email_to": "{{email}}",
+       "email_subject": "New enquiry from the Emma website",
+       "email_content": "[all-fields]",
+       "email_from": "hello@emmadigitalagency.com",
+       "email_from_name": "Emma website",
+       "email_reply_to": "email",
+       "form_metadata": [
+        "date",
+        "time",
+        "page_url"
+       ],
+       "success_message": "Thank you. Your enquiry has been sent, and we will reply within one working day.",
+       "error_message": "Your enquiry could not be sent. Please try again, or email us directly.",
+       "required_field_message": "Please fill in this field.",
+       "invalid_message": "Please check this field.",
+       "custom_messages": "yes",
+       "_css_classes": "emma-form"
+      },
+      "elements": []
+     }
+    ]
+   }
+  ]
+ }
+]

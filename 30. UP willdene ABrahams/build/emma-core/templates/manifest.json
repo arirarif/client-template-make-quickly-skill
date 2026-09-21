@@ -1,0 +1,83 @@
+[
+ {
+  "key": "loop-case",
+  "title": "Project card",
+  "kind": "loop-item"
+ },
+ {
+  "key": "header",
+  "title": "Header",
+  "kind": "header",
+  "conditions": [
+   "include/general"
+  ]
+ },
+ {
+  "key": "footer",
+  "title": "Footer",
+  "kind": "footer",
+  "conditions": [
+   "include/general"
+  ]
+ },
+ {
+  "key": "pricing",
+  "title": "Pricing table",
+  "kind": "section"
+ },
+ {
+  "key": "home",
+  "title": "Home",
+  "kind": "page",
+  "slug": "home",
+  "front": true
+ },
+ {
+  "key": "about",
+  "title": "About",
+  "kind": "page",
+  "slug": "about"
+ },
+ {
+  "key": "services",
+  "title": "Services",
+  "kind": "page",
+  "slug": "services"
+ },
+ {
+  "key": "portfolio",
+  "title": "Portfolio",
+  "kind": "page",
+  "slug": "portfolio"
+ },
+ {
+  "key": "archive-service",
+  "title": "Service archive",
+  "kind": "archive",
+  "conditions": [
+   "include/archive/service"
+  ]
+ },
+ {
+  "key": "single-case",
+  "title": "Single project",
+  "kind": "single-post",
+  "conditions": [
+   "include/singular/case_study"
+  ]
+ },
+ {
+  "key": "contact",
+  "title": "Contact",
+  "kind": "page",
+  "slug": "contact"
+ },
+ {
+  "key": "not-found",
+  "title": "Page not found",
+  "kind": "error-404",
+  "conditions": [
+   "include/singular/not_found404"
+  ]
+ }
+]

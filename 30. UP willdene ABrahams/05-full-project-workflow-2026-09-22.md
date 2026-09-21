@@ -4,6 +4,15 @@ Built from (1) the whole Upwork thread, (2) a **read-only audit of the live Word
 Chrome on 2026-09-22 (nothing was changed), and (3) the real CSS of the two reference sites.
 Files `02`, `03` and `04` are history. **This file is the plan.**
 
+> **Update 2026-09-22 (evening): the build method changed.** Ariful chose **Hello Elementor + the Emma child theme +
+> Elementor Pro**, with normal Elementor widgets, so every part of the site can be edited visually. The client never
+> asked for "no page builder": that wording was only in our own milestone message, and the proposal and shortlist
+> answer both named Elementor Pro on Hello. One line about it goes into the Milestone 1 message. Sections 3 and 5
+> below describe the earlier block-theme plan (kept in `build/archive-block-theme/`). **The build and install steps
+> are now in `build/INSTALL.md`**; the design, palette, fonts, portfolio logic, promises, timeline and QA list are unchanged.
+> The enquiry form is the Elementor Pro Form widget (no separate form plugin). Elementor Pro is installed on the
+> live site by Ariful; it was not available locally, so the Pro widgets get their first check on the live site.
+
 ---
 
 ## 0. The job on one screen

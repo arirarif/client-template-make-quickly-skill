@@ -1,0 +1,8 @@
+# Third-party plugin copies are never committed
+gloRL3fYLTMb-Elementor-Pro-*/
+*.zip
+
+# The site source lives in build/ (a parent .gitignore ignores "build"); outputs stay out
+!/build/
+/build/dist/
+/build/.playground/

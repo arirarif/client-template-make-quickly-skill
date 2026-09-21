@@ -1,0 +1,242 @@
+[
+ {
+  "id": "1f8bfed",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-pricing-section",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "ba5b400",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-section-head"
+    },
+    "elements": [
+     {
+      "id": "880322e",
+      "elType": "widget",
+      "widgetType": "heading",
+      "settings": {
+       "title": "Packages and pricing",
+       "header_size": "h2"
+      },
+      "elements": []
+     }
+    ]
+   },
+   {
+    "id": "511c8b3",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-pricing"
+    },
+    "elements": [
+     {
+      "id": "80036d3",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-price-card"
+      },
+      "elements": [
+       {
+        "id": "dbfd796",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Starter",
+         "header_size": "h3"
+        },
+        "elements": []
+       },
+       {
+        "id": "1c3c1d4",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>$000</p>",
+         "_css_classes": "emma-price"
+        },
+        "elements": []
+       },
+       {
+        "id": "d8c08d8",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>one-time, from</p>",
+         "_css_classes": "emma-price-note"
+        },
+        "elements": []
+       },
+       {
+        "id": "51efbc3",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li>First item included in this package</li><li>Second item included</li><li>Third item included</li></ul>",
+         "_css_classes": "emma-price-list"
+        },
+        "elements": []
+       },
+       {
+        "id": "83fc255",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Choose Starter",
+         "link": {
+          "url": "/contact/",
+          "is_external": "",
+          "nofollow": ""
+         }
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "f3f4c0c",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-price-card is-featured"
+      },
+      "elements": [
+       {
+        "id": "0757667",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Growth",
+         "header_size": "h3"
+        },
+        "elements": []
+       },
+       {
+        "id": "47402a8",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>$000</p>",
+         "_css_classes": "emma-price"
+        },
+        "elements": []
+       },
+       {
+        "id": "db69e50",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>per month, from</p>",
+         "_css_classes": "emma-price-note"
+        },
+        "elements": []
+       },
+       {
+        "id": "1f03e21",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li>Everything in Starter</li><li>First extra item</li><li>Second extra item</li><li>Third extra item</li></ul>",
+         "_css_classes": "emma-price-list"
+        },
+        "elements": []
+       },
+       {
+        "id": "13a4bd0",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Choose Growth",
+         "link": {
+          "url": "/contact/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "emma-sun"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "83e61cd",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-price-card"
+      },
+      "elements": [
+       {
+        "id": "466a511",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Complete",
+         "header_size": "h3"
+        },
+        "elements": []
+       },
+       {
+        "id": "182c0de",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>$000</p>",
+         "_css_classes": "emma-price"
+        },
+        "elements": []
+       },
+       {
+        "id": "b5c7d8e",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>per month, from</p>",
+         "_css_classes": "emma-price-note"
+        },
+        "elements": []
+       },
+       {
+        "id": "0e75cce",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li>Everything in Growth</li><li>First extra item</li><li>Second extra item</li><li>Third extra item</li></ul>",
+         "_css_classes": "emma-price-list"
+        },
+        "elements": []
+       },
+       {
+        "id": "f3d3a91",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Choose Complete",
+         "link": {
+          "url": "/contact/",
+          "is_external": "",
+          "nofollow": ""
+         }
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+]

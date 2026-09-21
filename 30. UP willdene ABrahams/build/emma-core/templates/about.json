@@ -1,0 +1,586 @@
+[
+ {
+  "id": "0e2bdcb",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-page-hero",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "70c8994",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>About</p>",
+     "_css_classes": "emma-label"
+    },
+    "elements": []
+   },
+   {
+    "id": "ee377e3",
+    "elType": "widget",
+    "widgetType": "heading",
+    "settings": {
+     "title": "A small agency that treats your business like its own.",
+     "header_size": "h1"
+    },
+    "elements": []
+   },
+   {
+    "id": "f3fdf92",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Emma brings design, development and marketing together, so you talk to one team and always know what is happening.</p>",
+     "_css_classes": "emma-lead"
+    },
+    "elements": []
+   }
+  ]
+ },
+ {
+  "id": "0a3505a",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-story",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "ea8850a",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-split"
+    },
+    "elements": [
+     {
+      "id": "01c469d",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-split-text"
+      },
+      "elements": [
+       {
+        "id": "11bf884",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Our story</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "b5cc570",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Digital work should be clear, not complicated.",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "b22b699",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Many business owners pay for websites and marketing they do not fully understand. Emma was started to change that: good work, explained in plain words, with results you can check yourself.</p><p>We plan every project with you, agree a fixed price before we start, and report honestly on what worked and what did not.</p>"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "ad51e15",
+      "elType": "widget",
+      "widgetType": "image",
+      "settings": {
+       "image": {
+        "url": "{{img:hero-team.jpg:url}}",
+        "id": "{{img:hero-team.jpg:id}}",
+        "alt": "The team working together around a laptop",
+        "source": "library"
+       },
+       "image_size": "full",
+       "_css_classes": "emma-photo emma-ratio-4-3"
+      },
+      "elements": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "b6dff22",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-values",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "a3421b9",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-section-head"
+    },
+    "elements": [
+     {
+      "id": "50259bd",
+      "elType": "widget",
+      "widgetType": "heading",
+      "settings": {
+       "title": "What you can expect",
+       "header_size": "h2"
+      },
+      "elements": []
+     }
+    ]
+   },
+   {
+    "id": "5c1e46e",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-cards"
+    },
+    "elements": [
+     {
+      "id": "2d0169e",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-card"
+      },
+      "elements": [
+       {
+        "id": "7c93f8d",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Clear",
+         "header_size": "h3"
+        },
+        "elements": []
+       },
+       {
+        "id": "8cafa94",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Plain words, written plans and fixed prices. You always know what you are paying for.</p>"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "53cd6f5",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-card"
+      },
+      "elements": [
+       {
+        "id": "772ee0f",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Careful",
+         "header_size": "h3"
+        },
+        "elements": []
+       },
+       {
+        "id": "3959c26",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>We build things properly, test them on real devices and look after them once they are live.</p>"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "1b2663a",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-card"
+      },
+      "elements": [
+       {
+        "id": "3ace062",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Honest",
+         "header_size": "h3"
+        },
+        "elements": []
+       },
+       {
+        "id": "6fae955",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>We report the real numbers, including the ones that are not good yet, and say what we would do next.</p>"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "db51a83",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-story",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "4f8d161",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-split"
+    },
+    "elements": [
+     {
+      "id": "8804ed6",
+      "elType": "widget",
+      "widgetType": "image",
+      "settings": {
+       "image": {
+        "url": "{{img:intro-sketch.jpg:url}}",
+        "id": "{{img:intro-sketch.jpg:id}}",
+        "alt": "Sketching website layouts on paper",
+        "source": "library"
+       },
+       "image_size": "full",
+       "_css_classes": "emma-photo emma-ratio-4-3"
+      },
+      "elements": []
+     },
+     {
+      "id": "d545a33",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-split-text"
+      },
+      "elements": [
+       {
+        "id": "92f09c8",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>How we are organised</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "d0e221e",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "One contact, a network of specialists.",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "f2bc383",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>You work with one person at Emma from the first call to the final report. Behind that contact is a network of trusted specialists: developers, SEO and ads experts, designers and analysts.</p><p>Each project gets the people it needs and nothing more. That keeps quality high and prices fair.</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "81ce38b",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "See our work",
+         "link": {
+          "url": "/portfolio/",
+          "is_external": "",
+          "nofollow": ""
+         }
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "4a295c5",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-team",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "ef23449",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-section-head"
+    },
+    "elements": [
+     {
+      "id": "be5cc32",
+      "elType": "widget",
+      "widgetType": "heading",
+      "settings": {
+       "title": "The people behind Emma",
+       "header_size": "h2"
+      },
+      "elements": []
+     }
+    ]
+   },
+   {
+    "id": "eb1735f",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-cards emma-cards-4"
+    },
+    "elements": [
+     {
+      "id": "5c1aaef",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-card emma-member"
+      },
+      "elements": [
+       {
+        "id": "cf45d02",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Team member name",
+         "header_size": "h3"
+        },
+        "elements": []
+       },
+       {
+        "id": "c8892df",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Founder and main contact</p>"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "7047dca",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-card emma-member"
+      },
+      "elements": [
+       {
+        "id": "cf8cfe5",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Team member name",
+         "header_size": "h3"
+        },
+        "elements": []
+       },
+       {
+        "id": "e47417f",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Web development</p>"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "e41e3d1",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-card emma-member"
+      },
+      "elements": [
+       {
+        "id": "c9bf7d8",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Team member name",
+         "header_size": "h3"
+        },
+        "elements": []
+       },
+       {
+        "id": "496e066",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>SEO and paid search</p>"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "8c87e8c",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-card emma-member"
+      },
+      "elements": [
+       {
+        "id": "f8e87b9",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Team member name",
+         "header_size": "h3"
+        },
+        "elements": []
+       },
+       {
+        "id": "31c6038",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Design and content</p>"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "d64ed8c",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-cta",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "7bb2a7a",
+    "elType": "widget",
+    "widgetType": "image",
+    "settings": {
+     "image": {
+      "url": "{{img:sunflower-real.png:url}}",
+      "id": "{{img:sunflower-real.png:id}}",
+      "alt": "",
+      "source": "library"
+     },
+     "image_size": "full",
+     "_css_classes": "emma-bloom"
+    },
+    "elements": []
+   },
+   {
+    "id": "24a62a8",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Start a project</p>",
+     "_css_classes": "emma-label"
+    },
+    "elements": []
+   },
+   {
+    "id": "08246d4",
+    "elType": "widget",
+    "widgetType": "heading",
+    "settings": {
+     "title": "Tell us what you are working on.",
+     "header_size": "h2"
+    },
+    "elements": []
+   },
+   {
+    "id": "435eca8",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>A few lines about your business are enough. We will come back to you with ideas and a clear next step.</p>",
+     "_css_classes": "emma-lead"
+    },
+    "elements": []
+   },
+   {
+    "id": "7fec3de",
+    "elType": "widget",
+    "widgetType": "button",
+    "settings": {
+     "text": "Get in touch",
+     "link": {
+      "url": "/contact/",
+      "is_external": "",
+      "nofollow": ""
+     }
+    },
+    "elements": []
+   }
+  ]
+ }
+]

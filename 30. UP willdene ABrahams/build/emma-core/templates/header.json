@@ -1,0 +1,75 @@
+[
+ {
+  "id": "73b5054",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-header",
+   "html_tag": "header"
+  },
+  "elements": [
+   {
+    "id": "209be13",
+    "elType": "widget",
+    "widgetType": "theme-site-logo",
+    "settings": {
+     "image_size": "full",
+     "link_to": "custom",
+     "__dynamic__": {
+      "image": "[elementor-tag id=\"356626b\" name=\"site-logo\" settings=\"%7B%7D\"]",
+      "link": "[elementor-tag id=\"e19994d\" name=\"site-url\" settings=\"%7B%7D\"]"
+     },
+     "_css_classes": "emma-logo"
+    },
+    "elements": []
+   },
+   {
+    "id": "c16127f",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-header-nav"
+    },
+    "elements": [
+     {
+      "id": "46c251b",
+      "elType": "widget",
+      "widgetType": "nav-menu",
+      "settings": {
+       "menu": "{{menu}}",
+       "layout": "horizontal",
+       "align_items": "end",
+       "pointer": "none",
+       "dropdown": "mobile",
+       "full_width": "stretch",
+       "toggle": "burger",
+       "submenu_icon": {
+        "value": "",
+        "library": ""
+       },
+       "_css_classes": "emma-nav"
+      },
+      "elements": []
+     },
+     {
+      "id": "914f2e5",
+      "elType": "widget",
+      "widgetType": "button",
+      "settings": {
+       "text": "Start a project",
+       "link": {
+        "url": "/contact/",
+        "is_external": "",
+        "nofollow": ""
+       },
+       "_css_classes": "emma-header-cta"
+      },
+      "elements": []
+     }
+    ]
+   }
+  ]
+ }
+]

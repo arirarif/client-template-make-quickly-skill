@@ -1,0 +1,85 @@
+[
+ {
+  "id": "e4a37a2",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-page-hero",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "2e548e2",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Page not found</p>",
+     "_css_classes": "emma-label"
+    },
+    "elements": []
+   },
+   {
+    "id": "dc795eb",
+    "elType": "widget",
+    "widgetType": "heading",
+    "settings": {
+     "title": "This page has moved or never existed.",
+     "header_size": "h1"
+    },
+    "elements": []
+   },
+   {
+    "id": "6158491",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Go back to the homepage, or have a look at our work.</p>",
+     "_css_classes": "emma-lead"
+    },
+    "elements": []
+   },
+   {
+    "id": "32f5dd2",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-actions"
+    },
+    "elements": [
+     {
+      "id": "4cc2dec",
+      "elType": "widget",
+      "widgetType": "button",
+      "settings": {
+       "text": "Back to the homepage",
+       "link": {
+        "url": "/",
+        "is_external": "",
+        "nofollow": ""
+       },
+       "_css_classes": "emma-sun"
+      },
+      "elements": []
+     },
+     {
+      "id": "2afb249",
+      "elType": "widget",
+      "widgetType": "button",
+      "settings": {
+       "text": "See our work",
+       "link": {
+        "url": "/portfolio/",
+        "is_external": "",
+        "nofollow": ""
+       },
+       "_css_classes": "emma-textlink"
+      },
+      "elements": []
+     }
+    ]
+   }
+  ]
+ }
+]

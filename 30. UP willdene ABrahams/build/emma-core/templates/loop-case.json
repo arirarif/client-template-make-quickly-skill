@@ -1,0 +1,84 @@
+[
+ {
+  "id": "0ec44a4",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "full",
+   "css_classes": "emma-case-card"
+  },
+  "elements": [
+   {
+    "id": "c85e7cb",
+    "elType": "widget",
+    "widgetType": "theme-post-featured-image",
+    "settings": {
+     "image_size": "large",
+     "link_to": "custom",
+     "__dynamic__": {
+      "link": "[elementor-tag id=\"84387ec\" name=\"post-url\" settings=\"%7B%7D\"]"
+     },
+     "_css_classes": "emma-case-image"
+    },
+    "elements": []
+   },
+   {
+    "id": "f8d4d61",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-case-meta"
+    },
+    "elements": [
+     {
+      "id": "6a019da",
+      "elType": "widget",
+      "widgetType": "theme-post-title",
+      "settings": {
+       "header_size": "h3",
+       "__dynamic__": {
+        "title": "[elementor-tag id=\"cef88bb\" name=\"post-title\" settings=\"%7B%7D\"]",
+        "link": "[elementor-tag id=\"ae0d3ca\" name=\"post-url\" settings=\"%7B%7D\"]"
+       },
+       "_css_classes": "emma-case-title"
+      },
+      "elements": []
+     },
+     {
+      "id": "4b7bada",
+      "elType": "widget",
+      "widgetType": "post-info",
+      "settings": {
+       "view": "inline",
+       "icon_list": [
+        {
+         "_id": "3e597e0",
+         "type": "terms",
+         "taxonomy": "service",
+         "show_icon": "none",
+         "terms_link": "",
+         "link": ""
+        }
+       ],
+       "_css_classes": "emma-case-terms"
+      },
+      "elements": []
+     }
+    ]
+   },
+   {
+    "id": "44cd316",
+    "elType": "widget",
+    "widgetType": "theme-post-excerpt",
+    "settings": {
+     "__dynamic__": {
+      "excerpt": "[elementor-tag id=\"fcb0ef3\" name=\"post-excerpt\" settings=\"%7B%7D\"]"
+     },
+     "_css_classes": "emma-case-excerpt"
+    },
+    "elements": []
+   }
+  ]
+ }
+]

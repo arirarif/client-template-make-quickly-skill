@@ -1,0 +1,163 @@
+[
+ {
+  "id": "9977972",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-page-hero",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "e5b19bf",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Our work</p>",
+     "_css_classes": "emma-label"
+    },
+    "elements": []
+   },
+   {
+    "id": "6f00756",
+    "elType": "widget",
+    "widgetType": "heading",
+    "settings": {
+     "title": "Work that made a difference.",
+     "header_size": "h1"
+    },
+    "elements": []
+   },
+   {
+    "id": "4c6452e",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>A selection of projects. Choose a service to see the work that matches it.</p>",
+     "_css_classes": "emma-lead"
+    },
+    "elements": []
+   }
+  ]
+ },
+ {
+  "id": "94d23c1",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-archive",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "cfb2c16",
+    "elType": "widget",
+    "widgetType": "taxonomy-filter",
+    "settings": {
+     "selected_element": "a87d374",
+     "taxonomy": "service",
+     "show_first_item": "yes",
+     "first_item_title": "All work",
+     "horizontal_scroll": "enable",
+     "_css_classes": "emma-filter"
+    },
+    "elements": []
+   },
+   {
+    "id": "a87d374",
+    "elType": "widget",
+    "widgetType": "loop-grid",
+    "settings": {
+     "template_id": "{{tpl:loop-case}}",
+     "post_query_post_type": "case_study",
+     "posts_per_page": 12,
+     "columns": 2,
+     "columns_tablet": 2,
+     "columns_mobile": 1,
+     "post_query_orderby": "post_date",
+     "post_query_order": "desc",
+     "nothing_found_message_text": "No projects here yet. Please check back soon.",
+     "enable_nothing_found_message": "yes",
+     "pagination_type": "load_more_on_click",
+     "load_more_button_text": "Show more projects",
+     "_css_classes": "emma-cases emma-cases-grid"
+    },
+    "elements": []
+   }
+  ]
+ },
+ {
+  "id": "9b02454",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-cta",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "55d67e7",
+    "elType": "widget",
+    "widgetType": "image",
+    "settings": {
+     "image": {
+      "url": "{{img:sunflower-real.png:url}}",
+      "id": "{{img:sunflower-real.png:id}}",
+      "alt": "",
+      "source": "library"
+     },
+     "image_size": "full",
+     "_css_classes": "emma-bloom"
+    },
+    "elements": []
+   },
+   {
+    "id": "7ad6132",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Start a project</p>",
+     "_css_classes": "emma-label"
+    },
+    "elements": []
+   },
+   {
+    "id": "63d204c",
+    "elType": "widget",
+    "widgetType": "heading",
+    "settings": {
+     "title": "Tell us what you are working on.",
+     "header_size": "h2"
+    },
+    "elements": []
+   },
+   {
+    "id": "a8248ca",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>A few lines about your business are enough. We will come back to you with ideas and a clear next step.</p>",
+     "_css_classes": "emma-lead"
+    },
+    "elements": []
+   },
+   {
+    "id": "f40cad9",
+    "elType": "widget",
+    "widgetType": "button",
+    "settings": {
+     "text": "Get in touch",
+     "link": {
+      "url": "/contact/",
+      "is_external": "",
+      "nofollow": ""
+     }
+    },
+    "elements": []
+   }
+  ]
+ }
+]

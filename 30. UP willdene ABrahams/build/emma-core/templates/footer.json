@@ -1,0 +1,181 @@
+[
+ {
+  "id": "7faf40f",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-footer",
+   "html_tag": "footer"
+  },
+  "elements": [
+   {
+    "id": "04ecb09",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-footer-grid"
+    },
+    "elements": [
+     {
+      "id": "01eb383",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-footer-col"
+      },
+      "elements": [
+       {
+        "id": "8d28101",
+        "elType": "widget",
+        "widgetType": "image",
+        "settings": {
+         "image": {
+          "url": "{{img:logo-yellow.png:url}}",
+          "id": "{{img:logo-yellow.png:id}}",
+          "alt": "Emma Digital Agency",
+          "source": "library"
+         },
+         "image_size": "full",
+         "_css_classes": "emma-footer-logo"
+        },
+        "elements": []
+       },
+       {
+        "id": "7219157",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Make your ideas bloom. Websites, search, social, AI, email and analytics.</p>",
+         "_css_classes": "emma-footer-note"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "51cf583",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-footer-col"
+      },
+      "elements": [
+       {
+        "id": "7be3ddd",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Pages",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "cdc9f2c",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li><a href=\"/services/\">Services</a></li><li><a href=\"/portfolio/\">Work</a></li><li><a href=\"/about/\">About</a></li><li><a href=\"/contact/\">Contact</a></li></ul>"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "543642a",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-footer-col"
+      },
+      "elements": [
+       {
+        "id": "7afc144",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Services",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "1054c5c",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li><a href=\"/services/#web-development\">Web Development</a></li><li><a href=\"/services/#seo-sem\">SEO &amp; SEM</a></li><li><a href=\"/services/#social-media-marketing\">Social Media Marketing</a></li><li><a href=\"/services/#ai-solutions\">AI Solutions</a></li></ul>"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "a845297",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-footer-col"
+      },
+      "elements": [
+       {
+        "id": "6b7cceb",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Contact",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "1c8a6aa",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li><a href=\"mailto:{{email}}\">{{email}}</a></li><li><a href=\"/contact/\">Send an enquiry</a></li></ul>"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "1eb993c",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-legal"
+    },
+    "elements": [
+     {
+      "id": "07f28af",
+      "elType": "widget",
+      "widgetType": "text-editor",
+      "settings": {
+       "editor": "<p>© 2026 Emma Digital Agency</p>"
+      },
+      "elements": []
+     },
+     {
+      "id": "d46794e",
+      "elType": "widget",
+      "widgetType": "text-editor",
+      "settings": {
+       "editor": "<p><a href=\"/privacy-policy/\">Privacy policy</a></p>"
+      },
+      "elements": []
+     }
+    ]
+   }
+  ]
+ }
+]

@@ -1,0 +1,950 @@
+[
+ {
+  "id": "4cc2c3e",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-page-hero",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "2f657cd",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Services</p>",
+     "_css_classes": "emma-label"
+    },
+    "elements": []
+   },
+   {
+    "id": "c1b88f9",
+    "elType": "widget",
+    "widgetType": "heading",
+    "settings": {
+     "title": "Everything your business needs online, from one team.",
+     "header_size": "h1"
+    },
+    "elements": []
+   },
+   {
+    "id": "c309696",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Six services that work well on their own and better together. Every project starts with a free first call and a written plan.</p>",
+     "_css_classes": "emma-lead"
+    },
+    "elements": []
+   }
+  ]
+ },
+ {
+  "id": "be0b35b",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-service-detail",
+   "html_tag": "section",
+   "_element_id": "web-development"
+  },
+  "elements": [
+   {
+    "id": "eb0de59",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-split"
+    },
+    "elements": [
+     {
+      "id": "0fa0984",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-split-text"
+      },
+      "elements": [
+       {
+        "id": "a3496b5",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Web Development",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "a01d7c3",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Websites that load fast, look right on every screen and are easy for you to update. Built on WordPress, with a design made for your brand.</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "bb60bbe",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li>Design made for your brand, not a template</li><li>Responsive build for phone, tablet and desktop</li><li>Speed, security and search basics included</li><li>A short guide so you can edit it yourself</li></ul>",
+         "_css_classes": "emma-checklist"
+        },
+        "elements": []
+       },
+       {
+        "id": "436d264",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Ask about Web Development",
+         "link": {
+          "url": "/contact/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "emma-sun"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "672f0f5",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-related"
+      },
+      "elements": [
+       {
+        "id": "da75948",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Related work</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "b1cee71",
+        "elType": "widget",
+        "widgetType": "loop-grid",
+        "settings": {
+         "template_id": "{{tpl:loop-case}}",
+         "post_query_post_type": "case_study",
+         "posts_per_page": 2,
+         "columns": 2,
+         "columns_tablet": 2,
+         "columns_mobile": 1,
+         "post_query_orderby": "post_date",
+         "post_query_order": "desc",
+         "nothing_found_message_text": "Case studies for this service are coming soon.",
+         "enable_nothing_found_message": "yes",
+         "post_query_include": [
+          "terms"
+         ],
+         "post_query_include_term_ids": [
+          "{{term:web-development}}"
+         ],
+         "_css_classes": "emma-cases emma-cases-small"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "37b8b59",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-service-detail",
+   "html_tag": "section",
+   "_element_id": "seo-sem"
+  },
+  "elements": [
+   {
+    "id": "433b913",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-split"
+    },
+    "elements": [
+     {
+      "id": "24d3afa",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-split-text"
+      },
+      "elements": [
+       {
+        "id": "e8bef6b",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "SEO &amp; SEM",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "9a062c6",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Be found when people search for what you sell. We fix the technical basics, improve your pages and run paid search where it pays off.</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "02e1e6f",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li>Technical and on-page SEO audit</li><li>Keyword and content plan</li><li>Google Ads setup and management</li><li>Monthly report in plain words</li></ul>",
+         "_css_classes": "emma-checklist"
+        },
+        "elements": []
+       },
+       {
+        "id": "0fcf618",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Ask about SEO &amp; SEM",
+         "link": {
+          "url": "/contact/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "emma-sun"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "2ab53a9",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-related"
+      },
+      "elements": [
+       {
+        "id": "2083e8a",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Related work</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "3a29f29",
+        "elType": "widget",
+        "widgetType": "loop-grid",
+        "settings": {
+         "template_id": "{{tpl:loop-case}}",
+         "post_query_post_type": "case_study",
+         "posts_per_page": 2,
+         "columns": 2,
+         "columns_tablet": 2,
+         "columns_mobile": 1,
+         "post_query_orderby": "post_date",
+         "post_query_order": "desc",
+         "nothing_found_message_text": "Case studies for this service are coming soon.",
+         "enable_nothing_found_message": "yes",
+         "post_query_include": [
+          "terms"
+         ],
+         "post_query_include_term_ids": [
+          "{{term:seo-sem}}"
+         ],
+         "_css_classes": "emma-cases emma-cases-small"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "b1fc77e",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-service-detail",
+   "html_tag": "section",
+   "_element_id": "social-media-marketing"
+  },
+  "elements": [
+   {
+    "id": "26b6913",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-split"
+    },
+    "elements": [
+     {
+      "id": "b43ea57",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-split-text"
+      },
+      "elements": [
+       {
+        "id": "d714208",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Social Media Marketing",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "a98a293",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>A steady, recognisable presence on the channels your customers use, with content planned ahead instead of posted in a hurry.</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "25d8f30",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li>Channel and content plan</li><li>Post design and copy</li><li>Paid social campaigns</li><li>Community replies and reporting</li></ul>",
+         "_css_classes": "emma-checklist"
+        },
+        "elements": []
+       },
+       {
+        "id": "64bbba0",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Ask about Social Media Marketing",
+         "link": {
+          "url": "/contact/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "emma-sun"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "59ecc1c",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-related"
+      },
+      "elements": [
+       {
+        "id": "c9a1739",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Related work</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "079665b",
+        "elType": "widget",
+        "widgetType": "loop-grid",
+        "settings": {
+         "template_id": "{{tpl:loop-case}}",
+         "post_query_post_type": "case_study",
+         "posts_per_page": 2,
+         "columns": 2,
+         "columns_tablet": 2,
+         "columns_mobile": 1,
+         "post_query_orderby": "post_date",
+         "post_query_order": "desc",
+         "nothing_found_message_text": "Case studies for this service are coming soon.",
+         "enable_nothing_found_message": "yes",
+         "post_query_include": [
+          "terms"
+         ],
+         "post_query_include_term_ids": [
+          "{{term:social-media-marketing}}"
+         ],
+         "_css_classes": "emma-cases emma-cases-small"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "042ad81",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-service-detail",
+   "html_tag": "section",
+   "_element_id": "ai-solutions"
+  },
+  "elements": [
+   {
+    "id": "e5610d9",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-split"
+    },
+    "elements": [
+     {
+      "id": "2a53c67",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-split-text"
+      },
+      "elements": [
+       {
+        "id": "b8003da",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "AI Solutions",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "069691a",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Practical AI that saves your team time: assistants that answer common questions and workflows that take over repetitive tasks.</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "4d5ee47",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li>Review of where AI can help you</li><li>Assistants trained on your own content</li><li>Automated workflows between your tools</li><li>Training for your team</li></ul>",
+         "_css_classes": "emma-checklist"
+        },
+        "elements": []
+       },
+       {
+        "id": "3b6d78b",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Ask about AI Solutions",
+         "link": {
+          "url": "/contact/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "emma-sun"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "1596d5e",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-related"
+      },
+      "elements": [
+       {
+        "id": "786d011",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Related work</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "e68ffef",
+        "elType": "widget",
+        "widgetType": "loop-grid",
+        "settings": {
+         "template_id": "{{tpl:loop-case}}",
+         "post_query_post_type": "case_study",
+         "posts_per_page": 2,
+         "columns": 2,
+         "columns_tablet": 2,
+         "columns_mobile": 1,
+         "post_query_orderby": "post_date",
+         "post_query_order": "desc",
+         "nothing_found_message_text": "Case studies for this service are coming soon.",
+         "enable_nothing_found_message": "yes",
+         "post_query_include": [
+          "terms"
+         ],
+         "post_query_include_term_ids": [
+          "{{term:ai-solutions}}"
+         ],
+         "_css_classes": "emma-cases emma-cases-small"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "3c9d0f2",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-service-detail",
+   "html_tag": "section",
+   "_element_id": "email-automation"
+  },
+  "elements": [
+   {
+    "id": "3e882c7",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-split"
+    },
+    "elements": [
+     {
+      "id": "3111b57",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-split-text"
+      },
+      "elements": [
+       {
+        "id": "2bb9ba2",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Email Automation",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "edc7555",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Emails that send themselves at the right moment: a welcome series, reminders and newsletters your customers want to open.</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "a3788bd",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li>Setup of your email platform</li><li>Welcome and follow-up flows</li><li>Newsletter templates in your brand</li><li>List segments and reporting</li></ul>",
+         "_css_classes": "emma-checklist"
+        },
+        "elements": []
+       },
+       {
+        "id": "8e4274b",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Ask about Email Automation",
+         "link": {
+          "url": "/contact/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "emma-sun"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "b4be9c7",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-related"
+      },
+      "elements": [
+       {
+        "id": "2ce5c7d",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Related work</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "638f519",
+        "elType": "widget",
+        "widgetType": "loop-grid",
+        "settings": {
+         "template_id": "{{tpl:loop-case}}",
+         "post_query_post_type": "case_study",
+         "posts_per_page": 2,
+         "columns": 2,
+         "columns_tablet": 2,
+         "columns_mobile": 1,
+         "post_query_orderby": "post_date",
+         "post_query_order": "desc",
+         "nothing_found_message_text": "Case studies for this service are coming soon.",
+         "enable_nothing_found_message": "yes",
+         "post_query_include": [
+          "terms"
+         ],
+         "post_query_include_term_ids": [
+          "{{term:email-automation}}"
+         ],
+         "_css_classes": "emma-cases emma-cases-small"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "23c421c",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-service-detail",
+   "html_tag": "section",
+   "_element_id": "analytics"
+  },
+  "elements": [
+   {
+    "id": "0c41ac3",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-split"
+    },
+    "elements": [
+     {
+      "id": "02faf84",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-split-text"
+      },
+      "elements": [
+       {
+        "id": "610fe24",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Analytics",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "4e6c1cf",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Know what works. We set up clean tracking and turn the numbers into a dashboard and a report you can read in five minutes.</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "dcfd433",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul><li>Analytics and conversion tracking setup</li><li>Dashboard with the numbers that matter</li><li>Monthly report with next steps</li><li>Privacy-friendly configuration</li></ul>",
+         "_css_classes": "emma-checklist"
+        },
+        "elements": []
+       },
+       {
+        "id": "26cc696",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Ask about Analytics",
+         "link": {
+          "url": "/contact/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "emma-sun"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "b684041",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+       "content_width": "full",
+       "css_classes": "emma-related"
+      },
+      "elements": [
+       {
+        "id": "9a6941b",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Related work</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
+       {
+        "id": "5c3fb65",
+        "elType": "widget",
+        "widgetType": "loop-grid",
+        "settings": {
+         "template_id": "{{tpl:loop-case}}",
+         "post_query_post_type": "case_study",
+         "posts_per_page": 2,
+         "columns": 2,
+         "columns_tablet": 2,
+         "columns_mobile": 1,
+         "post_query_orderby": "post_date",
+         "post_query_order": "desc",
+         "nothing_found_message_text": "Case studies for this service are coming soon.",
+         "enable_nothing_found_message": "yes",
+         "post_query_include": [
+          "terms"
+         ],
+         "post_query_include_term_ids": [
+          "{{term:analytics}}"
+         ],
+         "_css_classes": "emma-cases emma-cases-small"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "23bf421",
+  "elType": "widget",
+  "widgetType": "template",
+  "settings": {
+   "template_id": "{{tpl:pricing}}",
+   "_css_classes": "emma-pricing-embed"
+  },
+  "elements": []
+ },
+ {
+  "id": "8530fea",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-faq",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "43ee1cb",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-section-head"
+    },
+    "elements": [
+     {
+      "id": "b834661",
+      "elType": "widget",
+      "widgetType": "heading",
+      "settings": {
+       "title": "Questions and answers",
+       "header_size": "h2"
+      },
+      "elements": []
+     }
+    ]
+   },
+   {
+    "id": "8d37f54",
+    "elType": "widget",
+    "widgetType": "accordion",
+    "settings": {
+     "tabs": [
+      {
+       "_id": "7b1f30d",
+       "tab_title": "How does a project start?",
+       "tab_content": "<p>With a short call. After that you receive a written plan with the scope, the timeline and a fixed price. Work starts when you approve it.</p>"
+      },
+      {
+       "_id": "4072884",
+       "tab_title": "Can I update my website myself?",
+       "tab_content": "<p>Yes. We build on WordPress and show you how to change text, images and prices. You also receive a short written guide.</p>"
+      },
+      {
+       "_id": "50408b5",
+       "tab_title": "Do you work with businesses in other countries?",
+       "tab_content": "<p>Yes. We work remotely with clients in different countries and time zones.</p>"
+      },
+      {
+       "_id": "0c4e35c",
+       "tab_title": "What happens after launch?",
+       "tab_content": "<p>You can look after the site yourself, or choose a care plan where we handle updates, backups and small changes.</p>"
+      }
+     ],
+     "title_html_tag": "h3",
+     "faq_schema": "yes",
+     "selected_icon": {
+      "value": "fas fa-plus",
+      "library": "fa-solid"
+     },
+     "selected_active_icon": {
+      "value": "fas fa-minus",
+      "library": "fa-solid"
+     },
+     "_css_classes": "emma-faq-list"
+    },
+    "elements": []
+   }
+  ]
+ },
+ {
+  "id": "5bccdbd",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-cta",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "d2d239e",
+    "elType": "widget",
+    "widgetType": "image",
+    "settings": {
+     "image": {
+      "url": "{{img:sunflower-real.png:url}}",
+      "id": "{{img:sunflower-real.png:id}}",
+      "alt": "",
+      "source": "library"
+     },
+     "image_size": "full",
+     "_css_classes": "emma-bloom"
+    },
+    "elements": []
+   },
+   {
+    "id": "b8100e3",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>Start a project</p>",
+     "_css_classes": "emma-label"
+    },
+    "elements": []
+   },
+   {
+    "id": "d22d314",
+    "elType": "widget",
+    "widgetType": "heading",
+    "settings": {
+     "title": "Tell us what you are working on.",
+     "header_size": "h2"
+    },
+    "elements": []
+   },
+   {
+    "id": "0ace75b",
+    "elType": "widget",
+    "widgetType": "text-editor",
+    "settings": {
+     "editor": "<p>A few lines about your business are enough. We will come back to you with ideas and a clear next step.</p>",
+     "_css_classes": "emma-lead"
+    },
+    "elements": []
+   },
+   {
+    "id": "c9a5931",
+    "elType": "widget",
+    "widgetType": "button",
+    "settings": {
+     "text": "Get in touch",
+     "link": {
+      "url": "/contact/",
+      "is_external": "",
+      "nofollow": ""
+     }
+    },
+    "elements": []
+   }
+  ]
+ }
+]
