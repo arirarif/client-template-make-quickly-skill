@@ -144,3 +144,4 @@ Picker path: section → image → **Change** → **Listings** tab → choose th
 | 2026-09-22 | T3.14 | Order (per Arif): Hero → Partners → Why Us → Packages → Add-ons → Virtual Tours → FAQ → Portfolio → Contact → Footer; header menu reordered to match. Saved, verified after reload |
 | 2026-09-22 | T6.2 | Mobile view checked: header, hero, text, package cards fit |
 | 2026-09-21 | notes | Header "Add link" accepts any https:// URL (external links possible). Contact "Larchmont" placeholder is not an editable field — ask Fotello via Requests. Footer socials verified real. Package cards live in /dashboard/products (Paul's booking) — not touched |
+| 2026-09-25 | Feedback | Paul's round-1 feedback logged in CLIENT-FEEDBACK-2026-09-25.md. Hero rewritten to Sarasota & Charlotte County, "Every shoot by Paul" removed. Saved. Logo + headshot still open |
