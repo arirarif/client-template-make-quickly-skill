@@ -145,3 +145,4 @@ Picker path: section → image → **Change** → **Listings** tab → choose th
 | 2026-09-22 | T6.2 | Mobile view checked: header, hero, text, package cards fit |
 | 2026-09-21 | notes | Header "Add link" accepts any https:// URL (external links possible). Contact "Larchmont" placeholder is not an editable field — ask Fotello via Requests. Footer socials verified real. Package cards live in /dashboard/products (Paul's booking) — not touched |
 | 2026-09-25 | Feedback | Paul's round-1 feedback logged in CLIENT-FEEDBACK-2026-09-25.md. Hero rewritten to Sarasota & Charlotte County, "Every shoot by Paul" removed. Saved. Logo + headshot still open |
+| 2026-09-26 | Feedback | Headline hadn't stuck: re-set to Sarasota & Charlotte County and confirmed after a reload. Footer blurb Venice → Sarasota & Charlotte County. Fotello logo-size request sent. Publish = book a Fotello call (not booked). Paul wants a call |

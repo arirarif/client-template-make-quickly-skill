@@ -7,15 +7,18 @@ Why he still sees Venice:
 2. The headline didn't save properly. On 2026-09-26 the editor showed "Venice agents call first." again, while the highlights and subtext kept the new text. It needs to be set again and saved.
 3. The editor also had unsaved changes: the new light logo (800×476).
 
-Before sending: fix the headline, save, publish, and check the home page yourself. Fill in the times.
+**Fixed 2026-09-26:** headline set again, saved, and still there after a reload. The footer blurb changed from "Venice, Sarasota and Southwest Florida" to "across Sarasota & Charlotte County"; saved and confirmed after a reload. The Fotello logo-size request has been sent (Requests tab → Feature).
+**Publish is not a button:** clicking Publish opens "Book a call to publish your website" with a Fotello expert, which is the planned call with Adam. Nothing is live yet; Paul sees the site through the editor preview. Nothing was booked.
+
+Fill in the times before sending.
 
 ---
 
 Hi Paul,
 
-You're right, and thanks for checking. The changes were made in the editor, but the headline didn't save properly and I hadn't published the update yet, so the page you're seeing is still the old version. That's my mistake. I'm fixing it now and will publish, so the headline will read "The photographer Sarasota & Charlotte County agents call first."
+You're right, and thanks for checking. The headline change hadn't saved properly, so the page was still showing the old version. That's my mistake. It's fixed now: the headline reads "The photographer Sarasota & Charlotte County agents call first." I also changed the footer so it says Sarasota & Charlotte County instead of Venice. If you still see Venice, please refresh the page.
 
-On the logo: I've made a lighter version so it stands out on the dark photo. Fotello shows logos in a small fixed square, though, so I'm also working on a tighter crop to make it bigger, and I've asked Fotello whether they can let us increase the size.
+On the logo: the lighter version is in, so it stands out more against the dark photo. Fotello shows logos in a small fixed square, though, so it's still smaller than we'd like. I've sent Fotello a request to add a logo-size option, and meanwhile I'm making a tighter crop so it fills that square better.
 
 And yes, a call would be great. We can go through the whole page together and you can tell me anything else you'd like changed. I'm free [DAY/TIME ET] or [DAY/TIME ET]. Does either work for you? Or send me a time that suits you.
 

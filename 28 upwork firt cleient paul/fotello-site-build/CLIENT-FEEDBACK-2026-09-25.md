@@ -9,8 +9,8 @@
 
 | # | Fix | Done |
 |---|---|---|
-| 1 | Logo bigger / more visible | ⏳ in progress — see "Logo findings" |
-| 2 | Headline + Venice mentions → Sarasota & Charlotte County | ✅ saved 2026-09-25 |
+| 1 | Logo bigger / more visible | ⏳ light version (light blue + red, 800×476) in the header; still in the 40×40 box. Fotello request sent 2026-09-26; square crop next |
+| 2 | Headline + Venice mentions → Sarasota & Charlotte County | ✅ 2026-09-26: headline re-set (the 09-25 save hadn't stuck) + footer blurb changed; both confirmed after reload |
 | 3 | Drop "Every shoot by Paul" highlight | ✅ saved 2026-09-25 |
 | 4 | Headshot in Why Us | ⏳ next — needs the headshot file (check the live site's About/Why Us image first) |
 
@@ -32,3 +32,12 @@
 
 Typing fast into Hero fields crashes the editor ("Application error", React #185 = infinite update loop) and loses unsaved edits. Safe method: set the value via JS native setter + `input` event, one field at a time, and **Save after each field**.
 
+
+## 2026-09-26 — Paul: "still seeing Venice"
+
+- Cause: the 09-25 headline edit showed in the preview but never saved; after a reload it read "Venice agents call first." again. Re-set it with the same JS setter, saved, and confirmed after a reload.
+- Footer blurb → "Real estate photography, video, drone, floor plans and 3D tours for listing agents across Sarasota & Charlotte County." Saved and confirmed after a reload.
+- Left as they are: Why Us town list, Portfolio "Recent listings across Venice, Sarasota…" (a list of towns) and the footer address "Venice, FL 34293" (his real address).
+- **Publish = book a call.** The Publish button opens "Book a call to publish your website" with a Fotello expert. Nothing is live; Paul reviews via the editor. Not booked.
+- Logo-size request sent via Requests → Feature.
+- Paul asked for a call to go through the site → reply draft in CLIENT-REPLY-2026-09-26-venice-call.md.
