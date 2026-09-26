@@ -119,19 +119,19 @@ Also: rename "The people behind Emma" → names **Eivind & Matleena** + IMG_9707
 6. [ ] Screenshots, desktop + phone, full page (Ariful, for the M1 message)
 7. [ ] **Send M1** (message A below)
 
-Notes: the About page still uses the stock `hero-team.jpg` + `intro-sketch.jpg` (they are replaced in Step 2). The Chrome session is logged in as the **client's** account (eivindjohansen@…), not `Developer`.
+Note: the Chrome session is logged in as the **client's** account (eivindjohansen@…), not `Developer`.
 
-### Step 2 — About page (Day 7, Sun 09-27)
-1. [ ] Team section → Eivind & Matleena + IMG_9707
-2. [ ] New section "The Story About Emma" (section 6), full text
-3. [ ] About hero photo ← IMG_9708 if it helps the page; otherwise keep the text-only hero
-4. [ ] Replace the placeholder About copy with the client's text **when it arrives** (they said they will send their text)
-5. [ ] Mobile check: the long story must read well at 390 px (no widows in the heading, comfortable line length)
+### Step 2 — About page ✅ done and live 2026-09-26 (v0.5.0 + theme 0.5.1, commits 5857ebc, 803e590)
+1. [x] "The people behind Emma" → **Eivind & Matleena** + the lake photo (`emma-eivind-matleena.jpg`, from IMG_9707), in place of the 4 placeholder cards. The one line of text is ours ("Emma is run by Eivind and Matleena…"); replace it with their text when it arrives
+2. [x] New last section **"The Story About Emma"** (label "Why Emma", from their PDF): lake sunset strip (`emma-lake-sunset.jpg`, IMG_9708) · the story in full · the note in olive after a thin line · signed "Eivind and Matleena". **Checked word for word against the PDF: identical**
+3. [x] The last stock photos on About are gone: "Our story" ← `emma-desk.jpg`, "How we are organised" ← `emma-ferns.jpg` (IMG_9711). The About hero stays text-only
+4. [ ] Their About text when it arrives
+5. [x] Phone check at 374 px: no sideways scroll; story heading balanced (0.5.1) so "Emma" is not left alone on a line
 
-### Step 3 — Portfolio (Day 7)
-1. [ ] Per the section 4 decision: 3 or 5 projects. The Home "Selected work" layout: 1 large + 2 stacked for 3; for 5: 1 large + 4 in a 2×2 grid, or a 3-then-2 row. Build the 5-card layout either way so a 4th/5th project drops in
-2. [ ] Portfolio page grid: test with 5 items + the filter
-3. [ ] Keep the "Sample project" labels until real work replaces them
+### Step 3 — Portfolio ✅ layout done (option A: 3 agreed, room for 5)
+1. [x] Home "Selected work" shows up to 5 (`[emma_projects count="5"]`): 1 large + 2 stacked, then projects 4–5 side by side. With 3 projects it looks exactly as before. Phones: one column. The Pro Loop Grid version has the same rule
+2. [x] The Portfolio page already shows up to 12, with the filter
+3. [ ] The 3 are still clearly labelled "Sample project". Real work replaces them when the client sends it
 
 ### Step 4 — Contact + email (Day 8, Mon 09-28)
 1. [ ] SMTP through `hello@emmadigitalagency.com` (FluentSMTP or Hostinger's mail settings)
@@ -157,48 +157,51 @@ Notes: the About page still uses the stock `hero-team.jpg` + `intro-sketch.jpg` 
 
 ## 9. Messages to Willdene
 
-### A. M1 delivery (after Step 1)
+### A. M1 delivery (updated 2026-09-26: Steps 1–3 are live)
 
 ```
 Hi Willdene,
 
-Thank you, and please thank the client for the photos and the story.
+Thank you, and please thank the client for the photos and for sharing
+Emma's story.
 
 Milestone 1 is complete. Here is what is included:
 - Homepage designed and built, responsive on desktop, tablet and mobile
 - Brand colours, fonts and style set up for the whole site
-- Their requested changes are already in: the logo in the header is
-  larger, the new favicon is in place, and their own photos now replace
-  the placeholder images on the homepage
 - WordPress set up and hidden from Google until launch
 
-Link: https://emmadigitalagency.com
-Screenshots attached (desktop and mobile).
+Their requested changes are already in:
+- The logo in the header is larger
+- The new favicon is in place
+- Their own photos now replace the placeholder images. On the homepage
+  I used the golden field at sunset (horizon straightened) and their
+  sunflower photos, as they carry the "light and sunshine" feeling best
+- The About page now shows the two of them. I chose the photo by the
+  lake, as it is bright and matches the sunflower colours. The other
+  photo is kept in case they prefer it
+- "The Story About Emma" is the final section of the About page, in
+  full and word for word, in a calm section with the lake at sunset
+  above it
 
-About the photos: for the homepage I used the golden field at sunset
-(horizon straightened) and their sunflower photos, as they carry the
-"light and sunshine" feeling best. For the About page I chose the photo
-of the two of them by the lake, as it is bright and matches the
-sunflower colours. The other photo is kept in case they prefer it.
+Home: https://emmadigitalagency.com
+About: https://emmadigitalagency.com/about/
+Screenshots attached (desktop and mobile).
 
 The favicon file came with the transparency pattern saved into the
 image, so I cleaned it up. If they have the original file (PNG or SVG),
 please send it and I will use that.
 
-Portfolio: the agreed scope was 3 portfolio pieces, and the system has
-no limit, so they can add as many as they like. I will build the layout
-for 5, so it looks right with 5 as soon as the content for two more
-is sent.
-
-The Emma story will be the final section of the About page, under the
-heading "The Story About Emma", in full, as they asked. That is part of
-Milestone 2, which I start tomorrow.
+Portfolio: the agreed scope was 3 portfolio pieces. The system itself
+has no limit, and I have already made the homepage layout work for 5,
+so two more pieces fit in as soon as they send the content (images,
+a short description and the services for each).
 
 One small question: which question was the "second question" they
 answered yes to? I want to be sure I act on the right one.
 
 You can now request the release of the Milestone 1 payment. Please also
-activate Milestone 2 so I can continue.
+activate Milestone 2 so I can continue with the contact form, email
+delivery and the remaining pages.
 
 Best regards,
 Ariful
