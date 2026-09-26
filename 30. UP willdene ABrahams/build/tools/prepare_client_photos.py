@@ -88,6 +88,13 @@ def main():
     print('emma-sunflower-cutout.png', flower.size)
     favicon()
 
+    # About, "The people behind Emma": the two of them by the lake (chosen over IMG_9717, see file 06).
+    save_jpg(crop_ratio(load('IMG_9707.png'), 16 / 10, cx=0.45), 'emma-eivind-matleena.jpg', 1600)
+    # About, "The Story About Emma": calm lake sunset, a wide strip above the story.
+    save_jpg(crop_ratio(load('IMG_9708.jpeg'), 21 / 9, cy=0.42), 'emma-lake-sunset.jpg', 2000)
+    # About, "How we are organised": sun through the ferns (portrait source, 4:3 crop).
+    save_jpg(crop_ratio(load('IMG_9711.jpeg'), 4 / 3, cy=0.42), 'emma-ferns.jpg', 1200)
+
 
 if __name__ == '__main__':
     main()

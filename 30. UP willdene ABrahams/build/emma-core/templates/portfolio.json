@@ -1,6 +1,6 @@
 [
  {
-  "id": "9977972",
+  "id": "4c6452e",
   "elType": "container",
   "isInner": false,
   "settings": {
@@ -10,7 +10,7 @@
   },
   "elements": [
    {
-    "id": "e5b19bf",
+    "id": "a87d374",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -20,7 +20,7 @@
     "elements": []
    },
    {
-    "id": "6f00756",
+    "id": "e5b19bf",
     "elType": "widget",
     "widgetType": "heading",
     "settings": {
@@ -30,7 +30,7 @@
     "elements": []
    },
    {
-    "id": "4c6452e",
+    "id": "6f00756",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -42,7 +42,7 @@
   ]
  },
  {
-  "id": "94d23c1",
+  "id": "cfb2c16",
   "elType": "container",
   "isInner": false,
   "settings": {
@@ -52,11 +52,11 @@
   },
   "elements": [
    {
-    "id": "cfb2c16",
+    "id": "9977972",
     "elType": "widget",
     "widgetType": "taxonomy-filter",
     "settings": {
-     "selected_element": "a87d374",
+     "selected_element": "5bccdbd",
      "taxonomy": "service",
      "show_first_item": "yes",
      "first_item_title": "All work",
@@ -66,7 +66,7 @@
     "elements": []
    },
    {
-    "id": "a87d374",
+    "id": "5bccdbd",
     "elType": "widget",
     "widgetType": "loop-grid",
     "settings": {
@@ -89,7 +89,7 @@
   ]
  },
  {
-  "id": "9b02454",
+  "id": "f40cad9",
   "elType": "container",
   "isInner": false,
   "settings": {
@@ -99,7 +99,7 @@
   },
   "elements": [
    {
-    "id": "55d67e7",
+    "id": "94d23c1",
     "elType": "widget",
     "widgetType": "image",
     "settings": {
@@ -115,7 +115,7 @@
     "elements": []
    },
    {
-    "id": "7ad6132",
+    "id": "55d67e7",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -125,7 +125,7 @@
     "elements": []
    },
    {
-    "id": "63d204c",
+    "id": "7ad6132",
     "elType": "widget",
     "widgetType": "heading",
     "settings": {
@@ -135,7 +135,7 @@
     "elements": []
    },
    {
-    "id": "a8248ca",
+    "id": "63d204c",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -145,7 +145,7 @@
     "elements": []
    },
    {
-    "id": "f40cad9",
+    "id": "a8248ca",
     "elType": "widget",
     "widgetType": "button",
     "settings": {

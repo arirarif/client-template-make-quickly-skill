@@ -106,9 +106,9 @@
       "widgetType": "image",
       "settings": {
        "image": {
-        "url": "{{img:hero-team.jpg:url}}",
-        "id": "{{img:hero-team.jpg:id}}",
-        "alt": "The team working together around a laptop",
+        "url": "{{img:emma-desk.jpg:url}}",
+        "id": "{{img:emma-desk.jpg:id}}",
+        "alt": "Planning a website on paper at a desk by the window",
         "source": "library"
        },
        "image_size": "full",
@@ -279,9 +279,9 @@
       "widgetType": "image",
       "settings": {
        "image": {
-        "url": "{{img:intro-sketch.jpg:url}}",
-        "id": "{{img:intro-sketch.jpg:id}}",
-        "alt": "Sketching website layouts on paper",
+        "url": "{{img:emma-ferns.jpg:url}}",
+        "id": "{{img:emma-ferns.jpg:id}}",
+        "alt": "Evening sun shining through ferns in a Finnish forest",
         "source": "library"
        },
        "image_size": "full",
@@ -348,7 +348,7 @@
   ]
  },
  {
-  "id": "4a295c5",
+  "id": "e47417f",
   "elType": "container",
   "isInner": false,
   "settings": {
@@ -358,51 +358,56 @@
   },
   "elements": [
    {
-    "id": "ef23449",
+    "id": "cf8cfe5",
     "elType": "container",
     "isInner": false,
     "settings": {
      "content_width": "full",
-     "css_classes": "emma-section-head"
+     "css_classes": "emma-split"
     },
     "elements": [
      {
       "id": "be5cc32",
       "elType": "widget",
-      "widgetType": "heading",
+      "widgetType": "image",
       "settings": {
-       "title": "The people behind Emma",
-       "header_size": "h2"
+       "image": {
+        "url": "{{img:emma-eivind-matleena.jpg:url}}",
+        "id": "{{img:emma-eivind-matleena.jpg:id}}",
+        "alt": "Eivind and Matleena, the founders of Emma, by a lake in Finland",
+        "source": "library"
+       },
+       "image_size": "full",
+       "_css_classes": "emma-photo emma-ratio-16-10"
       },
       "elements": []
-     }
-    ]
-   },
-   {
-    "id": "eb1735f",
-    "elType": "container",
-    "isInner": false,
-    "settings": {
-     "content_width": "full",
-     "css_classes": "emma-cards emma-cards-4"
-    },
-    "elements": [
+     },
      {
       "id": "5c1aaef",
       "elType": "container",
       "isInner": false,
       "settings": {
        "content_width": "full",
-       "css_classes": "emma-card emma-member"
+       "css_classes": "emma-split-text"
       },
       "elements": [
+       {
+        "id": "ef23449",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>The people behind Emma</p>",
+         "_css_classes": "emma-label"
+        },
+        "elements": []
+       },
        {
         "id": "cf45d02",
         "elType": "widget",
         "widgetType": "heading",
         "settings": {
-         "title": "Team member name",
-         "header_size": "h3"
+         "title": "Eivind & Matleena",
+         "header_size": "h2"
         },
         "elements": []
        },
@@ -411,97 +416,7 @@
         "elType": "widget",
         "widgetType": "text-editor",
         "settings": {
-         "editor": "<p>Founder and main contact</p>"
-        },
-        "elements": []
-       }
-      ]
-     },
-     {
-      "id": "7047dca",
-      "elType": "container",
-      "isInner": false,
-      "settings": {
-       "content_width": "full",
-       "css_classes": "emma-card emma-member"
-      },
-      "elements": [
-       {
-        "id": "cf8cfe5",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Team member name",
-         "header_size": "h3"
-        },
-        "elements": []
-       },
-       {
-        "id": "e47417f",
-        "elType": "widget",
-        "widgetType": "text-editor",
-        "settings": {
-         "editor": "<p>Web development</p>"
-        },
-        "elements": []
-       }
-      ]
-     },
-     {
-      "id": "e41e3d1",
-      "elType": "container",
-      "isInner": false,
-      "settings": {
-       "content_width": "full",
-       "css_classes": "emma-card emma-member"
-      },
-      "elements": [
-       {
-        "id": "c9bf7d8",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Team member name",
-         "header_size": "h3"
-        },
-        "elements": []
-       },
-       {
-        "id": "496e066",
-        "elType": "widget",
-        "widgetType": "text-editor",
-        "settings": {
-         "editor": "<p>SEO and paid search</p>"
-        },
-        "elements": []
-       }
-      ]
-     },
-     {
-      "id": "8c87e8c",
-      "elType": "container",
-      "isInner": false,
-      "settings": {
-       "content_width": "full",
-       "css_classes": "emma-card emma-member"
-      },
-      "elements": [
-       {
-        "id": "f8e87b9",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Team member name",
-         "header_size": "h3"
-        },
-        "elements": []
-       },
-       {
-        "id": "31c6038",
-        "elType": "widget",
-        "widgetType": "text-editor",
-        "settings": {
-         "editor": "<p>Design and content</p>"
+         "editor": "<p>Emma is run by Eivind and Matleena. When you work with Emma, you work with us directly, from the first call to the final report.</p>"
         },
         "elements": []
        }
@@ -512,7 +427,96 @@
   ]
  },
  {
-  "id": "d64ed8c",
+  "id": "eb1735f",
+  "elType": "container",
+  "isInner": false,
+  "settings": {
+   "content_width": "boxed",
+   "css_classes": "emma-section emma-emma-story",
+   "html_tag": "section"
+  },
+  "elements": [
+   {
+    "id": "7047dca",
+    "elType": "widget",
+    "widgetType": "image",
+    "settings": {
+     "image": {
+      "url": "{{img:emma-lake-sunset.jpg:url}}",
+      "id": "{{img:emma-lake-sunset.jpg:id}}",
+      "alt": "A calm lake at sunset on a Finnish summer night",
+      "source": "library"
+     },
+     "image_size": "full",
+     "_css_classes": "emma-photo emma-ratio-21-9"
+    },
+    "elements": []
+   },
+   {
+    "id": "8c87e8c",
+    "elType": "container",
+    "isInner": false,
+    "settings": {
+     "content_width": "full",
+     "css_classes": "emma-story-body"
+    },
+    "elements": [
+     {
+      "id": "c9bf7d8",
+      "elType": "widget",
+      "widgetType": "text-editor",
+      "settings": {
+       "editor": "<p>Why Emma</p>",
+       "_css_classes": "emma-label"
+      },
+      "elements": []
+     },
+     {
+      "id": "496e066",
+      "elType": "widget",
+      "widgetType": "heading",
+      "settings": {
+       "title": "The Story About Emma",
+       "header_size": "h2"
+      },
+      "elements": []
+     },
+     {
+      "id": "e41e3d1",
+      "elType": "widget",
+      "widgetType": "text-editor",
+      "settings": {
+       "editor": "<p>Two days before our beloved and much-longed-for daughter Emma Elisabeth was supposed to be born, she died inside Matleena's belly. The doctors and nurses confirmed this when we arrived at the hospital that very same morning for a routine check, meant to become the start of the birth if she was not lying in the right position.</p><p>When we got the message from the doctors and nurses that she was dead, we were led into a separate room, where we were supposed to stay until she was born. We stood alone in that room, holding around each other. I was thinking that this is a bad dream, and I will probably soon wake up. But it was not a dream. It was real.</p><p>I was standing with my eyes closed, holding around my wife. Suddenly, The Lord gave me a short vision, showing His Throne, the Throne of God. The Throne was blurred out, as for my eyes not to be seen clearly at this point in time. Then somebody held Emma up in front of His Throne, Emma being fully alive!! As to say: Look at her! Here she is! And there was sooo much joy and life in this short vision! So much!</p><p>In an instant, we knew where she was, and that she was more than ok. She was doing more than great! It was overwhelming — the wonderful atmosphere, the massive light, the overwhelming joy and the powerful life pulsating from it.</p><p>We will meet again. But not yet. First we will have to live our lives down here. Then we will meet. We love you, Emma! And we will be together. Forever.</p>",
+       "_css_classes": "emma-story-text"
+      },
+      "elements": []
+     },
+     {
+      "id": "f8e87b9",
+      "elType": "widget",
+      "widgetType": "text-editor",
+      "settings": {
+       "editor": "<p><em>Note to everyone that has lost a small child:</em> Children are innocent, and go straight back to Our Father in Heaven, God, if they die. If you want to see them again, there is only ONE way: His name is Jesus Christ. Receive Him into your heart as your Lord and Saviour. Then you will be reunited with them when this short life is over, as Jesus is The ONLY way to The Father. John 14:6</p>",
+       "_css_classes": "emma-story-note"
+      },
+      "elements": []
+     },
+     {
+      "id": "31c6038",
+      "elType": "widget",
+      "widgetType": "text-editor",
+      "settings": {
+       "editor": "<p>Eivind and Matleena</p>",
+       "_css_classes": "emma-story-sign"
+      },
+      "elements": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "7fec3de",
   "elType": "container",
   "isInner": false,
   "settings": {
@@ -522,7 +526,7 @@
   },
   "elements": [
    {
-    "id": "7bb2a7a",
+    "id": "4a295c5",
     "elType": "widget",
     "widgetType": "image",
     "settings": {
@@ -538,7 +542,7 @@
     "elements": []
    },
    {
-    "id": "24a62a8",
+    "id": "7bb2a7a",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -548,7 +552,7 @@
     "elements": []
    },
    {
-    "id": "08246d4",
+    "id": "24a62a8",
     "elType": "widget",
     "widgetType": "heading",
     "settings": {
@@ -558,7 +562,7 @@
     "elements": []
    },
    {
-    "id": "435eca8",
+    "id": "08246d4",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -568,7 +572,7 @@
     "elements": []
    },
    {
-    "id": "7fec3de",
+    "id": "435eca8",
     "elType": "widget",
     "widgetType": "button",
     "settings": {

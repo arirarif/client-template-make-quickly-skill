@@ -244,7 +244,7 @@ save('home', 'Home', 'page', [
     con([image('emma-field-sunset.jpg', 'The sun setting over a golden field on a Finnish summer evening', 'emma-band-photo'), label('Make your ideas bloom')], 'emma-band'),
     section([
         section_head('Selected work', 'All projects', '/portfolio/'),
-        widget('shortcode', {'shortcode': '[emma_projects count="3" layout="featured"]'}, 'emma-projects-widget'),
+        widget('shortcode', {'shortcode': '[emma_projects count="5" layout="featured"]'}, 'emma-projects-widget'),
         con([button('See all projects', '/portfolio/', 'emma-textlink')], 'emma-work-foot'),
     ], 'emma-work'),
     section([
@@ -258,8 +258,18 @@ save('home', 'Home', 'page', [
 VALUES = [('Clear', 'Plain words, written plans and fixed prices. You always know what you are paying for.'),
           ('Careful', 'We build things properly, test them on real devices and look after them once they are live.'),
           ('Honest', 'We report the real numbers, including the ones that are not good yet, and say what we would do next.')]
-TEAM = [('Team member name', 'Founder and main contact'), ('Team member name', 'Web development'),
-        ('Team member name', 'SEO and paid search'), ('Team member name', 'Design and content')]
+# "The Story About Emma": the client's own words from Emma_Our_Story.pdf (2026-09-26), in full and unedited.
+# They asked for it as the last part of About, after the two of them introduce themselves.
+EMMA_STORY = [
+    "Two days before our beloved and much-longed-for daughter Emma Elisabeth was supposed to be born, she died inside Matleena's belly. The doctors and nurses confirmed this when we arrived at the hospital that very same morning for a routine check, meant to become the start of the birth if she was not lying in the right position.",
+    "When we got the message from the doctors and nurses that she was dead, we were led into a separate room, where we were supposed to stay until she was born. We stood alone in that room, holding around each other. I was thinking that this is a bad dream, and I will probably soon wake up. But it was not a dream. It was real.",
+    "I was standing with my eyes closed, holding around my wife. Suddenly, The Lord gave me a short vision, showing His Throne, the Throne of God. The Throne was blurred out, as for my eyes not to be seen clearly at this point in time. Then somebody held Emma up in front of His Throne, Emma being fully alive!! As to say: Look at her! Here she is! And there was sooo much joy and life in this short vision! So much!",
+    "In an instant, we knew where she was, and that she was more than ok. She was doing more than great! It was overwhelming — the wonderful atmosphere, the massive light, the overwhelming joy and the powerful life pulsating from it.",
+    "We will meet again. But not yet. First we will have to live our lives down here. Then we will meet. We love you, Emma! And we will be together. Forever.",
+]
+EMMA_NOTE = ("<em>Note to everyone that has lost a small child:</em> Children are innocent, and go straight back to Our Father in Heaven, God, if they die. "
+             "If you want to see them again, there is only ONE way: His name is Jesus Christ. Receive Him into your heart as your Lord and Saviour. "
+             "Then you will be reunited with them when this short life is over, as Jesus is The ONLY way to The Father. John 14:6")
 
 save('about', 'About', 'page', [
     page_hero('About', 'A small agency that treats your business like its own.',
@@ -269,19 +279,31 @@ save('about', 'About', 'page', [
              text('<p>Many business owners pay for websites and marketing they do not fully understand. Emma was started to change that: good work, explained in plain words, with results you can check yourself.</p>'
                   '<p>We plan every project with you, agree a fixed price before we start, and report honestly on what worked and what did not.</p>')],
             'emma-split-text'),
-        image('hero-team.jpg', 'The team working together around a laptop', 'emma-photo emma-ratio-4-3'),
+        image('emma-desk.jpg', 'Planning a website on paper at a desk by the window', 'emma-photo emma-ratio-4-3'),
     ], 'emma-split')], 'emma-story'),
     section([section_head('What you can expect'),
              con([con([heading(t, 'h3'), text(d)], 'emma-card') for t, d in VALUES], 'emma-cards')], 'emma-values'),
     section([con([
-        image('intro-sketch.jpg', 'Sketching website layouts on paper', 'emma-photo emma-ratio-4-3'),
+        image('emma-ferns.jpg', 'Evening sun shining through ferns in a Finnish forest', 'emma-photo emma-ratio-4-3'),
         con([label('How we are organised'), heading('One contact, a network of specialists.', 'h2'),
              text('<p>You work with one person at Emma from the first call to the final report. Behind that contact is a network of trusted specialists: developers, SEO and ads experts, designers and analysts.</p>'
                   '<p>Each project gets the people it needs and nothing more. That keeps quality high and prices fair.</p>'),
              button('See our work', '/portfolio/')], 'emma-split-text'),
     ], 'emma-split')], 'emma-story'),
-    section([section_head('The people behind Emma'),
-             con([con([heading(n, 'h3'), text(r)], 'emma-card emma-member') for n, r in TEAM], 'emma-cards emma-cards-4')], 'emma-team'),
+    section([con([
+        image('emma-eivind-matleena.jpg', 'Eivind and Matleena, the founders of Emma, by a lake in Finland', 'emma-photo emma-ratio-16-10'),
+        con([label('The people behind Emma'), heading('Eivind & Matleena', 'h2'),
+             text('<p>Emma is run by Eivind and Matleena. When you work with Emma, you work with us directly, from the first call to the final report.</p>')],
+            'emma-split-text'),
+    ], 'emma-split')], 'emma-team'),
+    section([
+        image('emma-lake-sunset.jpg', 'A calm lake at sunset on a Finnish summer night', 'emma-photo emma-ratio-21-9'),
+        con([label('Why Emma'), heading('The Story About Emma', 'h2'),
+             text(''.join('<p>%s</p>' % p for p in EMMA_STORY), 'emma-story-text'),
+             text('<p>%s</p>' % EMMA_NOTE, 'emma-story-note'),
+             text('<p>Eivind and Matleena</p>', 'emma-story-sign')],
+            'emma-story-body'),
+    ], 'emma-emma-story'),
     cta(),
 ], slug='about')
 

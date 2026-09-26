@@ -1,6 +1,6 @@
 [
  {
-  "id": "e4a37a2",
+  "id": "32f5dd2",
   "elType": "container",
   "isInner": false,
   "settings": {
@@ -10,7 +10,7 @@
   },
   "elements": [
    {
-    "id": "2e548e2",
+    "id": "98732a2",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -20,7 +20,7 @@
     "elements": []
    },
    {
-    "id": "dc795eb",
+    "id": "2e548e2",
     "elType": "widget",
     "widgetType": "heading",
     "settings": {
@@ -30,7 +30,7 @@
     "elements": []
    },
    {
-    "id": "6158491",
+    "id": "dc795eb",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -40,7 +40,7 @@
     "elements": []
    },
    {
-    "id": "32f5dd2",
+    "id": "2afb249",
     "elType": "container",
     "isInner": false,
     "settings": {
@@ -49,7 +49,7 @@
     },
     "elements": [
      {
-      "id": "4cc2dec",
+      "id": "6158491",
       "elType": "widget",
       "widgetType": "button",
       "settings": {
@@ -64,7 +64,7 @@
       "elements": []
      },
      {
-      "id": "2afb249",
+      "id": "4cc2dec",
       "elType": "widget",
       "widgetType": "button",
       "settings": {

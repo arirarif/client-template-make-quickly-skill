@@ -669,7 +669,7 @@
     "elType": "widget",
     "widgetType": "shortcode",
     "settings": {
-     "shortcode": "[emma_projects count=\"3\" layout=\"featured\"]",
+     "shortcode": "[emma_projects count=\"5\" layout=\"featured\"]",
      "_css_classes": "emma-projects-widget"
     },
     "elements": []

@@ -1,6 +1,6 @@
 [
  {
-  "id": "1ccb496",
+  "id": "844e3c9",
   "elType": "container",
   "isInner": false,
   "settings": {
@@ -10,7 +10,7 @@
   },
   "elements": [
    {
-    "id": "e223d1d",
+    "id": "9b02454",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -20,19 +20,19 @@
     "elements": []
    },
    {
-    "id": "e8a1a67",
+    "id": "e2a9c4b",
     "elType": "widget",
     "widgetType": "theme-archive-title",
     "settings": {
      "header_size": "h1",
      "__dynamic__": {
-      "title": "[elementor-tag id=\"e2a9c4b\" name=\"archive-title\" settings=\"%7B%22include_context%22%3A%22%22%7D\"]"
+      "title": "[elementor-tag id=\"e223d1d\" name=\"archive-title\" settings=\"%7B%22include_context%22%3A%22%22%7D\"]"
      }
     },
     "elements": []
    },
    {
-    "id": "844e3c9",
+    "id": "e8a1a67",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -44,7 +44,7 @@
   ]
  },
  {
-  "id": "28bd421",
+  "id": "df6b454",
   "elType": "container",
   "isInner": false,
   "settings": {
@@ -54,7 +54,7 @@
   },
   "elements": [
    {
-    "id": "df6b454",
+    "id": "1ccb496",
     "elType": "widget",
     "widgetType": "loop-grid",
     "settings": {
@@ -75,7 +75,7 @@
   ]
  },
  {
-  "id": "d5830e4",
+  "id": "bd57950",
   "elType": "container",
   "isInner": false,
   "settings": {
@@ -85,7 +85,7 @@
   },
   "elements": [
    {
-    "id": "7fdb268",
+    "id": "28bd421",
     "elType": "widget",
     "widgetType": "image",
     "settings": {
@@ -101,7 +101,7 @@
     "elements": []
    },
    {
-    "id": "c9a48a3",
+    "id": "7fdb268",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -111,7 +111,7 @@
     "elements": []
    },
    {
-    "id": "0b57719",
+    "id": "c9a48a3",
     "elType": "widget",
     "widgetType": "heading",
     "settings": {
@@ -121,7 +121,7 @@
     "elements": []
    },
    {
-    "id": "7680ab4",
+    "id": "0b57719",
     "elType": "widget",
     "widgetType": "text-editor",
     "settings": {
@@ -131,7 +131,7 @@
     "elements": []
    },
    {
-    "id": "bd57950",
+    "id": "7680ab4",
     "elType": "widget",
     "widgetType": "button",
     "settings": {
