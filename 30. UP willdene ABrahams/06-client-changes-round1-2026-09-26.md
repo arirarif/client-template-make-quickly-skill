@@ -157,56 +157,34 @@ Note: the Chrome session is logged in as the **client's** account (eivindjohanse
 
 ## 9. Messages to Willdene
 
-### A. M1 delivery (final text, 2026-09-26; the privacy question from B is included)
+### A. M1 delivery (short version, sent text)
 
 ```
 Hi Willdene,
 
-Thank you, and please thank the client for the photos and for sharing
-Emma's story with us.
-
-Milestone 1 is complete and ready for review:
-- Homepage designed and built, responsive on desktop, tablet and mobile
-- Brand colours, fonts and style set up for the whole site
-- WordPress set up, and the site stays hidden from Google until launch
-
-Their requested changes are already done:
-1. Logo: the logo in the header is now larger.
-2. Favicon: the new favicon is in place. The file came with the
-   transparency pattern saved into the image, so I cleaned it up. If
-   they have the original file (PNG or SVG), please send it and I will
-   use that.
-3. Photos: their own photos now replace the placeholder images. On the
-   homepage I used the golden field at sunset (horizon straightened)
-   and their sunflower photos, as they carry the "light and sunshine"
-   feeling best.
-4. Photo of the two of them: it is on the About page. I chose the photo
-   by the lake, as it is bright and matches the sunflower colours. The
-   other one is kept in case they prefer it.
-5. The Story About Emma: it is the final section of the About page, in
-   full and word for word, in a calm section with the lake at sunset
-   above it.
+Milestone 1 is complete, and the client's changes are already in:
+- Larger logo in the header
+- New favicon (their file had the transparency pattern saved into the
+  image, so I cleaned it. If they have the original, please send it)
+- Their own photos on the homepage and About page, with the horizon
+  straightened
+- The photo of the two of them on the About page
+- "The Story About Emma" in full, as the last section of About
 
 Home: https://emmadigitalagency.com
 About: https://emmadigitalagency.com/about/
-Screenshots are attached (desktop and mobile).
+Screenshots attached.
 
-Portfolio: the agreed scope was 3 portfolio pieces. The system itself
-has no limit, and I have already made the homepage layout work for 5,
-so two more pieces fit in as soon as they send the content (images, a
-short description and the services for each).
+Portfolio: the agreed scope was 3 pieces, but the homepage is built to
+show 5, so two more fit in as soon as they send the content.
 
-Two small questions:
-1. Which question was the "second question" they answered yes to? I
-   want to be sure I act on the right one.
-2. The privacy policy still needs the registered business name, the
-   Business ID (Y-tunnus), the address and the date. It also mentions
-   analytics cookies, which the site does not use yet, so I suggest
-   leaving that part out until analytics is added. Is that okay?
+Two quick questions:
+1. Which was the "second question" they answered yes to?
+2. For the privacy policy, I need the business name, Business ID,
+   address and date.
 
-You can now request the release of the Milestone 1 payment. Please also
-activate Milestone 2, and I will continue with the contact form, email
-delivery and the remaining pages.
+You can now request the Milestone 1 payment. Please activate Milestone
+2 and I will continue.
 
 Best regards,
 Ariful
