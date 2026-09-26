@@ -110,14 +110,16 @@ Also: rename "The people behind Emma" → names **Eivind & Matleena** + IMG_9707
 - [x] Moved `SSSS/` to `client-assets/2026-09-26/` (2026-09-26). The originals are not committed (14 MB); the web copies are in `build/emma-core/assets/img/emma-*`
 - [ ] hPanel backup before touching the live site
 
-### Step 1 — M1 fixes on Home (today, about 2 h) → **submit M1 today**
-1. [ ] Logo 76 px / 58 px (`theme.css`), and check the header at 390 / 768 / 1440 px
-2. [ ] Favicon (section 3)
-3. [ ] Photos: straighten + export (section 2); upload to the Media Library
-4. [ ] Home: band ← 9714, intro ← 9716 (+ 9713 small if it passes), hero sunflower ← 9715 cut-out. Update `make_elementor.py` / `home.json` too, so the importer matches the live site
-5. [ ] Check: no stock photo left on Home except the sample project covers; LCP image preloaded; no sideways scroll
-6. [ ] Screenshots: desktop + mobile full page
-7. [ ] **Send M1** (message A below): link + screenshots + what was done + ask her to request the payment and fund M2
+### Step 1 — M1 fixes on Home ✅ done and live 2026-09-26 (v0.4.0, commit 23c15d3)
+1. [x] Logo 76 px desktop / 58 px phone (the Pro header and Hello's fallback header). Measured on live: 76 / 58
+2. [x] Favicon: `emma-favicon.png` (checkerboard removed, colour #FDB01D), set as the Site Icon by setup
+3. [x] Photos prepared by `build/tools/prepare_client_photos.py` (re-run it if the originals change)
+4. [x] Home: band ← `emma-field-sunset.jpg` (straightened), intro ← `emma-desk.jpg` (caption "Every project starts on paper.") + `emma-sunflower-wall.jpg`, hero/CTA sunflower ← `emma-sunflower-cutout.png` (150 KB). The generator and `home.json` match the live site
+5. [x] Deployed: theme + plugin zips uploaded, Tools → Emma setup run with "Replace", no failures. Checked logged out: 0.4.0 CSS, new favicon, all 4 new images; no sideways scroll at 1521 px or 374 px
+6. [ ] Screenshots, desktop + phone, full page (Ariful, for the M1 message)
+7. [ ] **Send M1** (message A below)
+
+Notes: the About page still uses the stock `hero-team.jpg` + `intro-sketch.jpg` (they are replaced in Step 2). The Chrome session is logged in as the **client's** account (eivindjohansen@…), not `Developer`.
 
 ### Step 2 — About page (Day 7, Sun 09-27)
 1. [ ] Team section → Eivind & Matleena + IMG_9707
