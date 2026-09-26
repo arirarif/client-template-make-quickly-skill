@@ -281,6 +281,7 @@ body.emma-is-sample .emma-case-cover::before {
 .e-con.emma-story-body { max-width: 680px; margin: clamp(56px, 7vw, 96px) auto 0; }
 .emma-story-body > .emma-label, .emma-story-body > .elementor-widget-heading { text-align: center; }
 .emma-story-body > .emma-label + .elementor-widget-heading { margin-top: 1.4rem; }
+.emma-story-body .elementor-heading-title { text-wrap: balance; }
 .emma-story-text { margin-top: clamp(36px, 4.5vw, 56px); font-size: clamp(1.05rem, 1.25vw, 1.15rem); line-height: 1.8; color: var(--emma-ink); }
 .emma-story-text p { margin: 0; }
 .emma-story-text p + p { margin-top: 1.25em; }
