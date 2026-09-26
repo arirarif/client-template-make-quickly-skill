@@ -157,50 +157,55 @@ Note: the Chrome session is logged in as the **client's** account (eivindjohanse
 
 ## 9. Messages to Willdene
 
-### A. M1 delivery (updated 2026-09-26: Steps 1–3 are live)
+### A. M1 delivery (final text, 2026-09-26; the privacy question from B is included)
 
 ```
 Hi Willdene,
 
 Thank you, and please thank the client for the photos and for sharing
-Emma's story.
+Emma's story with us.
 
-Milestone 1 is complete. Here is what is included:
+Milestone 1 is complete and ready for review:
 - Homepage designed and built, responsive on desktop, tablet and mobile
 - Brand colours, fonts and style set up for the whole site
-- WordPress set up and hidden from Google until launch
+- WordPress set up, and the site stays hidden from Google until launch
 
-Their requested changes are already in:
-- The logo in the header is larger
-- The new favicon is in place
-- Their own photos now replace the placeholder images. On the homepage
-  I used the golden field at sunset (horizon straightened) and their
-  sunflower photos, as they carry the "light and sunshine" feeling best
-- The About page now shows the two of them. I chose the photo by the
-  lake, as it is bright and matches the sunflower colours. The other
-  photo is kept in case they prefer it
-- "The Story About Emma" is the final section of the About page, in
-  full and word for word, in a calm section with the lake at sunset
-  above it
+Their requested changes are already done:
+1. Logo: the logo in the header is now larger.
+2. Favicon: the new favicon is in place. The file came with the
+   transparency pattern saved into the image, so I cleaned it up. If
+   they have the original file (PNG or SVG), please send it and I will
+   use that.
+3. Photos: their own photos now replace the placeholder images. On the
+   homepage I used the golden field at sunset (horizon straightened)
+   and their sunflower photos, as they carry the "light and sunshine"
+   feeling best.
+4. Photo of the two of them: it is on the About page. I chose the photo
+   by the lake, as it is bright and matches the sunflower colours. The
+   other one is kept in case they prefer it.
+5. The Story About Emma: it is the final section of the About page, in
+   full and word for word, in a calm section with the lake at sunset
+   above it.
 
 Home: https://emmadigitalagency.com
 About: https://emmadigitalagency.com/about/
-Screenshots attached (desktop and mobile).
-
-The favicon file came with the transparency pattern saved into the
-image, so I cleaned it up. If they have the original file (PNG or SVG),
-please send it and I will use that.
+Screenshots are attached (desktop and mobile).
 
 Portfolio: the agreed scope was 3 portfolio pieces. The system itself
 has no limit, and I have already made the homepage layout work for 5,
-so two more pieces fit in as soon as they send the content (images,
-a short description and the services for each).
+so two more pieces fit in as soon as they send the content (images, a
+short description and the services for each).
 
-One small question: which question was the "second question" they
-answered yes to? I want to be sure I act on the right one.
+Two small questions:
+1. Which question was the "second question" they answered yes to? I
+   want to be sure I act on the right one.
+2. The privacy policy still needs the registered business name, the
+   Business ID (Y-tunnus), the address and the date. It also mentions
+   analytics cookies, which the site does not use yet, so I suggest
+   leaving that part out until analytics is added. Is that okay?
 
 You can now request the release of the Milestone 1 payment. Please also
-activate Milestone 2 so I can continue with the contact form, email
+activate Milestone 2, and I will continue with the contact form, email
 delivery and the remaining pages.
 
 Best regards,
