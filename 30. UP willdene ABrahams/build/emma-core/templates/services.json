@@ -891,8 +891,8 @@
     "widgetType": "image",
     "settings": {
      "image": {
-      "url": "{{img:sunflower-real.png:url}}",
-      "id": "{{img:sunflower-real.png:id}}",
+      "url": "{{img:emma-sunflower-cutout.png:url}}",
+      "id": "{{img:emma-sunflower-cutout.png:id}}",
       "alt": "",
       "source": "library"
      },

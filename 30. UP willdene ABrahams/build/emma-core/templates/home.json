@@ -15,8 +15,8 @@
     "widgetType": "image",
     "settings": {
      "image": {
-      "url": "{{img:sunflower-real.png:url}}",
-      "id": "{{img:sunflower-real.png:id}}",
+      "url": "{{img:emma-sunflower-cutout.png:url}}",
+      "id": "{{img:emma-sunflower-cutout.png:id}}",
       "alt": "",
       "source": "library"
      },
@@ -154,14 +154,14 @@
       "widgetType": "image",
       "settings": {
        "image": {
-        "url": "{{img:hero-team.jpg:url}}",
-        "id": "{{img:hero-team.jpg:id}}",
-        "alt": "The team working together around a laptop",
+        "url": "{{img:emma-desk.jpg:url}}",
+        "id": "{{img:emma-desk.jpg:id}}",
+        "alt": "Planning a website on paper at a desk by the window",
         "source": "library"
        },
        "image_size": "full",
        "caption_source": "custom",
-       "caption": "One team for your website, search, social and data.",
+       "caption": "Every project starts on paper.",
        "_css_classes": "emma-photo emma-ratio-16-10"
       },
       "elements": []
@@ -172,14 +172,12 @@
       "widgetType": "image",
       "settings": {
        "image": {
-        "url": "{{img:intro-sketch.jpg:url}}",
-        "id": "{{img:intro-sketch.jpg:id}}",
-        "alt": "Sketching website layouts on paper",
+        "url": "{{img:emma-sunflower-wall.jpg:url}}",
+        "id": "{{img:emma-sunflower-wall.jpg:id}}",
+        "alt": "A sunflower in the evening light against a white wall",
         "source": "library"
        },
        "image_size": "full",
-       "caption_source": "custom",
-       "caption": "Every project starts on paper.",
        "_css_classes": "emma-photo emma-ratio-4-5"
       },
       "elements": []
@@ -598,9 +596,9 @@
     "widgetType": "image",
     "settings": {
      "image": {
-      "url": "{{img:band-sunflowers.jpg:url}}",
-      "id": "{{img:band-sunflowers.jpg:id}}",
-      "alt": "A sunflower field at sunset",
+      "url": "{{img:emma-field-sunset.jpg:url}}",
+      "id": "{{img:emma-field-sunset.jpg:id}}",
+      "alt": "The sun setting over a golden field on a Finnish summer evening",
       "source": "library"
      },
      "image_size": "full",
@@ -884,8 +882,8 @@
     "widgetType": "image",
     "settings": {
      "image": {
-      "url": "{{img:sunflower-real.png:url}}",
-      "id": "{{img:sunflower-real.png:id}}",
+      "url": "{{img:emma-sunflower-cutout.png:url}}",
+      "id": "{{img:emma-sunflower-cutout.png:id}}",
       "alt": "",
       "source": "library"
      },

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Emma Core
  * Description: Site functionality for Emma Digital Agency: the Portfolio (case studies) with Service tags and a simple project form, small security settings, and a one-time setup tool that creates the Elementor pages and templates.
- * Version: 0.3.0
+ * Version: 0.4.0
  * Author: Md Ariful Islam
  * Requires at least: 6.6
  * Requires PHP: 8.0
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'EMMA_CORE_VERSION', '0.3.0' );
+define( 'EMMA_CORE_VERSION', '0.4.0' );
 define( 'EMMA_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'EMMA_CORE_URL', plugin_dir_url( __FILE__ ) );
 

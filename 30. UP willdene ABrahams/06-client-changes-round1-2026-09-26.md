@@ -1,7 +1,7 @@
 # Client changes, round 1 — plan and workflow (written 2026-09-26, Day 6 of 10)
 
-Source: 3 messages from Willdene (below), 10 photos + 1 privacy-policy PDF in `SSSS/till first/`, the
-story PDF `SSSS/Emma_Our_Story.pdf`, and a read-only check of the live site on 2026-09-26.
+Source: 3 messages from Willdene (below), 10 photos + 1 privacy-policy PDF in `client-assets/2026-09-26/photos-and-policy/`, the
+story PDF `client-assets/2026-09-26/Emma_Our_Story.pdf`, and a read-only check of the live site on 2026-09-26.
 `05-full-project-workflow-2026-09-22.md` stays the master plan; **this file covers round 1 of the client's changes and the rest of the job.**
 
 ---
@@ -107,7 +107,7 @@ Also: rename "The people behind Emma" → names **Eivind & Matleena** + IMG_9707
 ### Step 0 — Before any work (today)
 - [ ] Ariful: check which "second question" was answered yes (R6)
 - [ ] Ariful: portfolio decision A / A+B / A+C (section 4)
-- [ ] Move `SSSS/` to `client-assets/2026-09-26/` (clear name). Do not commit the originals if the repo size matters; commit the optimised WebP copies
+- [x] Moved `SSSS/` to `client-assets/2026-09-26/` (2026-09-26). The originals are not committed (14 MB); the web copies are in `build/emma-core/assets/img/emma-*`
 - [ ] hPanel backup before touching the live site
 
 ### Step 1 — M1 fixes on Home (today, about 2 h) → **submit M1 today**

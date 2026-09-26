@@ -77,12 +77,12 @@ a { color: var(--emma-ink); }
 	content: ""; position: absolute; inset: -18% -18% 20%; border-radius: 50%;
 	background: radial-gradient(closest-side, rgba(242,176,47,.34), rgba(242,176,47,.12) 55%, rgba(242,176,47,0));
 }
-.emma-bloom img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 900 / 983; }
+.emma-bloom img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 852 / 900; }
 
 /* 3 header ----------------------------------------------------------------- */
 .e-con.emma-header { --flex-direction: row; --justify-content: space-between; --align-items: center; --column-gap: 2rem; --min-height: 92px; position: relative; z-index: 5; }
 .emma-header .e-con-inner > .elementor-widget, .emma-header-nav > .elementor-widget { width: auto; }
-.emma-logo img { height: 60px; width: auto; display: block; }
+.emma-logo img { height: 76px; width: auto; display: block; }
 .e-con.emma-header-nav { --flex-direction: row; --align-items: center; --column-gap: 2.2rem; --width: auto; width: auto; }
 .emma-nav .elementor-nav-menu--main .elementor-nav-menu { gap: 2.2rem; }
 .emma-nav .elementor-nav-menu--main .elementor-item { padding: 0; font-size: .95rem; font-weight: 400; color: var(--emma-ink); }
@@ -96,8 +96,8 @@ a { color: var(--emma-ink); }
 .emma-header-cta .elementor-button { padding: .85em 1.3em; }
 
 /* fallback: Hello's own header and footer, shown only while Elementor Pro is not active */
-.site-header { padding: 16px var(--emma-gutter); }
-.site-header .site-logo img, .site-header .custom-logo { height: 60px; width: auto; }
+.site-header { padding: 14px var(--emma-gutter); }
+.site-header .site-logo img, .site-header .custom-logo { height: 76px; width: auto; max-width: none; }
 .site-header .site-description { display: none; }
 .site-header .site-navigation a { color: var(--emma-ink); font-size: .95rem; }
 .site-footer { padding: 32px var(--emma-gutter); }
@@ -157,7 +157,7 @@ a { color: var(--emma-ink); }
 /* 7 band ------------------------------------------------------------------- */
 .e-con.emma-band { position: relative; height: clamp(300px, 40vw, 580px); overflow: hidden; }
 .emma-band .emma-band-photo, .emma-band .emma-band-photo .elementor-widget-container { height: 100%; }
-.emma-band img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.emma-band img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
 .emma-band::after { content: ""; position: absolute; inset: auto 0 0; height: 45%; background: linear-gradient(to top, rgba(18,16,14,.45), rgba(18,16,14,0)); }
 .emma-band > .emma-label {
 	position: absolute; z-index: 1; width: auto; left: max(var(--emma-gutter), calc((100vw - 1128px) / 2)); bottom: clamp(24px, 4vw, 48px); color: var(--emma-bg);
@@ -385,7 +385,7 @@ body.emma-is-sample .emma-case-cover::before {
 }
 @media (max-width: 767px) {
 	.e-con.emma-header { --min-height: 76px; }
-	.emma-logo img { height: 50px; }
+	.emma-logo img, .site-header .site-logo img, .site-header .custom-logo { height: 58px; }
 	.emma-header-cta { display: none; }
 	.e-con.emma-hero { --padding-bottom: 300px; }
 	.emma-hero .emma-bloom { width: 72vw; right: -6vw; bottom: -60px; }

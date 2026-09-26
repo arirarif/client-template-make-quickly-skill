@@ -338,8 +338,11 @@ function emma_core_setup_options( $images, $tpl_ids, &$log ) {
 		set_theme_mod( 'custom_logo', $images['logo-color.png']['id'] );
 		$log[] = 'Site logo set.';
 	}
-	if ( isset( $images['sunflower.png'] ) && ! get_option( 'site_icon' ) ) {
-		update_option( 'site_icon', $images['sunflower.png']['id'] );
+	/* The client's favicon (2026-09-26). Replaces the first icon, but never one chosen by hand. */
+	$icon = (int) get_option( 'site_icon' );
+	$old  = isset( $images['sunflower.png'] ) ? $images['sunflower.png']['id'] : -1;
+	if ( isset( $images['emma-favicon.png'] ) && ( ! $icon || $icon === $old ) ) {
+		update_option( 'site_icon', $images['emma-favicon.png']['id'] );
 		$log[] = 'Site icon set.';
 	}
 	if ( 'emmadigitalagency.com' === get_option( 'blogname' ) || '' === get_option( 'blogname' ) ) {

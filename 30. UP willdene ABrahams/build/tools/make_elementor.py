@@ -102,7 +102,7 @@ def section_head(title, link_text=None, link_url=None):
     return con(kids, 'emma-section-head')
 
 
-SUN = lambda: image('sunflower-real.png', '', 'emma-bloom')  # noqa: E731
+SUN = lambda: image('emma-sunflower-cutout.png', '', 'emma-bloom')  # noqa: E731
 
 
 def page_hero(lab, title, lead):
@@ -231,8 +231,8 @@ save('home', 'Home', 'page', [
         con([label('Who we are'),
              text('Emma looks after the digital side of your business, <em>from the website to the numbers behind it,</em> and explains every step in plain words.', 'emma-statement')],
             'emma-intro-head'),
-        con([image('hero-team.jpg', 'The team working together around a laptop', 'emma-photo emma-ratio-16-10', 'One team for your website, search, social and data.'),
-             image('intro-sketch.jpg', 'Sketching website layouts on paper', 'emma-photo emma-ratio-4-5', 'Every project starts on paper.')],
+        con([image('emma-desk.jpg', 'Planning a website on paper at a desk by the window', 'emma-photo emma-ratio-16-10', 'Every project starts on paper.'),
+             image('emma-sunflower-wall.jpg', 'A sunflower in the evening light against a white wall', 'emma-photo emma-ratio-4-5')],
             'emma-intro-photos'),
     ], 'emma-intro'),
     section([
@@ -241,7 +241,7 @@ save('home', 'Home', 'page', [
                   con([text(short), text(tags, 'emma-tags')], 'emma-service-text')], 'emma-service')
              for slug, name, short, tags, _, _ in SERVICES], 'emma-service-list'),
     ], 'emma-services'),
-    con([image('band-sunflowers.jpg', 'A sunflower field at sunset', 'emma-band-photo'), label('Make your ideas bloom')], 'emma-band'),
+    con([image('emma-field-sunset.jpg', 'The sun setting over a golden field on a Finnish summer evening', 'emma-band-photo'), label('Make your ideas bloom')], 'emma-band'),
     section([
         section_head('Selected work', 'All projects', '/portfolio/'),
         widget('shortcode', {'shortcode': '[emma_projects count="3" layout="featured"]'}, 'emma-projects-widget'),
