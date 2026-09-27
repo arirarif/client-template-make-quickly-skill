@@ -102,6 +102,11 @@ Also: rename "The people behind Emma" → names **Eivind & Matleena** + IMG_9707
 
 ## 7. Work plan, step by step
 
+> **Scope rule (Ariful, 2026-09-27): do no more than the $40 Milestone 1.** M1 = design, WordPress setup and the
+> homepage only. Nothing else gets built until Willdene activates (funds) M2. The About work (Steps 2–3) is
+> already live; it stays up but is **not billed as M1** and **counts toward M2**. Step 4 onward is frozen until
+> M2 is funded, and the privacy page (section 5) is M2 work too. The M1 message (section 9A) lists only M1 items.
+
 **Rules for every step:** bump the child theme / Emma Core version after any file edit · rebuild the zips with `build/tools/build_zips.py` · purge the Elementor CSS + LiteSpeed · test logged out with `?cb=` (never `?m=`) · commit each step (scope `git add` to this folder).
 
 ### Step 0 — Before any work (today)
@@ -162,35 +167,35 @@ Note: the Chrome session is logged in as the **client's** account (eivindjohanse
 ```
 Hi Willdene,
 
-Milestone 1 is complete, and the client's changes are already in:
+Milestone 1 is complete: WordPress setup, the design and the
+homepage, with the client's homepage changes already in:
 - Larger logo in the header
 - New favicon (their file had the transparency pattern saved into the
   image, so I cleaned it. If they have the original, please send it)
-- Their own photos on the homepage and About page, with the horizon
-  straightened
-- The photo of the two of them on the About page
-- "The Story About Emma" in full, as the last section of About
+- Their own photos on the homepage, with the horizon straightened
 
 Home: https://emmadigitalagency.com
-About: https://emmadigitalagency.com/about/
 Screenshots attached.
 
-Portfolio: the agreed scope was 3 pieces, but the homepage is built to
-show 5, so two more fit in as soon as they send the content.
+I have also made a head start on Milestone 2: the About page already
+has the photo of the two of them and "The Story About Emma" in full
+(https://emmadigitalagency.com/about/).
 
-Two quick questions:
-1. Which was the "second question" they answered yes to?
-2. For the privacy policy, I need the business name, Business ID,
-   address and date.
+Portfolio: the agreed scope is 3 pieces, and the homepage has room for
+5, so two more fit in as soon as they send the content.
 
-You can now request the Milestone 1 payment. Please activate Milestone
-2 and I will continue.
+One quick question: which was the "second question" they answered
+yes to?
+
+You can now request the Milestone 1 payment. Once Milestone 2 is
+activated, I will continue with the remaining pages, the contact form
+and the privacy policy.
 
 Best regards,
 Ariful
 ```
 
-### B. Short privacy-policy question (can go in the same message or with M2)
+### B. Short privacy-policy question (send only after M2 is activated — it is M2 work)
 
 ```
 The privacy policy is ready to publish. It still needs the registered
